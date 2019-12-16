@@ -114,10 +114,46 @@ namespace windows_source1ide
             }
             if (children.Count == 1 && root == null)
             {
-                root = children.Pop() ;
+                root = children.Pop();
             }
 
             return root;
+        }
+
+        public static void writeChunkFile(string path, string key, KeyVal<string, string> root)
+        {
+            List<string> lines = writeChunkFileTraverse(key, root, 0);
+            File.WriteAllLines(path, lines);
+        }
+
+        private static List<string> writeChunkFileTraverse(string key, KeyVal<string, string> node, int level)
+        {
+            List<string> lines = new List<string>();
+
+            string tabs = "";
+            for(int i = 0; i < level; i++)
+            {
+                tabs = tabs + "\t";
+            }
+
+            if (node.Children != null)
+            {
+                lines.Add(tabs + "\"" + key + "\"");
+                lines.Add(tabs + "{");
+                foreach(KeyValuePair<string, KeyVal<string, string>> entry in node.Children)
+                {
+                    lines.AddRange(writeChunkFileTraverse(entry.Key.Trim(), entry.Value, level + 1));
+                }
+                lines.Add(tabs + "}");
+            }
+            else if(node.Value != null)
+            {
+                lines.Add(tabs + "\"" + key + "\"\t\"" + node.Value + "\"");
+            }
+            
+
+
+                return lines;
         }
 
         public static string GetSteamPath()

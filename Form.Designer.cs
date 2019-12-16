@@ -48,6 +48,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -138,7 +139,6 @@
             this.buttonModStart.Caption = "Start";
             this.buttonModStart.Id = 8;
             this.buttonModStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStart.ImageOptions.Image")));
-            this.buttonModStart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModStart.ImageOptions.LargeImage")));
             this.buttonModStart.Name = "buttonModStart";
             this.buttonModStart.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.buttonModStart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
@@ -226,11 +226,22 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 500);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -267,5 +278,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem buttonModStart;
         private DevExpress.XtraBars.BarButtonItem buttonHammerStart;
+        private System.Windows.Forms.Button button1;
     }
 }
