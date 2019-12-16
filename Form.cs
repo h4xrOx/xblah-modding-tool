@@ -73,10 +73,10 @@ namespace windows_source1ide
             sourceSDK.runHammer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
-            KeyVal<string, string> gameInfo = SourceSDK.readChunkfile("G:\\SteamLibrary\\steamapps\\sourcemods\\mapbase_episodic_template\\gameinfo.txt");
-            SourceSDK.writeChunkFile("G:\\SteamLibrary\\steamapps\\sourcemods\\mapbase_episodic_template\\gameinfo.txt", "GameInfo", gameInfo);
+            GameinfoForm form = new GameinfoForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            form.Show();
         }
     }
 }

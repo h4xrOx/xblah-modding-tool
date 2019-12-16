@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -29,6 +30,7 @@ namespace windows_source1ide
 
         public Dictionary<string, string> GetMods(string game)
         {
+            loadGames();
             loadMods(game);
             return mods;
         }
@@ -36,7 +38,42 @@ namespace windows_source1ide
         public class KeyVal<KType, VType>
         {
             public KType Value;
-            public Dictionary<KType, KeyVal<KType, VType>> Children;
+            public Dictionary<string, KeyVal<string, string>> Children;
+
+            public KeyVal()
+            {
+
+            }
+
+            public KeyVal(KType value)
+            {
+                this.Value = value;
+            }
+
+            public KeyVal<string, string> GetChild(string key)
+            {
+                if (Children.ContainsKey(key))
+                    return Children[key];
+
+                return new KeyVal<string, string>();
+            }
+
+            public void SetChild(string key, KeyVal<string, string> value)
+            {
+                if (Children.ContainsKey(key))
+                    Children[key] = value;
+                else
+                    Children.Add(key, value);
+            }
+
+            public void SetChild(string key, string value)
+            {
+                KeyVal<string,string> keyVal = new KeyVal<string, string>(value);
+                if (Children.ContainsKey(key))
+                    Children[key] = keyVal;
+                else
+                    Children.Add(key, keyVal);
+            }
         }
 
         public static KeyVal<string, string> readChunkfile(String path)
