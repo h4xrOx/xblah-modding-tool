@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="toolTipItem13.Text" xml:space="preserve">
+    <value>Local path relative to GameInfo.txt, to an uncompressed 16x16 TGA that will appear as your mod's icon in Steam. Do not include the file extension. The larger 32px pixel icon that appears in Steam's Detail View should be placed next to the 16px one and called &lt;icon&gt;_big.tga.</value>
+  </data>
+  <data name="toolTipItem18.Text" xml:space="preserve">
+    <value>The AppID of the game the mod is to be based on. The mod will have access to all of this game's content, and will not be playable unless it is installed, the mod will also be ran with the game's executable as well. If you're uploading your Source game to Steam, this will be your game's AppID. Otherwise, this will be 243750 for Source 2013 Multiplayer, 243730 for Source 2013 Singleplayer, 630 for Alien Swarm, or the AppID of the game you're basing it off of if you're not working with source code.</value>
+  </data>
 </root>

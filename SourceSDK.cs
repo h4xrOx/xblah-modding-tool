@@ -52,7 +52,7 @@ namespace windows_source1ide
 
             public KeyVal<string, string> GetChild(string key)
             {
-                if (Children.ContainsKey(key))
+                if (Children != null && Children.ContainsKey(key))
                     return Children[key];
 
                 return new KeyVal<string, string>();
@@ -122,6 +122,7 @@ namespace windows_source1ide
                         {
                             // It's a group
                             line = line.Replace("\"", "");
+                            line = line.ToLower();
 
                             children.Push(new KeyVal<string, string>
                             {
@@ -135,6 +136,7 @@ namespace windows_source1ide
                             var a = words;
                             var v = new KeyVal<string, string> { Value = a[1], Children = null };
                             string key = a[0].Replace("\"", "");
+                            key = key.ToLower();
                             while (children.Peek().Children.Keys.Contains(key))
                             {
                                 key = key + " ";
@@ -244,7 +246,7 @@ namespace windows_source1ide
                 KeyVal<string, string> gameInfo = readChunkfile(path + "\\gameinfo.txt");
 
                 string name = gameInfo.Children["game"].Value;
-                string modAppId = gameInfo.Children["FileSystem"].Children["SteamAppId"].Value;
+                string modAppId = gameInfo.Children["filesystem"].Children["steamappid"].Value;
 
                 if (int.Parse(modAppId) == gameAppId)
                 {
@@ -277,8 +279,12 @@ namespace windows_source1ide
         public int GetGameAppId(string game)
         {
             string gamePath = games[game];
-            string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
-            return int.Parse(steam_appid);
+            if (File.Exists(gamePath + "\\steam_appid.txt"))
+            {
+                string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
+                return int.Parse(steam_appid);
+            }
+            return -1;
         }
 
         public static string[] splitByWords(string fullString)
@@ -385,6 +391,12 @@ namespace windows_source1ide
             sb.AppendLine("}");
 
             File.WriteAllText(gamePath + "\\bin\\GameConfig.txt", sb.ToString());
+        }
+
+        public void openModFolder(string mod)
+        {
+            string modPath = mods[mod];
+            Process.Start(modPath);
         }
     }
 }

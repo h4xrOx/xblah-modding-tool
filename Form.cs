@@ -32,13 +32,16 @@ namespace windows_source1ide
 
         private void updateGamesCombo()
         {
+            string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : "");
             repositoryGamesCombo.Items.Clear();
             foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
             {
                 repositoryGamesCombo.Items.Add(item.Key);
             }
 
-            if (repositoryGamesCombo.Items.Count > 0)
+            if (repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
+                gamesCombo.EditValue = currentGame;
+            else if (repositoryGamesCombo.Items.Count > 0)
                 gamesCombo.EditValue = repositoryGamesCombo.Items[0];
             else
                 gamesCombo.EditValue = "";
@@ -46,13 +49,16 @@ namespace windows_source1ide
 
         private void updateModsCombo()
         {
+            string currentMod = (modsCombo.EditValue != null ? modsCombo.EditValue.ToString() : "");
             repositoryModsCombo.Items.Clear();
             foreach (KeyValuePair<string, string> item in sourceSDK.GetMods(gamesCombo.EditValue.ToString()))
             {
                 repositoryModsCombo.Items.Add(item.Key);
             }
 
-            if (repositoryModsCombo.Items.Count > 0)
+            if (repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
+                modsCombo.EditValue = currentMod;
+            else if (repositoryModsCombo.Items.Count > 0)
                 modsCombo.EditValue = repositoryModsCombo.Items[0];
             else
                 modsCombo.EditValue = "";
@@ -76,7 +82,14 @@ namespace windows_source1ide
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             GameinfoForm form = new GameinfoForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
-            form.Show();
+            form.ShowDialog();
+            updateGamesCombo();
+            updateModsCombo();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            sourceSDK.openModFolder(modsCombo.EditValue.ToString());
         }
     }
 }
