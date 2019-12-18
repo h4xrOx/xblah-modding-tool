@@ -66,6 +66,7 @@ namespace windows_source1ide
                     Children.Add(key, value);
             }
 
+
             public void SetChild(string key, string value)
             {
                 KeyVal<string,string> keyVal = new KeyVal<string, string>(value);
@@ -161,11 +162,26 @@ namespace windows_source1ide
 
         public static void writeChunkFile(string path, string key, KeyVal<string, string> root)
         {
-            List<string> lines = writeChunkFileTraverse(key, root, 0);
-            File.WriteAllLines(path, lines);
+            writeChunkFile(path, key, root, Encoding.UTF8);
         }
 
-        private static List<string> writeChunkFileTraverse(string key, KeyVal<string, string> node, int level)
+        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, bool quotes)
+        {
+            writeChunkFile(path, key, root, quotes, Encoding.UTF8);
+        }
+
+        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, Encoding encoding)
+        {
+            writeChunkFile(path, key, root, true, encoding);
+        }
+
+        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, bool quotes, Encoding encoding)
+        {
+            List<string> lines = writeChunkFileTraverse(key, root, 0, quotes);
+            File.WriteAllLines(path, lines, encoding);
+        }
+
+        private static List<string> writeChunkFileTraverse(string key, KeyVal<string, string> node, int level, bool quotes)
         {
             List<string> lines = new List<string>();
 
@@ -177,17 +193,17 @@ namespace windows_source1ide
 
             if (node.Children != null)
             {
-                lines.Add(tabs + "\"" + key + "\"");
+                lines.Add(tabs + (quotes ? "\"" : "") + key + (quotes ? "\"" : ""));
                 lines.Add(tabs + "{");
                 foreach(KeyValuePair<string, KeyVal<string, string>> entry in node.Children)
                 {
-                    lines.AddRange(writeChunkFileTraverse(entry.Key.Trim(), entry.Value, level + 1));
+                    lines.AddRange(writeChunkFileTraverse(entry.Key.Trim(), entry.Value, level + 1, quotes));
                 }
                 lines.Add(tabs + "}");
             }
             else if(node.Value != null)
             {
-                lines.Add(tabs + "\"" + key + "\"\t\"" + node.Value + "\"");
+                lines.Add(tabs + (quotes ? "\"" : "") + key + (quotes ? "\"" : "") + "\t\"" + node.Value + "\"");
             }
             
 
@@ -314,7 +330,7 @@ namespace windows_source1ide
             return words.ToArray();
         }
 
-        public void runGame(string game, string mod)
+        public Process runGame(string game, string mod)
         {
             string gamePath = games[game];
             string modPath = mods[mod];
@@ -336,6 +352,9 @@ namespace windows_source1ide
             ffmpeg.StartInfo.FileName = exePath;
             ffmpeg.StartInfo.Arguments = "-game \"" + modPath + "\"";
             ffmpeg.Start();
+            ffmpeg.EnableRaisingEvents = true;
+
+            return ffmpeg;
         }
 
         public void runHammer(string game, string mod)

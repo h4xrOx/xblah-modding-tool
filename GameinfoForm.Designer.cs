@@ -34,6 +34,9 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
@@ -77,9 +80,6 @@
             DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
@@ -90,6 +90,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.textTitle2 = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.textType = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -124,22 +126,21 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.textGamedata = new DevExpress.XtraEditors.TextEdit();
             this.textInstance = new DevExpress.XtraEditors.TextEdit();
-            this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.textTitle2 = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.comboGames = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
+            this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.textGame.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textTitle2.Properties)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textType.Properties)).BeginInit();
@@ -160,12 +161,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textInstance.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textTitle2.Properties)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboGames.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textGame
@@ -225,7 +225,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 423F));
             this.tableLayoutPanel1.Controls.Add(this.textGame, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textTitle, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl1, 0, 0);
@@ -258,19 +258,42 @@
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Title";
             // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(3, 55);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(29, 13);
+            this.labelControl17.TabIndex = 4;
+            this.labelControl17.Text = "Title 2";
+            // 
+            // textTitle2
+            // 
+            this.textTitle2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textTitle2.Location = new System.Drawing.Point(38, 55);
+            this.textTitle2.Name = "textTitle2";
+            this.textTitle2.Size = new System.Drawing.Size(417, 20);
+            toolTipTitleItem3.Text = "Title2 <string>";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "You can also new line the menu text by adding another key of the same name Title," +
+    " but append either 2 or a higher number onto it.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.textTitle2.SuperTip = superToolTip3;
+            this.textTitle2.TabIndex = 5;
+            // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.tableLayoutPanel3);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage3.Size = new System.Drawing.Size(404, 189);
+            this.xtraTabPage3.Size = new System.Drawing.Size(474, 189);
             this.xtraTabPage3.Text = "Options";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316F));
             this.tableLayoutPanel3.Controls.Add(this.textType, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelControl7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.switchDifficulty, 1, 1);
@@ -294,7 +317,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(388, 173);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 173);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // textType
@@ -308,7 +331,7 @@
             "Single-player",
             "Multi-player"});
             this.textType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.textType.Size = new System.Drawing.Size(244, 20);
+            this.textType.Size = new System.Drawing.Size(314, 20);
             toolTipTitleItem4.Text = "Type <string>";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "Affects which tabs appear in which order in the Options panel, the value will eit" +
@@ -448,14 +471,14 @@
             this.xtraTabPage2.Controls.Add(this.tableLayoutPanel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage2.Size = new System.Drawing.Size(404, 189);
+            this.xtraTabPage2.Size = new System.Drawing.Size(474, 189);
             this.xtraTabPage2.Text = "Steam games list";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 377F));
             this.tableLayoutPanel2.Controls.Add(this.labelControl3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelControl4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.labelControl5, 0, 2);
@@ -472,7 +495,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(388, 173);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(458, 173);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // labelControl3
@@ -512,7 +535,7 @@
             this.textDeveloper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textDeveloper.Location = new System.Drawing.Point(80, 3);
             this.textDeveloper.Name = "textDeveloper";
-            this.textDeveloper.Size = new System.Drawing.Size(305, 20);
+            this.textDeveloper.Size = new System.Drawing.Size(375, 20);
             toolTipTitleItem10.Text = "Developer <string>";
             toolTipItem10.LeftIndent = 6;
             toolTipItem10.Text = "The developer of the mod. Usually either the Mod Team\'s name, or a single person\'" +
@@ -527,7 +550,7 @@
             this.textDeveloperURL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textDeveloperURL.Location = new System.Drawing.Point(80, 29);
             this.textDeveloperURL.Name = "textDeveloperURL";
-            this.textDeveloperURL.Size = new System.Drawing.Size(305, 20);
+            this.textDeveloperURL.Size = new System.Drawing.Size(375, 20);
             toolTipTitleItem11.Text = "Developer_URL <string>";
             toolTipItem11.LeftIndent = 6;
             toolTipItem11.Text = "Your or the mod\'s URL. Must start with http://.";
@@ -541,7 +564,7 @@
             this.textManual.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textManual.Location = new System.Drawing.Point(80, 55);
             this.textManual.Name = "textManual";
-            this.textManual.Size = new System.Drawing.Size(305, 20);
+            this.textManual.Size = new System.Drawing.Size(375, 20);
             toolTipTitleItem12.Text = "Manual <string>";
             toolTipItem12.LeftIndent = 6;
             toolTipItem12.Text = "URL to the mod\'s manual; can also be a local file.";
@@ -555,7 +578,7 @@
             this.textIcon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textIcon.Location = new System.Drawing.Point(80, 81);
             this.textIcon.Name = "textIcon";
-            this.textIcon.Size = new System.Drawing.Size(305, 20);
+            this.textIcon.Size = new System.Drawing.Size(375, 20);
             toolTipTitleItem13.Text = "Icon <string>";
             toolTipItem13.LeftIndent = 6;
             toolTipItem13.Text = resources.GetString("toolTipItem13.Text");
@@ -576,7 +599,7 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 370F));
             this.tableLayoutPanel4.Controls.Add(this.switchNodegraph, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.switchVR, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.labelControl13, 0, 0);
@@ -687,6 +710,59 @@
             this.textInstance.SuperTip = superToolTip17;
             this.textInstance.TabIndex = 7;
             // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.tableLayoutPanel5);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(8);
+            this.xtraTabPage5.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage5.Text = "File system";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 386F));
+            this.tableLayoutPanel5.Controls.Add(this.labelControl18, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboGames, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(8, 8);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(3, 3);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(66, 13);
+            this.labelControl18.TabIndex = 0;
+            this.labelControl18.Text = "Steam App ID";
+            // 
+            // comboGames
+            // 
+            this.comboGames.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboGames.Location = new System.Drawing.Point(75, 3);
+            this.comboGames.Name = "comboGames";
+            this.comboGames.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboGames.Size = new System.Drawing.Size(380, 20);
+            toolTipTitleItem18.Text = "SteamAppID <integer>";
+            toolTipItem18.LeftIndent = 6;
+            toolTipItem18.Text = resources.GetString("toolTipItem18.Text");
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            superToolTip18.Items.Add(toolTipItem18);
+            this.comboGames.SuperTip = superToolTip18;
+            this.comboGames.TabIndex = 1;
+            // 
+            // xtraTabPage6
+            // 
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage6.Text = "Search paths";
+            // 
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -721,82 +797,6 @@
             this.panelControl1.Size = new System.Drawing.Size(476, 31);
             this.panelControl1.TabIndex = 5;
             // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(3, 55);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(29, 13);
-            this.labelControl17.TabIndex = 4;
-            this.labelControl17.Text = "Title 2";
-            // 
-            // textTitle2
-            // 
-            this.textTitle2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textTitle2.Location = new System.Drawing.Point(38, 55);
-            this.textTitle2.Name = "textTitle2";
-            this.textTitle2.Size = new System.Drawing.Size(417, 20);
-            toolTipTitleItem3.Text = "Title2 <string>";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "You can also new line the menu text by adding another key of the same name Title," +
-    " but append either 2 or a higher number onto it.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.textTitle2.SuperTip = superToolTip3;
-            this.textTitle2.TabIndex = 5;
-            // 
-            // xtraTabPage5
-            // 
-            this.xtraTabPage5.Controls.Add(this.tableLayoutPanel5);
-            this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage5.Size = new System.Drawing.Size(474, 189);
-            this.xtraTabPage5.Text = "File system";
-            // 
-            // xtraTabPage6
-            // 
-            this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(474, 189);
-            this.xtraTabPage6.Text = "Search paths";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel5.Controls.Add(this.labelControl18, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboGames, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 173);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(3, 3);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(66, 13);
-            this.labelControl18.TabIndex = 0;
-            this.labelControl18.Text = "Steam App ID";
-            // 
-            // comboGames
-            // 
-            this.comboGames.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboGames.Location = new System.Drawing.Point(75, 3);
-            this.comboGames.Name = "comboGames";
-            this.comboGames.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboGames.Size = new System.Drawing.Size(380, 20);
-            toolTipTitleItem18.Text = "SteamAppID <integer>";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = resources.GetString("toolTipItem18.Text");
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem18);
-            this.comboGames.SuperTip = superToolTip18;
-            this.comboGames.TabIndex = 1;
-            // 
             // GameinfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -815,6 +815,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textTitle2.Properties)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -838,13 +839,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textInstance.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textTitle2.Properties)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboGames.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -12,13 +12,17 @@ using static windows_source1ide.SourceSDK;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using DevExpress.XtraBars;
 
 namespace windows_source1ide
 {
-    public partial class Form : DevExpress.XtraEditors.XtraForm
+    public partial class ModForm : DevExpress.XtraEditors.XtraForm
     {
+
+        Process modProcess = null;
         SourceSDK sourceSDK;
-        public Form()
+
+        public ModForm()
         {
             InitializeComponent();
         }
@@ -71,15 +75,39 @@ namespace windows_source1ide
 
         private void buttonModStart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sourceSDK.runGame(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            modProcess = sourceSDK.runGame(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            buttonModRestart.Visibility = BarItemVisibility.Always;
+            modProcess.Exited += new EventHandler(modExited);
         }
 
-        private void buttonHammerStart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void modExited(object sender, EventArgs e)
+        {
+            buttonModStart.Enabled = true;
+            barButtonRun.Enabled = true;
+            buttonModStop.Visibility = BarItemVisibility.Never;
+            buttonModRestart.Visibility = BarItemVisibility.Never;
+            modProcess = null;
+        }
+
+        private void barButtonHammer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             sourceSDK.runHammer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
+        }
+
+        private void barButtonModOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            sourceSDK.openModFolder(modsCombo.EditValue.ToString());
+        }
+
+        private void barButtonGameinfo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GameinfoForm form = new GameinfoForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
             form.ShowDialog();
@@ -87,9 +115,32 @@ namespace windows_source1ide
             updateModsCombo();
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void barButtonChapters_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sourceSDK.openModFolder(modsCombo.EditValue.ToString());
+            ChaptersForm form = new ChaptersForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            form.ShowDialog();
+        }
+
+        private void modsCombo_EditValueChanged(object sender, EventArgs e)
+        {
+            buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            barButtonHammer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+        }
+
+        private void buttonModStop_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (modProcess != null)
+            {
+                modProcess.Kill();
+                modProcess = null;
+            }
+        }
+
+        private void buttonModRestart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            buttonModStop_ItemClick(null, null);
+            buttonModStart_ItemClick(null, null);
         }
     }
 }
