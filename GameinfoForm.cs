@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using static windows_source1ide.SourceSDK;
+using static windows_source1ide.Steam;
 using System.Diagnostics;
 
 namespace windows_source1ide
@@ -17,8 +17,8 @@ namespace windows_source1ide
     {
         string game;
         string mod;
-        SourceSDK sourceSDK;
-        KeyVal<string, string> gameinfo;
+        Steam sourceSDK;
+        SourceSDK.KeyValue gameinfo;
 
         public GameinfoForm(string game, string mod)
         {
@@ -30,16 +30,16 @@ namespace windows_source1ide
 
         private void GameinfoForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new SourceSDK();
+            sourceSDK = new Steam();
             string path = sourceSDK.GetMods(game)[mod] + "\\gameinfo.txt";
 
-            gameinfo = SourceSDK.readChunkfile(path);
+            gameinfo = SourceSDK.KeyValue.readChunkfile(path);
 
-            textGame.EditValue = gameinfo.GetChild("game").Value;
-            textTitle.EditValue = gameinfo.GetChild("title").Value;
-            //textTitle2.EditValue = gameinfo.GetChild("title2").Value;
+            textGame.EditValue = gameinfo.getValue("game");
+            textTitle.EditValue = gameinfo.getValue("title");
+            textTitle2.EditValue = gameinfo.getValue("title2");
 
-            string type = gameinfo.GetChild("type").Value;
+            string type = gameinfo.getValue("type");
             if (type == "multiplayer_only")
             {
                 textType.EditValue = "Multi-player";
@@ -47,24 +47,24 @@ namespace windows_source1ide
             {
                 textType.EditValue = "Single-player";
             }
-            switchDifficulty.EditValue = (gameinfo.GetChild("nodifficulty").Value == "1" ? false : true);
-            switchPortals.EditValue = (gameinfo.GetChild("hasportals").Value == "1" ? true : false);
-            switchCrosshair.EditValue = (gameinfo.GetChild("nocrosshair").Value == "1" ? false : true);
-            switchAdvCrosshair.EditValue = (gameinfo.GetChild("advcrosshair").Value == "1" ? true : false);
-            switchModels.EditValue = (gameinfo.GetChild("nomodels").Value == "1" ? false : true);
+            switchDifficulty.EditValue = (gameinfo.getValue("nodifficulty") == "1" ? false : true);
+            switchPortals.EditValue = (gameinfo.getValue("hasportals") == "1" ? true : false);
+            switchCrosshair.EditValue = (gameinfo.getValue("nocrosshair") == "1" ? false : true);
+            switchAdvCrosshair.EditValue = (gameinfo.getValue("advcrosshair") == "1" ? true : false);
+            switchModels.EditValue = (gameinfo.getValue("nomodels")== "1" ? false : true);
 
-            textDeveloper.EditValue = gameinfo.GetChild("developer").Value;
-            textDeveloperURL.EditValue = gameinfo.GetChild("developer_url").Value;
-            textManual.EditValue = gameinfo.GetChild("manual").Value;
-            textIcon.EditValue = gameinfo.GetChild("icon").Value;
+            textDeveloper.EditValue = gameinfo.getValue("developer");
+            textDeveloperURL.EditValue = gameinfo.getValue("developer_url");
+            textManual.EditValue = gameinfo.getValue("manual");
+            textIcon.EditValue = gameinfo.getValue("icon");
 
-            switchNodegraph.EditValue = (gameinfo.GetChild("nodegraph").Value == "1" ? true : false);
-            textGamedata.EditValue = gameinfo.GetChild("gamedata").Value;
-            textInstance.EditValue = gameinfo.GetChild("instancepath").Value;
-            switchVR.EditValue = (gameinfo.GetChild("supportsvr").Value == "1" ? true : false);
+            switchNodegraph.EditValue = (gameinfo.getValue("nodegraph") == "1" ? true : false);
+            textGamedata.EditValue = gameinfo.getValue("gamedata");
+            textInstance.EditValue = gameinfo.getValue("instancepath");
+            switchVR.EditValue = (gameinfo.getValue("supportsvr") == "1" ? true : false);
 
             comboGames.Properties.Items.Clear();
-            string appID = gameinfo.GetChild("filesystem").GetChild("steamappid").Value;
+            string appID = gameinfo.getChild("filesystem").getValue("steamappid");
             foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
             {
                 comboGames.Properties.Items.Add(item.Key);
@@ -78,9 +78,9 @@ namespace windows_source1ide
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            gameinfo.SetChild("game", (textGame.EditValue != null ? textGame.EditValue.ToString() : ""));
-            gameinfo.SetChild("title", (textTitle.EditValue != null ? textTitle.EditValue.ToString() : ""));
-            //gameinfo.SetChild("title2", (textTitle2.EditValue != null ? textTitle2.EditValue.ToString() : ""));
+            gameinfo.setValue("game", textGame.EditValue != null ? textGame.EditValue.ToString() : "");
+            gameinfo.setValue("title", textTitle.EditValue != null ? textTitle.EditValue.ToString() : "");
+            gameinfo.setValue("title2", textTitle2.EditValue != null ? textTitle2.EditValue.ToString() : "");
 
             string type;
             if (textType.EditValue.ToString() == "Multi-player")
@@ -90,30 +90,30 @@ namespace windows_source1ide
             {
                 type = "singleplayer_only";
             }
-            gameinfo.SetChild("type", type);
+            gameinfo.setValue("type", type);
 
-            gameinfo.SetChild("nodifficulty", (switchDifficulty.IsOn ? "0" : "1"));
-            gameinfo.SetChild("hasportals", (switchPortals.IsOn ? "1" : "0"));
-            gameinfo.SetChild("nocrosshair", (switchCrosshair.IsOn ? "0" : "1"));
-            gameinfo.SetChild("advcrosshair", (switchAdvCrosshair.IsOn ? "1" : "0"));
-            gameinfo.SetChild("nomodels", (switchModels.IsOn ? "0" : "1"));
+            gameinfo.setValue("nodifficulty", (switchDifficulty.IsOn ? "0" : "1"));
+            gameinfo.setValue("hasportals", (switchPortals.IsOn ? "1" : "0"));
+            gameinfo.setValue("nocrosshair", (switchCrosshair.IsOn ? "0" : "1"));
+            gameinfo.setValue("advcrosshair", (switchAdvCrosshair.IsOn ? "1" : "0"));
+            gameinfo.setValue("nomodels", (switchModels.IsOn ? "0" : "1"));
 
-            gameinfo.SetChild("developer", (textDeveloper.EditValue != null ? textDeveloper.EditValue.ToString() : ""));
-            gameinfo.SetChild("developer_url", (textDeveloperURL.EditValue != null ? textDeveloperURL.EditValue.ToString() : ""));
-            gameinfo.SetChild("manual", (textManual.EditValue != null ? textManual.EditValue.ToString() : ""));
-            gameinfo.SetChild("icon", (textIcon.EditValue != null ? textIcon.EditValue.ToString() : ""));
+            gameinfo.setValue("developer", textDeveloper.EditValue != null ? textDeveloper.EditValue.ToString() : "");
+            gameinfo.setValue("developer_url", textDeveloperURL.EditValue != null ? textDeveloperURL.EditValue.ToString() : "");
+            gameinfo.setValue("manual", textManual.EditValue != null ? textManual.EditValue.ToString() : "");
+            gameinfo.setValue("icon", textIcon.EditValue != null ? textIcon.EditValue.ToString() : "");
 
-            gameinfo.SetChild("nodegraph", (switchNodegraph.IsOn ? "1" : "0"));
-            gameinfo.SetChild("gamedata", (textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : ""));
-            gameinfo.SetChild("instancepath", (textInstance.EditValue != null ? textInstance.EditValue.ToString() : ""));
-            gameinfo.SetChild("supportsvr", (switchVR.IsOn ? "1" : "0"));
+            gameinfo.setValue("nodegraph", switchNodegraph.IsOn ? "1" : "0");
+            gameinfo.setValue("gamedata", textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : "");
+            gameinfo.setValue("instancepath", textInstance.EditValue != null ? textInstance.EditValue.ToString() : "");
+            gameinfo.setValue("supportsvr", switchVR.IsOn ? "1" : "0");
 
             int appID = sourceSDK.GetGameAppId(comboGames.EditValue.ToString());
-            gameinfo.GetChild("filesystem").SetChild("steamappid", appID.ToString());
+            gameinfo.getChild("filesystem").setValue("steamappid", appID.ToString());
 
             string path = sourceSDK.GetMods(game)[mod] + "\\gameinfo.txt";
 
-            writeChunkFile(path, "GameInfo", gameinfo);
+            SourceSDK.KeyValue.writeChunkFile(path, gameinfo, false, new UTF8Encoding(false));
 
             Close();
         }

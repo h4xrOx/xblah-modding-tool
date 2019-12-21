@@ -81,10 +81,29 @@
     <Compile Include="GamemenuForm.Designer.cs">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModSelectionDialog.Designer.cs">
+      <DependentUpon>ModSelectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewModForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewModForm.Designer.cs">
+      <DependentUpon>NewModForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceSDK.cs" />
+    <Compile Include="Steam.cs" />
+    <Compile Include="SourceSDK\KeyValue.cs" />
     <Compile Include="TGASharpLib.cs" />
+    <Compile Include="Tools\AssetsCopierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\AssetsCopierForm.Designer.cs">
+      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +116,12 @@
     <EmbeddedResource Include="GamemenuForm.resx">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModSelectionDialog.resx">
+      <DependentUpon>ModSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewModForm.resx">
+      <DependentUpon>NewModForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tools\AssetsCopierForm.resx">
+      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,6 +146,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

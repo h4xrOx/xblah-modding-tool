@@ -8,11 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using static windows_source1ide.SourceSDK;
+using static windows_source1ide.Steam;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using DevExpress.XtraBars;
+using windows_source1ide.Tools;
 
 namespace windows_source1ide
 {
@@ -20,7 +21,7 @@ namespace windows_source1ide
     {
 
         Process modProcess = null;
-        SourceSDK sourceSDK;
+        Steam sourceSDK;
 
         public ModForm()
         {
@@ -30,7 +31,7 @@ namespace windows_source1ide
         private void Form_Load(object sender, EventArgs e)
         {
             Text = Application.ProductName;
-            sourceSDK = new SourceSDK();
+            sourceSDK = new Steam();
             updateGamesCombo();
         }
 
@@ -141,6 +142,98 @@ namespace windows_source1ide
         {
             buttonModStop_ItemClick(null, null);
             buttonModStart_ItemClick(null, null);
+        }
+
+        private void assetsCopierButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AssetsCopierForm form = new AssetsCopierForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            form.ShowDialog();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            NewModForm form = new NewModForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                string folder = form.modFolder;
+                string title = form.modTitle;
+                string game = form.game;
+                string gameBranch = form.gameBranch;
+                string appId = sourceSDK.GetGameAppId(game).ToString();
+                string client = form.client;
+                string server = form.server;
+
+                string gamePath = sourceSDK.GetGames()[game];
+                string modPath = Steam.GetSteamPath() + "\\steamapps\\sourcemods\\" + folder;
+
+                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(gamePath + "\\" + gameBranch + "\\gameinfo.txt");
+                string gamebin = gameInfo.findChild("gamebin").getValue();
+                gameInfo.getChild("filesystem").getChild("searchpaths").setValue("gamebin", "|gameinfo_path|bin");
+
+                // Copy binaries
+                Directory.CreateDirectory(modPath + "\\bin");
+                File.Copy(client, modPath + "\\bin\\client.dll", true);
+                File.Copy(server, modPath + "\\bin\\server.dll", true);
+
+                // Create gameinfo
+                
+                gameInfo.setValue("game", title);
+                gameInfo.setValue("title", title);
+                gameInfo.setValue("title2", "");
+                gameInfo.findChild("steamappid").setValue(appId);
+
+                SourceSDK.KeyValue searchPaths = gameInfo.getChild("filesystem").getChild("searchpaths");
+                searchPaths.clearChildren();
+
+                searchPaths.addChild(new SourceSDK.KeyValue("game+mod+mod_write+default_write_path", "|gameinfo_path|."));
+
+                searchPaths.addChild(new SourceSDK.KeyValue("gamebin", "|gameinfo_path|bin"));
+
+                searchPaths.addChild(new SourceSDK.KeyValue("game_lv", "hl2/hl2_lv.vpk"));
+
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2/ep2_english.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2/ep2_pak.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic/ep1_english.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic/ep1_pak.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|sourcetest/sourcetest_pak.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_english.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_pak.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_textures.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_sound_vo_english.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_sound_misc.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_misc.vpk"));
+
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|sourcetest"));
+                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2"));
+
+                searchPaths.addChild(new SourceSDK.KeyValue("platform", "|all_source_engine_paths|platform/platform_misc.vpk"));
+                searchPaths.addChild(new SourceSDK.KeyValue("platform", "|all_source_engine_paths|platform"));
+
+                SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
+
+                updateModsCombo();
+                gamesCombo.EditValue = game;
+                modsCombo.EditValue = title + " (" + folder + ")";
+               //
+            }
+        }
+
+        private void importMapButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ModSelectionDialog dialog = new ModSelectionDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string game = dialog.game;
+                string mod = dialog.mod;
+
+                AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod, sourceSDK.GetMods(gamesCombo.EditValue.ToString())[modsCombo.EditValue.ToString()]);
+                if (assetsCopierForm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }

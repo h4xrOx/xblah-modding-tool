@@ -1,23 +1,20 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace windows_source1ide
 {
-    class SourceSDK
+    class Steam
     {
         public List<string> libraries;
         Dictionary<string, string> games = new Dictionary<string, string>();
         Dictionary<string, string> mods = new Dictionary<string, string>();
 
-        public SourceSDK()
+        public Steam()
         {
             loadLibraries();
         }
@@ -35,182 +32,6 @@ namespace windows_source1ide
             return mods;
         }
 
-        public class KeyVal<KType, VType>
-        {
-            public KType Value;
-            public Dictionary<string, KeyVal<string, string>> Children;
-
-            public KeyVal()
-            {
-
-            }
-
-            public KeyVal(KType value)
-            {
-                this.Value = value;
-            }
-
-            public KeyVal<string, string> GetChild(string key)
-            {
-                if (Children != null && Children.ContainsKey(key))
-                    return Children[key];
-
-                return new KeyVal<string, string>();
-            }
-
-            public void SetChild(string key, KeyVal<string, string> value)
-            {
-                if (Children.ContainsKey(key))
-                    Children[key] = value;
-                else
-                    Children.Add(key, value);
-            }
-
-
-            public void SetChild(string key, string value)
-            {
-                KeyVal<string,string> keyVal = new KeyVal<string, string>(value);
-                if (Children.ContainsKey(key))
-                    Children[key] = keyVal;
-                else
-                    Children.Add(key, keyVal);
-            }
-        }
-
-        public static KeyVal<string, string> readChunkfile(String path)
-        {
-            // Parse Valve chunkfile format
-            KeyVal<string, string> root = null;
-            Stack<KeyVal<string, string>> children = new Stack<KeyVal<string, string>>();
-
-            if (File.Exists(path))
-            {
-                using (StreamReader r = new StreamReader(path))
-                {
-
-                    while (r.Peek() >= 0)
-                    {
-                        String line = r.ReadLine();
-                        line = line.Trim();
-                        line = Regex.Replace(line, @"\s+", " ");
-                        if (line.StartsWith("//"))
-                        {
-                            continue;
-                        }
-
-                        string[] words = SourceSDK.splitByWords(line);
-
-                        if (words.Length > 0 && words[0].Contains("{"))
-                        {
-                            // It opens a group
-                            children.Peek().Children = new Dictionary<string, KeyVal<string, string>>();
-                        }
-                        else if (words.Length > 0 && words[0].Contains("}"))
-                        {
-                            // It closes a group
-                            var child = children.Pop();
-                            if (children.Count > 0)
-                            {
-                                String key = child.Value;
-                                children.Peek().Children.Add(key, child);
-                            }
-                            else
-                            {
-                                root = child;
-                            }
-                        }
-                        else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))
-                        {
-                            // It's a group
-                            line = line.Replace("\"", "");
-                            line = line.ToLower();
-
-                            children.Push(new KeyVal<string, string>
-                            {
-                                Value = line,
-                                Children = new Dictionary<string, KeyVal<string, string>>()
-                            });
-                        }
-                        else if (words.Length >= 2)
-                        {
-                            // It's a key value
-                            var a = words;
-                            var v = new KeyVal<string, string> { Value = a[1], Children = null };
-                            string key = a[0].Replace("\"", "");
-                            key = key.ToLower();
-                            while (children.Peek().Children.Keys.Contains(key))
-                            {
-                                key = key + " ";
-                            }
-                            children.Peek().Children.Add(key, v);
-                        } else
-                        {
-
-                        }
-
-
-                    }
-                }
-            }
-            if (children.Count == 1 && root == null)
-            {
-                root = children.Pop();
-            }
-
-            return root;
-        }
-
-        public static void writeChunkFile(string path, string key, KeyVal<string, string> root)
-        {
-            writeChunkFile(path, key, root, Encoding.UTF8);
-        }
-
-        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, bool quotes)
-        {
-            writeChunkFile(path, key, root, quotes, Encoding.UTF8);
-        }
-
-        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, Encoding encoding)
-        {
-            writeChunkFile(path, key, root, true, encoding);
-        }
-
-        public static void writeChunkFile(string path, string key, KeyVal<string, string> root, bool quotes, Encoding encoding)
-        {
-            List<string> lines = writeChunkFileTraverse(key, root, 0, quotes);
-            File.WriteAllLines(path, lines, encoding);
-        }
-
-        private static List<string> writeChunkFileTraverse(string key, KeyVal<string, string> node, int level, bool quotes)
-        {
-            List<string> lines = new List<string>();
-
-            string tabs = "";
-            for(int i = 0; i < level; i++)
-            {
-                tabs = tabs + "\t";
-            }
-
-            if (node.Children != null)
-            {
-                lines.Add(tabs + (quotes ? "\"" : "") + key + (quotes ? "\"" : ""));
-                lines.Add(tabs + "{");
-                foreach(KeyValuePair<string, KeyVal<string, string>> entry in node.Children)
-                {
-                    lines.AddRange(writeChunkFileTraverse(entry.Key.Trim(), entry.Value, level + 1, quotes));
-                }
-                lines.Add(tabs + "}");
-            }
-            else if(node.Value != null)
-            {
-                lines.Add(tabs + (quotes ? "\"" : "") + key + (quotes ? "\"" : "") + "\t\"" + node.Value + "\"");
-            }
-            
-
-
-                return lines;
-        }
-
         public static string GetSteamPath()
         {
             return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString();
@@ -223,11 +44,11 @@ namespace windows_source1ide
             libraries = new List<string>();
             libraries.Add(steamPath);
 
-            KeyVal<string, string> root = readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
+            SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
             
-            foreach (KeyValuePair<string, KeyVal<string, string>> child in root.Children)
+            foreach (SourceSDK.KeyValue child in root.getChildrenList())
             {
-                string dir = child.Value.Value;
+                string dir = child.getValue();
                 if (Directory.Exists(dir))
                     libraries.Add(dir);
             }
@@ -259,10 +80,10 @@ namespace windows_source1ide
 
             foreach (string path in GetAllModPaths())
             {
-                KeyVal<string, string> gameInfo = readChunkfile(path + "\\gameinfo.txt");
+                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
 
-                string name = gameInfo.Children["game"].Value;
-                string modAppId = gameInfo.Children["filesystem"].Children["steamappid"].Value;
+                string name = gameInfo.getChild("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                string modAppId = gameInfo.getChild("filesystem").getChild("steamappid").getValue();
 
                 if (int.Parse(modAppId) == gameAppId)
                 {
@@ -279,7 +100,7 @@ namespace windows_source1ide
         public List<string> GetAllModPaths()
         {
             List<string> mods = new List<string>();
-            string library = SourceSDK.GetSteamPath();
+            string library = Steam.GetSteamPath();
             foreach (String path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
             {
                 String game = new FileInfo(path).Name;
@@ -292,8 +113,27 @@ namespace windows_source1ide
             return mods;
         }
 
+        public List<string> GetAllGameBranches(string game)
+        {
+            List<string> mods = new List<string>();
+            string gamePath = GetGames()[game];
+            foreach (String path in Directory.GetDirectories(gamePath))
+            {
+                String gameBranch = new FileInfo(path).Name;
+
+                if (File.Exists(gamePath + "\\" + gameBranch + "\\gameinfo.txt"))
+                {
+                    mods.Add(gameBranch);
+                }
+            }
+            return mods;
+        }
+
         public int GetGameAppId(string game)
         {
+            if (game == "")
+                return -1;
+
             string gamePath = games[game];
             if (File.Exists(gamePath + "\\steam_appid.txt"))
             {
@@ -314,8 +154,7 @@ namespace windows_source1ide
                 {
                     // between quotes
                     string subpart = parts[i].Replace("\"", "");
-                    //if (subpart != "" && subpart != " ")
-                        words.Add(subpart);
+                    words.Add(subpart);
                 } else
                 {
                     string[] subparts = parts[i].Split(null);

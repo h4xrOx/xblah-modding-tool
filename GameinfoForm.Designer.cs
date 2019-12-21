@@ -293,7 +293,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
             this.tableLayoutPanel3.Controls.Add(this.textType, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelControl7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.switchDifficulty, 1, 1);
@@ -478,7 +478,7 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 377F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 381F));
             this.tableLayoutPanel2.Controls.Add(this.labelControl3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelControl4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.labelControl5, 0, 2);

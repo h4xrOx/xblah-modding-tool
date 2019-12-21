@@ -38,6 +38,8 @@
             this.modsCombo = new DevExpress.XtraBars.BarEditItem();
             this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.buttonModStart = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonModRestart = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -48,8 +50,11 @@
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.importMapButton = new DevExpress.XtraBars.BarButtonItem();
             this.barTools = new DevExpress.XtraBars.BarSubItem();
             this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
+            this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -57,8 +62,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonModRestart = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -97,9 +100,12 @@
             this.barButtonGameinfo,
             this.barButtonChapters,
             this.buttonModStop,
-            this.buttonModRestart});
+            this.buttonModRestart,
+            this.assetsCopierButton,
+            this.barSubItem1,
+            this.importMapButton});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 29;
+            this.barManager1.MaxItemId = 32;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -166,6 +172,26 @@
             this.buttonModStart.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.buttonModStart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
             // 
+            // buttonModStop
+            // 
+            this.buttonModStop.Caption = "Stop";
+            this.buttonModStop.Id = 27;
+            this.buttonModStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.Image")));
+            this.buttonModStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.LargeImage")));
+            this.buttonModStop.Name = "buttonModStop";
+            this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
+            // 
+            // buttonModRestart
+            // 
+            this.buttonModRestart.Caption = "Restart";
+            this.buttonModRestart.Id = 28;
+            this.buttonModRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.Image")));
+            this.buttonModRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.LargeImage")));
+            this.buttonModRestart.Name = "buttonModRestart";
+            this.buttonModRestart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.buttonModRestart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModRestart_ItemClick);
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -196,6 +222,7 @@
             this.barButtonItem3.Caption = "New";
             this.barButtonItem3.Id = 22;
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -211,7 +238,8 @@
             this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.barMod.Name = "barMod";
             // 
             // barButtonRun
@@ -251,12 +279,28 @@
             this.barButtonChapters.Name = "barButtonChapters";
             this.barButtonChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonChapters_ItemClick);
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Import assets";
+            this.barSubItem1.Id = 30;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.importMapButton)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // importMapButton
+            // 
+            this.importMapButton.Caption = "From another mod";
+            this.importMapButton.Id = 31;
+            this.importMapButton.Name = "importMapButton";
+            this.importMapButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.importMapButton_ItemClick);
+            // 
             // barTools
             // 
             this.barTools.Caption = "Tools";
             this.barTools.Id = 15;
             this.barTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
             this.barTools.Name = "barTools";
             // 
             // barButtonHammer
@@ -265,6 +309,13 @@
             this.barButtonHammer.Id = 16;
             this.barButtonHammer.Name = "barButtonHammer";
             this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
+            // 
+            // assetsCopierButton
+            // 
+            this.assetsCopierButton.Caption = "Assets copier";
+            this.assetsCopierButton.Id = 29;
+            this.assetsCopierButton.Name = "assetsCopierButton";
+            this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
             // 
             // bar3
             // 
@@ -321,26 +372,6 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // buttonModStop
-            // 
-            this.buttonModStop.Caption = "Stop";
-            this.buttonModStop.Id = 27;
-            this.buttonModStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.Image")));
-            this.buttonModStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.LargeImage")));
-            this.buttonModStop.Name = "buttonModStop";
-            this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
-            // 
-            // buttonModRestart
-            // 
-            this.buttonModRestart.Caption = "Restart";
-            this.buttonModRestart.Id = 28;
-            this.buttonModRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.Image")));
-            this.buttonModRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.LargeImage")));
-            this.buttonModRestart.Name = "buttonModRestart";
-            this.buttonModRestart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.buttonModRestart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModRestart_ItemClick);
-            // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,5 +424,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonChapters;
         private DevExpress.XtraBars.BarButtonItem buttonModStop;
         private DevExpress.XtraBars.BarButtonItem buttonModRestart;
+        private DevExpress.XtraBars.BarButtonItem assetsCopierButton;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem importMapButton;
     }
 }

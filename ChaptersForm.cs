@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
-using static windows_source1ide.SourceSDK;
+using static windows_source1ide.Steam;
 using TGASharpLib;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using windows_source1ide.SourceSDK;
 
 namespace windows_source1ide
 {
@@ -21,9 +22,9 @@ namespace windows_source1ide
     {
         string game;
         string mod;
-        SourceSDK sourceSDK;
+        Steam sourceSDK;
 
-        KeyVal<string, string> lang;
+        SourceSDK.KeyValue lang;
 
         List<Chapter> chapters = new List<Chapter>();
 
@@ -49,7 +50,7 @@ namespace windows_source1ide
 
         private void ChaptersForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new SourceSDK();
+            sourceSDK = new Steam();
 
             readChapters();
             readChapterTitles();
@@ -96,6 +97,7 @@ namespace windows_source1ide
         {
             string path = sourceSDK.GetMods(game)[mod] + "\\cfg";
 
+            Directory.CreateDirectory(path);
             foreach (string file in Directory.GetFiles(path))
             {
                 if (new FileInfo(file).Name.StartsWith("chapter"))
@@ -136,11 +138,11 @@ namespace windows_source1ide
 
             if (File.Exists(filePath))
             {
-                lang = readChunkfile(filePath);
-                KeyVal<string, string> tokens = lang.GetChild("tokens");
+                lang = SourceSDK.KeyValue.readChunkfile(filePath);
+                SourceSDK.KeyValue tokens = lang.getChild("tokens");
                 for(int i = 0; i < chapters.Count; i++)
                 {
-                    string title = tokens.GetChild(modFolder + "_chapter" + (i + 1) + "_title").Value;
+                    string title = tokens.getValue(modFolder + "_chapter" + (i + 1) + "_title");
                     chapters[i].title = title;
                 }
             } else
@@ -157,11 +159,9 @@ namespace windows_source1ide
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
             for (int i = 0; i < chapters.Count; i++)
-            {
-                lang.GetChild("tokens").SetChild(modFolder + "_chapter" + (i + 1) + "_title", chapters[i].title);
-            }
+                lang.getChild("tokens").setValue(modFolder + "_chapter" + (i + 1) + "_title", chapters[i].title);
 
-            writeChunkFile(filePath, "lang", lang, Encoding.Unicode);
+            SourceSDK.KeyValue.writeChunkFile(filePath, lang, Encoding.Unicode);
         }
 
         private void createChapterTitles()
@@ -170,14 +170,12 @@ namespace windows_source1ide
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
-            KeyVal<string, string> root = new KeyVal<string, string>();
-            root.Children = new Dictionary<string, KeyVal<string, string>>();
-            root.Children.Add("language", new KeyVal<string, string>("English"));
-            KeyVal<string, string> tokens = new KeyVal<string, string>();
-            tokens.Children = new Dictionary<string, KeyVal<string, string>>();
-            root.Children.Add("tokens", tokens);
+            KeyValue root = new KeyValue("lang");
+            root.addChild(new KeyValue("language", "English"));
+            KeyValue tokens = new KeyValue("tokens");
+            root.addChild(tokens);
 
-            writeChunkFile(filePath, "lang", root, Encoding.Unicode);
+            SourceSDK.KeyValue.writeChunkFile(filePath, root, Encoding.Unicode);
         }
 
         private void readChapterBackgrounds()
@@ -188,10 +186,10 @@ namespace windows_source1ide
 
             if (File.Exists(filePath))
             {
-                KeyVal<string, string> chapters = readChunkfile(filePath);
+                SourceSDK.KeyValue chapters = SourceSDK.KeyValue.readChunkfile(filePath);
                 for (int i = 0; i < this.chapters.Count; i++)
                 {
-                    string background = chapters.GetChild((i + 1).ToString()).Value;
+                    string background = chapters.getChild((i + 1).ToString()).getValue();
                     this.chapters[i].background = background;
                 }
             }
@@ -203,15 +201,14 @@ namespace windows_source1ide
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\scripts\\chapterbackgrounds.txt";
 
-            KeyVal<string, string> root = new KeyVal<string, string>();
-            root.Children = new Dictionary<string, KeyVal<string, string>>();
+            KeyValue root = new KeyValue("chapters");
 
             for (int i = 0; i < chapters.Count; i++)
             {
-                root.SetChild((i + 1).ToString(), chapters[i].background);
+                root.addChild(new KeyValue((i + 1).ToString(), chapters[i].background));
             }
 
-            writeChunkFile(filePath, "chapters", root, false);
+            SourceSDK.KeyValue.writeChunkFile(filePath, root, false);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -331,12 +328,11 @@ namespace windows_source1ide
                 {
                     File.WriteAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf", chapters[i].thumbnailFile);
 
-                    KeyVal<string, string> root = new KeyVal<string, string>();
-                    root.Children = new Dictionary<string, KeyVal<string, string>>();
-                    root.Children.Add("$basetexture", new KeyVal<string, string>("VGUI/chapters/chapter" + (i + 1)));
-                    root.Children.Add("$vertexalpha", new KeyVal<string, string>("1"));
+                    KeyValue root = new KeyValue("UnlitGeneric");
+                    root.addChild(new KeyValue("$basetexture", "VGUI/chapters/chapter" + (i + 1)));
+                    root.addChild(new KeyValue("$vertexalpha", "1"));
 
-                    writeChunkFile(filePath + "\\chapter" + (i + 1) + ".vmt", "UnlitGeneric", root, false, new UTF8Encoding(false));
+                    SourceSDK.KeyValue.writeChunkFile(filePath + "\\chapter" + (i + 1) + ".vmt", root, false, new UTF8Encoding(false));
                 }
             }
         }
@@ -541,21 +537,19 @@ namespace windows_source1ide
                     File.WriteAllBytes(filePath + "\\" + chapters[i].background + ".vtf", chapters[i].backgroundImageFile);
                     File.WriteAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf", chapters[i].backgroundImageWideFile);
 
-                    KeyVal<string, string> root = new KeyVal<string, string>();
-                    root.Children = new Dictionary<string, KeyVal<string, string>>();
-                    root.Children.Add("$basetexture", new KeyVal<string, string>("console/" + chapters[i].background));
-                    root.Children.Add("$vertexcolor", new KeyVal<string, string>("1"));
-                    root.Children.Add("$vertexalpha", new KeyVal<string, string>("1"));
-                    root.Children.Add("$ignorez", new KeyVal<string, string>("1"));
-                    root.Children.Add("$no_fullbright", new KeyVal<string, string>("1"));
-                    root.Children.Add("$nolod", new KeyVal<string, string>("1"));
+                    KeyValue root = new KeyValue("UnlitGeneric");
+                    root.addChild(new KeyValue("$basetexture", "console/" + chapters[i].background));
+                    root.addChild(new KeyValue("$vertexcolor", "1"));
+                    root.addChild(new KeyValue("$vertexalpha", "1"));
+                    root.addChild(new KeyValue("$ignorez", "1"));
+                    root.addChild(new KeyValue("$no_fullbright", "1"));
+                    root.addChild(new KeyValue("$nolod", "1"));
 
-                    writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt", "UnlitGeneric", root, false, new UTF8Encoding(false));
+                    SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt", root, false, new UTF8Encoding(false));
 
-                    root.Children = new Dictionary<string, KeyVal<string, string>>();
-                    root.SetChild("$basetexture", "console/" + chapters[i].background + "_widescreen");
+                    root.getChild("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
 
-                    writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt", "UnlitGeneric", root, false, new UTF8Encoding(false));
+                    SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt", root, false, new UTF8Encoding(false));
                 }
             }
         }
@@ -649,6 +643,8 @@ namespace windows_source1ide
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
+            if (list.FocusedNode == null)
+                return; 
             chapters.RemoveAt(list.FocusedNode.Id);
             updateChaptersList();
         }
