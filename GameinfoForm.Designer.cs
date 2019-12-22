@@ -67,7 +67,6 @@
             DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameinfoForm));
             DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
@@ -80,9 +79,7 @@
             DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameinfoForm));
             this.textGame = new DevExpress.XtraEditors.TextEdit();
             this.textTitle = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -108,6 +105,9 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.pictureIconSmall = new System.Windows.Forms.PictureBox();
+            this.pictureIconLarge = new System.Windows.Forms.PictureBox();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -115,7 +115,6 @@
             this.textDeveloper = new DevExpress.XtraEditors.TextEdit();
             this.textDeveloperURL = new DevExpress.XtraEditors.TextEdit();
             this.textManual = new DevExpress.XtraEditors.TextEdit();
-            this.textIcon = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.switchNodegraph = new DevExpress.XtraEditors.ToggleSwitch();
@@ -134,6 +133,7 @@
             this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
             this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dialogIcon = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.textGame.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -151,10 +151,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.switchModels.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureIconSmall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureIconLarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloper.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textManual.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textIcon.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.switchNodegraph.Properties)).BeginInit();
@@ -479,6 +482,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 381F));
+            this.tableLayoutPanel2.Controls.Add(this.panelControl2, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.labelControl3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelControl4, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.labelControl5, 0, 2);
@@ -486,7 +490,6 @@
             this.tableLayoutPanel2.Controls.Add(this.textDeveloper, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.textDeveloperURL, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.textManual, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.textIcon, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 8);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -497,6 +500,37 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(458, 173);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.pictureIconSmall);
+            this.panelControl2.Controls.Add(this.pictureIconLarge);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl2.Location = new System.Drawing.Point(80, 81);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(375, 32);
+            this.panelControl2.TabIndex = 5;
+            // 
+            // pictureIconSmall
+            // 
+            this.pictureIconSmall.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureIconSmall.Location = new System.Drawing.Point(38, 0);
+            this.pictureIconSmall.Name = "pictureIconSmall";
+            this.pictureIconSmall.Size = new System.Drawing.Size(16, 16);
+            this.pictureIconSmall.TabIndex = 10;
+            this.pictureIconSmall.TabStop = false;
+            // 
+            // pictureIconLarge
+            // 
+            this.pictureIconLarge.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureIconLarge.Location = new System.Drawing.Point(0, 0);
+            this.pictureIconLarge.Name = "pictureIconLarge";
+            this.pictureIconLarge.Size = new System.Drawing.Size(32, 32);
+            this.pictureIconLarge.TabIndex = 9;
+            this.pictureIconLarge.TabStop = false;
+            this.pictureIconLarge.Click += new System.EventHandler(this.pictureIconLarge_Click);
             // 
             // labelControl3
             // 
@@ -573,20 +607,6 @@
             this.textManual.SuperTip = superToolTip12;
             this.textManual.TabIndex = 6;
             // 
-            // textIcon
-            // 
-            this.textIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textIcon.Location = new System.Drawing.Point(80, 81);
-            this.textIcon.Name = "textIcon";
-            this.textIcon.Size = new System.Drawing.Size(375, 20);
-            toolTipTitleItem13.Text = "Icon <string>";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = resources.GetString("toolTipItem13.Text");
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            this.textIcon.SuperTip = superToolTip13;
-            this.textIcon.TabIndex = 7;
-            // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.tableLayoutPanel4);
@@ -626,12 +646,12 @@
             this.switchNodegraph.Properties.OffText = "Off";
             this.switchNodegraph.Properties.OnText = "On";
             this.switchNodegraph.Size = new System.Drawing.Size(95, 24);
-            toolTipTitleItem14.Text = "Nodegraph <boolean>";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            this.switchNodegraph.SuperTip = superToolTip14;
+            toolTipTitleItem13.Text = "Nodegraph <boolean>";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            this.switchNodegraph.SuperTip = superToolTip13;
             this.switchNodegraph.TabIndex = 0;
             // 
             // switchVR
@@ -641,12 +661,12 @@
             this.switchVR.Properties.OffText = "Off";
             this.switchVR.Properties.OnText = "On";
             this.switchVR.Size = new System.Drawing.Size(95, 24);
-            toolTipTitleItem15.Text = "SupportsVR <boolean>";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "Whether or not the game supports being ran in VR mode.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            this.switchVR.SuperTip = superToolTip15;
+            toolTipTitleItem14.Text = "SupportsVR <boolean>";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "Whether or not the game supports being ran in VR mode.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.switchVR.SuperTip = superToolTip14;
             this.switchVR.TabIndex = 1;
             // 
             // labelControl13
@@ -687,13 +707,13 @@
             this.textGamedata.Location = new System.Drawing.Point(91, 33);
             this.textGamedata.Name = "textGamedata";
             this.textGamedata.Size = new System.Drawing.Size(364, 20);
-            toolTipTitleItem16.Text = "GameData <string>";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
+            toolTipTitleItem15.Text = "GameData <string>";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
     "o be compiled into maps. It is not used by Hammer itself.";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            superToolTip16.Items.Add(toolTipItem16);
-            this.textGamedata.SuperTip = superToolTip16;
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            this.textGamedata.SuperTip = superToolTip15;
             this.textGamedata.TabIndex = 6;
             // 
             // textInstance
@@ -702,12 +722,12 @@
             this.textInstance.Location = new System.Drawing.Point(91, 59);
             this.textInstance.Name = "textInstance";
             this.textInstance.Size = new System.Drawing.Size(364, 20);
-            toolTipTitleItem17.Text = "InstancePath <string>";
-            toolTipItem17.LeftIndent = 6;
-            toolTipItem17.Text = "The default location in which to look for Instance VMFs.";
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            superToolTip17.Items.Add(toolTipItem17);
-            this.textInstance.SuperTip = superToolTip17;
+            toolTipTitleItem16.Text = "InstancePath <string>";
+            toolTipItem16.LeftIndent = 6;
+            toolTipItem16.Text = "The default location in which to look for Instance VMFs.";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            this.textInstance.SuperTip = superToolTip16;
             this.textInstance.TabIndex = 7;
             // 
             // xtraTabPage5
@@ -749,12 +769,12 @@
             this.comboGames.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboGames.Size = new System.Drawing.Size(380, 20);
-            toolTipTitleItem18.Text = "SteamAppID <integer>";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = resources.GetString("toolTipItem18.Text");
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem18);
-            this.comboGames.SuperTip = superToolTip18;
+            toolTipTitleItem17.Text = "SteamAppID <integer>";
+            toolTipItem17.LeftIndent = 6;
+            toolTipItem17.Text = resources.GetString("toolTipItem17.Text");
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            superToolTip17.Items.Add(toolTipItem17);
+            this.comboGames.SuperTip = superToolTip17;
             this.comboGames.TabIndex = 1;
             // 
             // xtraTabPage6
@@ -797,6 +817,10 @@
             this.panelControl1.Size = new System.Drawing.Size(476, 31);
             this.panelControl1.TabIndex = 5;
             // 
+            // dialogIcon
+            // 
+            this.dialogIcon.Filter = "Icon files(*.tga|*.tga";
+            // 
             // GameinfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,10 +852,13 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureIconSmall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureIconLarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloper.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textManual.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textIcon.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -870,7 +897,6 @@
         private DevExpress.XtraEditors.TextEdit textDeveloper;
         private DevExpress.XtraEditors.TextEdit textDeveloperURL;
         private DevExpress.XtraEditors.TextEdit textManual;
-        private DevExpress.XtraEditors.TextEdit textIcon;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private DevExpress.XtraEditors.ComboBoxEdit textType;
@@ -902,5 +928,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.ComboBoxEdit comboGames;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.OpenFileDialog dialogIcon;
+        private System.Windows.Forms.PictureBox pictureIconSmall;
+        private System.Windows.Forms.PictureBox pictureIconLarge;
     }
 }

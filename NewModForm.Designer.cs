@@ -41,16 +41,16 @@
             this.labelFolderInfo = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.comboBranches = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.textClient = new DevExpress.XtraEditors.TextEdit();
-            this.textServer = new DevExpress.XtraEditors.TextEdit();
             this.buttonClient = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.textServer = new DevExpress.XtraEditors.TextEdit();
             this.buttonServer = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textFolder.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboGames.Properties)).BeginInit();
@@ -60,16 +60,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBranches.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textClient.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textServer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
-            this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
-            this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textClient.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textServer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // textTitle
@@ -142,7 +142,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 470F));
             this.tableLayoutPanel1.Controls.Add(this.panelControl3, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textTitle, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 1);
@@ -219,27 +219,6 @@
             this.comboBranches.TabIndex = 10;
             this.comboBranches.TextChanged += new System.EventHandler(this.comboBranches_TextChanged);
             // 
-            // panelControl1
-            // 
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.createButton);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 262);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(551, 39);
-            this.panelControl1.TabIndex = 9;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.tableLayoutPanel1);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 0);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.panelControl2.Size = new System.Drawing.Size(551, 262);
-            this.panelControl2.TabIndex = 10;
-            // 
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(3, 125);
@@ -268,18 +247,6 @@
             this.panelControl5.Size = new System.Drawing.Size(464, 20);
             this.panelControl5.TabIndex = 13;
             // 
-            // panelControl6
-            // 
-            this.panelControl6.AutoSize = true;
-            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl6.Controls.Add(this.textServer);
-            this.panelControl6.Controls.Add(this.buttonServer);
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl6.Location = new System.Drawing.Point(68, 151);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(464, 20);
-            this.panelControl6.TabIndex = 14;
-            // 
             // textClient
             // 
             this.textClient.Dock = System.Windows.Forms.DockStyle.Top;
@@ -288,15 +255,6 @@
             this.textClient.Properties.ReadOnly = true;
             this.textClient.Size = new System.Drawing.Size(389, 20);
             this.textClient.TabIndex = 0;
-            // 
-            // textServer
-            // 
-            this.textServer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textServer.Location = new System.Drawing.Point(0, 0);
-            this.textServer.Name = "textServer";
-            this.textServer.Properties.ReadOnly = true;
-            this.textServer.Size = new System.Drawing.Size(389, 20);
-            this.textServer.TabIndex = 0;
             // 
             // buttonClient
             // 
@@ -309,6 +267,27 @@
             this.buttonClient.Text = "Search";
             this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
+            // panelControl6
+            // 
+            this.panelControl6.AutoSize = true;
+            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl6.Controls.Add(this.textServer);
+            this.panelControl6.Controls.Add(this.buttonServer);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl6.Location = new System.Drawing.Point(68, 151);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(464, 20);
+            this.panelControl6.TabIndex = 14;
+            // 
+            // textServer
+            // 
+            this.textServer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textServer.Location = new System.Drawing.Point(0, 0);
+            this.textServer.Name = "textServer";
+            this.textServer.Properties.ReadOnly = true;
+            this.textServer.Size = new System.Drawing.Size(389, 20);
+            this.textServer.TabIndex = 0;
+            // 
             // buttonServer
             // 
             this.buttonServer.Dock = System.Windows.Forms.DockStyle.Right;
@@ -319,6 +298,27 @@
             this.buttonServer.TabIndex = 1;
             this.buttonServer.Text = "Search";
             this.buttonServer.Click += new System.EventHandler(this.buttonServer_Click);
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.createButton);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 262);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(551, 39);
+            this.panelControl1.TabIndex = 9;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.tableLayoutPanel1);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 0);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
+            this.panelControl2.Size = new System.Drawing.Size(551, 262);
+            this.panelControl2.TabIndex = 10;
             // 
             // NewModForm
             // 
@@ -341,16 +341,16 @@
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBranches.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textClient.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textServer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
-            this.panelControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
-            this.panelControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textClient.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textServer.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

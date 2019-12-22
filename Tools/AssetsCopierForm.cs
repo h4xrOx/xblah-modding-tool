@@ -204,11 +204,11 @@ namespace windows_source1ide.Tools
                     continue;
 
                 string directory = Path.GetDirectoryName(modelPath);
-                string modelName = Path.GetFileNameWithoutExtension(modelPath);
+                string modelName = Path.GetFileNameWithoutExtension(modelPath).ToLower();
 
                 foreach(string file in Directory.GetFiles(directory))
                 {
-                    string fileName = Path.GetFileName(file);
+                    string fileName = Path.GetFileName(file.ToLower());
                     if (fileName.Substring(0, fileName.IndexOf(".")) == modelName)
                     {
                         string filePath = relativePath.Replace(modelName + ".mdl", "") + fileName;

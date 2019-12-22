@@ -203,7 +203,7 @@
             // 
             // selectVMFDialog
             // 
-            this.selectVMFDialog.Filter = "Valve Map Files files (*.vmf)|*.vmf";
+            this.selectVMFDialog.Filter = "Valve Map Files (*.vmf)|*.vmf";
             // 
             // AssetsCopierForm
             // 

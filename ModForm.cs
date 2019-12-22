@@ -213,6 +213,9 @@ namespace windows_source1ide
 
                 SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
 
+                Directory.CreateDirectory(modPath + "\\resource");
+                File.Copy("Resources/HL2EP2.ttf", modPath + "\\resource\\HL2EP2.tff", true);
+
                 updateModsCombo();
                 gamesCombo.EditValue = game;
                 modsCombo.EditValue = title + " (" + folder + ")";
@@ -234,6 +237,12 @@ namespace windows_source1ide
 
                 }
             }
+        }
+
+        private void menuButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GamemenuForm form = new GamemenuForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            form.ShowDialog();
         }
     }
 }

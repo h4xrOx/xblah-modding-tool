@@ -62,6 +62,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.menuButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -103,9 +104,10 @@
             this.buttonModRestart,
             this.assetsCopierButton,
             this.barSubItem1,
-            this.importMapButton});
+            this.importMapButton,
+            this.menuButton});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 32;
+            this.barManager1.MaxItemId = 33;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -262,7 +264,8 @@
             this.barSubItem3.Id = 24;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonGameinfo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonChapters)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonChapters),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton)});
             this.barSubItem3.Name = "barSubItem3";
             // 
             // barButtonGameinfo
@@ -372,6 +375,13 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // menuButton
+            // 
+            this.menuButton.Caption = "Menu";
+            this.menuButton.Id = 32;
+            this.menuButton.Name = "menuButton";
+            this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
+            // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,5 +437,6 @@
         private DevExpress.XtraBars.BarButtonItem assetsCopierButton;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem importMapButton;
+        private DevExpress.XtraBars.BarButtonItem menuButton;
     }
 }
