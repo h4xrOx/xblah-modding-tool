@@ -160,28 +160,31 @@ namespace windows_source1ide
                 string game = form.game;
                 string gameBranch = form.gameBranch;
                 string appId = sourceSDK.GetGameAppId(game).ToString();
-                string client = form.client;
-                string server = form.server;
 
+                string mod = title + " (" + folder + ")";
                 string gamePath = sourceSDK.GetGames()[game];
                 string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + folder;
 
-                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(gamePath + "\\" + gameBranch + "\\gameinfo.txt");
-                string gamebin = gameInfo.findChild("gamebin").getValue();
-                gameInfo.getChild("filesystem").getChild("searchpaths").setValue("gamebin", "|gameinfo_path|bin");
-
-                // Copy binaries
                 Directory.CreateDirectory(modPath + "\\bin");
-                File.Copy(client, modPath + "\\bin\\client.dll", true);
-                File.Copy(server, modPath + "\\bin\\server.dll", true);
+                Directory.CreateDirectory(modPath + "\\resource");
+                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(gamePath + "\\" + gameBranch + "\\gameinfo.txt");
 
-                // Create gameinfo
-                
+                // Edit basic gameinfo
                 gameInfo.setValue("game", title);
                 gameInfo.setValue("title", title);
                 gameInfo.setValue("title2", "");
                 gameInfo.findChild("steamappid").setValue(appId);
 
+                gameInfo.getChild("filesystem").getChild("searchpaths").setValue("gamebin", "|gameinfo_path|bin");
+
+                // Copy binaries
+                File.Copy(Application.StartupPath + "\\Resources\\sp_client.dll", modPath + "\\bin\\client.dll", true);
+                File.Copy(Application.StartupPath + "\\Resources\\sp_server.dll", modPath + "\\bin\\server.dll", true);
+
+                File.Copy(Application.StartupPath + "\\Resources\\sp_english.txt", modPath + "\\resource\\" + folder + "_english.txt");
+
+
+                // Create gameinfo
                 SourceSDK.KeyValue searchPaths = gameInfo.getChild("filesystem").getChild("searchpaths");
                 searchPaths.clearChildren();
 
@@ -214,12 +217,11 @@ namespace windows_source1ide
                 SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
 
                 Directory.CreateDirectory(modPath + "\\resource");
-                File.Copy("Resources/HL2EP2.ttf", modPath + "\\resource\\HL2EP2.tff", true);
+                File.Copy("Resources/HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf", true);
 
                 updateModsCombo();
                 gamesCombo.EditValue = game;
                 modsCombo.EditValue = title + " (" + folder + ")";
-               //
             }
         }
 

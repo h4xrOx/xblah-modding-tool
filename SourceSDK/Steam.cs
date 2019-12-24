@@ -313,18 +313,18 @@ namespace windows_source1ide
             return files;
         }
 
-        private void extractFileFromVPK(string game, string mod, string vpk, string filePath, string startupPath)
+        public void extractFileFromVPK(string game, string mod, string vpk, string filePath, string startupPath)
         {
             string modPath = GetMods(game)[mod];
             string toolPath = startupPath + "\\Tools\\HLExtract.exe";
 
             string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = toolPath;
-            ffmpeg.StartInfo.Arguments = args;
-            ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            ffmpeg.Start();
-            ffmpeg.WaitForExit();
+            Process process = new Process();
+            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.Arguments = "/K " + toolPath + " " + args;
+            //ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
         }
 
         public void extractFileFromVPKs(string game, string mod, Dictionary<string, List<string>> vpks, string filePath, string startupPath)

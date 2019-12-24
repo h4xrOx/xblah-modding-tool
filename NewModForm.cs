@@ -22,8 +22,6 @@ namespace windows_source1ide
         public string modTitle = "";
         public string game = "";
         public string gameBranch = "";
-        public string client = "";
-        public string server = "";
 
         public NewModForm()
         {
@@ -40,10 +38,6 @@ namespace windows_source1ide
 
             comboGames.EditValue = comboGames.Properties.Items[0];
             comboGames.EditValue = "Source SDK Base 2013 Singleplayer";
-            textClient.EditValue = sourceSDK.GetGames()["Source SDK Base 2013 Singleplayer"] + "\\sourcetest\\bin\\client.dll";
-            textServer.EditValue = sourceSDK.GetGames()["Source SDK Base 2013 Singleplayer"] + "\\sourcetest\\bin\\server.dll";
-            client = textClient.EditValue.ToString();
-            server = textServer.EditValue.ToString();
             checkModDetails();
         }
 
@@ -115,34 +109,10 @@ namespace windows_source1ide
             checkModDetails();
         }
 
-        private void buttonClient_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Dynamic-link library files (*.dll) | *.dll";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                textClient.EditValue = dialog.FileName;
-                client = dialog.FileName;
-            }
-            checkModDetails();
-        }
-
-        private void buttonServer_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Dynamic-link library files (*.dll) | *.dll";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                textServer.EditValue = dialog.FileName;
-                server = dialog.FileName;
-            }
-            checkModDetails();
-        }
-
         private void checkModDetails()
         {
             createButton.Enabled = false;
-            if (!validFolder || !File.Exists(client) || !File.Exists(server))
+            if (!validFolder)
                 return;
 
             createButton.Enabled = true;
