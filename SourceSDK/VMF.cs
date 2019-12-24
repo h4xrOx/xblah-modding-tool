@@ -54,7 +54,14 @@ namespace windows_source1ide.SourceSDK
                 if ((value.EndsWith(".wav") || value.EndsWith(".mp3")) && !assets.Contains(value))
                 {
                     //setStatusMessage("Sound added: " + value, COLOR_ORANGE);
-                    assets.Add(kv.getValue().ToLower());
+                    string v = kv.getValue().ToLower();
+                    if (v.StartsWith("@"))
+                        v = v.Substring(1);
+                    if (v.StartsWith("#"))
+                        v = v.Substring(1);
+                    if (v.StartsWith("@"))
+                        v = v.Substring(1);
+                    assets.Add(v);
                 }
             }
 
