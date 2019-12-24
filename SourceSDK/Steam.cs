@@ -16,30 +16,30 @@ namespace windows_source1ide
 
         public Steam()
         {
-            loadLibraries();
+            LoadLibraries();
         }
 
         public Dictionary<string, string> GetGames()
         {
-            loadLibraries();
-            return loadGames();
+            LoadLibraries();
+            return LoadGames();
         }
 
         public Dictionary<string, string> GetMods(string game)
         {
-            loadGames();
-            loadMods(game);
+            LoadGames();
+            LoadMods(game);
             return mods;
         }
 
-        public static string GetSteamPath()
+        public static string GetInstallPath()
         {
             return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString();
         }
 
-        private void loadLibraries()
+        private void LoadLibraries()
         {
-            String steamPath = GetSteamPath();
+            String steamPath = GetInstallPath();
 
             libraries = new List<string>();
             libraries.Add(steamPath);
@@ -54,7 +54,7 @@ namespace windows_source1ide
             }
         }
 
-        private Dictionary<string, string> loadGames()
+        private Dictionary<string, string> LoadGames()
         {
             games = new Dictionary<string, string>();
             if (libraries.Count > 0)
@@ -73,7 +73,7 @@ namespace windows_source1ide
             return games;
         }
 
-        private Dictionary<string, string> loadMods(String game)
+        private Dictionary<string, string> LoadMods(String game)
         {
             mods = new Dictionary<string, string>();
             int gameAppId = GetGameAppId(game);
@@ -100,7 +100,7 @@ namespace windows_source1ide
         public List<string> GetAllModPaths()
         {
             List<string> mods = new List<string>();
-            string library = Steam.GetSteamPath();
+            string library = Steam.GetInstallPath();
             foreach (String path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
             {
                 String game = new FileInfo(path).Name;
@@ -143,33 +143,7 @@ namespace windows_source1ide
             return -1;
         }
 
-        public static string[] splitByWords(string fullString)
-        {
-            List<string> words = new List<string>();
-
-            string[] parts = fullString.Split('\"');
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (i % 2 == 1)
-                {
-                    // between quotes
-                    string subpart = parts[i].Replace("\"", "");
-                    words.Add(subpart);
-                } else
-                {
-                    string[] subparts = parts[i].Split(null);
-                    // outside quotes
-                    foreach (string subpart in subparts)
-                    {
-                        if (subpart != "" && subpart != " ")
-                            words.Add(subpart);
-                    }  
-                }
-            }
-            return words.ToArray();
-        }
-
-        public Process runGame(string game, string mod)
+        public Process RunMod(string game, string mod)
         {
             string gamePath = games[game];
             string modPath = mods[mod];
@@ -187,21 +161,21 @@ namespace windows_source1ide
                 }
             }
 
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = exePath;
-            ffmpeg.StartInfo.Arguments = "-game \"" + modPath + "\"";
-            ffmpeg.Start();
-            ffmpeg.EnableRaisingEvents = true;
+            Process process = new Process();
+            process.StartInfo.FileName = exePath;
+            process.StartInfo.Arguments = "-game \"" + modPath + "\"";
+            process.Start();
+            process.EnableRaisingEvents = true;
 
-            return ffmpeg;
+            return process;
         }
 
-        public void runHammer(string game, string mod)
+        public void RunHammer(string game, string mod)
         {
             string gamePath = games[game];
             string modPath = mods[mod];
 
-            createGameConfig(game, mod);
+            CreateGameConfig(game, mod);
 
             string hammerPath = gamePath + "\\bin\\hammer.exe";
             Debug.Write("Hammer: " + hammerPath);
@@ -212,7 +186,7 @@ namespace windows_source1ide
             ffmpeg.Start();
         }
 
-        private void createGameConfig(string game, string mod)
+        private void CreateGameConfig(string game, string mod)
         {
             string gamePath = games[game];
             string modPath = mods[mod];
@@ -251,10 +225,118 @@ namespace windows_source1ide
             File.WriteAllText(gamePath + "\\bin\\GameConfig.txt", sb.ToString());
         }
 
-        public void openModFolder(string mod)
+        public void OpenModFolder(string mod)
         {
             string modPath = mods[mod];
             Process.Start(modPath);
+        }
+
+        public List<string> getModMountedVPKs(string game, string mod)
+        {
+            string modPath = GetMods(game)[mod];
+            string gamePath = GetGames()[game];
+            SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+
+            SourceSDK.KeyValue searchPaths = gameInfo.findChild("searchpaths");
+            List<string> result = new List<string>();
+            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildrenList())
+            {
+                string value = searchPath.getValue();
+                if (value.EndsWith(".vpk"))
+                {
+                    value = value.Replace("|all_source_engine_paths|", gamePath + "/");
+                    value = value.Replace("|gameinfo_path|", modPath + "/");
+                    result.Add(value);
+                }
+            }
+            return result;
+        }
+
+        public List<string> getModSearchPaths(string game, string mod)
+        {
+            List<string> result = new List<string>();
+
+            string gamePath = GetGames()[game];
+            string modPath = GetMods(game)[mod];
+
+            SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+
+            SourceSDK.KeyValue searchPaths = gameInfo.findChild("searchpaths");
+            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildrenList())
+            {
+                string[] keys = searchPath.getKey().Split('+');
+
+                if (!keys.Contains("game"))
+                    continue;
+
+                string value = searchPath.getValue();
+                value = value.Replace("/", "\\");
+                value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
+                value = value.Replace("|gameinfo_path|", modPath + "\\");
+                value = value.Replace("\\\\", "\\");
+                if (value.EndsWith("/"))
+                    value = value.Substring(0, value.Length - 1);
+
+                if (Directory.Exists(value) && !result.Contains(value))
+                    result.Add(value);
+            }
+
+            return result;
+        }
+
+        public List<string> listFilesInVPK(string game, string fullPath)
+        {
+            string gamePath = GetGames()[game];
+            string toolPath = gamePath + "\\bin\\vpk.exe";
+
+            List<string> files = new List<string>();
+
+            Process process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = toolPath,
+                    Arguments = "l \"" + fullPath + "\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            process.Start();
+            while (!process.StandardOutput.EndOfStream)
+            {
+                string line = process.StandardOutput.ReadLine();
+                files.Add(line);
+            }
+
+            return files;
+        }
+
+        private void extractFileFromVPK(string game, string mod, string vpk, string filePath, string startupPath)
+        {
+            string modPath = GetMods(game)[mod];
+            string toolPath = startupPath + "\\Tools\\HLExtract.exe";
+
+            string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
+            Process ffmpeg = new Process();
+            ffmpeg.StartInfo.FileName = toolPath;
+            ffmpeg.StartInfo.Arguments = args;
+            ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            ffmpeg.Start();
+            ffmpeg.WaitForExit();
+        }
+
+        public void extractFileFromVPKs(string game, string mod, Dictionary<string, List<string>> vpks, string filePath, string startupPath)
+        {
+            foreach (KeyValuePair<string, List<string>> vpk in vpks)
+            {
+                if (vpk.Value.Contains(filePath))
+                {
+                    extractFileFromVPK(game, mod, vpk.Key.Replace(".vpk", "_dir.vpk"), filePath, startupPath);
+                    return;
+                }
+            }
         }
     }
 }

@@ -76,7 +76,7 @@ namespace windows_source1ide
 
         private void buttonModStart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            modProcess = sourceSDK.runGame(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            modProcess = sourceSDK.RunMod(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
             buttonModStart.Enabled = false;
             barButtonRun.Enabled = false;
             buttonModStop.Visibility = BarItemVisibility.Always;
@@ -95,7 +95,7 @@ namespace windows_source1ide
 
         private void barButtonHammer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sourceSDK.runHammer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            sourceSDK.RunHammer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -105,7 +105,7 @@ namespace windows_source1ide
 
         private void barButtonModOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sourceSDK.openModFolder(modsCombo.EditValue.ToString());
+            sourceSDK.OpenModFolder(modsCombo.EditValue.ToString());
         }
 
         private void barButtonGameinfo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -164,7 +164,7 @@ namespace windows_source1ide
                 string server = form.server;
 
                 string gamePath = sourceSDK.GetGames()[game];
-                string modPath = Steam.GetSteamPath() + "\\steamapps\\sourcemods\\" + folder;
+                string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + folder;
 
                 SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(gamePath + "\\" + gameBranch + "\\gameinfo.txt");
                 string gamebin = gameInfo.findChild("gamebin").getValue();
@@ -242,6 +242,12 @@ namespace windows_source1ide
         private void menuButton_ItemClick(object sender, ItemClickEventArgs e)
         {
             GamemenuForm form = new GamemenuForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            form.ShowDialog();
+        }
+
+        private void buttonVPKExplorer_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VPKExplorer form = new VPKExplorer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
             form.ShowDialog();
         }
     }

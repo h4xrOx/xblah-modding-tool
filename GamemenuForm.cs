@@ -22,8 +22,6 @@ namespace windows_source1ide
         List<MenuAction> actions;
         class MenuAction
         {
-
-
             internal string label = "";
             internal string command = "";
             internal bool inGame = false;

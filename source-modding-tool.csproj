@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -95,14 +96,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steam.cs" />
+    <Compile Include="SourceSDK\MDL.cs" />
+    <Compile Include="SourceSDK\Steam.cs" />
     <Compile Include="SourceSDK\KeyValue.cs" />
+    <Compile Include="SourceSDK\VMF.cs" />
+    <Compile Include="SourceSDK\VMT.cs" />
+    <Compile Include="SourceSDK\VTF.cs" />
     <Compile Include="TGASharpLib.cs" />
-    <Compile Include="Tools\AssetsCopierForm.cs">
+    <Compile Include="AssetsCopierForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tools\AssetsCopierForm.Designer.cs">
+    <Compile Include="AssetsCopierForm.Designer.cs">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VPKExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VPKExplorer.Designer.cs">
+      <DependentUpon>VPKExplorer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
@@ -133,8 +144,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tools\AssetsCopierForm.resx">
+    <EmbeddedResource Include="AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VPKExplorer.resx">
+      <DependentUpon>VPKExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -150,8 +164,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Tools\HLExtract.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\HLLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>RD /S /Q "$(TargetDir)de"
+RD /S /Q "$(TargetDir)es"
+RD /S /Q "$(TargetDir)ja"
+RD /S /Q "$(TargetDir)ru"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

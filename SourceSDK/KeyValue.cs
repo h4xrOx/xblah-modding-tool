@@ -178,7 +178,7 @@ namespace windows_source1ide.SourceSDK
                         if (line.StartsWith("//"))
                             continue;
 
-                        string[] words = Steam.splitByWords(line);
+                        string[] words = splitByWords(line);
 
                         if (words.Length > 0 && words[0].Contains("{")) // It opens a group
                         {
@@ -276,6 +276,33 @@ namespace windows_source1ide.SourceSDK
 
 
             return lines;
+        }
+
+        public static string[] splitByWords(string fullString)
+        {
+            List<string> words = new List<string>();
+
+            string[] parts = fullString.Split('\"');
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (i % 2 == 1)
+                {
+                    // between quotes
+                    string subpart = parts[i].Replace("\"", "");
+                    words.Add(subpart);
+                }
+                else
+                {
+                    string[] subparts = parts[i].Split(null);
+                    // outside quotes
+                    foreach (string subpart in subparts)
+                    {
+                        if (subpart != "" && subpart != " ")
+                            words.Add(subpart);
+                    }
+                }
+            }
+            return words.ToArray();
         }
     }
 }

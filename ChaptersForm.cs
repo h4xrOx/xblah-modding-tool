@@ -256,17 +256,12 @@ namespace windows_source1ide
                 int idealWidth = src.Width;
 
                 if (idealHeight / idealWidth > target.Height / target.Width)
-                {
                     idealHeight = idealWidth * target.Height / target.Width;
-                } else
-                {
+                else
                     idealWidth = idealHeight * target.Width / target.Height;
-                }
 
                 using (Graphics gfx = Graphics.FromImage(target))
-                {
                     gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
-                }
 
                 chapters[list.FocusedNode.Id].thumbnail = target;
                 pictureThumbnail.Image = target;
@@ -277,13 +272,6 @@ namespace windows_source1ide
 
         private void writeChapterThumbnail(int i)
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
-            string filePath = modPath + "\\materialsrc\\vgui\\chapters";
-
-            string vtexPath = gamePath + "\\bin\\vtex.exe";
-
             // Crop image
             Bitmap src = chapters[i].thumbnail;
             Bitmap target = new Bitmap(256, 128);
@@ -293,26 +281,7 @@ namespace windows_source1ide
                 gfx.Clear(Color.Black);
                 gfx.DrawImage(src, new Rectangle(0, 0, src.Width, src.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
-
-            var tga = new TGA(target);
-            Directory.CreateDirectory(filePath);
-            tga.Save(filePath + "\\temp.tga");
-            File.WriteAllText(filePath + "\\temp.txt", "nolod 1\r\nnomip 1");
-
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = vtexPath;
-            ffmpeg.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
-            ffmpeg.StartInfo.WorkingDirectory = filePath;
-            ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            ffmpeg.Start();
-            ffmpeg.WaitForExit();
-
-            chapters[i].thumbnailFile = File.ReadAllBytes(modPath + "\\materials\\vgui\\chapters\\temp.vtf");
-
-            File.Delete(filePath + "\\temp.tga");
-            File.Delete(filePath + "\\temp.txt");
-            File.Delete(modPath + "\\materials\\vgui\\chapters\\temp.vtf");
-            File.Delete(modPath + "\\materials\\vgui\\chapters\\temp.vmt");
+            chapters[i].thumbnailFile = VTF.fromBitmap(target, game, mod, sourceSDK);
         }
 
         private void writeChapterThumbnails()
@@ -351,26 +320,15 @@ namespace windows_source1ide
                 if (File.Exists(filePath + "\\chapter" + (i + 1) + ".vtf"))
                 {
                     chapters[i].thumbnailFile = File.ReadAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf");
-                    Process ffmpeg = new Process();
-                    ffmpeg.StartInfo.FileName = vtf2tgaPath;
-                    ffmpeg.StartInfo.Arguments = "-i chapter" + (i + 1) + " -o chapter" + (i + 1) + "";
-                    ffmpeg.StartInfo.WorkingDirectory = filePath;
-                    ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    ffmpeg.Start();
-                    ffmpeg.WaitForExit();
+                    Bitmap src = VTF.toBitmap(chapters[i].thumbnailFile, game, mod, sourceSDK);
 
                     // Crop image
-                    Bitmap src = TGA.FromFile(filePath + "\\chapter" + (i + 1) + ".tga").ToBitmap();
                     Bitmap target = new Bitmap(152, 86);
 
                     using (Graphics gfx = Graphics.FromImage(target))
-                    {
                         gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, target.Width, target.Height), GraphicsUnit.Pixel);
-                    }
 
                     chapters[i].thumbnail = target;
-   
-                    File.Delete(filePath + "\\chapter" + (i + 1) + ".tga");
                 }
             }
         }
@@ -399,22 +357,15 @@ namespace windows_source1ide
                 int idealWidth = src.Width;
 
                 if (idealHeight / idealWidth > targetWide.Height / targetWide.Width)
-                {
                     idealHeight = idealWidth * targetWide.Height / targetWide.Width;
-                }
                 else
-                {
                     idealWidth = idealHeight * targetWide.Width / targetWide.Height;
-                }
 
                 using (Graphics gfx = Graphics.FromImage(targetWide))
-                {
                     gfx.DrawImage(src, new Rectangle(0, 0, targetWide.Width, targetWide.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
-                }
 
                 chapters[list.FocusedNode.Id].backgroundImageWide = targetWide;
                 pictureBackgroundWide.Image = targetWide;
-
 
                 Bitmap target = new Bitmap(1024, 768);
 
@@ -422,18 +373,12 @@ namespace windows_source1ide
                 idealWidth = src.Width;
 
                 if (idealHeight / idealWidth > target.Height / target.Width)
-                {
                     idealHeight = idealWidth * target.Height / target.Width;
-                }
                 else
-                {
                     idealWidth = idealHeight * target.Width / target.Height;
-                }
 
                 using (Graphics gfx = Graphics.FromImage(target))
-                {
                     gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
-                }
 
                 chapters[list.FocusedNode.Id].backgroundImage = target;
                 pictureBackground.Image = target;
@@ -445,13 +390,6 @@ namespace windows_source1ide
 
         private void writeBackgroundImage(int i)
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
-            string filePath = modPath + "\\materialsrc\\console";
-
-            string vtexPath = gamePath + "\\bin\\vtex.exe";
-
             // Crop image
             Bitmap src = chapters[i].backgroundImage;
             Bitmap target = new Bitmap(1024, 1024);
@@ -462,36 +400,11 @@ namespace windows_source1ide
                 gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
 
-            var tga = new TGA(target);
-            Directory.CreateDirectory(filePath);
-            tga.Save(filePath + "\\temp.tga");
-            File.WriteAllText(filePath + "\\temp.txt", "nolod 1\r\nnomip 1");
-
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = vtexPath;
-            ffmpeg.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
-            ffmpeg.StartInfo.WorkingDirectory = filePath;
-            ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            ffmpeg.Start();
-            ffmpeg.WaitForExit();
-
-            chapters[i].backgroundImageFile = File.ReadAllBytes(modPath + "\\materials\\console\\temp.vtf");
-
-            File.Delete(filePath + "\\temp.tga");
-            File.Delete(filePath + "\\temp.txt");
-            File.Delete(modPath + "\\materials\\console\\temp.vtf");
-            File.Delete(modPath + "\\materials\\console\\temp.vmt");
+            chapters[i].backgroundImageFile = VTF.fromBitmap(target, game, mod, sourceSDK);
         }
 
         private void writeBackgroundImageWide(int i)
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
-            string filePath = modPath + "\\materialsrc\\console";
-
-            string vtexPath = gamePath + "\\bin\\vtex.exe";
-
             // Crop image
             Bitmap src = chapters[i].backgroundImageWide;
             Bitmap target = new Bitmap(1024, 1024);
@@ -502,25 +415,7 @@ namespace windows_source1ide
                 gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
 
-            var tga = new TGA(target);
-            Directory.CreateDirectory(filePath);
-            tga.Save(filePath + "\\temp.tga");
-            File.WriteAllText(filePath + "\\temp.txt", "nolod 1\r\nnomip 1");
-
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = vtexPath;
-            ffmpeg.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
-            ffmpeg.StartInfo.WorkingDirectory = filePath;
-            ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            ffmpeg.Start();
-            ffmpeg.WaitForExit();
-
-            chapters[i].backgroundImageWideFile = File.ReadAllBytes(modPath + "\\materials\\console\\temp.vtf");
-
-            File.Delete(filePath + "\\temp.tga");
-            File.Delete(filePath + "\\temp.txt");
-            File.Delete(modPath + "\\materials\\console\\temp.vtf");
-            File.Delete(modPath + "\\materials\\console\\temp.vmt");
+            chapters[i].backgroundImageWideFile = VTF.fromBitmap(target, game, mod, sourceSDK);
         }
 
         private void writeBackgroundImages()
@@ -544,11 +439,9 @@ namespace windows_source1ide
                     root.addChild(new KeyValue("$ignorez", "1"));
                     root.addChild(new KeyValue("$no_fullbright", "1"));
                     root.addChild(new KeyValue("$nolod", "1"));
-
                     SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt", root, false, new UTF8Encoding(false));
 
                     root.getChild("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
-
                     SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt", root, false, new UTF8Encoding(false));
                 }
             }
@@ -568,57 +461,34 @@ namespace windows_source1ide
                 if (File.Exists(filePath + "\\" + chapters[i].background + ".vtf"))
                 {
                     chapters[i].backgroundImageFile = File.ReadAllBytes(filePath + "\\" + chapters[i].background + ".vtf");
-                    Process ffmpeg = new Process();
-                    ffmpeg.StartInfo.FileName = vtf2tgaPath;
-                    ffmpeg.StartInfo.Arguments = "-i " + chapters[i].background + " -o " + chapters[i].background + "";
-                    ffmpeg.StartInfo.WorkingDirectory = filePath;
-                    ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    ffmpeg.Start();
-                    ffmpeg.WaitForExit();
+                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageFile, game, mod, sourceSDK);
 
                     // Crop image
-                    if (!File.Exists(filePath + "\\" + chapters[i].background + ".tga"))
+                    if (src == null)
                         continue;
 
-                    Bitmap src = TGA.FromFile(filePath + "\\" + chapters[i].background + ".tga").ToBitmap();
                     Bitmap target = new Bitmap(1024, 768);
-
                     using (Graphics gfx = Graphics.FromImage(target))
-                    {
                         gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
-                    }
 
                     chapters[i].backgroundImage = target;
-
-                    File.Delete(filePath + "\\" + chapters[i].background + ".tga");
                 }
 
                 if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.vtf"))
                 {
                     chapters[i].backgroundImageWideFile = File.ReadAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf");
-                    Process ffmpeg = new Process();
-                    ffmpeg.StartInfo.FileName = vtf2tgaPath;
-                    ffmpeg.StartInfo.Arguments = "-i " + chapters[i].background + "_widescreen -o " + chapters[i].background + "_widescreen";
-                    ffmpeg.StartInfo.WorkingDirectory = filePath;
-                    ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    ffmpeg.Start();
-                    ffmpeg.WaitForExit();
+                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageWideFile, game, mod, sourceSDK);
+                    
 
                     // Crop image
-                    if (!File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.tga"))
+                    if (src == null)
                         continue;
 
-                    Bitmap src = TGA.FromFile(filePath + "\\" + chapters[i].background + "_widescreen.tga").ToBitmap();
                     Bitmap target = new Bitmap(1920, 1080);
-
                     using (Graphics gfx = Graphics.FromImage(target))
-                    {
                         gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
-                    }
 
                     chapters[i].backgroundImageWide = target;
-
-                    File.Delete(filePath + "\\" + chapters[i].background + "_widescreen.tga");
                 }
             }
         }

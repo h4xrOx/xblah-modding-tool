@@ -50,6 +50,7 @@
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
+            this.menuButton = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.importMapButton = new DevExpress.XtraBars.BarButtonItem();
             this.barTools = new DevExpress.XtraBars.BarSubItem();
@@ -62,7 +63,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.menuButton = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -105,9 +106,10 @@
             this.assetsCopierButton,
             this.barSubItem1,
             this.importMapButton,
-            this.menuButton});
+            this.menuButton,
+            this.buttonVPKExplorer});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 33;
+            this.barManager1.MaxItemId = 34;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -282,6 +284,13 @@
             this.barButtonChapters.Name = "barButtonChapters";
             this.barButtonChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonChapters_ItemClick);
             // 
+            // menuButton
+            // 
+            this.menuButton.Caption = "Menu";
+            this.menuButton.Id = 32;
+            this.menuButton.Name = "menuButton";
+            this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
+            // 
             // barSubItem1
             // 
             this.barSubItem1.Caption = "Import assets";
@@ -303,7 +312,8 @@
             this.barTools.Id = 15;
             this.barTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer)});
             this.barTools.Name = "barTools";
             // 
             // barButtonHammer
@@ -375,12 +385,12 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // menuButton
+            // buttonVPKExplorer
             // 
-            this.menuButton.Caption = "Menu";
-            this.menuButton.Id = 32;
-            this.menuButton.Name = "menuButton";
-            this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
+            this.buttonVPKExplorer.Caption = "VPK Explorer";
+            this.buttonVPKExplorer.Id = 33;
+            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
+            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
             // 
             // ModForm
             // 
@@ -438,5 +448,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem importMapButton;
         private DevExpress.XtraBars.BarButtonItem menuButton;
+        private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
     }
 }

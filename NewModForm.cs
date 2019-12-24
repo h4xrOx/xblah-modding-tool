@@ -49,7 +49,7 @@ namespace windows_source1ide
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            string modsPath = Steam.GetSteamPath() + "\\steamapps\\sourcemods\\";
+            string modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
             modFolder = textFolder.EditValue.ToString();
 
             modTitle = modFolder;
@@ -66,7 +66,7 @@ namespace windows_source1ide
         {
             createButton.Enabled = false;
             validFolder = false;
-            string modsPath = Steam.GetSteamPath() + "\\steamapps\\sourcemods\\";
+            string modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
 
             if (textFolder.EditValue == null)
             {
