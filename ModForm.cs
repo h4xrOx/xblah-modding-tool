@@ -294,11 +294,6 @@ namespace windows_source1ide
                 Directory.Delete(modPath + "\\screenshots",true);
         }
 
-        private void buttonGCFScape_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Process.Start("Tools\\GCFScape\\GCFScape.exe");
-        }
-
         private void buttonCrafty_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("Tools\\Crafty\\Crafty.exe");
@@ -348,6 +343,12 @@ namespace windows_source1ide
         private void buttonTest_Click(object sender, EventArgs e)
         {
             PCF.read("particles/aux_fx.pcf", gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString(), sourceSDK);
+        }
+
+        private void buttonVMFtoMDL_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            VMFtoMDL form = new VMFtoMDL(sourceSDK);
+            form.ShowDialog();
         }
     }
 }

@@ -117,6 +117,12 @@
     <Compile Include="AssetsCopierForm.Designer.cs">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="VMFtoMDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VMFtoMDL.Designer.cs">
+      <DependentUpon>VMFtoMDL.cs</DependentUpon>
+    </Compile>
     <Compile Include="VPKExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </Compile>
     <EmbeddedResource Include="AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VMFtoMDL.resx">
+      <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VPKExplorer.resx">
       <DependentUpon>VPKExplorer.cs</DependentUpon>
@@ -288,6 +297,12 @@
     <Content Include="Tools\BatchCompiler\Batch Compiler.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Tools\Propper\propper.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Propper\propper.fgd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\TerrainGenerator\nativegl.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -319,12 +334,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Tools\VTFEdit\VTFLib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\GCFScape\GCFScape.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\GCFScape\HLLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Tools\Crafty\Crafty.exe">

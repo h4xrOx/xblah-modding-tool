@@ -46,6 +46,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barMod = new DevExpress.XtraBars.BarSubItem();
             this.barButtonRun = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonModOpenFolder = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonClear = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -54,19 +55,21 @@
             this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barTools = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
-            this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
             this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonGCFScape = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
             this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
+            this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -101,7 +104,6 @@
             this.modsCombo,
             this.buttonModStart,
             this.barButtonItem4,
-            this.barTools,
             this.barButtonHammer,
             this.barMod,
             this.barButtonRun,
@@ -120,7 +122,6 @@
             this.menuButton,
             this.buttonVPKExplorer,
             this.barButtonClear,
-            this.buttonGCFScape,
             this.buttonCrafty,
             this.buttonVTFEdit,
             this.buttonBatchCompiler,
@@ -128,9 +129,14 @@
             this.buttonHLMV,
             this.buttonFaceposer,
             this.barButtonItem5,
-            this.buttonIngameTools});
+            this.buttonIngameTools,
+            this.buttonVMFtoMDL,
+            this.barSubItem2,
+            this.barSubItem4,
+            this.barSubItem5,
+            this.barSubItem6});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 44;
+            this.barManager1.MaxItemId = 49;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -226,7 +232,10 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.barMod),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barTools)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -246,6 +255,8 @@
             // 
             this.barButtonItem3.Caption = "New";
             this.barButtonItem3.Id = 22;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -253,32 +264,48 @@
             // 
             this.barButtonItem1.Caption = "Exit";
             this.barButtonItem1.Id = 20;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barMod
             // 
-            this.barMod.Caption = "Mod";
+            this.barMod.Caption = "Modding";
             this.barMod.Id = 17;
             this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonIngameTools),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
             this.barMod.Name = "barMod";
             // 
             // barButtonRun
             // 
             this.barButtonRun.Caption = "Run";
             this.barButtonRun.Id = 18;
+            this.barButtonRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonRun.ImageOptions.Image")));
+            this.barButtonRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonRun.ImageOptions.LargeImage")));
             this.barButtonRun.Name = "barButtonRun";
             this.barButtonRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
+            // 
+            // buttonIngameTools
+            // 
+            this.buttonIngameTools.Caption = "Ingame Tools";
+            this.buttonIngameTools.Id = 43;
+            this.buttonIngameTools.Name = "buttonIngameTools";
+            this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
             // 
             // barButtonModOpenFolder
             // 
             this.barButtonModOpenFolder.Caption = "Open folder";
             this.barButtonModOpenFolder.Id = 21;
+            this.barButtonModOpenFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonModOpenFolder.ImageOptions.Image")));
+            this.barButtonModOpenFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonModOpenFolder.ImageOptions.LargeImage")));
             this.barButtonModOpenFolder.Name = "barButtonModOpenFolder";
             this.barButtonModOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonModOpenFolder_ItemClick);
             // 
@@ -286,6 +313,8 @@
             // 
             this.barButtonClear.Caption = "Clean";
             this.barButtonClear.Id = 34;
+            this.barButtonClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonClear.ImageOptions.Image")));
+            this.barButtonClear.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonClear.ImageOptions.LargeImage")));
             this.barButtonClear.Name = "barButtonClear";
             this.barButtonClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClean_ItemClick);
             // 
@@ -335,52 +364,12 @@
             this.menuButton.Name = "menuButton";
             this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
             // 
-            // barTools
+            // buttonVPKExplorer
             // 
-            this.barTools.Caption = "Tools";
-            this.barTools.Id = 15;
-            this.barTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHLMV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonIngameTools),
-            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonGCFScape, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrafty),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonBatchCompiler),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
-            this.barTools.Name = "barTools";
-            // 
-            // barButtonHammer
-            // 
-            this.barButtonHammer.Caption = "Hammer";
-            this.barButtonHammer.Id = 16;
-            this.barButtonHammer.Name = "barButtonHammer";
-            this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
-            // 
-            // buttonHLMV
-            // 
-            this.buttonHLMV.Caption = "HLMV";
-            this.buttonHLMV.Id = 40;
-            this.buttonHLMV.Name = "buttonHLMV";
-            this.buttonHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHLMV_ItemClick);
-            // 
-            // buttonFaceposer
-            // 
-            this.buttonFaceposer.Caption = "Faceposer";
-            this.buttonFaceposer.Id = 41;
-            this.buttonFaceposer.Name = "buttonFaceposer";
-            this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
-            // 
-            // buttonIngameTools
-            // 
-            this.buttonIngameTools.Caption = "Ingame Tools";
-            this.buttonIngameTools.Id = 43;
-            this.buttonIngameTools.Name = "buttonIngameTools";
-            this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
+            this.buttonVPKExplorer.Caption = "VPK Explorer";
+            this.buttonVPKExplorer.Id = 33;
+            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
+            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
             // 
             // assetsCopierButton
             // 
@@ -389,54 +378,105 @@
             this.assetsCopierButton.Name = "assetsCopierButton";
             this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
             // 
-            // buttonVPKExplorer
+            // barSubItem2
             // 
-            this.buttonVPKExplorer.Caption = "VPK Explorer";
-            this.buttonVPKExplorer.Id = 33;
-            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
-            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
+            this.barSubItem2.Caption = "Modeling";
+            this.barSubItem2.Id = 45;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHLMV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVMFtoMDL, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar, true)});
+            this.barSubItem2.Name = "barSubItem2";
             // 
-            // buttonGCFScape
+            // buttonHLMV
             // 
-            this.buttonGCFScape.Caption = "GCFScape";
-            this.buttonGCFScape.Id = 35;
-            this.buttonGCFScape.Name = "buttonGCFScape";
-            this.buttonGCFScape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonGCFScape_ItemClick);
+            this.buttonHLMV.Caption = "HLMV";
+            this.buttonHLMV.Id = 40;
+            this.buttonHLMV.Name = "buttonHLMV";
+            this.buttonHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHLMV_ItemClick);
             // 
-            // buttonCrafty
+            // buttonVMFtoMDL
             // 
-            this.buttonCrafty.Caption = "Crafty";
-            this.buttonCrafty.Id = 36;
-            this.buttonCrafty.Name = "buttonCrafty";
-            this.buttonCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrafty_ItemClick);
-            // 
-            // buttonVTFEdit
-            // 
-            this.buttonVTFEdit.Caption = "VTFEdit";
-            this.buttonVTFEdit.Id = 37;
-            this.buttonVTFEdit.Name = "buttonVTFEdit";
-            this.buttonVTFEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVTFEdit_ItemClick);
-            // 
-            // buttonBatchCompiler
-            // 
-            this.buttonBatchCompiler.Caption = "Batch Compiler";
-            this.buttonBatchCompiler.Id = 38;
-            this.buttonBatchCompiler.Name = "buttonBatchCompiler";
-            this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
+            this.buttonVMFtoMDL.Caption = "VMF to MDL";
+            this.buttonVMFtoMDL.Id = 44;
+            this.buttonVMFtoMDL.Name = "buttonVMFtoMDL";
+            this.buttonVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVMFtoMDL_ItemClick);
             // 
             // buttonCrowbar
             // 
-            this.buttonCrowbar.Caption = "Crowbar";
+            this.buttonCrowbar.Caption = "Crowbar (legacy)";
             this.buttonCrowbar.Id = 39;
             this.buttonCrowbar.Name = "buttonCrowbar";
             this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
             // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "Choreography";
+            this.barSubItem4.Id = 46;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // buttonFaceposer
+            // 
+            this.buttonFaceposer.Caption = "Faceposer";
+            this.buttonFaceposer.Id = 41;
+            this.buttonFaceposer.Name = "buttonFaceposer";
+            this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
+            // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Level Design";
+            this.barSubItem5.Id = 47;
+            this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrafty, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonBatchCompiler)});
+            this.barSubItem5.Name = "barSubItem5";
+            // 
+            // barButtonHammer
+            // 
+            this.barButtonHammer.Caption = "Hammer";
+            this.barButtonHammer.Id = 16;
+            this.barButtonHammer.Name = "barButtonHammer";
+            this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
+            // 
+            // buttonCrafty
+            // 
+            this.buttonCrafty.Caption = "Crafty (legacy)";
+            this.buttonCrafty.Id = 36;
+            this.buttonCrafty.Name = "buttonCrafty";
+            this.buttonCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrafty_ItemClick);
+            // 
             // barButtonItem5
             // 
-            this.barButtonItem5.Caption = "Terrain Generator";
+            this.barButtonItem5.Caption = "Terrain Generator (legacy)";
             this.barButtonItem5.Id = 42;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
+            // buttonBatchCompiler
+            // 
+            this.buttonBatchCompiler.Caption = "Batch Compiler (legacy)";
+            this.buttonBatchCompiler.Id = 38;
+            this.buttonBatchCompiler.Name = "buttonBatchCompiler";
+            this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
+            // 
+            // barSubItem6
+            // 
+            this.barSubItem6.Caption = "Materials";
+            this.barSubItem6.Id = 48;
+            this.barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit)});
+            this.barSubItem6.Name = "barSubItem6";
+            // 
+            // buttonVTFEdit
+            // 
+            this.buttonVTFEdit.Caption = "VTFEdit (legacy)";
+            this.buttonVTFEdit.Id = 37;
+            this.buttonVTFEdit.Name = "buttonVTFEdit";
+            this.buttonVTFEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVTFEdit_ItemClick);
             // 
             // bar3
             // 
@@ -543,7 +583,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem buttonModStart;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarSubItem barTools;
         private DevExpress.XtraBars.BarButtonItem barButtonHammer;
         private DevExpress.XtraBars.BarSubItem barMod;
         private DevExpress.XtraBars.BarButtonItem barButtonRun;
@@ -562,7 +601,6 @@
         private DevExpress.XtraBars.BarButtonItem menuButton;
         private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
         private DevExpress.XtraBars.BarButtonItem barButtonClear;
-        private DevExpress.XtraBars.BarButtonItem buttonGCFScape;
         private DevExpress.XtraBars.BarButtonItem buttonCrafty;
         private DevExpress.XtraBars.BarButtonItem buttonVTFEdit;
         private DevExpress.XtraBars.BarButtonItem buttonBatchCompiler;
@@ -572,5 +610,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem buttonIngameTools;
         private DevExpress.XtraEditors.SimpleButton buttonTest;
+        private DevExpress.XtraBars.BarButtonItem buttonVMFtoMDL;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.BarSubItem barSubItem6;
     }
 }
