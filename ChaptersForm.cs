@@ -46,18 +46,6 @@ namespace windows_source1ide
             internal Bitmap backgroundImage = new Bitmap(4,4);
             internal byte[] backgroundImageFile = null;
             internal byte[] backgroundImageWideFile = null;
-
-            /*public Chapter()
-            {
-                using (Graphics gfx = Graphics.FromImage(backgroundImage))
-                    gfx.Clear(Color.Black);
-
-                using (Graphics gfx = Graphics.FromImage(backgroundImageWide))
-                    gfx.Clear(Color.Black);
-
-                using (Graphics gfx = Graphics.FromImage(thumbnail))
-                    gfx.Clear(Color.Black);
-            }*/
         }
 
         private void ChaptersForm_Load(object sender, EventArgs e)
@@ -70,6 +58,9 @@ namespace windows_source1ide
             readChapterThumbnails();
             readBackgroundImages();
             updateChaptersList();
+
+            Directory.CreateDirectory(sourceSDK.GetMods(game)[mod] + "\\maps");
+            selectBSPDialog.InitialDirectory = sourceSDK.GetMods(game)[mod] + "\\maps";
         }
 
         private void updateChaptersList()
@@ -523,20 +514,14 @@ namespace windows_source1ide
 
         private void buttonMap_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                textMap.EditValue = Path.GetFileNameWithoutExtension(dialog.FileName);
-            }
+            if (selectBSPDialog.ShowDialog() == DialogResult.OK)
+                textMap.EditValue = Path.GetFileNameWithoutExtension(selectBSPDialog.FileName);
         }
 
         private void buttonBackground_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                textBackground.EditValue = Path.GetFileNameWithoutExtension(dialog.FileName);
-            }
+            if (selectBSPDialog.ShowDialog() == DialogResult.OK)
+                textBackground.EditValue = Path.GetFileNameWithoutExtension(selectBSPDialog.FileName);
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)

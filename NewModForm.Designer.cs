@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewModForm));
             this.textTitle = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textFolder = new DevExpress.XtraEditors.TextEdit();
@@ -229,6 +230,7 @@
             this.ClientSize = new System.Drawing.Size(551, 301);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewModForm";
             this.Text = "New Mod";
             this.Load += new System.EventHandler(this.NewModForm_Load);

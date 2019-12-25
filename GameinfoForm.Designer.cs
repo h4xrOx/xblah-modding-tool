@@ -828,9 +828,10 @@
             this.ClientSize = new System.Drawing.Size(492, 261);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.panelControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GameinfoForm";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Gameinfo";
+            this.Text = "Game info";
             this.Load += new System.EventHandler(this.GameinfoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textGame.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).EndInit();

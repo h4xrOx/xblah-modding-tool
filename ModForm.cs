@@ -181,7 +181,7 @@ namespace windows_source1ide
                 File.Copy(Application.StartupPath + "\\template_sp\\bin\\client.dll", modPath + "\\bin\\client.dll", true);
                 File.Copy(Application.StartupPath + "\\template_sp\\bin\\server.dll", modPath + "\\bin\\server.dll", true);
 
-                File.Copy(Application.StartupPath + "\\template_sp\\resource\\english.txt", modPath + "\\resource\\" + folder + "_english.txt");
+                File.Copy(Application.StartupPath + "\\template_sp\\resource\\template_sp_english.txt", modPath + "\\resource\\" + folder + "_english.txt");
                 File.Copy(Application.StartupPath + "\\template_sp\\resource\\HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf");
 
                 // Create gameinfo
@@ -254,24 +254,36 @@ namespace windows_source1ide
         {
             string modPath = sourceSDK.GetMods(gamesCombo.EditValue.ToString())[modsCombo.EditValue.ToString()];
 
-            //if (File.Exists(modPath + "\\Gamestate.txt"))
+            if (File.Exists(modPath + "\\Gamestate.txt"))
                 File.Delete(modPath + "\\Gamestate.txt");
-            //if (File.Exists(modPath + "\\modelsounds.cache"))
+            if (File.Exists(modPath + "\\demoheader.tmp"))
+                File.Delete(modPath + "\\demoheader.tmp");
+            if (File.Exists(modPath + "\\ep1_gamestats.dat"))
+                File.Delete(modPath + "\\ep1_gamestats.dat");
+            if (File.Exists(modPath + "\\modelsounds.cache"))
                 File.Delete(modPath + "\\modelsounds.cache");
-           // if (File.Exists(modPath + "\\stats.txt"))
+            if (File.Exists(modPath + "\\stats.txt"))
                 File.Delete(modPath + "\\stats.txt");
-            //if (File.Exists(modPath + "\\voice_ban.dt"))
+            if (File.Exists(modPath + "\\voice_ban.dt"))
                 File.Delete(modPath + "\\voice_ban.dt");
-            //if (File.Exists(modPath + "\\cfg\\config.cfg"))
+            if (File.Exists(modPath + "\\cfg\\config.cfg"))
                 File.Delete(modPath + "\\cfg\\config.cfg");
-            //if (File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
+            if (File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
                 File.Delete(modPath + "\\cfg\\server_blacklist.txt");
-            //if (File.Exists(modPath + "\\voice_ban.dt"))
+            if (File.Exists(modPath + "\\sound\\sound.cache"))
+                File.Delete(modPath + "\\sound\\sound.cache");
+            if (File.Exists(modPath + "\\voice_ban.dt"))
                 File.Delete(modPath + "\\voice_ban.dt");
             if (Directory.Exists(modPath + "\\materialsrc"))
-                Directory.Delete(modPath + "\\materialsrc");
+                Directory.Delete(modPath + "\\materialsrc", true);
+            if (Directory.Exists(modPath + "\\downloadlists"))
+                Directory.Delete(modPath + "\\downloadlists", true);
             if (Directory.Exists(modPath + "\\mapsrc"))
                 Directory.Delete(modPath + "\\mapsrc");
+            if (Directory.Exists(modPath + "\\save"))
+                Directory.Delete(modPath + "\\save", true);
+            if (Directory.Exists(modPath + "\\screenshots"))
+                Directory.Delete(modPath + "\\screenshots",true);
         }
     }
 }

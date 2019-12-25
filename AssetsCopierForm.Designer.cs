@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssetsCopierForm));
             this.buttonSearch = new DevExpress.XtraEditors.SimpleButton();
             this.readMapButton = new DevExpress.XtraEditors.SimpleButton();
             this.vmfList = new DevExpress.XtraTreeList.TreeList();
@@ -216,6 +217,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AssetsCopierForm";
             this.Text = "Assets copier";
             this.Load += new System.EventHandler(this.AssetsCopierForm_Load);

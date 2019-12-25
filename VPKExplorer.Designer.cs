@@ -289,6 +289,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VPKExplorer";
             this.Text = "VPK Explorer";
             this.Load += new System.EventHandler(this.VPKExplorer_Load);

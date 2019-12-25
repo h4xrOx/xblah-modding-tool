@@ -42,6 +42,7 @@ namespace windows_source1ide.Tools
         {
             sourceSDK = new Steam();
             updateVMFList();
+            selectVMFDialog.InitialDirectory = sourceSDK.GetMods(game)[mod];
         }
 
         class Asset

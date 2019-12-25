@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChaptersForm));
             this.list = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.textName = new DevExpress.XtraEditors.TextEdit();
@@ -52,6 +53,7 @@
             this.buttonRemove = new DevExpress.XtraEditors.SimpleButton();
             this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
+            this.selectBSPDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -338,6 +340,10 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // selectBSPDialog
+            // 
+            this.selectBSPDialog.Filter = "Binary Space Partitioning Files (*.bsp)|*.bsp";
+            // 
             // ChaptersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +352,7 @@
             this.Controls.Add(this.list);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChaptersForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Chapters";
@@ -397,5 +404,6 @@
         private DevExpress.XtraEditors.SimpleButton buttonBackground;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.SimpleButton buttonMap;
+        private System.Windows.Forms.OpenFileDialog selectBSPDialog;
     }
 }
