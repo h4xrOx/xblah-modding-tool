@@ -170,6 +170,33 @@ namespace windows_source1ide
             return process;
         }
 
+        public Process RunIngameTools(string game, string mod)
+        {
+            string gamePath = games[game];
+            string modPath = mods[mod];
+
+            Debug.Write(modPath);
+
+            string exePath = "";
+
+            foreach (string file in Directory.GetFiles(gamePath))
+            {
+                if (new FileInfo(file).Extension == ".exe")
+                {
+                    exePath = file;
+                    break;
+                }
+            }
+
+            Process process = new Process();
+            process.StartInfo.FileName = exePath;
+            process.StartInfo.Arguments = "-game \"" + modPath + "\" -tools -nop4";
+            process.Start();
+            process.EnableRaisingEvents = true;
+
+            return process;
+        }
+
         public void RunHammer(string game, string mod)
         {
             string gamePath = games[game];

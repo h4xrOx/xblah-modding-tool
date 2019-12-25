@@ -127,6 +127,10 @@ namespace windows_source1ide
             buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barButtonHammer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            buttonHLMV.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            buttonFaceposer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            assetsCopierButton.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            buttonVPKExplorer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
         }
 
         private void buttonModStop_ItemClick(object sender, ItemClickEventArgs e)
@@ -309,6 +313,32 @@ namespace windows_source1ide
         private void buttonCrowbar_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("Tools\\Crowbar\\Crowbar.exe");
+        }
+
+        private void buttonHLMV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string gamePath = sourceSDK.GetGames()[gamesCombo.EditValue.ToString()];
+
+            string toolPath = gamePath + "\\bin\\hlmv.exe";
+            Process.Start(toolPath);
+        }
+
+        private void barButtonFaceposer_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string gamePath = sourceSDK.GetGames()[gamesCombo.EditValue.ToString()];
+
+            string toolPath = gamePath + "\\bin\\hlfaceposer.exe";
+            Process.Start(toolPath);
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\TerrainGenerator\\TerrainGenerator.exe");
+        }
+
+        private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            sourceSDK.RunIngameTools(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
         }
     }
 }

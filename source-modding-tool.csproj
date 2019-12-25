@@ -70,6 +70,7 @@
     <Compile Include="ChaptersForm.Designer.cs">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GaussianBlur.cs" />
     <Compile Include="ModForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,7 +287,25 @@
     <Content Include="Tools\BatchCompiler\Batch Compiler.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Tools\TerrainGenerator\nativegl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\TerrainGenerator\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\TerrainGenerator\TerrainGenerator.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\Crowbar\Crowbar.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\TerrainGenerator\config\wads\halflife.wdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\TerrainGenerator\config\wads\tfc.wdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\TerrainGenerator\config\wads\tfc2.wdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Tools\VTFEdit\DevIL.dll">

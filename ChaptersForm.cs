@@ -40,7 +40,7 @@ namespace windows_source1ide
             internal string map = "";
             internal string title = "";
             internal string background = "";
-            internal Bitmap thumbnail = new Bitmap(4,4);
+            internal Bitmap thumbnail = new Bitmap(256,128);
             internal byte[] thumbnailFile = null;
             internal Bitmap backgroundImageWide = new Bitmap(4, 4);
             internal Bitmap backgroundImage = new Bitmap(4,4);
@@ -360,8 +360,14 @@ namespace windows_source1ide
             {
                 String filePath = dialog.FileName;
 
-                // Crop image
+                
                 Bitmap src = Image.FromFile(filePath) as Bitmap;
+
+                // Blur image
+                GaussianBlur blur = new GaussianBlur(src);
+                src = blur.Process(30);
+
+                // Crop image
                 Bitmap targetWide = new Bitmap(1920, 1080);
 
                 int idealHeight = src.Height;
