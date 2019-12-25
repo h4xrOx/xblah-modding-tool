@@ -40,12 +40,24 @@ namespace windows_source1ide
             internal string map = "";
             internal string title = "";
             internal string background = "";
-            internal Bitmap thumbnail = new Bitmap(152,86);
+            internal Bitmap thumbnail = new Bitmap(4,4);
             internal byte[] thumbnailFile = null;
-            internal Bitmap backgroundImageWide = new Bitmap(1920, 1080);
-            internal Bitmap backgroundImage = new Bitmap(1024,768);
+            internal Bitmap backgroundImageWide = new Bitmap(4, 4);
+            internal Bitmap backgroundImage = new Bitmap(4,4);
             internal byte[] backgroundImageFile = null;
             internal byte[] backgroundImageWideFile = null;
+
+            /*public Chapter()
+            {
+                using (Graphics gfx = Graphics.FromImage(backgroundImage))
+                    gfx.Clear(Color.Black);
+
+                using (Graphics gfx = Graphics.FromImage(backgroundImageWide))
+                    gfx.Clear(Color.Black);
+
+                using (Graphics gfx = Graphics.FromImage(thumbnail))
+                    gfx.Clear(Color.Black);
+            }*/
         }
 
         private void ChaptersForm_Load(object sender, EventArgs e)
@@ -189,7 +201,7 @@ namespace windows_source1ide
                 SourceSDK.KeyValue chapters = SourceSDK.KeyValue.readChunkfile(filePath);
                 for (int i = 0; i < this.chapters.Count; i++)
                 {
-                    string background = chapters.getChild((i + 1).ToString()).getValue();
+                    string background = chapters.getValue((i + 1).ToString());
                     this.chapters[i].background = background;
                 }
             }
@@ -205,6 +217,9 @@ namespace windows_source1ide
 
             for (int i = 0; i < chapters.Count; i++)
             {
+                if (chapters[i].background == "")
+                    chapters[i].background = "default";
+
                 root.addChild(new KeyValue((i + 1).ToString(), chapters[i].background));
             }
 
@@ -293,8 +308,13 @@ namespace windows_source1ide
 
             for (int i = 0; i < chapters.Count; i++)
             {
+                if (chapters[i].thumbnailFile == null)
+                    chapters[i].thumbnailFile = VTF.fromBitmap(chapters[i].thumbnail, game, mod, sourceSDK);
+
                 if (chapters[i].thumbnailFile != null)
                 {
+
+                    Directory.CreateDirectory(filePath);
                     File.WriteAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf", chapters[i].thumbnailFile);
 
                     KeyValue root = new KeyValue("UnlitGeneric");
@@ -427,8 +447,16 @@ namespace windows_source1ide
 
             for (int i = 0; i < chapters.Count; i++)
             {
+                if (chapters[i].backgroundImageFile == null)
+                    chapters[i].backgroundImageFile = VTF.fromBitmap(chapters[i].backgroundImage, game, mod, sourceSDK);
+
+                if (chapters[i].backgroundImageWideFile == null)
+                    chapters[i].backgroundImageWideFile = VTF.fromBitmap(chapters[i].backgroundImageWide, game, mod, sourceSDK);
+
                 if (chapters[i].backgroundImageFile != null && chapters[i].backgroundImageWideFile != null)
                 {
+                    Directory.CreateDirectory(filePath);
+
                     File.WriteAllBytes(filePath + "\\" + chapters[i].background + ".vtf", chapters[i].backgroundImageFile);
                     File.WriteAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf", chapters[i].backgroundImageWideFile);
 

@@ -249,5 +249,29 @@ namespace windows_source1ide
             VPKExplorer form = new VPKExplorer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
             form.ShowDialog();
         }
+
+        private void barButtonClean_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string modPath = sourceSDK.GetMods(gamesCombo.EditValue.ToString())[modsCombo.EditValue.ToString()];
+
+            //if (File.Exists(modPath + "\\Gamestate.txt"))
+                File.Delete(modPath + "\\Gamestate.txt");
+            //if (File.Exists(modPath + "\\modelsounds.cache"))
+                File.Delete(modPath + "\\modelsounds.cache");
+           // if (File.Exists(modPath + "\\stats.txt"))
+                File.Delete(modPath + "\\stats.txt");
+            //if (File.Exists(modPath + "\\voice_ban.dt"))
+                File.Delete(modPath + "\\voice_ban.dt");
+            //if (File.Exists(modPath + "\\cfg\\config.cfg"))
+                File.Delete(modPath + "\\cfg\\config.cfg");
+            //if (File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
+                File.Delete(modPath + "\\cfg\\server_blacklist.txt");
+            //if (File.Exists(modPath + "\\voice_ban.dt"))
+                File.Delete(modPath + "\\voice_ban.dt");
+            if (Directory.Exists(modPath + "\\materialsrc"))
+                Directory.Delete(modPath + "\\materialsrc");
+            if (Directory.Exists(modPath + "\\mapsrc"))
+                Directory.Delete(modPath + "\\mapsrc");
+        }
     }
 }

@@ -32,42 +32,42 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.textName = new DevExpress.XtraEditors.TextEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.textBackground = new DevExpress.XtraEditors.TextEdit();
+            this.buttonBackground = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.textMap = new DevExpress.XtraEditors.TextEdit();
+            this.buttonMap = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textMap = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textBackground = new DevExpress.XtraEditors.TextEdit();
             this.pictureThumbnail = new System.Windows.Forms.PictureBox();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.pictureBackground = new System.Windows.Forms.PictureBox();
             this.pictureBackgroundWide = new System.Windows.Forms.PictureBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.buttonAdd = new DevExpress.XtraEditors.SimpleButton();
             this.buttonRemove = new DevExpress.XtraEditors.SimpleButton();
             this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
-            this.pictureBackground = new System.Windows.Forms.PictureBox();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.buttonMap = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonBackground = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textMap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBackground.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textMap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureThumbnail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBackgroundWide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBackground)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
-            this.panelControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // list
@@ -106,7 +106,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
             this.tableLayoutPanel1.Controls.Add(this.panelControl4, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelControl3, 1, 1);
@@ -129,6 +129,72 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 265);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // panelControl4
+            // 
+            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl4.Controls.Add(this.textBackground);
+            this.panelControl4.Controls.Add(this.buttonBackground);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(96, 55);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(273, 20);
+            this.panelControl4.TabIndex = 8;
+            // 
+            // textBackground
+            // 
+            this.textBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBackground.Location = new System.Drawing.Point(0, 0);
+            this.textBackground.Name = "textBackground";
+            this.textBackground.Properties.EditValueChangedDelay = 300;
+            this.textBackground.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
+            this.textBackground.Properties.ReadOnly = true;
+            this.textBackground.Size = new System.Drawing.Size(198, 20);
+            this.textBackground.TabIndex = 8;
+            this.textBackground.TextChanged += new System.EventHandler(this.textBackground_TextChanged);
+            // 
+            // buttonBackground
+            // 
+            this.buttonBackground.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonBackground.Location = new System.Drawing.Point(198, 0);
+            this.buttonBackground.Name = "buttonBackground";
+            this.buttonBackground.Size = new System.Drawing.Size(75, 20);
+            this.buttonBackground.TabIndex = 1;
+            this.buttonBackground.Text = "Search";
+            this.buttonBackground.Click += new System.EventHandler(this.buttonBackground_Click);
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.textMap);
+            this.panelControl3.Controls.Add(this.buttonMap);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl3.Location = new System.Drawing.Point(96, 29);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(273, 20);
+            this.panelControl3.TabIndex = 7;
+            // 
+            // textMap
+            // 
+            this.textMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textMap.Location = new System.Drawing.Point(0, 0);
+            this.textMap.Name = "textMap";
+            this.textMap.Properties.EditValueChangedDelay = 300;
+            this.textMap.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
+            this.textMap.Properties.ReadOnly = true;
+            this.textMap.Size = new System.Drawing.Size(198, 20);
+            this.textMap.TabIndex = 4;
+            this.textMap.EditValueChanged += new System.EventHandler(this.textMap_EditValueChanged);
+            // 
+            // buttonMap
+            // 
+            this.buttonMap.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMap.Location = new System.Drawing.Point(198, 0);
+            this.buttonMap.Name = "buttonMap";
+            this.buttonMap.Size = new System.Drawing.Size(75, 20);
+            this.buttonMap.TabIndex = 0;
+            this.buttonMap.Text = "Search";
+            this.buttonMap.Click += new System.EventHandler(this.buttonMap_Click);
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
@@ -144,18 +210,6 @@
             this.labelControl2.Size = new System.Drawing.Size(49, 13);
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Map name";
-            // 
-            // textMap
-            // 
-            this.textMap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textMap.Location = new System.Drawing.Point(0, 0);
-            this.textMap.Name = "textMap";
-            this.textMap.Properties.EditValueChangedDelay = 300;
-            this.textMap.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
-            this.textMap.Properties.ReadOnly = true;
-            this.textMap.Size = new System.Drawing.Size(198, 20);
-            this.textMap.TabIndex = 4;
-            this.textMap.EditValueChanged += new System.EventHandler(this.textMap_EditValueChanged);
             // 
             // labelControl3
             // 
@@ -181,20 +235,9 @@
             this.labelControl5.TabIndex = 7;
             this.labelControl5.Text = "Chapter image";
             // 
-            // textBackground
-            // 
-            this.textBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBackground.Location = new System.Drawing.Point(0, 0);
-            this.textBackground.Name = "textBackground";
-            this.textBackground.Properties.EditValueChangedDelay = 300;
-            this.textBackground.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
-            this.textBackground.Properties.ReadOnly = true;
-            this.textBackground.Size = new System.Drawing.Size(198, 20);
-            this.textBackground.TabIndex = 8;
-            this.textBackground.TextChanged += new System.EventHandler(this.textBackground_TextChanged);
-            // 
             // pictureThumbnail
             // 
+            this.pictureThumbnail.BackColor = System.Drawing.Color.Red;
             this.pictureThumbnail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureThumbnail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureThumbnail.Location = new System.Drawing.Point(96, 173);
@@ -205,8 +248,31 @@
             this.pictureThumbnail.TabStop = false;
             this.pictureThumbnail.Click += new System.EventHandler(this.pictureThumbnail_Click);
             // 
+            // panelControl2
+            // 
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.pictureBackground);
+            this.panelControl2.Controls.Add(this.pictureBackgroundWide);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(96, 81);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(273, 86);
+            this.panelControl2.TabIndex = 10;
+            // 
+            // pictureBackground
+            // 
+            this.pictureBackground.BackColor = System.Drawing.Color.Red;
+            this.pictureBackground.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBackground.Location = new System.Drawing.Point(158, 0);
+            this.pictureBackground.Name = "pictureBackground";
+            this.pictureBackground.Size = new System.Drawing.Size(115, 86);
+            this.pictureBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBackground.TabIndex = 7;
+            this.pictureBackground.TabStop = false;
+            // 
             // pictureBackgroundWide
             // 
+            this.pictureBackgroundWide.BackColor = System.Drawing.Color.Red;
             this.pictureBackgroundWide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBackgroundWide.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBackgroundWide.Location = new System.Drawing.Point(0, 0);
@@ -272,69 +338,6 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // pictureBackground
-            // 
-            this.pictureBackground.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBackground.Location = new System.Drawing.Point(158, 0);
-            this.pictureBackground.Name = "pictureBackground";
-            this.pictureBackground.Size = new System.Drawing.Size(115, 86);
-            this.pictureBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBackground.TabIndex = 7;
-            this.pictureBackground.TabStop = false;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.pictureBackground);
-            this.panelControl2.Controls.Add(this.pictureBackgroundWide);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(96, 81);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(273, 86);
-            this.panelControl2.TabIndex = 10;
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl3.Controls.Add(this.textMap);
-            this.panelControl3.Controls.Add(this.buttonMap);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(96, 29);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(273, 20);
-            this.panelControl3.TabIndex = 7;
-            // 
-            // panelControl4
-            // 
-            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl4.Controls.Add(this.textBackground);
-            this.panelControl4.Controls.Add(this.buttonBackground);
-            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(96, 55);
-            this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(273, 20);
-            this.panelControl4.TabIndex = 8;
-            // 
-            // buttonMap
-            // 
-            this.buttonMap.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonMap.Location = new System.Drawing.Point(198, 0);
-            this.buttonMap.Name = "buttonMap";
-            this.buttonMap.Size = new System.Drawing.Size(75, 20);
-            this.buttonMap.TabIndex = 0;
-            this.buttonMap.Text = "Search";
-            this.buttonMap.Click += new System.EventHandler(this.buttonMap_Click);
-            // 
-            // buttonBackground
-            // 
-            this.buttonBackground.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonBackground.Location = new System.Drawing.Point(198, 0);
-            this.buttonBackground.Name = "buttonBackground";
-            this.buttonBackground.Size = new System.Drawing.Size(75, 20);
-            this.buttonBackground.TabIndex = 1;
-            this.buttonBackground.Text = "Search";
-            this.buttonBackground.Click += new System.EventHandler(this.buttonBackground_Click);
-            // 
             // ChaptersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,19 +354,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textMap.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textBackground.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textMap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureThumbnail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBackgroundWide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBackground)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
-            this.panelControl4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

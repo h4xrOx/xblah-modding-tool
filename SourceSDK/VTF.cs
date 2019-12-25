@@ -28,9 +28,9 @@ namespace windows_source1ide.SourceSDK
 
             Process process = new Process();
             process.StartInfo.FileName = vtexPath;
-            process.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
+            process.StartInfo.Arguments = "-mkdir -shader UnlitGeneric temp.tga";   //-quiet -nopause 
             process.StartInfo.WorkingDirectory = filePath;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
 

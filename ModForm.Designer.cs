@@ -47,15 +47,17 @@
             this.barMod = new DevExpress.XtraBars.BarSubItem();
             this.barButtonRun = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonModOpenFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonClear = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.importMapButton = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.importMapButton = new DevExpress.XtraBars.BarButtonItem();
             this.barTools = new DevExpress.XtraBars.BarSubItem();
             this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
             this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -63,7 +65,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -107,9 +108,10 @@
             this.barSubItem1,
             this.importMapButton,
             this.menuButton,
-            this.buttonVPKExplorer});
+            this.buttonVPKExplorer,
+            this.barButtonClear});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 34;
+            this.barManager1.MaxItemId = 35;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -242,8 +244,9 @@
             this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3)});
             this.barMod.Name = "barMod";
             // 
             // barButtonRun
@@ -259,6 +262,28 @@
             this.barButtonModOpenFolder.Id = 21;
             this.barButtonModOpenFolder.Name = "barButtonModOpenFolder";
             this.barButtonModOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonModOpenFolder_ItemClick);
+            // 
+            // barButtonClear
+            // 
+            this.barButtonClear.Caption = "Clean";
+            this.barButtonClear.Id = 34;
+            this.barButtonClear.Name = "barButtonClear";
+            this.barButtonClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClean_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Import assets";
+            this.barSubItem1.Id = 30;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.importMapButton)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // importMapButton
+            // 
+            this.importMapButton.Caption = "From another mod";
+            this.importMapButton.Id = 31;
+            this.importMapButton.Name = "importMapButton";
+            this.importMapButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.importMapButton_ItemClick);
             // 
             // barSubItem3
             // 
@@ -291,28 +316,13 @@
             this.menuButton.Name = "menuButton";
             this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Import assets";
-            this.barSubItem1.Id = 30;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.importMapButton)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // importMapButton
-            // 
-            this.importMapButton.Caption = "From another mod";
-            this.importMapButton.Id = 31;
-            this.importMapButton.Name = "importMapButton";
-            this.importMapButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.importMapButton_ItemClick);
-            // 
             // barTools
             // 
             this.barTools.Caption = "Tools";
             this.barTools.Id = 15;
             this.barTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer)});
             this.barTools.Name = "barTools";
             // 
@@ -329,6 +339,13 @@
             this.assetsCopierButton.Id = 29;
             this.assetsCopierButton.Name = "assetsCopierButton";
             this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
+            // 
+            // buttonVPKExplorer
+            // 
+            this.buttonVPKExplorer.Caption = "VPK Explorer";
+            this.buttonVPKExplorer.Id = 33;
+            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
+            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
             // 
             // bar3
             // 
@@ -384,13 +401,6 @@
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
-            // buttonVPKExplorer
-            // 
-            this.buttonVPKExplorer.Caption = "VPK Explorer";
-            this.buttonVPKExplorer.Id = 33;
-            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
-            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
             // 
             // ModForm
             // 
@@ -449,5 +459,6 @@
         private DevExpress.XtraBars.BarButtonItem importMapButton;
         private DevExpress.XtraBars.BarButtonItem menuButton;
         private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
+        private DevExpress.XtraBars.BarButtonItem barButtonClear;
     }
 }
