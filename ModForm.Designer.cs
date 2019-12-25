@@ -65,6 +65,11 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.buttonGCFScape = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -109,9 +114,14 @@
             this.importMapButton,
             this.menuButton,
             this.buttonVPKExplorer,
-            this.barButtonClear});
+            this.barButtonClear,
+            this.buttonGCFScape,
+            this.buttonCrafty,
+            this.buttonVTFEdit,
+            this.buttonBatchCompiler,
+            this.buttonCrowbar});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 35;
+            this.barManager1.MaxItemId = 40;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -323,7 +333,12 @@
             this.barTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
             new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonGCFScape, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrafty),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonBatchCompiler),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar)});
             this.barTools.Name = "barTools";
             // 
             // barButtonHammer
@@ -402,6 +417,41 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // buttonGCFScape
+            // 
+            this.buttonGCFScape.Caption = "GCFScape";
+            this.buttonGCFScape.Id = 35;
+            this.buttonGCFScape.Name = "buttonGCFScape";
+            this.buttonGCFScape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonGCFScape_ItemClick);
+            // 
+            // buttonCrafty
+            // 
+            this.buttonCrafty.Caption = "Crafty";
+            this.buttonCrafty.Id = 36;
+            this.buttonCrafty.Name = "buttonCrafty";
+            this.buttonCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrafty_ItemClick);
+            // 
+            // buttonVTFEdit
+            // 
+            this.buttonVTFEdit.Caption = "VTFEdit";
+            this.buttonVTFEdit.Id = 37;
+            this.buttonVTFEdit.Name = "buttonVTFEdit";
+            this.buttonVTFEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVTFEdit_ItemClick);
+            // 
+            // buttonBatchCompiler
+            // 
+            this.buttonBatchCompiler.Caption = "Batch Compiler";
+            this.buttonBatchCompiler.Id = 38;
+            this.buttonBatchCompiler.Name = "buttonBatchCompiler";
+            this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
+            // 
+            // buttonCrowbar
+            // 
+            this.buttonCrowbar.Caption = "Crowbar";
+            this.buttonCrowbar.Id = 39;
+            this.buttonCrowbar.Name = "buttonCrowbar";
+            this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
+            // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,5 +511,10 @@
         private DevExpress.XtraBars.BarButtonItem menuButton;
         private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
         private DevExpress.XtraBars.BarButtonItem barButtonClear;
+        private DevExpress.XtraBars.BarButtonItem buttonGCFScape;
+        private DevExpress.XtraBars.BarButtonItem buttonCrafty;
+        private DevExpress.XtraBars.BarButtonItem buttonVTFEdit;
+        private DevExpress.XtraBars.BarButtonItem buttonBatchCompiler;
+        private DevExpress.XtraBars.BarButtonItem buttonCrowbar;
     }
 }

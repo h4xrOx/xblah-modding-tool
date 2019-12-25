@@ -316,7 +316,7 @@ namespace windows_source1ide
         public void extractFileFromVPK(string game, string mod, string vpk, string filePath, string startupPath)
         {
             string modPath = GetMods(game)[mod];
-            string toolPath = startupPath + "\\Tools\\HLExtract.exe";
+            string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
             Process process = new Process();

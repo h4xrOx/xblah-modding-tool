@@ -285,5 +285,30 @@ namespace windows_source1ide
             if (Directory.Exists(modPath + "\\screenshots"))
                 Directory.Delete(modPath + "\\screenshots",true);
         }
+
+        private void buttonGCFScape_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\GCFScape\\GCFScape.exe");
+        }
+
+        private void buttonCrafty_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\Crafty\\Crafty.exe");
+        }
+
+        private void buttonVTFEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\VTFEdit\\VTFEdit.exe");
+        }
+
+        private void buttonBatchCompiler_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\BatchCompiler\\Batch Compiler.exe");
+        }
+
+        private void buttonCrowbar_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("Tools\\Crowbar\\Crowbar.exe");
+        }
     }
 }
