@@ -42,7 +42,7 @@ namespace windows_source1ide.Tools
         {
             sourceSDK = new Steam();
             updateVMFList();
-            selectVMFDialog.InitialDirectory = sourceSDK.GetMods(game)[mod];
+            selectVMFDialog.InitialDirectory = sourceSDK.GetModPath(game, mod);
         }
 
         class Asset
@@ -88,7 +88,7 @@ namespace windows_source1ide.Tools
             assets = assets.Distinct().ToList();
             string customPath = copyAssets();
 
-            string modPath = sourceSDK.GetMods(game)[mod];
+            string modPath = sourceSDK.GetModPath(game,mod);
             setStatusMessage("Done.", COLOR_GREEN);
             Process.Start(customPath);
         }
@@ -144,8 +144,8 @@ namespace windows_source1ide.Tools
 
         private string copyAssets()
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
+            string gamePath = sourceSDK.GetGamePath(game);
+            string modPath = sourceSDK.GetModPath(game, mod);
 
             String mapName = Path.GetFileNameWithoutExtension(vmfs[0]).ToLower();
 

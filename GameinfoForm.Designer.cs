@@ -803,7 +803,6 @@
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // panelControl1
             // 

@@ -20,19 +20,19 @@ namespace windows_source1ide
 {
     public partial class ChaptersForm : DevExpress.XtraEditors.XtraForm
     {
-        string game;
-        string mod;
         Steam sourceSDK;
+        string gamePath = "";
+        string modPath = "";
 
         SourceSDK.KeyValue lang;
 
         List<Chapter> chapters = new List<Chapter>();
 
-        public ChaptersForm(string game, string mod)
+        public ChaptersForm(Steam sourceSDK)
         {
-            this.game = game;
-            this.mod = mod; 
             InitializeComponent();
+
+            this.sourceSDK = sourceSDK;
         }
 
         class Chapter
@@ -50,8 +50,8 @@ namespace windows_source1ide
 
         private void ChaptersForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
-
+            gamePath = sourceSDK.GetGamePath();
+            modPath = sourceSDK.GetModPath();
             readChapters();
             readChapterTitles();
             readChapterBackgrounds();
@@ -59,8 +59,8 @@ namespace windows_source1ide
             readBackgroundImages();
             updateChaptersList();
 
-            Directory.CreateDirectory(sourceSDK.GetMods(game)[mod] + "\\maps");
-            selectBSPDialog.InitialDirectory = sourceSDK.GetMods(game)[mod] + "\\maps";
+            Directory.CreateDirectory(modPath + "\\maps");
+            selectBSPDialog.InitialDirectory = modPath + "\\maps";
         }
 
         private void updateChaptersList()
@@ -98,7 +98,7 @@ namespace windows_source1ide
 
         private void readChapters()
         {
-            string path = sourceSDK.GetMods(game)[mod] + "\\cfg";
+            string path = modPath + "\\cfg";
 
             Directory.CreateDirectory(path);
             foreach (string file in Directory.GetFiles(path))
@@ -117,7 +117,7 @@ namespace windows_source1ide
 
         private void writeChapters()
         {
-            string path = sourceSDK.GetMods(game)[mod] + "\\cfg";
+            string path = modPath + "\\cfg";
 
             foreach (string file in Directory.GetFiles(path))
             {
@@ -135,7 +135,6 @@ namespace windows_source1ide
 
         private void readChapterTitles()
         {
-            string modPath = sourceSDK.GetMods(game)[mod];
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
@@ -157,7 +156,6 @@ namespace windows_source1ide
 
         private void writeChapterTitles()
         {
-            string modPath = sourceSDK.GetMods(game)[mod];
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
@@ -169,7 +167,6 @@ namespace windows_source1ide
 
         private void createChapterTitles()
         {
-            string modPath = sourceSDK.GetMods(game)[mod];
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
@@ -183,7 +180,6 @@ namespace windows_source1ide
 
         private void readChapterBackgrounds()
         {
-            string modPath = sourceSDK.GetMods(game)[mod];
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\scripts\\chapterbackgrounds.txt";
 
@@ -200,7 +196,6 @@ namespace windows_source1ide
 
         private void writeChapterBackgrounds()
         {
-            string modPath = sourceSDK.GetMods(game)[mod];
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\scripts\\chapterbackgrounds.txt";
 
@@ -287,20 +282,17 @@ namespace windows_source1ide
                 gfx.Clear(Color.Black);
                 gfx.DrawImage(src, new Rectangle(0, 0, src.Width, src.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
-            chapters[i].thumbnailFile = VTF.fromBitmap(target, game, mod, sourceSDK);
+            chapters[i].thumbnailFile = VTF.fromBitmap(target, sourceSDK);
         }
 
         private void writeChapterThumbnails()
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materials\\vgui\\chapters";
 
             for (int i = 0; i < chapters.Count; i++)
             {
                 if (chapters[i].thumbnailFile == null)
-                    chapters[i].thumbnailFile = VTF.fromBitmap(chapters[i].thumbnail, game, mod, sourceSDK);
+                    chapters[i].thumbnailFile = VTF.fromBitmap(chapters[i].thumbnail, sourceSDK);
 
                 if (chapters[i].thumbnailFile != null)
                 {
@@ -319,9 +311,6 @@ namespace windows_source1ide
 
         private void readChapterThumbnails()
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materials\\vgui\\chapters";
 
             string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";
@@ -331,7 +320,7 @@ namespace windows_source1ide
                 if (File.Exists(filePath + "\\chapter" + (i + 1) + ".vtf"))
                 {
                     chapters[i].thumbnailFile = File.ReadAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf");
-                    Bitmap src = VTF.toBitmap(chapters[i].thumbnailFile, game, mod, sourceSDK);
+                    Bitmap src = VTF.toBitmap(chapters[i].thumbnailFile, sourceSDK);
 
                     // Crop image
                     Bitmap target = new Bitmap(152, 86);
@@ -417,7 +406,7 @@ namespace windows_source1ide
                 gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
 
-            chapters[i].backgroundImageFile = VTF.fromBitmap(target, game, mod, sourceSDK);
+            chapters[i].backgroundImageFile = VTF.fromBitmap(target, sourceSDK);
         }
 
         private void writeBackgroundImageWide(int i)
@@ -432,23 +421,20 @@ namespace windows_source1ide
                 gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle(0, 0, src.Width, src.Height), GraphicsUnit.Pixel);
             }
 
-            chapters[i].backgroundImageWideFile = VTF.fromBitmap(target, game, mod, sourceSDK);
+            chapters[i].backgroundImageWideFile = VTF.fromBitmap(target, sourceSDK);
         }
 
         private void writeBackgroundImages()
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materials\\console";
 
             for (int i = 0; i < chapters.Count; i++)
             {
                 if (chapters[i].backgroundImageFile == null)
-                    chapters[i].backgroundImageFile = VTF.fromBitmap(chapters[i].backgroundImage, game, mod, sourceSDK);
+                    chapters[i].backgroundImageFile = VTF.fromBitmap(chapters[i].backgroundImage, sourceSDK);
 
                 if (chapters[i].backgroundImageWideFile == null)
-                    chapters[i].backgroundImageWideFile = VTF.fromBitmap(chapters[i].backgroundImageWide, game, mod, sourceSDK);
+                    chapters[i].backgroundImageWideFile = VTF.fromBitmap(chapters[i].backgroundImageWide, sourceSDK);
 
                 if (chapters[i].backgroundImageFile != null && chapters[i].backgroundImageWideFile != null)
                 {
@@ -474,9 +460,6 @@ namespace windows_source1ide
 
         private void readBackgroundImages()
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
-            string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materials\\console";
 
             string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";
@@ -486,7 +469,7 @@ namespace windows_source1ide
                 if (File.Exists(filePath + "\\" + chapters[i].background + ".vtf"))
                 {
                     chapters[i].backgroundImageFile = File.ReadAllBytes(filePath + "\\" + chapters[i].background + ".vtf");
-                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageFile, game, mod, sourceSDK);
+                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageFile, sourceSDK);
 
                     // Crop image
                     if (src == null)
@@ -502,7 +485,7 @@ namespace windows_source1ide
                 if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.vtf"))
                 {
                     chapters[i].backgroundImageWideFile = File.ReadAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf");
-                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageWideFile, game, mod, sourceSDK);
+                    Bitmap src = VTF.toBitmap(chapters[i].backgroundImageWideFile, sourceSDK);
                     
 
                     // Crop image

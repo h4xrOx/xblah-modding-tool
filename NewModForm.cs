@@ -33,7 +33,7 @@ namespace windows_source1ide
             sourceSDK = new Steam();
 
             comboGames.Properties.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
                 comboGames.Properties.Items.Add(item.Key);
 
             comboGames.EditValue = comboGames.Properties.Items[0];

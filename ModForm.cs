@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using DevExpress.XtraBars;
 using windows_source1ide.Tools;
+using windows_source1ide.SourceSDK;
 
 namespace windows_source1ide
 {
@@ -39,7 +40,7 @@ namespace windows_source1ide
         {
             string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : "");
             repositoryGamesCombo.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
             {
                 repositoryGamesCombo.Items.Add(item.Key);
             }
@@ -56,7 +57,7 @@ namespace windows_source1ide
         {
             string currentMod = (modsCombo.EditValue != null ? modsCombo.EditValue.ToString() : "");
             repositoryModsCombo.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetMods(gamesCombo.EditValue.ToString()))
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetModsList(gamesCombo.EditValue.ToString()))
             {
                 repositoryModsCombo.Items.Add(item.Key);
             }
@@ -71,6 +72,7 @@ namespace windows_source1ide
 
         private void gamesCombo_EditValueChanged(object sender, EventArgs e)
         {
+            sourceSDK.setCurrentGame(gamesCombo.EditValue.ToString());
             updateModsCombo();
         }
 
@@ -110,7 +112,7 @@ namespace windows_source1ide
 
         private void barButtonGameinfo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GameinfoForm form = new GameinfoForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            GameinfoForm form = new GameinfoForm(sourceSDK);
             form.ShowDialog();
             updateGamesCombo();
             updateModsCombo();
@@ -118,12 +120,14 @@ namespace windows_source1ide
 
         private void barButtonChapters_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChaptersForm form = new ChaptersForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            ChaptersForm form = new ChaptersForm(sourceSDK);
             form.ShowDialog();
         }
 
         private void modsCombo_EditValueChanged(object sender, EventArgs e)
         {
+            sourceSDK.setCurrentMod(modsCombo.EditValue.ToString());
+
             buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barButtonHammer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
@@ -166,7 +170,7 @@ namespace windows_source1ide
                 string appId = sourceSDK.GetGameAppId(game).ToString();
 
                 string mod = title + " (" + folder + ")";
-                string gamePath = sourceSDK.GetGames()[game];
+                string gamePath = sourceSDK.GetGamePath(game);
                 string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + folder;
 
                 Directory.CreateDirectory(modPath + "\\bin");
@@ -234,7 +238,7 @@ namespace windows_source1ide
                 string game = dialog.game;
                 string mod = dialog.mod;
 
-                AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod, sourceSDK.GetMods(gamesCombo.EditValue.ToString())[modsCombo.EditValue.ToString()]);
+                AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod, sourceSDK.GetModPath(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString()));
                 if (assetsCopierForm.ShowDialog() == DialogResult.OK)
                 {
 
@@ -244,19 +248,19 @@ namespace windows_source1ide
 
         private void menuButton_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GamemenuForm form = new GamemenuForm(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            GamemenuForm form = new GamemenuForm(sourceSDK);
             form.ShowDialog();
         }
 
         private void buttonVPKExplorer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            VPKExplorer form = new VPKExplorer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            VPKExplorer form = new VPKExplorer(sourceSDK);
             form.ShowDialog();
         }
 
         private void barButtonClean_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string modPath = sourceSDK.GetMods(gamesCombo.EditValue.ToString())[modsCombo.EditValue.ToString()];
+            string modPath = sourceSDK.GetModPath(gamesCombo.EditValue.ToString(),modsCombo.EditValue.ToString());
 
             if (File.Exists(modPath + "\\Gamestate.txt"))
                 File.Delete(modPath + "\\Gamestate.txt");
@@ -317,7 +321,7 @@ namespace windows_source1ide
 
         private void buttonHLMV_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string gamePath = sourceSDK.GetGames()[gamesCombo.EditValue.ToString()];
+            string gamePath = sourceSDK.GetGamePath(gamesCombo.EditValue.ToString());
 
             string toolPath = gamePath + "\\bin\\hlmv.exe";
             Process.Start(toolPath);
@@ -325,7 +329,7 @@ namespace windows_source1ide
 
         private void barButtonFaceposer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string gamePath = sourceSDK.GetGames()[gamesCombo.EditValue.ToString()];
+            string gamePath = sourceSDK.GetGamePath(gamesCombo.EditValue.ToString());
 
             string toolPath = gamePath + "\\bin\\hlfaceposer.exe";
             Process.Start(toolPath);
@@ -339,6 +343,11 @@ namespace windows_source1ide
         private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
         {
             sourceSDK.RunIngameTools(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            PCF.read("particles/aux_fx.pcf", gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString(), sourceSDK);
         }
     }
 }

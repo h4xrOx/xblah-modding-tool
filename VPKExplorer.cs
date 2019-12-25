@@ -16,8 +16,8 @@ namespace windows_source1ide.Tools
 {
     public partial class VPKExplorer : DevExpress.XtraEditors.XtraForm
     {
-        string game;
-        string mod;
+        string gamePath;
+        string modPath;
         Steam sourceSDK;
 
         string currentDirectory = "";
@@ -28,21 +28,21 @@ namespace windows_source1ide.Tools
 
         Dictionary<string, List<string>> vpks = new Dictionary<string, List<string>>();
 
-        public VPKExplorer(string game, string mod)
+        public VPKExplorer(Steam sourceSDK)
         {
-            this.game = game;
-            this.mod = mod;
-
             InitializeComponent();
+
+            this.sourceSDK = sourceSDK;
         }
 
         private void VPKExplorer_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
+            gamePath = sourceSDK.GetGamePath();
+            modPath = sourceSDK.GetModPath();
 
             vpks.Clear();
-            foreach(string vpk in sourceSDK.getModMountedVPKs(game, mod))
-                vpks.Add(vpk, sourceSDK.listFilesInVPK(game, vpk));
+            foreach(string vpk in sourceSDK.getModMountedVPKs())
+                vpks.Add(vpk, sourceSDK.listFilesInVPK(vpk));
 
             traverseFileTree();
             traverseDirectory("");
@@ -101,8 +101,6 @@ namespace windows_source1ide.Tools
                     stack.Peek().StateImageIndex = 0;
                     stackString.Push(fileSplit[i]);
                 }
-                
-                //dirs.AppendNode(new object[] { fileSplit.Last() }, stack.Peek());
             }
 
             dirs.ExpandToLevel(0);
@@ -337,10 +335,10 @@ namespace windows_source1ide.Tools
 
             foreach(string filePath in values)
             {
-                sourceSDK.extractFileFromVPKs(game, mod, vpks, filePath, Application.StartupPath);
+                sourceSDK.extractFileFromVPKs(vpks, filePath, Application.StartupPath, sourceSDK);
             }
 
-            string modPath = sourceSDK.GetMods(game)[mod];
+            string modPath = sourceSDK.GetModPath();
             Process.Start(modPath);
         }
 

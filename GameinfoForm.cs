@@ -7,34 +7,28 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using static windows_source1ide.Steam;
-using System.Diagnostics;
 using System.IO;
 
 namespace windows_source1ide
 {
     public partial class GameinfoForm : DevExpress.XtraEditors.XtraForm
     {
-        string game;
-        string mod;
         Steam sourceSDK;
         SourceSDK.KeyValue gameinfo;
 
-        public GameinfoForm(string game, string mod)
+        public GameinfoForm(Steam sourceSDK)
         {
-            this.game = game;
-            this.mod = mod;
-
             InitializeComponent();
+            this.sourceSDK = sourceSDK;
         }
 
         private void GameinfoForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
-            string path = sourceSDK.GetMods(game)[mod] + "\\gameinfo.txt";
+            string modPath = sourceSDK.GetModPath();
 
-            gameinfo = SourceSDK.KeyValue.readChunkfile(path);
+            string gameinfoPath = modPath + "\\gameinfo.txt";
+
+            gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
 
             textGame.EditValue = gameinfo.getValue("game");
             textTitle.EditValue = gameinfo.getValue("title");
@@ -59,11 +53,11 @@ namespace windows_source1ide
             textManual.EditValue = gameinfo.getValue("manual");
             string icon = gameinfo.getValue("icon");
 
-            if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\" + icon + ".tga"))
-                pictureIconSmall.Image = new TGASharpLib.TGA(sourceSDK.GetMods(game)[mod] + "\\" + icon + ".tga").ToBitmap();
+            if (File.Exists(modPath + "\\" + icon + ".tga"))
+                pictureIconSmall.Image = new TGASharpLib.TGA(modPath + "\\" + icon + ".tga").ToBitmap();
 
-            if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\" + icon + "_big.tga"))
-                pictureIconLarge.Image = new TGASharpLib.TGA(sourceSDK.GetMods(game)[mod] + "\\" + icon + "_big.tga").ToBitmap();
+            if (File.Exists(modPath + "\\" + icon + "_big.tga"))
+                pictureIconLarge.Image = new TGASharpLib.TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
 
             switchNodegraph.EditValue = (gameinfo.getValue("nodegraph") == "1" ? true : false);
             textGamedata.EditValue = gameinfo.getValue("gamedata");
@@ -72,7 +66,7 @@ namespace windows_source1ide
 
             comboGames.Properties.Items.Clear();
             string appID = gameinfo.getChild("filesystem").getValue("steamappid");
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
             {
                 comboGames.Properties.Items.Add(item.Key);
                 string gameAppID = sourceSDK.GetGameAppId(item.Key).ToString();
@@ -85,6 +79,8 @@ namespace windows_source1ide
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            string modPath = sourceSDK.GetModPath();
+
             gameinfo.setValue("game", textGame.EditValue != null ? textGame.EditValue.ToString() : "");
             gameinfo.setValue("title", textTitle.EditValue != null ? textTitle.EditValue.ToString() : "");
             gameinfo.setValue("title2", textTitle2.EditValue != null ? textTitle2.EditValue.ToString() : "");
@@ -111,14 +107,14 @@ namespace windows_source1ide
             gameinfo.setValue("icon", "resource/icon");
 
             if (pictureIconSmall.Image != null)
-                new TGASharpLib.TGA((Bitmap)pictureIconSmall.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga");
-            else if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga"))
-                File.Delete(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga");
+                new TGASharpLib.TGA((Bitmap)pictureIconSmall.Image).Save(modPath + "\\resource\\icon.tga");
+            else if (File.Exists(modPath + "\\resource\\icon.tga"))
+                File.Delete(modPath + "\\resource\\icon.tga");
 
             if (pictureIconLarge.Image != null)
-                new TGASharpLib.TGA((Bitmap) pictureIconLarge.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga");
-            else if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga"))
-                File.Delete(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga");
+                new TGASharpLib.TGA((Bitmap) pictureIconLarge.Image).Save(modPath + "\\resource\\icon_big.tga");
+            else if (File.Exists(modPath + "\\resource\\icon_big.tga"))
+                File.Delete(modPath + "\\resource\\icon_big.tga");
 
             gameinfo.setValue("nodegraph", switchNodegraph.IsOn ? "1" : "0");
             gameinfo.setValue("gamedata", textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : "");
@@ -128,21 +124,11 @@ namespace windows_source1ide
             int appID = sourceSDK.GetGameAppId(comboGames.EditValue.ToString());
             gameinfo.getChild("filesystem").setValue("steamappid", appID.ToString());
 
-            string path = sourceSDK.GetMods(game)[mod] + "\\gameinfo.txt";
+            string path = modPath + "\\gameinfo.txt";
 
             SourceSDK.KeyValue.writeChunkFile(path, gameinfo, false, new UTF8Encoding(false));
 
             Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void buttonIcon_Click(object sender, EventArgs e)
-        {
- 
         }
 
         private void pictureIconLarge_Click(object sender, EventArgs e)

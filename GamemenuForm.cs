@@ -15,9 +15,9 @@ namespace windows_source1ide
 {
     public partial class GamemenuForm : DevExpress.XtraEditors.XtraForm
     {
-        string game;
-        string mod;
         Steam sourceSDK;
+        string gamePath = "";
+        string modPath = "";
 
         List<MenuAction> actions;
         class MenuAction
@@ -35,17 +35,17 @@ namespace windows_source1ide
             }
         }
 
-        public GamemenuForm(string game, string mod)
+        public GamemenuForm(Steam sourceSDK)
         {
-            this.game = game;
-            this.mod = mod;
-
             InitializeComponent();
+
+            this.sourceSDK = sourceSDK;
         }
 
         private void GamemenuForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
+            gamePath = sourceSDK.GetGamePath();
+            modPath = sourceSDK.GetModPath();
             actions = new List<MenuAction>();
             readGameMenu();
             updateList();
@@ -66,7 +66,7 @@ namespace windows_source1ide
 
         private void readGameMenu()
         {
-            string path = sourceSDK.GetMods(game)[mod] + "\\resource\\gamemenu.res";
+            string path = modPath + "\\resource\\gamemenu.res";
             Directory.CreateDirectory(Path.GetDirectoryName(path));
 
             if (!File.Exists(path))
@@ -98,7 +98,7 @@ namespace windows_source1ide
 
         private void writeGameMenu()
         {
-            string path = sourceSDK.GetMods(game)[mod] + "\\resource\\gamemenu.res";
+            string path = modPath + "\\resource\\gamemenu.res";
             SourceSDK.KeyValue gameMenu = new SourceSDK.KeyValue("gamemenu");
 
             for(int i = 0; i < actions.Count; i++)

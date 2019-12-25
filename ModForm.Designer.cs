@@ -58,6 +58,7 @@
             this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
             this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
             this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
             this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
             this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.buttonGCFScape = new DevExpress.XtraBars.BarButtonItem();
@@ -73,7 +74,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonTest = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -374,6 +375,13 @@
             this.buttonFaceposer.Name = "buttonFaceposer";
             this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
             // 
+            // buttonIngameTools
+            // 
+            this.buttonIngameTools.Caption = "Ingame Tools";
+            this.buttonIngameTools.Id = 43;
+            this.buttonIngameTools.Name = "buttonIngameTools";
+            this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
+            // 
             // assetsCopierButton
             // 
             this.assetsCopierButton.Caption = "Assets copier";
@@ -485,18 +493,21 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // buttonIngameTools
+            // buttonTest
             // 
-            this.buttonIngameTools.Caption = "Ingame Tools";
-            this.buttonIngameTools.Id = 43;
-            this.buttonIngameTools.Name = "buttonIngameTools";
-            this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
+            this.buttonTest.Location = new System.Drawing.Point(391, 102);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonTest.TabIndex = 4;
+            this.buttonTest.Text = "Test button";
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 470);
+            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -560,5 +571,6 @@
         private DevExpress.XtraBars.BarButtonItem buttonFaceposer;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem buttonIngameTools;
+        private DevExpress.XtraEditors.SimpleButton buttonTest;
     }
 }

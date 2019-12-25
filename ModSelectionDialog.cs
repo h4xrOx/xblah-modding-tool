@@ -33,7 +33,7 @@ namespace windows_source1ide
         {
             string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : "");
             gamesCombo.Properties.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGames())
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
             {
                 gamesCombo.Properties.Items.Add(item.Key);
             }
@@ -50,7 +50,7 @@ namespace windows_source1ide
         {
             string currentMod = (modsCombo.EditValue != null ? modsCombo.EditValue.ToString() : "");
             modsCombo.Properties.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetMods(gamesCombo.EditValue.ToString()))
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetModsList(gamesCombo.EditValue.ToString()))
             {
                 modsCombo.Properties.Items.Add(item.Key);
             }

@@ -8,28 +8,96 @@ using System.Text;
 
 namespace windows_source1ide
 {
-    class Steam
+    public class Steam
     {
         public List<string> libraries;
         Dictionary<string, string> games = new Dictionary<string, string>();
         Dictionary<string, string> mods = new Dictionary<string, string>();
+
+        string currentGame = "";
+        string currentMod = "";
 
         public Steam()
         {
             LoadLibraries();
         }
 
-        public Dictionary<string, string> GetGames()
+        public Dictionary<string, string> GetGamesList()
         {
             LoadLibraries();
             return LoadGames();
         }
 
-        public Dictionary<string, string> GetMods(string game)
+        public string GetGamePath(string game)
+        {
+            if (games.ContainsKey(game))
+                return games[game];
+            else
+            {
+                LoadGames();
+                if (games.ContainsKey(game))
+                    return games[game];
+                else
+                    return null;
+            }
+        }
+
+        public string GetGamePath()
+        {
+            return GetGamePath(currentGame);
+        }
+
+        public Dictionary<string, string> GetModsList(string game)
         {
             LoadGames();
             LoadMods(game);
             return mods;
+        }
+
+        public string GetModPath()
+        {
+            return GetModPath(currentGame, currentMod);
+        }
+
+        public string GetModPath(string game, string mod)
+        {
+            if (game != currentGame || !games.ContainsKey(game))
+            {
+                if (!games.ContainsKey(game))
+                    LoadGames();
+
+                if (games.ContainsKey(game))
+                    LoadMods(game);
+                else
+                    return null;
+            }
+
+            if (mod != currentMod || !mods.ContainsKey(mod))
+            {
+                if (!mods.ContainsKey(mod))
+                    LoadMods(game);
+
+                if (!mods.ContainsKey(mod))
+                    return null;
+            }
+
+            string path = mods[mod];
+
+            if (game != currentGame)
+                LoadMods(currentGame);
+
+            return path;
+        }
+
+        public void setCurrentGame(string game)
+        {
+            currentGame = game;
+            LoadMods(game);
+        }
+
+        public void setCurrentMod(string mod)
+        {
+            currentMod = mod;
         }
 
         public static string GetInstallPath()
@@ -48,7 +116,7 @@ namespace windows_source1ide
             
             foreach (SourceSDK.KeyValue child in root.getChildrenList())
             {
-                string dir = child.getValue();
+                string dir = child.getValue().Replace("\\\\", "\\");
                 if (Directory.Exists(dir))
                     libraries.Add(dir);
             }
@@ -116,7 +184,7 @@ namespace windows_source1ide
         public List<string> GetAllGameBranches(string game)
         {
             List<string> mods = new List<string>();
-            string gamePath = GetGames()[game];
+            string gamePath = GetGamesList()[game];
             foreach (String path in Directory.GetDirectories(gamePath))
             {
                 String gameBranch = new FileInfo(path).Name;
@@ -258,10 +326,10 @@ namespace windows_source1ide
             Process.Start(modPath);
         }
 
-        public List<string> getModMountedVPKs(string game, string mod)
+        public List<string> getModMountedVPKs()
         {
-            string modPath = GetMods(game)[mod];
-            string gamePath = GetGames()[game];
+            string modPath = GetModPath();
+            string gamePath = GetGamePath();
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
 
             SourceSDK.KeyValue searchPaths = gameInfo.findChild("searchpaths");
@@ -283,8 +351,8 @@ namespace windows_source1ide
         {
             List<string> result = new List<string>();
 
-            string gamePath = GetGames()[game];
-            string modPath = GetMods(game)[mod];
+            string gamePath = GetGamePath(game);
+            string modPath = GetModPath(game,mod);
 
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
 
@@ -311,9 +379,9 @@ namespace windows_source1ide
             return result;
         }
 
-        public List<string> listFilesInVPK(string game, string fullPath)
+        public List<string> listFilesInVPK(string fullPath)
         {
-            string gamePath = GetGames()[game];
+            string gamePath = GetGamePath();
             string toolPath = gamePath + "\\bin\\vpk.exe";
 
             List<string> files = new List<string>();
@@ -340,9 +408,9 @@ namespace windows_source1ide
             return files;
         }
 
-        public void extractFileFromVPK(string game, string mod, string vpk, string filePath, string startupPath)
+        public void extractFileFromVPK(string vpk, string filePath, string startupPath, Steam sourceSDK)
         {
-            string modPath = GetMods(game)[mod];
+            string modPath = sourceSDK.GetModPath();
             string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
@@ -354,13 +422,13 @@ namespace windows_source1ide
             process.WaitForExit();
         }
 
-        public void extractFileFromVPKs(string game, string mod, Dictionary<string, List<string>> vpks, string filePath, string startupPath)
+        public void extractFileFromVPKs(Dictionary<string, List<string>> vpks, string filePath, string startupPath, Steam sourceSDK)
         {
             foreach (KeyValuePair<string, List<string>> vpk in vpks)
             {
                 if (vpk.Value.Contains(filePath))
                 {
-                    extractFileFromVPK(game, mod, vpk.Key.Replace(".vpk", "_dir.vpk"), filePath, startupPath);
+                    extractFileFromVPK(vpk.Key.Replace(".vpk", "_dir.vpk"), filePath, startupPath, sourceSDK);
                     return;
                 }
             }

@@ -12,10 +12,10 @@ namespace windows_source1ide.SourceSDK
 {
     class VTF
     {
-        public static byte[] fromBitmap(Bitmap bitmap, string game, string mod, Steam sourceSDK)
+        public static byte[] fromBitmap(Bitmap bitmap, Steam sourceSDK)
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
             string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materialsrc";
 
@@ -44,10 +44,10 @@ namespace windows_source1ide.SourceSDK
             return result;
         }
 
-        public static Bitmap toBitmap(byte[] vtf, string game, string mod, Steam sourceSDK)
+        public static Bitmap toBitmap(byte[] vtf, Steam sourceSDK)
         {
-            string gamePath = sourceSDK.GetGames()[game];
-            string modPath = sourceSDK.GetMods(game)[mod];
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
             string filePath = modPath + "\\materials";
 
             string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";
