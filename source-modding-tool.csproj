@@ -160,7 +160,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\HL2EP2.ttf">
+    <None Include="template_sp\resource\HL2EP2.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -173,15 +173,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sp_client.dll">
+    <None Include="template_sp\bin\client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\sp_server.dll">
+    <None Include="template_sp\bin\server.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sp_english.txt">
+    <None Include="template_sp\resource\template_sp_english.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

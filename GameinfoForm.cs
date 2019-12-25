@@ -110,8 +110,15 @@ namespace windows_source1ide
             gameinfo.setValue("manual", textManual.EditValue != null ? textManual.EditValue.ToString() : "");
             gameinfo.setValue("icon", "resource/icon");
 
-            new TGASharpLib.TGA((Bitmap) pictureIconSmall.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga");
-            new TGASharpLib.TGA((Bitmap) pictureIconLarge.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga");
+            if (pictureIconSmall.Image != null)
+                new TGASharpLib.TGA((Bitmap)pictureIconSmall.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga");
+            else if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga"))
+                File.Delete(sourceSDK.GetMods(game)[mod] + "\\resource\\icon.tga");
+
+            if (pictureIconLarge.Image != null)
+                new TGASharpLib.TGA((Bitmap) pictureIconLarge.Image).Save(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga");
+            else if (File.Exists(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga"))
+                File.Delete(sourceSDK.GetMods(game)[mod] + "\\resource\\icon_big.tga");
 
             gameinfo.setValue("nodegraph", switchNodegraph.IsOn ? "1" : "0");
             gameinfo.setValue("gamedata", textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : "");

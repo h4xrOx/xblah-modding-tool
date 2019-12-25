@@ -178,11 +178,11 @@ namespace windows_source1ide
                 gameInfo.getChild("filesystem").getChild("searchpaths").setValue("gamebin", "|gameinfo_path|bin");
 
                 // Copy binaries
-                File.Copy(Application.StartupPath + "\\Resources\\sp_client.dll", modPath + "\\bin\\client.dll", true);
-                File.Copy(Application.StartupPath + "\\Resources\\sp_server.dll", modPath + "\\bin\\server.dll", true);
+                File.Copy(Application.StartupPath + "\\template_sp\\bin\\client.dll", modPath + "\\bin\\client.dll", true);
+                File.Copy(Application.StartupPath + "\\template_sp\\bin\\server.dll", modPath + "\\bin\\server.dll", true);
 
-                File.Copy(Application.StartupPath + "\\Resources\\sp_english.txt", modPath + "\\resource\\" + folder + "_english.txt");
-
+                File.Copy(Application.StartupPath + "\\template_sp\\resource\\english.txt", modPath + "\\resource\\" + folder + "_english.txt");
+                File.Copy(Application.StartupPath + "\\template_sp\\resource\\HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf");
 
                 // Create gameinfo
                 SourceSDK.KeyValue searchPaths = gameInfo.getChild("filesystem").getChild("searchpaths");
@@ -215,9 +215,6 @@ namespace windows_source1ide
                 searchPaths.addChild(new SourceSDK.KeyValue("platform", "|all_source_engine_paths|platform"));
 
                 SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
-
-                Directory.CreateDirectory(modPath + "\\resource");
-                File.Copy("Resources/HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf", true);
 
                 updateModsCombo();
                 gamesCombo.EditValue = game;

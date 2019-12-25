@@ -55,13 +55,9 @@ namespace windows_source1ide.SourceSDK
                 {
                     //setStatusMessage("Sound added: " + value, COLOR_ORANGE);
                     string v = kv.getValue().ToLower();
-                    if (v.StartsWith("@"))
-                        v = v.Substring(1);
                     if (v.StartsWith("#"))
                         v = v.Substring(1);
-                    if (v.StartsWith("@"))
-                        v = v.Substring(1);
-                    assets.Add(v);
+                    assets.Add("sound/" + v);
                 }
             }
 
