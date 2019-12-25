@@ -347,9 +347,9 @@ namespace windows_source1ide
 
             string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
             Process process = new Process();
-            process.StartInfo.FileName = "cmd.exe";
-            process.StartInfo.Arguments = "/K " + toolPath + " " + args;
-            //ffmpeg.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            process.StartInfo.FileName = toolPath;
+            process.StartInfo.Arguments = args;
+            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
         }

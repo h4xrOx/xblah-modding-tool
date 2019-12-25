@@ -343,5 +343,16 @@ namespace windows_source1ide.Tools
             string modPath = sourceSDK.GetMods(game)[mod];
             Process.Start(modPath);
         }
+
+        private void buttonDownload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            extractSelected();
+        }
+
+        private void list_SelectionChanged(object sender, EventArgs e)
+        {
+            buttonDownload.Enabled = (list.Selection.Count > 0);
+            buttonEdit.Enabled = (list.Selection.Count == 1);
+        }
     }
 }
