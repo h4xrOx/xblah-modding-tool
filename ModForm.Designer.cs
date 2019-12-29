@@ -57,19 +57,22 @@
             this.menuButton = new DevExpress.XtraBars.BarButtonItem();
             this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
-            this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
-            this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
             this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonHammerPropper = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.barParticles = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -78,6 +81,8 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.buttonTest = new DevExpress.XtraEditors.SimpleButton();
+            this.buttonOpenPrefabsFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonOpenMapsrcFolder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -134,9 +139,14 @@
             this.barSubItem2,
             this.barSubItem4,
             this.barSubItem5,
-            this.barSubItem6});
+            this.barSubItem6,
+            this.barParticles,
+            this.barButtonItem2,
+            this.buttonHammerPropper,
+            this.buttonOpenPrefabsFolder,
+            this.buttonOpenMapsrcFolder});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 49;
+            this.barManager1.MaxItemId = 54;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -232,10 +242,11 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.barMod),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barParticles),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -280,7 +291,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
             this.barMod.Name = "barMod";
             // 
@@ -378,58 +389,14 @@
             this.assetsCopierButton.Name = "assetsCopierButton";
             this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
             // 
-            // barSubItem2
-            // 
-            this.barSubItem2.Caption = "Modeling";
-            this.barSubItem2.Id = 45;
-            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHLMV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVMFtoMDL, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar, true)});
-            this.barSubItem2.Name = "barSubItem2";
-            // 
-            // buttonHLMV
-            // 
-            this.buttonHLMV.Caption = "HLMV";
-            this.buttonHLMV.Id = 40;
-            this.buttonHLMV.Name = "buttonHLMV";
-            this.buttonHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHLMV_ItemClick);
-            // 
-            // buttonVMFtoMDL
-            // 
-            this.buttonVMFtoMDL.Caption = "VMF to MDL";
-            this.buttonVMFtoMDL.Id = 44;
-            this.buttonVMFtoMDL.Name = "buttonVMFtoMDL";
-            this.buttonVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVMFtoMDL_ItemClick);
-            // 
-            // buttonCrowbar
-            // 
-            this.buttonCrowbar.Caption = "Crowbar (legacy)";
-            this.buttonCrowbar.Id = 39;
-            this.buttonCrowbar.Name = "buttonCrowbar";
-            this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
-            // 
-            // barSubItem4
-            // 
-            this.barSubItem4.Caption = "Choreography";
-            this.barSubItem4.Id = 46;
-            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer)});
-            this.barSubItem4.Name = "barSubItem4";
-            // 
-            // buttonFaceposer
-            // 
-            this.buttonFaceposer.Caption = "Faceposer";
-            this.buttonFaceposer.Id = 41;
-            this.buttonFaceposer.Name = "buttonFaceposer";
-            this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
-            // 
             // barSubItem5
             // 
             this.barSubItem5.Caption = "Level Design";
             this.barSubItem5.Id = 47;
             this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonOpenPrefabsFolder, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonOpenMapsrcFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrafty, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonBatchCompiler)});
@@ -463,6 +430,45 @@
             this.buttonBatchCompiler.Name = "buttonBatchCompiler";
             this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
             // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "Modeling";
+            this.barSubItem2.Id = 45;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHLMV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHammerPropper),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVMFtoMDL, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar, true)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // buttonHLMV
+            // 
+            this.buttonHLMV.Caption = "HLMV";
+            this.buttonHLMV.Id = 40;
+            this.buttonHLMV.Name = "buttonHLMV";
+            this.buttonHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHLMV_ItemClick);
+            // 
+            // buttonHammerPropper
+            // 
+            this.buttonHammerPropper.Caption = "Hammer (Propper)";
+            this.buttonHammerPropper.Id = 51;
+            this.buttonHammerPropper.Name = "buttonHammerPropper";
+            this.buttonHammerPropper.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHammerPropper_ItemClick);
+            // 
+            // buttonVMFtoMDL
+            // 
+            this.buttonVMFtoMDL.Caption = "VMF to MDL";
+            this.buttonVMFtoMDL.Id = 44;
+            this.buttonVMFtoMDL.Name = "buttonVMFtoMDL";
+            this.buttonVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVMFtoMDL_ItemClick);
+            // 
+            // buttonCrowbar
+            // 
+            this.buttonCrowbar.Caption = "Crowbar (legacy)";
+            this.buttonCrowbar.Id = 39;
+            this.buttonCrowbar.Name = "buttonCrowbar";
+            this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
+            // 
             // barSubItem6
             // 
             this.barSubItem6.Caption = "Materials";
@@ -477,6 +483,36 @@
             this.buttonVTFEdit.Id = 37;
             this.buttonVTFEdit.Name = "buttonVTFEdit";
             this.buttonVTFEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVTFEdit_ItemClick);
+            // 
+            // barParticles
+            // 
+            this.barParticles.Caption = "Particles";
+            this.barParticles.Id = 49;
+            this.barParticles.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.barParticles.Name = "barParticles";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Generate manifest";
+            this.barButtonItem2.Id = 50;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "Choreography";
+            this.barSubItem4.Id = 46;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // buttonFaceposer
+            // 
+            this.buttonFaceposer.Caption = "Faceposer";
+            this.buttonFaceposer.Id = 41;
+            this.buttonFaceposer.Name = "buttonFaceposer";
+            this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
             // 
             // bar3
             // 
@@ -541,6 +577,19 @@
             this.buttonTest.TabIndex = 4;
             this.buttonTest.Text = "Test button";
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            // 
+            // buttonOpenPrefabsFolder
+            // 
+            this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
+            this.buttonOpenPrefabsFolder.Id = 52;
+            this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
+            this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
+            // 
+            // buttonOpenMapsrcFolder
+            // 
+            this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
+            this.buttonOpenMapsrcFolder.Id = 53;
+            this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
             // 
             // ModForm
             // 
@@ -615,5 +664,10 @@
         private DevExpress.XtraBars.BarSubItem barSubItem4;
         private DevExpress.XtraBars.BarSubItem barSubItem5;
         private DevExpress.XtraBars.BarSubItem barSubItem6;
+        private DevExpress.XtraBars.BarSubItem barParticles;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem buttonHammerPropper;
+        private DevExpress.XtraBars.BarButtonItem buttonOpenPrefabsFolder;
+        private DevExpress.XtraBars.BarButtonItem buttonOpenMapsrcFolder;
     }
 }

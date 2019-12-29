@@ -64,29 +64,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChaptersForm.cs">
+    <Compile Include="Modding\ChaptersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChaptersForm.Designer.cs">
+    <Compile Include="Modding\ChaptersForm.Designer.cs">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GaussianBlur.cs" />
+    <Compile Include="Materials\GaussianBlur.cs" />
     <Compile Include="ModForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModForm.Designer.cs">
       <DependentUpon>ModForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameinfoForm.cs">
+    <Compile Include="Modding\GameinfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameinfoForm.Designer.cs">
+    <Compile Include="Modding\GameinfoForm.Designer.cs">
       <DependentUpon>GameinfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GamemenuForm.cs">
+    <Compile Include="Modding\GamemenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GamemenuForm.Designer.cs">
+    <Compile Include="Modding\GamemenuForm.Designer.cs">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ModSelectionDialog.cs">
@@ -101,6 +101,12 @@
     <Compile Include="NewModForm.Designer.cs">
       <DependentUpon>NewModForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Particles\ParticleManifestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Particles\ParticleManifestForm.Designer.cs">
+      <DependentUpon>ParticleManifestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceSDK\MDL.cs" />
@@ -110,35 +116,35 @@
     <Compile Include="SourceSDK\VMF.cs" />
     <Compile Include="SourceSDK\VMT.cs" />
     <Compile Include="SourceSDK\VTF.cs" />
-    <Compile Include="TGASharpLib.cs" />
-    <Compile Include="AssetsCopierForm.cs">
+    <Compile Include="Materials\TGASharpLib.cs" />
+    <Compile Include="Modding\AssetsCopierForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AssetsCopierForm.Designer.cs">
+    <Compile Include="Modding\AssetsCopierForm.Designer.cs">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VMFtoMDL.cs">
+    <Compile Include="Modeling\VMFtoMDL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VMFtoMDL.Designer.cs">
+    <Compile Include="Modeling\VMFtoMDL.Designer.cs">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="VPKExplorer.cs">
+    <Compile Include="Modding\VPKExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VPKExplorer.Designer.cs">
+    <Compile Include="Modding\VPKExplorer.Designer.cs">
       <DependentUpon>VPKExplorer.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ChaptersForm.resx">
+    <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModForm.resx">
       <DependentUpon>ModForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameinfoForm.resx">
+    <EmbeddedResource Include="Modding\GameinfoForm.resx">
       <DependentUpon>GameinfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GamemenuForm.resx">
+    <EmbeddedResource Include="Modding\GamemenuForm.resx">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModSelectionDialog.resx">
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewModForm.resx">
       <DependentUpon>NewModForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Particles\ParticleManifestForm.resx">
+      <DependentUpon>ParticleManifestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -158,13 +167,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="AssetsCopierForm.resx">
+    <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VMFtoMDL.resx">
+    <EmbeddedResource Include="Modeling\VMFtoMDL.resx">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VPKExplorer.resx">
+    <EmbeddedResource Include="Modding\VPKExplorer.resx">
       <DependentUpon>VPKExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -297,6 +306,30 @@
     <Content Include="Tools\BatchCompiler\Batch Compiler.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Tools\SlartibartysHammer\sp\hammer.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\hammer_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\vbsp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\vrad_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\vvis.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\SlartibartysHammer\sp\vvis_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\Propper\propper.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -361,6 +394,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"

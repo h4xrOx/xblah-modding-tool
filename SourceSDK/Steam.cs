@@ -265,12 +265,14 @@ namespace windows_source1ide
             return process;
         }
 
-        public void RunHammer(string game, string mod)
+        public void RunHammer(string startupPath)
         {
-            string gamePath = games[game];
-            string modPath = mods[mod];
+            string gamePath = GetGamePath();
+            string modPath = GetModPath();
 
-            CreateGameConfig(game, mod);
+            CopySlartibartysHammer(startupPath);
+
+            CreateGameConfig();
 
             string hammerPath = gamePath + "\\bin\\hammer.exe";
             Debug.Write("Hammer: " + hammerPath);
@@ -281,10 +283,42 @@ namespace windows_source1ide
             ffmpeg.Start();
         }
 
-        private void CreateGameConfig(string game, string mod)
+        private void CopySlartibartysHammer(string startupPath)
         {
-            string gamePath = games[game];
-            string modPath = mods[mod];
+            string gamePath = GetGamePath();
+            if (currentGame == "Source SDK Base 2013 Singleplayer")
+            {
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer.exe", gamePath + "\\bin\\hammer.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_dll.dll", gamePath + "\\bin\\hammer_dll.dll", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe", gamePath + "\\bin\\hammer_run_map_launcher.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe", gamePath + "\\bin\\vbsp.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll", gamePath + "\\bin\\vrad_dll.dll", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis.exe", gamePath + "\\bin\\vvis.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis_dll.dll", gamePath + "\\bin\\vvis_dll.dll", true);
+            }
+        }
+
+        public void RunPropperHammer()
+        {
+            string gamePath = GetGamePath();
+            string modPath = GetModPath();
+
+            CreatePropperConfig();
+
+            string hammerPath = gamePath + "\\bin\\hammer.exe";
+            Debug.Write("Hammer: " + hammerPath);
+
+            Process ffmpeg = new Process();
+            ffmpeg.StartInfo.FileName = hammerPath;
+            ffmpeg.StartInfo.Arguments = "";
+            ffmpeg.Start();
+        }
+
+        private void CreateGameConfig()
+        {
+            string gamePath = GetGamePath();
+            string modPath = GetModPath();
 
             StringBuilder sb = new StringBuilder();
 
@@ -306,6 +340,42 @@ namespace windows_source1ide
             sb.AppendLine("             \"BSP\"		\"" + gamePath + "\\bin\\vbsp.exe\"");
             sb.AppendLine("             \"Vis\"		\"" + gamePath + "\\bin\\vvis.exe\"");
             sb.AppendLine("             \"Light\"		\"" + gamePath + "\\bin\\vrad.exe\"");
+            sb.AppendLine("             \"GameExeDir\"		\"" + gamePath + "\"");
+            sb.AppendLine("             \"MapDir\"		\"" + gamePath + "\\sourcesdk_content\\ep2\\mapsrc\"");
+            sb.AppendLine("             \"BSPDir\"		\"" + modPath + "\\maps\"");
+            sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
+            sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
+            sb.AppendLine("         }");
+            sb.AppendLine("     }");
+            sb.AppendLine(" }");
+            sb.AppendLine(" \"SDKVersion\"		\"5\"");
+            sb.AppendLine("}");
+
+            File.WriteAllText(gamePath + "\\bin\\GameConfig.txt", sb.ToString());
+        }
+
+        private void CreatePropperConfig()
+        {
+            string gamePath = GetGamePath();
+            string modPath = GetModPath();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("\"Configs\"");
+            sb.AppendLine("{");
+            sb.AppendLine(" \"Games\"");
+            sb.AppendLine(" {");
+            sb.AppendLine("     \"My game\"");
+            sb.AppendLine("     {");
+            sb.AppendLine("         \"GameDir\"		\"" + modPath + "\"");
+            sb.AppendLine("         \"Hammer\"");
+            sb.AppendLine("         {");
+            sb.AppendLine("             \"GameData0\"		\"" + gamePath + "\\bin\\propper.fgd\"");
+            sb.AppendLine("             \"DefaultTextureScale\"		\"0.250000\"");
+            sb.AppendLine("             \"DefaultLightmapScale\"		\"16\"");
+            sb.AppendLine("             \"GameExe\"		\"" + gamePath + "\\hl2.exe\"");
+            sb.AppendLine("             \"DefaultSolidEntity\"		\"propper_model\"");
+            sb.AppendLine("             \"DefaultPointEntity\"		\"propper_skins\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + gamePath + "\"");
             sb.AppendLine("             \"MapDir\"		\"" + gamePath + "\\sourcesdk_content\\ep2\\mapsrc\"");
             sb.AppendLine("             \"BSPDir\"		\"" + modPath + "\\maps\"");
@@ -345,6 +415,11 @@ namespace windows_source1ide
                 }
             }
             return result;
+        }
+
+        public List<string> getModSearchPaths()
+        {
+            return getModSearchPaths(currentGame, currentMod);
         }
 
         public List<string> getModSearchPaths(string game, string mod)

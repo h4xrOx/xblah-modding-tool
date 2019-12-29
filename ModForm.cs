@@ -15,6 +15,7 @@ using System.Diagnostics;
 using DevExpress.XtraBars;
 using windows_source1ide.Tools;
 using windows_source1ide.SourceSDK;
+using windows_source1ide.Particles;
 
 namespace windows_source1ide
 {
@@ -97,7 +98,7 @@ namespace windows_source1ide
 
         private void barButtonHammer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sourceSDK.RunHammer(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            sourceSDK.RunHammer(Application.StartupPath);
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -135,6 +136,9 @@ namespace windows_source1ide
             buttonFaceposer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             assetsCopierButton.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             buttonVPKExplorer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            barParticles.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            buttonHLMV.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            buttonHammerPropper.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
         }
 
         private void buttonModStop_ItemClick(object sender, ItemClickEventArgs e)
@@ -349,6 +353,23 @@ namespace windows_source1ide
         {
             VMFtoMDL form = new VMFtoMDL(sourceSDK);
             form.ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ParticleManifestForm form = new ParticleManifestForm(sourceSDK);
+            form.ShowDialog();
+        }
+
+        private void buttonHammerPropper_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            sourceSDK.RunPropperHammer();
+        }
+
+        private void buttonOpenPrefabsFolder_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string gamePath = sourceSDK.GetGamePath();
+            Process.Start(gamePath + "\\bin\\Prefabs");
         }
     }
 }

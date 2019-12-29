@@ -10,18 +10,20 @@ namespace windows_source1ide.SourceSDK
 {
     class PCF
     {
-        public static bool containsEffect(string effectName, string relativePath, string game, string mod, Steam sourceSDK)
+        public static bool containsEffect(List<string> effects, string fullPath)
         {
+            List<string> strings = ListStrings(fullPath);
+
+            foreach(string effect in effects)
+            {
+                if (strings.Contains(effect))
+                    return true;
+            }
             return false;
         }
 
-        private static List<string> ListStrings(string relativePath, string game, string mod, Steam sourceSDK)
+        private static List<string> ListStrings(string fullPath)
         {
-            string gamePath = sourceSDK.GetGamePath(game);
-            string modPath = sourceSDK.GetModPath(game, mod);
-
-            string fullPath = modPath + "\\" + relativePath;
-
             byte[] byteArray = File.ReadAllBytes(fullPath);
             List<string> list = new List<string>();
 
@@ -41,11 +43,27 @@ namespace windows_source1ide.SourceSDK
             return list;
         }
 
+        public static List<string> getAllFiles(Steam sourceSDK)
+        {
+            List<string> searchPaths = sourceSDK.getModSearchPaths();
+
+            List<string> files = new List<string>();
+
+            
+
+            foreach(string path in searchPaths)
+                if (Directory.Exists(path + "\\particles"))
+                    files.AddRange(Directory.GetFiles(path + "\\particles", "*.pcf", SearchOption.AllDirectories));
+
+            return files;
+        }
+
 
         public static void read(string relativePath, string game, string mod, Steam sourceSDK)
         {
 
-            List<string> particles = ListStrings(relativePath, game, mod, sourceSDK).Where(x => x.Contains("particle")).ToList();
+            //List<string> particles = ListStrings(fullPath).Where(x => x.Contains("particle")).ToList();
+
 
             Debugger.Break();
         }
