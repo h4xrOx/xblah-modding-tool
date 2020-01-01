@@ -39,13 +39,13 @@
             this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.buttonModStart = new DevExpress.XtraBars.BarButtonItem();
             this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonModRestart = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barMod = new DevExpress.XtraBars.BarSubItem();
             this.barButtonRun = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
             this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonModOpenFolder = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonClear = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +59,8 @@
             this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonOpenPrefabsFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonOpenMapsrcFolder = new DevExpress.XtraBars.BarButtonItem();
             this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
@@ -81,8 +83,8 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.buttonTest = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonOpenPrefabsFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonOpenMapsrcFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -120,7 +122,6 @@
             this.barButtonGameinfo,
             this.barButtonChapters,
             this.buttonModStop,
-            this.buttonModRestart,
             this.assetsCopierButton,
             this.barSubItem1,
             this.importMapButton,
@@ -144,9 +145,10 @@
             this.barButtonItem2,
             this.buttonHammerPropper,
             this.buttonOpenPrefabsFolder,
-            this.buttonOpenMapsrcFolder});
+            this.buttonOpenMapsrcFolder,
+            this.barButtonRunFullscreen});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 54;
+            this.barManager1.MaxItemId = 57;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -163,8 +165,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.gamesCombo),
             new DevExpress.XtraBars.LinkPersistInfo(this.modsCombo),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStart),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStop),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModRestart)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStop)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -223,16 +224,6 @@
             this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
             // 
-            // buttonModRestart
-            // 
-            this.buttonModRestart.Caption = "Restart";
-            this.buttonModRestart.Id = 28;
-            this.buttonModRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.Image")));
-            this.buttonModRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModRestart.ImageOptions.LargeImage")));
-            this.buttonModRestart.Name = "buttonModRestart";
-            this.buttonModRestart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.buttonModRestart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModRestart_ItemClick);
-            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -286,6 +277,7 @@
             this.barMod.Id = 17;
             this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRunFullscreen),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonIngameTools),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
@@ -303,6 +295,13 @@
             this.barButtonRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonRun.ImageOptions.LargeImage")));
             this.barButtonRun.Name = "barButtonRun";
             this.barButtonRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
+            // 
+            // barButtonRunFullscreen
+            // 
+            this.barButtonRunFullscreen.Caption = "Run (Full screen)";
+            this.barButtonRunFullscreen.Id = 56;
+            this.barButtonRunFullscreen.Name = "barButtonRunFullscreen";
+            this.barButtonRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
             // 
             // buttonIngameTools
             // 
@@ -408,6 +407,19 @@
             this.barButtonHammer.Id = 16;
             this.barButtonHammer.Name = "barButtonHammer";
             this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
+            // 
+            // buttonOpenPrefabsFolder
+            // 
+            this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
+            this.buttonOpenPrefabsFolder.Id = 52;
+            this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
+            this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
+            // 
+            // buttonOpenMapsrcFolder
+            // 
+            this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
+            this.buttonOpenMapsrcFolder.Id = 53;
+            this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
             // 
             // buttonCrafty
             // 
@@ -532,15 +544,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(587, 58);
+            this.barDockControlTop.Size = new System.Drawing.Size(944, 58);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 452);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 573);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(587, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(944, 18);
             // 
             // barDockControlLeft
             // 
@@ -548,15 +560,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 58);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 394);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(587, 58);
+            this.barDockControlRight.Location = new System.Drawing.Point(944, 58);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 394);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
             // 
             // barButtonItem4
             // 
@@ -571,40 +583,45 @@
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(391, 102);
+            this.buttonTest.Location = new System.Drawing.Point(788, 29);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 23);
             this.buttonTest.TabIndex = 4;
             this.buttonTest.Text = "Test button";
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
-            // buttonOpenPrefabsFolder
+            // panel1
             // 
-            this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
-            this.buttonOpenPrefabsFolder.Id = 52;
-            this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
-            this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 58);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(944, 515);
+            this.panel1.TabIndex = 9;
             // 
-            // buttonOpenMapsrcFolder
+            // modProcessUpdater
             // 
-            this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
-            this.buttonOpenMapsrcFolder.Id = 53;
-            this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
+            this.modProcessUpdater.Interval = 1000;
+            this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 470);
+            this.ClientSize = new System.Drawing.Size(944, 591);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.LookAndFeel.SkinMaskColor = System.Drawing.Color.Red;
+            this.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Name = "ModForm";
             this.Text = "Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.ResizeEnd += new System.EventHandler(this.ModForm_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
@@ -643,7 +660,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonGameinfo;
         private DevExpress.XtraBars.BarButtonItem barButtonChapters;
         private DevExpress.XtraBars.BarButtonItem buttonModStop;
-        private DevExpress.XtraBars.BarButtonItem buttonModRestart;
         private DevExpress.XtraBars.BarButtonItem assetsCopierButton;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem importMapButton;
@@ -669,5 +685,8 @@
         private DevExpress.XtraBars.BarButtonItem buttonHammerPropper;
         private DevExpress.XtraBars.BarButtonItem buttonOpenPrefabsFolder;
         private DevExpress.XtraBars.BarButtonItem buttonOpenMapsrcFolder;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraBars.BarButtonItem barButtonRunFullscreen;
+        private System.Windows.Forms.Timer modProcessUpdater;
     }
 }

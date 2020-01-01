@@ -16,13 +16,13 @@ using DevExpress.XtraBars;
 using windows_source1ide.Tools;
 using windows_source1ide.SourceSDK;
 using windows_source1ide.Particles;
+using System.Threading;
 
 namespace windows_source1ide
 {
     public partial class ModForm : DevExpress.XtraEditors.XtraForm
     {
-
-        Process modProcess = null;
+        Game game = null;
         Steam sourceSDK;
 
         public ModForm()
@@ -33,8 +33,14 @@ namespace windows_source1ide
         private void Form_Load(object sender, EventArgs e)
         {
             Text = Application.ProductName;
+            string currentGame = Properties.Settings.Default.currentGame;
+            string currentMod = Properties.Settings.Default.currentMod;
+
             sourceSDK = new Steam();
             updateGamesCombo();
+
+            gamesCombo.EditValue = currentGame;
+            modsCombo.EditValue = currentMod;
         }
 
         private void updateGamesCombo()
@@ -73,27 +79,10 @@ namespace windows_source1ide
 
         private void gamesCombo_EditValueChanged(object sender, EventArgs e)
         {
-            sourceSDK.setCurrentGame(gamesCombo.EditValue.ToString());
+            sourceSDK.setCurrentGame((gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : ""));
             updateModsCombo();
-        }
-
-        private void buttonModStart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            modProcess = sourceSDK.RunMod(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
-            buttonModStart.Enabled = false;
-            barButtonRun.Enabled = false;
-            buttonModStop.Visibility = BarItemVisibility.Always;
-            buttonModRestart.Visibility = BarItemVisibility.Always;
-            modProcess.Exited += new EventHandler(modExited);
-        }
-
-        private void modExited(object sender, EventArgs e)
-        {
-            buttonModStart.Enabled = true;
-            barButtonRun.Enabled = true;
-            buttonModStop.Visibility = BarItemVisibility.Never;
-            buttonModRestart.Visibility = BarItemVisibility.Never;
-            modProcess = null;
+            Properties.Settings.Default.currentGame = gamesCombo.EditValue.ToString();
+            Properties.Settings.Default.Save();
         }
 
         private void barButtonHammer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -128,6 +117,8 @@ namespace windows_source1ide
         private void modsCombo_EditValueChanged(object sender, EventArgs e)
         {
             sourceSDK.setCurrentMod(modsCombo.EditValue.ToString());
+            Properties.Settings.Default.currentMod = modsCombo.EditValue.ToString();
+            Properties.Settings.Default.Save();
 
             buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
@@ -143,17 +134,8 @@ namespace windows_source1ide
 
         private void buttonModStop_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (modProcess != null)
-            {
-                modProcess.Kill();
-                modProcess = null;
-            }
-        }
-
-        private void buttonModRestart_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            buttonModStop_ItemClick(null, null);
-            buttonModStart_ItemClick(null, null);
+            if (game.modProcess != null)
+                game.Stop();
         }
 
         private void assetsCopierButton_ItemClick(object sender, ItemClickEventArgs e)
@@ -291,7 +273,7 @@ namespace windows_source1ide
             if (Directory.Exists(modPath + "\\downloadlists"))
                 Directory.Delete(modPath + "\\downloadlists", true);
             if (Directory.Exists(modPath + "\\mapsrc"))
-                Directory.Delete(modPath + "\\mapsrc");
+                Directory.Delete(modPath + "\\mapsrc", true);
             if (Directory.Exists(modPath + "\\save"))
                 Directory.Delete(modPath + "\\save", true);
             if (Directory.Exists(modPath + "\\screenshots"))
@@ -341,12 +323,32 @@ namespace windows_source1ide
 
         private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
         {
-            sourceSDK.RunIngameTools(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            game = new Game(sourceSDK, panel1);
+            game.modProcess = sourceSDK.RunIngameTools(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            PCF.read("particles/aux_fx.pcf", gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString(), sourceSDK);
+            //PCF.read("particles/aux_fx.pcf", gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString(), sourceSDK);
+
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+
+            string hammerPath = gamePath + "\\bin\\hammer.exe";
+            Debug.Write("Hammer: " + hammerPath);
+
+            Process ffmpeg = new Process();
+            ffmpeg.StartInfo.FileName = hammerPath;
+            ffmpeg.StartInfo.Arguments = "";
+            ffmpeg.Start();
+
+            ffmpeg.WaitForInputIdle();
+            Thread.Sleep(100);
+
+            // Set the panel control as the application's parent
+            Program.SetParent(ffmpeg.MainWindowHandle, this.panel1.Handle);
+            Program.SendMessage(ffmpeg.MainWindowHandle, 274, 61488, 0);
         }
 
         private void buttonVMFtoMDL_ItemClick(object sender, ItemClickEventArgs e)
@@ -370,6 +372,56 @@ namespace windows_source1ide
         {
             string gamePath = sourceSDK.GetGamePath();
             Process.Start(gamePath + "\\bin\\Prefabs");
+        }
+
+        private void buttonModStart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            game = new Game(sourceSDK, panel1);
+            game.Start();
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            modProcessUpdater.Enabled = true;
+
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            game.modProcess.Exited += new EventHandler(modExited);
+        }
+
+        private void modExited(object sender, EventArgs e)
+        {
+            buttonModStart.Enabled = true;
+            barButtonRun.Enabled = true;
+            buttonModStop.Visibility = BarItemVisibility.Never;
+            game.modProcess = null;
+            //FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+
+        private void ModForm_ResizeEnd(object sender, EventArgs e)
+        {
+            if (game != null)
+                game.Resize();
+        }
+
+        private void ModForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (game != null)
+                game.Stop();
+        }
+
+        private void barButtonRunFullscreen_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            game = new Game(sourceSDK, panel1);
+            game.modProcess = sourceSDK.RunMod(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+        }
+
+        private void modProcessUpdater_Tick(object sender, EventArgs e)
+        {
+            if (game.modProcess == null)
+            {
+                FormBorderStyle = FormBorderStyle.Sizable;
+                modProcessUpdater.Enabled = false;
+            }
         }
     }
 }
