@@ -81,7 +81,7 @@
             this.textFolder.Location = new System.Drawing.Point(0, 0);
             this.textFolder.Name = "textFolder";
             this.textFolder.Size = new System.Drawing.Size(464, 20);
-            this.textFolder.TabIndex = 2;
+            this.textFolder.TabIndex = 1;
             this.textFolder.EditValueChanged += new System.EventHandler(this.textFolder_EditValueChanged);
             // 
             // labelControl2
@@ -102,7 +102,7 @@
             this.comboGames.Properties.ReadOnly = true;
             this.comboGames.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.comboGames.Size = new System.Drawing.Size(464, 20);
-            this.comboGames.TabIndex = 4;
+            this.comboGames.TabIndex = 2;
             this.comboGames.TextChanged += new System.EventHandler(this.comboGames_TextChanged);
             // 
             // labelControl3
@@ -121,7 +121,7 @@
             this.createButton.Margin = new System.Windows.Forms.Padding(8);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 23);
-            this.createButton.TabIndex = 6;
+            this.createButton.TabIndex = 4;
             this.createButton.Text = "OK";
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
@@ -149,7 +149,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(535, 254);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl3
             // 
@@ -171,7 +171,7 @@
             this.panelControl4.Location = new System.Drawing.Point(0, 20);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(464, 18);
-            this.panelControl4.TabIndex = 7;
+            this.panelControl4.TabIndex = 1;
             // 
             // labelFolderInfo
             // 
@@ -199,7 +199,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBranches.Properties.ReadOnly = true;
             this.comboBranches.Size = new System.Drawing.Size(464, 20);
-            this.comboBranches.TabIndex = 10;
+            this.comboBranches.TabIndex = 3;
             this.comboBranches.TextChanged += new System.EventHandler(this.comboBranches_TextChanged);
             // 
             // panelControl1
