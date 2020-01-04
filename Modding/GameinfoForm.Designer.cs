@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -80,6 +77,9 @@
             DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameinfoForm));
             this.textGame = new DevExpress.XtraEditors.TextEdit();
             this.textTitle = new DevExpress.XtraEditors.TextEdit();
@@ -206,13 +206,13 @@
             this.textGame.Location = new System.Drawing.Point(38, 3);
             this.textGame.Name = "textGame";
             this.textGame.Size = new System.Drawing.Size(417, 20);
-            toolTipTitleItem18.Text = "Game <string>";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = "The name of the mod in ASCII. Displayed in Steam and used as the window title. On" +
+            toolTipTitleItem1.Text = "Game <string>";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "The name of the mod in ASCII. Displayed in Steam and used as the window title. On" +
     "ly displayed in the main menu if Title isn\'t specified.";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem18);
-            this.textGame.SuperTip = superToolTip18;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.textGame.SuperTip = superToolTip1;
             this.textGame.TabIndex = 0;
             // 
             // textTitle
@@ -221,12 +221,12 @@
             this.textTitle.Location = new System.Drawing.Point(38, 29);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(417, 20);
-            toolTipTitleItem1.Text = "Title <string>";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "A Unicode string displayed in the main menu of your mod";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.textTitle.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Title <string>";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "A Unicode string displayed in the main menu of your mod";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.textTitle.SuperTip = superToolTip2;
             this.textTitle.TabIndex = 1;
             // 
             // xtraTabControl1
@@ -304,13 +304,13 @@
             this.textTitle2.Location = new System.Drawing.Point(38, 55);
             this.textTitle2.Name = "textTitle2";
             this.textTitle2.Size = new System.Drawing.Size(417, 20);
-            toolTipTitleItem2.Text = "Title2 <string>";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "You can also new line the menu text by adding another key of the same name Title," +
+            toolTipTitleItem3.Text = "Title2 <string>";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "You can also new line the menu text by adding another key of the same name Title," +
     " but append either 2 or a higher number onto it.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.textTitle2.SuperTip = superToolTip2;
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.textTitle2.SuperTip = superToolTip3;
             this.textTitle2.TabIndex = 5;
             // 
             // xtraTabPage3
@@ -365,14 +365,14 @@
             "Both"});
             this.textType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.textType.Size = new System.Drawing.Size(314, 20);
-            toolTipTitleItem3.Text = "Type <string>";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Affects which tabs appear in which order in the Options panel, the value will eit" +
+            toolTipTitleItem4.Text = "Type <string>";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Affects which tabs appear in which order in the Options panel, the value will eit" +
     "her be Singleplayer_Only or Multiplayer_Only. Omit this key if your mod has both" +
     " SP and MP modes.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.textType.SuperTip = superToolTip3;
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.textType.SuperTip = superToolTip4;
             this.textType.TabIndex = 0;
             // 
             // labelControl7
@@ -390,13 +390,13 @@
             this.switchDifficulty.Properties.OffText = "Off";
             this.switchDifficulty.Properties.OnText = "On";
             this.switchDifficulty.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem4.Text = "NoDifficulty <boolean>";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Hides the difficulty tab (this happens automatically if your mod is Multiplayer_O" +
+            toolTipTitleItem5.Text = "NoDifficulty <boolean>";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Hides the difficulty tab (this happens automatically if your mod is Multiplayer_O" +
     "nly.)";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.switchDifficulty.SuperTip = superToolTip4;
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.switchDifficulty.SuperTip = superToolTip5;
             this.switchDifficulty.TabIndex = 2;
             // 
             // switchPortals
@@ -406,12 +406,12 @@
             this.switchPortals.Properties.OffText = "Off";
             this.switchPortals.Properties.OnText = "On";
             this.switchPortals.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem5.Text = "HasPortals <boolean>";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Shows the Portal options tab.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.switchPortals.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "HasPortals <boolean>";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Shows the Portal options tab.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.switchPortals.SuperTip = superToolTip6;
             this.switchPortals.TabIndex = 3;
             // 
             // switchCrosshair
@@ -421,12 +421,12 @@
             this.switchCrosshair.Properties.OffText = "Off";
             this.switchCrosshair.Properties.OnText = "On";
             this.switchCrosshair.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem6.Text = "NoCrosshair <boolean>";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Hides the multiplayer crosshair selection menu.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.switchCrosshair.SuperTip = superToolTip6;
+            toolTipTitleItem7.Text = "NoCrosshair <boolean>";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "Hides the multiplayer crosshair selection menu.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.switchCrosshair.SuperTip = superToolTip7;
             this.switchCrosshair.TabIndex = 4;
             // 
             // switchAdvCrosshair
@@ -436,12 +436,12 @@
             this.switchAdvCrosshair.Properties.OffText = "Off";
             this.switchAdvCrosshair.Properties.OnText = "On";
             this.switchAdvCrosshair.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem7.Text = "AdvCrosshair <boolean>";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Enables the special advanced crosshair options.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.switchAdvCrosshair.SuperTip = superToolTip7;
+            toolTipTitleItem8.Text = "AdvCrosshair <boolean>";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "Enables the special advanced crosshair options.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.switchAdvCrosshair.SuperTip = superToolTip8;
             this.switchAdvCrosshair.TabIndex = 5;
             // 
             // switchModels
@@ -451,12 +451,12 @@
             this.switchModels.Properties.OffText = "Off";
             this.switchModels.Properties.OnText = "On";
             this.switchModels.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem8.Text = "NoModels <boolean>";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Hides the multiplayer model selection menu.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.switchModels.SuperTip = superToolTip8;
+            toolTipTitleItem9.Text = "NoModels <boolean>";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Hides the multiplayer model selection menu.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.switchModels.SuperTip = superToolTip9;
             this.switchModels.TabIndex = 6;
             // 
             // labelControl8
@@ -604,13 +604,13 @@
             this.textDeveloper.Location = new System.Drawing.Point(80, 3);
             this.textDeveloper.Name = "textDeveloper";
             this.textDeveloper.Size = new System.Drawing.Size(518, 20);
-            toolTipTitleItem9.Text = "Developer <string>";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "The developer of the mod. Usually either the Mod Team\'s name, or a single person\'" +
+            toolTipTitleItem10.Text = "Developer <string>";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "The developer of the mod. Usually either the Mod Team\'s name, or a single person\'" +
     "s name.";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.textDeveloper.SuperTip = superToolTip9;
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.textDeveloper.SuperTip = superToolTip10;
             this.textDeveloper.TabIndex = 4;
             // 
             // textDeveloperURL
@@ -619,12 +619,12 @@
             this.textDeveloperURL.Location = new System.Drawing.Point(80, 29);
             this.textDeveloperURL.Name = "textDeveloperURL";
             this.textDeveloperURL.Size = new System.Drawing.Size(518, 20);
-            toolTipTitleItem10.Text = "Developer_URL <string>";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "Your or the mod\'s URL. Must start with http://.";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.textDeveloperURL.SuperTip = superToolTip10;
+            toolTipTitleItem11.Text = "Developer_URL <string>";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Your or the mod\'s URL. Must start with http://.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.textDeveloperURL.SuperTip = superToolTip11;
             this.textDeveloperURL.TabIndex = 5;
             // 
             // textManual
@@ -633,12 +633,12 @@
             this.textManual.Location = new System.Drawing.Point(80, 55);
             this.textManual.Name = "textManual";
             this.textManual.Size = new System.Drawing.Size(518, 20);
-            toolTipTitleItem11.Text = "Manual <string>";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "URL to the mod\'s manual; can also be a local file.";
-            superToolTip11.Items.Add(toolTipTitleItem11);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.textManual.SuperTip = superToolTip11;
+            toolTipTitleItem12.Text = "Manual <string>";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "URL to the mod\'s manual; can also be a local file.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.textManual.SuperTip = superToolTip12;
             this.textManual.TabIndex = 6;
             // 
             // xtraTabPage4
@@ -680,12 +680,12 @@
             this.switchNodegraph.Properties.OffText = "Off";
             this.switchNodegraph.Properties.OnText = "On";
             this.switchNodegraph.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem12.Text = "Nodegraph <boolean>";
-            toolTipItem12.LeftIndent = 6;
-            toolTipItem12.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
-            superToolTip12.Items.Add(toolTipTitleItem12);
-            superToolTip12.Items.Add(toolTipItem12);
-            this.switchNodegraph.SuperTip = superToolTip12;
+            toolTipTitleItem15.Text = "Nodegraph <boolean>";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            this.switchNodegraph.SuperTip = superToolTip15;
             this.switchNodegraph.TabIndex = 0;
             // 
             // switchVR
@@ -695,12 +695,12 @@
             this.switchVR.Properties.OffText = "Off";
             this.switchVR.Properties.OnText = "On";
             this.switchVR.Size = new System.Drawing.Size(95, 20);
-            toolTipTitleItem15.Text = "SupportsVR <boolean>";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "Whether or not the game supports being ran in VR mode.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            this.switchVR.SuperTip = superToolTip15;
+            toolTipTitleItem16.Text = "SupportsVR <boolean>";
+            toolTipItem16.LeftIndent = 6;
+            toolTipItem16.Text = "Whether or not the game supports being ran in VR mode.";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            this.switchVR.SuperTip = superToolTip16;
             this.switchVR.TabIndex = 1;
             // 
             // labelControl13
@@ -742,13 +742,13 @@
             this.textGamedata.Name = "textGamedata";
             this.textGamedata.Properties.ReadOnly = true;
             this.textGamedata.Size = new System.Drawing.Size(432, 20);
-            toolTipTitleItem16.Text = "GameData <string>";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
+            toolTipTitleItem14.Text = "GameData <string>";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
     "o be compiled into maps. It is not used by Hammer itself.";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            superToolTip16.Items.Add(toolTipItem16);
-            this.textGamedata.SuperTip = superToolTip16;
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.textGamedata.SuperTip = superToolTip14;
             this.textGamedata.TabIndex = 6;
             // 
             // textInstance
@@ -758,12 +758,12 @@
             this.textInstance.Name = "textInstance";
             this.textInstance.Properties.ReadOnly = true;
             this.textInstance.Size = new System.Drawing.Size(432, 20);
-            toolTipTitleItem14.Text = "InstancePath <string>";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "The default location in which to look for Instance VMFs.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            this.textInstance.SuperTip = superToolTip14;
+            toolTipTitleItem13.Text = "InstancePath <string>";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "The default location in which to look for Instance VMFs.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            this.textInstance.SuperTip = superToolTip13;
             this.textInstance.TabIndex = 7;
             // 
             // xtraTabPage5
@@ -771,7 +771,7 @@
             this.xtraTabPage5.Controls.Add(this.tableLayoutPanel5);
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage5.Size = new System.Drawing.Size(474, 185);
+            this.xtraTabPage5.Size = new System.Drawing.Size(617, 301);
             this.xtraTabPage5.Text = "File system";
             // 
             // tableLayoutPanel5
@@ -786,7 +786,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 169);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(601, 285);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // labelControl18
@@ -804,13 +804,14 @@
             this.comboGames.Name = "comboGames";
             this.comboGames.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboGames.Size = new System.Drawing.Size(380, 20);
-            toolTipTitleItem13.Text = "SteamAppID <integer>";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = resources.GetString("toolTipItem13.Text");
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            this.comboGames.SuperTip = superToolTip13;
+            this.comboGames.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboGames.Size = new System.Drawing.Size(523, 20);
+            toolTipTitleItem17.Text = "SteamAppID <integer>";
+            toolTipItem17.LeftIndent = 6;
+            toolTipItem17.Text = resources.GetString("toolTipItem17.Text");
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            superToolTip17.Items.Add(toolTipItem17);
+            this.comboGames.SuperTip = superToolTip17;
             this.comboGames.TabIndex = 1;
             // 
             // xtraTabPage6
