@@ -61,39 +61,15 @@ namespace windows_source1ide
 
             Directory.CreateDirectory(modPath + "\\maps");
             selectBSPDialog.InitialDirectory = modPath + "\\maps";
+
+            pictureBackgroundWide.ContextMenuStrip = new ContextMenuStrip();
         }
 
         private void updateChaptersList()
         {
-            list.BeginUnboundLoad();
-            list.Nodes.Clear();
-            foreach(Chapter chapter in chapters)
-            {
-                list.AppendNode(new object[] { "Chapter " + (chapters.IndexOf(chapter) + 1) + " - " + chapter.title }, null);
-            }
-            list.EndUnboundLoad();
-        }
-
-        private void list_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-            if (e.Node != null)
-            {
-                textMap.EditValue = chapters[e.Node.Id].map;
-                textName.EditValue = chapters[e.Node.Id].title;
-                textBackground.EditValue = chapters[e.Node.Id].background;
-                pictureThumbnail.Image = chapters[e.Node.Id].thumbnail;
-                pictureBackground.Image = chapters[e.Node.Id].backgroundImage;
-                pictureBackgroundWide.Image = chapters[e.Node.Id].backgroundImageWide;
-            } else
-            {
-                textMap.EditValue = "";
-                textName.EditValue = "";
-                textBackground.EditValue = "";
-                pictureThumbnail.Image  = null;
-                pictureBackground.Image = null;
-                pictureBackgroundWide.Image = null;
-            }
-
+            galleryControl1.Gallery.Groups[0].Items.Clear();
+            foreach (Chapter chapter in chapters)
+                galleryControl1.Gallery.Groups[0].Items.Add(new DevExpress.XtraBars.Ribbon.GalleryItem(chapter.thumbnail, "Chapter " + (chapters.IndexOf(chapter) + 1), chapter.title));
         }
 
         private void readChapters()
@@ -223,26 +199,31 @@ namespace windows_source1ide
 
         private void textName_TextChanged(object sender, EventArgs e)
         {
-            if (list.FocusedNode != null && ((TextEdit)sender).EditValue != null)
-                chapters[list.FocusedNode.Id].title = ((TextEdit)sender).EditValue.ToString();
+            int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+            if (((TextEdit)sender).EditValue != null)
+            {
+                chapters[index].title = ((TextEdit)sender).EditValue.ToString();
+                galleryControl1.Gallery.GetCheckedItem().Description = ((TextEdit)sender).EditValue.ToString();
+            }
         }
 
         private void textMap_EditValueChanged(object sender, EventArgs e)
         {
-            if (list.FocusedNode != null && ((TextEdit)sender).EditValue != null)
-                chapters[list.FocusedNode.Id].map = ((TextEdit)sender).EditValue.ToString();
+            int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+            if (((TextEdit)sender).EditValue != null)
+                chapters[index].map = ((TextEdit)sender).EditValue.ToString();
         }
 
         private void textBackground_TextChanged(object sender, EventArgs e)
         {
-            if (list.FocusedNode != null && ((TextEdit)sender).EditValue != null)
-                chapters[list.FocusedNode.Id].background = ((TextEdit)sender).EditValue.ToString();
+            int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+            if (((TextEdit)sender).EditValue != null)
+                chapters[index].background = ((TextEdit)sender).EditValue.ToString();
         }
 
         private void pictureThumbnail_Click(object sender, EventArgs e)
         {
-            if (list.FocusedNode == null)
-                return;
+            int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
 
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -264,10 +245,10 @@ namespace windows_source1ide
                 using (Graphics gfx = Graphics.FromImage(target))
                     gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
 
-                chapters[list.FocusedNode.Id].thumbnail = target;
+                chapters[index].thumbnail = target;
                 pictureThumbnail.Image = target;
 
-                writeChapterThumbnail(list.FocusedNode.Id);
+                writeChapterThumbnail(index);
             }
         }
 
@@ -341,8 +322,7 @@ namespace windows_source1ide
 
         private void pictureBackground_Click(object sender, EventArgs e)
         {
-            if (list.FocusedNode == null)
-                return;
+            int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
 
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -370,7 +350,7 @@ namespace windows_source1ide
                 using (Graphics gfx = Graphics.FromImage(targetWide))
                     gfx.DrawImage(src, new Rectangle(0, 0, targetWide.Width, targetWide.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
 
-                chapters[list.FocusedNode.Id].backgroundImageWide = targetWide;
+                chapters[index].backgroundImageWide = targetWide;
                 pictureBackgroundWide.Image = targetWide;
 
                 Bitmap target = new Bitmap(1024, 768);
@@ -386,11 +366,11 @@ namespace windows_source1ide
                 using (Graphics gfx = Graphics.FromImage(target))
                     gfx.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height), new Rectangle((src.Width - idealWidth) / 2, (src.Height - idealHeight) / 2, idealWidth, idealHeight), GraphicsUnit.Pixel);
 
-                chapters[list.FocusedNode.Id].backgroundImage = target;
+                chapters[index].backgroundImage = target;
                 pictureBackground.Image = target;
 
-                writeBackgroundImage(list.FocusedNode.Id);
-                writeBackgroundImageWide(list.FocusedNode.Id);
+                writeBackgroundImage(index);
+                writeBackgroundImageWide(index);
             }
         }
 
@@ -515,10 +495,103 @@ namespace windows_source1ide
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            if (list.FocusedNode == null)
-                return; 
-            chapters.RemoveAt(list.FocusedNode.Id);
-            updateChaptersList();
+            if (galleryControl1.Gallery.GetCheckedItem() != null)
+            {
+                int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+
+                chapters.RemoveAt(index);
+                galleryControl1.Gallery.Groups[0].Items.RemoveAt(index);
+
+                DevExpress.XtraBars.Ribbon.GalleryItem galleryItem = galleryControl1.Gallery.GetCheckedItem();
+
+                if (galleryItem != null)
+                {
+                    index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+
+                    buttonLeft.Enabled = (index > 0);
+                    buttonRight.Enabled = (index < chapters.Count - 1);
+                    buttonRemove.Enabled = true;
+                    table.Visible = true;
+                }
+                else
+                {
+                    buttonLeft.Enabled = false;
+                    buttonRight.Enabled = false;
+                    buttonRemove.Enabled = false;
+                    table.Visible = false;
+                }
+            }
+        }
+
+        private void galleryControl1_Gallery_ItemCheckedChanged(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
+        {
+            if (galleryControl1.Gallery.GetCheckedItem() != null)
+            {
+                int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+                textMap.EditValue = chapters[index].map;
+                textName.EditValue = chapters[index].title;
+                textBackground.EditValue = chapters[index].background;
+                pictureThumbnail.Image = chapters[index].thumbnail;
+                pictureBackground.Image = chapters[index].backgroundImage;
+                pictureBackgroundWide.Image = chapters[index].backgroundImageWide;
+                table.Visible = true;
+
+                buttonLeft.Enabled = (index > 0);
+                buttonRight.Enabled = (index < chapters.Count - 1);
+                buttonRemove.Enabled = true;
+
+            }
+            else
+            {
+                table.Visible = false;
+
+                buttonLeft.Enabled = false;
+                buttonRight.Enabled = false;
+                buttonRemove.Enabled = false;
+            }
+            
+        }
+
+        private void buttonRight_Click(object sender, EventArgs e)
+        {
+            if (galleryControl1.Gallery.GetCheckedItem() != null)
+            {
+                int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+                DevExpress.XtraBars.Ribbon.GalleryItem galleryItem = galleryControl1.Gallery.GetCheckedItem();
+
+                galleryControl1.Gallery.Groups[0].Items.RemoveAt(index);
+                galleryControl1.Gallery.Groups[0].Items.Insert(index + 1, galleryItem);
+                galleryControl1.Gallery.SetItemCheck(galleryItem, true);
+
+                buttonLeft.Enabled = (index + 1 > 0);
+                buttonRight.Enabled = (index + 1 < chapters.Count - 1);
+                buttonRemove.Enabled = true;
+
+                Chapter item = chapters[index];
+                chapters.RemoveAt(index);
+                chapters.Insert(index + 1, item);
+            }
+        }
+
+        private void buttonLeft_Click(object sender, EventArgs e)
+        {
+            if (galleryControl1.Gallery.GetCheckedItem() != null)
+            {
+                int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
+                DevExpress.XtraBars.Ribbon.GalleryItem galleryItem = galleryControl1.Gallery.GetCheckedItem();
+
+                galleryControl1.Gallery.Groups[0].Items.RemoveAt(index);
+                galleryControl1.Gallery.Groups[0].Items.Insert(index - 1, galleryItem);
+                galleryControl1.Gallery.SetItemCheck(galleryItem, true);
+
+                buttonLeft.Enabled = (index - 1 > 0);
+                buttonRight.Enabled = (index - 1 < chapters.Count - 1);
+                buttonRemove.Enabled = true;
+
+                Chapter item = chapters[index];
+                chapters.RemoveAt(index);
+                chapters.Insert(index - 1, item);
+            }
         }
     }
 }
