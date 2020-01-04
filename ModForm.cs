@@ -336,30 +336,6 @@ namespace windows_source1ide
             game.modProcess.Exited += new EventHandler(modExited);
         }
 
-        private void buttonTest_Click(object sender, EventArgs e)
-        {
-            //PCF.read("particles/aux_fx.pcf", gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString(), sourceSDK);
-
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
-
-
-            string hammerPath = gamePath + "\\bin\\hammer.exe";
-            Debug.Write("Hammer: " + hammerPath);
-
-            Process ffmpeg = new Process();
-            ffmpeg.StartInfo.FileName = hammerPath;
-            ffmpeg.StartInfo.Arguments = "";
-            ffmpeg.Start();
-
-            ffmpeg.WaitForInputIdle();
-            Thread.Sleep(100);
-
-            // Set the panel control as the application's parent
-            Program.SetParent(ffmpeg.MainWindowHandle, this.panel1.Handle);
-            Program.SendMessage(ffmpeg.MainWindowHandle, 274, 61488, 0);
-        }
-
         private void buttonVMFtoMDL_ItemClick(object sender, ItemClickEventArgs e)
         {
             VMFtoMDL form = new VMFtoMDL(sourceSDK);

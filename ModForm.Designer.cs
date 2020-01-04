@@ -81,7 +81,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.buttonTest = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -527,6 +526,7 @@
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer)});
             this.barSubItem4.Name = "barSubItem4";
+            this.barSubItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // buttonFaceposer
             // 
@@ -590,15 +590,6 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // buttonTest
-            // 
-            this.buttonTest.Location = new System.Drawing.Point(788, 29);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(75, 23);
-            this.buttonTest.TabIndex = 4;
-            this.buttonTest.Text = "Test button";
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
-            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -618,7 +609,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 591);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -679,7 +669,6 @@
         private DevExpress.XtraBars.BarButtonItem buttonFaceposer;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem buttonIngameTools;
-        private DevExpress.XtraEditors.SimpleButton buttonTest;
         private DevExpress.XtraBars.BarButtonItem buttonVMFtoMDL;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
