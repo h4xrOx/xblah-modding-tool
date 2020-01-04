@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModForm));
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.gamesCombo = new DevExpress.XtraBars.BarEditItem();
@@ -90,10 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Black";
             // 
             // barManager1
             // 
@@ -277,7 +272,7 @@
             this.barMod.Id = 17;
             this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRunFullscreen),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonRunFullscreen, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonIngameTools),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
@@ -300,6 +295,8 @@
             // 
             this.barButtonRunFullscreen.Caption = "Run (Full screen)";
             this.barButtonRunFullscreen.Id = 56;
+            this.barButtonRunFullscreen.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonRunFullscreen.ImageOptions.Image")));
+            this.barButtonRunFullscreen.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonRunFullscreen.ImageOptions.LargeImage")));
             this.barButtonRunFullscreen.Name = "barButtonRunFullscreen";
             this.barButtonRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
             // 
@@ -307,6 +304,8 @@
             // 
             this.buttonIngameTools.Caption = "Ingame Tools";
             this.buttonIngameTools.Id = 43;
+            this.buttonIngameTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonIngameTools.ImageOptions.Image")));
+            this.buttonIngameTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonIngameTools.ImageOptions.LargeImage")));
             this.buttonIngameTools.Name = "buttonIngameTools";
             this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
             // 
@@ -340,6 +339,8 @@
             // 
             this.importMapButton.Caption = "From another mod";
             this.importMapButton.Id = 31;
+            this.importMapButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("importMapButton.ImageOptions.Image")));
+            this.importMapButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("importMapButton.ImageOptions.LargeImage")));
             this.importMapButton.Name = "importMapButton";
             this.importMapButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.importMapButton_ItemClick);
             // 
@@ -378,6 +379,8 @@
             // 
             this.buttonVPKExplorer.Caption = "VPK Explorer";
             this.buttonVPKExplorer.Id = 33;
+            this.buttonVPKExplorer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.Image")));
+            this.buttonVPKExplorer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.LargeImage")));
             this.buttonVPKExplorer.Name = "buttonVPKExplorer";
             this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
             // 
@@ -385,6 +388,8 @@
             // 
             this.assetsCopierButton.Caption = "Assets copier";
             this.assetsCopierButton.Id = 29;
+            this.assetsCopierButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("assetsCopierButton.ImageOptions.Image")));
+            this.assetsCopierButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("assetsCopierButton.ImageOptions.LargeImage")));
             this.assetsCopierButton.Name = "assetsCopierButton";
             this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
             // 
@@ -412,6 +417,8 @@
             // 
             this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
             this.buttonOpenPrefabsFolder.Id = 52;
+            this.buttonOpenPrefabsFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.Image")));
+            this.buttonOpenPrefabsFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.LargeImage")));
             this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
             this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
             // 
@@ -419,6 +426,8 @@
             // 
             this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
             this.buttonOpenMapsrcFolder.Id = 53;
+            this.buttonOpenMapsrcFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.Image")));
+            this.buttonOpenMapsrcFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.LargeImage")));
             this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
             // 
             // buttonCrafty
@@ -544,7 +553,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(944, 58);
+            this.barDockControlTop.Size = new System.Drawing.Size(944, 54);
             // 
             // barDockControlBottom
             // 
@@ -558,17 +567,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 58);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 54);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(944, 58);
+            this.barDockControlRight.Location = new System.Drawing.Point(944, 54);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
             // 
             // barButtonItem4
             // 
@@ -593,9 +602,9 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 58);
+            this.panel1.Location = new System.Drawing.Point(0, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 515);
+            this.panel1.Size = new System.Drawing.Size(944, 519);
             this.panel1.TabIndex = 9;
             // 
             // modProcessUpdater
@@ -615,8 +624,6 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.LookAndFeel.SkinMaskColor = System.Drawing.Color.Red;
-            this.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Name = "ModForm";
             this.Text = "Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
@@ -632,8 +639,6 @@
         }
 
         #endregion
-
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;

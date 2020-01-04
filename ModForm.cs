@@ -324,7 +324,16 @@ namespace windows_source1ide
         private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
         {
             game = new Game(sourceSDK, panel1);
-            game.modProcess = sourceSDK.RunIngameTools(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            game.StartTools();
+
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
+            modProcessUpdater.Enabled = true;
+
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            game.modProcess.Exited += new EventHandler(modExited);
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
@@ -379,6 +388,7 @@ namespace windows_source1ide
             game = new Game(sourceSDK, panel1);
             game.Start();
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             modProcessUpdater.Enabled = true;
 
             buttonModStart.Enabled = false;
@@ -412,7 +422,12 @@ namespace windows_source1ide
         private void barButtonRunFullscreen_ItemClick(object sender, ItemClickEventArgs e)
         {
             game = new Game(sourceSDK, panel1);
-            game.modProcess = sourceSDK.RunMod(gamesCombo.EditValue.ToString(), modsCombo.EditValue.ToString());
+            game.StartFullScreen();
+
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            game.modProcess.Exited += new EventHandler(modExited);
         }
 
         private void modProcessUpdater_Tick(object sender, EventArgs e)
@@ -421,6 +436,7 @@ namespace windows_source1ide
             {
                 FormBorderStyle = FormBorderStyle.Sizable;
                 modProcessUpdater.Enabled = false;
+                MaximizeBox = true;
             }
         }
     }

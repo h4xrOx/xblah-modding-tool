@@ -38,9 +38,12 @@ namespace windows_source1ide
             if (type == "multiplayer_only")
             {
                 textType.EditValue = "Multi-player";
-            } else
+            } else if (type == "singleplayer_only")
             {
                 textType.EditValue = "Single-player";
+            } else
+            {
+                textType.EditValue = "Both";
             }
             switchDifficulty.EditValue = (gameinfo.getValue("nodifficulty") == "1" ? false : true);
             switchPortals.EditValue = (gameinfo.getValue("hasportals") == "1" ? true : false);
@@ -89,9 +92,12 @@ namespace windows_source1ide
             if (textType.EditValue.ToString() == "Multi-player")
             {
                 type = "multiplayer_only";
-            } else
+            } else if (textType.EditValue.ToString() == "Single-player")
             {
                 type = "singleplayer_only";
+            } else
+            {
+                type = "both";
             }
             gameinfo.setValue("type", type);
 

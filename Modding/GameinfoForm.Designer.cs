@@ -221,7 +221,7 @@
             this.xtraTabPage1.Controls.Add(this.tableLayoutPanel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage1.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage1.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage1.Text = "Name";
             // 
             // tableLayoutPanel1
@@ -242,7 +242,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(458, 169);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelControl1
@@ -289,7 +289,7 @@
             this.xtraTabPage3.Controls.Add(this.tableLayoutPanel3);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage3.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage3.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage3.Text = "Options";
             // 
             // tableLayoutPanel3
@@ -320,7 +320,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 169);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // textType
@@ -332,7 +332,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textType.Properties.Items.AddRange(new object[] {
             "Single-player",
-            "Multi-player"});
+            "Multi-player",
+            "Both"});
             this.textType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.textType.Size = new System.Drawing.Size(314, 20);
             toolTipTitleItem4.Text = "Type <string>";
@@ -359,7 +360,7 @@
             this.switchDifficulty.Name = "switchDifficulty";
             this.switchDifficulty.Properties.OffText = "Off";
             this.switchDifficulty.Properties.OnText = "On";
-            this.switchDifficulty.Size = new System.Drawing.Size(95, 24);
+            this.switchDifficulty.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem5.Text = "NoDifficulty <boolean>";
             toolTipItem5.LeftIndent = 6;
             toolTipItem5.Text = "Hides the difficulty tab (this happens automatically if your mod is Multiplayer_O" +
@@ -375,7 +376,7 @@
             this.switchPortals.Name = "switchPortals";
             this.switchPortals.Properties.OffText = "Off";
             this.switchPortals.Properties.OnText = "On";
-            this.switchPortals.Size = new System.Drawing.Size(95, 24);
+            this.switchPortals.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem6.Text = "HasPortals <boolean>";
             toolTipItem6.LeftIndent = 6;
             toolTipItem6.Text = "Shows the Portal options tab.";
@@ -390,7 +391,7 @@
             this.switchCrosshair.Name = "switchCrosshair";
             this.switchCrosshair.Properties.OffText = "Off";
             this.switchCrosshair.Properties.OnText = "On";
-            this.switchCrosshair.Size = new System.Drawing.Size(95, 24);
+            this.switchCrosshair.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem7.Text = "NoCrosshair <boolean>";
             toolTipItem7.LeftIndent = 6;
             toolTipItem7.Text = "Hides the multiplayer crosshair selection menu.";
@@ -405,7 +406,7 @@
             this.switchAdvCrosshair.Name = "switchAdvCrosshair";
             this.switchAdvCrosshair.Properties.OffText = "Off";
             this.switchAdvCrosshair.Properties.OnText = "On";
-            this.switchAdvCrosshair.Size = new System.Drawing.Size(95, 24);
+            this.switchAdvCrosshair.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem8.Text = "AdvCrosshair <boolean>";
             toolTipItem8.LeftIndent = 6;
             toolTipItem8.Text = "Enables the special advanced crosshair options.";
@@ -420,7 +421,7 @@
             this.switchModels.Name = "switchModels";
             this.switchModels.Properties.OffText = "Off";
             this.switchModels.Properties.OnText = "On";
-            this.switchModels.Size = new System.Drawing.Size(95, 24);
+            this.switchModels.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem9.Text = "NoModels <boolean>";
             toolTipItem9.LeftIndent = 6;
             toolTipItem9.Text = "Hides the multiplayer model selection menu.";
@@ -474,7 +475,7 @@
             this.xtraTabPage2.Controls.Add(this.tableLayoutPanel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage2.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage2.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage2.Text = "Steam games list";
             // 
             // tableLayoutPanel2
@@ -498,7 +499,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(458, 169);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelControl2
@@ -612,7 +613,7 @@
             this.xtraTabPage4.Controls.Add(this.tableLayoutPanel4);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage4.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage4.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage4.Text = "Engine and tools";
             // 
             // tableLayoutPanel4
@@ -636,7 +637,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(458, 169);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // switchNodegraph
@@ -645,7 +646,7 @@
             this.switchNodegraph.Name = "switchNodegraph";
             this.switchNodegraph.Properties.OffText = "Off";
             this.switchNodegraph.Properties.OnText = "On";
-            this.switchNodegraph.Size = new System.Drawing.Size(95, 24);
+            this.switchNodegraph.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem13.Text = "Nodegraph <boolean>";
             toolTipItem13.LeftIndent = 6;
             toolTipItem13.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
@@ -660,7 +661,7 @@
             this.switchVR.Name = "switchVR";
             this.switchVR.Properties.OffText = "Off";
             this.switchVR.Properties.OnText = "On";
-            this.switchVR.Size = new System.Drawing.Size(95, 24);
+            this.switchVR.Size = new System.Drawing.Size(95, 20);
             toolTipTitleItem14.Text = "SupportsVR <boolean>";
             toolTipItem14.LeftIndent = 6;
             toolTipItem14.Text = "Whether or not the game supports being ran in VR mode.";
@@ -735,7 +736,7 @@
             this.xtraTabPage5.Controls.Add(this.tableLayoutPanel5);
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage5.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage5.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage5.Text = "File system";
             // 
             // tableLayoutPanel5
@@ -750,7 +751,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 173);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 169);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // labelControl18
@@ -780,7 +781,7 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(474, 189);
+            this.xtraTabPage6.Size = new System.Drawing.Size(474, 185);
             this.xtraTabPage6.Text = "Search paths";
             // 
             // buttonSave

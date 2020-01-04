@@ -53,6 +53,64 @@ namespace windows_source1ide.SourceSDK
             return modProcess;
         }
 
+        public Process StartTools()
+        {
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+            string exePath = "";
+
+            foreach (string file in Directory.GetFiles(gamePath))
+            {
+                if (new FileInfo(file).Extension == ".exe")
+                {
+                    exePath = file;
+                    break;
+                }
+            }
+
+            modProcess = new Process();
+            modProcess.StartInfo.FileName = exePath;
+            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -tools -nop4 -windowed -noborder 0 -width " + parent.Width + " -height " + parent.Height;
+            modProcess.Start();
+            modProcess.EnableRaisingEvents = true;
+            modProcess.WaitForInputIdle();
+
+            Thread.Sleep(300);
+            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+            Resize();
+
+            return modProcess;
+        }
+
+        public Process StartFullScreen()
+        {
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+            Debug.Write(modPath);
+
+            string exePath = "";
+
+            foreach (string file in Directory.GetFiles(gamePath))
+            {
+                if (new FileInfo(file).Extension == ".exe")
+                {
+                    exePath = file;
+                    break;
+                }
+            }
+
+            modProcess = new Process();
+            modProcess.StartInfo.FileName = exePath;
+            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -fullscreen";
+            modProcess.Start();
+            modProcess.EnableRaisingEvents = true;
+            modProcess.WaitForInputIdle();
+
+            return modProcess;
+        }
+
         public void Resize()
         {
             if (modProcess != null)
