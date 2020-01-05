@@ -434,7 +434,8 @@ namespace windows_source1ide
             string modPath = sourceSDK.GetModPath();
             string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";
 
-            string args = "-p \"" + vpk + "\" -d \"" + modPath + "\" -e \"" + filePath + "\" -s";
+            Directory.CreateDirectory(modPath + "/" + (filePath.Contains("/") ? filePath.Substring(0, filePath.LastIndexOf("/")) : ""));
+            string args = "-p \"" + vpk + "\" -d \"" + modPath + "/" + (filePath.Contains("/") ? filePath.Substring(0, filePath.LastIndexOf("/")) : "") + "\" -e \"" + filePath + "\" -s";
             Process process = new Process();
             process.StartInfo.FileName = toolPath;
             process.StartInfo.Arguments = args;

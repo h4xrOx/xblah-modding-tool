@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace windows_source1ide.SourceSDK
 {
     class Game
     {
-        private Steam sourceSDK;
-        private Control parent;
-        public Process modProcess;
+        private Steam sourceSDK = null;
+        private Control parent = null;
+        public Process modProcess = null;
 
         public Game(Steam sourceSDK, Control parent)
         {
@@ -28,7 +24,7 @@ namespace windows_source1ide.SourceSDK
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
 
-            string exePath = "";
+            string exePath = string.Empty;
 
             foreach (string file in Directory.GetFiles(gamePath))
             {
@@ -41,7 +37,7 @@ namespace windows_source1ide.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -windowed -noborder 0 -width " + parent.Width + " -height " + parent.Height;
+            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -windowed -noborder -novid 0 -width " + parent.Width + " -height " + parent.Height;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
@@ -58,7 +54,7 @@ namespace windows_source1ide.SourceSDK
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
 
-            string exePath = "";
+            string exePath = string.Empty;
 
             foreach (string file in Directory.GetFiles(gamePath))
             {
@@ -71,7 +67,7 @@ namespace windows_source1ide.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -tools -nop4 -windowed -noborder 0 -width " + parent.Width + " -height " + parent.Height;
+            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -tools -nop4 -windowed -novid -noborder 0 -width " + parent.Width + " -height " + parent.Height;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
@@ -90,7 +86,7 @@ namespace windows_source1ide.SourceSDK
 
             Debug.Write(modPath);
 
-            string exePath = "";
+            string exePath = string.Empty;
 
             foreach (string file in Directory.GetFiles(gamePath))
             {
@@ -115,8 +111,10 @@ namespace windows_source1ide.SourceSDK
         {
             if (modProcess != null)
             {
-                Program.MoveWindow(modProcess.MainWindowHandle, 0,0, parent.Width, parent.Height, true);
-                File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\smt_cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
+                
+                //Command("-width " + parent.Width + " -height " + parent.Height);
+                //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
+                Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
             }
         }
 
@@ -127,6 +125,40 @@ namespace windows_source1ide.SourceSDK
                 modProcess.Kill();
                 modProcess = null;
             }
+        }
+
+        public void Command(string command)
+        {
+            if (modProcess == null)
+                return;
+
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+            Debug.Write(modPath);
+
+            string exePath = string.Empty;
+
+            foreach (string file in Directory.GetFiles(gamePath))
+            {
+                if (new FileInfo(file).Extension == ".exe")
+                {
+                    exePath = file;
+                    break;
+                }
+            }
+
+            Program.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
+            Program.ShowWindow((int)modProcess.MainWindowHandle, 0);
+
+            Process process = new Process();
+            process.StartInfo.FileName = exePath;
+            process.StartInfo.Arguments = "-hijack " + command;
+            process.Start();
+            process.EnableRaisingEvents = true;
+            process.WaitForInputIdle();
+            Program.ShowWindow((int)modProcess.MainWindowHandle, 9);
+            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
         }
     }
 }
