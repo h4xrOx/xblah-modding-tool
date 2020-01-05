@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChaptersForm));
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.textName = new DevExpress.XtraEditors.TextEdit();
             this.table = new System.Windows.Forms.TableLayoutPanel();
             this.pictureThumbnail = new DevExpress.XtraEditors.PictureEdit();
@@ -100,7 +97,7 @@
             // 
             this.table.ColumnCount = 2;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
             this.table.Controls.Add(this.pictureThumbnail, 1, 4);
             this.table.Controls.Add(this.panelControl4, 1, 2);
             this.table.Controls.Add(this.textName, 1, 0);
@@ -347,14 +344,6 @@
             // 
             // 
             galleryItemGroup1.Caption = "Chapters";
-            galleryItem1.Caption = "Item2";
-            galleryItem1.Description = "Chapter 1";
-            galleryItem2.Caption = "Item3";
-            galleryItem3.Caption = "Item4";
-            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem1,
-            galleryItem2,
-            galleryItem3});
             this.galleryControl1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
             this.galleryControl1.Gallery.ImageSize = new System.Drawing.Size(76, 43);

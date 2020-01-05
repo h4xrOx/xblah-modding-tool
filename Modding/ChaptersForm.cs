@@ -71,6 +71,7 @@ namespace windows_source1ide
             foreach (Chapter chapter in chapters)
                 galleryControl1.Gallery.Groups[0].Items.Add(new DevExpress.XtraBars.Ribbon.GalleryItem(chapter.thumbnail, "Chapter " + (chapters.IndexOf(chapter) + 1), chapter.title));
 
+
             if (galleryControl1.Gallery.Groups[0].Items.Count > 0)
             {
                 galleryControl1.Gallery.SetItemCheck(galleryControl1.Gallery.Groups[0].Items[0], true);
@@ -89,17 +90,28 @@ namespace windows_source1ide
             string path = modPath + "\\cfg";
 
             Directory.CreateDirectory(path);
+
+            List<int> available = new List<int>();
+
             foreach (string file in Directory.GetFiles(path))
             {
                 if (new FileInfo(file).Name.StartsWith("chapter"))
                 {
-                    string map = File.ReadAllText(file).Replace("map ", "");
-                    Chapter chapter = new Chapter()
-                    {
-                        map = map
-                    };
-                    chapters.Add(chapter);
+                    int id = int.Parse(new FileInfo(file).Name.Replace("chapter", "").Replace(".cfg", ""));
+                    available.Add(id);
                 }
+            }
+
+            available.Sort();
+
+            foreach(int i in available)
+            {
+                string map = File.ReadAllText(path + "\\chapter" + i + ".cfg").Replace("map ", "");
+                Chapter chapter = new Chapter()
+                {
+                    map = map
+                };
+                chapters.Add(chapter);
             }
         }
 
