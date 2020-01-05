@@ -45,21 +45,25 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.selectVMFDialog = new System.Windows.Forms.OpenFileDialog();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.vmfList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSearch
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearch.Location = new System.Drawing.Point(8, 8);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(8);
+            this.buttonSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonSearch.ImageOptions.SvgImage")));
+            this.buttonSearch.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.buttonSearch.Location = new System.Drawing.Point(3, 29);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(23, 23);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Add";
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -83,7 +87,7 @@
             this.vmfList.Location = new System.Drawing.Point(8, 8);
             this.vmfList.Name = "vmfList";
             this.vmfList.OptionsBehavior.Editable = false;
-            this.vmfList.Size = new System.Drawing.Size(436, 217);
+            this.vmfList.Size = new System.Drawing.Size(407, 217);
             this.vmfList.TabIndex = 5;
             // 
             // treeListColumn3
@@ -97,10 +101,11 @@
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeButton.Location = new System.Drawing.Point(91, 8);
-            this.removeButton.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
+            this.removeButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("removeButton.ImageOptions.SvgImage")));
+            this.removeButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.removeButton.Location = new System.Drawing.Point(3, 0);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.Size = new System.Drawing.Size(23, 23);
             this.removeButton.TabIndex = 6;
             this.removeButton.Text = "Remove";
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
@@ -121,8 +126,6 @@
             // 
             // statusBar
             // 
-            this.statusBar.BarAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.statusBar.BarAppearance.Normal.Options.UseBackColor = true;
             this.statusBar.BarName = "Status bar";
             this.statusBar.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
             this.statusBar.DockCol = 0;
@@ -140,7 +143,6 @@
             // 
             // statusLabel
             // 
-            this.statusLabel.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.statusLabel.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.statusLabel.Caption = "Ready";
             this.statusLabel.Id = 0;
@@ -182,8 +184,6 @@
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.readMapButton);
-            this.panelControl1.Controls.Add(this.removeButton);
-            this.panelControl1.Controls.Add(this.buttonSearch);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 225);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -195,6 +195,7 @@
             // 
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.vmfList);
+            this.panelControl2.Controls.Add(this.panelControl3);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
@@ -205,6 +206,17 @@
             // selectVMFDialog
             // 
             this.selectVMFDialog.Filter = "Valve Map Files (*.vmf)|*.vmf";
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.buttonSearch);
+            this.panelControl3.Controls.Add(this.removeButton);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelControl3.Location = new System.Drawing.Point(415, 8);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(29, 217);
+            this.panelControl3.TabIndex = 6;
             // 
             // AssetsCopierForm
             // 
@@ -227,6 +239,8 @@
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +262,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.OpenFileDialog selectVMFDialog;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
     }
 }

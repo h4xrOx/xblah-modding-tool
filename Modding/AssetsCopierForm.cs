@@ -151,7 +151,7 @@ namespace windows_source1ide.Tools
         private void setStatusMessage(string message, int color)
         {
             statusLabel.Caption = message;
-            switch(color)
+            /*switch(color)
             {
                 case COLOR_ORANGE:
                     statusBar.Appearance.BackColor = Color.FromArgb(230,81,0);
@@ -166,8 +166,7 @@ namespace windows_source1ide.Tools
                 default:
                     statusBar.Appearance.BackColor = Color.FromArgb(13, 71, 161);
                     break;
-            }
-            
+            }*/
 
             Application.DoEvents();
         }

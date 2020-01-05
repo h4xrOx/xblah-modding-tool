@@ -81,6 +81,21 @@ namespace windows_source1ide.SourceSDK
                 }
             }
 
+            // Add skybox
+            SourceSDK.KeyValue skybox = map.findChild("skyname");
+            if (skybox != null)
+            {
+                string value = skybox.getValue().ToLower();
+
+                //setStatusMessage("Skybox added: " + value, COLOR_ORANGE);
+                string[] parts = new string[] { "up", "dn", "lf", "rt", "ft", "bk" };
+                foreach(string part in parts)
+                {
+                    assets.Add("materials/skybox/" + value + part + ".vmt");
+                    VMT.getAssets("materials/skybox/" + value + part + ".vmt", game, mod, sourceSDK);
+                }
+            }
+
             assets = assets.Distinct().ToList();
             return assets;
         }
