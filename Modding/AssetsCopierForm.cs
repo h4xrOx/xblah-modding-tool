@@ -170,5 +170,11 @@ namespace windows_source1ide.Tools
 
             Application.DoEvents();
         }
+
+        private void vmfList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            removeButton.Enabled = (vmfList.FocusedNode != null);
+            readMapButton.Enabled = (vmfList.FocusedNode != null);
+        }
     }
 }

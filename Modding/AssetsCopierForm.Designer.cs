@@ -71,6 +71,7 @@
             // readMapButton
             // 
             this.readMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.readMapButton.Enabled = false;
             this.readMapButton.Location = new System.Drawing.Point(369, 8);
             this.readMapButton.Margin = new System.Windows.Forms.Padding(8);
             this.readMapButton.Name = "readMapButton";
@@ -89,6 +90,7 @@
             this.vmfList.OptionsBehavior.Editable = false;
             this.vmfList.Size = new System.Drawing.Size(407, 217);
             this.vmfList.TabIndex = 5;
+            this.vmfList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.vmfList_FocusedNodeChanged);
             // 
             // treeListColumn3
             // 
@@ -101,6 +103,7 @@
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.removeButton.Enabled = false;
             this.removeButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("removeButton.ImageOptions.SvgImage")));
             this.removeButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.removeButton.Location = new System.Drawing.Point(3, 0);
