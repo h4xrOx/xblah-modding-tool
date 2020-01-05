@@ -118,5 +118,23 @@ namespace windows_source1ide.SourceSDK
             materials = materials.Where(x => x.Contains(".vmt")).Select(x => x.Replace("\u0005", "materials\\")).Distinct().ToList();
             return materials;
         }
+        public static void CreateManifest(Steam sourceSDK)
+        {
+            VPKManager vpkManager = new VPKManager(sourceSDK);
+            vpkManager.extractFile("particles/particles_manifest.txt");
+
+            string modPath = sourceSDK.GetModPath();
+
+            KeyValue manifest = KeyValue.readChunkfile(sourceSDK.GetModPath() + "\\particles\\particles_manifest.txt");
+            foreach (string file in Directory.GetFiles(sourceSDK.GetModPath() + "\\particles", "*.pcf", SearchOption.AllDirectories))
+            {
+                Uri path1 = new Uri(modPath + "\\");
+                Uri path2 = new Uri(file);
+                Uri diff = path1.MakeRelativeUri(path2);
+
+                manifest.addChild(new KeyValue("file", diff.OriginalString));
+            }
+            KeyValue.writeChunkFile(sourceSDK.GetModPath() + "\\particles\\particles_manifest.txt", manifest);
+        }
     }
 }

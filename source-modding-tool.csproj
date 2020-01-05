@@ -130,6 +130,7 @@
     <Compile Include="SourceSDK\VMF.cs" />
     <Compile Include="SourceSDK\VMT.cs" />
     <Compile Include="SourceSDK\VPK.cs" />
+    <Compile Include="SourceSDK\VPKManager.cs" />
     <Compile Include="SourceSDK\VTF.cs" />
     <Compile Include="Materials\TGASharpLib.cs" />
     <Compile Include="Modding\AssetsCopierForm.cs">

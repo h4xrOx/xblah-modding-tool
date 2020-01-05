@@ -402,17 +402,5 @@ namespace windows_source1ide
 
             return result;
         }
-
-        public void extractFileFromVPKs(Dictionary<string, VPK> vpks, string filePath, string startupPath, Steam sourceSDK)
-        {
-            foreach (KeyValuePair<string, VPK> vpk in vpks)
-            {
-                if (vpk.Value.files.ContainsKey(filePath))
-                {
-                    vpk.Value.extractFile(filePath, startupPath);
-                    return;
-                }
-            }
-        }
     }
 }

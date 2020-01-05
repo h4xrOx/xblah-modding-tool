@@ -26,7 +26,7 @@ namespace windows_source1ide.Tools
 
         string filter = "";
 
-        Dictionary<string, VPK> vpks = new Dictionary<string, VPK>();
+        VPKManager vpkManager;
 
         public VPKExplorer(Steam sourceSDK)
         {
@@ -40,9 +40,7 @@ namespace windows_source1ide.Tools
             gamePath = sourceSDK.GetGamePath();
             modPath = sourceSDK.GetModPath();
 
-            vpks.Clear();
-            foreach(string vpk in sourceSDK.getModMountedVPKs())
-                vpks.Add(vpk, new VPK(vpk, sourceSDK));
+            vpkManager = new VPKManager(sourceSDK);
 
             traverseFileTree();
             traverseDirectory("");
@@ -55,7 +53,7 @@ namespace windows_source1ide.Tools
 
         private void traverseFileTree()
         {
-            List<VPK.File> files = getAllFiles();
+            List<VPK.File> files = vpkManager.getAllFiles(filter);
 
             dirs.BeginUnboundLoad();
             dirs.Nodes.Clear();
@@ -128,7 +126,7 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<VPK.File> files = getAllFiles();
+            List<VPK.File> files = vpkManager.getAllFiles(filter);
 
             List<string> usedFiles = new List<string>();
 
@@ -178,7 +176,7 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<VPK.File> files = getAllFiles();
+            List<VPK.File> files = vpkManager.getAllFiles(filter);
 
             List<string> usedFiles = new List<string>();
 
@@ -222,21 +220,6 @@ namespace windows_source1ide.Tools
             }
 
             list.EndUnboundLoad();
-        }
-
-        private List<VPK.File> getAllFiles()
-        {
-            List<VPK.File> files = new List<VPK.File>();
-            foreach (VPK vpk in vpks.Values)
-                files.AddRange(vpk.files.Values);
-            files = files
-                .GroupBy(x => x.path)
-                .Select(y => y.First())
-                .Where(x => x.path.Contains(filter))
-                .OrderBy(x => x.path)
-                .ToList();
-
-            return files;
         }
 
         private void dirs_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -339,7 +322,7 @@ namespace windows_source1ide.Tools
 
             foreach(string filePath in values)
             {
-                sourceSDK.extractFileFromVPKs(vpks, filePath, Application.StartupPath, sourceSDK);
+                vpkManager.extractFile(filePath);
             }
 
             string modPath = sourceSDK.GetModPath();
@@ -359,7 +342,7 @@ namespace windows_source1ide.Tools
 
             foreach (string filePath in values)
             {
-                sourceSDK.extractFileFromVPKs(vpks, filePath, Application.StartupPath, sourceSDK);
+                vpkManager.extractFile(filePath);
                 Process.Start("notepad", modPath + "\\" + filePath);
             }
         }
@@ -385,7 +368,7 @@ namespace windows_source1ide.Tools
                     else
                     {
                         // It's a file
-                        filePopupMenu.ShowPopup(MousePosition);
+                        filePopMenu.ShowPopup(MousePosition);
                     }
                 }
             }

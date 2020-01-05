@@ -122,7 +122,8 @@ namespace windows_source1ide
 
             buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
-            barButtonHammer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            barLevelDesign.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+
             buttonHLMV.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             buttonFaceposer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             assetsCopierButton.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
@@ -344,8 +345,8 @@ namespace windows_source1ide
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ParticleManifestForm form = new ParticleManifestForm(sourceSDK);
-            form.ShowDialog();
+            PCF.CreateManifest(sourceSDK);
+            XtraMessageBox.Show("Particle manifest generated.");
         }
 
         private void buttonHammerPropper_ItemClick(object sender, ItemClickEventArgs e)
@@ -424,6 +425,11 @@ namespace windows_source1ide
         private void ModForm_Resize(object sender, EventArgs e)
         {
             
+        }
+
+        private void buttonOpenMapsrcFolder_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

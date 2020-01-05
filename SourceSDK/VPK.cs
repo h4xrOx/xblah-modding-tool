@@ -54,7 +54,7 @@ namespace windows_source1ide
                 Uri diff = path1.MakeRelativeUri(path2);
 
                 packName = diff.OriginalString;
-            } catch (Exception e)
+            } catch (Exception)
             {
                 packName = Path.GetFileName(fullPath);
             }
