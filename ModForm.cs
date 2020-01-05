@@ -415,5 +415,15 @@ namespace windows_source1ide
                 MaximizeBox = true;
             }
         }
+
+        private void buttonTest_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            game.Command("+mat_setvideomode 1920 1080 1");
+        }
+
+        private void ModForm_Resize(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
