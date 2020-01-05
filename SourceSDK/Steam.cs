@@ -202,6 +202,9 @@ namespace windows_source1ide
             if (game == "")
                 return -1;
 
+            if (!games.ContainsKey(game))
+                GetGamesList();
+
             string gamePath = games[game];
             if (File.Exists(gamePath + "\\steam_appid.txt"))
             {

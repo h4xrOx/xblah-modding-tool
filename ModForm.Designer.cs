@@ -38,6 +38,7 @@
             this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.buttonModStart = new DevExpress.XtraBars.BarButtonItem();
             this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonTest = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -84,7 +85,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
-            this.buttonTest = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -224,6 +224,13 @@
             this.buttonModStop.Name = "buttonModStop";
             this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.Caption = "Test";
+            this.buttonTest.Id = 57;
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonTest_ItemClick);
             // 
             // bar2
             // 
@@ -425,6 +432,7 @@
             // 
             this.barButtonHammer.Caption = "Hammer";
             this.barButtonHammer.Id = 16;
+            this.barButtonHammer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonHammer.ImageOptions.Image")));
             this.barButtonHammer.Name = "barButtonHammer";
             this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
             // 
@@ -490,6 +498,7 @@
             // 
             this.buttonHammerPropper.Caption = "Hammer (Propper)";
             this.buttonHammerPropper.Id = 51;
+            this.buttonHammerPropper.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonHammerPropper.ImageOptions.Image")));
             this.buttonHammerPropper.Name = "buttonHammerPropper";
             this.buttonHammerPropper.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHammerPropper_ItemClick);
             // 
@@ -624,13 +633,6 @@
             // imageCollection3
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
-            // 
-            // buttonTest
-            // 
-            this.buttonTest.Caption = "Test";
-            this.buttonTest.Id = 57;
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonTest_ItemClick);
             // 
             // ModForm
             // 

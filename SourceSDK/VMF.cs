@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,25 @@ namespace windows_source1ide.SourceSDK
                     if (v.StartsWith("#"))
                         v = v.Substring(1);
                     assets.Add("sound/" + v);
+                }
+            }
+
+            // Add particle assets
+            List<SourceSDK.KeyValue> effectsKVs = map.findChildren("effect_name");
+            List<string> effects = new List<string>();
+            List<string> pcfFiles = PCF.getAllFiles(sourceSDK);
+            foreach (SourceSDK.KeyValue kv in effectsKVs)
+            {
+                effects.Add(kv.getValue());
+            }
+            effects = effects.Distinct().ToList();
+            foreach(string pcf in pcfFiles)
+            {
+                if (PCF.containsEffect(effects, pcf))
+                {
+                    string asset = pcf.Substring(pcf.IndexOf("\\particles\\") + 1).Replace("\\", "/");
+                    assets.Add(asset);
+                    assets.AddRange(PCF.getAssets(asset, game, mod, sourceSDK));
                 }
             }
 

@@ -67,5 +67,56 @@ namespace windows_source1ide.SourceSDK
 
             Debugger.Break();
         }
+
+        public static List<string> getAssets(string relativePath, string game, string mod, Steam sourceSDK)
+        {
+            List<string> assets = new List<string>();
+            List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
+
+            foreach (string searchPath in searchPaths)
+            {
+                string particlePath = searchPath + "\\" + relativePath;
+
+                if (!File.Exists(particlePath))
+                    continue;
+
+                List<string> materials = getMaterials(particlePath, game, mod, sourceSDK);
+                foreach (string material in materials)
+                {
+                    assets.Add(material.Replace("\\", "/"));
+                    assets.AddRange(VMT.getAssets(material, game, mod, sourceSDK));
+                }
+
+                break;
+            }
+
+            return assets;
+        }
+
+        private static List<string> getMaterials(string fullPath, string game, string mod, Steam sourceSDK)
+        {
+            List<string> materials = new List<string>();
+
+            if (!File.Exists(fullPath))
+                return materials;
+
+            byte[] byteArray = File.ReadAllBytes(fullPath);
+
+            List<char> chars = new List<char>();
+            foreach (byte b in byteArray)
+            {
+                if (b == 0 && chars.Count > 0)
+                {
+                    string word = new String(chars.ToArray());
+                    materials.Add(word);
+                    chars.Clear();
+                }
+                else if (b > 0)
+                    chars.Add(Convert.ToChar(b));
+            }
+
+            materials = materials.Where(x => x.Contains(".vmt")).Select(x => x.Replace("\u0005", "materials\\")).Distinct().ToList();
+            return materials;
+        }
     }
 }

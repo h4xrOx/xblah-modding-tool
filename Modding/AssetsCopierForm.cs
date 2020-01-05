@@ -41,6 +41,9 @@ namespace windows_source1ide.Tools
         private void AssetsCopierForm_Load(object sender, EventArgs e)
         {
             sourceSDK = new Steam();
+            sourceSDK.setCurrentGame(game);
+            sourceSDK.setCurrentMod(mod);
+
             updateVMFList();
             selectVMFDialog.InitialDirectory = sourceSDK.GetModPath(game, mod);
         }

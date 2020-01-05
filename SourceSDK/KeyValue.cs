@@ -206,6 +206,9 @@ namespace windows_source1ide.SourceSDK
                         }
                     }
                 }
+            } else
+            {
+                throw new FileNotFoundException();
             }
 
             if (list.Count > 1)
