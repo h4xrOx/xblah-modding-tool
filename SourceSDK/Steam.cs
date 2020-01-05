@@ -400,57 +400,13 @@ namespace windows_source1ide
             return result;
         }
 
-        public List<string> listFilesInVPK(string fullPath)
+        public void extractFileFromVPKs(Dictionary<string, VPK> vpks, string filePath, string startupPath, Steam sourceSDK)
         {
-            string gamePath = GetGamePath();
-            string toolPath = gamePath + "\\bin\\vpk.exe";
-
-            List<string> files = new List<string>();
-
-            Process process = new Process
+            foreach (KeyValuePair<string, VPK> vpk in vpks)
             {
-                StartInfo = new ProcessStartInfo
+                if (vpk.Value.files.ContainsKey(filePath))
                 {
-                    FileName = toolPath,
-                    Arguments = "l \"" + fullPath + "\"",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-
-            process.Start();
-            while (!process.StandardOutput.EndOfStream)
-            {
-                string line = process.StandardOutput.ReadLine();
-                files.Add(line);
-            }
-
-            return files;
-        }
-
-        public void extractFileFromVPK(string vpk, string filePath, string startupPath, Steam sourceSDK)
-        {
-            string modPath = sourceSDK.GetModPath();
-            string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";
-
-            Directory.CreateDirectory(modPath + "/" + (filePath.Contains("/") ? filePath.Substring(0, filePath.LastIndexOf("/")) : ""));
-            string args = "-p \"" + vpk + "\" -d \"" + modPath + "/" + (filePath.Contains("/") ? filePath.Substring(0, filePath.LastIndexOf("/")) : "") + "\" -e \"" + filePath + "\" -s";
-            Process process = new Process();
-            process.StartInfo.FileName = toolPath;
-            process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
-        }
-
-        public void extractFileFromVPKs(Dictionary<string, List<string>> vpks, string filePath, string startupPath, Steam sourceSDK)
-        {
-            foreach (KeyValuePair<string, List<string>> vpk in vpks)
-            {
-                if (vpk.Value.Contains(filePath))
-                {
-                    extractFileFromVPK(vpk.Key.Replace(".vpk", "_dir.vpk"), filePath, startupPath, sourceSDK);
+                    vpk.Value.extractFile(filePath, startupPath);
                     return;
                 }
             }

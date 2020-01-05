@@ -50,9 +50,12 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.buttonDownload = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
@@ -61,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTextSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // dirs
@@ -71,7 +75,7 @@
             this.dirs.Location = new System.Drawing.Point(8, 8);
             this.dirs.Name = "dirs";
             this.dirs.OptionsBehavior.Editable = false;
-            this.dirs.Size = new System.Drawing.Size(260, 580);
+            this.dirs.Size = new System.Drawing.Size(260, 592);
             this.dirs.StateImageList = this.imageCollection1;
             this.dirs.TabIndex = 0;
             this.dirs.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.dirs_FocusedNodeChanged);
@@ -97,18 +101,23 @@
             // 
             this.list.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2,
-            this.treeListColumn3});
+            this.treeListColumn3,
+            this.treeListColumn4});
             this.list.Cursor = System.Windows.Forms.Cursors.Default;
             this.list.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list.Location = new System.Drawing.Point(0, 8);
+            this.list.MenuManager = this.barManager1;
             this.list.Name = "list";
             this.list.OptionsBehavior.Editable = false;
+            this.list.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.list.OptionsSelection.MultiSelect = true;
-            this.list.Size = new System.Drawing.Size(697, 580);
+            this.list.OptionsSelection.SelectNodesOnRightClick = true;
+            this.list.Size = new System.Drawing.Size(692, 592);
             this.list.StateImageList = this.imageCollection1;
             this.list.TabIndex = 1;
             this.list.SelectionChanged += new System.EventHandler(this.list_SelectionChanged);
             this.list.DoubleClick += new System.EventHandler(this.list_DoubleClick);
+            this.list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.list_MouseClick);
             // 
             // treeListColumn2
             // 
@@ -124,6 +133,7 @@
             this.treeListColumn3.Caption = "Type";
             this.treeListColumn3.FieldName = "type";
             this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.SortOrder = System.Windows.Forms.SortOrder.Descending;
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 1;
             // 
@@ -143,9 +153,10 @@
             this.buttonUp,
             this.textDirectory,
             this.textSearch,
-            this.buttonDownload,
-            this.buttonEdit});
-            this.barManager1.MaxItemId = 8;
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 11;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryTextSearch});
@@ -231,9 +242,6 @@
             this.bar3.DockCol = 0;
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.buttonDownload, DevExpress.XtraBars.BarItemPaintStyle.Standard),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.buttonEdit, false)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -245,36 +253,50 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(978, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(978, 28);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 627);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 636);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(978, 27);
+            this.barDockControlBottom.Size = new System.Drawing.Size(978, 18);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 596);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 608);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(978, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(978, 28);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 596);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Extract";
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "World";
+            this.barButtonItem2.Id = 9;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 31);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 28);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.dirs);
             this.splitContainerControl1.Panel1.Padding = new System.Windows.Forms.Padding(8, 8, 0, 8);
@@ -282,29 +304,34 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.list);
             this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(978, 596);
+            this.splitContainerControl1.Size = new System.Drawing.Size(978, 608);
             this.splitContainerControl1.SplitterPosition = 268;
             this.splitContainerControl1.TabIndex = 7;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // buttonDownload
+            // popupMenu1
             // 
-            this.buttonDownload.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.buttonDownload.Caption = "Download";
-            this.buttonDownload.Id = 6;
-            this.buttonDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.buttonDownload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonDownload_ItemClick);
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
             // 
-            // buttonEdit
+            // treeListColumn4
             // 
-            this.buttonEdit.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.buttonEdit.Caption = "Edit";
-            this.buttonEdit.Id = 7;
-            this.buttonEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.buttonEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.buttonEdit.Name = "buttonEdit";
+            this.treeListColumn4.Caption = "Source";
+            this.treeListColumn4.FieldName = "source";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 2;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Open";
+            this.barButtonItem3.Id = 10;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // VPKExplorer
             // 
@@ -328,6 +355,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTextSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,7 +384,11 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.BarEditItem textSearch;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryTextSearch;
-        private DevExpress.XtraBars.BarButtonItem buttonDownload;
-        private DevExpress.XtraBars.BarButtonItem buttonEdit;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.PopupMenu filePopupMenu;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

@@ -26,7 +26,7 @@ namespace windows_source1ide.Tools
 
         string filter = "";
 
-        Dictionary<string, List<string>> vpks = new Dictionary<string, List<string>>();
+        Dictionary<string, VPK> vpks = new Dictionary<string, VPK>();
 
         public VPKExplorer(Steam sourceSDK)
         {
@@ -42,7 +42,7 @@ namespace windows_source1ide.Tools
 
             vpks.Clear();
             foreach(string vpk in sourceSDK.getModMountedVPKs())
-                vpks.Add(vpk, sourceSDK.listFilesInVPK(vpk));
+                vpks.Add(vpk, new VPK(vpk, sourceSDK));
 
             traverseFileTree();
             traverseDirectory("");
@@ -55,7 +55,7 @@ namespace windows_source1ide.Tools
 
         private void traverseFileTree()
         {
-            List<string> files = getAllFiles();
+            List<VPK.File> files = getAllFiles();
 
             dirs.BeginUnboundLoad();
             dirs.Nodes.Clear();
@@ -69,9 +69,9 @@ namespace windows_source1ide.Tools
 
             for (int f = 0; f < files.Count; f++)
             {
-                string file = files[f];
+                VPK.File file = files[f];
 
-                string[] fileSplit = file.Split('/');
+                string[] fileSplit = file.path.Split('/');
 
                 while (stackString.Count >= fileSplit.Length)
                 {
@@ -128,20 +128,21 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<string> files = getAllFiles();
+            List<VPK.File> files = getAllFiles();
 
             List<string> usedFiles = new List<string>();
 
             for (int f = 0; f < files.Count; f++)
             {
-                string file = files[f];
+                VPK.File file = files[f];
+                string path = file.path;
 
-                if (!file.StartsWith(directory))
+                if (!path.StartsWith(directory))
                     continue;
 
-                file = file.Substring(directory.Length);
+                path = path.Substring(directory.Length);
 
-                string[] fileSplit = file.Split('/');
+                string[] fileSplit = path.Split('/');
 
                 if (fileSplit.Length > 1)
                 {
@@ -156,10 +157,10 @@ namespace windows_source1ide.Tools
                 } else
                 {
                     // It's a file
-                    TreeListNode node = list.AppendNode(new object[] { fileSplit[0], "File" }, null);
-                    node.Tag = directory + file;
+                    TreeListNode node = list.AppendNode(new object[] { fileSplit[0], file.type, file.pack }, null);
+                    node.Tag = directory + path;
                     node.StateImageIndex = 1;
-                    usedFiles.Add(file);
+                    usedFiles.Add(path);
                 } 
             }
 
@@ -177,18 +178,19 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<string> files = getAllFiles();
+            List<VPK.File> files = getAllFiles();
 
             List<string> usedFiles = new List<string>();
 
             for (int f = 0; f < files.Count; f++)
             {
-                string file = files[f];
+                VPK.File file = files[f];
+                string path = file.path;
 
-                if (!file.StartsWith(directory))
+                if (!path.StartsWith(directory))
                     continue;
 
-                string[] fileSplit = file.Split('/');
+                string[] fileSplit = path.Split('/');
 
                 string dir = "";
                 for (int j = 0; j < fileSplit.Length; j++)
@@ -204,17 +206,17 @@ namespace windows_source1ide.Tools
                         if (usedFiles.Contains(dir))
                             continue;
 
-                        TreeListNode node = list.AppendNode(new object[] { file, "Folder" }, null);
+                        TreeListNode node = list.AppendNode(new object[] { path, "Folder" }, null);
                         node.Tag = dir;
                         node.StateImageIndex = 0;
                         usedFiles.Add(dir);
                     } else
                     {
                         // It's a file
-                        TreeListNode node = list.AppendNode(new object[] { file, "File" }, null);
-                        node.Tag = file;
+                        TreeListNode node = list.AppendNode(new object[] { path, file.type, file.pack }, null);
+                        node.Tag = path;
                         node.StateImageIndex = 1;
-                        usedFiles.Add(file);
+                        usedFiles.Add(path);
                     }
                 }
             }
@@ -222,15 +224,17 @@ namespace windows_source1ide.Tools
             list.EndUnboundLoad();
         }
 
-        private List<string> getAllFiles()
+        private List<VPK.File> getAllFiles()
         {
-            List<string> files = new List<string>();
-            foreach (List<string> vpk in vpks.Values)
-                files.AddRange(vpk);
-            files = files.Distinct().ToList();
-
-            files = files.Where(x => x.Contains(filter)).ToList();
-            files.Sort();
+            List<VPK.File> files = new List<VPK.File>();
+            foreach (VPK vpk in vpks.Values)
+                files.AddRange(vpk.files.Values);
+            files = files
+                .GroupBy(x => x.path)
+                .Select(y => y.First())
+                .Where(x => x.path.Contains(filter))
+                .OrderBy(x => x.path)
+                .ToList();
 
             return files;
         }
@@ -271,7 +275,7 @@ namespace windows_source1ide.Tools
                 } else
                 {
                     // It's a file
-                    extractSelected();
+                    openSelected();
                 }
             }
         }
@@ -342,15 +346,60 @@ namespace windows_source1ide.Tools
             Process.Start(modPath);
         }
 
-        private void buttonDownload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void openSelected()
         {
-            extractSelected();
+            var nodes = list.Selection;
+            List<string> values = new List<string>();
+            foreach (TreeListNode node in nodes)
+            {
+                values.Add(node.Tag.ToString());
+            }
+
+            string modPath = sourceSDK.GetModPath();
+
+            foreach (string filePath in values)
+            {
+                sourceSDK.extractFileFromVPKs(vpks, filePath, Application.StartupPath, sourceSDK);
+                Process.Start("notepad", modPath + "\\" + filePath);
+            }
         }
 
         private void list_SelectionChanged(object sender, EventArgs e)
         {
-            buttonDownload.Enabled = (list.Selection.Count > 0);
-            buttonEdit.Enabled = (list.Selection.Count == 1);
+
+        }
+
+        private void list_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point pt = list.PointToClient(MousePosition);
+                TreeListHitInfo info = list.CalcHitInfo(pt);
+                if (info.HitInfoType == HitInfoType.Cell)
+                {
+                    string tag = info.Node.Tag.ToString();
+                    if (tag.EndsWith("/"))
+                    {
+                        // It's a folder
+                    }
+                    else
+                    {
+                        // It's a file
+                        filePopupMenu.ShowPopup(MousePosition);
+                    }
+                }
+            }
+                
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            extractSelected();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            openSelected();
         }
     }
 }
