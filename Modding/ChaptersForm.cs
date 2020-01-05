@@ -70,6 +70,18 @@ namespace windows_source1ide
             galleryControl1.Gallery.Groups[0].Items.Clear();
             foreach (Chapter chapter in chapters)
                 galleryControl1.Gallery.Groups[0].Items.Add(new DevExpress.XtraBars.Ribbon.GalleryItem(chapter.thumbnail, "Chapter " + (chapters.IndexOf(chapter) + 1), chapter.title));
+
+            if (galleryControl1.Gallery.Groups[0].Items.Count > 0)
+            {
+                galleryControl1.Gallery.SetItemCheck(galleryControl1.Gallery.Groups[0].Items[0], true);
+            } else
+            {
+                table.Visible = false;
+
+                buttonLeft.Enabled = false;
+                buttonRight.Enabled = false;
+                buttonRemove.Enabled = false;
+            }
         }
 
         private void readChapters()
@@ -247,6 +259,7 @@ namespace windows_source1ide
 
                 chapters[index].thumbnail = target;
                 pictureThumbnail.Image = target;
+                galleryControl1.Gallery.GetCheckedItem().ImageOptions.Image = target;
 
                 writeChapterThumbnail(index);
             }
@@ -500,26 +513,7 @@ namespace windows_source1ide
                 int index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
 
                 chapters.RemoveAt(index);
-                galleryControl1.Gallery.Groups[0].Items.RemoveAt(index);
-
-                DevExpress.XtraBars.Ribbon.GalleryItem galleryItem = galleryControl1.Gallery.GetCheckedItem();
-
-                if (galleryItem != null)
-                {
-                    index = galleryControl1.Gallery.Groups[0].Items.IndexOf(galleryControl1.Gallery.GetCheckedItem());
-
-                    buttonLeft.Enabled = (index > 0);
-                    buttonRight.Enabled = (index < chapters.Count - 1);
-                    buttonRemove.Enabled = true;
-                    table.Visible = true;
-                }
-                else
-                {
-                    buttonLeft.Enabled = false;
-                    buttonRight.Enabled = false;
-                    buttonRemove.Enabled = false;
-                    table.Visible = false;
-                }
+                updateChaptersList();
             }
         }
 

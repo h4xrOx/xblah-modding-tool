@@ -83,10 +83,12 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -603,6 +605,10 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // imageCollection3
+            // 
+            this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
+            // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,6 +629,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -682,5 +689,6 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraBars.BarButtonItem barButtonRunFullscreen;
         private System.Windows.Forms.Timer modProcessUpdater;
+        private DevExpress.Utils.ImageCollection imageCollection3;
     }
 }

@@ -39,18 +39,21 @@
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.saveButton = new DevExpress.XtraEditors.SimpleButton();
             this.removeButton = new DevExpress.XtraEditors.SimpleButton();
             this.addButton = new DevExpress.XtraEditors.SimpleButton();
-            this.saveButton = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.buttonUp = new DevExpress.XtraEditors.SimpleButton();
+            this.buttonDown = new DevExpress.XtraEditors.SimpleButton();
+            this.buttonEdit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // list
@@ -65,12 +68,15 @@
             this.list.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list.Location = new System.Drawing.Point(8, 8);
             this.list.Name = "list";
+            this.list.OptionsBehavior.Editable = false;
+            this.list.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.list.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2,
             this.repositoryItemCheckEdit3});
-            this.list.Size = new System.Drawing.Size(670, 328);
+            this.list.Size = new System.Drawing.Size(641, 336);
             this.list.TabIndex = 0;
+            this.list.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.list_FocusedNodeChanged);
             this.list.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.list_CellValueChanged);
             // 
             // treeListColumn1
@@ -137,43 +143,19 @@
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.removeButton);
-            this.panelControl1.Controls.Add(this.addButton);
             this.panelControl1.Controls.Add(this.saveButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 344);
+            this.panelControl1.Location = new System.Drawing.Point(8, 344);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(686, 39);
+            this.panelControl1.Size = new System.Drawing.Size(670, 31);
             this.panelControl1.TabIndex = 1;
-            // 
-            // removeButton
-            // 
-            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeButton.Location = new System.Drawing.Point(91, 8);
-            this.removeButton.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(75, 23);
-            this.removeButton.TabIndex = 2;
-            this.removeButton.Text = "Remove";
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addButton.Location = new System.Drawing.Point(8, 8);
-            this.addButton.Margin = new System.Windows.Forms.Padding(8);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 1;
-            this.addButton.Text = "Add";
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveButton.Location = new System.Drawing.Point(603, 8);
+            this.saveButton.Location = new System.Drawing.Point(595, 8);
             this.saveButton.Margin = new System.Windows.Forms.Padding(8);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -181,26 +163,96 @@
             this.saveButton.Text = "Save";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // panelControl2
+            // removeButton
             // 
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.list);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 0);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Padding = new System.Windows.Forms.Padding(8);
-            this.panelControl2.Size = new System.Drawing.Size(686, 344);
-            this.panelControl2.TabIndex = 2;
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.removeButton.Enabled = false;
+            this.removeButton.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.removeButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("removeButton.ImageOptions.SvgImage")));
+            this.removeButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.removeButton.Location = new System.Drawing.Point(6, 58);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(23, 23);
+            this.removeButton.TabIndex = 2;
+            this.removeButton.Text = "Remove";
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addButton.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.addButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("addButton.ImageOptions.SvgImage")));
+            this.addButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.addButton.Location = new System.Drawing.Point(6, 116);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(23, 23);
+            this.addButton.TabIndex = 1;
+            this.addButton.Text = "Add";
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.buttonEdit);
+            this.panelControl3.Controls.Add(this.buttonUp);
+            this.panelControl3.Controls.Add(this.buttonDown);
+            this.panelControl3.Controls.Add(this.removeButton);
+            this.panelControl3.Controls.Add(this.addButton);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelControl3.Location = new System.Drawing.Point(649, 8);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(29, 336);
+            this.panelControl3.TabIndex = 1;
+            // 
+            // buttonUp
+            // 
+            this.buttonUp.Enabled = false;
+            this.buttonUp.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.buttonUp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonUp.ImageOptions.SvgImage")));
+            this.buttonUp.Location = new System.Drawing.Point(6, 0);
+            this.buttonUp.Name = "buttonUp";
+            this.buttonUp.Size = new System.Drawing.Size(23, 23);
+            this.buttonUp.TabIndex = 3;
+            this.buttonUp.Text = "Up";
+            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
+            // 
+            // buttonDown
+            // 
+            this.buttonDown.Enabled = false;
+            this.buttonDown.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.buttonDown.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonDown.ImageOptions.SvgImage")));
+            this.buttonDown.Location = new System.Drawing.Point(6, 29);
+            this.buttonDown.Name = "buttonDown";
+            this.buttonDown.Size = new System.Drawing.Size(23, 23);
+            this.buttonDown.TabIndex = 4;
+            this.buttonDown.Text = "Down";
+            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEdit.Enabled = false;
+            this.buttonEdit.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.buttonEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.buttonEdit.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.buttonEdit.Location = new System.Drawing.Point(6, 87);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(23, 23);
+            this.buttonEdit.TabIndex = 5;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // GamemenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 383);
-            this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.list);
+            this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GamemenuForm";
+            this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Game Menu";
             this.Load += new System.EventHandler(this.GamemenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.list)).EndInit();
@@ -209,8 +261,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -227,9 +279,12 @@
         private DevExpress.XtraEditors.SimpleButton removeButton;
         private DevExpress.XtraEditors.SimpleButton addButton;
         private DevExpress.XtraEditors.SimpleButton saveButton;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.SimpleButton buttonUp;
+        private DevExpress.XtraEditors.SimpleButton buttonDown;
+        private DevExpress.XtraEditors.SimpleButton buttonEdit;
     }
 }

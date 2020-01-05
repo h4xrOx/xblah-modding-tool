@@ -52,6 +52,7 @@
     <Reference Include="DevExpress.XtraDialogs.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -77,6 +78,12 @@
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Materials\GaussianBlur.cs" />
+    <Compile Include="Modding\GamemenuDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\GamemenuDialog.Designer.cs">
+      <DependentUpon>GamemenuDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\GamemenuDialog.resx">
+      <DependentUpon>GamemenuDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModForm.resx">
       <DependentUpon>ModForm.cs</DependentUpon>

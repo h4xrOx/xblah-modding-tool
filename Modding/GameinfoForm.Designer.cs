@@ -325,7 +325,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 463F));
             this.tableLayoutPanel3.Controls.Add(this.textType, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelControl7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.switchDifficulty, 1, 1);
