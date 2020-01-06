@@ -21,7 +21,7 @@ namespace windows_source1ide
                 vpks.Add(vpk, new VPK(vpk, sourceSDK));
         }
 
-        public List<VPK.File> getAllFiles(string filter)
+        public List<VPK.File> getAllFiles()
         {
             List<VPK.File> files = new List<VPK.File>();
             foreach (VPK vpk in vpks.Values)
@@ -29,7 +29,6 @@ namespace windows_source1ide
             files = files
                 .GroupBy(x => x.path)
                 .Select(y => y.First())
-                .Where(x => x.path.Contains(filter))
                 .OrderBy(x => x.path)
                 .ToList();
 

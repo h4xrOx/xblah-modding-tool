@@ -24,6 +24,8 @@ namespace windows_source1ide.Tools
         Stack<string> previousDirectories = new Stack<string>();
         Stack<string> nextDirectories = new Stack<string>();
 
+        List<VPK.File> files = new List<VPK.File>();
+
         string filter = "";
 
         VPKManager vpkManager;
@@ -42,6 +44,7 @@ namespace windows_source1ide.Tools
 
             vpkManager = new VPKManager(sourceSDK);
 
+            listFiles();
             traverseFileTree();
             traverseDirectory("");
         }
@@ -51,10 +54,13 @@ namespace windows_source1ide.Tools
             List<Folder> folders = new List<Folder>();
         }
 
+        private void listFiles()
+        {
+            files = vpkManager.getAllFiles();
+        }
+
         private void traverseFileTree()
         {
-            List<VPK.File> files = vpkManager.getAllFiles(filter);
-
             dirs.BeginUnboundLoad();
             dirs.Nodes.Clear();
 
@@ -126,8 +132,6 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<VPK.File> files = vpkManager.getAllFiles(filter);
-
             List<string> usedFiles = new List<string>();
 
             for (int f = 0; f < files.Count; f++)
@@ -176,13 +180,13 @@ namespace windows_source1ide.Tools
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<VPK.File> files = vpkManager.getAllFiles(filter);
+            List<VPK.File> filtered = files.Where(x => x.path.Contains(filter)).ToList();
 
             List<string> usedFiles = new List<string>();
 
-            for (int f = 0; f < files.Count; f++)
+            for (int f = 0; f < filtered.Count; f++)
             {
-                VPK.File file = files[f];
+                VPK.File file = filtered[f];
                 string path = file.path;
 
                 if (!path.StartsWith(directory))
