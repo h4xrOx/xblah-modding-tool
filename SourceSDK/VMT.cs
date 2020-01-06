@@ -31,7 +31,6 @@ namespace windows_source1ide.SourceSDK
                 textures.Add(material.getChild("$parallaxmap"));
                 textures.Add(material.getChild("$basetexture2"));
                 textures.Add(material.getChild("%tooltexture"));
-                textures.Add(material.getChild("$blendmodulatetexture"));
 
                 foreach (SourceSDK.KeyValue textureKv in textures)
                 {
