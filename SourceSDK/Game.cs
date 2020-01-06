@@ -99,7 +99,7 @@ namespace windows_source1ide.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -fullscreen";
+            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -fullscreen -width " + Screen.PrimaryScreen.Bounds.Width + " -height " + Screen.PrimaryScreen.Bounds.Height;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
