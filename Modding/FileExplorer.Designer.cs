@@ -51,9 +51,11 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.filePopExtractButton = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.filePopOpenButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.filePopDeleteButton = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filePopMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).BeginInit();
@@ -161,10 +163,12 @@
             this.buttonUp,
             this.textDirectory,
             this.textSearch,
-            this.barButtonItem1,
+            this.filePopExtractButton,
             this.barButtonItem2,
-            this.barButtonItem3});
-            this.barManager1.MaxItemId = 11;
+            this.filePopOpenButton,
+            this.barButtonItem4,
+            this.filePopDeleteButton});
+            this.barManager1.MaxItemId = 13;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryTextSearch});
@@ -287,13 +291,13 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
             // 
-            // barButtonItem1
+            // filePopExtractButton
             // 
-            this.barButtonItem1.Caption = "Extract";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.filePopExtractButton.Caption = "Extract";
+            this.filePopExtractButton.Id = 8;
+            this.filePopExtractButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filePopExtractButton.ImageOptions.SvgImage")));
+            this.filePopExtractButton.Name = "filePopExtractButton";
+            this.filePopExtractButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopExtractButton_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -301,13 +305,27 @@
             this.barButtonItem2.Id = 9;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barButtonItem3
+            // filePopOpenButton
             // 
-            this.barButtonItem3.Caption = "Open";
-            this.barButtonItem3.Id = 10;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            this.filePopOpenButton.Caption = "Open";
+            this.filePopOpenButton.Id = 10;
+            this.filePopOpenButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filePopOpenButton.ImageOptions.SvgImage")));
+            this.filePopOpenButton.Name = "filePopOpenButton";
+            this.filePopOpenButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopOpenButton_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 11;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // filePopDeleteButton
+            // 
+            this.filePopDeleteButton.Caption = "Delete";
+            this.filePopDeleteButton.Id = 12;
+            this.filePopDeleteButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filePopDeleteButton.ImageOptions.SvgImage")));
+            this.filePopDeleteButton.Name = "filePopDeleteButton";
+            this.filePopDeleteButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopDeleteButton_ItemClick);
             // 
             // splitContainerControl1
             // 
@@ -328,8 +346,9 @@
             // filePopMenu
             // 
             this.filePopMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.filePopOpenButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.filePopExtractButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.filePopDeleteButton)});
             this.filePopMenu.Manager = this.barManager1;
             this.filePopMenu.Name = "filePopMenu";
             // 
@@ -345,7 +364,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VPKExplorer";
-            this.Text = "VPK Explorer";
+            this.Text = "File Explorer";
             this.Load += new System.EventHandler(this.VPKExplorer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
@@ -384,10 +403,12 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.BarEditItem textSearch;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryTextSearch;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem filePopExtractButton;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
         private DevExpress.XtraBars.PopupMenu filePopMenu;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem filePopOpenButton;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem filePopDeleteButton;
     }
 }

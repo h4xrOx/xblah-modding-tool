@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,20 @@ namespace windows_source1ide
         public VPKManager(Steam sourceSDK)
         {
             this.sourceSDK = sourceSDK;
-            vpks =  new Dictionary<string, VPK>();
+            Reload();
+        }
 
-            foreach (string vpk in sourceSDK.getModMountedVPKs())
-                vpks.Add(vpk, new VPK(vpk, sourceSDK));
+        public void Reload()
+        {
+            vpks = new Dictionary<string, VPK>();
+
+            foreach (string searchPath in sourceSDK.getModMountedPaths())
+            {
+                if (searchPath.EndsWith(".vpk"))
+                    vpks.Add(searchPath, new VPK(searchPath, sourceSDK));
+                else
+                    vpks.Add(searchPath, new MountedFolder(searchPath, sourceSDK));
+            }
         }
 
         public List<VPK.File> getAllFiles()
@@ -33,6 +44,15 @@ namespace windows_source1ide
                 .ToList();
 
             return files;
+        }
+
+        public string getExtractedPath(string filePath)
+        {
+            foreach (string searchPath in sourceSDK.getModSearchPaths())
+                if (File.Exists(searchPath + "\\" + filePath))
+                    return searchPath + "\\" + filePath;
+
+            return "";
         }
 
         public void extractFile(string filePath)

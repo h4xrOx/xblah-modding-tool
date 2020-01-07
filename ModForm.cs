@@ -15,7 +15,6 @@ using System.Diagnostics;
 using DevExpress.XtraBars;
 using windows_source1ide.Tools;
 using windows_source1ide.SourceSDK;
-using windows_source1ide.Particles;
 using System.Threading;
 
 namespace windows_source1ide
@@ -123,13 +122,11 @@ namespace windows_source1ide
             buttonModStart.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barMod.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             barLevelDesign.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            barParticles.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
 
             buttonHLMV.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
             buttonFaceposer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
-            assetsCopierButton.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
-            buttonVPKExplorer.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
-            barParticles.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
-            buttonHLMV.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
+            
             buttonHammerPropper.Enabled = (modsCombo.EditValue != null && modsCombo.EditValue.ToString() != "");
         }
 
@@ -419,7 +416,7 @@ namespace windows_source1ide
 
         private void buttonTest_ItemClick(object sender, ItemClickEventArgs e)
         {
-            game.Command("+mat_setvideomode 1920 1080 1");
+
         }
 
         private void ModForm_Resize(object sender, EventArgs e)
@@ -430,6 +427,12 @@ namespace windows_source1ide
         private void buttonOpenMapsrcFolder_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void buttonMaterialEditor_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MaterialEditor form = new MaterialEditor("", sourceSDK);
+            form.ShowDialog();
         }
     }
 }

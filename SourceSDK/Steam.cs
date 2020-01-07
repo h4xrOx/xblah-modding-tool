@@ -347,7 +347,7 @@ namespace windows_source1ide
 
         public List<string> getModMountedVPKs()
         {
-            string modPath = GetModPath();
+            /*string modPath = GetModPath();
             string gamePath = GetGamePath();
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
 
@@ -363,7 +363,45 @@ namespace windows_source1ide
                     result.Add(value);
                 }
             }
-            return result;
+            return result;*/
+
+            return getModMountedPaths().Where(x => x.EndsWith(".vpk")).ToList();
+        }
+
+        public List<string> getModMountedPaths()
+        {
+            return getModMountedPaths(currentGame, currentMod);
+        }
+
+        public List<string> getModMountedPaths(string game, string mod)
+        {
+            List<string> result = new List<string>();
+
+            string gamePath = GetGamePath(game);
+            string modPath = GetModPath(game, mod);
+
+            SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+
+            SourceSDK.KeyValue searchPaths = gameInfo.findChild("searchpaths");
+            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildrenList())
+            {
+                string[] keys = searchPath.getKey().Split('+');
+
+                if (!keys.Contains("game"))
+                    continue;
+
+                string value = searchPath.getValue();
+                value = value.Replace("/", "\\");
+                value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
+                value = value.Replace("|gameinfo_path|", modPath + "\\");
+                value = value.Replace("\\\\", "\\");
+                if (value.EndsWith("/"))
+                    value = value.Substring(0, value.Length - 1);
+
+                result.Add(value);
+            }
+
+            return result.Distinct().ToList();
         }
 
         public List<string> getModSearchPaths()
@@ -373,7 +411,7 @@ namespace windows_source1ide
 
         public List<string> getModSearchPaths(string game, string mod)
         {
-            List<string> result = new List<string>();
+            /*List<string> result = new List<string>();
 
             string gamePath = GetGamePath(game);
             string modPath = GetModPath(game,mod);
@@ -400,7 +438,9 @@ namespace windows_source1ide
                     result.Add(value);
             }
 
-            return result;
+            return result;*/
+
+            return getModMountedPaths(game, mod).Where(x => Directory.Exists(x)).ToList();
         }
     }
 }

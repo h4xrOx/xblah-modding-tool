@@ -85,6 +85,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
+            this.buttonMaterialEditor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -144,9 +145,10 @@
             this.buttonOpenPrefabsFolder,
             this.buttonOpenMapsrcFolder,
             this.barButtonRunFullscreen,
-            this.buttonTest});
+            this.buttonTest,
+            this.buttonMaterialEditor});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 58;
+            this.barManager1.MaxItemId = 59;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -522,7 +524,8 @@
             this.barMaterials.Caption = "Materials";
             this.barMaterials.Id = 48;
             this.barMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonMaterialEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit, true)});
             this.barMaterials.Name = "barMaterials";
             // 
             // buttonVTFEdit
@@ -544,6 +547,7 @@
             // 
             this.barButtonItem2.Caption = "Generate manifest";
             this.barButtonItem2.Id = 50;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -635,6 +639,13 @@
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
             // 
+            // buttonMaterialEditor
+            // 
+            this.buttonMaterialEditor.Caption = "Material Editor";
+            this.buttonMaterialEditor.Id = 58;
+            this.buttonMaterialEditor.Name = "buttonMaterialEditor";
+            this.buttonMaterialEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonMaterialEditor_ItemClick);
+            // 
             // ModForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,5 +729,6 @@
         private System.Windows.Forms.Timer modProcessUpdater;
         private DevExpress.Utils.ImageCollection imageCollection3;
         private DevExpress.XtraBars.BarButtonItem buttonTest;
+        private DevExpress.XtraBars.BarButtonItem buttonMaterialEditor;
     }
 }

@@ -13,7 +13,7 @@ namespace windows_source1ide
         public string fullPath;
         public Dictionary<string, File> files;
 
-        Steam sourceSDK;
+        internal Steam sourceSDK;
 
         public class File
         {
@@ -22,11 +22,53 @@ namespace windows_source1ide
             public string type = "";
         }
 
+        public VPK()
+        {
+
+        }
+
         public VPK(string fullPath, Steam sourceSDK)
         {
             this.fullPath = fullPath;
             this.sourceSDK = sourceSDK;
 
+            ListFiles();
+        }
+
+        internal string GetPackName()
+        {
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+            string packName;
+            try
+            {
+                if (fullPath.Contains(modPath))
+                {
+                    Uri path1 = new Uri(modPath + "\\");
+                    Uri path2 = new Uri(fullPath);
+                    Uri diff = path1.MakeRelativeUri(path2);
+                    packName = "|gameinfo_path|" + diff.OriginalString;
+                }
+                else
+                {
+                    Uri path1 = new Uri(gamePath + "\\");
+                    Uri path2 = new Uri(fullPath);
+                    Uri diff = path1.MakeRelativeUri(path2);
+                    packName = "|all_source_engine_paths|" + diff.OriginalString;
+                }
+
+            }
+            catch (Exception)
+            {
+                packName = Path.GetFileName(fullPath);
+            }
+
+            return packName;
+        }
+
+        internal virtual void ListFiles()
+        {
             string gamePath = sourceSDK.GetGamePath();
             string toolPath = gamePath + "\\bin\\vpk.exe";
 
@@ -46,22 +88,11 @@ namespace windows_source1ide
 
             process.Start();
 
-            string packName;
-            try
-            {
-                Uri path1 = new Uri(gamePath + "\\");
-                Uri path2 = new Uri(fullPath);
-                Uri diff = path1.MakeRelativeUri(path2);
-
-                packName = diff.OriginalString;
-            } catch (Exception)
-            {
-                packName = Path.GetFileName(fullPath);
-            }
+            string packName = GetPackName();
 
             while (!process.StandardOutput.EndOfStream)
             {
-                string line = process.StandardOutput.ReadLine();
+                string line = process.StandardOutput.ReadLine().ToLower();
 
                 string extension = new FileInfo(line).Extension;
 
@@ -75,7 +106,7 @@ namespace windows_source1ide
             }
         }
 
-        public void extractFile(string filePath, string startupPath)
+        public virtual void extractFile(string filePath, string startupPath)
         {
             string modPath = sourceSDK.GetModPath();
             string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";

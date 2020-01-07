@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using System.Diagnostics;
 using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraTreeList;
+using System.IO;
 
 namespace windows_source1ide.Tools
 {
@@ -46,7 +47,7 @@ namespace windows_source1ide.Tools
 
             listFiles();
             traverseFileTree();
-            traverseDirectory("");
+            traverseDirectory(currentDirectory);
         }
 
         class Folder {
@@ -56,6 +57,13 @@ namespace windows_source1ide.Tools
 
         private void listFiles()
         {
+            listFiles(false);
+        }
+
+        private void listFiles(bool reload)
+        {
+            if (reload)
+                vpkManager.Reload();
             files = vpkManager.getAllFiles();
         }
 
@@ -331,24 +339,39 @@ namespace windows_source1ide.Tools
 
             string modPath = sourceSDK.GetModPath();
             Process.Start(modPath);
+
+            listFiles(true);
+            traverseDirectory(currentDirectory);
+        }
+
+        private List<string> getSelectedPaths()
+        {
+            List<string> selectedPaths = new List<string>();
+            foreach (TreeListNode node in list.Selection)
+                selectedPaths.Add(node.Tag.ToString());
+
+            return selectedPaths;
         }
 
         private void openSelected()
         {
-            var nodes = list.Selection;
-            List<string> values = new List<string>();
-            foreach (TreeListNode node in nodes)
-            {
-                values.Add(node.Tag.ToString());
-            }
-
             string modPath = sourceSDK.GetModPath();
 
-            foreach (string filePath in values)
+            foreach (string filePath in getSelectedPaths())
             {
-                vpkManager.extractFile(filePath);
-                Process.Start("notepad", modPath + "\\" + filePath);
+                string extractedPath = vpkManager.getExtractedPath(filePath);
+
+                if (extractedPath == "")
+                {
+                    vpkManager.extractFile(filePath);
+                    extractedPath = modPath + "\\" + filePath;
+                }
+
+                Process.Start("notepad", extractedPath);
             }
+
+            listFiles(true);
+            traverseDirectory(currentDirectory);
         }
 
         private void list_SelectionChanged(object sender, EventArgs e)
@@ -360,33 +383,56 @@ namespace windows_source1ide.Tools
         {
             if (e.Button == MouseButtons.Right)
             {
-                Point pt = list.PointToClient(MousePosition);
-                TreeListHitInfo info = list.CalcHitInfo(pt);
-                if (info.HitInfoType == HitInfoType.Cell)
+                bool hasFolders = false;
+                bool hasFiles = false;
+                bool fileExists = true;
+
+                List<string> selectedPaths = getSelectedPaths();
+                foreach(string filePath in selectedPaths)
                 {
-                    string tag = info.Node.Tag.ToString();
-                    if (tag.EndsWith("/"))
-                    {
-                        // It's a folder
-                    }
+                    if (filePath.EndsWith("/"))
+                        hasFolders = true;
                     else
                     {
-                        // It's a file
-                        filePopMenu.ShowPopup(MousePosition);
+                        fileExists = fileExists && vpkManager.getExtractedPath(filePath) != "";
+                        hasFiles = true;
                     }
                 }
+
+                filePopDeleteButton.Enabled = !hasFolders & fileExists;
+                filePopExtractButton.Enabled = !hasFolders;
+                filePopOpenButton.Enabled = selectedPaths.Count == 1;
+                filePopMenu.ShowPopup(MousePosition);
             }
                 
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void deleteSelected()
         {
-            extractSelected();
+            List<string> selectedPaths = getSelectedPaths();
+            foreach (string filePath in selectedPaths)
+            {
+                string fullPath = vpkManager.getExtractedPath(filePath);
+                File.Delete(fullPath);
+            }
+
+            listFiles(true);
+            traverseDirectory(currentDirectory);
         }
 
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void filePopDeleteButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            deleteSelected();
+        }
+
+        private void filePopOpenButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             openSelected();
+        }
+
+        private void filePopExtractButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            extractSelected();
         }
     }
 }
