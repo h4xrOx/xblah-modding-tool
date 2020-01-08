@@ -70,6 +70,7 @@
             this.buttonVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
             this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
             this.barMaterials = new DevExpress.XtraBars.BarSubItem();
+            this.buttonMaterialEditor = new DevExpress.XtraBars.BarButtonItem();
             this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barParticles = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -85,7 +86,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
-            this.buttonMaterialEditor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -399,7 +399,7 @@
             // 
             // buttonVPKExplorer
             // 
-            this.buttonVPKExplorer.Caption = "VPK Explorer";
+            this.buttonVPKExplorer.Caption = "File Explorer";
             this.buttonVPKExplorer.Id = 33;
             this.buttonVPKExplorer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.Image")));
             this.buttonVPKExplorer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.LargeImage")));
@@ -528,6 +528,13 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit, true)});
             this.barMaterials.Name = "barMaterials";
             // 
+            // buttonMaterialEditor
+            // 
+            this.buttonMaterialEditor.Caption = "Material Editor";
+            this.buttonMaterialEditor.Id = 58;
+            this.buttonMaterialEditor.Name = "buttonMaterialEditor";
+            this.buttonMaterialEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonMaterialEditor_ItemClick);
+            // 
             // buttonVTFEdit
             // 
             this.buttonVTFEdit.Caption = "VTFEdit (legacy)";
@@ -638,13 +645,6 @@
             // imageCollection3
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
-            // 
-            // buttonMaterialEditor
-            // 
-            this.buttonMaterialEditor.Caption = "Material Editor";
-            this.buttonMaterialEditor.Id = 58;
-            this.buttonMaterialEditor.Name = "buttonMaterialEditor";
-            this.buttonMaterialEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonMaterialEditor_ItemClick);
             // 
             // ModForm
             // 

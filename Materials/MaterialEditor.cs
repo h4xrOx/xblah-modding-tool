@@ -31,6 +31,8 @@ namespace windows_source1ide
             this.sourceSDK = sourceSDK;
             InitializeComponent();
 
+            MessageBox.Show(relativePath);
+
             textures.Add("basetexture", new Texture());
             textures.Add("basetexture2", new Texture());
             textures.Add("bumpmap", new Texture());
@@ -87,12 +89,8 @@ namespace windows_source1ide
                     Color baseColor = basetexture.GetPixel(i, j);
                     Color baseColor2 = basetexture2.GetPixel(i, j);
 
-                    //float xdiff = (1f - (Math.Max((float)i - (float)width / 2f, 0f) / ((float)width / 2f)));
-
                     float baseMultiply = Math.Min(Math.Max(2.5f - (float)(i + j) / (width + height) * 4, 0),1);
                     float baseMultiply2 = 1 - baseMultiply;
-
-                    // * (0.5f + ((j - height / 2f) / height))
 
                     Color toolColor = Color.FromArgb(
                         (int)(baseColor.R * baseMultiply + baseColor2.R * baseMultiply2),

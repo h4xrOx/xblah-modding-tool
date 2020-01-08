@@ -51,6 +51,7 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.buttonCreateToolTexture = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
@@ -62,23 +63,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureToolTexture
             // 
-            this.pictureToolTexture.Location = new System.Drawing.Point(816, 12);
+            this.pictureToolTexture.Location = new System.Drawing.Point(6, 6);
+            this.pictureToolTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureToolTexture.Name = "pictureToolTexture";
             this.pictureToolTexture.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureToolTexture.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pictureToolTexture.Properties.Tag = "tooltexture";
-            this.pictureToolTexture.Size = new System.Drawing.Size(256, 256);
+            this.pictureToolTexture.Size = new System.Drawing.Size(128, 128);
             this.pictureToolTexture.TabIndex = 0;
             this.pictureToolTexture.Tag = "tooltexture";
             this.pictureToolTexture.Click += new System.EventHandler(this.picture_Click);
             // 
             // pictureBaseTexture
             // 
-            this.pictureBaseTexture.Location = new System.Drawing.Point(146, 12);
+            this.pictureBaseTexture.Location = new System.Drawing.Point(142, 6);
+            this.pictureBaseTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBaseTexture.Name = "pictureBaseTexture";
             this.pictureBaseTexture.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureBaseTexture.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -90,7 +95,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(154, 154);
+            this.labelControl1.Location = new System.Drawing.Point(142, 141);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(62, 13);
             this.labelControl1.TabIndex = 2;
@@ -98,7 +103,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(395, 352);
+            this.labelControl2.Location = new System.Drawing.Point(17, 341);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(27, 13);
             this.labelControl2.TabIndex = 3;
@@ -106,7 +111,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(690, 154);
+            this.labelControl3.Location = new System.Drawing.Point(855, 159);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(112, 13);
             this.labelControl3.TabIndex = 4;
@@ -114,7 +119,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(422, 154);
+            this.labelControl4.Location = new System.Drawing.Point(587, 159);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(46, 13);
             this.labelControl4.TabIndex = 5;
@@ -122,7 +127,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(556, 154);
+            this.labelControl5.Location = new System.Drawing.Point(721, 159);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(58, 13);
             this.labelControl5.TabIndex = 6;
@@ -130,7 +135,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(288, 154);
+            this.labelControl7.Location = new System.Drawing.Point(278, 141);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(71, 13);
             this.labelControl7.TabIndex = 8;
@@ -138,7 +143,7 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(816, 274);
+            this.labelControl8.Location = new System.Drawing.Point(6, 141);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(59, 13);
             this.labelControl8.TabIndex = 9;
@@ -146,7 +151,8 @@
             // 
             // pictureEdit2
             // 
-            this.pictureEdit2.Location = new System.Drawing.Point(280, 12);
+            this.pictureEdit2.Location = new System.Drawing.Point(278, 6);
+            this.pictureEdit2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -158,7 +164,8 @@
             // 
             // pictureEdit3
             // 
-            this.pictureEdit3.Location = new System.Drawing.Point(414, 12);
+            this.pictureEdit3.Location = new System.Drawing.Point(579, 17);
+            this.pictureEdit3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit3.Name = "pictureEdit3";
             this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit3.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -170,7 +177,8 @@
             // 
             // pictureEdit4
             // 
-            this.pictureEdit4.Location = new System.Drawing.Point(548, 12);
+            this.pictureEdit4.Location = new System.Drawing.Point(713, 17);
+            this.pictureEdit4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit4.Name = "pictureEdit4";
             this.pictureEdit4.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit4.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -182,7 +190,8 @@
             // 
             // pictureEdit5
             // 
-            this.pictureEdit5.Location = new System.Drawing.Point(682, 12);
+            this.pictureEdit5.Location = new System.Drawing.Point(847, 17);
+            this.pictureEdit5.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit5.Name = "pictureEdit5";
             this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit5.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -194,7 +203,8 @@
             // 
             // pictureEdit6
             // 
-            this.pictureEdit6.Location = new System.Drawing.Point(385, 218);
+            this.pictureEdit6.Location = new System.Drawing.Point(17, 206);
+            this.pictureEdit6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureEdit6.Name = "pictureEdit6";
             this.pictureEdit6.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit6.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -204,7 +214,7 @@
             // 
             // memoEdit
             // 
-            this.memoEdit.Location = new System.Drawing.Point(11, 302);
+            this.memoEdit.Location = new System.Drawing.Point(160, 260);
             this.memoEdit.Name = "memoEdit";
             this.memoEdit.Size = new System.Drawing.Size(262, 74);
             this.memoEdit.TabIndex = 15;
@@ -212,12 +222,32 @@
             // comboBoxEdit1
             // 
             this.comboBoxEdit1.EditValue = "LightmappedGeneric";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(12, 262);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(161, 220);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "LightmappedGeneric"});
+            "Cable",
+            "EyeRefract",
+            "Eyes",
+            "LightmappedGeneric",
+            "Modulate",
+            "MonitorScreen",
+            "Predator",
+            "Refract",
+            "ShatteredGlass",
+            "Sprite",
+            "Teeth",
+            "UnlitGeneric",
+            "UnlitTwoTexture",
+            "VertexLitGeneric",
+            "VortWarp",
+            "Water",
+            "WindowImposter",
+            "WorldTwoTextureBlend",
+            "WorldVertexAlpha",
+            "WorldVertexTransition",
+            "WriteZ"});
             this.comboBoxEdit1.Properties.Sorted = true;
             this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.comboBoxEdit1.Size = new System.Drawing.Size(262, 20);
@@ -225,7 +255,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(20, 251);
+            this.labelControl6.Location = new System.Drawing.Point(169, 209);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(34, 13);
             this.labelControl6.TabIndex = 17;
@@ -264,18 +294,32 @@
             // 
             // buttonCreateToolTexture
             // 
-            this.buttonCreateToolTexture.Location = new System.Drawing.Point(816, 293);
+            this.buttonCreateToolTexture.Location = new System.Drawing.Point(348, 341);
             this.buttonCreateToolTexture.Name = "buttonCreateToolTexture";
             this.buttonCreateToolTexture.Size = new System.Drawing.Size(75, 23);
             this.buttonCreateToolTexture.TabIndex = 21;
             this.buttonCreateToolTexture.Text = "Create";
             this.buttonCreateToolTexture.Click += new System.EventHandler(this.buttonCreateToolTexture_Click);
             // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.pictureBaseTexture);
+            this.panelControl2.Controls.Add(this.labelControl1);
+            this.panelControl2.Controls.Add(this.pictureEdit2);
+            this.panelControl2.Controls.Add(this.labelControl7);
+            this.panelControl2.Controls.Add(this.pictureToolTexture);
+            this.panelControl2.Controls.Add(this.labelControl8);
+            this.panelControl2.Location = new System.Drawing.Point(11, 11);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(411, 160);
+            this.panelControl2.TabIndex = 22;
+            // 
             // MaterialEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 432);
+            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.buttonCreateToolTexture);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.labelControl6);
@@ -285,16 +329,10 @@
             this.Controls.Add(this.pictureEdit5);
             this.Controls.Add(this.pictureEdit4);
             this.Controls.Add(this.pictureEdit3);
-            this.Controls.Add(this.pictureEdit2);
-            this.Controls.Add(this.labelControl8);
-            this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.pictureBaseTexture);
-            this.Controls.Add(this.pictureToolTexture);
             this.Name = "MaterialEditor";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Material Editor";
@@ -309,6 +347,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +379,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton buttonCreateToolTexture;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }
