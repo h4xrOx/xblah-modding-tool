@@ -272,6 +272,29 @@ namespace windows_source1ide
 
                 string relativePath = fullPath;
 
+                string modPath = sourceSDK.GetModPath();
+                string gamePath = sourceSDK.GetGamePath();
+
+                Debugger.Break();
+                if (fullPath.Contains(modPath))
+                {
+                    relativePath = fullPath.Replace(modPath, "").Replace(".vmt", "");
+                }
+                else if (fullPath.Contains("\\materials\\"))
+                {
+                    relativePath = fullPath.Substring(fullPath.LastIndexOf("\\materials\\") + "\\materials\\".Length).Replace(".vmt", "");
+                }
+                else
+                {
+                    Uri path1 = new Uri(gamePath + "\\");
+                    Uri path2 = new Uri(fullPath);
+                    Uri diff = path1.MakeRelativeUri(path2);
+
+                    relativePath = diff.OriginalString.Replace(".vmt", "");
+                }
+
+                SourceSDK.KeyValue vmt = SourceSDK.KeyValue.readChunkfile(fullPath);
+
                 textPath.EditValue = relativePath;
             }
         }

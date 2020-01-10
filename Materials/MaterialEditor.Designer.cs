@@ -215,6 +215,10 @@
             this.pictureBlendModulateTexture.Tag = "blendmodulatetexture";
             this.pictureBlendModulateTexture.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBaseTexture_MouseClick);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Valve Material Type (*.vmt)|*.vmt";
+            // 
             // shaderCombo
             // 
             this.shaderCombo.EditValue = "LightmappedGeneric";
