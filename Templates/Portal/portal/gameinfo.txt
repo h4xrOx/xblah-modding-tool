@@ -1,0 +1,37 @@
+"GameInfo"
+{
+	game 		"Portal mod name HERE"
+        title 		"Portal mod name HERE"
+	type		singleplayer_only
+	nodifficulty	1
+	hasportals	1
+	nocrosshair	1
+	nomodels	1
+ 
+	FileSystem
+	{
+		SteamAppId				400
+		ToolsAppId				211
+ 
+		SearchPaths
+		{
+			game				|gameinfo_path|custom/*
+			game+mod			|gameinfo_path|.
+			platform			|gameinfo_path|.
+			game_lv				|all_source_engine_paths|portal/portal_lv.vpk
+			game+mod			|all_source_engine_paths|portal/portal_sound_vo_english.vpk
+			game+mod			|all_source_engine_paths|portal/portal_pak.vpk
+			game				|all_source_engine_paths|hl2/hl2_textures.vpk
+			game				|all_source_engine_paths|hl2/hl2_sound_vo_english.vpk
+			game				|all_source_engine_paths|hl2/hl2_sound_misc.vpk
+			game				|all_source_engine_paths|hl2/hl2_misc.vpk
+			platform			|all_source_engine_paths|platform/platform_misc.vpk
+			mod+mod_write+default_write_path		|gameinfo_path|.
+			game				|all_source_engine_paths|portal/custom/*
+			game+game_write		|all_source_engine_paths|portal
+			gamebin				|all_source_engine_paths|portal/bin
+			game				|all_source_engine_paths|hl2
+			platform			|all_source_engine_paths|platform
+		}
+	}
+}

@@ -210,6 +210,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\hl2mp.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -343,6 +346,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Templates\Portal\portal\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Portal\portal\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Portal\portal\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -479,6 +506,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"
