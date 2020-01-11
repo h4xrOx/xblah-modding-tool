@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TGASharpLib;
 
 namespace SourceModdingTool.SourceSDK
@@ -63,7 +60,7 @@ namespace SourceModdingTool.SourceSDK
             process.Start();
             process.WaitForExit();
 
-            if (!File.Exists(filePath + "\\temp.tga"))
+            if(!File.Exists(filePath + "\\temp.tga"))
                 return null;
 
             Bitmap src = TGA.FromFile(filePath + "\\temp.tga").ToBitmap();

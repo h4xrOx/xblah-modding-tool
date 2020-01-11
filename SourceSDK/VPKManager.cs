@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SourceModdingTool
 {
     public class VPKManager
     {
-        public Dictionary<string, VPK> vpks;
         private Steam sourceSDK;
+        public Dictionary<string, VPK> vpks;
 
         public VPKManager(Steam sourceSDK)
         {
@@ -19,23 +16,24 @@ namespace SourceModdingTool
             Reload();
         }
 
-        public void Reload()
+        public void extractFile(string filePath)
         {
-            vpks = new Dictionary<string, VPK>();
-
-            foreach (string searchPath in sourceSDK.getModMountedPaths())
+            foreach(KeyValuePair<string, VPK> vpk in vpks)
             {
-                if (searchPath.EndsWith(".vpk"))
-                    vpks.Add(searchPath, new VPK(searchPath, sourceSDK));
-                else
-                    vpks.Add(searchPath, new MountedFolder(searchPath, sourceSDK));
+                if(vpk.Value.files.ContainsKey(filePath))
+                {
+                    vpk.Value.extractFile(filePath);
+
+
+                    return;
+                }
             }
         }
 
         public List<VPK.File> getAllFiles()
         {
             List<VPK.File> files = new List<VPK.File>();
-            foreach (VPK vpk in vpks.Values)
+            foreach(VPK vpk in vpks.Values)
                 files.AddRange(vpk.files.Values);
             files = files
                 .GroupBy(x => x.path)
@@ -48,24 +46,23 @@ namespace SourceModdingTool
 
         public string getExtractedPath(string filePath)
         {
-            foreach (string searchPath in sourceSDK.getModSearchPaths())
-                if (File.Exists(searchPath + "\\" + filePath))
+            foreach(string searchPath in sourceSDK.getModSearchPaths())
+                if(File.Exists(searchPath + "\\" + filePath))
                     return searchPath + "\\" + filePath;
 
-            return "";
+            return string.Empty;
         }
 
-        public void extractFile(string filePath)
+        public void Reload()
         {
-            foreach (KeyValuePair<string, VPK> vpk in vpks)
-            {
-                if (vpk.Value.files.ContainsKey(filePath))
-                {
-                    vpk.Value.extractFile(filePath);
+            vpks = new Dictionary<string, VPK>();
 
-                    
-                    return;
-                }
+            foreach(string searchPath in sourceSDK.getModMountedPaths())
+            {
+                if(searchPath.EndsWith(".vpk"))
+                    vpks.Add(searchPath, new VPK(searchPath, sourceSDK));
+                else
+                    vpks.Add(searchPath, new MountedFolder(searchPath, sourceSDK));
             }
         }
     }

@@ -1,45 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace SourceModdingTool
 {
     public partial class NewModForm : DevExpress.XtraEditors.XtraForm
     {
         Steam sourceSDK;
+        public string game = string.Empty;
+        public string gameBranch = string.Empty;
+        public string modFolder = string.Empty;
+        public string modTitle = string.Empty;
 
         public bool validFolder = false;
-        public string modFolder = "";
-        public string modTitle = "";
-        public string game = "";
-        public string gameBranch = "";
 
-        public NewModForm()
+        public NewModForm() { InitializeComponent(); }
+
+        private void checkModDetails()
         {
-            InitializeComponent();
-        }
+            createButton.Enabled = false;
+            if(!validFolder)
+                return;
 
-        private void NewModForm_Load(object sender, EventArgs e)
-        {
-            sourceSDK = new Steam();
-
-            List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
-            foreach (DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
-            {
-                if (gamesList.Contains(item.Tag.ToString().Split('/')[0]))
-                    item.Enabled = true;
-            }
-
-            checkModDetails();
+            createButton.Enabled = true;
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -59,16 +46,22 @@ namespace SourceModdingTool
             Directory.CreateDirectory(modPath + "\\resource");
 
             // Copy binaries
-            string templatePath = AppDomain.CurrentDomain.BaseDirectory + "Templates\\" + game + "\\" + gameBranch + "\\";
-            foreach (string file in Directory.GetFiles(templatePath, "*", SearchOption.AllDirectories))
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory +
+                "Templates\\" +
+                game +
+                "\\" +
+                gameBranch +
+                "\\";
+            foreach(string file in Directory.GetFiles(templatePath, "*", SearchOption.AllDirectories))
             {
-                string destinationPath = modPath + "\\" + file.Replace(templatePath, "");
+                string destinationPath = modPath + "\\" + file.Replace(templatePath, string.Empty);
                 string destinationDirectory = new FileInfo(destinationPath).Directory.FullName;
                 Directory.CreateDirectory(destinationDirectory);
                 File.Copy(file, destinationPath);
             }
 
-            File.Move(modPath + "\\resource\\template_english.txt", modPath + "\\resource\\" + modFolder + "_english.txt");
+            File.Move(modPath + "\\resource\\template_english.txt",
+                      modPath + "\\resource\\" + modFolder + "_english.txt");
 
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
             gameInfo.setValue("game", modTitle);
@@ -81,13 +74,37 @@ namespace SourceModdingTool
             Close();
         }
 
+        private void galleryControl1_Gallery_ItemCheckedChanged(object sender,
+                                                                DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
+        {
+            string branchAndGame = e.Item.Tag.ToString();
+            game = branchAndGame.Split('/')[0];
+            gameBranch = branchAndGame.Split('/')[1];
+
+            checkModDetails();
+        }
+
+        private void NewModForm_Load(object sender, EventArgs e)
+        {
+            sourceSDK = new Steam();
+
+            List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
+            foreach(DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
+            {
+                if(gamesList.Contains(item.Tag.ToString().Split('/')[0]))
+                    item.Enabled = true;
+            }
+
+            checkModDetails();
+        }
+
         private void textFolder_EditValueChanged(object sender, EventArgs e)
         {
             createButton.Enabled = false;
             validFolder = false;
             string modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
 
-            if (textFolder.EditValue == null)
+            if(textFolder.EditValue == null)
             {
                 labelFolderInfo.Text = "Invalid mod folder.";
                 return;
@@ -99,38 +116,20 @@ namespace SourceModdingTool
 
             // Compare a string against the regular expression
 
-            if (modFolder.Length == 0 || !regex.IsMatch(modFolder))
+            if(modFolder.Length == 0 || !regex.IsMatch(modFolder))
             {
                 labelFolderInfo.Text = ("Invalid mod folder.");
                 return;
             }
 
-            if (Directory.Exists(modsPath + textFolder.EditValue.ToString()))
+            if(Directory.Exists(modsPath + textFolder.EditValue.ToString()))
             {
                 labelFolderInfo.Text = ("The mod folder already exists.");
                 return;
             }
 
-            labelFolderInfo.Text = "";
+            labelFolderInfo.Text = string.Empty;
             validFolder = true;
-            checkModDetails();
-        }
-
-        private void checkModDetails()
-        {
-            createButton.Enabled = false;
-            if (!validFolder)
-                return;
-
-            createButton.Enabled = true;
-        }
-
-        private void galleryControl1_Gallery_ItemCheckedChanged(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
-        {
-            string branchAndGame = e.Item.Tag.ToString();
-            game = branchAndGame.Split('/')[0];
-            gameBranch = branchAndGame.Split('/')[1];
-            
             checkModDetails();
         }
     }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SourceModdingTool.SourceSDK
 {
@@ -14,11 +12,11 @@ namespace SourceModdingTool.SourceSDK
             List<string> assets = new List<string>();
             List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
 
-            foreach (string searchPath in searchPaths)
+            foreach(string searchPath in searchPaths)
             {
                 string materialPath = searchPath + "\\" + relativePath;
 
-                if (!File.Exists(materialPath))
+                if(!File.Exists(materialPath))
                     continue;
 
                 SourceSDK.KeyValue material = SourceSDK.KeyValue.readChunkfile(materialPath);
@@ -32,14 +30,14 @@ namespace SourceModdingTool.SourceSDK
                 textures.Add(material.getChildByKey("$basetexture2"));
                 textures.Add(material.getChildByKey("%tooltexture"));
 
-                foreach (SourceSDK.KeyValue textureKv in textures)
+                foreach(SourceSDK.KeyValue textureKv in textures)
                 {
-                    if (textureKv == null)
+                    if(textureKv == null)
                         continue;
 
                     string textureValue = "materials/" + textureKv.getValue().ToLower() + ".vtf";
 
-                    if (!assets.Contains(textureValue))
+                    if(!assets.Contains(textureValue))
                     {
                         //setStatusMessage("Texture added: " + textureValue, COLOR_ORANGE);
                         assets.Add(textureValue);

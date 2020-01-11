@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SourceModdingTool
 {
@@ -12,14 +9,8 @@ namespace SourceModdingTool
     {
         public MountedFolder(string fullPath, Steam sourceSDK) : base()
         {
-            this.fullPath = fullPath.Replace("*", "");
+            this.fullPath = fullPath.Replace("*", string.Empty);
             this.sourceSDK = sourceSDK;
-
-            /*if (this.fullPath.EndsWith("."))
-                this.fullPath = this.fullPath.Substring(0, this.fullPath.Length - 1);
-
-            if (this.fullPath.EndsWith("\\"))
-                this.fullPath = this.fullPath.Substring(0, this.fullPath.Length - 1);*/
 
             ListFiles();
         }
@@ -30,29 +21,22 @@ namespace SourceModdingTool
 
             string packName = GetPackName();
 
-            if (Directory.Exists(fullPath))
-                foreach (string filePath in Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories).Where(x => !x.EndsWith(".vpk")).ToArray())
+            if(Directory.Exists(fullPath))
+                foreach(string filePath in Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories)
+                    .Where(x => !x.EndsWith(".vpk"))
+                    .ToArray())
                 {
-
                     string extension = new FileInfo(filePath).Extension;
 
                     Uri path1 = new Uri(fullPath + "\\");
                     Uri path2 = new Uri(filePath);
                     Uri diff = path1.MakeRelativeUri(path2);
 
-                    File file = new File()
-                    {
-                        path = diff.OriginalString.ToLower(),
-                        pack = packName,
-                        type = extension
-                    };
+                    File file = new File() { path = diff.OriginalString.ToLower(), pack = packName, type = extension };
                     files.Add(file.path, file);
                 }
         }
 
-        public override void extractFile(string filePath)
-        {
-
-        }
+        public override void extractFile(string filePath) { }
     }
 }

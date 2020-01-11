@@ -1,30 +1,30 @@
-﻿using System;
+﻿using SourceModdingTool.SourceSDK;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using static SourceModdingTool.Steam;
 using System.Diagnostics;
 using System.IO;
-using SourceModdingTool.SourceSDK;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace SourceModdingTool.Tools
 {
     public partial class AssetsCopierForm : DevExpress.XtraEditors.XtraForm
     {
+        private const int COLOR_BLUE = 0;
+
+        private const int COLOR_GREEN = 1;
+        private const int COLOR_ORANGE = 2;
+        private const int COLOR_RED = 3;
+
+        List<string> assets = new List<string>();
+
+        string destination = string.Empty;
         string game;
         string mod;
         Steam sourceSDK;
 
-        string destination = "";
-
         List<string> vmfs = new List<string>();
-        List<string> assets = new List<string>();
+
         public AssetsCopierForm(string game, string mod)
         {
             this.game = game;
@@ -34,9 +34,7 @@ namespace SourceModdingTool.Tools
         }
 
         public AssetsCopierForm(string game, string mod, string destination) : this(game, mod)
-        {
-            this.destination = destination;
-        }
+        { this.destination = destination; }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)
         {
@@ -48,61 +46,15 @@ namespace SourceModdingTool.Tools
             selectVMFDialog.InitialDirectory = sourceSDK.GetModPath(game, mod);
         }
 
-        class Asset
-        {
-            public string path = "";
-            public string type = "";
-        }
-
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            if (selectVMFDialog.ShowDialog() == DialogResult.OK)
+            if(selectVMFDialog.ShowDialog() == DialogResult.OK)
             {
-                if (!vmfs.Contains(selectVMFDialog.FileName))
+                if(!vmfs.Contains(selectVMFDialog.FileName))
                     vmfs.Add(selectVMFDialog.FileName);
 
                 updateVMFList();
             }
-        }
-
-        private void updateVMFList()
-        {
-            vmfList.BeginUnboundLoad();
-            vmfList.Nodes.Clear();
-            foreach(string vmf in vmfs)
-            {
-                vmfList.AppendNode(new object[] { vmf }, null);
-            }
-            vmfList.EndUnboundLoad();
-            if (vmfs.Count > 0)
-            {
-                setStatusMessage("Ready to copy.", COLOR_BLUE);
-            } else
-            {
-                setStatusMessage("Choose at least one VMF to start.", COLOR_RED);
-            }
-        }
-
-        private void readMapButton_Click(object sender, EventArgs e)
-        {
-            foreach(string vmf in vmfs)
-                assets.AddRange(getAssetsFromMap(vmf));
-
-            assets = assets.Distinct().ToList();
-            string customPath = copyAssets();
-
-            string modPath = sourceSDK.GetModPath(game,mod);
-            setStatusMessage("Done.", COLOR_GREEN);
-            Process.Start(customPath);
-        }
-
-        private List<string> getAssetsFromMap(string fullPath)
-        {
-            setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
-            assets = VMF.getAssets(fullPath, game, mod, sourceSDK);
-            
-
-            return assets;
         }
 
         private string copyAssets()
@@ -115,16 +67,16 @@ namespace SourceModdingTool.Tools
             List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
 
             string customPath = modPath + "\\custom\\" + mapName;
-            if (this.destination != "")
+            if(this.destination != string.Empty)
                 customPath = destination;
 
             Directory.CreateDirectory(customPath);
 
-            foreach (string asset in assets)
+            foreach(string asset in assets)
             {
                 foreach(string searchPath in searchPaths)
                 {
-                    if (File.Exists(searchPath + "\\" + asset))
+                    if(File.Exists(searchPath + "\\" + asset))
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(customPath + "\\" + asset));
 
@@ -136,18 +88,36 @@ namespace SourceModdingTool.Tools
             return customPath;
         }
 
+        private List<string> getAssetsFromMap(string fullPath)
+        {
+            setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
+            assets = VMF.getAssets(fullPath, game, mod, sourceSDK);
+
+
+            return assets;
+        }
+
+        private void readMapButton_Click(object sender, EventArgs e)
+        {
+            foreach(string vmf in vmfs)
+                assets.AddRange(getAssetsFromMap(vmf));
+
+            assets = assets.Distinct().ToList();
+            string customPath = copyAssets();
+
+            string modPath = sourceSDK.GetModPath(game, mod);
+            setStatusMessage("Done.", COLOR_GREEN);
+            Process.Start(customPath);
+        }
+
         private void removeButton_Click(object sender, EventArgs e)
         {
-            if (vmfList.FocusedNode == null)
-                return; 
+            if(vmfList.FocusedNode == null)
+                return;
             vmfs.RemoveAt(vmfList.FocusedNode.Id);
             updateVMFList();
         }
 
-        private const int COLOR_GREEN = 1;
-        private const int COLOR_BLUE = 0;
-        private const int COLOR_ORANGE = 2;
-        private const int COLOR_RED = 3;
         private void setStatusMessage(string message, int color)
         {
             statusLabel.Caption = message;
@@ -169,6 +139,24 @@ namespace SourceModdingTool.Tools
             }*/
 
             Application.DoEvents();
+        }
+
+        private void updateVMFList()
+        {
+            vmfList.BeginUnboundLoad();
+            vmfList.Nodes.Clear();
+            foreach(string vmf in vmfs)
+            {
+                vmfList.AppendNode(new object[] { vmf }, null);
+            }
+            vmfList.EndUnboundLoad();
+            if(vmfs.Count > 0)
+            {
+                setStatusMessage("Ready to copy.", COLOR_BLUE);
+            } else
+            {
+                setStatusMessage("Choose at least one VMF to start.", COLOR_RED);
+            }
         }
 
         private void vmfList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

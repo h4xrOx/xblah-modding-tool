@@ -9,14 +9,67 @@ namespace SourceModdingTool.SourceSDK
 {
     class Game
     {
-        private Steam sourceSDK = null;
         private Control parent = null;
+        private Steam sourceSDK = null;
         public Process modProcess = null;
 
         public Game(Steam sourceSDK, Control parent)
         {
             this.sourceSDK = sourceSDK;
             this.parent = parent;
+        }
+
+        internal void Stop()
+        {
+            if(modProcess != null)
+            {
+                modProcess.Kill();
+                modProcess = null;
+            }
+        }
+
+        public void Command(string command)
+        {
+            if(modProcess == null)
+                return;
+
+            string gamePath = sourceSDK.GetGamePath();
+            string modPath = sourceSDK.GetModPath();
+
+            Debug.Write(modPath);
+
+            string exePath = string.Empty;
+
+            foreach(string file in Directory.GetFiles(gamePath))
+            {
+                if(new FileInfo(file).Extension == ".exe")
+                {
+                    exePath = file;
+                    break;
+                }
+            }
+
+            Program.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
+            Program.ShowWindow((int)modProcess.MainWindowHandle, 0);
+
+            Process process = new Process();
+            process.StartInfo.FileName = exePath;
+            process.StartInfo.Arguments = "-hijack " + command;
+            process.Start();
+            process.EnableRaisingEvents = true;
+            process.WaitForInputIdle();
+            Program.ShowWindow((int)modProcess.MainWindowHandle, 9);
+            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+        }
+
+        public void Resize()
+        {
+            if(modProcess != null)
+            {
+                //Command("-width " + parent.Width + " -height " + parent.Height);
+                //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
+                Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
+            }
         }
 
         public Process Start()
@@ -26,9 +79,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach (string file in Directory.GetFiles(gamePath))
+            foreach(string file in Directory.GetFiles(gamePath))
             {
-                if (new FileInfo(file).Extension == ".exe")
+                if(new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
@@ -37,37 +90,12 @@ namespace SourceModdingTool.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -windowed -noborder -novid 0 -width " + parent.Width + " -height " + parent.Height;
-            modProcess.Start();
-            modProcess.EnableRaisingEvents = true;
-            modProcess.WaitForInputIdle();
-
-            Thread.Sleep(300);
-            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
-            Resize();
-
-            return modProcess;
-        }
-
-        public Process StartTools()
-        {
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
-
-            string exePath = string.Empty;
-
-            foreach (string file in Directory.GetFiles(gamePath))
-            {
-                if (new FileInfo(file).Extension == ".exe")
-                {
-                    exePath = file;
-                    break;
-                }
-            }
-
-            modProcess = new Process();
-            modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -tools -nop4 -windowed -novid -noborder 0 -width " + parent.Width + " -height " + parent.Height;
+            modProcess.StartInfo.Arguments = "-game \"" +
+                modPath +
+                "\" -windowed -noborder -novid 0 -width " +
+                parent.Width +
+                " -height " +
+                parent.Height;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
@@ -88,9 +116,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach (string file in Directory.GetFiles(gamePath))
+            foreach(string file in Directory.GetFiles(gamePath))
             {
-                if (new FileInfo(file).Extension == ".exe")
+                if(new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
@@ -99,7 +127,12 @@ namespace SourceModdingTool.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" + modPath + "\" -fullscreen -width " + Screen.PrimaryScreen.Bounds.Width + " -height " + Screen.PrimaryScreen.Bounds.Height;
+            modProcess.StartInfo.Arguments = "-game \"" +
+                modPath +
+                "\" -fullscreen -width " +
+                Screen.PrimaryScreen.Bounds.Width +
+                " -height " +
+                Screen.PrimaryScreen.Bounds.Height;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
@@ -107,58 +140,39 @@ namespace SourceModdingTool.SourceSDK
             return modProcess;
         }
 
-        public void Resize()
+        public Process StartTools()
         {
-            if (modProcess != null)
-            {
-                
-                //Command("-width " + parent.Width + " -height " + parent.Height);
-                //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
-                Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
-            }
-        }
-
-        internal void Stop()
-        {
-            if (modProcess != null)
-            {
-                modProcess.Kill();
-                modProcess = null;
-            }
-        }
-
-        public void Command(string command)
-        {
-            if (modProcess == null)
-                return;
-
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
 
-            Debug.Write(modPath);
-
             string exePath = string.Empty;
 
-            foreach (string file in Directory.GetFiles(gamePath))
+            foreach(string file in Directory.GetFiles(gamePath))
             {
-                if (new FileInfo(file).Extension == ".exe")
+                if(new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
                 }
             }
 
-            Program.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
-            Program.ShowWindow((int)modProcess.MainWindowHandle, 0);
+            modProcess = new Process();
+            modProcess.StartInfo.FileName = exePath;
+            modProcess.StartInfo.Arguments = "-game \"" +
+                modPath +
+                "\" -tools -nop4 -windowed -novid -noborder 0 -width " +
+                parent.Width +
+                " -height " +
+                parent.Height;
+            modProcess.Start();
+            modProcess.EnableRaisingEvents = true;
+            modProcess.WaitForInputIdle();
 
-            Process process = new Process();
-            process.StartInfo.FileName = exePath;
-            process.StartInfo.Arguments = "-hijack " + command;
-            process.Start();
-            process.EnableRaisingEvents = true;
-            process.WaitForInputIdle();
-            Program.ShowWindow((int)modProcess.MainWindowHandle, 9);
+            Thread.Sleep(300);
             Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+            Resize();
+
+            return modProcess;
         }
     }
 }
