@@ -91,11 +91,11 @@
     <Compile Include="Modding\GamemenuDialog.Designer.cs">
       <DependentUpon>GamemenuDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModForm.Designer.cs">
-      <DependentUpon>ModForm.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\GameinfoForm.cs">
       <SubType>Form</SubType>
@@ -109,16 +109,16 @@
     <Compile Include="Modding\GamemenuForm.Designer.cs">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModSelectionDialog.cs">
+    <Compile Include="File\ModSelectionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModSelectionDialog.Designer.cs">
+    <Compile Include="File\ModSelectionDialog.Designer.cs">
       <DependentUpon>ModSelectionDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewModForm.cs">
+    <Compile Include="File\NewModForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewModForm.Designer.cs">
+    <Compile Include="File\NewModForm.Designer.cs">
       <DependentUpon>NewModForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -162,8 +162,8 @@
     <EmbeddedResource Include="Modding\GamemenuDialog.resx">
       <DependentUpon>GamemenuDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModForm.resx">
-      <DependentUpon>ModForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\GameinfoForm.resx">
       <DependentUpon>GameinfoForm.cs</DependentUpon>
@@ -171,10 +171,10 @@
     <EmbeddedResource Include="Modding\GamemenuForm.resx">
       <DependentUpon>GamemenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModSelectionDialog.resx">
+    <EmbeddedResource Include="File\ModSelectionDialog.resx">
       <DependentUpon>ModSelectionDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewModForm.resx">
+    <EmbeddedResource Include="File\NewModForm.resx">
       <DependentUpon>NewModForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -208,8 +208,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="template_sp\resource\HL2EP2.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\HL2EP2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -313,12 +313,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="template_sp\resource\template_sp_english.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\bin\client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\BatchCompiler\Automatic Update Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -377,18 +386,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Tools\TerrainGenerator\config\wads\tfc2.wdl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\VTFEdit\DevIL.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\VTFEdit\HLLib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\VTFEdit\VTFEdit.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Tools\VTFEdit\VTFLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Tools\Crafty\Crafty.exe">
