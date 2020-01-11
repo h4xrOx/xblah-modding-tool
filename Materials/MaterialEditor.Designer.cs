@@ -42,7 +42,7 @@
             this.pictureBumpMap = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEnvMapMask = new DevExpress.XtraEditors.PictureEdit();
             this.pictureBlendModulateTexture = new DevExpress.XtraEditors.PictureEdit();
-            this.openFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.openVMTFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.shaderCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -64,6 +64,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.comboSurfaceProp2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboSurfaceProp = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.openBitmapFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture2.Properties)).BeginInit();
@@ -215,9 +216,9 @@
             this.pictureBlendModulateTexture.Tag = "blendmodulatetexture";
             this.pictureBlendModulateTexture.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBaseTexture_MouseClick);
             // 
-            // openFileDialog
+            // openVMTFileDialog
             // 
-            this.openFileDialog.Filter = "Valve Material Type (*.vmt)|*.vmt";
+            this.openVMTFileDialog.Filter = "Valve Material Type (*.vmt)|*.vmt";
             // 
             // shaderCombo
             // 
@@ -371,14 +372,14 @@
             // 
             this.barButtonNew.Caption = "New";
             this.barButtonNew.Id = 0;
-            this.barButtonNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barButtonNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonNew.ImageOptions.SvgImage")));
             this.barButtonNew.Name = "barButtonNew";
             // 
             // barButtonOpen
             // 
             this.barButtonOpen.Caption = "Open";
             this.barButtonOpen.Id = 1;
-            this.barButtonOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonOpen.ImageOptions.SvgImage")));
             this.barButtonOpen.Name = "barButtonOpen";
             this.barButtonOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -386,7 +387,7 @@
             // 
             this.barButtonSave.Caption = "Save";
             this.barButtonSave.Id = 2;
-            this.barButtonSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonSave.ImageOptions.SvgImage")));
             this.barButtonSave.Name = "barButtonSave";
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -702,7 +703,7 @@
         private DevExpress.XtraEditors.PictureEdit pictureBumpMap;
         private DevExpress.XtraEditors.PictureEdit pictureEnvMapMask;
         private DevExpress.XtraEditors.PictureEdit pictureBlendModulateTexture;
-        private DevExpress.XtraEditors.XtraOpenFileDialog openFileDialog;
+        private DevExpress.XtraEditors.XtraOpenFileDialog openVMTFileDialog;
         private DevExpress.XtraEditors.ComboBoxEdit shaderCombo;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl2;
@@ -724,5 +725,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboSurfaceProp;
         private DevExpress.XtraEditors.ComboBoxEdit comboDetail;
         private DevExpress.XtraEditors.ComboBoxEdit comboSurfaceProp2;
+        private DevExpress.XtraEditors.XtraOpenFileDialog openBitmapFileDialog;
     }
 }

@@ -31,9 +31,9 @@ namespace SourceModdingTool
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if(openVMTFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string fullPath = openFileDialog.FileName;
+                string fullPath = openVMTFileDialog.FileName;
 
                 string relativePath = fullPath;
 
@@ -211,26 +211,26 @@ namespace SourceModdingTool
         {
             string tag = pictureEdit.Tag.ToString();
 
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if(openVMTFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string type = new FileInfo(openFileDialog.FileName).Extension;
+                string type = new FileInfo(openVMTFileDialog.FileName).Extension;
 
                 string modPath = sourceSDK.GetModPath();
 
                 Uri path1 = new Uri(modPath + "\\");
-                Uri path2 = new Uri(openFileDialog.FileName);
+                Uri path2 = new Uri(openVMTFileDialog.FileName);
                 Uri diff = path1.MakeRelativeUri(path2);
 
 
                 if(type == ".vtf")
                 {
                     textures[tag].relativePath = diff.OriginalString;
-                    textures[tag].bytes = File.ReadAllBytes(openFileDialog.FileName);
+                    textures[tag].bytes = File.ReadAllBytes(openVMTFileDialog.FileName);
                     textures[tag].bitmap = VTF.toBitmap(textures[tag].bytes, sourceSDK);
                 } else
                 {
                     textures[tag].relativePath = string.Empty;
-                    textures[tag].bitmap = (Bitmap)Bitmap.FromFile(openFileDialog.FileName);
+                    textures[tag].bitmap = (Bitmap)Bitmap.FromFile(openVMTFileDialog.FileName);
                     textures[tag].bytes = VTF.fromBitmap(textures[tag].bitmap, sourceSDK);
                 }
 

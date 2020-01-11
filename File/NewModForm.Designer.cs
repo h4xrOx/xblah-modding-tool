@@ -35,8 +35,6 @@
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem5 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem6 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.textFolder = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.createButton = new DevExpress.XtraEditors.SimpleButton();
@@ -95,7 +93,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 760F));
             this.tableLayoutPanel1.Controls.Add(this.panelControl3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -103,7 +101,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 42);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -181,30 +179,20 @@
             galleryItem3.Enabled = false;
             galleryItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             galleryItem3.Tag = "Source SDK Base 2013 Singleplayer/ep2";
-            galleryItem4.Caption = "Portal 2";
+            galleryItem4.Caption = "Portal";
             galleryItem4.Enabled = false;
             galleryItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            galleryItem4.Tag = "Portal 2/portal2";
-            galleryItem5.Caption = "Portal";
+            galleryItem4.Tag = "Portal/portal";
+            galleryItem5.Caption = "Half-Life 2: Deathmatch";
             galleryItem5.Enabled = false;
             galleryItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            galleryItem5.Tag = "Portal/portal";
-            galleryItem6.Caption = "Half-Life 2: Deathmatch";
-            galleryItem6.Enabled = false;
-            galleryItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            galleryItem6.Tag = "Source SDK Base 2013 Multiplayer/hl2mp";
-            galleryItem7.Caption = "Black Mesa";
-            galleryItem7.Enabled = false;
-            galleryItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
-            galleryItem7.Tag = "Black Mesa/bms";
+            galleryItem5.Tag = "Source SDK Base 2013 Multiplayer/hl2mp";
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,
             galleryItem2,
             galleryItem3,
             galleryItem4,
-            galleryItem5,
-            galleryItem6,
-            galleryItem7});
+            galleryItem5});
             this.galleryControl1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
             this.galleryControl1.Gallery.ImageSize = new System.Drawing.Size(111, 166);

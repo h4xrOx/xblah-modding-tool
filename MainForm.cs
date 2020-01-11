@@ -226,6 +226,8 @@ namespace SourceModdingTool
 
             gamesCombo.EditValue = currentGame;
             modsCombo.EditValue = currentMod;
+
+            XtraMessageBox.Show("This is an BETA version. Make sure to report any bugs you find, as well as suggestions you may have. \n\nhttps://github.com/jean-knapp/windows-source-modding-tool/issues", "BETA Testing");
         }
 
         private void gamesCombo_EditValueChanged(object sender, EventArgs e)

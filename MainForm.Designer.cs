@@ -243,7 +243,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barMod),
             new DevExpress.XtraBars.LinkPersistInfo(this.barLevelDesign),
             new DevExpress.XtraBars.LinkPersistInfo(this.barModeling),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barMaterials),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.barMaterials, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.barParticles),
             new DevExpress.XtraBars.LinkPersistInfo(this.barChoreography)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
