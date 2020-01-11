@@ -19,12 +19,12 @@ using System.Threading;
 
 namespace windows_source1ide
 {
-    public partial class ModForm : DevExpress.XtraEditors.XtraForm
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         Game game = null;
         Steam sourceSDK;
 
-        public ModForm()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -151,64 +151,14 @@ namespace windows_source1ide
                 string title = form.modTitle;
                 string game = form.game;
                 string gameBranch = form.gameBranch;
-                string appId = sourceSDK.GetGameAppId(game).ToString();
 
                 string mod = title + " (" + folder + ")";
-                string gamePath = sourceSDK.GetGamePath(game);
-                string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + folder;
 
-                Directory.CreateDirectory(modPath + "\\bin");
-                Directory.CreateDirectory(modPath + "\\resource");
-                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(gamePath + "\\" + gameBranch + "\\gameinfo.txt");
-
-                // Edit basic gameinfo
-                gameInfo.setValue("game", title);
-                gameInfo.setValue("title", title);
-                gameInfo.setValue("title2", "");
-                gameInfo.findChild("steamappid").setValue(appId);
-
-                gameInfo.getChild("filesystem").getChild("searchpaths").setValue("gamebin", "|gameinfo_path|bin");
-
-                // Copy binaries
-                File.Copy(Application.StartupPath + "\\template_sp\\bin\\client.dll", modPath + "\\bin\\client.dll", true);
-                File.Copy(Application.StartupPath + "\\template_sp\\bin\\server.dll", modPath + "\\bin\\server.dll", true);
-
-                File.Copy(Application.StartupPath + "\\template_sp\\resource\\template_sp_english.txt", modPath + "\\resource\\" + folder + "_english.txt");
-                File.Copy(Application.StartupPath + "\\template_sp\\resource\\HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf");
-
-                // Create gameinfo
-                SourceSDK.KeyValue searchPaths = gameInfo.getChild("filesystem").getChild("searchpaths");
-                searchPaths.clearChildren();
-
-                searchPaths.addChild(new SourceSDK.KeyValue("game+mod+mod_write+default_write_path", "|gameinfo_path|."));
-
-                searchPaths.addChild(new SourceSDK.KeyValue("gamebin", "|gameinfo_path|bin"));
-
-                searchPaths.addChild(new SourceSDK.KeyValue("game_lv", "hl2/hl2_lv.vpk"));
-
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2/ep2_english.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2/ep2_pak.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic/ep1_english.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic/ep1_pak.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|sourcetest/sourcetest_pak.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_english.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_pak.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_textures.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_sound_vo_english.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_sound_misc.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2/hl2_misc.vpk"));
-
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|ep2"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|episodic"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|sourcetest"));
-                searchPaths.addChild(new SourceSDK.KeyValue("game", "|all_source_engine_paths|hl2"));
-
-                searchPaths.addChild(new SourceSDK.KeyValue("platform", "|all_source_engine_paths|platform/platform_misc.vpk"));
-                searchPaths.addChild(new SourceSDK.KeyValue("platform", "|all_source_engine_paths|platform"));
-
-                SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
+                sourceSDK.setCurrentGame(game);
+                sourceSDK.setCurrentMod(mod);
 
                 updateModsCombo();
+
                 gamesCombo.EditValue = game;
                 modsCombo.EditValue = title + " (" + folder + ")";
             }
@@ -281,11 +231,6 @@ namespace windows_source1ide
         private void buttonCrafty_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("Tools\\Crafty\\Crafty.exe");
-        }
-
-        private void buttonVTFEdit_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Process.Start("Tools\\VTFEdit\\VTFEdit.exe");
         }
 
         private void buttonBatchCompiler_ItemClick(object sender, ItemClickEventArgs e)

@@ -32,12 +32,13 @@ namespace windows_source1ide
         {
             sourceSDK = new Steam();
 
-            comboGames.Properties.Items.Clear();
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
-                comboGames.Properties.Items.Add(item.Key);
+            List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
+            foreach (DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
+            {
+                if (gamesList.Contains(item.Tag.ToString().Split('/')[0]))
+                    item.Enabled = true;
+            }
 
-            comboGames.EditValue = comboGames.Properties.Items[0];
-            comboGames.EditValue = "Source SDK Base 2013 Singleplayer";
             checkModDetails();
         }
 
@@ -47,10 +48,30 @@ namespace windows_source1ide
             modFolder = textFolder.EditValue.ToString();
 
             modTitle = modFolder;
-            if (textTitle.EditValue != null && textTitle.EditValue.ToString().Length > 0 && !(textTitle.EditValue.ToString().IndexOfAny("{}\"".ToCharArray()) != -1))
-            {
-                modTitle = textTitle.EditValue.ToString();
-            }
+
+            string appId = sourceSDK.GetGameAppId(game).ToString();
+
+            string mod = modTitle + " (" + modFolder + ")";
+            string gamePath = sourceSDK.GetGamePath(game);
+            string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + modFolder;
+
+            Directory.CreateDirectory(modPath + "\\bin");
+            Directory.CreateDirectory(modPath + "\\resource");
+
+            // Copy binaries
+            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\bin\\client.dll", modPath + "\\bin\\client.dll", true);
+            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\bin\\server.dll", modPath + "\\bin\\server.dll", true);
+            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\gameinfo.txt", modPath + "\\gameinfo.txt", true);
+
+            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\resource\\template_english.txt", modPath + "\\resource\\" + modFolder + "_english.txt");
+            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\resource\\HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf");
+
+            SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+            gameInfo.setValue("game", modTitle);
+            gameInfo.setValue("title", modTitle);
+
+
+            SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
 
             DialogResult = DialogResult.OK;
             Close();
@@ -91,24 +112,6 @@ namespace windows_source1ide
             checkModDetails();
         }
 
-        private void comboGames_TextChanged(object sender, EventArgs e)
-        {
-            game = comboGames.EditValue.ToString();
-
-            comboBranches.Properties.Items.Clear();
-            foreach (string branch in sourceSDK.GetAllGameBranches(game))
-                comboBranches.Properties.Items.Add(branch);
-
-            comboBranches.EditValue = comboBranches.Properties.Items[0];
-            checkModDetails();
-        }
-
-        private void comboBranches_TextChanged(object sender, EventArgs e)
-        {
-            gameBranch = comboBranches.EditValue.ToString();
-            checkModDetails();
-        }
-
         private void checkModDetails()
         {
             createButton.Enabled = false;
@@ -116,6 +119,15 @@ namespace windows_source1ide
                 return;
 
             createButton.Enabled = true;
+        }
+
+        private void galleryControl1_Gallery_ItemCheckedChanged(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
+        {
+            string branchAndGame = e.Item.Tag.ToString();
+            game = branchAndGame.Split('/')[0];
+            gameBranch = branchAndGame.Split('/')[1];
+            
+            checkModDetails();
         }
     }
 }

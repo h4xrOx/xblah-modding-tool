@@ -1,6 +1,6 @@
 ﻿namespace windows_source1ide
 {
-    partial class ModForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.gamesCombo = new DevExpress.XtraBars.BarEditItem();
@@ -71,7 +71,6 @@
             this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
             this.barMaterials = new DevExpress.XtraBars.BarSubItem();
             this.buttonMaterialEditor = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonVTFEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barParticles = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barChoreography = new DevExpress.XtraBars.BarSubItem();
@@ -127,7 +126,6 @@
             this.buttonVPKExplorer,
             this.barButtonClear,
             this.buttonCrafty,
-            this.buttonVTFEdit,
             this.buttonBatchCompiler,
             this.buttonCrowbar,
             this.buttonHLMV,
@@ -267,8 +265,7 @@
             // 
             this.barButtonItem3.Caption = "New";
             this.barButtonItem3.Id = 22;
-            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -276,8 +273,7 @@
             // 
             this.barButtonItem1.Caption = "Exit";
             this.barButtonItem1.Id = 20;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -301,8 +297,6 @@
             // 
             this.barButtonRun.Caption = "Run";
             this.barButtonRun.Id = 18;
-            this.barButtonRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonRun.ImageOptions.Image")));
-            this.barButtonRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonRun.ImageOptions.LargeImage")));
             this.barButtonRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonRun.ImageOptions.SvgImage")));
             this.barButtonRun.Name = "barButtonRun";
             this.barButtonRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
@@ -311,8 +305,6 @@
             // 
             this.barButtonRunFullscreen.Caption = "Run (Full screen)";
             this.barButtonRunFullscreen.Id = 56;
-            this.barButtonRunFullscreen.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonRunFullscreen.ImageOptions.Image")));
-            this.barButtonRunFullscreen.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonRunFullscreen.ImageOptions.LargeImage")));
             this.barButtonRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonRunFullscreen.ImageOptions.SvgImage")));
             this.barButtonRunFullscreen.Name = "barButtonRunFullscreen";
             this.barButtonRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
@@ -321,8 +313,6 @@
             // 
             this.buttonIngameTools.Caption = "Ingame Tools";
             this.buttonIngameTools.Id = 43;
-            this.buttonIngameTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonIngameTools.ImageOptions.Image")));
-            this.buttonIngameTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonIngameTools.ImageOptions.LargeImage")));
             this.buttonIngameTools.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonIngameTools.ImageOptions.SvgImage")));
             this.buttonIngameTools.Name = "buttonIngameTools";
             this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
@@ -331,8 +321,6 @@
             // 
             this.barButtonModOpenFolder.Caption = "Open folder";
             this.barButtonModOpenFolder.Id = 21;
-            this.barButtonModOpenFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonModOpenFolder.ImageOptions.Image")));
-            this.barButtonModOpenFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonModOpenFolder.ImageOptions.LargeImage")));
             this.barButtonModOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonModOpenFolder.ImageOptions.SvgImage")));
             this.barButtonModOpenFolder.Name = "barButtonModOpenFolder";
             this.barButtonModOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonModOpenFolder_ItemClick);
@@ -341,8 +329,6 @@
             // 
             this.barButtonClear.Caption = "Clean";
             this.barButtonClear.Id = 34;
-            this.barButtonClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonClear.ImageOptions.Image")));
-            this.barButtonClear.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonClear.ImageOptions.LargeImage")));
             this.barButtonClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonClear.ImageOptions.SvgImage")));
             this.barButtonClear.Name = "barButtonClear";
             this.barButtonClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClean_ItemClick);
@@ -401,8 +387,6 @@
             // 
             this.buttonVPKExplorer.Caption = "File Explorer";
             this.buttonVPKExplorer.Id = 33;
-            this.buttonVPKExplorer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.Image")));
-            this.buttonVPKExplorer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonVPKExplorer.ImageOptions.LargeImage")));
             this.buttonVPKExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonVPKExplorer.ImageOptions.SvgImage")));
             this.buttonVPKExplorer.Name = "buttonVPKExplorer";
             this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
@@ -411,8 +395,6 @@
             // 
             this.assetsCopierButton.Caption = "Assets copier";
             this.assetsCopierButton.Id = 29;
-            this.assetsCopierButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("assetsCopierButton.ImageOptions.Image")));
-            this.assetsCopierButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("assetsCopierButton.ImageOptions.LargeImage")));
             this.assetsCopierButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("assetsCopierButton.ImageOptions.SvgImage")));
             this.assetsCopierButton.Name = "assetsCopierButton";
             this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
@@ -442,8 +424,6 @@
             // 
             this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
             this.buttonOpenPrefabsFolder.Id = 52;
-            this.buttonOpenPrefabsFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.Image")));
-            this.buttonOpenPrefabsFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.LargeImage")));
             this.buttonOpenPrefabsFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.SvgImage")));
             this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
             this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
@@ -452,29 +432,27 @@
             // 
             this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
             this.buttonOpenMapsrcFolder.Id = 53;
-            this.buttonOpenMapsrcFolder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.Image")));
-            this.buttonOpenMapsrcFolder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.LargeImage")));
             this.buttonOpenMapsrcFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.SvgImage")));
             this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
             this.buttonOpenMapsrcFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenMapsrcFolder_ItemClick);
             // 
             // buttonCrafty
             // 
-            this.buttonCrafty.Caption = "Crafty (legacy)";
+            this.buttonCrafty.Caption = "Crafty (external)";
             this.buttonCrafty.Id = 36;
             this.buttonCrafty.Name = "buttonCrafty";
             this.buttonCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrafty_ItemClick);
             // 
             // barButtonItem5
             // 
-            this.barButtonItem5.Caption = "Terrain Generator (legacy)";
+            this.barButtonItem5.Caption = "Terrain Generator (external)";
             this.barButtonItem5.Id = 42;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // buttonBatchCompiler
             // 
-            this.buttonBatchCompiler.Caption = "Batch Compiler (legacy)";
+            this.buttonBatchCompiler.Caption = "Batch Compiler (external)";
             this.buttonBatchCompiler.Id = 38;
             this.buttonBatchCompiler.Name = "buttonBatchCompiler";
             this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
@@ -514,7 +492,7 @@
             // 
             // buttonCrowbar
             // 
-            this.buttonCrowbar.Caption = "Crowbar (legacy)";
+            this.buttonCrowbar.Caption = "Crowbar (external)";
             this.buttonCrowbar.Id = 39;
             this.buttonCrowbar.Name = "buttonCrowbar";
             this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
@@ -524,23 +502,16 @@
             this.barMaterials.Caption = "Materials";
             this.barMaterials.Id = 48;
             this.barMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonMaterialEditor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVTFEdit, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonMaterialEditor)});
             this.barMaterials.Name = "barMaterials";
             // 
             // buttonMaterialEditor
             // 
             this.buttonMaterialEditor.Caption = "Material Editor";
             this.buttonMaterialEditor.Id = 58;
+            this.buttonMaterialEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonMaterialEditor.ImageOptions.SvgImage")));
             this.buttonMaterialEditor.Name = "buttonMaterialEditor";
             this.buttonMaterialEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonMaterialEditor_ItemClick);
-            // 
-            // buttonVTFEdit
-            // 
-            this.buttonVTFEdit.Caption = "VTFEdit (legacy)";
-            this.buttonVTFEdit.Id = 37;
-            this.buttonVTFEdit.Name = "buttonVTFEdit";
-            this.buttonVTFEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVTFEdit_ItemClick);
             // 
             // barParticles
             // 
@@ -646,7 +617,7 @@
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
             // 
-            // ModForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -657,7 +628,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ModForm";
+            this.Name = "MainForm";
             this.Text = "Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
@@ -707,7 +678,6 @@
         private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
         private DevExpress.XtraBars.BarButtonItem barButtonClear;
         private DevExpress.XtraBars.BarButtonItem buttonCrafty;
-        private DevExpress.XtraBars.BarButtonItem buttonVTFEdit;
         private DevExpress.XtraBars.BarButtonItem buttonBatchCompiler;
         private DevExpress.XtraBars.BarButtonItem buttonCrowbar;
         private DevExpress.XtraBars.BarButtonItem buttonHLMV;
