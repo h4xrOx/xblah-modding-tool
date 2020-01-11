@@ -23,7 +23,7 @@ namespace SourceModdingTool
         private void checkModDetails()
         {
             createButton.Enabled = false;
-            if(!validFolder)
+            if (!validFolder || galleryControl1.Gallery.GetCheckedItems().Count == 0)
                 return;
 
             createButton.Enabled = true;
