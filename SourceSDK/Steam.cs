@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using DevExpress.XtraEditors;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -129,11 +130,12 @@ namespace windows_source1ide
             {
                 foreach (string library in libraries)
                 {
+                    
                     foreach (String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
                     {
                         String game = new FileInfo(path).Name;
 
-                        if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\hammer.exe"))
+                        if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll"))
                             games.Add(game, library + "\\steamapps\\common\\" + game);
                     }
                 }
@@ -146,14 +148,18 @@ namespace windows_source1ide
             mods = new Dictionary<string, string>();
             int gameAppId = GetGameAppId(game);
 
-            foreach (string path in GetAllModPaths())
+            List<string> paths = GetAllModPaths();
+            string gamePath = GetGamePath();
+            foreach (string path in GetAllGameBranches(currentGame))
+                paths.Add(gamePath + "\\" + path);
+            foreach (string path in paths)
             {
                 SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
 
                 string name = gameInfo.getChild("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
                 string modAppId = gameInfo.getChild("filesystem").getChild("steamappid").getValue();
 
-                if (int.Parse(modAppId) == gameAppId)
+                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
                 {
                     while (mods.Keys.Contains(name))
                     {
