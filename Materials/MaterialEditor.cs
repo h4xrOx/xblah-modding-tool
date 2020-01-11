@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
-using windows_source1ide.SourceSDK;
+using SourceModdingTool.SourceSDK;
 using System.Diagnostics;
 using DevExpress.XtraBars;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class MaterialEditor : DevExpress.XtraEditors.XtraForm
     {

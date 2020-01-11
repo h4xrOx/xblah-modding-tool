@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     class PCF
     {

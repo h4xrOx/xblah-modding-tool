@@ -8,13 +8,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using SourceModdingTool.SourceSDK;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class GameinfoForm : DevExpress.XtraEditors.XtraForm
     {
         Steam sourceSDK;
-        SourceSDK.KeyValue gameinfo;
+        KeyValue gameinfo;
 
         List<String[]> searchPaths;
 
@@ -72,7 +73,7 @@ namespace windows_source1ide
             switchVR.EditValue = (gameinfo.getValue("supportsvr") == "1" ? true : false);
 
             comboGames.Properties.Items.Clear();
-            string appID = gameinfo.getChild("filesystem").getValue("steamappid");
+            string appID = gameinfo.getChildByKey("filesystem").getValue("steamappid");
             foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
             {
                 comboGames.Properties.Items.Add(item.Key);
@@ -88,7 +89,7 @@ namespace windows_source1ide
             searchList.BeginUnboundLoad();
             searchList.Nodes.Clear();
             searchPaths = new List<string[]>();
-            foreach (SourceSDK.KeyValue searchPath in gameinfo.getChild("filesystem").getChild("searchpaths").getChildrenList())
+            foreach (SourceSDK.KeyValue searchPath in gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths").getChildren())
             {
                 searchPaths.Add(new string[] { searchPath.getKey(), searchPath.getValue() });
                 searchList.AppendNode(new object[] { searchPath.getKey(), searchPath.getValue() }, null);
@@ -146,9 +147,9 @@ namespace windows_source1ide
             gameinfo.setValue("supportsvr", switchVR.IsOn ? "1" : "0");
 
             int appID = sourceSDK.GetGameAppId(comboGames.EditValue.ToString());
-            gameinfo.getChild("filesystem").setValue("steamappid", appID.ToString());
+            gameinfo.getChildByKey("filesystem").setValue("steamappid", appID.ToString());
 
-            SourceSDK.KeyValue searchPathsKV = gameinfo.getChild("filesystem").getChild("searchpaths");
+            SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
             searchPathsKV.clearChildren();
             foreach (String[] searchPath in searchPaths)
             {

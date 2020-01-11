@@ -1,4 +1,4 @@
-﻿namespace windows_source1ide
+﻿namespace SourceModdingTool
 {
     partial class GamemenuDialog
     {

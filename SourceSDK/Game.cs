@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     class Game
     {

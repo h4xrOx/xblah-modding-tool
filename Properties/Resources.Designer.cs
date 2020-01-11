@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace windows_source1ide.Properties {
+namespace SourceModdingTool.Properties {
     using System;
     
     

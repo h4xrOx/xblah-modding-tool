@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     class VMT
     {
@@ -24,13 +24,13 @@ namespace windows_source1ide.SourceSDK
                 SourceSDK.KeyValue material = SourceSDK.KeyValue.readChunkfile(materialPath);
                 List<SourceSDK.KeyValue> textures = new List<SourceSDK.KeyValue>();
 
-                textures.Add(material.getChild("$basetexture"));
-                textures.Add(material.getChild("$detail"));
-                textures.Add(material.getChild("$blendmodulatetexture"));
-                textures.Add(material.getChild("$bumpmap"));
-                textures.Add(material.getChild("$parallaxmap"));
-                textures.Add(material.getChild("$basetexture2"));
-                textures.Add(material.getChild("%tooltexture"));
+                textures.Add(material.getChildByKey("$basetexture"));
+                textures.Add(material.getChildByKey("$detail"));
+                textures.Add(material.getChildByKey("$blendmodulatetexture"));
+                textures.Add(material.getChildByKey("$bumpmap"));
+                textures.Add(material.getChildByKey("$parallaxmap"));
+                textures.Add(material.getChildByKey("$basetexture2"));
+                textures.Add(material.getChildByKey("%tooltexture"));
 
                 foreach (SourceSDK.KeyValue textureKv in textures)
                 {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public class MountedFolder : VPK
     {
@@ -50,7 +50,7 @@ namespace windows_source1ide
                 }
         }
 
-        public override void extractFile(string filePath, string startupPath)
+        public override void extractFile(string filePath)
         {
 
         }

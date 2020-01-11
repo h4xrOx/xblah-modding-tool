@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     class VMF
     {
@@ -22,7 +22,7 @@ namespace windows_source1ide.SourceSDK
             //setStatusMessage("Map added: " + "maps/" + mapName + ".bsp", COLOR_ORANGE);
 
             // Add material assets
-            List<SourceSDK.KeyValue> materials = map.findChildren("material");
+            List<SourceSDK.KeyValue> materials = map.findChildrenByKey("material");
             foreach (SourceSDK.KeyValue kv in materials)
             {
                 string value = "materials/" + kv.getValue().ToLower() + ".vmt";
@@ -35,7 +35,7 @@ namespace windows_source1ide.SourceSDK
             }
 
             // Add model and sprite assets
-            List<SourceSDK.KeyValue> models = map.findChildren("model");
+            List<SourceSDK.KeyValue> models = map.findChildrenByKey("model");
             foreach (SourceSDK.KeyValue kv in models)
             {
                 string value = kv.getValue().ToLower();
@@ -48,7 +48,7 @@ namespace windows_source1ide.SourceSDK
             }
 
             // Add sound assets
-            List<SourceSDK.KeyValue> sounds = map.findChildren("message");
+            List<SourceSDK.KeyValue> sounds = map.findChildrenByKey("message");
             foreach (SourceSDK.KeyValue kv in sounds)
             {
                 string value = kv.getValue().ToLower();
@@ -63,7 +63,7 @@ namespace windows_source1ide.SourceSDK
             }
 
             // Add particle assets
-            List<SourceSDK.KeyValue> effectsKVs = map.findChildren("effect_name");
+            List<SourceSDK.KeyValue> effectsKVs = map.findChildrenByKey("effect_name");
             List<string> effects = new List<string>();
             List<string> pcfFiles = PCF.getAllFiles(sourceSDK);
             foreach (SourceSDK.KeyValue kv in effectsKVs)
@@ -82,7 +82,7 @@ namespace windows_source1ide.SourceSDK
             }
 
             // Add skybox
-            SourceSDK.KeyValue skybox = map.findChild("skyname");
+            SourceSDK.KeyValue skybox = map.findChildByKey("skyname");
             if (skybox != null)
             {
                 string value = skybox.getValue().ToLower();

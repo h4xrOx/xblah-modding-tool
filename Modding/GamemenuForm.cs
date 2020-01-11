@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using DevExpress.XtraEditors.Repository;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class GamemenuForm : DevExpress.XtraEditors.XtraForm
     {
@@ -77,7 +77,7 @@ namespace windows_source1ide
 
             SourceSDK.KeyValue gameMenu = SourceSDK.KeyValue.readChunkfile(path);
             actions.Clear();
-            foreach (SourceSDK.KeyValue actionKv in gameMenu.getChildrenList())
+            foreach (SourceSDK.KeyValue actionKv in gameMenu.getChildren())
             {
                 string label = actionKv.getValue("label");
                 string command = actionKv.getValue("command");

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
@@ -13,7 +9,7 @@ using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraTreeList;
 using System.IO;
 
-namespace windows_source1ide.Tools
+namespace SourceModdingTool.Tools
 {
     public partial class VPKExplorer : DevExpress.XtraEditors.XtraForm
     {
@@ -270,7 +266,7 @@ namespace windows_source1ide.Tools
                 } else
                 {
                     // It's a file
-                    openSelected();
+                    editSelected();
                 }
             }
         }
@@ -353,7 +349,7 @@ namespace windows_source1ide.Tools
             return selectedPaths;
         }
 
-        private void openSelected()
+        private void editSelected()
         {
             string modPath = sourceSDK.GetModPath();
 
@@ -365,6 +361,9 @@ namespace windows_source1ide.Tools
                 {
                     vpkManager.extractFile(filePath);
                     extractedPath = modPath + "\\" + filePath;
+                } else if(extractedPath != modPath + "\\" + filePath)
+                {
+                    File.Copy(extractedPath, modPath + "\\" + filePath, true);
                 }
 
                 Process.Start("notepad", extractedPath);
@@ -427,12 +426,34 @@ namespace windows_source1ide.Tools
 
         private void filePopOpenButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            openSelected();
+            editSelected();
         }
 
         private void filePopExtractButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             extractSelected();
+        }
+
+        private void filePopOpenFileLocationButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string modPath = sourceSDK.GetModPath();
+
+            List<string> paths = getSelectedPaths();
+            for (int i = 0; i < paths.Count; i++)
+            {
+
+                paths[i] = vpkManager.getExtractedPath(paths[i]).Replace("/", "\\");
+                if (paths[i].Contains("\\"))
+                {
+                    paths[i] = paths[i].Substring(0, paths[i].LastIndexOf("\\") + 1);
+                }
+            }
+
+            paths = paths.Distinct().ToList();
+            foreach(string path in paths)
+            {
+                Process.Start(path);
+            }
         }
     }
 }

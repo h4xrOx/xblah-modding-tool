@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class NewModForm : DevExpress.XtraEditors.XtraForm
     {
@@ -59,12 +59,16 @@ namespace windows_source1ide
             Directory.CreateDirectory(modPath + "\\resource");
 
             // Copy binaries
-            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\bin\\client.dll", modPath + "\\bin\\client.dll", true);
-            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\bin\\server.dll", modPath + "\\bin\\server.dll", true);
-            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\gameinfo.txt", modPath + "\\gameinfo.txt", true);
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory + "Templates\\" + game + "\\" + gameBranch + "\\";
+            foreach (string file in Directory.GetFiles(templatePath, "*", SearchOption.AllDirectories))
+            {
+                string destinationPath = modPath + "\\" + file.Replace(templatePath, "");
+                string destinationDirectory = new FileInfo(destinationPath).Directory.FullName;
+                Directory.CreateDirectory(destinationDirectory);
+                File.Copy(file, destinationPath);
+            }
 
-            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\resource\\template_english.txt", modPath + "\\resource\\" + modFolder + "_english.txt");
-            File.Copy(Application.StartupPath + "\\Templates\\" + game + "\\" + gameBranch + "\\resource\\HL2EP2.ttf", modPath + "\\resource\\HL2EP2.ttf");
+            File.Move(modPath + "\\resource\\template_english.txt", modPath + "\\resource\\" + modFolder + "_english.txt");
 
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
             gameInfo.setValue("game", modTitle);

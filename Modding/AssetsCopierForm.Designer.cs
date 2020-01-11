@@ -1,4 +1,4 @@
-﻿namespace windows_source1ide.Tools
+﻿namespace SourceModdingTool.Tools
 {
     partial class AssetsCopierForm
     {

@@ -1,4 +1,4 @@
-﻿namespace windows_source1ide.Tools
+﻿namespace SourceModdingTool.Tools
 {
     partial class VPKExplorer
     {
@@ -58,6 +58,7 @@
             this.filePopDeleteButton = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filePopMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.filePopOpenFileLocationButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
@@ -167,8 +168,9 @@
             this.barButtonItem2,
             this.filePopOpenButton,
             this.barButtonItem4,
-            this.filePopDeleteButton});
-            this.barManager1.MaxItemId = 13;
+            this.filePopDeleteButton,
+            this.filePopOpenFileLocationButton});
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryTextSearch});
@@ -307,7 +309,7 @@
             // 
             // filePopOpenButton
             // 
-            this.filePopOpenButton.Caption = "Open";
+            this.filePopOpenButton.Caption = "Edit";
             this.filePopOpenButton.Id = 10;
             this.filePopOpenButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filePopOpenButton.ImageOptions.SvgImage")));
             this.filePopOpenButton.Name = "filePopOpenButton";
@@ -347,10 +349,19 @@
             // 
             this.filePopMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopOpenButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.filePopOpenFileLocationButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopExtractButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopDeleteButton)});
             this.filePopMenu.Manager = this.barManager1;
             this.filePopMenu.Name = "filePopMenu";
+            // 
+            // filePopOpenFileLocationButton
+            // 
+            this.filePopOpenFileLocationButton.Caption = "Open File Location";
+            this.filePopOpenFileLocationButton.Id = 13;
+            this.filePopOpenFileLocationButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.filePopOpenFileLocationButton.Name = "filePopOpenFileLocationButton";
+            this.filePopOpenFileLocationButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopOpenFileLocationButton_ItemClick);
             // 
             // VPKExplorer
             // 
@@ -410,5 +421,6 @@
         private DevExpress.XtraBars.BarButtonItem filePopOpenButton;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem filePopDeleteButton;
+        private DevExpress.XtraBars.BarButtonItem filePopOpenFileLocationButton;
     }
 }

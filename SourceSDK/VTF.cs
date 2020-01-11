@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TGASharpLib;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     class VTF
     {

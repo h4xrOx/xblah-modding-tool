@@ -8,12 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using static windows_source1ide.Steam;
+using static SourceModdingTool.Steam;
 using System.Diagnostics;
 using System.IO;
-using windows_source1ide.SourceSDK;
+using SourceModdingTool.SourceSDK;
 
-namespace windows_source1ide.Tools
+namespace SourceModdingTool.Tools
 {
     public partial class AssetsCopierForm : DevExpress.XtraEditors.XtraForm
     {

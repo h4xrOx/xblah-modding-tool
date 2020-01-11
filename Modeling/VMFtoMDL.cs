@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Diagnostics;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class VMFtoMDL : DevExpress.XtraEditors.XtraForm
     {

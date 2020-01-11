@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public class Steam
     {
@@ -115,7 +115,7 @@ namespace windows_source1ide
 
             SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
             
-            foreach (SourceSDK.KeyValue child in root.getChildrenList())
+            foreach (SourceSDK.KeyValue child in root.getChildren())
             {
                 string dir = child.getValue().Replace("\\\\", "\\");
                 if (Directory.Exists(dir))
@@ -156,8 +156,8 @@ namespace windows_source1ide
             {
                 SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
 
-                string name = gameInfo.getChild("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
-                string modAppId = gameInfo.getChild("filesystem").getChild("steamappid").getValue();
+                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
                 {
@@ -388,8 +388,8 @@ namespace windows_source1ide
 
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
 
-            SourceSDK.KeyValue searchPaths = gameInfo.findChild("searchpaths");
-            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildrenList())
+            SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
+            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
             {
                 string[] keys = searchPath.getKey().Split('+');
 

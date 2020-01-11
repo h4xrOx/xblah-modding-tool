@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public class VPKManager
     {
@@ -57,12 +57,11 @@ namespace windows_source1ide
 
         public void extractFile(string filePath)
         {
-            string startupPath = AppDomain.CurrentDomain.BaseDirectory;
             foreach (KeyValuePair<string, VPK> vpk in vpks)
             {
                 if (vpk.Value.files.ContainsKey(filePath))
                 {
-                    vpk.Value.extractFile(filePath, startupPath);
+                    vpk.Value.extractFile(filePath);
 
                     
                     return;

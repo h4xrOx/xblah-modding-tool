@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class ModSelectionDialog : DevExpress.XtraEditors.XtraForm
     {

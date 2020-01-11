@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList.Nodes;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class GamemenuDialog : DevExpress.XtraEditors.XtraForm
     {

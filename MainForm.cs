@@ -8,16 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using static windows_source1ide.Steam;
+using static SourceModdingTool.Steam;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using DevExpress.XtraBars;
-using windows_source1ide.Tools;
-using windows_source1ide.SourceSDK;
+using SourceModdingTool.Tools;
+using SourceModdingTool.SourceSDK;
 using System.Threading;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {

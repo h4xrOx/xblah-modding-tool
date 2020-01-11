@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
-using static windows_source1ide.Steam;
+using static SourceModdingTool.Steam;
 using TGASharpLib;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using windows_source1ide.SourceSDK;
+using SourceModdingTool.SourceSDK;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public partial class ChaptersForm : DevExpress.XtraEditors.XtraForm
     {
@@ -24,7 +24,7 @@ namespace windows_source1ide
         string gamePath = "";
         string modPath = "";
 
-        SourceSDK.KeyValue lang;
+        KeyValue lang;
 
         List<Chapter> chapters = new List<Chapter>();
 
@@ -141,7 +141,7 @@ namespace windows_source1ide
             if (File.Exists(filePath))
             {
                 lang = SourceSDK.KeyValue.readChunkfile(filePath);
-                SourceSDK.KeyValue tokens = lang.getChild("tokens");
+                SourceSDK.KeyValue tokens = lang.getChildByKey("tokens");
                 for(int i = 0; i < chapters.Count; i++)
                 {
                     string title = tokens.getValue(modFolder + "_chapter" + (i + 1) + "_title");
@@ -160,9 +160,9 @@ namespace windows_source1ide
             string filePath = modPath + "\\resource\\" + modFolder + "_english.txt";
 
             for (int i = 0; i < chapters.Count; i++)
-                lang.getChild("tokens").setValue(modFolder + "_chapter" + (i + 1) + "_title", chapters[i].title);
+                lang.getChildByKey("tokens").setValue(modFolder + "_chapter" + (i + 1) + "_title", chapters[i].title);
 
-            SourceSDK.KeyValue.writeChunkFile(filePath, lang, Encoding.Unicode);
+            KeyValue.writeChunkFile(filePath, lang, Encoding.Unicode);
         }
 
         private void createChapterTitles()
@@ -457,7 +457,7 @@ namespace windows_source1ide
                     root.addChild(new KeyValue("$nolod", "1"));
                     SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt", root, false, new UTF8Encoding(false));
 
-                    root.getChild("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
+                    root.getChildByKey("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
                     SourceSDK.KeyValue.writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt", root, false, new UTF8Encoding(false));
                 }
             }

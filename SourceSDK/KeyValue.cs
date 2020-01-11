@@ -7,13 +7,15 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace windows_source1ide.SourceSDK
+namespace SourceModdingTool.SourceSDK
 {
     public class KeyValue
     {
         private string key = "";
         private string value = null;
-        private Dictionary<string, List<KeyValue>> children = null;
+
+        private Dictionary<string, List<KeyValue>> childrenIndex = null;
+        private List<KeyValue> children = null;
 
         public KeyValue(string key, string value)
         {
@@ -24,71 +26,71 @@ namespace windows_source1ide.SourceSDK
         public KeyValue(string key)
         {
             this.key = key;
-            children = new Dictionary<string, List<KeyValue>>();
+            childrenIndex = new Dictionary<string, List<KeyValue>>();
+            children = new List<KeyValue>();
         }
 
         public bool isParentKey()
         {
-            return (children != null && value == null);
+            return (childrenIndex != null && value == null);
         }
 
         public void addChild(string key, KeyValue value)
         {
-            if (!children.ContainsKey(key))
-                children.Add(key, new List<KeyValue>());
+            value.key = key;
+            addChild(value);
+        }
 
-            children[key].Add(value);
+        public void addChild(string key, string value)
+        {
+            addChild(new KeyValue(key, value));
         }
 
         public void addChild(KeyValue value)
         {
-            if (!children.ContainsKey(value.getKey()))
-                children.Add(value.getKey(), new List<KeyValue>());
+            if (!childrenIndex.ContainsKey(value.getKey()))
+                childrenIndex.Add(value.getKey(), new List<KeyValue>());
 
-            children[value.getKey()].Add(value);
+            childrenIndex[value.getKey()].Add(value);
+            children.Add(value);
         }
 
-        public KeyValue getChild(string key)
+        public KeyValue getChildByKey(string key)
         {
-            if (children != null && children.ContainsKey(key))
-                return children[key][0];
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
+                return childrenIndex[key][0];
 
             return null;
         }
 
-        public List<KeyValue> getChildren(string key)
+        public List<KeyValue> getChildrenByKey(string key)
         {
-            if (children != null && children.ContainsKey(key))
-                return children[key];
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
+                return childrenIndex[key];
 
             return null;
         }
 
-        public Dictionary<string, List<KeyValue>> getChildren()
+        public Dictionary<string, List<KeyValue>> getChildrenByKey()
+        {
+            return childrenIndex;
+        }
+
+        public List<KeyValue> getChildren()
         {
             return children;
         }
 
-        public List<KeyValue> getChildrenList()
+        public KeyValue findChildByKey(string key)
         {
-            List<KeyValue> result = new List<KeyValue>();
-            foreach (List<KeyValue> list in children.Values)
-            {
-                result.AddRange(list);
-            }
-            return result;
-        }
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
+                return childrenIndex[key][0];
 
-        public KeyValue findChild(string key)
-        {
-            if (children != null && children.ContainsKey(key))
-                return children[key][0];
-
-            if (children != null)
-                foreach(string k in children.Keys)
-                    foreach(KeyValue child in children[k])
+            if (childrenIndex != null)
+                foreach (string k in childrenIndex.Keys)
+                    foreach (KeyValue child in childrenIndex[k])
                     {
-                        KeyValue result = child.findChild(key);
+                        KeyValue result = child.findChildByKey(key);
                         if (result != null)
                             return result;
                     }
@@ -96,17 +98,17 @@ namespace windows_source1ide.SourceSDK
             return null;
         }
 
-        public List<KeyValue> findChildren(string key)
+        public List<KeyValue> findChildrenByKey(string key)
         {
             List<KeyValue> result = new List<KeyValue>();
-            if (children != null && children.ContainsKey(key))
-                result.AddRange(children[key]);
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
+                result.AddRange(childrenIndex[key]);
 
-            if (children != null)
-                foreach (string k in children.Keys)
-                    foreach (KeyValue child in children[k])
+            if (childrenIndex != null)
+                foreach (string k in childrenIndex.Keys)
+                    foreach (KeyValue child in childrenIndex[k])
                     {
-                        result.AddRange(child.findChildren(key));
+                        result.AddRange(child.findChildrenByKey(key));
                     }
 
             return result;
@@ -114,7 +116,8 @@ namespace windows_source1ide.SourceSDK
 
         public void clearChildren()
         {
-            children = new Dictionary<string, List<KeyValue>>();
+            childrenIndex = new Dictionary<string, List<KeyValue>>();
+            children = new List<KeyValue>();
         }
 
         public string getValue()
@@ -124,7 +127,7 @@ namespace windows_source1ide.SourceSDK
 
         public string getValue(string key)
         {
-            KeyValue child = getChild(key);
+            KeyValue child = getChildByKey(key);
             if (child != null)
                 return child.getValue();
 
@@ -138,16 +141,16 @@ namespace windows_source1ide.SourceSDK
 
         public void setValue(string value)
         {
-            if (this.value != null && children == null)
+            if (this.value != null && childrenIndex == null)
                 this.value = value;
         }
 
         public void setValue(string key, string value)
         {
-            if (this.value != null || children == null)
+            if (this.value != null || childrenIndex == null)
                 return;
 
-            KeyValue child = getChild(key);
+            KeyValue child = getChildByKey(key);
             if (child != null)
             {
                 child.setValue(value);
@@ -191,11 +194,12 @@ namespace windows_source1ide.SourceSDK
                                 stack.Peek().Value.addChild(child.Key, child.Value);
                             else
                                 list.Add(child.Value);
-                                //root = child.Value;
+                            //root = child.Value;
                         }
                         else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
                         {
                             line = line.Replace("\"", "").ToLower();
+                            KeyValue parent = new KeyValue(line);
                             stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
                         }
                         else if (words.Length >= 2) // It's a value key
@@ -206,7 +210,8 @@ namespace windows_source1ide.SourceSDK
                         }
                     }
                 }
-            } else
+            }
+            else
             {
                 throw new FileNotFoundException();
             }
@@ -214,17 +219,18 @@ namespace windows_source1ide.SourceSDK
             if (list.Count > 1)
             {
                 root = new KeyValue("");
-                foreach(KeyValue keyValue in list)
+                foreach (KeyValue keyValue in list)
                     root.addChild(keyValue);
 
                 return root;
-            } else
+            }
+            else
                 return list[0];
 
         }
 
         public static void writeChunkFile(string path, KeyValue root)
-        { 
+        {
             writeChunkFile(path, root, Encoding.UTF8);
         }
 
@@ -263,20 +269,16 @@ namespace windows_source1ide.SourceSDK
                     lines.Add(tabs + "{");
                 }
 
-                foreach (KeyValue entry in node.getChildrenList())
+                foreach (KeyValue entry in node.getChildren())
                     lines.AddRange(writeChunkFileTraverse(entry, level + 1, quotes));
 
                 if (node.key != "")
                     lines.Add(tabs + "}");
-
-                
             }
             else if (node.getValue() != null)
             {
                 lines.Add(tabs + (quotes ? "\"" : "") + node.key + (quotes ? "\"" : "") + "\t\"" + node.value + "\"");
             }
-
-
 
             return lines;
         }
@@ -307,5 +309,6 @@ namespace windows_source1ide.SourceSDK
             }
             return words.ToArray();
         }
+
     }
 }

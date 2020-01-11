@@ -58,10 +58,12 @@
     <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Text.Encoding" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,11 +126,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceSDK\Game.cs" />
+    <Compile Include="SourceSDK\KeyValue.cs" />
     <Compile Include="SourceSDK\MDL.cs" />
     <Compile Include="SourceSDK\MountedFolder.cs" />
     <Compile Include="SourceSDK\PCF.cs" />
     <Compile Include="SourceSDK\Steam.cs" />
-    <Compile Include="SourceSDK\KeyValue.cs" />
     <Compile Include="SourceSDK\VMF.cs" />
     <Compile Include="SourceSDK\VMT.cs" />
     <Compile Include="SourceSDK\VPK.cs" />
@@ -208,6 +210,36 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_episodic.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_manifest.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\HL2EP2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_episodic.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_manifest.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\HL2EP2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill_manifest.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\HL2EP2.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -305,20 +337,48 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="template_sp\bin\client.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="template_sp\bin\server.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\bin\client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\clientscheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\bin\client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\clientscheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -326,6 +386,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\clientscheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\BatchCompiler\Automatic Update Core.dll">
@@ -413,7 +479,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"

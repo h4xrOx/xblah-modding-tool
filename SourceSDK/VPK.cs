@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windows_source1ide
+namespace SourceModdingTool
 {
     public class VPK
     {
@@ -106,10 +106,10 @@ namespace windows_source1ide
             }
         }
 
-        public virtual void extractFile(string filePath, string startupPath)
+        public virtual void extractFile(string filePath)
         {
             string modPath = sourceSDK.GetModPath();
-            string toolPath = startupPath + "\\Tools\\HLExtract\\HLExtract.exe";
+            string toolPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string vpkPath = fullPath;
             if (!System.IO.File.Exists(vpkPath))
