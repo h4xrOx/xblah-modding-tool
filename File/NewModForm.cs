@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using windows_source1ide.Properties;
 
 namespace SourceModdingTool
 {
@@ -91,9 +93,40 @@ namespace SourceModdingTool
             List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
             foreach(DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
             {
-                if(gamesList.Contains(item.Tag.ToString().Split('/')[0]))
+                if (gamesList.Contains(item.Tag.ToString().Split('/')[0]))
+                {
                     item.Enabled = true;
+                    switch(item.Tag.ToString().Split('/')[1])
+                    {
+                        case "hl2":
+                            item.ImageOptions.Image = Resources.hl2;
+                            break;
+                        case "episodic":
+                            item.ImageOptions.Image = Resources.episodic;
+                            break;
+                        case "ep2":
+                            item.ImageOptions.Image = Resources.ep2;
+                            break;
+                        case "portal":
+                            item.ImageOptions.Image = Resources.portal;
+                            break;
+                        case "portal2":
+                            item.ImageOptions.Image = Resources.portal2;
+                            break;
+                        case "hl2mp":
+                            item.ImageOptions.Image = Resources.hl2mp;
+                            break;
+                        case "bms":
+                            item.ImageOptions.Image = Resources.bms;
+                            item.Enabled = false;
+                            break;
+                    }
+                }
             }
+
+            textModsPath.EditValue = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
+            Size size = TextRenderer.MeasureText(textModsPath.EditValue.ToString(), textModsPath.Font);
+            textModsPath.Width = size.Width + 8;
 
             checkModDetails();
         }
