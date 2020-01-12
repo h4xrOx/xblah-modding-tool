@@ -98,7 +98,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panelControl3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 229);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 241);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -142,7 +142,7 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.createButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 271);
+            this.panelControl1.Location = new System.Drawing.Point(0, 283);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(714, 39);
             this.panelControl1.TabIndex = 9;
@@ -156,7 +156,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.panelControl2.Size = new System.Drawing.Size(714, 271);
+            this.panelControl2.Size = new System.Drawing.Size(714, 283);
             this.panelControl2.TabIndex = 10;
             // 
             // galleryControl1
@@ -202,7 +202,7 @@
             this.galleryControl1.Gallery.ItemCheckedChanged += new DevExpress.XtraBars.Ribbon.GalleryItemEventHandler(this.galleryControl1_Gallery_ItemCheckedChanged);
             this.galleryControl1.Location = new System.Drawing.Point(8, 8);
             this.galleryControl1.Name = "galleryControl1";
-            this.galleryControl1.Size = new System.Drawing.Size(698, 221);
+            this.galleryControl1.Size = new System.Drawing.Size(698, 233);
             this.galleryControl1.TabIndex = 1;
             this.galleryControl1.Text = "galleryGames";
             // 
@@ -210,14 +210,14 @@
             // 
             this.galleryControlClient1.GalleryControl = this.galleryControl1;
             this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
-            this.galleryControlClient1.Size = new System.Drawing.Size(677, 217);
+            this.galleryControlClient1.Size = new System.Drawing.Size(677, 229);
             // 
             // NewModForm
             // 
             this.AcceptButton = this.createButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 310);
+            this.ClientSize = new System.Drawing.Size(714, 322);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

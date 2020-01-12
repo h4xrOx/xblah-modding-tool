@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace SourceModdingTool.SourceSDK
 
         internal void Stop()
         {
-            if(modProcess != null)
+            if (modProcess != null)
             {
                 modProcess.Kill();
                 modProcess = null;
@@ -30,7 +31,7 @@ namespace SourceModdingTool.SourceSDK
 
         public void Command(string command)
         {
-            if(modProcess == null)
+            if (modProcess == null)
                 return;
 
             string gamePath = sourceSDK.GetGamePath();
@@ -40,9 +41,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach(string file in Directory.GetFiles(gamePath))
+            foreach (string file in Directory.GetFiles(gamePath))
             {
-                if(new FileInfo(file).Extension == ".exe")
+                if (new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
@@ -64,7 +65,7 @@ namespace SourceModdingTool.SourceSDK
 
         public void Resize()
         {
-            if(modProcess != null)
+            if (modProcess != null)
             {
                 //Command("-width " + parent.Width + " -height " + parent.Height);
                 //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
@@ -79,9 +80,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach(string file in Directory.GetFiles(gamePath))
+            foreach (string file in Directory.GetFiles(gamePath))
             {
-                if(new FileInfo(file).Extension == ".exe")
+                if (new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
@@ -116,9 +117,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach(string file in Directory.GetFiles(gamePath))
+            foreach (string file in Directory.GetFiles(gamePath))
             {
-                if(new FileInfo(file).Extension == ".exe")
+                if (new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
@@ -147,9 +148,9 @@ namespace SourceModdingTool.SourceSDK
 
             string exePath = string.Empty;
 
-            foreach(string file in Directory.GetFiles(gamePath))
+            foreach (string file in Directory.GetFiles(gamePath))
             {
-                if(new FileInfo(file).Extension == ".exe")
+                if (new FileInfo(file).Extension == ".exe")
                 {
                     exePath = file;
                     break;
