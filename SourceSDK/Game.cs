@@ -75,6 +75,16 @@ namespace SourceModdingTool.SourceSDK
 
         public Process Start()
         {
+            return Start("");
+        }
+
+        public Process Start(string command)
+        {
+            foreach (var process in Process.GetProcessesByName("hl2.exe"))
+            {
+                process.Kill();
+            }
+
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
 
@@ -96,7 +106,7 @@ namespace SourceModdingTool.SourceSDK
                 "\" -windowed -noborder -novid 0 -width " +
                 parent.Width +
                 " -height " +
-                parent.Height;
+                parent.Height + " " + command;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
