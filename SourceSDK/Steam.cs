@@ -34,7 +34,7 @@ namespace SourceModdingTool
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe",
                           gamePath + "\\bin\\hammer_run_map_launcher.exe",
                           true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe", gamePath + "\\bin\\vbsp.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe", gamePath + "\\bin\\vbsp_2013.exe", true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
                           gamePath + "\\bin\\vrad_dll.dll",
@@ -80,7 +80,7 @@ namespace SourceModdingTool
             sb.AppendLine("             \"GameExe\"		\"" + gamePath + "\\hl2.exe\"");
             sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
             sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
-            sb.AppendLine("             \"BSP\"		\"" + gamePath + "\\bin\\vbsp.exe\"");
+            sb.AppendLine("             \"BSP\"		\"" + gamePath + "\\bin\\vbsp_2013.exe\"");
             sb.AppendLine("             \"Vis\"		\"" + gamePath + "\\bin\\vvis.exe\"");
             sb.AppendLine("             \"Light\"		\"" + gamePath + "\\bin\\vrad.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + gamePath + "\"");
