@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace SourceModdingTool
@@ -88,7 +89,7 @@ namespace SourceModdingTool
                             }
                             break;
                         case "envmapmask":
-                            vmt.addChild(new KeyValue("envmap", "env_cubemap"));
+                            vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
                             vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
                             File.WriteAllBytes(fullPath + "_" + texture.Key + ".vtf", texture.Value.bytes);
                             break;
@@ -102,16 +103,16 @@ namespace SourceModdingTool
 
             if(detail != null)
             {
-                vmt.addChild(new KeyValue("detail", detail[0]));
-                vmt.addChild(new KeyValue("detailscale", detail[0]));
-                vmt.addChild(new KeyValue("detailblendfactor", detail[0]));
-                vmt.addChild(new KeyValue("detailblendmode", detail[0]));
+                vmt.addChild(new KeyValue("$detail", detail[0]));
+                vmt.addChild(new KeyValue("$detailscale", detail[0]));
+                vmt.addChild(new KeyValue("$detailblendfactor", detail[0]));
+                vmt.addChild(new KeyValue("$detailblendmode", detail[0]));
             }
 
-            vmt.addChild(new KeyValue("surfaceprop", comboSurfaceProp.EditValue.ToString()));
-            vmt.addChild(new KeyValue("surfaceprop2", comboSurfaceProp2.EditValue.ToString()));
+            vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
+            vmt.addChild(new KeyValue("$surfaceprop2", comboSurfaceProp2.EditValue.ToString()));
 
-            SourceSDK.KeyValue.writeChunkFile(fullPath + ".vmt", vmt, false);
+            SourceSDK.KeyValue.writeChunkFile(fullPath + ".vmt", vmt, false, new UTF8Encoding(false));
         }
 
         private void clearTexture(PictureEdit pictureEdit)
@@ -211,26 +212,26 @@ namespace SourceModdingTool
         {
             string tag = pictureEdit.Tag.ToString();
 
-            if(openVMTFileDialog.ShowDialog() == DialogResult.OK)
+            if(openBitmapFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string type = new FileInfo(openVMTFileDialog.FileName).Extension;
+                string type = new FileInfo(openBitmapFileDialog.FileName).Extension;
 
                 string modPath = sourceSDK.GetModPath();
 
                 Uri path1 = new Uri(modPath + "\\");
-                Uri path2 = new Uri(openVMTFileDialog.FileName);
+                Uri path2 = new Uri(openBitmapFileDialog.FileName);
                 Uri diff = path1.MakeRelativeUri(path2);
 
 
                 if(type == ".vtf")
                 {
                     textures[tag].relativePath = diff.OriginalString;
-                    textures[tag].bytes = File.ReadAllBytes(openVMTFileDialog.FileName);
+                    textures[tag].bytes = File.ReadAllBytes(openBitmapFileDialog.FileName);
                     textures[tag].bitmap = VTF.toBitmap(textures[tag].bytes, sourceSDK);
                 } else
                 {
                     textures[tag].relativePath = string.Empty;
-                    textures[tag].bitmap = (Bitmap)Bitmap.FromFile(openVMTFileDialog.FileName);
+                    textures[tag].bitmap = (Bitmap)Bitmap.FromFile(openBitmapFileDialog.FileName);
                     textures[tag].bytes = VTF.fromBitmap(textures[tag].bitmap, sourceSDK);
                 }
 
@@ -284,6 +285,46 @@ namespace SourceModdingTool
             public Bitmap bitmap = null;
             public byte[] bytes = null;
             public string relativePath = string.Empty;
+        }
+
+        Game game;
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            string modPath = sourceSDK.GetModPath();
+            File.Copy(modPath + "\\gameinfo.txt", modPath + "\\gameinfo.txt.temp");
+            File.Copy(modPath + "\\resource\\gamemenu.res", modPath + "\\resource\\gamemenu.res.temp");
+
+            KeyValue gameinfo = KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+            gameinfo.setValue("title", "");
+            gameinfo.setValue("title2", "");
+            KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameinfo, false, new UTF8Encoding(false));
+
+            KeyValue gamemenu = new KeyValue("GameMenu");
+            KeyValue.writeChunkFile(modPath + "\\resource\\gamemenu.res", gamemenu, true, new UTF8Encoding(false));
+
+            game = new Game(sourceSDK, panelControl1);
+            game.Start("+map_background material_preview +crosshair 0");
+            this.ActiveControl = null;
+        }
+
+        private void MaterialEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string modPath = sourceSDK.GetModPath();
+
+            if (game != null && game.modProcess != null)
+            {
+                game.modProcess.Kill();
+                File.Copy(modPath + "\\gameinfo.txt.temp", modPath + "\\gameinfo.txt", true);
+                File.Copy(modPath + "\\resource\\gamemenu.res.temp", modPath + "\\resource\\gamemenu.res", true);
+                File.Delete(modPath + "\\gameinfo.txt.temp");
+                File.Delete(modPath + "\\resource\\gamemenu.res.temp");
+            }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            game.Command("+mat_reloadallmaterials");
         }
     }
 }

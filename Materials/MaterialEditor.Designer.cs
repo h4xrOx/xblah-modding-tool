@@ -65,6 +65,9 @@
             this.comboSurfaceProp2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboSurfaceProp = new DevExpress.XtraEditors.ComboBoxEdit();
             this.openBitmapFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture2.Properties)).BeginInit();
@@ -80,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureToolTexture
@@ -428,7 +432,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 264);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(843, 18);
             // 
@@ -438,7 +442,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 236);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 546);
             // 
             // barDockControlRight
             // 
@@ -446,7 +450,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(843, 28);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 236);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 546);
             // 
             // comboSurfaceProp2
             // 
@@ -652,11 +656,39 @@
             this.comboSurfaceProp.TabIndex = 14;
             this.comboSurfaceProp.Tag = "surfaceprop";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Location = new System.Drawing.Point(12, 264);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(256, 256);
+            this.panelControl1.TabIndex = 27;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(274, 264);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 28;
+            this.simpleButton1.Text = "Start";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(274, 293);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 33;
+            this.simpleButton2.Text = "Reload";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // MaterialEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 282);
+            this.ClientSize = new System.Drawing.Size(843, 592);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.shaderCombo);
@@ -668,6 +700,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MaterialEditor";
             this.Text = "Material Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MaterialEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture2.Properties)).EndInit();
@@ -684,6 +717,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -726,5 +760,8 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboDetail;
         private DevExpress.XtraEditors.ComboBoxEdit comboSurfaceProp2;
         private DevExpress.XtraEditors.XtraOpenFileDialog openBitmapFileDialog;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }
