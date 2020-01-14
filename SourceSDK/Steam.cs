@@ -179,7 +179,7 @@ namespace SourceModdingTool
 
             List<string> paths = GetAllModPaths();
             string gamePath = GetGamePath();
-            foreach(string path in GetAllGameBranches(currentGame))
+            foreach(string path in GetAllBaseGameinfoFolders(currentGame))
                 paths.Add(gamePath + "\\" + path);
             foreach(string path in paths)
             {
@@ -200,18 +200,24 @@ namespace SourceModdingTool
             return mods;
         }
 
-        public List<string> GetAllGameBranches(string game)
+        /// <summary>
+        /// Returns a list of all the folders with game infos of the specific game
+        /// </summary>
+        /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
+        /// <returns></returns>
+        public List<string> GetAllBaseGameinfoFolders(string game)
         {
+            if (string.IsNullOrEmpty(game))
+                return null;
+
             List<string> mods = new List<string>();
             string gamePath = GetGamesList()[game];
-            foreach(String path in Directory.GetDirectories(gamePath))
+            foreach (String path in Directory.GetDirectories(gamePath))
             {
                 String gameBranch = new FileInfo(path).Name;
 
-                if(File.Exists(gamePath + "\\" + gameBranch + "\\gameinfo.txt"))
-                {
+                if (File.Exists(gamePath + "\\" + gameBranch + "\\gameinfo.txt"))
                     mods.Add(gameBranch);
-                }
             }
             return mods;
         }
