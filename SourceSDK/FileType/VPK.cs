@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="D:\Development\CS\windows-source-modding-tool\SourceSDK\FileType\VPK.cs" company="">
+//     Author:  
+//     Copyright (c) . All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -14,6 +20,11 @@ namespace SourceModdingTool
 
         public VPK() { }
 
+        /// <summary>
+        /// Creates an instance of the VPK, reads and stores its content for later usage
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <param name="sourceSDK"></param>
         public VPK(string fullPath, Steam sourceSDK)
         {
             this.fullPath = fullPath;
@@ -22,6 +33,10 @@ namespace SourceModdingTool
             ListFiles();
         }
 
+        /// <summary>
+        /// Returns the name of the package relative to the source dirs (i.e. |gameinfo_path|file.vpk
+        /// </summary>
+        /// <returns></returns>
         internal string GetPackName()
         {
             string gamePath = sourceSDK.GetGamePath();
@@ -30,20 +45,22 @@ namespace SourceModdingTool
             string packName;
             try
             {
-                if(fullPath.Contains(modPath))
+                if (fullPath.Contains(modPath))
                 {
                     Uri path1 = new Uri(modPath + "\\");
                     Uri path2 = new Uri(fullPath);
                     Uri diff = path1.MakeRelativeUri(path2);
                     packName = "|gameinfo_path|" + diff.OriginalString;
-                } else
+                }
+                else
                 {
                     Uri path1 = new Uri(gamePath + "\\");
                     Uri path2 = new Uri(fullPath);
                     Uri diff = path1.MakeRelativeUri(path2);
                     packName = "|all_source_engine_paths|" + diff.OriginalString;
                 }
-            } catch(Exception)
+            }
+            catch (Exception)
             {
                 packName = Path.GetFileName(fullPath);
             }
@@ -51,6 +68,9 @@ namespace SourceModdingTool
             return packName;
         }
 
+        /// <summary>
+        /// Stores a list of all the files packed into the VPK
+        /// </summary>
         internal virtual void ListFiles()
         {
             string gamePath = sourceSDK.GetGamePath();
@@ -62,20 +82,20 @@ namespace SourceModdingTool
             {
                 StartInfo =
                 new ProcessStartInfo
-                    {
-                        FileName = toolPath,
-                        Arguments = "l \"" + fullPath + "\"",
-                        UseShellExecute = false,
-                        RedirectStandardOutput = true,
-                        CreateNoWindow = true
-                    }
+                {
+                    FileName = toolPath,
+                    Arguments = "l \"" + fullPath + "\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
             };
 
             process.Start();
 
             string packName = GetPackName();
 
-            while(!process.StandardOutput.EndOfStream)
+            while (!process.StandardOutput.EndOfStream)
             {
                 string line = process.StandardOutput.ReadLine().ToLower();
 
@@ -86,16 +106,23 @@ namespace SourceModdingTool
             }
         }
 
-        public virtual void extractFile(string filePath)
+        /// <summary>
+        /// Extracts a file from the VPK to the respective relative path in the mod folder
+        /// </summary>
+        /// <param name="filePath">Path of the asset relative to the root of the VPK</param>
+        public virtual void ExtractFile(string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+                return;
+
             string modPath = sourceSDK.GetModPath();
             string toolPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string vpkPath = fullPath;
-            if(!System.IO.File.Exists(vpkPath))
+            if (!System.IO.File.Exists(vpkPath))
                 vpkPath = vpkPath.Replace(".vpk", "_dir.vpk");
 
-            if(!System.IO.File.Exists(vpkPath))
+            if (!System.IO.File.Exists(vpkPath))
                 return;
 
             Directory.CreateDirectory(modPath +

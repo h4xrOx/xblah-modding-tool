@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="D:\Development\CS\windows-source-modding-tool\SourceSDK\FileType\VTF.cs" company="">
+//     Author: Jean XBLAH Knapp
+//     Copyright (c) 2019-2020. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -9,11 +15,19 @@ namespace SourceModdingTool.SourceSDK
 {
     class VTF
     {
-        public static byte[] fromBitmap(Bitmap bitmap, Steam sourceSDK)
+        /// <summary>
+        /// Converts a bitmap var into a byte array that can be saved as a VTF
+        /// </summary>
+        /// <param name="bitmap">The image to be converted</param>
+        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <returns></returns>
+        public static byte[] FromBitmap(Bitmap bitmap, Steam sourceSDK)
         {
+            if (bitmap == null || sourceSDK == null)
+                return null;
+
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
-            string modFolder = new DirectoryInfo(modPath).Name;
             string filePath = modPath + "\\materialsrc";
 
             string vtexPath = gamePath + "\\bin\\vtex.exe";
@@ -41,8 +55,17 @@ namespace SourceModdingTool.SourceSDK
             return result;
         }
 
-        public static Bitmap toBitmap(byte[] vtf, Steam sourceSDK)
+        /// <summary>
+        /// Converts a byte array of a VTF file into a bitmap var
+        /// </summary>
+        /// <param name="vtf">The byte array read from a VTF</param>
+        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap(byte[] vtf, Steam sourceSDK)
         {
+            if (vtf == null || vtf.Length == 0 || sourceSDK == null)
+                return null;
+
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
             string filePath = modPath + "\\materials";
@@ -60,7 +83,7 @@ namespace SourceModdingTool.SourceSDK
             process.Start();
             process.WaitForExit();
 
-            if(!File.Exists(filePath + "\\temp.tga"))
+            if (!File.Exists(filePath + "\\temp.tga"))
                 return null;
 
             Bitmap src = TGA.FromFile(filePath + "\\temp.tga").ToBitmap();

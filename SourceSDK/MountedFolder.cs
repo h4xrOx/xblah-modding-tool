@@ -37,6 +37,6 @@ namespace SourceModdingTool
                 }
         }
 
-        public override void extractFile(string filePath) { }
+        public override void ExtractFile(string filePath) { }
     }
 }

@@ -91,7 +91,7 @@ namespace SourceModdingTool.Tools
         private List<string> getAssetsFromMap(string fullPath)
         {
             setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
-            assets = VMF.getAssets(fullPath, game, mod, sourceSDK);
+            assets = VMF.GetAssets(fullPath, game, mod, sourceSDK);
 
 
             return assets;

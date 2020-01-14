@@ -22,7 +22,7 @@ namespace SourceModdingTool
             {
                 if(vpk.Value.files.ContainsKey(filePath))
                 {
-                    vpk.Value.extractFile(filePath);
+                    vpk.Value.ExtractFile(filePath);
 
 
                     return;
