@@ -80,7 +80,7 @@ namespace SourceModdingTool
             sb.AppendLine("             \"GameExe\"		\"" + gamePath + "\\hl2.exe\"");
             sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
             sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
-            sb.AppendLine("             \"BSP\"		\"" + gamePath + "\\bin\\vbsp_2013.exe\"");
+            sb.AppendLine("             \"BSP\"		\"" + gamePath + "\\bin\\vbsp.exe\"");
             sb.AppendLine("             \"Vis\"		\"" + gamePath + "\\bin\\vvis.exe\"");
             sb.AppendLine("             \"Light\"		\"" + gamePath + "\\bin\\vrad.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + gamePath + "\"");
