@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -34,7 +33,9 @@ namespace SourceModdingTool
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe",
                           gamePath + "\\bin\\hammer_run_map_launcher.exe",
                           true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe", gamePath + "\\bin\\vbsp_2013.exe", true);
+                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe",
+                          gamePath + "\\bin\\vbsp_2013.exe",
+                          true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
                           gamePath + "\\bin\\vrad_dll.dll",
@@ -51,10 +52,10 @@ namespace SourceModdingTool
             string gamePath = GetGamePath();
             string modPath = GetModPath();
 
-            if (File.Exists(gamePath + "\\bin\\propper.fgd"))
+            if(File.Exists(gamePath + "\\bin\\propper.fgd"))
                 File.Delete(gamePath + "\\bin\\propper.fgd");
 
-            if (File.Exists(gamePath + "\\bin\\propper.exe"))
+            if(File.Exists(gamePath + "\\bin\\propper.exe"))
                 File.Delete(gamePath + "\\bin\\propper.exe");
 
             List<string> fgds = getFGDs();
@@ -74,7 +75,7 @@ namespace SourceModdingTool
             {
                 sb.AppendLine("             \"GameData" + i + "\"		\"" + fgds[i] + "\"");
             }
-            
+
             sb.AppendLine("             \"DefaultTextureScale\"		\"0.250000\"");
             sb.AppendLine("             \"DefaultLightmapScale\"		\"16\"");
             sb.AppendLine("             \"GameExe\"		\"" + gamePath + "\\hl2.exe\"");
@@ -102,8 +103,12 @@ namespace SourceModdingTool
             string gamePath = GetGamePath();
             string modPath = GetModPath();
 
-            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.fgd", gamePath + "\\bin\\propper.fgd", true);
-            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.exe", gamePath + "\\bin\\propper.exe", true);
+            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.fgd",
+                      gamePath + "\\bin\\propper.fgd",
+                      true);
+            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.exe",
+                      gamePath + "\\bin\\propper.exe",
+                      true);
 
             StringBuilder sb = new StringBuilder();
 
@@ -172,8 +177,16 @@ namespace SourceModdingTool
             }
         }
 
+        /// <summary>
+        /// Loads all the mods with the same game app id of the specified game
+        /// </summary>
+        /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
+        /// <returns></returns>
         private Dictionary<string, string> LoadMods(String game)
         {
+            if (string.IsNullOrEmpty(game))
+                return null;
+
             mods = new Dictionary<string, string>();
             int gameAppId = GetGameAppId(game);
 
@@ -190,10 +203,8 @@ namespace SourceModdingTool
 
                 if(int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
                 {
-                    while(mods.Keys.Contains(name))
-                    {
+                    while (mods.Keys.Contains(name))
                         name = name + "_";
-                    }
                     mods.Add(name, path);
                 }
             }
@@ -207,16 +218,16 @@ namespace SourceModdingTool
         /// <returns></returns>
         public List<string> GetAllBaseGameinfoFolders(string game)
         {
-            if (string.IsNullOrEmpty(game))
+            if(string.IsNullOrEmpty(game))
                 return null;
 
             List<string> mods = new List<string>();
             string gamePath = GetGamesList()[game];
-            foreach (String path in Directory.GetDirectories(gamePath))
+            foreach(String path in Directory.GetDirectories(gamePath))
             {
                 String gameBranch = new FileInfo(path).Name;
 
-                if (File.Exists(gamePath + "\\" + gameBranch + "\\gameinfo.txt"))
+                if(File.Exists(gamePath + "\\" + gameBranch + "\\gameinfo.txt"))
                     mods.Add(gameBranch);
             }
             return mods;
@@ -236,6 +247,41 @@ namespace SourceModdingTool
                 }
             }
             return mods;
+        }
+
+        public List<string> getFGDs()
+        {
+            List<string> result = new List<string>();
+
+            string gamePath = GetGamePath();
+            string modPath = GetModPath();
+
+            result.AddRange(Directory.GetFiles(gamePath, "*.fgd", SearchOption.AllDirectories));
+            result.AddRange(Directory.GetFiles(modPath, "*.fgd", SearchOption.AllDirectories));
+
+            List<string> alreadyIncluded = new List<string>();
+
+            foreach(string fgd in result)
+            {
+                string line;
+                StreamReader file = new StreamReader(fgd);
+                while((line = file.ReadLine()) != null)
+                {
+                    if(line.Trim().StartsWith("@include"))
+                    {
+                        line = line.Replace("@include", string.Empty).Replace("\"", string.Empty).Trim();
+                        alreadyIncluded.Add(new FileInfo(fgd).Directory.FullName + "\\" + line);
+                        alreadyIncluded.Add(gamePath + "\\bin\\" + line);
+                    }
+                }
+            }
+
+            foreach(string fgd in alreadyIncluded.Distinct().ToList())
+            {
+                result.Remove(fgd);
+            }
+
+            return result;
         }
 
         public int GetGameAppId(string game)
@@ -313,10 +359,7 @@ namespace SourceModdingTool
             return result.Distinct().ToList();
         }
 
-        public List<string> getModMountedVPKs()
-        {
-            return getModMountedPaths().Where(x => x.EndsWith(".vpk")).ToList();
-        }
+        public List<string> getModMountedVPKs() { return getModMountedPaths().Where(x => x.EndsWith(".vpk")).ToList(); }
 
         public string GetModPath() { return GetModPath(currentGame, currentMod); }
 
@@ -353,9 +396,7 @@ namespace SourceModdingTool
         public List<string> getModSearchPaths() { return getModSearchPaths(currentGame, currentMod); }
 
         public List<string> getModSearchPaths(string game, string mod)
-        {
-            return getModMountedPaths(game, mod).Where(x => Directory.Exists(x)).ToList();
-        }
+        { return getModMountedPaths(game, mod).Where(x => Directory.Exists(x)).ToList(); }
 
         public Dictionary<string, string> GetModsList(string game)
         {
@@ -368,38 +409,6 @@ namespace SourceModdingTool
         {
             string modPath = mods[mod];
             Process.Start(modPath);
-        }
-        public List<string> getFGDs()
-        {
-            List<string> result = new List<string>();
-
-            string gamePath = GetGamePath();
-            string modPath = GetModPath();
-
-            result.AddRange(Directory.GetFiles(gamePath, "*.fgd", SearchOption.AllDirectories));
-            result.AddRange(Directory.GetFiles(modPath, "*.fgd", SearchOption.AllDirectories));
-
-            List<string> alreadyIncluded = new List<string>();
-
-            foreach(string fgd in result)
-            {
-                string line;
-                StreamReader file = new StreamReader(fgd);
-                while ((line = file.ReadLine()) != null) {
-                    if (line.Trim().StartsWith("@include")) {
-                        line = line.Replace("@include", "").Replace("\"", "").Trim();
-                        alreadyIncluded.Add(new FileInfo(fgd).Directory.FullName + "\\" + line);
-                        alreadyIncluded.Add(gamePath + "\\bin\\" + line);
-                    }
-                }
-            }
-
-            foreach(string fgd in alreadyIncluded.Distinct().ToList())
-            {
-                result.Remove(fgd);
-            }
-
-            return result;
         }
 
         public void RunHammer(string startupPath)
