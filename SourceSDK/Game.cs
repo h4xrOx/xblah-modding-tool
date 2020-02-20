@@ -106,7 +106,10 @@ namespace SourceModdingTool.SourceSDK
                 "\" -windowed -noborder -novid 0 -width " +
                 parent.Width +
                 " -height " +
-                parent.Height + " " + command;
+                parent.Height + 
+                " -multirun " + 
+                command +
+                " +net_graph 0";
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();

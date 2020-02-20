@@ -346,5 +346,11 @@ namespace SourceModdingTool
             else
                 modsCombo.EditValue = string.Empty;
         }
+
+        private void barButtonClientScheme_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ClientSchemeForm form = new ClientSchemeForm(sourceSDK);
+            form.ShowDialog();
+        }
     }
 }

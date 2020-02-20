@@ -85,6 +85,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonClientScheme = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -144,9 +145,10 @@
             this.buttonOpenMapsrcFolder,
             this.barButtonRunFullscreen,
             this.buttonTest,
-            this.buttonMaterialEditor});
+            this.buttonMaterialEditor,
+            this.barButtonClientScheme});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 59;
+            this.barManager1.MaxItemId = 60;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -356,7 +358,8 @@
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonGameinfo),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonChapters),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClientScheme)});
             this.barSubItem3.Name = "barSubItem3";
             // 
             // barButtonGameinfo
@@ -617,6 +620,13 @@
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
             // 
+            // barButtonClientScheme
+            // 
+            this.barButtonClientScheme.Caption = "Client Scheme";
+            this.barButtonClientScheme.Id = 59;
+            this.barButtonClientScheme.Name = "barButtonClientScheme";
+            this.barButtonClientScheme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClientScheme_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -700,5 +710,6 @@
         private DevExpress.Utils.ImageCollection imageCollection3;
         private DevExpress.XtraBars.BarButtonItem buttonTest;
         private DevExpress.XtraBars.BarButtonItem buttonMaterialEditor;
+        private DevExpress.XtraBars.BarButtonItem barButtonClientScheme;
     }
 }

@@ -179,27 +179,41 @@ namespace SourceModdingTool.SourceSDK
 
                         string[] words = splitByWords(line);
 
-                        if(words.Length > 0 && words[0].Contains("{")) // It opens a group
+                        if (words.Length > 0 && words[0].Contains("{")) // It opens a group
                         {
                             // We actually don't need to do anything.
-                        } else if(words.Length > 0 && words[0].Contains("}"))    // It closes a group
+                        } else if (words.Length > 0 && words[0].Contains("}"))    // It closes a group
                         {
                             KeyValuePair<string, KeyValue> child = stack.Pop();
-                            if(stack.Count > 0)
+                            if (stack.Count > 0)
                                 stack.Peek().Value.addChild(child.Key, child.Value);
                             else
                                 list.Add(child.Value);
                             //root = child.Value;
-                        } else if(words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
+                        } else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
                         {
                             line = line.Replace("\"", string.Empty).ToLower();
                             KeyValue parent = new KeyValue(line);
                             stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
-                        } else if(words.Length >= 2) // It's a value key
+                        } else if (words.Length >= 2) 
                         {
-                            string key = words[0].Replace("\"", string.Empty).ToLower();
-                            KeyValue value = new KeyValue(key, words[1]);
-                            stack.Peek().Value.addChild(key, value);
+                            // Workaround: Valve decided to use spaces in some .res files to identify the OS the key is used by.
+                            // So, this code will result in a false positive. Right now, the only example I have is of this kind:
+                            // HudHealth [$WIN32]
+                            // So, the workaround will be if the second word starts and ends with brackets
+                            if (words[1].StartsWith("[") && words[1].EndsWith("]")) // It's a parent key with a target OS
+                            {
+                                line = line.Replace("\"", string.Empty);
+                                KeyValue parent = new KeyValue(line);
+                                stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
+                            }
+                            else // It's a value key
+                            {
+                                string key = words[0].Replace("\"", string.Empty).ToLower();
+                                KeyValue value = new KeyValue(key, words[1]);
+                                stack.Peek().Value.addChild(key, value);
+                            }
+                            
                         }
                     }
                 }
