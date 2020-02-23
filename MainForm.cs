@@ -303,6 +303,7 @@ namespace SourceModdingTool
             menuModdingRun.Enabled = false;
             menuModdingRunFullscreen.Enabled = false;
             menuModdingIngameTools.Enabled = false;
+            menuModdingDelete.Enabled = false;
             toolsStop.Visibility = BarItemVisibility.Always;
         }
 
@@ -334,6 +335,7 @@ namespace SourceModdingTool
                 menuModdingRun.Enabled = true;
                 menuModdingRunFullscreen.Enabled = true;
                 menuModdingIngameTools.Enabled = true;
+                menuModdingDelete.Enabled = true;
                 toolsStop.Visibility = BarItemVisibility.Never;
             }
         }
