@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,7 @@ namespace SourceModdingTool
 
         private void gamesCombo_TextChanged(object sender, EventArgs e)
         {
+            sourceSDK.setCurrentGame(gamesCombo.EditValue.ToString());
             game = gamesCombo.EditValue.ToString();
             updateModsCombo();
         }
@@ -39,14 +41,24 @@ namespace SourceModdingTool
             else if(gamesCombo.Properties.Items.Count > 0)
                 gamesCombo.EditValue = gamesCombo.Properties.Items[0];
             else
+            {
                 gamesCombo.EditValue = string.Empty;
+                XtraMessageBox.Show("No Source games were found. Check if everything is all set at Steam and restart this tool.");
+                Close();
+            }
         }
 
         private void updateModsCombo()
         {
             string currentMod = (modsCombo.EditValue != null ? modsCombo.EditValue.ToString() : string.Empty);
             modsCombo.Properties.Items.Clear();
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(gamesCombo.EditValue.ToString()))
+
+            string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty);
+            if(currentGame == string.Empty)
+                return;
+
+            Dictionary<string, string> dictionary = sourceSDK.GetModsList(currentGame);
+            foreach (KeyValuePair<string, string> item in dictionary)
                 modsCombo.Properties.Items.Add(item.Key);
 
             if(modsCombo.Properties.Items.Count > 0 && modsCombo.Properties.Items.Contains(currentMod))
@@ -54,7 +66,9 @@ namespace SourceModdingTool
             else if(modsCombo.Properties.Items.Count > 0)
                 modsCombo.EditValue = modsCombo.Properties.Items[0];
             else
+            {
                 modsCombo.EditValue = string.Empty;
+            }
         }
     }
 }

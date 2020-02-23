@@ -33,9 +33,9 @@
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.tools = new DevExpress.XtraBars.Bar();
             this.toolsGames = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryGamesCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.toolsGamesRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.toolsMods = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.toolsModsRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.toolsRun = new DevExpress.XtraBars.BarButtonItem();
             this.toolsRunPopup = new DevExpress.XtraBars.PopupMenu(this.components);
             this.toolsRunPopupRun = new DevExpress.XtraBars.BarButtonItem();
@@ -92,8 +92,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsGamesRepository)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsModsRepository)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -160,8 +160,8 @@
             this.barManager.MainMenu = this.menu;
             this.barManager.MaxItemId = 78;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryGamesCombo,
-            this.repositoryModsCombo,
+            this.toolsGamesRepository,
+            this.toolsModsRepository,
             this.repositoryItemTextEdit1,
             this.repositoryItemButtonEdit1});
             this.barManager.StatusBar = this.status;
@@ -185,7 +185,7 @@
             // toolsGames
             // 
             this.toolsGames.Caption = "barEditItem1";
-            this.toolsGames.Edit = this.repositoryGamesCombo;
+            this.toolsGames.Edit = this.toolsGamesRepository;
             this.toolsGames.EditWidth = 128;
             this.toolsGames.Id = 2;
             this.toolsGames.Name = "toolsGames";
@@ -193,16 +193,16 @@
             // 
             // repositoryGamesCombo
             // 
-            this.repositoryGamesCombo.AutoHeight = false;
-            this.repositoryGamesCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.toolsGamesRepository.AutoHeight = false;
+            this.toolsGamesRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryGamesCombo.Name = "repositoryGamesCombo";
-            this.repositoryGamesCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.toolsGamesRepository.Name = "repositoryGamesCombo";
+            this.toolsGamesRepository.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // toolsMods
             // 
             this.toolsMods.Caption = "barEditItem2";
-            this.toolsMods.Edit = this.repositoryModsCombo;
+            this.toolsMods.Edit = this.toolsModsRepository;
             this.toolsMods.EditWidth = 128;
             this.toolsMods.Id = 3;
             this.toolsMods.Name = "toolsMods";
@@ -210,11 +210,11 @@
             // 
             // repositoryModsCombo
             // 
-            this.repositoryModsCombo.AutoHeight = false;
-            this.repositoryModsCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.toolsModsRepository.AutoHeight = false;
+            this.toolsModsRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryModsCombo.Name = "repositoryModsCombo";
-            this.repositoryModsCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.toolsModsRepository.Name = "repositoryModsCombo";
+            this.toolsModsRepository.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // toolsRun
             // 
@@ -696,8 +696,8 @@
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResizeEnd += new System.EventHandler(this.ModForm_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsGamesRepository)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsModsRepository)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
@@ -716,9 +716,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarEditItem toolsGames;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryGamesCombo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox toolsGamesRepository;
         private DevExpress.XtraBars.BarEditItem toolsMods;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryModsCombo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox toolsModsRepository;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem toolsRun;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;

@@ -184,15 +184,20 @@ namespace SourceModdingTool
         /// <returns></returns>
         private Dictionary<string, string> LoadMods(String game)
         {
-            if (string.IsNullOrEmpty(game))
-                return null;
-
             mods = new Dictionary<string, string>();
+
+            if (string.IsNullOrEmpty(game))
+                return mods;
+            
             int gameAppId = GetGameAppId(game);
+            string gamePath = GetGamePath();
+
+            if (gameAppId == -1 || gamePath == null)
+                return mods;
 
             List<string> paths = GetAllModPaths();
-            string gamePath = GetGamePath();
-            foreach(string path in GetAllBaseGameinfoFolders(currentGame))
+            
+            foreach (string path in GetAllBaseGameinfoFolders(currentGame))
                 paths.Add(gamePath + "\\" + path);
             foreach(string path in paths)
             {
@@ -218,10 +223,11 @@ namespace SourceModdingTool
         /// <returns></returns>
         public List<string> GetAllBaseGameinfoFolders(string game)
         {
-            if(string.IsNullOrEmpty(game))
-                return null;
-
             List<string> mods = new List<string>();
+
+            if (string.IsNullOrEmpty(game))
+                return mods;
+            
             string gamePath = GetGamesList()[game];
             foreach(String path in Directory.GetDirectories(gamePath))
             {

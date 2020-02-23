@@ -368,16 +368,14 @@ namespace SourceModdingTool
         private void updateToolsGames()
         {
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
-            repositoryGamesCombo.Items.Clear();
+            toolsGamesRepository.Items.Clear();
             foreach(KeyValuePair<string, string> item in sourceSDK.GetGamesList())
-            {
-                repositoryGamesCombo.Items.Add(item.Key);
-            }
+                toolsGamesRepository.Items.Add(item.Key);
 
-            if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
+            if(toolsGamesRepository.Items.Count > 0 && toolsGamesRepository.Items.Contains(currentGame))
                 toolsGames.EditValue = currentGame;
-            else if(repositoryGamesCombo.Items.Count > 0)
-                toolsGames.EditValue = repositoryGamesCombo.Items[0];
+            else if(toolsGamesRepository.Items.Count > 0)
+                toolsGames.EditValue = toolsGamesRepository.Items[0];
             else
             {
                 toolsGames.EditValue = string.Empty;
@@ -388,24 +386,22 @@ namespace SourceModdingTool
 
         private void updateToolsMods()
         {
+            string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
+            toolsModsRepository.Items.Clear();
+
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
             if(currentGame == string.Empty)
                 return;
 
-            string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
-            repositoryModsCombo.Items.Clear();
             foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(currentGame))
-            {
-                repositoryModsCombo.Items.Add(item.Key);
-            }
+                toolsModsRepository.Items.Add(item.Key);
 
-            if(repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
+            if(toolsModsRepository.Items.Count > 0 && toolsModsRepository.Items.Contains(currentMod))
                 toolsMods.EditValue = currentMod;
-            else if(repositoryModsCombo.Items.Count > 0)
-                toolsMods.EditValue = repositoryModsCombo.Items[0];
+            else if(toolsModsRepository.Items.Count > 0)
+                toolsMods.EditValue = toolsModsRepository.Items[0];
             else
             {
-                XtraMessageBox.Show("No mods were found for this Source game.");
                 toolsMods.EditValue = string.Empty;
             }
         }
