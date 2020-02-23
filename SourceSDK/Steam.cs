@@ -495,5 +495,12 @@ namespace SourceModdingTool
             if (Directory.Exists(modPath + "\\screenshots"))
                 Directory.Delete(modPath + "\\screenshots", true);
         }
+        public void deleteMod()
+        {
+            string modPath = GetModPath();
+
+            if (Directory.Exists(modPath))
+                Directory.Delete(modPath, true);
+        }
     }
 }

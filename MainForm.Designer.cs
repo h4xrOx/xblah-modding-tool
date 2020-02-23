@@ -33,9 +33,9 @@
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.tools = new DevExpress.XtraBars.Bar();
             this.toolsGames = new DevExpress.XtraBars.BarEditItem();
-            this.toolsGamesRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryGamesCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.toolsMods = new DevExpress.XtraBars.BarEditItem();
-            this.toolsModsRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.toolsRun = new DevExpress.XtraBars.BarButtonItem();
             this.toolsRunPopup = new DevExpress.XtraBars.PopupMenu(this.components);
             this.toolsRunPopupRun = new DevExpress.XtraBars.BarButtonItem();
@@ -91,9 +91,10 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolsGamesRepository)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolsModsRepository)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -156,12 +157,13 @@
             this.toolsRunPopupRun,
             this.toolsRunPopupRunFullscreen,
             this.toolsRunPopupIngameTools,
-            this.menuModdingImport2});
+            this.menuModdingImport2,
+            this.menuModdingDelete});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 78;
+            this.barManager.MaxItemId = 79;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.toolsGamesRepository,
-            this.toolsModsRepository,
+            this.repositoryGamesCombo,
+            this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
             this.repositoryItemButtonEdit1});
             this.barManager.StatusBar = this.status;
@@ -185,7 +187,7 @@
             // toolsGames
             // 
             this.toolsGames.Caption = "barEditItem1";
-            this.toolsGames.Edit = this.toolsGamesRepository;
+            this.toolsGames.Edit = this.repositoryGamesCombo;
             this.toolsGames.EditWidth = 128;
             this.toolsGames.Id = 2;
             this.toolsGames.Name = "toolsGames";
@@ -193,16 +195,16 @@
             // 
             // repositoryGamesCombo
             // 
-            this.toolsGamesRepository.AutoHeight = false;
-            this.toolsGamesRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryGamesCombo.AutoHeight = false;
+            this.repositoryGamesCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.toolsGamesRepository.Name = "repositoryGamesCombo";
-            this.toolsGamesRepository.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryGamesCombo.Name = "repositoryGamesCombo";
+            this.repositoryGamesCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // toolsMods
             // 
             this.toolsMods.Caption = "barEditItem2";
-            this.toolsMods.Edit = this.toolsModsRepository;
+            this.toolsMods.Edit = this.repositoryModsCombo;
             this.toolsMods.EditWidth = 128;
             this.toolsMods.Id = 3;
             this.toolsMods.Name = "toolsMods";
@@ -210,11 +212,11 @@
             // 
             // repositoryModsCombo
             // 
-            this.toolsModsRepository.AutoHeight = false;
-            this.toolsModsRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryModsCombo.AutoHeight = false;
+            this.repositoryModsCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.toolsModsRepository.Name = "repositoryModsCombo";
-            this.toolsModsRepository.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryModsCombo.Name = "repositoryModsCombo";
+            this.repositoryModsCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // toolsRun
             // 
@@ -332,7 +334,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
             this.menuModding.Name = "menuModding";
             // 
             // menuModdingRun
@@ -679,6 +682,17 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuModdingDelete
+            // 
+            this.menuModdingDelete.Caption = "Delete Mod";
+            this.menuModdingDelete.Id = 78;
+            this.menuModdingDelete.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.menuModdingDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingDelete.ImageOptions.SvgImage")));
+            this.menuModdingDelete.ItemInMenuAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
+            this.menuModdingDelete.Name = "menuModdingDelete";
+            this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -696,8 +710,8 @@
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResizeEnd += new System.EventHandler(this.ModForm_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolsGamesRepository)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolsModsRepository)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
@@ -768,5 +782,8 @@
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupRunFullscreen;
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupIngameTools;
         private DevExpress.XtraBars.BarButtonItem menuModdingImport2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryGamesCombo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryModsCombo;
+        private DevExpress.XtraBars.BarButtonItem menuModdingDelete;
     }
 }

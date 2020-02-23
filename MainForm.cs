@@ -179,6 +179,17 @@ namespace SourceModdingTool
                 HudEditorForm form = new HudEditorForm(sourceSDK);
                 form.ShowDialog();
             }
+
+            // Delete mod
+            else if(e.Item == menuModdingDelete)
+            {
+                if (XtraMessageBox.Show("Are you sure you want to delete this mod?", "Delete mod", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    sourceSDK.deleteMod();
+                    updateToolsGames();
+                    updateToolsMods();
+                }
+            }
         }
 
         private void menuModdingRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -368,14 +379,14 @@ namespace SourceModdingTool
         private void updateToolsGames()
         {
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
-            toolsGamesRepository.Items.Clear();
+            repositoryGamesCombo.Items.Clear();
             foreach(KeyValuePair<string, string> item in sourceSDK.GetGamesList())
-                toolsGamesRepository.Items.Add(item.Key);
+                repositoryGamesCombo.Items.Add(item.Key);
 
-            if(toolsGamesRepository.Items.Count > 0 && toolsGamesRepository.Items.Contains(currentGame))
+            if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
                 toolsGames.EditValue = currentGame;
-            else if(toolsGamesRepository.Items.Count > 0)
-                toolsGames.EditValue = toolsGamesRepository.Items[0];
+            else if(repositoryGamesCombo.Items.Count > 0)
+                toolsGames.EditValue = repositoryGamesCombo.Items[0];
             else
             {
                 toolsGames.EditValue = string.Empty;
@@ -387,19 +398,19 @@ namespace SourceModdingTool
         private void updateToolsMods()
         {
             string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
-            toolsModsRepository.Items.Clear();
+            repositoryModsCombo.Items.Clear();
 
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
             if(currentGame == string.Empty)
                 return;
 
             foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(currentGame))
-                toolsModsRepository.Items.Add(item.Key);
+                repositoryModsCombo.Items.Add(item.Key);
 
-            if(toolsModsRepository.Items.Count > 0 && toolsModsRepository.Items.Contains(currentMod))
+            if(repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
                 toolsMods.EditValue = currentMod;
-            else if(toolsModsRepository.Items.Count > 0)
-                toolsMods.EditValue = toolsModsRepository.Items[0];
+            else if(repositoryModsCombo.Items.Count > 0)
+                toolsMods.EditValue = repositoryModsCombo.Items[0];
             else
             {
                 toolsMods.EditValue = string.Empty;
