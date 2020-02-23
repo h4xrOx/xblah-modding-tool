@@ -121,16 +121,6 @@ namespace SourceModdingTool
         private void barButtonModOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         { sourceSDK.OpenModFolder(modsCombo.EditValue.ToString()); }
 
-        private void barButtonRunFullscreen_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            game = new Game(sourceSDK, panel1);
-            game.StartFullScreen();
-
-            buttonModStart.Enabled = false;
-            barButtonRun.Enabled = false;
-            buttonModStop.Visibility = BarItemVisibility.Always;
-            game.modProcess.Exited += new EventHandler(modExited);
-        }
 
         private void buttonBatchCompiler_ItemClick(object sender, ItemClickEventArgs e)
         { Process.Start("Tools\\BatchCompiler\\Batch Compiler.exe"); }
@@ -152,21 +142,6 @@ namespace SourceModdingTool
             Process.Start(toolPath);
         }
 
-        private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            game = new Game(sourceSDK, panel1);
-            game.StartTools();
-
-            FormBorderStyle = FormBorderStyle.Fixed3D;
-            MaximizeBox = false;
-            modProcessUpdater.Enabled = true;
-
-            buttonModStart.Enabled = false;
-            barButtonRun.Enabled = false;
-            buttonModStop.Visibility = BarItemVisibility.Always;
-            game.modProcess.Exited += new EventHandler(modExited);
-        }
-
         private void buttonMaterialEditor_ItemClick(object sender, ItemClickEventArgs e)
         {
             MaterialEditor form = new MaterialEditor(string.Empty, sourceSDK);
@@ -177,6 +152,35 @@ namespace SourceModdingTool
         {
             game = new Game(sourceSDK, panel1);
             game.Start();
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
+            modProcessUpdater.Enabled = true;
+
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            barButtonRunFullscreen.Enabled = false;
+            buttonIngameTools.Enabled = false;
+
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            game.modProcess.Exited += new EventHandler(modExited);
+        }
+
+        private void barButtonRunFullscreen_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            game = new Game(sourceSDK, panel1);
+            game.StartFullScreen();
+
+            buttonModStart.Enabled = false;
+            barButtonRun.Enabled = false;
+            buttonModStop.Visibility = BarItemVisibility.Always;
+            game.modProcess.Exited += new EventHandler(modExited);
+        }
+
+        private void buttonIngameTools_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            game = new Game(sourceSDK, panel1);
+            game.StartTools();
+
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             modProcessUpdater.Enabled = true;
@@ -268,9 +272,9 @@ namespace SourceModdingTool
 
         private void modExited(object sender, EventArgs e)
         {
-            buttonModStart.Enabled = true;
-            barButtonRun.Enabled = true;
-            buttonModStop.Visibility = BarItemVisibility.Never;
+            //buttonModStart.Enabled = true;
+            //barButtonRun.Enabled = true;
+            //buttonModStop.Visibility = BarItemVisibility.Never;
             game.modProcess = null;
             //FormBorderStyle = FormBorderStyle.Sizable;
         }
@@ -297,6 +301,12 @@ namespace SourceModdingTool
                 FormBorderStyle = FormBorderStyle.Sizable;
                 modProcessUpdater.Enabled = false;
                 MaximizeBox = true;
+
+                buttonModStart.Enabled = true;
+                barButtonRun.Enabled = true;
+                barButtonRunFullscreen.Enabled = true;
+                buttonIngameTools.Enabled = true;
+                buttonModStop.Visibility = BarItemVisibility.Never;
             }
         }
 

@@ -87,12 +87,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.startOptionsMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startOptionsMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -148,9 +157,14 @@
             this.barButtonRunFullscreen,
             this.buttonMaterialEditor,
             this.barButtonClientScheme,
-            this.barButtonItem6});
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barButtonItem9,
+            this.barButtonItem10,
+            this.barButtonItem11});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 70;
+            this.barManager1.MaxItemId = 76;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -210,7 +224,9 @@
             // 
             // buttonModStart
             // 
+            this.buttonModStart.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.buttonModStart.Caption = "Start";
+            this.buttonModStart.DropDownControl = this.startOptionsMenu;
             this.buttonModStart.Id = 8;
             this.buttonModStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStart.ImageOptions.Image")));
             this.buttonModStart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonModStart.ImageOptions.SvgImage")));
@@ -286,7 +302,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClientScheme, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
             this.barMod.Name = "barMod";
             // 
@@ -353,8 +370,7 @@
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonGameinfo),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonChapters),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClientScheme)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton)});
             this.barSubItem3.Name = "barSubItem3";
             // 
             // barButtonGameinfo
@@ -383,7 +399,7 @@
             // 
             // barButtonClientScheme
             // 
-            this.barButtonClientScheme.Caption = "Client Scheme";
+            this.barButtonClientScheme.Caption = "Hud Editor";
             this.barButtonClientScheme.Id = 59;
             this.barButtonClientScheme.Name = "barButtonClientScheme";
             this.barButtonClientScheme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClientScheme_ItemClick);
@@ -635,6 +651,56 @@
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "barButtonItem7";
+            this.barButtonItem7.Id = 71;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "barButtonItem8";
+            this.barButtonItem8.Id = 72;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // startOptionsMenu
+            // 
+            this.startOptionsMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
+            this.startOptionsMenu.Manager = this.barManager1;
+            this.startOptionsMenu.Name = "startOptionsMenu";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Run";
+            this.barButtonItem9.Id = 73;
+            this.barButtonItem9.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem9.ImageOptions.SvgImage")));
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Run (Full Screen)";
+            this.barButtonItem10.Id = 74;
+            this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Ingame Tools";
+            this.barButtonItem11.Id = 75;
+            this.barButtonItem11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,6 +724,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startOptionsMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,5 +789,12 @@
         private DevExpress.XtraBars.BarButtonItem barButtonClientScheme;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.PopupMenu startOptionsMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }
