@@ -1,6 +1,6 @@
 ﻿namespace SourceModdingTool
 {
-    partial class ClientSchemeForm
+    partial class HudEditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientSchemeForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HudEditorForm));
             this.itemTree = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();

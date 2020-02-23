@@ -18,7 +18,7 @@ using DevExpress.Utils;
 
 namespace SourceModdingTool
 {
-    public partial class ClientSchemeForm : DevExpress.XtraEditors.XtraForm
+    public partial class HudEditorForm : DevExpress.XtraEditors.XtraForm
     {
         string gamePath = string.Empty;
         string modPath = string.Empty;
@@ -30,7 +30,7 @@ namespace SourceModdingTool
         Game game;
         bool isPreviewing = false;
 
-        public ClientSchemeForm(Steam sourceSDK)
+        public HudEditorForm(Steam sourceSDK)
         {
             InitializeComponent();
 
