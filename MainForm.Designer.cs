@@ -38,7 +38,6 @@
             this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.buttonModStart = new DevExpress.XtraBars.BarButtonItem();
             this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonTest = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -55,6 +54,7 @@
             this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonClientScheme = new DevExpress.XtraBars.BarButtonItem();
             this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
             this.barLevelDesign = new DevExpress.XtraBars.BarSubItem();
@@ -81,15 +81,17 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
-            this.barButtonClientScheme = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,15 +146,16 @@
             this.buttonOpenPrefabsFolder,
             this.buttonOpenMapsrcFolder,
             this.barButtonRunFullscreen,
-            this.buttonTest,
             this.buttonMaterialEditor,
-            this.barButtonClientScheme});
+            this.barButtonClientScheme,
+            this.barButtonItem6});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 60;
+            this.barManager1.MaxItemId = 70;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
-            this.repositoryItemTextEdit1});
+            this.repositoryItemTextEdit1,
+            this.repositoryItemButtonEdit1});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -165,8 +168,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.gamesCombo),
             new DevExpress.XtraBars.LinkPersistInfo(this.modsCombo),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStart),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStop),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonTest)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStop)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -226,13 +228,6 @@
             this.buttonModStop.Name = "buttonModStop";
             this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
-            // 
-            // buttonTest
-            // 
-            this.buttonTest.Caption = "Test";
-            this.buttonTest.Id = 57;
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonTest_ItemClick);
             // 
             // bar2
             // 
@@ -385,6 +380,13 @@
             this.menuButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuButton.ImageOptions.SvgImage")));
             this.menuButton.Name = "menuButton";
             this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
+            // 
+            // barButtonClientScheme
+            // 
+            this.barButtonClientScheme.Caption = "Client Scheme";
+            this.barButtonClientScheme.Id = 59;
+            this.barButtonClientScheme.Name = "barButtonClientScheme";
+            this.barButtonClientScheme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClientScheme_ItemClick);
             // 
             // buttonVPKExplorer
             // 
@@ -598,10 +600,23 @@
             this.barButtonItem4.Id = 14;
             this.barButtonItem4.Name = "barButtonItem4";
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Reload Map";
+            this.barButtonItem6.Id = 63;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
             // panel1
             // 
@@ -619,13 +634,6 @@
             // imageCollection3
             // 
             this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
-            // 
-            // barButtonClientScheme
-            // 
-            this.barButtonClientScheme.Caption = "Client Scheme";
-            this.barButtonClientScheme.Id = 59;
-            this.barButtonClientScheme.Name = "barButtonClientScheme";
-            this.barButtonClientScheme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClientScheme_ItemClick);
             // 
             // MainForm
             // 
@@ -648,6 +656,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -708,8 +717,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonRunFullscreen;
         private System.Windows.Forms.Timer modProcessUpdater;
         private DevExpress.Utils.ImageCollection imageCollection3;
-        private DevExpress.XtraBars.BarButtonItem buttonTest;
         private DevExpress.XtraBars.BarButtonItem buttonMaterialEditor;
         private DevExpress.XtraBars.BarButtonItem barButtonClientScheme;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

@@ -201,8 +201,6 @@ namespace SourceModdingTool
             Process.Start(gamePath + "\\bin\\Prefabs");
         }
 
-        private void buttonTest_ItemClick(object sender, ItemClickEventArgs e) { }
-
         private void buttonVMFtoMDL_ItemClick(object sender, ItemClickEventArgs e)
         {
             VMFtoMDL form = new VMFtoMDL(sourceSDK);
