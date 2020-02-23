@@ -30,172 +30,166 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.gamesCombo = new DevExpress.XtraBars.BarEditItem();
+            this.barManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.tools = new DevExpress.XtraBars.Bar();
+            this.toolsGames = new DevExpress.XtraBars.BarEditItem();
             this.repositoryGamesCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.modsCombo = new DevExpress.XtraBars.BarEditItem();
+            this.toolsMods = new DevExpress.XtraBars.BarEditItem();
             this.repositoryModsCombo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.buttonModStart = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonModStop = new DevExpress.XtraBars.BarButtonItem();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barFile = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barMod = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonRun = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonIngameTools = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonModOpenFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonClear = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.importMapButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonGameinfo = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonChapters = new DevExpress.XtraBars.BarButtonItem();
-            this.menuButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonClientScheme = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonVPKExplorer = new DevExpress.XtraBars.BarButtonItem();
-            this.assetsCopierButton = new DevExpress.XtraBars.BarButtonItem();
-            this.barLevelDesign = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonHammer = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonOpenPrefabsFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonOpenMapsrcFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonCrafty = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
-            this.barModeling = new DevExpress.XtraBars.BarSubItem();
-            this.buttonHLMV = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonHammerPropper = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
-            this.buttonCrowbar = new DevExpress.XtraBars.BarButtonItem();
-            this.barMaterials = new DevExpress.XtraBars.BarSubItem();
-            this.buttonMaterialEditor = new DevExpress.XtraBars.BarButtonItem();
-            this.barParticles = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barChoreography = new DevExpress.XtraBars.BarSubItem();
-            this.buttonFaceposer = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.toolsRun = new DevExpress.XtraBars.BarButtonItem();
+            this.toolsRunPopup = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.toolsRunPopupRun = new DevExpress.XtraBars.BarButtonItem();
+            this.toolsRunPopupRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
+            this.toolsRunPopupIngameTools = new DevExpress.XtraBars.BarButtonItem();
+            this.toolsStop = new DevExpress.XtraBars.BarButtonItem();
+            this.menu = new DevExpress.XtraBars.Bar();
+            this.menuFile = new DevExpress.XtraBars.BarSubItem();
+            this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModding = new DevExpress.XtraBars.BarSubItem();
+            this.menuModdingRun = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingIngameTools = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingOpenFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingClean = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingImport2 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingSettings = new DevExpress.XtraBars.BarSubItem();
+            this.menuModdingSettingsGameInfo = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingSettingsChapters = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
+            this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignPrefabs = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignMapsrc = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignCrafty = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignTerrainGenerator = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModeling = new DevExpress.XtraBars.BarSubItem();
+            this.menuModelingHLMV = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModelingPropper = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModelingVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModelingCrowbar = new DevExpress.XtraBars.BarButtonItem();
+            this.menuMaterials = new DevExpress.XtraBars.BarSubItem();
+            this.menuMaterialsEditor = new DevExpress.XtraBars.BarButtonItem();
+            this.menuParticles = new DevExpress.XtraBars.BarSubItem();
+            this.menuParticlesManifestGenerator = new DevExpress.XtraBars.BarButtonItem();
+            this.menuChoreography = new DevExpress.XtraBars.BarSubItem();
+            this.menuChoreographyFaceposer = new DevExpress.XtraBars.BarButtonItem();
+            this.status = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.startOptionsMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startOptionsMenu)).BeginInit();
             this.SuspendLayout();
             // 
-            // barManager1
+            // barManager
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar2,
-            this.bar3});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.gamesCombo,
-            this.modsCombo,
-            this.buttonModStart,
+            this.barManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.tools,
+            this.menu,
+            this.status});
+            this.barManager.DockControls.Add(this.barDockControlTop);
+            this.barManager.DockControls.Add(this.barDockControlBottom);
+            this.barManager.DockControls.Add(this.barDockControlLeft);
+            this.barManager.DockControls.Add(this.barDockControlRight);
+            this.barManager.Form = this;
+            this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.toolsGames,
+            this.toolsMods,
+            this.toolsRun,
             this.barButtonItem4,
-            this.barButtonHammer,
-            this.barMod,
-            this.barButtonRun,
-            this.barFile,
-            this.barButtonItem1,
-            this.barButtonModOpenFolder,
-            this.barButtonItem3,
-            this.barSubItem3,
-            this.barButtonGameinfo,
-            this.barButtonChapters,
-            this.buttonModStop,
-            this.assetsCopierButton,
-            this.barSubItem1,
-            this.importMapButton,
-            this.menuButton,
-            this.buttonVPKExplorer,
-            this.barButtonClear,
-            this.buttonCrafty,
-            this.buttonBatchCompiler,
-            this.buttonCrowbar,
-            this.buttonHLMV,
-            this.buttonFaceposer,
-            this.barButtonItem5,
-            this.buttonIngameTools,
-            this.buttonVMFtoMDL,
-            this.barModeling,
-            this.barChoreography,
-            this.barLevelDesign,
-            this.barMaterials,
-            this.barParticles,
-            this.barButtonItem2,
-            this.buttonHammerPropper,
-            this.buttonOpenPrefabsFolder,
-            this.buttonOpenMapsrcFolder,
-            this.barButtonRunFullscreen,
-            this.buttonMaterialEditor,
-            this.barButtonClientScheme,
+            this.menuLevelDesignHammer,
+            this.menuModding,
+            this.menuModdingRun,
+            this.menuFile,
+            this.menuFileExit,
+            this.menuModdingOpenFolder,
+            this.menuFileNew,
+            this.menuModdingSettings,
+            this.menuModdingSettingsGameInfo,
+            this.menuModdingSettingsChapters,
+            this.toolsStop,
+            this.menuModdingExport,
+            this.menuModdingSettingsMenu,
+            this.menuModdingFileExplorer,
+            this.menuModdingClean,
+            this.menuLevelDesignCrafty,
+            this.menuLevelDesignBatchCompiler,
+            this.menuModelingCrowbar,
+            this.menuModelingHLMV,
+            this.menuChoreographyFaceposer,
+            this.menuLevelDesignTerrainGenerator,
+            this.menuModdingIngameTools,
+            this.menuModelingVMFtoMDL,
+            this.menuModeling,
+            this.menuChoreography,
+            this.menuLevelDesign,
+            this.menuMaterials,
+            this.menuParticles,
+            this.menuParticlesManifestGenerator,
+            this.menuModelingPropper,
+            this.menuLevelDesignPrefabs,
+            this.menuLevelDesignMapsrc,
+            this.menuModdingRunFullscreen,
+            this.menuMaterialsEditor,
+            this.menuModdingHudEditor,
             this.barButtonItem6,
             this.barButtonItem7,
             this.barButtonItem8,
-            this.barButtonItem9,
-            this.barButtonItem10,
-            this.barButtonItem11});
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 76;
-            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.toolsRunPopupRun,
+            this.toolsRunPopupRunFullscreen,
+            this.toolsRunPopupIngameTools,
+            this.menuModdingImport2});
+            this.barManager.MainMenu = this.menu;
+            this.barManager.MaxItemId = 78;
+            this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
             this.repositoryItemButtonEdit1});
-            this.barManager1.StatusBar = this.bar3;
+            this.barManager.StatusBar = this.status;
             // 
-            // bar1
+            // tools
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.gamesCombo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.modsCombo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStart),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonModStop)});
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.DrawDragBorder = false;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.Text = "Tools";
+            this.tools.BarName = "Tools";
+            this.tools.DockCol = 0;
+            this.tools.DockRow = 1;
+            this.tools.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.tools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsGames),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsMods),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsStop)});
+            this.tools.OptionsBar.AllowQuickCustomization = false;
+            this.tools.OptionsBar.DrawDragBorder = false;
+            this.tools.OptionsBar.UseWholeRow = true;
+            this.tools.Text = "Tools";
             // 
-            // gamesCombo
+            // toolsGames
             // 
-            this.gamesCombo.Caption = "barEditItem1";
-            this.gamesCombo.Edit = this.repositoryGamesCombo;
-            this.gamesCombo.EditWidth = 128;
-            this.gamesCombo.Id = 2;
-            this.gamesCombo.Name = "gamesCombo";
-            this.gamesCombo.EditValueChanged += new System.EventHandler(this.gamesCombo_EditValueChanged);
+            this.toolsGames.Caption = "barEditItem1";
+            this.toolsGames.Edit = this.repositoryGamesCombo;
+            this.toolsGames.EditWidth = 128;
+            this.toolsGames.Id = 2;
+            this.toolsGames.Name = "toolsGames";
+            this.toolsGames.EditValueChanged += new System.EventHandler(this.toolsGames_EditValueChanged);
             // 
             // repositoryGamesCombo
             // 
@@ -205,14 +199,14 @@
             this.repositoryGamesCombo.Name = "repositoryGamesCombo";
             this.repositoryGamesCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
-            // modsCombo
+            // toolsMods
             // 
-            this.modsCombo.Caption = "barEditItem2";
-            this.modsCombo.Edit = this.repositoryModsCombo;
-            this.modsCombo.EditWidth = 128;
-            this.modsCombo.Id = 3;
-            this.modsCombo.Name = "modsCombo";
-            this.modsCombo.EditValueChanged += new System.EventHandler(this.modsCombo_EditValueChanged);
+            this.toolsMods.Caption = "barEditItem2";
+            this.toolsMods.Edit = this.repositoryModsCombo;
+            this.toolsMods.EditWidth = 128;
+            this.toolsMods.Id = 3;
+            this.toolsMods.Name = "toolsMods";
+            this.toolsMods.EditValueChanged += new System.EventHandler(this.toolsMods_EditValueChanged);
             // 
             // repositoryModsCombo
             // 
@@ -222,368 +216,394 @@
             this.repositoryModsCombo.Name = "repositoryModsCombo";
             this.repositoryModsCombo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
-            // buttonModStart
-            // 
-            this.buttonModStart.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.buttonModStart.Caption = "Start";
-            this.buttonModStart.DropDownControl = this.startOptionsMenu;
-            this.buttonModStart.Id = 8;
-            this.buttonModStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStart.ImageOptions.Image")));
-            this.buttonModStart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonModStart.ImageOptions.SvgImage")));
-            this.buttonModStart.Name = "buttonModStart";
-            this.buttonModStart.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.buttonModStart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
-            // 
-            // buttonModStop
-            // 
-            this.buttonModStop.Caption = "Stop";
-            this.buttonModStop.Id = 27;
-            this.buttonModStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.Image")));
-            this.buttonModStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonModStop.ImageOptions.LargeImage")));
-            this.buttonModStop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonModStop.ImageOptions.SvgImage")));
-            this.buttonModStop.Name = "buttonModStop";
-            this.buttonModStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.buttonModStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStop_ItemClick);
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barFile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barMod),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barLevelDesign),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barModeling),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barMaterials),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barParticles),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barChoreography)});
-            this.bar2.OptionsBar.AllowQuickCustomization = false;
-            this.bar2.OptionsBar.DrawDragBorder = false;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // barFile
-            // 
-            this.barFile.Caption = "File";
-            this.barFile.Id = 19;
-            this.barFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
-            this.barFile.Name = "barFile";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "New";
-            this.barButtonItem3.Id = 22;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Exit";
-            this.barButtonItem1.Id = 20;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // barMod
-            // 
-            this.barMod.Caption = "Modding";
-            this.barMod.Id = 17;
-            this.barMod.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRun),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonRunFullscreen, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonIngameTools),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonModOpenFolder),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClear),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonClientScheme, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVPKExplorer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.assetsCopierButton)});
-            this.barMod.Name = "barMod";
-            // 
-            // barButtonRun
-            // 
-            this.barButtonRun.Caption = "Run";
-            this.barButtonRun.Id = 18;
-            this.barButtonRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonRun.ImageOptions.SvgImage")));
-            this.barButtonRun.Name = "barButtonRun";
-            this.barButtonRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
-            // 
-            // barButtonRunFullscreen
-            // 
-            this.barButtonRunFullscreen.Caption = "Run (Full screen)";
-            this.barButtonRunFullscreen.Id = 56;
-            this.barButtonRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonRunFullscreen.ImageOptions.SvgImage")));
-            this.barButtonRunFullscreen.Name = "barButtonRunFullscreen";
-            this.barButtonRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
-            // 
-            // buttonIngameTools
-            // 
-            this.buttonIngameTools.Caption = "Ingame Tools";
-            this.buttonIngameTools.Id = 43;
-            this.buttonIngameTools.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonIngameTools.ImageOptions.SvgImage")));
-            this.buttonIngameTools.Name = "buttonIngameTools";
-            this.buttonIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
-            // 
-            // barButtonModOpenFolder
-            // 
-            this.barButtonModOpenFolder.Caption = "Open folder";
-            this.barButtonModOpenFolder.Id = 21;
-            this.barButtonModOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonModOpenFolder.ImageOptions.SvgImage")));
-            this.barButtonModOpenFolder.Name = "barButtonModOpenFolder";
-            this.barButtonModOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonModOpenFolder_ItemClick);
-            // 
-            // barButtonClear
-            // 
-            this.barButtonClear.Caption = "Clean";
-            this.barButtonClear.Id = 34;
-            this.barButtonClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonClear.ImageOptions.SvgImage")));
-            this.barButtonClear.Name = "barButtonClear";
-            this.barButtonClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClean_ItemClick);
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Import assets";
-            this.barSubItem1.Id = 30;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.importMapButton)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // importMapButton
-            // 
-            this.importMapButton.Caption = "From another mod";
-            this.importMapButton.Id = 31;
-            this.importMapButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("importMapButton.ImageOptions.SvgImage")));
-            this.importMapButton.Name = "importMapButton";
-            this.importMapButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.importMapButton_ItemClick);
-            // 
-            // barSubItem3
-            // 
-            this.barSubItem3.Caption = "Settings";
-            this.barSubItem3.Id = 24;
-            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonGameinfo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonChapters),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuButton)});
-            this.barSubItem3.Name = "barSubItem3";
-            // 
-            // barButtonGameinfo
-            // 
-            this.barButtonGameinfo.Caption = "Game info";
-            this.barButtonGameinfo.Id = 25;
-            this.barButtonGameinfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonGameinfo.ImageOptions.SvgImage")));
-            this.barButtonGameinfo.Name = "barButtonGameinfo";
-            this.barButtonGameinfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonGameinfo_ItemClick);
-            // 
-            // barButtonChapters
-            // 
-            this.barButtonChapters.Caption = "Chapters";
-            this.barButtonChapters.Id = 26;
-            this.barButtonChapters.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonChapters.ImageOptions.SvgImage")));
-            this.barButtonChapters.Name = "barButtonChapters";
-            this.barButtonChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonChapters_ItemClick);
-            // 
-            // menuButton
-            // 
-            this.menuButton.Caption = "Menu";
-            this.menuButton.Id = 32;
-            this.menuButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuButton.ImageOptions.SvgImage")));
-            this.menuButton.Name = "menuButton";
-            this.menuButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuButton_ItemClick);
-            // 
-            // barButtonClientScheme
-            // 
-            this.barButtonClientScheme.Caption = "Hud Editor";
-            this.barButtonClientScheme.Id = 59;
-            this.barButtonClientScheme.Name = "barButtonClientScheme";
-            this.barButtonClientScheme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonClientScheme_ItemClick);
-            // 
-            // buttonVPKExplorer
-            // 
-            this.buttonVPKExplorer.Caption = "File Explorer";
-            this.buttonVPKExplorer.Id = 33;
-            this.buttonVPKExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonVPKExplorer.ImageOptions.SvgImage")));
-            this.buttonVPKExplorer.Name = "buttonVPKExplorer";
-            this.buttonVPKExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVPKExplorer_ItemClick);
-            // 
-            // assetsCopierButton
-            // 
-            this.assetsCopierButton.Caption = "Assets copier";
-            this.assetsCopierButton.Id = 29;
-            this.assetsCopierButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("assetsCopierButton.ImageOptions.SvgImage")));
-            this.assetsCopierButton.Name = "assetsCopierButton";
-            this.assetsCopierButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.assetsCopierButton_ItemClick);
-            // 
-            // barLevelDesign
-            // 
-            this.barLevelDesign.Caption = "Level Design";
-            this.barLevelDesign.Id = 47;
-            this.barLevelDesign.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHammer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonOpenPrefabsFolder, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.buttonOpenMapsrcFolder, false),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrafty, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonBatchCompiler)});
-            this.barLevelDesign.Name = "barLevelDesign";
-            // 
-            // barButtonHammer
-            // 
-            this.barButtonHammer.Caption = "Hammer";
-            this.barButtonHammer.Id = 16;
-            this.barButtonHammer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonHammer.ImageOptions.Image")));
-            this.barButtonHammer.Name = "barButtonHammer";
-            this.barButtonHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHammer_ItemClick);
-            // 
-            // buttonOpenPrefabsFolder
-            // 
-            this.buttonOpenPrefabsFolder.Caption = "Open Prefabs folder";
-            this.buttonOpenPrefabsFolder.Id = 52;
-            this.buttonOpenPrefabsFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonOpenPrefabsFolder.ImageOptions.SvgImage")));
-            this.buttonOpenPrefabsFolder.Name = "buttonOpenPrefabsFolder";
-            this.buttonOpenPrefabsFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenPrefabsFolder_ItemClick);
-            // 
-            // buttonOpenMapsrcFolder
-            // 
-            this.buttonOpenMapsrcFolder.Caption = "Open Mapsrc folder";
-            this.buttonOpenMapsrcFolder.Id = 53;
-            this.buttonOpenMapsrcFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonOpenMapsrcFolder.ImageOptions.SvgImage")));
-            this.buttonOpenMapsrcFolder.Name = "buttonOpenMapsrcFolder";
-            this.buttonOpenMapsrcFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonOpenMapsrcFolder_ItemClick);
-            // 
-            // buttonCrafty
-            // 
-            this.buttonCrafty.Caption = "Crafty (external)";
-            this.buttonCrafty.Id = 36;
-            this.buttonCrafty.Name = "buttonCrafty";
-            this.buttonCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrafty_ItemClick);
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Terrain Generator (external)";
-            this.barButtonItem5.Id = 42;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
-            // 
-            // buttonBatchCompiler
-            // 
-            this.buttonBatchCompiler.Caption = "Batch Compiler (external)";
-            this.buttonBatchCompiler.Id = 38;
-            this.buttonBatchCompiler.Name = "buttonBatchCompiler";
-            this.buttonBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBatchCompiler_ItemClick);
-            // 
-            // barModeling
-            // 
-            this.barModeling.Caption = "Modeling";
-            this.barModeling.Id = 45;
-            this.barModeling.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHLMV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonHammerPropper),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonVMFtoMDL, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonCrowbar, true)});
-            this.barModeling.Name = "barModeling";
-            // 
-            // buttonHLMV
-            // 
-            this.buttonHLMV.Caption = "HLMV";
-            this.buttonHLMV.Id = 40;
-            this.buttonHLMV.Name = "buttonHLMV";
-            this.buttonHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHLMV_ItemClick);
-            // 
-            // buttonHammerPropper
-            // 
-            this.buttonHammerPropper.Caption = "Hammer (Propper)";
-            this.buttonHammerPropper.Id = 51;
-            this.buttonHammerPropper.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonHammerPropper.ImageOptions.Image")));
-            this.buttonHammerPropper.Name = "buttonHammerPropper";
-            this.buttonHammerPropper.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonHammerPropper_ItemClick);
-            // 
-            // buttonVMFtoMDL
-            // 
-            this.buttonVMFtoMDL.Caption = "VMF to MDL";
-            this.buttonVMFtoMDL.Id = 44;
-            this.buttonVMFtoMDL.Name = "buttonVMFtoMDL";
-            this.buttonVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVMFtoMDL_ItemClick);
-            // 
-            // buttonCrowbar
-            // 
-            this.buttonCrowbar.Caption = "Crowbar (external)";
-            this.buttonCrowbar.Id = 39;
-            this.buttonCrowbar.Name = "buttonCrowbar";
-            this.buttonCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonCrowbar_ItemClick);
-            // 
-            // barMaterials
-            // 
-            this.barMaterials.Caption = "Materials";
-            this.barMaterials.Id = 48;
-            this.barMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonMaterialEditor)});
-            this.barMaterials.Name = "barMaterials";
-            // 
-            // buttonMaterialEditor
-            // 
-            this.buttonMaterialEditor.Caption = "Material Editor";
-            this.buttonMaterialEditor.Id = 58;
-            this.buttonMaterialEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonMaterialEditor.ImageOptions.SvgImage")));
-            this.buttonMaterialEditor.Name = "buttonMaterialEditor";
-            this.buttonMaterialEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonMaterialEditor_ItemClick);
-            // 
-            // barParticles
-            // 
-            this.barParticles.Caption = "Particles";
-            this.barParticles.Id = 49;
-            this.barParticles.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
-            this.barParticles.Name = "barParticles";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Generate manifest";
-            this.barButtonItem2.Id = 50;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
-            // barChoreography
-            // 
-            this.barChoreography.Caption = "Choreography";
-            this.barChoreography.Id = 46;
-            this.barChoreography.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.buttonFaceposer)});
-            this.barChoreography.Name = "barChoreography";
-            this.barChoreography.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            // 
-            // buttonFaceposer
-            // 
-            this.buttonFaceposer.Caption = "Faceposer";
-            this.buttonFaceposer.Id = 41;
-            this.buttonFaceposer.Name = "buttonFaceposer";
-            this.buttonFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonFaceposer_ItemClick);
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
+            // toolsRun
+            // 
+            this.toolsRun.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.toolsRun.Caption = "Run";
+            this.toolsRun.DropDownControl = this.toolsRunPopup;
+            this.toolsRun.Id = 8;
+            this.toolsRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("toolsRun.ImageOptions.Image")));
+            this.toolsRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRun.ImageOptions.SvgImage")));
+            this.toolsRun.Name = "toolsRun";
+            this.toolsRun.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.toolsRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // toolsRunPopup
+            // 
+            this.toolsRunPopup.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunFullscreen),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupIngameTools)});
+            this.toolsRunPopup.Manager = this.barManager;
+            this.toolsRunPopup.Name = "toolsRunPopup";
+            // 
+            // toolsRunPopupRun
+            // 
+            this.toolsRunPopupRun.Caption = "Run";
+            this.toolsRunPopupRun.Id = 73;
+            this.toolsRunPopupRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRunPopupRun.ImageOptions.SvgImage")));
+            this.toolsRunPopupRun.Name = "toolsRunPopupRun";
+            this.toolsRunPopupRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // toolsRunPopupRunFullscreen
+            // 
+            this.toolsRunPopupRunFullscreen.Caption = "Run (Full Screen)";
+            this.toolsRunPopupRunFullscreen.Id = 74;
+            this.toolsRunPopupRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRunPopupRunFullscreen.ImageOptions.SvgImage")));
+            this.toolsRunPopupRunFullscreen.Name = "toolsRunPopupRunFullscreen";
+            this.toolsRunPopupRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // toolsRunPopupIngameTools
+            // 
+            this.toolsRunPopupIngameTools.Caption = "Ingame Tools";
+            this.toolsRunPopupIngameTools.Id = 75;
+            this.toolsRunPopupIngameTools.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRunPopupIngameTools.ImageOptions.SvgImage")));
+            this.toolsRunPopupIngameTools.Name = "toolsRunPopupIngameTools";
+            this.toolsRunPopupIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // toolsStop
+            // 
+            this.toolsStop.Caption = "Stop";
+            this.toolsStop.Id = 27;
+            this.toolsStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("toolsStop.ImageOptions.Image")));
+            this.toolsStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("toolsStop.ImageOptions.LargeImage")));
+            this.toolsStop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsStop.ImageOptions.SvgImage")));
+            this.toolsStop.Name = "toolsStop";
+            this.toolsStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.toolsStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.toolsStop_ItemClick);
+            // 
+            // menu
+            // 
+            this.menu.BarName = "Main menu";
+            this.menu.DockCol = 0;
+            this.menu.DockRow = 0;
+            this.menu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.menu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFile),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModding),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesign),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModeling),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterials),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuParticles),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuChoreography)});
+            this.menu.OptionsBar.AllowQuickCustomization = false;
+            this.menu.OptionsBar.DrawDragBorder = false;
+            this.menu.OptionsBar.MultiLine = true;
+            this.menu.OptionsBar.UseWholeRow = true;
+            this.menu.Text = "Main menu";
+            // 
+            // menuFile
+            // 
+            this.menuFile.Caption = "File";
+            this.menuFile.Id = 19;
+            this.menuFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit, true)});
+            this.menuFile.Name = "menuFile";
+            this.menuFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
+            // menuFileNew
+            // 
+            this.menuFileNew.Caption = "New";
+            this.menuFileNew.Id = 22;
+            this.menuFileNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileNew.ImageOptions.SvgImage")));
+            this.menuFileNew.Name = "menuFileNew";
+            this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
+            // menuFileExit
+            // 
+            this.menuFileExit.Caption = "Exit";
+            this.menuFileExit.Id = 20;
+            this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
+            this.menuFileExit.Name = "menuFileExit";
+            this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
+            // menuModding
+            // 
+            this.menuModding.Caption = "Modding";
+            this.menuModding.Id = 17;
+            this.menuModding.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRun),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuModdingRunFullscreen, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingIngameTools),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingOpenFolder),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingImport2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport)});
+            this.menuModding.Name = "menuModding";
+            // 
+            // menuModdingRun
+            // 
+            this.menuModdingRun.Caption = "Run";
+            this.menuModdingRun.Id = 18;
+            this.menuModdingRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRun.ImageOptions.SvgImage")));
+            this.menuModdingRun.Name = "menuModdingRun";
+            this.menuModdingRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // menuModdingRunFullscreen
+            // 
+            this.menuModdingRunFullscreen.Caption = "Run (Full screen)";
+            this.menuModdingRunFullscreen.Id = 56;
+            this.menuModdingRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunFullscreen.ImageOptions.SvgImage")));
+            this.menuModdingRunFullscreen.Name = "menuModdingRunFullscreen";
+            this.menuModdingRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // menuModdingIngameTools
+            // 
+            this.menuModdingIngameTools.Caption = "Ingame Tools";
+            this.menuModdingIngameTools.Id = 43;
+            this.menuModdingIngameTools.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingIngameTools.ImageOptions.SvgImage")));
+            this.menuModdingIngameTools.Name = "menuModdingIngameTools";
+            this.menuModdingIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // menuModdingOpenFolder
+            // 
+            this.menuModdingOpenFolder.Caption = "Open folder";
+            this.menuModdingOpenFolder.Id = 21;
+            this.menuModdingOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingOpenFolder.ImageOptions.SvgImage")));
+            this.menuModdingOpenFolder.Name = "menuModdingOpenFolder";
+            this.menuModdingOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingClean
+            // 
+            this.menuModdingClean.Caption = "Clean";
+            this.menuModdingClean.Id = 34;
+            this.menuModdingClean.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingClean.ImageOptions.SvgImage")));
+            this.menuModdingClean.Name = "menuModdingClean";
+            this.menuModdingClean.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingImport2
+            // 
+            this.menuModdingImport2.Caption = "Import assets";
+            this.menuModdingImport2.Id = 77;
+            this.menuModdingImport2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingImport2.ImageOptions.SvgImage")));
+            this.menuModdingImport2.Name = "menuModdingImport2";
+            this.menuModdingImport2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingSettings
+            // 
+            this.menuModdingSettings.Caption = "Settings";
+            this.menuModdingSettings.Id = 24;
+            this.menuModdingSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsGameInfo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu)});
+            this.menuModdingSettings.Name = "menuModdingSettings";
+            // 
+            // menuModdingSettingsGameInfo
+            // 
+            this.menuModdingSettingsGameInfo.Caption = "Game info";
+            this.menuModdingSettingsGameInfo.Id = 25;
+            this.menuModdingSettingsGameInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsGameInfo.ImageOptions.SvgImage")));
+            this.menuModdingSettingsGameInfo.Name = "menuModdingSettingsGameInfo";
+            this.menuModdingSettingsGameInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
+            // menuModdingSettingsChapters
+            // 
+            this.menuModdingSettingsChapters.Caption = "Chapters";
+            this.menuModdingSettingsChapters.Id = 26;
+            this.menuModdingSettingsChapters.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsChapters.ImageOptions.SvgImage")));
+            this.menuModdingSettingsChapters.Name = "menuModdingSettingsChapters";
+            this.menuModdingSettingsChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
+            // menuModdingSettingsMenu
+            // 
+            this.menuModdingSettingsMenu.Caption = "Menu";
+            this.menuModdingSettingsMenu.Id = 32;
+            this.menuModdingSettingsMenu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsMenu.ImageOptions.SvgImage")));
+            this.menuModdingSettingsMenu.Name = "menuModdingSettingsMenu";
+            this.menuModdingSettingsMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
+            // menuModdingHudEditor
+            // 
+            this.menuModdingHudEditor.Caption = "Hud Editor";
+            this.menuModdingHudEditor.Id = 59;
+            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
+            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingFileExplorer
+            // 
+            this.menuModdingFileExplorer.Caption = "File Explorer";
+            this.menuModdingFileExplorer.Id = 33;
+            this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
+            this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
+            this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingExport
+            // 
+            this.menuModdingExport.Caption = "Assets copier";
+            this.menuModdingExport.Id = 29;
+            this.menuModdingExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingExport.ImageOptions.SvgImage")));
+            this.menuModdingExport.Name = "menuModdingExport";
+            this.menuModdingExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuLevelDesign
+            // 
+            this.menuLevelDesign.Caption = "Level Design";
+            this.menuLevelDesign.Id = 47;
+            this.menuLevelDesign.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignHammer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler)});
+            this.menuLevelDesign.Name = "menuLevelDesign";
+            // 
+            // menuLevelDesignHammer
+            // 
+            this.menuLevelDesignHammer.Caption = "Hammer";
+            this.menuLevelDesignHammer.Id = 16;
+            this.menuLevelDesignHammer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignHammer.ImageOptions.Image")));
+            this.menuLevelDesignHammer.Name = "menuLevelDesignHammer";
+            this.menuLevelDesignHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignPrefabs
+            // 
+            this.menuLevelDesignPrefabs.Caption = "Open Prefabs folder";
+            this.menuLevelDesignPrefabs.Id = 52;
+            this.menuLevelDesignPrefabs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignPrefabs.ImageOptions.SvgImage")));
+            this.menuLevelDesignPrefabs.Name = "menuLevelDesignPrefabs";
+            this.menuLevelDesignPrefabs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignMapsrc
+            // 
+            this.menuLevelDesignMapsrc.Caption = "Open Mapsrc folder";
+            this.menuLevelDesignMapsrc.Id = 53;
+            this.menuLevelDesignMapsrc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignMapsrc.ImageOptions.SvgImage")));
+            this.menuLevelDesignMapsrc.Name = "menuLevelDesignMapsrc";
+            this.menuLevelDesignMapsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignCrafty
+            // 
+            this.menuLevelDesignCrafty.Caption = "Crafty (external)";
+            this.menuLevelDesignCrafty.Id = 36;
+            this.menuLevelDesignCrafty.Name = "menuLevelDesignCrafty";
+            this.menuLevelDesignCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignTerrainGenerator
+            // 
+            this.menuLevelDesignTerrainGenerator.Caption = "Terrain Generator (external)";
+            this.menuLevelDesignTerrainGenerator.Id = 42;
+            this.menuLevelDesignTerrainGenerator.Name = "menuLevelDesignTerrainGenerator";
+            this.menuLevelDesignTerrainGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignBatchCompiler
+            // 
+            this.menuLevelDesignBatchCompiler.Caption = "Batch Compiler (external)";
+            this.menuLevelDesignBatchCompiler.Id = 38;
+            this.menuLevelDesignBatchCompiler.Name = "menuLevelDesignBatchCompiler";
+            this.menuLevelDesignBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuModeling
+            // 
+            this.menuModeling.Caption = "Modeling";
+            this.menuModeling.Id = 45;
+            this.menuModeling.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingHLMV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingPropper),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingVMFtoMDL, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingCrowbar, true)});
+            this.menuModeling.Name = "menuModeling";
+            // 
+            // menuModelingHLMV
+            // 
+            this.menuModelingHLMV.Caption = "HLMV";
+            this.menuModelingHLMV.Id = 40;
+            this.menuModelingHLMV.Name = "menuModelingHLMV";
+            this.menuModelingHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
+            // menuModelingPropper
+            // 
+            this.menuModelingPropper.Caption = "Hammer (Propper)";
+            this.menuModelingPropper.Id = 51;
+            this.menuModelingPropper.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingPropper.ImageOptions.Image")));
+            this.menuModelingPropper.Name = "menuModelingPropper";
+            this.menuModelingPropper.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
+            // menuModelingVMFtoMDL
+            // 
+            this.menuModelingVMFtoMDL.Caption = "VMF to MDL";
+            this.menuModelingVMFtoMDL.Id = 44;
+            this.menuModelingVMFtoMDL.Name = "menuModelingVMFtoMDL";
+            this.menuModelingVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
+            // menuModelingCrowbar
+            // 
+            this.menuModelingCrowbar.Caption = "Crowbar (external)";
+            this.menuModelingCrowbar.Id = 39;
+            this.menuModelingCrowbar.Name = "menuModelingCrowbar";
+            this.menuModelingCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
+            // menuMaterials
+            // 
+            this.menuMaterials.Caption = "Materials";
+            this.menuMaterials.Id = 48;
+            this.menuMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor)});
+            this.menuMaterials.Name = "menuMaterials";
+            // 
+            // menuMaterialsEditor
+            // 
+            this.menuMaterialsEditor.Caption = "Material Editor";
+            this.menuMaterialsEditor.Id = 58;
+            this.menuMaterialsEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsEditor.ImageOptions.SvgImage")));
+            this.menuMaterialsEditor.Name = "menuMaterialsEditor";
+            this.menuMaterialsEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
+            // menuParticles
+            // 
+            this.menuParticles.Caption = "Particles";
+            this.menuParticles.Id = 49;
+            this.menuParticles.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuParticlesManifestGenerator)});
+            this.menuParticles.Name = "menuParticles";
+            // 
+            // menuParticlesManifestGenerator
+            // 
+            this.menuParticlesManifestGenerator.Caption = "Generate manifest";
+            this.menuParticlesManifestGenerator.Id = 50;
+            this.menuParticlesManifestGenerator.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuParticlesManifestGenerator.ImageOptions.SvgImage")));
+            this.menuParticlesManifestGenerator.Name = "menuParticlesManifestGenerator";
+            this.menuParticlesManifestGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuParticles_ItemClick);
+            // 
+            // menuChoreography
+            // 
+            this.menuChoreography.Caption = "Choreography";
+            this.menuChoreography.Id = 46;
+            this.menuChoreography.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuChoreographyFaceposer)});
+            this.menuChoreography.Name = "menuChoreography";
+            this.menuChoreography.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // menuChoreographyFaceposer
+            // 
+            this.menuChoreographyFaceposer.Caption = "Faceposer";
+            this.menuChoreographyFaceposer.Id = 41;
+            this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
+            this.menuChoreographyFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuChoreography_ItemClick);
+            // 
+            // status
+            // 
+            this.status.BarName = "Status bar";
+            this.status.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.status.DockCol = 0;
+            this.status.DockRow = 0;
+            this.status.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.status.OptionsBar.AllowQuickCustomization = false;
+            this.status.OptionsBar.DrawDragBorder = false;
+            this.status.OptionsBar.UseWholeRow = true;
+            this.status.Text = "Status bar";
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Manager = this.barManager;
             this.barDockControlTop.Size = new System.Drawing.Size(944, 54);
             // 
             // barDockControlBottom
@@ -591,7 +611,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 573);
-            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Manager = this.barManager;
             this.barDockControlBottom.Size = new System.Drawing.Size(944, 18);
             // 
             // barDockControlLeft
@@ -599,7 +619,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 54);
-            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Manager = this.barManager;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
             // 
             // barDockControlRight
@@ -607,7 +627,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(944, 54);
-            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Manager = this.barManager;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
             // 
             // barButtonItem4
@@ -621,6 +641,18 @@
             this.barButtonItem6.Caption = "Reload Map";
             this.barButtonItem6.Id = 63;
             this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "barButtonItem7";
+            this.barButtonItem7.Id = 71;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "barButtonItem8";
+            this.barButtonItem8.Id = 72;
+            this.barButtonItem8.Name = "barButtonItem8";
             // 
             // repositoryItemTextEdit1
             // 
@@ -647,60 +679,6 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
-            // imageCollection3
-            // 
-            this.imageCollection3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection3.ImageStream")));
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "barButtonItem7";
-            this.barButtonItem7.Id = 71;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "barButtonItem8";
-            this.barButtonItem8.Id = 72;
-            this.barButtonItem8.Name = "barButtonItem8";
-            // 
-            // popupMenu1
-            // 
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
-            // 
-            // startOptionsMenu
-            // 
-            this.startOptionsMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
-            this.startOptionsMenu.Manager = this.barManager1;
-            this.startOptionsMenu.Name = "startOptionsMenu";
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Run";
-            this.barButtonItem9.Id = 73;
-            this.barButtonItem9.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem9.ImageOptions.SvgImage")));
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonModStart_ItemClick);
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Run (Full Screen)";
-            this.barButtonItem10.Id = 74;
-            this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRunFullscreen_ItemClick);
-            // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "Ingame Tools";
-            this.barButtonItem11.Id = 75;
-            this.barButtonItem11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem11.ImageOptions.SvgImage")));
-            this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonIngameTools_ItemClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,88 +691,82 @@
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Form";
+            this.Text = "XBLAH\'s Source Modding Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResizeEnd += new System.EventHandler(this.ModForm_ResizeEnd);
-            this.Resize += new System.EventHandler(this.ModForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startOptionsMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarManager barManager;
+        private DevExpress.XtraBars.Bar tools;
+        private DevExpress.XtraBars.Bar menu;
+        private DevExpress.XtraBars.Bar status;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarEditItem gamesCombo;
+        private DevExpress.XtraBars.BarEditItem toolsGames;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryGamesCombo;
-        private DevExpress.XtraBars.BarEditItem modsCombo;
+        private DevExpress.XtraBars.BarEditItem toolsMods;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryModsCombo;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraBars.BarButtonItem buttonModStart;
+        private DevExpress.XtraBars.BarButtonItem toolsRun;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonHammer;
-        private DevExpress.XtraBars.BarSubItem barMod;
-        private DevExpress.XtraBars.BarButtonItem barButtonRun;
-        private DevExpress.XtraBars.BarSubItem barFile;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonModOpenFolder;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarSubItem barSubItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonGameinfo;
-        private DevExpress.XtraBars.BarButtonItem barButtonChapters;
-        private DevExpress.XtraBars.BarButtonItem buttonModStop;
-        private DevExpress.XtraBars.BarButtonItem assetsCopierButton;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem importMapButton;
-        private DevExpress.XtraBars.BarButtonItem menuButton;
-        private DevExpress.XtraBars.BarButtonItem buttonVPKExplorer;
-        private DevExpress.XtraBars.BarButtonItem barButtonClear;
-        private DevExpress.XtraBars.BarButtonItem buttonCrafty;
-        private DevExpress.XtraBars.BarButtonItem buttonBatchCompiler;
-        private DevExpress.XtraBars.BarButtonItem buttonCrowbar;
-        private DevExpress.XtraBars.BarButtonItem buttonHLMV;
-        private DevExpress.XtraBars.BarButtonItem buttonFaceposer;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem buttonIngameTools;
-        private DevExpress.XtraBars.BarButtonItem buttonVMFtoMDL;
-        private DevExpress.XtraBars.BarSubItem barModeling;
-        private DevExpress.XtraBars.BarSubItem barChoreography;
-        private DevExpress.XtraBars.BarSubItem barLevelDesign;
-        private DevExpress.XtraBars.BarSubItem barMaterials;
-        private DevExpress.XtraBars.BarSubItem barParticles;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem buttonHammerPropper;
-        private DevExpress.XtraBars.BarButtonItem buttonOpenPrefabsFolder;
-        private DevExpress.XtraBars.BarButtonItem buttonOpenMapsrcFolder;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignHammer;
+        private DevExpress.XtraBars.BarSubItem menuModding;
+        private DevExpress.XtraBars.BarButtonItem menuModdingRun;
+        private DevExpress.XtraBars.BarSubItem menuFile;
+        private DevExpress.XtraBars.BarButtonItem menuFileExit;
+        private DevExpress.XtraBars.BarButtonItem menuModdingOpenFolder;
+        private DevExpress.XtraBars.BarButtonItem menuFileNew;
+        private DevExpress.XtraBars.BarSubItem menuModdingSettings;
+        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsGameInfo;
+        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsChapters;
+        private DevExpress.XtraBars.BarButtonItem toolsStop;
+        private DevExpress.XtraBars.BarButtonItem menuModdingExport;
+        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsMenu;
+        private DevExpress.XtraBars.BarButtonItem menuModdingFileExplorer;
+        private DevExpress.XtraBars.BarButtonItem menuModdingClean;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignCrafty;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignBatchCompiler;
+        private DevExpress.XtraBars.BarButtonItem menuModelingCrowbar;
+        private DevExpress.XtraBars.BarButtonItem menuModelingHLMV;
+        private DevExpress.XtraBars.BarButtonItem menuChoreographyFaceposer;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignTerrainGenerator;
+        private DevExpress.XtraBars.BarButtonItem menuModdingIngameTools;
+        private DevExpress.XtraBars.BarButtonItem menuModelingVMFtoMDL;
+        private DevExpress.XtraBars.BarSubItem menuModeling;
+        private DevExpress.XtraBars.BarSubItem menuChoreography;
+        private DevExpress.XtraBars.BarSubItem menuLevelDesign;
+        private DevExpress.XtraBars.BarSubItem menuMaterials;
+        private DevExpress.XtraBars.BarSubItem menuParticles;
+        private DevExpress.XtraBars.BarButtonItem menuParticlesManifestGenerator;
+        private DevExpress.XtraBars.BarButtonItem menuModelingPropper;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignPrefabs;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignMapsrc;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraBars.BarButtonItem barButtonRunFullscreen;
+        private DevExpress.XtraBars.BarButtonItem menuModdingRunFullscreen;
         private System.Windows.Forms.Timer modProcessUpdater;
-        private DevExpress.Utils.ImageCollection imageCollection3;
-        private DevExpress.XtraBars.BarButtonItem buttonMaterialEditor;
-        private DevExpress.XtraBars.BarButtonItem barButtonClientScheme;
+        private DevExpress.XtraBars.BarButtonItem menuMaterialsEditor;
+        private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.PopupMenu startOptionsMenu;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.PopupMenu toolsRunPopup;
+        private DevExpress.XtraBars.BarButtonItem toolsRunPopupRun;
+        private DevExpress.XtraBars.BarButtonItem toolsRunPopupRunFullscreen;
+        private DevExpress.XtraBars.BarButtonItem toolsRunPopupIngameTools;
+        private DevExpress.XtraBars.BarButtonItem menuModdingImport2;
     }
 }
