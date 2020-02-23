@@ -228,7 +228,13 @@ namespace SourceModdingTool
 
         private void gamesCombo_EditValueChanged(object sender, EventArgs e)
         {
-            sourceSDK.setCurrentGame((gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty));
+            if (gamesCombo.EditValue == null || gamesCombo.EditValue.ToString() == string.Empty)
+            {
+                XtraMessageBox.Show("No Source game was selected. Please, try again.");
+                return;
+            }
+
+            sourceSDK.setCurrentGame(gamesCombo.EditValue.ToString());
             updateModsCombo();
             Properties.Settings.Default.currentGame = gamesCombo.EditValue.ToString();
             Properties.Settings.Default.Save();
@@ -315,34 +321,45 @@ namespace SourceModdingTool
         {
             string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty);
             repositoryGamesCombo.Items.Clear();
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetGamesList())
+            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
             {
                 repositoryGamesCombo.Items.Add(item.Key);
             }
 
-            if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
+            if (repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
                 gamesCombo.EditValue = currentGame;
-            else if(repositoryGamesCombo.Items.Count > 0)
+            else if (repositoryGamesCombo.Items.Count > 0)
                 gamesCombo.EditValue = repositoryGamesCombo.Items[0];
             else
+            {
                 gamesCombo.EditValue = string.Empty;
+                XtraMessageBox.Show("No Source games were found. Check if everything is all set at Steam and restart this tool.");
+                Close();
+            }
         }
 
         private void updateModsCombo()
         {
+            string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty);
+            if (currentGame == string.Empty)
+                return;
+
             string currentMod = (modsCombo.EditValue != null ? modsCombo.EditValue.ToString() : string.Empty);
             repositoryModsCombo.Items.Clear();
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(gamesCombo.EditValue.ToString()))
+            foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(currentGame))
             {
                 repositoryModsCombo.Items.Add(item.Key);
             }
 
-            if(repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
+            if (repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
                 modsCombo.EditValue = currentMod;
-            else if(repositoryModsCombo.Items.Count > 0)
+            else if (repositoryModsCombo.Items.Count > 0)
                 modsCombo.EditValue = repositoryModsCombo.Items[0];
             else
+            {
+                XtraMessageBox.Show("No mods were found for this Source game.");
                 modsCombo.EditValue = string.Empty;
+            }
         }
 
         private void barButtonClientScheme_ItemClick(object sender, ItemClickEventArgs e)
