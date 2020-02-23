@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -219,7 +220,8 @@ namespace SourceModdingTool.SourceSDK
                 }
             } else
             {
-                throw new FileNotFoundException();
+                XtraMessageBox.Show("Could not find file \"" + path + "\" to read.");
+                return null;
             }
 
             if(list.Count > 1)
