@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraDiagram;
-using SourceModdingTool.SourceSDK;
+﻿using SourceModdingTool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
