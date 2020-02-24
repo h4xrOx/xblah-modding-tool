@@ -107,7 +107,6 @@ namespace SourceModdingTool.SourceSDK
 
             assets = assets.Distinct().ToList();
 
-            Debugger.Break();
             return assets;
         }
     }
