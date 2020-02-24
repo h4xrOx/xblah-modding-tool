@@ -1,0 +1,4 @@
+vertexlitgeneric
+{
+	$basetexture "models/tools/material_preview_basetexture"
+}
