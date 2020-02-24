@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -159,6 +160,11 @@ namespace SourceModdingTool.SourceSDK
 
         public static KeyValue readChunkfile(String path)
         {
+            return readChunkfile(path, false);
+        }
+
+        public static KeyValue readChunkfile(String path, bool hasOSInfo)
+        {
             // Parse Valve chunkfile format
             KeyValue root = null;
             List<KeyValue> list = new List<KeyValue>();
@@ -202,7 +208,7 @@ namespace SourceModdingTool.SourceSDK
                             // So, this code will result in a false positive. Right now, the only example I have is of this kind:
                             // HudHealth [$WIN32]
                             // So, the workaround will be if the second word starts and ends with brackets
-                            if (words[1].StartsWith("[") && words[1].EndsWith("]")) // It's a parent key with a target OS
+                            if (hasOSInfo && words[1].StartsWith("[") && words[1].EndsWith("]")) // It's a parent key with a target OS
                             {
                                 line = line.Replace("\"", string.Empty);
                                 KeyValue parent = new KeyValue(line);

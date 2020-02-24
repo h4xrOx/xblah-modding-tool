@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -31,7 +32,7 @@ namespace SourceModdingTool.SourceSDK
 
             List<string> assets = new List<string>();
 
-            SourceSDK.KeyValue map = SourceSDK.KeyValue.readChunkfile(fullPath);
+            SourceSDK.KeyValue map = SourceSDK.KeyValue.readChunkfile(fullPath, false);
 
             // Add maps assets
             String mapName = Path.GetFileNameWithoutExtension(fullPath).ToLower();
@@ -105,6 +106,8 @@ namespace SourceModdingTool.SourceSDK
             }
 
             assets = assets.Distinct().ToList();
+
+            Debugger.Break();
             return assets;
         }
     }

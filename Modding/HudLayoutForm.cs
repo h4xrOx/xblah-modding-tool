@@ -39,7 +39,7 @@ namespace SourceModdingTool
 
         private void loadFile(string fileName)
         {
-            root = KeyValue.readChunkfile(fileName);
+            root = KeyValue.readChunkfile(fileName, true);
             items = new List<HudItem>();
 
             foreach(KeyValue kv in root.getChildren())

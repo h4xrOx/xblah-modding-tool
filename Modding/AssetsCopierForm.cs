@@ -43,15 +43,15 @@ namespace SourceModdingTool.Tools
             sourceSDK.setCurrentMod(mod);
 
             updateVMFList();
-            selectVMFDialog.InitialDirectory = sourceSDK.GetModPath(game, mod);
+            xtraOpenFileDialog1.InitialDirectory = sourceSDK.GetModPath(game, mod);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            if(selectVMFDialog.ShowDialog() == DialogResult.OK)
+            if(xtraOpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if(!vmfs.Contains(selectVMFDialog.FileName))
-                    vmfs.Add(selectVMFDialog.FileName);
+                if(!vmfs.Contains(xtraOpenFileDialog1.FileName))
+                    vmfs.Add(xtraOpenFileDialog1.FileName);
 
                 updateVMFList();
             }

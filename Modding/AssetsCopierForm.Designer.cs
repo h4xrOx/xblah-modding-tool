@@ -43,22 +43,22 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.selectVMFDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.vmfList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonSearch.ImageOptions.SvgImage")));
             this.buttonSearch.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.buttonSearch.Location = new System.Drawing.Point(3, 29);
@@ -72,7 +72,7 @@
             // 
             this.readMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.readMapButton.Enabled = false;
-            this.readMapButton.Location = new System.Drawing.Point(369, 8);
+            this.readMapButton.Location = new System.Drawing.Point(355, 8);
             this.readMapButton.Margin = new System.Windows.Forms.Padding(8);
             this.readMapButton.Name = "readMapButton";
             this.readMapButton.Size = new System.Drawing.Size(75, 23);
@@ -88,7 +88,7 @@
             this.vmfList.Location = new System.Drawing.Point(8, 8);
             this.vmfList.Name = "vmfList";
             this.vmfList.OptionsBehavior.Editable = false;
-            this.vmfList.Size = new System.Drawing.Size(407, 217);
+            this.vmfList.Size = new System.Drawing.Size(393, 194);
             this.vmfList.TabIndex = 5;
             this.vmfList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.vmfList_FocusedNodeChanged);
             // 
@@ -102,7 +102,7 @@
             // 
             // removeButton
             // 
-            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeButton.Enabled = false;
             this.removeButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("removeButton.ImageOptions.SvgImage")));
             this.removeButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
@@ -157,15 +157,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(452, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(438, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 264);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 241);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(452, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(438, 24);
             // 
             // barDockControlLeft
             // 
@@ -173,26 +173,42 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 264);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 241);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(452, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(438, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 264);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 241);
             // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.readMapButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 225);
+            this.panelControl1.Location = new System.Drawing.Point(0, 202);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(452, 39);
+            this.panelControl1.Size = new System.Drawing.Size(438, 39);
             this.panelControl1.TabIndex = 11;
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.buttonSearch);
+            this.panelControl3.Controls.Add(this.removeButton);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelControl3.Location = new System.Drawing.Point(401, 8);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(29, 194);
+            this.panelControl3.TabIndex = 6;
+            // 
+            // xtraOpenFileDialog1
+            // 
+            this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
+            this.xtraOpenFileDialog1.Filter = "Valve Map Files (*.vmf)|*.vmf";
             // 
             // panelControl2
             // 
@@ -203,29 +219,14 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.panelControl2.Size = new System.Drawing.Size(452, 225);
-            this.panelControl2.TabIndex = 12;
-            // 
-            // selectVMFDialog
-            // 
-            this.selectVMFDialog.Filter = "Valve Map Files (*.vmf)|*.vmf";
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl3.Controls.Add(this.buttonSearch);
-            this.panelControl3.Controls.Add(this.removeButton);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl3.Location = new System.Drawing.Point(415, 8);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(29, 217);
-            this.panelControl3.TabIndex = 6;
+            this.panelControl2.Size = new System.Drawing.Size(438, 202);
+            this.panelControl2.TabIndex = 18;
             // 
             // AssetsCopierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 288);
+            this.ClientSize = new System.Drawing.Size(438, 265);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -240,10 +241,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,9 +263,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.OpenFileDialog selectVMFDialog;
         private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialog1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }
