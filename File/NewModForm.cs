@@ -20,6 +20,8 @@ namespace SourceModdingTool
 
         public bool validFolder = false;
 
+        string modsPath;
+
         public NewModForm() { InitializeComponent(); }
 
         private void checkModDetails()
@@ -89,6 +91,7 @@ namespace SourceModdingTool
         private void NewModForm_Load(object sender, EventArgs e)
         {
             sourceSDK = new Steam();
+            modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
 
             List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
             foreach(DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
@@ -129,13 +132,27 @@ namespace SourceModdingTool
             textModsPath.Width = size.Width + 8;
 
             checkModDetails();
+
+            string templateModName = "mymod";
+
+            int counter = 1;
+
+            if (Directory.Exists(modsPath + templateModName))
+            {
+                do
+                {
+                    counter++;
+                    templateModName = "mymod" + counter;
+                } while (Directory.Exists(modsPath + templateModName));
+            }
+
+            textFolder.EditValue = templateModName;
         }
 
         private void textFolder_EditValueChanged(object sender, EventArgs e)
         {
             createButton.Enabled = false;
             validFolder = false;
-            string modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
 
             if(textFolder.EditValue == null)
             {

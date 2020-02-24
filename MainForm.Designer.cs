@@ -60,6 +60,7 @@
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignPrefabs = new DevExpress.XtraBars.BarButtonItem();
@@ -91,7 +92,6 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -332,7 +332,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingImport2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingHudEditor, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
@@ -442,6 +442,17 @@
             this.menuModdingExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingExport.ImageOptions.SvgImage")));
             this.menuModdingExport.Name = "menuModdingExport";
             this.menuModdingExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingDelete
+            // 
+            this.menuModdingDelete.Caption = "Delete Mod";
+            this.menuModdingDelete.Id = 78;
+            this.menuModdingDelete.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.menuModdingDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingDelete.ImageOptions.SvgImage")));
+            this.menuModdingDelete.ItemInMenuAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
+            this.menuModdingDelete.Name = "menuModdingDelete";
+            this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuLevelDesign
             // 
@@ -681,17 +692,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // menuModdingDelete
-            // 
-            this.menuModdingDelete.Caption = "Delete Mod";
-            this.menuModdingDelete.Id = 78;
-            this.menuModdingDelete.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.menuModdingDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingDelete.ImageOptions.SvgImage")));
-            this.menuModdingDelete.ItemInMenuAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
-            this.menuModdingDelete.Name = "menuModdingDelete";
-            this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // MainForm
             // 
