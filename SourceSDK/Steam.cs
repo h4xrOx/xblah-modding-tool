@@ -34,7 +34,7 @@ namespace SourceModdingTool
                           gamePath + "\\bin\\hammer_run_map_launcher.exe",
                           true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe",
-                          gamePath + "\\bin\\vbsp_2013.exe",
+                          gamePath + "\\bin\\vbsp.exe",
                           true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
                 File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
