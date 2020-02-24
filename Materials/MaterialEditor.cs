@@ -23,11 +23,16 @@ namespace SourceModdingTool
         object popupMenuActivator;
         Steam sourceSDK;
 
+        string modPath;
+
         Dictionary<string, Texture> textures;
 
         public MaterialEditor(string relativePath, Steam sourceSDK)
         {
             this.sourceSDK = sourceSDK;
+            modPath = sourceSDK.GetModPath();
+
+
             InitializeComponent();
             populatePictureEdits();
             ClearMaterial();
@@ -39,7 +44,7 @@ namespace SourceModdingTool
 
         private void barButtonOpen_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openVMTFileDialog.InitialDirectory = sourceSDK.GetModPath() + "\\materials\\";
+            openVMTFileDialog.InitialDirectory = modPath + "\\materials\\";
             if(openVMTFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fullPath = openVMTFileDialog.FileName;
@@ -52,26 +57,29 @@ namespace SourceModdingTool
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
-            File.Copy(modPath + "\\gameinfo.txt", modPath + "\\gameinfo.txt.temp");
-            File.Copy(modPath + "\\resource\\gamemenu.res", modPath + "\\resource\\gamemenu.res.temp");
+            //SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
+            startPreview();
+        }
 
-            KeyValue gameinfo = KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
-            gameinfo.setValue("title", string.Empty);
-            gameinfo.setValue("title2", string.Empty);
-            KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameinfo, false, new UTF8Encoding(false));
+        private void startPreview()
+        {
+            string sourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews\\";
+ 
+            // Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*",
+                SearchOption.AllDirectories))
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, modPath));
 
-            KeyValue gamemenu = new KeyValue("GameMenu");
-            KeyValue.writeChunkFile(modPath + "\\resource\\gamemenu.res", gamemenu, true, new UTF8Encoding(false));
+            // Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*",
+                SearchOption.AllDirectories))
+                File.Copy(newPath, newPath.Replace(sourcePath, modPath), true);
 
             game = new Game(sourceSDK, panelControl1);
-            game.Start("+map_background material_preview +crosshair 0");
+            game.Start("-nomouse +map material_preview +crosshair 0");
             this.ActiveControl = null;
 
             isPreviewing = true;
-
-            SaveMaterial("props_tool/material_preview/preview", "VertexLitGeneric");
-            game.Command("+mat_reloadallmaterials +map_background material_preview");
         }
 
         private void ClearMaterial()
@@ -192,8 +200,8 @@ namespace SourceModdingTool
 
             if(isPreviewing)
             {
-                SaveMaterial("props_tool/material_preview/preview", "VertexLitGeneric");
-                game.Command("+mat_reloadallmaterials +map_background material_preview");
+                SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
+                game.Command("+mat_reloadallmaterials");
             }
         }
 
@@ -303,18 +311,17 @@ namespace SourceModdingTool
             CreateToolTexture();
         }
 
-        private void MaterialEditor_FormClosing(object sender, FormClosingEventArgs e)
+        private void stopPreview()
         {
-            string modPath = sourceSDK.GetModPath();
-
-            if(game != null && game.modProcess != null)
+            if (game != null && game.modProcess != null)
             {
                 game.modProcess.Kill();
-                File.Copy(modPath + "\\gameinfo.txt.temp", modPath + "\\gameinfo.txt", true);
-                File.Copy(modPath + "\\resource\\gamemenu.res.temp", modPath + "\\resource\\gamemenu.res", true);
-                File.Delete(modPath + "\\gameinfo.txt.temp");
-                File.Delete(modPath + "\\resource\\gamemenu.res.temp");
             }
+        }
+
+        private void MaterialEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stopPreview();
         }
 
         private void pictureBaseTexture_MouseClick(object sender, MouseEventArgs e)
