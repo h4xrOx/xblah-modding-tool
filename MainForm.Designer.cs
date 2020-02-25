@@ -92,6 +92,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuLevelDesignFogPreviewer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -158,9 +159,10 @@
             this.toolsRunPopupRunFullscreen,
             this.toolsRunPopupIngameTools,
             this.menuModdingImport2,
-            this.menuModdingDelete});
+            this.menuModdingDelete,
+            this.menuLevelDesignFogPreviewer});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 79;
+            this.barManager.MaxItemId = 80;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -460,6 +462,7 @@
             this.menuLevelDesign.Id = 47;
             this.menuLevelDesign.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignHammer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignFogPreviewer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty, true),
@@ -693,6 +696,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuLevelDesignFogPreviewer
+            // 
+            this.menuLevelDesignFogPreviewer.Caption = "Fog Previewer";
+            this.menuLevelDesignFogPreviewer.Id = 79;
+            this.menuLevelDesignFogPreviewer.Name = "menuLevelDesignFogPreviewer";
+            this.menuLevelDesignFogPreviewer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -785,5 +795,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryGamesCombo;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryModsCombo;
         private DevExpress.XtraBars.BarButtonItem menuModdingDelete;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignFogPreviewer;
     }
 }

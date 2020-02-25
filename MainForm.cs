@@ -81,6 +81,13 @@ namespace SourceModdingTool
                 sourceSDK.RunHammer(Application.StartupPath);
             }
 
+            // Fog Previewer
+            else if (e.Item == menuLevelDesignFogPreviewer)
+            {
+                FogForm form = new FogForm(sourceSDK);
+                form.ShowDialog();
+            }
+
             // Prefabs
             else if (e.Item == menuLevelDesignPrefabs)
             {
