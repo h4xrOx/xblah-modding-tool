@@ -163,6 +163,16 @@ namespace windows_source1ide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noScreenshots {
+            get {
+                object obj = ResourceManager.GetObject("noScreenshots", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap portal {
             get {
                 object obj = ResourceManager.GetObject("portal", resourceCulture);

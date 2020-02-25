@@ -75,6 +75,19 @@ namespace SourceModdingTool
 
         private void menuLevelDesign_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // Run Map
+            if (e.Item == menuLevelDesignRunMap)
+            {
+                RunMapForm form = new RunMapForm(sourceSDK);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = form.fileName;
+                    if (game != null)
+                    {
+                        game.Command("+map " + fileName);
+                    }
+                }
+            }
             // Hammer
             if (e.Item == menuLevelDesignHammer)
             {

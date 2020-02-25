@@ -118,17 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="hl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="episodic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\episodic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ep2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\ep2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hl2mp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hl2mp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hl2mp_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl2mp_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="portal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\portal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,28 +127,40 @@
   <data name="portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\portal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bms" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\bms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bms_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\bms_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="episodic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\episodic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ep2_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\ep2_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="episodic_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\episodic_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="portal_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\portal_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hl2_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\hl2_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hl2mp_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hl2mp_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hl2mp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl2mp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="portal_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\portal_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="episodic_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\episodic_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bms_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\bms_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\bms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ep2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\ep2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="portal2_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\portal2_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noScreenshots" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Misc\noScreenshots.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
