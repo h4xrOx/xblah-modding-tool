@@ -57,13 +57,13 @@ namespace SourceModdingTool
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            //SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
+            SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
             startPreview();
         }
 
         private void startPreview()
         {
-            string sourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews\\";
+            string sourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews";
  
             // Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*",
@@ -198,10 +198,15 @@ namespace SourceModdingTool
 
             pictureToolTexture.Image = textures["tooltexture"].bitmap;
 
-            if(isPreviewing)
+            updatePreview();
+        }
+
+        private void updatePreview()
+        {
+            if (isPreviewing)
             {
                 SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
-                game.Command("+mat_reloadallmaterials");
+                game.Command("+mat_reloadallmaterials +map material_preview");
             }
         }
 
