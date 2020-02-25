@@ -24,26 +24,32 @@ namespace SourceModdingTool
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
             if(currentGame == "Source SDK Base 2013 Singleplayer")
             {
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer.exe",
-                          gamePath + "\\bin\\hammer.exe",
-                          true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_dll.dll",
-                          gamePath + "\\bin\\hammer_dll.dll",
-                          true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe",
-                          gamePath + "\\bin\\hammer_run_map_launcher.exe",
-                          true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe",
-                          gamePath + "\\bin\\vbsp.exe",
-                          true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
-                          gamePath + "\\bin\\vrad_dll.dll",
-                          true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis.exe", gamePath + "\\bin\\vvis.exe", true);
-                File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis_dll.dll",
-                          gamePath + "\\bin\\vvis_dll.dll",
-                          true);
+                try
+                {
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer.exe",
+                              gamePath + "\\bin\\hammer.exe",
+                              true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_dll.dll",
+                              gamePath + "\\bin\\hammer_dll.dll",
+                              true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe",
+                              gamePath + "\\bin\\hammer_run_map_launcher.exe",
+                              true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe",
+                              gamePath + "\\bin\\vbsp.exe",
+                              true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
+                              gamePath + "\\bin\\vrad_dll.dll",
+                              true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis.exe", gamePath + "\\bin\\vvis.exe", true);
+                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis_dll.dll",
+                              gamePath + "\\bin\\vvis_dll.dll",
+                              true);
+                } catch (IOException ignore)
+                {
+
+                }
             }
         }
 
