@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using SourceModdingTool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +23,8 @@ namespace SourceModdingTool
         {
             string gamePath = GetGamePath();
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
-            if(currentGame == "Source SDK Base 2013 Singleplayer")
+
+            if (currentGame == "Source SDK Base 2013 Singleplayer")
             {
                 try
                 {
@@ -58,7 +60,12 @@ namespace SourceModdingTool
             string gamePath = GetGamePath();
             string modPath = GetModPath();
 
-            if(File.Exists(gamePath + "\\bin\\propper.fgd"))
+            string gameinfoPath = modPath + "\\gameinfo.txt";
+            KeyValue gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
+            string instancePath = gameinfo.getValue("instancepath");
+            string modName = gameinfo.getValue("name");
+
+            if (File.Exists(gamePath + "\\bin\\propper.fgd"))
                 File.Delete(gamePath + "\\bin\\propper.fgd");
 
             if(File.Exists(gamePath + "\\bin\\propper.exe"))
@@ -91,7 +98,7 @@ namespace SourceModdingTool
             sb.AppendLine("             \"Vis\"		\"" + gamePath + "\\bin\\vvis.exe\"");
             sb.AppendLine("             \"Light\"		\"" + gamePath + "\\bin\\vrad.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + gamePath + "\"");
-            sb.AppendLine("             \"MapDir\"		\"" + gamePath + "\\sourcesdk_content\\ep2\\mapsrc\"");
+            sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
             sb.AppendLine("             \"BSPDir\"		\"" + modPath + "\\maps\"");
             sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
             sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
