@@ -56,9 +56,9 @@
             this.filePopOpenButton = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.filePopDeleteButton = new DevExpress.XtraBars.BarButtonItem();
+            this.filePopOpenFileLocationButton = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filePopMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.filePopOpenFileLocationButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
@@ -198,6 +198,7 @@
             this.buttonBack.Id = 0;
             this.buttonBack.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.ImageOptions.Image")));
             this.buttonBack.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonBack.ImageOptions.LargeImage")));
+            this.buttonBack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonBack.ImageOptions.SvgImage")));
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonBack_ItemClick);
             // 
@@ -207,6 +208,7 @@
             this.buttonForward.Id = 1;
             this.buttonForward.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonForward.ImageOptions.Image")));
             this.buttonForward.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonForward.ImageOptions.LargeImage")));
+            this.buttonForward.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonForward.ImageOptions.SvgImage")));
             this.buttonForward.Name = "buttonForward";
             this.buttonForward.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonForward_ItemClick);
             // 
@@ -216,6 +218,7 @@
             this.buttonUp.Id = 2;
             this.buttonUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.ImageOptions.Image")));
             this.buttonUp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonUp.ImageOptions.LargeImage")));
+            this.buttonUp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonUp.ImageOptions.SvgImage")));
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonUp_ItemClick);
             // 
@@ -329,6 +332,14 @@
             this.filePopDeleteButton.Name = "filePopDeleteButton";
             this.filePopDeleteButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopDeleteButton_ItemClick);
             // 
+            // filePopOpenFileLocationButton
+            // 
+            this.filePopOpenFileLocationButton.Caption = "Open File Location";
+            this.filePopOpenFileLocationButton.Id = 13;
+            this.filePopOpenFileLocationButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filePopOpenFileLocationButton.ImageOptions.SvgImage")));
+            this.filePopOpenFileLocationButton.Name = "filePopOpenFileLocationButton";
+            this.filePopOpenFileLocationButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopOpenFileLocationButton_ItemClick);
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -355,15 +366,7 @@
             this.filePopMenu.Manager = this.barManager1;
             this.filePopMenu.Name = "filePopMenu";
             // 
-            // filePopOpenFileLocationButton
-            // 
-            this.filePopOpenFileLocationButton.Caption = "Open File Location";
-            this.filePopOpenFileLocationButton.Id = 13;
-            this.filePopOpenFileLocationButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.filePopOpenFileLocationButton.Name = "filePopOpenFileLocationButton";
-            this.filePopOpenFileLocationButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.filePopOpenFileLocationButton_ItemClick);
-            // 
-            // VPKExplorer
+            // FileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -374,7 +377,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VPKExplorer";
+            this.Name = "FileExplorer";
             this.Text = "File Explorer";
             this.Load += new System.EventHandler(this.VPKExplorer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dirs)).EndInit();
