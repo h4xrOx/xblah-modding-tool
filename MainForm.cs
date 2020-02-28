@@ -5,6 +5,7 @@ using SourceModdingTool.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SourceModdingTool
@@ -79,12 +80,27 @@ namespace SourceModdingTool
             if (e.Item == menuLevelDesignRunMap)
             {
                 RunMapForm form = new RunMapForm(sourceSDK);
-                if (form.ShowDialog() == DialogResult.OK)
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     string fileName = form.fileName;
-                    if (game != null)
+                    if (fileName.EndsWith(".bsp") && File.Exists(fileName))
                     {
-                        game.Command("+map " + fileName);
+                        string mapName = Map.GetMapNameWithoutVersion(Path.GetFileNameWithoutExtension(fileName));
+                        File.Copy(fileName, sourceSDK.GetModPath() + "\\maps\\" + mapName + ".bsp", true);
+
+                        if (game != null)
+                        {
+                            game.Command("+map " + mapName);
+                        } else
+                        {
+                            game = new Game(sourceSDK, panel1);
+                            game.Start("+map " + mapName);
+
+                            FormBorderStyle = FormBorderStyle.Fixed3D;
+                            MaximizeBox = false;
+                            modStarted();
+                        }
                     }
                 }
             }
@@ -328,7 +344,8 @@ namespace SourceModdingTool
         }
 
         private void modExited(object sender, EventArgs e) {
-            game.modProcess = null;
+            if (game != null)
+                game.modProcess = null;
         }
 
         private void ModForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -394,8 +411,11 @@ namespace SourceModdingTool
 
         private void toolsStop_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(game.modProcess != null)
+            if (game.modProcess != null)
+            {
                 game.Stop();
+                game = null;
+            }
         }
 
         private void updateToolsGames()

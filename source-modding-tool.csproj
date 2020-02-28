@@ -78,6 +78,8 @@
     <Compile Include="LevelDesign\FogForm.Designer.cs">
       <DependentUpon>FogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LevelDesign\Map.cs" />
+    <Compile Include="LevelDesign\MapFolder.cs" />
     <Compile Include="LevelDesign\RunMapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,6 +374,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Misc\folder.png" />
     <Content Include="Assets\Misc\noScreenshots.png" />
     <Content Include="Assets\Posters\bms.png" />
     <Content Include="Assets\Posters\bms_notinstalled.png" />
