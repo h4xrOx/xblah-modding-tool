@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RunMapForm));
             this.galleryControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
             this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
@@ -72,18 +72,19 @@
             // 
             // 
             this.galleryControl.Gallery.ClearSelectionOnClickEmptySpace = true;
-            galleryItemGroup1.Caption = "Maps";
-            galleryItem1.Caption = "Item1";
-            galleryItem1.ImageOptions.Image = global::windows_source1ide.Properties.Resources.folder;
-            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem1});
+            galleryItemGroup2.Caption = "Maps";
+            galleryItem2.Caption = "Item1";
+            galleryItem2.ImageOptions.Image = global::windows_source1ide.Properties.Resources.folder;
+            galleryItemGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem2});
             this.galleryControl.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup2});
             this.galleryControl.Gallery.ImageSize = new System.Drawing.Size(192, 108);
             this.galleryControl.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
             this.galleryControl.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.ZoomInside;
             this.galleryControl.Gallery.ShowItemText = true;
-            this.galleryControl.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.GalleryControl_Gallery_ItemClick);
+            this.galleryControl.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.GalleryControl_Gallery_ItemClick);
+            this.galleryControl.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.galleryControl_Gallery_ItemDoubleClick);
             this.galleryControl.Location = new System.Drawing.Point(0, 0);
             this.galleryControl.Name = "galleryControl";
             this.galleryControl.Size = new System.Drawing.Size(974, 460);
@@ -120,6 +121,7 @@
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 7;
             this.editButton.Text = "Edit";
+            this.editButton.Visible = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // deleteButton
@@ -132,6 +134,7 @@
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
+            this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // labelControl1

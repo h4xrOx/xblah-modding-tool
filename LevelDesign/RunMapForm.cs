@@ -45,14 +45,12 @@ namespace SourceModdingTool
             if (checkedItem != null && galleryControl.Gallery.GetCheckedItems().Count > 0)
                 if (checkedItem.Tag is KeyValuePair<string, MapFolder>)
                 {
-                    KeyValuePair<string, MapFolder> mapFolder = (KeyValuePair<string, MapFolder>)checkedItem.Tag;
+                    // Folder
 
-                    dirs.Add(mapFolder.Key);
-                    string path = string.Join("/", dirs);
-                    ShowMaps(path);
                 }
                 else
                 {
+                    // File
                     Map map = (Map)checkedItem.Tag;
                     versionsCombo.Properties.Items.Clear();
                     versionsCombo.Tag = map;
@@ -66,6 +64,37 @@ namespace SourceModdingTool
                 }
             else
             {
+                // Nothing
+                bspPath = null;
+                vmfPath = null;
+                runButton.Enabled = false;
+                editButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
+        }
+
+        private void galleryControl_Gallery_ItemDoubleClick(object sender, GalleryItemClickEventArgs e)
+        {
+            GalleryItem checkedItem = galleryControl.Gallery.GetCheckedItem();
+
+            if (checkedItem != null && galleryControl.Gallery.GetCheckedItems().Count > 0)
+                if (checkedItem.Tag is KeyValuePair<string, MapFolder>)
+                {
+                    // Folder
+                    KeyValuePair<string, MapFolder> mapFolder = (KeyValuePair<string, MapFolder>)checkedItem.Tag;
+
+                    dirs.Add(mapFolder.Key);
+                    string path = string.Join("/", dirs);
+                    ShowMaps(path);
+                }
+                else
+                {
+                    // File
+                   
+                }
+            else
+            {
+                // Nothing
                 bspPath = null;
                 vmfPath = null;
                 runButton.Enabled = false;
