@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,6 +39,7 @@ namespace SourceModdingTool
 
         private void GalleryControl_Gallery_ItemClick(object sender, GalleryItemClickEventArgs e)
         {
+
             GalleryItem checkedItem = galleryControl.Gallery.GetCheckedItem();
 
             if (checkedItem != null && galleryControl.Gallery.GetCheckedItems().Count > 0)

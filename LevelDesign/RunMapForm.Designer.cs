@@ -42,6 +42,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.toolsUpButton = new DevExpress.XtraBars.BarButtonItem();
+            this.pathEdit = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -51,17 +53,15 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.versionsCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.pathEdit = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl)).BeginInit();
             this.galleryControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.versionsCombo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // galleryControl
@@ -71,6 +71,7 @@
             // 
             // 
             // 
+            this.galleryControl.Gallery.ClearSelectionOnClickEmptySpace = true;
             galleryItemGroup1.Caption = "Maps";
             galleryItem1.Caption = "Item1";
             galleryItem1.ImageOptions.Image = global::windows_source1ide.Properties.Resources.folder;
@@ -79,10 +80,10 @@
             this.galleryControl.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
             this.galleryControl.Gallery.ImageSize = new System.Drawing.Size(192, 108);
-            this.galleryControl.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleCheck;
+            this.galleryControl.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
             this.galleryControl.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.ZoomInside;
             this.galleryControl.Gallery.ShowItemText = true;
-            this.galleryControl.Gallery.ItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.GalleryControl_Gallery_ItemClick);
+            this.galleryControl.Gallery.ItemDoubleClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.GalleryControl_Gallery_ItemClick);
             this.galleryControl.Location = new System.Drawing.Point(0, 0);
             this.galleryControl.Name = "galleryControl";
             this.galleryControl.Size = new System.Drawing.Size(974, 460);
@@ -193,6 +194,22 @@
             this.toolsUpButton.Name = "toolsUpButton";
             this.toolsUpButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ToolsUpButton_ItemClick);
             // 
+            // pathEdit
+            // 
+            this.pathEdit.AutoFillWidth = true;
+            this.pathEdit.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
+            this.pathEdit.CanOpenEdit = false;
+            this.pathEdit.Caption = "barEditItem1";
+            this.pathEdit.Edit = this.repositoryItemTextEdit1;
+            this.pathEdit.Enabled = false;
+            this.pathEdit.Id = 1;
+            this.pathEdit.Name = "pathEdit";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -285,22 +302,6 @@
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Select a version:";
             // 
-            // pathEdit
-            // 
-            this.pathEdit.AutoFillWidth = true;
-            this.pathEdit.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
-            this.pathEdit.CanOpenEdit = false;
-            this.pathEdit.Caption = "barEditItem1";
-            this.pathEdit.Edit = this.repositoryItemTextEdit1;
-            this.pathEdit.Enabled = false;
-            this.pathEdit.Id = 1;
-            this.pathEdit.Name = "pathEdit";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
             // RunMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,10 +323,10 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.versionsCombo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
