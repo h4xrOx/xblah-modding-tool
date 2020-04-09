@@ -78,12 +78,17 @@ namespace SourceModdingTool.SourceSDK
             return Start("");
         }
 
-        public Process Start(string command)
+        public void KillExistant()
         {
             foreach (var process in Process.GetProcessesByName("hl2.exe"))
             {
                 process.Kill();
             }
+        }
+
+        public Process Start(string command)
+        {
+            KillExistant();
 
             string gamePath = sourceSDK.GetGamePath();
             string modPath = sourceSDK.GetModPath();
@@ -111,14 +116,26 @@ namespace SourceModdingTool.SourceSDK
                 command +
                 " +net_graph 0";
             modProcess.Start();
-            modProcess.EnableRaisingEvents = true;
-            modProcess.WaitForInputIdle();
 
-            Thread.Sleep(300);
-            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
-            Resize();
+            AttachProcessTo(modProcess, parent);
 
             return modProcess;
+        }
+
+        public void AttachProcessTo(Process process, Control parent)
+        {
+            if (modProcess != null)
+            {
+                modProcess.EnableRaisingEvents = true;
+                modProcess.WaitForInputIdle();
+                while(modProcess.MainWindowHandle.ToString() == "0")
+                {
+                    // Just wait until the window is created. Bad, right?
+                }
+                Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+
+                Resize();
+            }
         }
 
         public Process StartFullScreen()
@@ -179,12 +196,7 @@ namespace SourceModdingTool.SourceSDK
                 " -height " +
                 parent.Height;
             modProcess.Start();
-            modProcess.EnableRaisingEvents = true;
-            modProcess.WaitForInputIdle();
-
-            Thread.Sleep(300);
-            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
-            Resize();
+            AttachProcessTo(modProcess, parent);
 
             return modProcess;
         }

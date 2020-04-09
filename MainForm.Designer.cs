@@ -62,6 +62,7 @@
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
+            this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignFogPreviewer = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignPrefabs = new DevExpress.XtraBars.BarButtonItem();
@@ -93,7 +94,6 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -164,7 +164,7 @@
             this.menuLevelDesignFogPreviewer,
             this.menuLevelDesignRunMap});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 82;
+            this.barManager.MaxItemId = 83;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -473,6 +473,14 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler)});
             this.menuLevelDesign.Name = "menuLevelDesign";
             // 
+            // menuLevelDesignRunMap
+            // 
+            this.menuLevelDesignRunMap.Caption = "Run Map";
+            this.menuLevelDesignRunMap.Id = 81;
+            this.menuLevelDesignRunMap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignRunMap.ImageOptions.SvgImage")));
+            this.menuLevelDesignRunMap.Name = "menuLevelDesignRunMap";
+            this.menuLevelDesignRunMap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
             // menuLevelDesignHammer
             // 
             this.menuLevelDesignHammer.Caption = "Hammer";
@@ -705,14 +713,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // menuLevelDesignRunMap
-            // 
-            this.menuLevelDesignRunMap.Caption = "Run Map";
-            this.menuLevelDesignRunMap.Id = 81;
-            this.menuLevelDesignRunMap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.menuLevelDesignRunMap.Name = "menuLevelDesignRunMap";
-            this.menuLevelDesignRunMap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // MainForm
             // 

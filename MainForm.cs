@@ -458,5 +458,16 @@ namespace SourceModdingTool
                 toolsMods.EditValue = string.Empty;
             }
         }
+
+        private void tools_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            switch (e.Item.Tag)
+            {
+                case "reattach":
+                    if (game != null)
+                        game.AttachProcessTo(game.modProcess, panel1);
+                    break;
+            }
+        }
     }
 }
