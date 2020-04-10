@@ -36,6 +36,9 @@ namespace SourceModdingTool
 
         private void UpdateLibrariesList()
         {
+            if (sourceSDK == null)
+                return;
+
             steamLibs = sourceSDK.GetSteamLibraries();
             userLibs = sourceSDK.GetUserLibraries();
 

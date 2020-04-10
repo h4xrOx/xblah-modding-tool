@@ -26,8 +26,17 @@ namespace SourceModdingTool
             sourceSDK = new Steam();
             updateToolsGames();
 
-            toolsGames.EditValue = currentGame;
-            toolsMods.EditValue = currentMod;
+            if (repositoryGamesCombo.Items.Contains(currentGame))
+                toolsGames.EditValue = currentGame;
+            else
+                toolsGames.EditValue = "";
+
+            if (repositoryModsCombo.Items.Contains(currentMod))
+                toolsMods.EditValue = currentMod;
+            else
+                toolsMods.EditValue = "";
+
+            UpdateMenus();
         }
 
         private void menuChoreography_ItemClick(object sender, ItemClickEventArgs e)
@@ -402,20 +411,28 @@ namespace SourceModdingTool
 
         private void toolsMods_EditValueChanged(object sender, EventArgs e)
         {
+            if (sourceSDK == null)
+                return;
+
             sourceSDK.setCurrentMod(toolsMods.EditValue.ToString());
             Properties.Settings.Default.currentMod = toolsMods.EditValue.ToString();
             Properties.Settings.Default.Save();
 
+            UpdateMenus();
+
+        }
+
+        private void UpdateMenus()
+        {
             toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
             menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
             menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+            menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+            menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
             menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
 
-            menuModelingHLMV.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
             menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null &&
-                toolsMods.EditValue.ToString() != string.Empty);
-
-            menuModelingPropper.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+            toolsMods.EditValue.ToString() != string.Empty);
         }
 
         private void toolsStop_ItemClick(object sender, ItemClickEventArgs e)
@@ -429,10 +446,16 @@ namespace SourceModdingTool
 
         private void updateToolsGames()
         {
+            if (sourceSDK == null)
+                return;
+
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
             repositoryGamesCombo.Items.Clear();
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetGamesList())
-                repositoryGamesCombo.Items.Add(item.Key);
+            Dictionary<string, string> gamesList = sourceSDK.GetGamesList();
+
+            if (gamesList.Count > 0)
+                foreach (KeyValuePair<string, string> item in gamesList)
+                    repositoryGamesCombo.Items.Add(item.Key);
 
             if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
                 toolsGames.EditValue = currentGame;
@@ -441,8 +464,6 @@ namespace SourceModdingTool
             else
             {
                 toolsGames.EditValue = string.Empty;
-                XtraMessageBox.Show("No Source games were found. Check if everything is all set at Steam and restart this tool.");
-                Close();
             }
         }
 
@@ -455,10 +476,12 @@ namespace SourceModdingTool
             if(currentGame == string.Empty)
                 return;
 
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetModsList(currentGame))
-                repositoryModsCombo.Items.Add(item.Key);
+            Dictionary<string, string> modsList = sourceSDK.GetModsList(currentGame);
+            if (modsList.Count > 0)
+                foreach (KeyValuePair<string, string> item in modsList)
+                    repositoryModsCombo.Items.Add(item.Key);
 
-            if(repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
+            if (repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
                 toolsMods.EditValue = currentMod;
             else if(repositoryModsCombo.Items.Count > 0)
                 toolsMods.EditValue = repositoryModsCombo.Items[0];

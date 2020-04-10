@@ -590,7 +590,10 @@
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"
 RD /S /Q "$(TargetDir)es"
 RD /S /Q "$(TargetDir)ja"
-RD /S /Q "$(TargetDir)ru"</PostBuildEvent>
+RD /S /Q "$(TargetDir)ru"
+; Move all assemblies and related files to lib folder
+ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF *.exe *.config *.manifest *.vdf /XD Libs logs Tools Templates data /E /IS /MOVE
+; if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

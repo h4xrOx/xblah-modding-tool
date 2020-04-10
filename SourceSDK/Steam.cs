@@ -14,14 +14,17 @@ namespace SourceModdingTool
     {
         string currentGame = string.Empty;
         string currentMod = string.Empty;
+
         Dictionary<string, string> games = new Dictionary<string, string>();
         Dictionary<string, string> mods = new Dictionary<string, string>();
-        private List<string> libs;
-        private List<string> userLibs;
 
-        public Steam() {
-            LoadSteamLibraries();
-            LoadUserLibraries();
+        private List<string> steamLibs = new List<string>();
+        private List<string> userLibs = new List<string>();
+
+        public Steam()
+        {
+            //LoadSteamLibraries();
+            //LoadUserLibraries();
         }
 
         private void CopySlartibartysHammer()
@@ -29,33 +32,17 @@ namespace SourceModdingTool
             string gamePath = GetGamePath();
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            if (currentGame == "Source SDK Base 2013 Singleplayer")
+            if(currentGame == "Source SDK Base 2013 Singleplayer")
             {
-                try
+                foreach(string file in Directory.GetFiles(startupPath + "\\Tools\\SlartibartysHammer\\sp\\"))
                 {
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer.exe",
-                              gamePath + "\\bin\\hammer.exe",
-                              true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_dll.dll",
-                              gamePath + "\\bin\\hammer_dll.dll",
-                              true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\hammer_run_map_launcher.exe",
-                              gamePath + "\\bin\\hammer_run_map_launcher.exe",
-                              true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vbsp.exe",
-                              gamePath + "\\bin\\vbsp.exe",
-                              true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad.exe", gamePath + "\\bin\\vrad.exe", true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vrad_dll.dll",
-                              gamePath + "\\bin\\vrad_dll.dll",
-                              true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis.exe", gamePath + "\\bin\\vvis.exe", true);
-                    File.Copy(startupPath + "\\Tools\\SlartibartysHammer\\sp\\vvis_dll.dll",
-                              gamePath + "\\bin\\vvis_dll.dll",
-                              true);
-                } catch (IOException ignore)
-                {
-
+                    try
+                    {
+                        File.Copy(file, gamePath + "\\bin\\" + new FileInfo(file).Name);
+                    }
+                    catch (IOException ignore)
+                    {
+                    }
                 }
             }
         }
@@ -70,7 +57,7 @@ namespace SourceModdingTool
             string instancePath = gameinfo.getValue("instancepath");
             string modName = gameinfo.getValue("name");
 
-            if (File.Exists(gamePath + "\\bin\\propper.fgd"))
+            if(File.Exists(gamePath + "\\bin\\propper.fgd"))
                 File.Delete(gamePath + "\\bin\\propper.fgd");
 
             if(File.Exists(gamePath + "\\bin\\propper.exe"))
@@ -159,94 +146,74 @@ namespace SourceModdingTool
             File.WriteAllText(gamePath + "\\bin\\GameConfig.txt", sb.ToString());
         }
 
+        private List<string> GetLibraries()
+        {
+            List<string> result = new List<string>();
+            result.AddRange(steamLibs);
+            result.AddRange(userLibs);
+            return result;
+        }
+
         private Dictionary<string, string> LoadGames()
         {
             games = new Dictionary<string, string>();
             if(GetLibraries().Count > 0)
             {
-                foreach(string library in GetLibraries())
-                {
-                    if (Directory.Exists(library + "\\steamapps\\common\\"))
-                        foreach(String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
-                        {
-                            String game = new FileInfo(path).Name;
+                List<string> libraries = GetLibraries();
+                if (libraries.Count > 0)
+                    foreach(string library in libraries)
+                    {
+                        if(Directory.Exists(library + "\\steamapps\\common\\"))
+                            foreach(String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
+                            {
+                                String game = new FileInfo(path).Name;
 
-                            if(File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll"))
-                                games.Add(game, library + "\\steamapps\\common\\" + game);
-                        }
-                }
+                                if(File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
+                                    games.Add(game, library + "\\steamapps\\common\\" + game);
+                            }
+                    }
             }
+
             return games;
         }
 
-        private List<string> GetLibraries()
+        /// <summary>
+        /// Loads all the mods with the same game app id of the specified game
+        /// </summary>
+        /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
+        /// <returns></returns>
+        private Dictionary<string, string> LoadMods(String game)
         {
-            List<string> result = new List<string>();
-            result.AddRange(libs);
-            result.AddRange(userLibs);
-            return result;
-        }
+            mods = new Dictionary<string, string>();
 
-        public List<string> GetSteamLibraries()
-        {
-            return libs;
-        }
+            if(string.IsNullOrEmpty(game))
+                return mods;
 
-        public List<string> GetUserLibraries()
-        {
-            return userLibs;
-        }
+            int gameAppId = GetGameAppId(game);
+            string gamePath = GetGamePath();
 
-        public void LoadSteamLibraries()
-        {
-            String steamPath = GetInstallPath();
+            if(gameAppId == -1 || gamePath == null)
+                return mods;
 
-            libs = new List<string>();
-            libs.Add(steamPath);
+            List<string> paths = GetAllModPaths();
 
-            if (File.Exists(steamPath + "\\steamapps\\libraryfolders.vdf"))
+            foreach(string path in GetAllBaseGameinfoFolders(currentGame))
+                paths.Add(gamePath + "\\" + path);
+            foreach(string path in paths)
             {
-                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
+                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
 
-                foreach (SourceSDK.KeyValue child in root.getChildren())
+                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
+
+                if(int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
                 {
-                    string dir = child.getValue().Replace("\\\\", "\\");
-                    if (Directory.Exists(dir))
-                        libs.Add(dir);
-                }
-            } else
-            {
-                XtraMessageBox.Show("Could not find file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
-            }
-        }
-
-        public void LoadUserLibraries()
-        {
-            userLibs = new List<string>();
-            string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
-            if (File.Exists(userPath))
-            {
-                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(userPath);
-
-                foreach (SourceSDK.KeyValue child in root.getChildren())
-                {
-                    string dir = child.getValue().Replace("\\\\", "\\");
-                    if (Directory.Exists(dir))
-                        userLibs.Add(dir);
+                    while(mods.Keys.Contains(name))
+                        name = name + "_";
+                    mods.Add(name, path);
                 }
             }
-        }
-
-        public void AddUserLibrary(string path)
-        {
-            userLibs.Add(path);
-            SaveUserLibraries();
-        }
-
-        public void RemoveUserLibrary(string path)
-        {
-            userLibs.Remove(path);
-            SaveUserLibraries();
+            return mods;
         }
 
         private void SaveUserLibraries()
@@ -263,43 +230,55 @@ namespace SourceModdingTool
             SourceSDK.KeyValue.writeChunkFile(userPath, root);
         }
 
-        /// <summary>
-        /// Loads all the mods with the same game app id of the specified game
-        /// </summary>
-        /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
-        /// <returns></returns>
-        private Dictionary<string, string> LoadMods(String game)
+        public void AddUserLibrary(string path)
         {
-            mods = new Dictionary<string, string>();
+            userLibs.Add(path);
+            SaveUserLibraries();
+        }
 
-            if (string.IsNullOrEmpty(game))
-                return mods;
-            
-            int gameAppId = GetGameAppId(game);
-            string gamePath = GetGamePath();
+        public void CleanModFolder()
+        {
+            //string modPath = sourceSDK.GetModPath(toolsGames.EditValue.ToString(), toolsMods.EditValue.ToString());
+            string modPath = GetModPath();
 
-            if (gameAppId == -1 || gamePath == null)
-                return mods;
+            if(File.Exists(modPath + "\\Gamestate.txt"))
+                File.Delete(modPath + "\\Gamestate.txt");
+            if(File.Exists(modPath + "\\demoheader.tmp"))
+                File.Delete(modPath + "\\demoheader.tmp");
+            if(File.Exists(modPath + "\\ep1_gamestats.dat"))
+                File.Delete(modPath + "\\ep1_gamestats.dat");
+            if(File.Exists(modPath + "\\modelsounds.cache"))
+                File.Delete(modPath + "\\modelsounds.cache");
+            if(File.Exists(modPath + "\\stats.txt"))
+                File.Delete(modPath + "\\stats.txt");
+            if(File.Exists(modPath + "\\voice_ban.dt"))
+                File.Delete(modPath + "\\voice_ban.dt");
+            if(File.Exists(modPath + "\\cfg\\config.cfg"))
+                File.Delete(modPath + "\\cfg\\config.cfg");
+            if(File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
+                File.Delete(modPath + "\\cfg\\server_blacklist.txt");
+            if(File.Exists(modPath + "\\sound\\sound.cache"))
+                File.Delete(modPath + "\\sound\\sound.cache");
+            if(File.Exists(modPath + "\\voice_ban.dt"))
+                File.Delete(modPath + "\\voice_ban.dt");
+            if(Directory.Exists(modPath + "\\materialsrc"))
+                Directory.Delete(modPath + "\\materialsrc", true);
+            if(Directory.Exists(modPath + "\\downloadlists"))
+                Directory.Delete(modPath + "\\downloadlists", true);
+            if(Directory.Exists(modPath + "\\mapsrc"))
+                Directory.Delete(modPath + "\\mapsrc", true);
+            if(Directory.Exists(modPath + "\\save"))
+                Directory.Delete(modPath + "\\save", true);
+            if(Directory.Exists(modPath + "\\screenshots"))
+                Directory.Delete(modPath + "\\screenshots", true);
+        }
 
-            List<string> paths = GetAllModPaths();
-            
-            foreach (string path in GetAllBaseGameinfoFolders(currentGame))
-                paths.Add(gamePath + "\\" + path);
-            foreach(string path in paths)
-            {
-                SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
+        public void deleteMod()
+        {
+            string modPath = GetModPath();
 
-                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
-                string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
-
-                if(int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
-                {
-                    while (mods.Keys.Contains(name))
-                        name = name + "_";
-                    mods.Add(name, path);
-                }
-            }
-            return mods;
+            if(Directory.Exists(modPath))
+                Directory.Delete(modPath, true);
         }
 
         /// <summary>
@@ -311,9 +290,9 @@ namespace SourceModdingTool
         {
             List<string> mods = new List<string>();
 
-            if (string.IsNullOrEmpty(game))
+            if(string.IsNullOrEmpty(game))
                 return mods;
-            
+
             string gamePath = GetGamesList()[game];
             foreach(String path in Directory.GetDirectories(gamePath))
             {
@@ -328,14 +307,20 @@ namespace SourceModdingTool
         public List<string> GetAllModPaths()
         {
             List<string> mods = new List<string>();
-            string library = Steam.GetInstallPath();
-            foreach(String path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
+            List<string> libraries = GetLibraries();
+            foreach (string library in libraries)
             {
-                String game = new FileInfo(path).Name;
-
-                if(File.Exists(library + "\\steamapps\\sourcemods\\" + game + "\\gameinfo.txt"))
+                if (Directory.Exists(library + "\\steamapps\\sourcemods\\"))
                 {
-                    mods.Add(library + "\\steamapps\\sourcemods\\" + game);
+                    foreach (String path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
+                    {
+                        String game = new FileInfo(path).Name;
+
+                        if (File.Exists(library + "\\steamapps\\sourcemods\\" + game + "\\gameinfo.txt"))
+                        {
+                            mods.Add(library + "\\steamapps\\sourcemods\\" + game);
+                        }
+                    }
                 }
             }
             return mods;
@@ -384,8 +369,8 @@ namespace SourceModdingTool
             if(!games.ContainsKey(game))
                 GetGamesList();
 
-            string gamePath = "";
-            if (games.ContainsKey(game))
+            string gamePath = string.Empty;
+            if(games.ContainsKey(game))
                 gamePath = games[game];
             if(File.Exists(gamePath + "\\steam_appid.txt"))
             {
@@ -413,12 +398,15 @@ namespace SourceModdingTool
 
         public Dictionary<string, string> GetGamesList()
         {
-            LoadSteamLibraries();
-            return LoadGames();
+            LoadLibraries();
+            Dictionary<string, string> games = LoadGames();
+            return games;
         }
 
         public static string GetInstallPath()
-        { return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString(); }
+        {
+            return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString();
+        }
 
         public List<string> getModMountedPaths() { return getModMountedPaths(currentGame, currentMod); }
 
@@ -499,10 +487,73 @@ namespace SourceModdingTool
             return mods;
         }
 
+        public List<string> GetSteamLibraries() { return steamLibs; }
+
+        public List<string> GetUserLibraries() { return userLibs; }
+
+        private void LoadLibraries()
+        {
+            LoadSteamLibraries();
+            LoadUserLibraries();
+        }
+
+        public void LoadSteamLibraries()
+        {
+            String steamPath = GetInstallPath();
+
+            steamLibs = new List<string>();
+            if(Directory.Exists(steamPath))
+            {
+                steamLibs.Add(steamPath);
+
+                if(File.Exists(steamPath + "\\steamapps\\libraryfolders.vdf"))
+                {
+                    SourceSDK.KeyValue root = SourceSDK.KeyValue
+                        .readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
+
+                    foreach(SourceSDK.KeyValue child in root.getChildren())
+                    {
+                        string dir = child.getValue().Replace("\\\\", "\\");
+                        if(Directory.Exists(dir))
+                            steamLibs.Add(dir);
+                    }
+                } else
+                {
+                    XtraMessageBox.Show("Could not find file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
+                }
+            } else
+            {
+                //XtraMessageBox.Show("Could not find Steam install directory.");
+            }
+        }
+
+        public void LoadUserLibraries()
+        {
+            userLibs = new List<string>();
+            string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
+            if(File.Exists(userPath))
+            {
+                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(userPath);
+
+                foreach(SourceSDK.KeyValue child in root.getChildren())
+                {
+                    string dir = child.getValue().Replace("\\\\", "\\");
+                    if(Directory.Exists(dir))
+                        userLibs.Add(dir);
+                }
+            }
+        }
+
         public void OpenModFolder(string mod)
         {
             string modPath = mods[mod];
             Process.Start(modPath);
+        }
+
+        public void RemoveUserLibrary(string path)
+        {
+            userLibs.Remove(path);
+            SaveUserLibraries();
         }
 
         public void RunHammer(string startupPath)
@@ -547,48 +598,5 @@ namespace SourceModdingTool
         }
 
         public void setCurrentMod(string mod) { currentMod = mod; }
-        public void CleanModFolder()
-        {
-            //string modPath = sourceSDK.GetModPath(toolsGames.EditValue.ToString(), toolsMods.EditValue.ToString());
-            string modPath = GetModPath();
-
-            if (File.Exists(modPath + "\\Gamestate.txt"))
-                File.Delete(modPath + "\\Gamestate.txt");
-            if (File.Exists(modPath + "\\demoheader.tmp"))
-                File.Delete(modPath + "\\demoheader.tmp");
-            if (File.Exists(modPath + "\\ep1_gamestats.dat"))
-                File.Delete(modPath + "\\ep1_gamestats.dat");
-            if (File.Exists(modPath + "\\modelsounds.cache"))
-                File.Delete(modPath + "\\modelsounds.cache");
-            if (File.Exists(modPath + "\\stats.txt"))
-                File.Delete(modPath + "\\stats.txt");
-            if (File.Exists(modPath + "\\voice_ban.dt"))
-                File.Delete(modPath + "\\voice_ban.dt");
-            if (File.Exists(modPath + "\\cfg\\config.cfg"))
-                File.Delete(modPath + "\\cfg\\config.cfg");
-            if (File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
-                File.Delete(modPath + "\\cfg\\server_blacklist.txt");
-            if (File.Exists(modPath + "\\sound\\sound.cache"))
-                File.Delete(modPath + "\\sound\\sound.cache");
-            if (File.Exists(modPath + "\\voice_ban.dt"))
-                File.Delete(modPath + "\\voice_ban.dt");
-            if (Directory.Exists(modPath + "\\materialsrc"))
-                Directory.Delete(modPath + "\\materialsrc", true);
-            if (Directory.Exists(modPath + "\\downloadlists"))
-                Directory.Delete(modPath + "\\downloadlists", true);
-            if (Directory.Exists(modPath + "\\mapsrc"))
-                Directory.Delete(modPath + "\\mapsrc", true);
-            if (Directory.Exists(modPath + "\\save"))
-                Directory.Delete(modPath + "\\save", true);
-            if (Directory.Exists(modPath + "\\screenshots"))
-                Directory.Delete(modPath + "\\screenshots", true);
-        }
-        public void deleteMod()
-        {
-            string modPath = GetModPath();
-
-            if (Directory.Exists(modPath))
-                Directory.Delete(modPath, true);
-        }
     }
 }
