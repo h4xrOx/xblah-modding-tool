@@ -203,14 +203,21 @@ namespace SourceModdingTool
             {
                 SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(path + "\\gameinfo.txt");
 
-                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
-                string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
-
-                if(int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
+                if (gameInfo != null)
                 {
-                    while(mods.Keys.Contains(name))
-                        name = name + "_";
-                    mods.Add(name, path);
+
+                    string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                    string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
+
+                    if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
+                    {
+                        while (mods.Keys.Contains(name))
+                            name = name + "_";
+                        mods.Add(name, path);
+                    }
+                } else
+                {
+                    XtraMessageBox.Show("Could not load mod " + path + ". It's gameinfo.txt is broken.");
                 }
             }
             return mods;

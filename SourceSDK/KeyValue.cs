@@ -231,7 +231,7 @@ namespace SourceModdingTool.SourceSDK
                     }
                 } catch (Exception e)
                 {
-                    XtraMessageBox.Show("That's it. This is the broken file: " + path);
+                    XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
                     return null;
                 }
             } else
