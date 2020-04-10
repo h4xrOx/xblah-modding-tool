@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using DevExpress.XtraEditors;
+using Microsoft.Win32;
 using SourceModdingTool.SourceSDK;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,13 @@ namespace SourceModdingTool
         string currentMod = string.Empty;
         Dictionary<string, string> games = new Dictionary<string, string>();
         Dictionary<string, string> mods = new Dictionary<string, string>();
-        public List<string> libraries;
+        private List<string> libs;
+        private List<string> userLibs;
 
-        public Steam() { LoadLibraries(); }
+        public Steam() {
+            LoadSteamLibraries();
+            LoadUserLibraries();
+        }
 
         private void CopySlartibartysHammer()
         {
@@ -157,37 +162,105 @@ namespace SourceModdingTool
         private Dictionary<string, string> LoadGames()
         {
             games = new Dictionary<string, string>();
-            if(libraries.Count > 0)
+            if(GetLibraries().Count > 0)
             {
-                foreach(string library in libraries)
+                foreach(string library in GetLibraries())
                 {
-                    foreach(String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
-                    {
-                        String game = new FileInfo(path).Name;
+                    if (Directory.Exists(library + "\\steamapps\\common\\"))
+                        foreach(String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
+                        {
+                            String game = new FileInfo(path).Name;
 
-                        if(File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll"))
-                            games.Add(game, library + "\\steamapps\\common\\" + game);
-                    }
+                            if(File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll"))
+                                games.Add(game, library + "\\steamapps\\common\\" + game);
+                        }
                 }
             }
             return games;
         }
 
-        private void LoadLibraries()
+        private List<string> GetLibraries()
+        {
+            List<string> result = new List<string>();
+            result.AddRange(libs);
+            result.AddRange(userLibs);
+            return result;
+        }
+
+        public List<string> GetSteamLibraries()
+        {
+            return libs;
+        }
+
+        public List<string> GetUserLibraries()
+        {
+            return userLibs;
+        }
+
+        public void LoadSteamLibraries()
         {
             String steamPath = GetInstallPath();
 
-            libraries = new List<string>();
-            libraries.Add(steamPath);
+            libs = new List<string>();
+            libs.Add(steamPath);
 
-            SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
-
-            foreach(SourceSDK.KeyValue child in root.getChildren())
+            if (File.Exists(steamPath + "\\steamapps\\libraryfolders.vdf"))
             {
-                string dir = child.getValue().Replace("\\\\", "\\");
-                if(Directory.Exists(dir))
-                    libraries.Add(dir);
+                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
+
+                foreach (SourceSDK.KeyValue child in root.getChildren())
+                {
+                    string dir = child.getValue().Replace("\\\\", "\\");
+                    if (Directory.Exists(dir))
+                        libs.Add(dir);
+                }
+            } else
+            {
+                XtraMessageBox.Show("Could not find file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
             }
+        }
+
+        public void LoadUserLibraries()
+        {
+            userLibs = new List<string>();
+            string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
+            if (File.Exists(userPath))
+            {
+                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(userPath);
+
+                foreach (SourceSDK.KeyValue child in root.getChildren())
+                {
+                    string dir = child.getValue().Replace("\\\\", "\\");
+                    if (Directory.Exists(dir))
+                        userLibs.Add(dir);
+                }
+            }
+        }
+
+        public void AddUserLibrary(string path)
+        {
+            userLibs.Add(path);
+            SaveUserLibraries();
+        }
+
+        public void RemoveUserLibrary(string path)
+        {
+            userLibs.Remove(path);
+            SaveUserLibraries();
+        }
+
+        private void SaveUserLibraries()
+        {
+            string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
+
+            SourceSDK.KeyValue root = new SourceSDK.KeyValue("LibraryFolders");
+
+            for(int i = 0; i < userLibs.Count; i++)
+            {
+                root.addChild(new SourceSDK.KeyValue(i.ToString(), userLibs[i]));
+            }
+
+            SourceSDK.KeyValue.writeChunkFile(userPath, root);
         }
 
         /// <summary>
@@ -311,7 +384,9 @@ namespace SourceModdingTool
             if(!games.ContainsKey(game))
                 GetGamesList();
 
-            string gamePath = games[game];
+            string gamePath = "";
+            if (games.ContainsKey(game))
+                gamePath = games[game];
             if(File.Exists(gamePath + "\\steam_appid.txt"))
             {
                 string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
@@ -338,7 +413,7 @@ namespace SourceModdingTool
 
         public Dictionary<string, string> GetGamesList()
         {
-            LoadLibraries();
+            LoadSteamLibraries();
             return LoadGames();
         }
 

@@ -72,6 +72,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="File\LibrariesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\LibrariesForm.Designer.cs">
+      <DependentUpon>LibrariesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LevelDesign\FogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     <Compile Include="Modding\FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="File\LibrariesForm.resx">
+      <DependentUpon>LibrariesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\FogForm.resx">
       <DependentUpon>FogForm.cs</DependentUpon>
     </EmbeddedResource>

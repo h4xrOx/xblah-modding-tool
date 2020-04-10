@@ -72,6 +72,15 @@ namespace SourceModdingTool
             {
                 Close();
             }
+
+            // Libraries
+            else if (e.Item.Name == menuFileLibraries.Name)
+            {
+                LibrariesForm form = new LibrariesForm(sourceSDK);
+                form.ShowDialog();
+
+                updateToolsGames();
+            }
         }
 
         private void menuLevelDesign_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

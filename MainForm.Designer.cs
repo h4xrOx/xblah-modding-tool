@@ -46,6 +46,7 @@
             this.menuFile = new DevExpress.XtraBars.BarSubItem();
             this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileLibraries = new DevExpress.XtraBars.BarButtonItem();
             this.menuModding = new DevExpress.XtraBars.BarSubItem();
             this.menuModdingRun = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
@@ -162,9 +163,10 @@
             this.menuModdingImport2,
             this.menuModdingDelete,
             this.menuLevelDesignFogPreviewer,
-            this.menuLevelDesignRunMap});
+            this.menuLevelDesignRunMap,
+            this.menuFileLibraries});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 83;
+            this.barManager.MaxItemId = 84;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -304,6 +306,7 @@
             this.menuFile.Id = 19;
             this.menuFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuFileLibraries, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit, true)});
             this.menuFile.Name = "menuFile";
             this.menuFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
@@ -323,6 +326,14 @@
             this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
             this.menuFileExit.Name = "menuFileExit";
             this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
+            // menuFileLibraries
+            // 
+            this.menuFileLibraries.Caption = "Steam Libraries";
+            this.menuFileLibraries.Id = 83;
+            this.menuFileLibraries.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileLibraries.ImageOptions.SvgImage")));
+            this.menuFileLibraries.Name = "menuFileLibraries";
+            this.menuFileLibraries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuModding
             // 
@@ -808,5 +819,6 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingDelete;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignFogPreviewer;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignRunMap;
+        private DevExpress.XtraBars.BarButtonItem menuFileLibraries;
     }
 }
