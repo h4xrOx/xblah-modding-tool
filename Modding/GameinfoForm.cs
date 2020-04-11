@@ -36,6 +36,7 @@ namespace SourceModdingTool
                 string path = diff.OriginalString;
                 path.Replace("\\", "/");
                 path = "|all_source_engine_paths|" + path;
+                path = path.Replace("%20", " ");
                 searchPaths.Add(new string[] { "game", path });
                 searchList.BeginUnboundLoad();
                 searchList.AppendNode(new object[] { "game", path }, null);
@@ -57,6 +58,7 @@ namespace SourceModdingTool
                 path.Replace("\\", "/");
                 path = "|all_source_engine_paths|" + path;
                 path = path.Replace("_dir.vpk", ".vpk");
+                path = path.Replace("%20", " ");
                 searchPaths.Add(new string[] { "game", path });
                 searchList.BeginUnboundLoad();
                 searchList.AppendNode(new object[] { "game", path }, null);
