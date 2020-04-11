@@ -209,11 +209,24 @@ namespace SourceModdingTool
                     string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
                     string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
-                    if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath))
+                    if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !mods.ContainsValue(path))
                     {
-                        while (mods.Keys.Contains(name))
-                            name = name + "_";
-                        mods.Add(name, path);
+                        bool containsMod = false;
+                        string newModPath = new FileInfo(path).Name;
+                        foreach(string modPath in mods.Values)
+                        {
+                            if (new FileInfo(modPath).Name == newModPath)
+                            {
+                                containsMod = true;
+                                break;
+                            }
+                        }
+                        if (!containsMod)
+                        {
+                            while (mods.Keys.Contains(name))
+                                name = name + "_";
+                            mods.Add(name, path);
+                        }
                     }
                 } else
                 {

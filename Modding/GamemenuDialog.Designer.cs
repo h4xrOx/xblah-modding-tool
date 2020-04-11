@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.list = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelDescription = new DevExpress.XtraEditors.LabelControl();
             this.textCaption = new DevExpress.XtraEditors.TextEdit();
@@ -45,8 +46,8 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCaption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCommand.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchIngame.Properties)).BeginInit();
@@ -54,7 +55,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // list
@@ -119,6 +119,24 @@
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // svgImageCollection1
+            // 
+            this.svgImageCollection1.ImageSize = new System.Drawing.Size(32, 32);
+            this.svgImageCollection1.Add("clearheaderandfooter", "image://svgimages/richedit/clearheaderandfooter.svg");
+            this.svgImageCollection1.Add("bo_department", "image://svgimages/business objects/bo_department.svg");
+            this.svgImageCollection1.Add("shopping_new", "image://svgimages/icon builder/shopping_new.svg");
+            this.svgImageCollection1.Add("newcomment", "image://svgimages/richedit/newcomment.svg");
+            this.svgImageCollection1.Add("open", "image://svgimages/actions/open.svg");
+            this.svgImageCollection1.Add("save", "image://svgimages/save/save.svg");
+            this.svgImageCollection1.Add("bold", "image://svgimages/outlook inspired/bold.svg");
+            this.svgImageCollection1.Add("backward", "image://svgimages/navigation/backward.svg");
+            this.svgImageCollection1.Add("charttype_area", "image://svgimages/chart/charttype_area.svg");
+            this.svgImageCollection1.Add("listview", "image://svgimages/scheduling/listview.svg");
+            this.svgImageCollection1.Add("newtablestyle", "image://svgimages/actions/newtablestyle.svg");
+            this.svgImageCollection1.Add("properties", "image://svgimages/setup/properties.svg");
+            this.svgImageCollection1.Add("initialstate", "image://svgimages/dashboards/initialstate.svg");
+            this.svgImageCollection1.Add("itemtypechecked", "image://svgimages/dashboards/itemtypechecked.svg");
             // 
             // labelControl1
             // 
@@ -271,24 +289,6 @@
             this.panelControl1.Size = new System.Drawing.Size(262, 31);
             this.panelControl1.TabIndex = 16;
             // 
-            // svgImageCollection1
-            // 
-            this.svgImageCollection1.ImageSize = new System.Drawing.Size(32, 32);
-            this.svgImageCollection1.Add("clearheaderandfooter", "image://svgimages/richedit/clearheaderandfooter.svg");
-            this.svgImageCollection1.Add("bo_department", "image://svgimages/business objects/bo_department.svg");
-            this.svgImageCollection1.Add("shopping_new", "image://svgimages/icon builder/shopping_new.svg");
-            this.svgImageCollection1.Add("newcomment", "image://svgimages/richedit/newcomment.svg");
-            this.svgImageCollection1.Add("open", "image://svgimages/actions/open.svg");
-            this.svgImageCollection1.Add("save", "image://svgimages/save/save.svg");
-            this.svgImageCollection1.Add("bold", "image://svgimages/outlook inspired/bold.svg");
-            this.svgImageCollection1.Add("backward", "image://svgimages/navigation/backward.svg");
-            this.svgImageCollection1.Add("charttype_area", "image://svgimages/chart/charttype_area.svg");
-            this.svgImageCollection1.Add("listview", "image://svgimages/scheduling/listview.svg");
-            this.svgImageCollection1.Add("newtablestyle", "image://svgimages/actions/newtablestyle.svg");
-            this.svgImageCollection1.Add("properties", "image://svgimages/setup/properties.svg");
-            this.svgImageCollection1.Add("initialstate", "image://svgimages/dashboards/initialstate.svg");
-            this.svgImageCollection1.Add("itemtypechecked", "image://svgimages/dashboards/itemtypechecked.svg");
-            // 
             // GamemenuDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +301,7 @@
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Menu item";
             ((System.ComponentModel.ISupportInitialize)(this.list)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCaption.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCommand.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchIngame.Properties)).EndInit();
@@ -309,7 +310,6 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
