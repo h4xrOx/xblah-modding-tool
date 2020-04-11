@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace SourceModdingTool
             GamemenuDialog dialog = new GamemenuDialog();
             if(dialog.ShowDialog() == DialogResult.OK)
             {
+                XtraMessageBox.Show(dialog.item);
                 MenuAction menuAction = new MenuAction(dialog.caption, dialog.item);
                 menuAction.inGame = dialog.ingame;
                 menuAction.onlyMulti = dialog.onlyMulti;

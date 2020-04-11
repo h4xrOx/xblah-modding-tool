@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraTreeList.Nodes;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraTreeList.Nodes;
 using System;
 using System.Linq;
 
@@ -19,10 +20,11 @@ namespace SourceModdingTool
         {
             string item = menuAction.command;
             string command = string.Empty;
-            if(item.StartsWith("engine "))
+
+            if (item.StartsWith("engine "))
             {
                 command = item.Substring("engine ".Length);
-                item = item.Remove(0, "engine ".Length).Replace("\"", string.Empty);
+                item = "engine <command>";
             }
 
             foreach(TreeListNode node in list.Nodes)
@@ -62,8 +64,8 @@ namespace SourceModdingTool
                 : false);
             command = textCommand.EditValue.ToString();
 
-            if(command == "engine <command>")
-                command = "engine \"" + command + "\"";
+            if(item.StartsWith("engine "))
+                item = "engine " + command + "";
         }
 
         private void list_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
