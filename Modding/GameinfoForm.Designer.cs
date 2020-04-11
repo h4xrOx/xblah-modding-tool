@@ -896,6 +896,7 @@
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
+            this.treeListColumn1.Width = 113;
             // 
             // treeListColumn2
             // 
@@ -904,6 +905,7 @@
             this.treeListColumn2.Name = "treeListColumn2";
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 1;
+            this.treeListColumn2.Width = 432;
             // 
             // panelControl6
             // 
