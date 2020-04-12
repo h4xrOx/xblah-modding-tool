@@ -15,7 +15,6 @@ namespace SourceModdingTool
 {
     public partial class SearchPathsForm : DevExpress.XtraEditors.XtraForm
     {
-
         KeyValue gameinfo;
 
         List<String[]> searchPaths;
@@ -53,7 +52,11 @@ namespace SourceModdingTool
                 .getChildByKey("searchpaths")
                 .getChildren())
             {
-                searchPaths.Add(new string[] { searchPath.getKey(), searchPath.getValue() });
+                string key = searchPath.getKey();
+                if (key == "platform")
+                    continue;
+
+                searchPaths.Add(new string[] { key, searchPath.getValue() });
                 searchList.AppendNode(new object[] { searchPath.getKey(), searchPath.getValue() }, null);
             }
             searchList.EndUnboundLoad();
@@ -65,6 +68,9 @@ namespace SourceModdingTool
 
             int appID = sourceSDK.GetGameAppId(comboGames.EditValue.ToString());
             gameinfo.getChildByKey("filesystem").setValue("steamappid", appID.ToString());
+
+            searchPaths.Add(new string[] { "platform", "|all_source_engine_paths|platform/platform_misc.vpk" });
+            searchPaths.Add(new string[] { "platform", "|all_source_engine_paths|platform" });
 
             SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
             searchPathsKV.clearChildren();

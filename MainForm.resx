@@ -436,6 +436,30 @@
         NHYyaDEwVjIyeiIgZmlsbD0iIzcyNzI3MiIgY2xhc3M9IkJsYWNrIiAvPg0KICA8L2c+DQo8L3N2Zz4L
 </value>
   </data>
+  <data name="menuModdingSettingsContentMount.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi40
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAP4DAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIGlkPSJOZXN0ZWREb3VnaG51dCI+DQogICAg
+        PHBhdGggZD0iTTE0LDI1Ljl2NEM2LjIsMjkuNCwwLDIyLjksMCwxNUMwLDYuNyw2LjcsMCwxNSwwYzMu
+        OCwwLDcuMiwxLjQsOS45LDMuN0wyMiw2LjZDMjAuMSw1LDE3LjcsNCwxNSw0ICAgQzguOSw0LDQsOC45
+        LDQsMTVDNCwyMC43LDguNCwyNS40LDE0LDI1Ljl6IE0xMCwxNWMwLTIuNCwxLjctNC40LDQtNC45di00
+        QzkuNSw2LjYsNiwxMC40LDYsMTVjMCwyLjEsMC43LDQuMSwyLDUuNmwyLjktMi45ICAgQzEwLjMsMTcs
+        MTAsMTYsMTAsMTV6IiBmaWxsPSIjRDExQzFDIiBjbGFzcz0iUmVkIiAvPg0KICAgIDxwYXRoIGQ9Ik0z
+        MCwxNWMwLDMuOC0xLjQsNy4zLTMuNyw5LjlMMjMuNCwyMmMxLjYtMS45LDIuNi00LjQsMi42LTdzLTEt
+        NS4xLTIuNi03bDIuOS0yLjlDMjguNiw3LjgsMzAsMTEuMiwzMCwxNXogICAgTTIwLDE1YzAsMS0wLjMs
+        Mi0wLjgsMi44bDIuOSwyLjljMS4yLTEuNSwyLTMuNSwyLTUuNmMwLTQuNi0zLjUtOC40LTgtOC45djRD
+        MTguMywxMC42LDIwLDEyLjYsMjAsMTV6IiBmaWxsPSIjMTE3N0Q3IiBjbGFzcz0iQmx1ZSIgLz4NCiAg
+        ICA8cGF0aCBkPSJNMjIuMSwyMy40bDIuOCwyLjhjLTIuNCwyLjEtNS41LDMuNS04LjksMy43di00QzE4
+        LjMsMjUuNywyMC40LDI0LjgsMjIuMSwyMy40eiBNMTcuOCwxOS4yICAgQzE3LDE5LjcsMTYsMjAsMTUs
+        MjBzLTItMC4zLTIuOC0wLjhMOS40LDIyYzEuNSwxLjIsMy41LDIsNS42LDJzNC4xLTAuNyw1LjYtMkwx
+        Ny44LDE5LjJ6IiBmaWxsPSIjRkZCMTE1IiBjbGFzcz0iWWVsbG93IiAvPg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
   <data name="menuModdingFileExplorer.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi40

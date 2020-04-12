@@ -58,6 +58,7 @@
             this.menuModdingSettingsGameInfo = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
@@ -95,7 +96,6 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -438,6 +438,14 @@
             this.menuModdingSettingsMenu.Name = "menuModdingSettingsMenu";
             this.menuModdingSettingsMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
+            // menuModdingSettingsContentMount
+            // 
+            this.menuModdingSettingsContentMount.Caption = "Content Mount";
+            this.menuModdingSettingsContentMount.Id = 84;
+            this.menuModdingSettingsContentMount.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsContentMount.ImageOptions.SvgImage")));
+            this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
+            this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
             // menuModdingHudEditor
             // 
             this.menuModdingHudEditor.Caption = "Hud Editor";
@@ -727,13 +735,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // menuModdingSettingsContentMount
-            // 
-            this.menuModdingSettingsContentMount.Caption = "Content Mount";
-            this.menuModdingSettingsContentMount.Id = 84;
-            this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
-            this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // MainForm
             // 
