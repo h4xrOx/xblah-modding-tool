@@ -45,8 +45,8 @@
             this.menu = new DevExpress.XtraBars.Bar();
             this.menuFile = new DevExpress.XtraBars.BarSubItem();
             this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
-            this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileLibraries = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
             this.menuModding = new DevExpress.XtraBars.BarSubItem();
             this.menuModdingRun = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
@@ -95,6 +95,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -164,9 +165,10 @@
             this.menuModdingDelete,
             this.menuLevelDesignFogPreviewer,
             this.menuLevelDesignRunMap,
-            this.menuFileLibraries});
+            this.menuFileLibraries,
+            this.menuModdingSettingsContentMount});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 84;
+            this.barManager.MaxItemId = 85;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -319,14 +321,6 @@
             this.menuFileNew.Name = "menuFileNew";
             this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
-            // menuFileExit
-            // 
-            this.menuFileExit.Caption = "Exit";
-            this.menuFileExit.Id = 20;
-            this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
-            this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
-            // 
             // menuFileLibraries
             // 
             this.menuFileLibraries.Caption = "Steam Libraries";
@@ -334,6 +328,14 @@
             this.menuFileLibraries.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileLibraries.ImageOptions.SvgImage")));
             this.menuFileLibraries.Name = "menuFileLibraries";
             this.menuFileLibraries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
+            // menuFileExit
+            // 
+            this.menuFileExit.Caption = "Exit";
+            this.menuFileExit.Id = 20;
+            this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
+            this.menuFileExit.Name = "menuFileExit";
+            this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuModding
             // 
@@ -408,7 +410,8 @@
             this.menuModdingSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsGameInfo),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount)});
             this.menuModdingSettings.Name = "menuModdingSettings";
             // 
             // menuModdingSettingsGameInfo
@@ -725,6 +728,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuModdingSettingsContentMount
+            // 
+            this.menuModdingSettingsContentMount.Caption = "Content Mount";
+            this.menuModdingSettingsContentMount.Id = 84;
+            this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
+            this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,5 +830,6 @@
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignFogPreviewer;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignRunMap;
         private DevExpress.XtraBars.BarButtonItem menuFileLibraries;
+        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsContentMount;
     }
 }

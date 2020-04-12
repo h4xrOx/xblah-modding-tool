@@ -305,6 +305,13 @@ namespace SourceModdingTool
                 GamemenuForm form = new GamemenuForm(sourceSDK);
                 form.ShowDialog();
             }
+
+            // Content Monut
+            else if (e.Item == menuModdingSettingsContentMount)
+            {
+                SearchPathsForm form = new SearchPathsForm(sourceSDK);
+                form.ShowDialog();
+            }
         }
 
         private void menuModeling_ItemClick(object sender, ItemClickEventArgs e)

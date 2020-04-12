@@ -77,9 +77,6 @@
             DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameinfoForm));
             this.textGame = new DevExpress.XtraEditors.TextEdit();
             this.textTitle = new DevExpress.XtraEditors.TextEdit();
@@ -130,21 +127,6 @@
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.comboGames = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
-            this.searchList = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.buttonAddVPK = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonAddDirectory = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.buttonUp = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonDown = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonRemove = new DevExpress.XtraEditors.SimpleButton();
             this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
             this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -187,15 +169,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNodegraph.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).BeginInit();
-            this.xtraTabPage5.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboGames.Properties)).BeginInit();
-            this.xtraTabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
-            this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
-            this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.SuspendLayout();
@@ -241,9 +214,7 @@
             this.xtraTabPage1,
             this.xtraTabPage3,
             this.xtraTabPage2,
-            this.xtraTabPage4,
-            this.xtraTabPage5,
-            this.xtraTabPage6});
+            this.xtraTabPage4});
             // 
             // xtraTabPage1
             // 
@@ -808,180 +779,6 @@
             this.labelControl16.TabIndex = 5;
             this.labelControl16.Text = "Supports VR";
             // 
-            // xtraTabPage5
-            // 
-            this.xtraTabPage5.Controls.Add(this.tableLayoutPanel5);
-            this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage5.Size = new System.Drawing.Size(617, 301);
-            this.xtraTabPage5.Text = "File system";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 529F));
-            this.tableLayoutPanel5.Controls.Add(this.labelControl18, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboGames, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 285F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(601, 285);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(3, 3);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(66, 13);
-            this.labelControl18.TabIndex = 0;
-            this.labelControl18.Text = "Steam App ID";
-            // 
-            // comboGames
-            // 
-            this.comboGames.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboGames.Location = new System.Drawing.Point(75, 3);
-            this.comboGames.Name = "comboGames";
-            this.comboGames.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboGames.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboGames.Size = new System.Drawing.Size(523, 20);
-            toolTipTitleItem17.Text = "SteamAppID <integer>";
-            toolTipItem17.LeftIndent = 6;
-            toolTipItem17.Text = resources.GetString("toolTipItem17.Text");
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            superToolTip17.Items.Add(toolTipItem17);
-            this.comboGames.SuperTip = superToolTip17;
-            this.comboGames.TabIndex = 1;
-            // 
-            // xtraTabPage6
-            // 
-            this.xtraTabPage6.Controls.Add(this.searchList);
-            this.xtraTabPage6.Controls.Add(this.panelControl6);
-            this.xtraTabPage6.Controls.Add(this.panelControl5);
-            this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Padding = new System.Windows.Forms.Padding(8);
-            this.xtraTabPage6.Size = new System.Drawing.Size(617, 301);
-            this.xtraTabPage6.Text = "Search paths";
-            // 
-            // searchList
-            // 
-            this.searchList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
-            this.treeListColumn2});
-            this.searchList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.searchList.CustomizationFormBounds = new System.Drawing.Rectangle(-1632, -9, 250, 280);
-            this.searchList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchList.Location = new System.Drawing.Point(8, 8);
-            this.searchList.Name = "searchList";
-            this.searchList.OptionsBehavior.Editable = false;
-            this.searchList.OptionsCustomization.AllowBandMoving = false;
-            this.searchList.OptionsCustomization.AllowBandResizing = false;
-            this.searchList.OptionsCustomization.AllowColumnMoving = false;
-            this.searchList.OptionsCustomization.AllowFilter = false;
-            this.searchList.OptionsCustomization.AllowQuickHideColumns = false;
-            this.searchList.OptionsCustomization.AllowSort = false;
-            this.searchList.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
-            this.searchList.Size = new System.Drawing.Size(572, 254);
-            this.searchList.TabIndex = 0;
-            this.searchList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.searchList_FocusedNodeChanged);
-            // 
-            // treeListColumn1
-            // 
-            this.treeListColumn1.Caption = "Key";
-            this.treeListColumn1.FieldName = "key";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
-            this.treeListColumn1.Width = 113;
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "Path";
-            this.treeListColumn2.FieldName = "path";
-            this.treeListColumn2.Name = "treeListColumn2";
-            this.treeListColumn2.Visible = true;
-            this.treeListColumn2.VisibleIndex = 1;
-            this.treeListColumn2.Width = 432;
-            // 
-            // panelControl6
-            // 
-            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl6.Controls.Add(this.buttonAddVPK);
-            this.panelControl6.Controls.Add(this.buttonAddDirectory);
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl6.Location = new System.Drawing.Point(8, 262);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(572, 31);
-            this.panelControl6.TabIndex = 7;
-            // 
-            // buttonAddVPK
-            // 
-            this.buttonAddVPK.Location = new System.Drawing.Point(0, 8);
-            this.buttonAddVPK.Name = "buttonAddVPK";
-            this.buttonAddVPK.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddVPK.TabIndex = 4;
-            this.buttonAddVPK.Text = "Add VPK";
-            this.buttonAddVPK.Click += new System.EventHandler(this.buttonAddVPK_Click);
-            // 
-            // buttonAddDirectory
-            // 
-            this.buttonAddDirectory.Location = new System.Drawing.Point(81, 8);
-            this.buttonAddDirectory.Name = "buttonAddDirectory";
-            this.buttonAddDirectory.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddDirectory.TabIndex = 5;
-            this.buttonAddDirectory.Text = "Add Directory";
-            this.buttonAddDirectory.Click += new System.EventHandler(this.buttonAddDirectory_Click);
-            // 
-            // panelControl5
-            // 
-            this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl5.Controls.Add(this.buttonUp);
-            this.panelControl5.Controls.Add(this.buttonDown);
-            this.panelControl5.Controls.Add(this.buttonRemove);
-            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl5.Location = new System.Drawing.Point(580, 8);
-            this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(29, 285);
-            this.panelControl5.TabIndex = 6;
-            // 
-            // buttonUp
-            // 
-            this.buttonUp.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.buttonUp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonUp.ImageOptions.SvgImage")));
-            this.buttonUp.Location = new System.Drawing.Point(3, 0);
-            this.buttonUp.Name = "buttonUp";
-            this.buttonUp.Size = new System.Drawing.Size(23, 23);
-            this.buttonUp.TabIndex = 1;
-            this.buttonUp.Text = "Up";
-            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
-            // 
-            // buttonDown
-            // 
-            this.buttonDown.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.buttonDown.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonDown.ImageOptions.SvgImage")));
-            this.buttonDown.Location = new System.Drawing.Point(3, 29);
-            this.buttonDown.Name = "buttonDown";
-            this.buttonDown.Size = new System.Drawing.Size(23, 23);
-            this.buttonDown.TabIndex = 2;
-            this.buttonDown.Text = "Down";
-            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
-            // 
-            // buttonRemove
-            // 
-            this.buttonRemove.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.buttonRemove.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonRemove.ImageOptions.SvgImage")));
-            this.buttonRemove.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.buttonRemove.Location = new System.Drawing.Point(3, 58);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(23, 23);
-            this.buttonRemove.TabIndex = 3;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
-            // 
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1087,16 +884,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNodegraph.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).EndInit();
-            this.xtraTabPage5.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboGames.Properties)).EndInit();
-            this.xtraTabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.searchList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
-            this.panelControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
-            this.panelControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1150,11 +937,6 @@
         private DevExpress.XtraEditors.TextEdit textInstance;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.TextEdit textTitle2;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.ComboBoxEdit comboGames;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private System.Windows.Forms.OpenFileDialog dialogIcon;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
@@ -1165,17 +947,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton buttonInstance;
         private DevExpress.XtraEditors.XtraFolderBrowserDialog instanceDialog;
-        private DevExpress.XtraEditors.SimpleButton buttonAddDirectory;
-        private DevExpress.XtraEditors.SimpleButton buttonAddVPK;
-        private DevExpress.XtraEditors.SimpleButton buttonRemove;
-        private DevExpress.XtraEditors.SimpleButton buttonDown;
-        private DevExpress.XtraEditors.SimpleButton buttonUp;
-        private DevExpress.XtraTreeList.TreeList searchList;
         private DevExpress.XtraEditors.XtraOpenFileDialog vpkDialog;
         private DevExpress.XtraEditors.XtraFolderBrowserDialog searchDirDialog;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
-        private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraEditors.PanelControl panelControl6;
     }
 }
