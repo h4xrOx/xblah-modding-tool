@@ -45,8 +45,6 @@ namespace SourceModdingTool
                 }
             }
 
-            searchList.BeginUnboundLoad();
-            searchList.Nodes.Clear();
             searchPaths = new List<string[]>();
             foreach (SourceSDK.KeyValue searchPath in gameinfo.getChildByKey("filesystem")
                 .getChildByKey("searchpaths")
@@ -57,7 +55,24 @@ namespace SourceModdingTool
                     continue;
 
                 searchPaths.Add(new string[] { key, searchPath.getValue() });
-                searchList.AppendNode(new object[] { searchPath.getKey(), searchPath.getValue() }, null);
+            }
+
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
+            searchList.BeginUnboundLoad();
+            searchList.Nodes.Clear();
+            foreach (string[] searchPath in searchPaths)
+            {
+                string key = searchPath[0];
+                string value = searchPath[1];
+
+                value = value.Replace("|all_source_engine_paths|", "|game_path|");
+                value = value.Replace("|gameinfo_path|", "|mod_path|");
+
+                searchList.AppendNode(new object[] { key, value }, null);
             }
             searchList.EndUnboundLoad();
         }
@@ -102,10 +117,9 @@ namespace SourceModdingTool
                 path = path.Replace("_dir.vpk", ".vpk");
                 path = path.Replace("%20", " ");
                 searchPaths.Add(new string[] { "game", path });
-                searchList.BeginUnboundLoad();
-                searchList.AppendNode(new object[] { "game", path }, null);
-                searchList.EndUnboundLoad();
             }
+
+            UpdateList();
         }
 
         private void buttonAddDirectory_Click(object sender, EventArgs e)
@@ -124,10 +138,9 @@ namespace SourceModdingTool
                 path = "|all_source_engine_paths|" + path;
                 path = path.Replace("%20", " ");
                 searchPaths.Add(new string[] { "game", path });
-                searchList.BeginUnboundLoad();
-                searchList.AppendNode(new object[] { "game", path }, null);
-                searchList.EndUnboundLoad();
             }
+
+            UpdateList();
         }
 
         private void buttonUp_Click(object sender, EventArgs e)
