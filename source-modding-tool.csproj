@@ -98,6 +98,12 @@
     <Compile Include="Materials\MaterialEditor.Designer.cs">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materials\MaterialEditorTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Materials\MaterialEditorTab.Designer.cs">
+      <DependentUpon>MaterialEditorTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\ChaptersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materials\MaterialEditor.resx">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
+      <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
