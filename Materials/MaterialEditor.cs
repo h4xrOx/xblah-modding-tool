@@ -32,33 +32,9 @@ namespace SourceModdingTool
 
             InitializeComponent();
 
-            activeTab = materialEditorTab1;
-            activeTab.sourceSDK = sourceSDK;
-            activeTab.ClearMaterial();
-
-            if (relativePath != string.Empty)
-            {
-                activeTab.LoadMaterial(relativePath);
-            }
+            activeTab = null;
 
             
-        }
-
-        private void barButtonOpen_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openVMTFileDialog.InitialDirectory = modPath + "\\materials\\";
-            if(openVMTFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fullPath = openVMTFileDialog.FileName;
-                activeTab.LoadMaterial(fullPath);
-            }
-        }
-
-        private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            string path = activeTab.relativePath;
-            string shader = activeTab.shader;
-            activeTab.SaveMaterial(path, shader);
         }
 
         private void buttonPreview_Click(object sender, EventArgs e)
@@ -151,14 +127,66 @@ namespace SourceModdingTool
             if (newVMTDialog.ShowDialog() == DialogResult.OK)
             {
                 string fullPath = newVMTDialog.FileName;
-                activeTab.LoadMaterial(fullPath);
+
+                MaterialEditorTab userControl = new MaterialEditorTab();
+                userControl.sourceSDK = sourceSDK;
+                XtraTabPage tab = new XtraTabPage();
+
+                string fileName = new FileInfo(fullPath).Name;
+
+                tab.Text = fileName;
+                tab.Controls.Add(userControl);
+                userControl.Dock = DockStyle.Fill;
+                tab.Tag = userControl;
+
+                tabControl.TabPages.Add(tab);
+
+                userControl.LoadMaterial(fullPath);
+                tabControl.SelectedTabPage = tab;
+            }  
+        }
+
+        private void barButtonOpen_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openVMTFileDialog.InitialDirectory = modPath + "\\materials\\";
+            if (openVMTFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fullPath = openVMTFileDialog.FileName;
+
+                MaterialEditorTab userControl = new MaterialEditorTab();
+                userControl.sourceSDK = sourceSDK;
+                XtraTabPage tab = new XtraTabPage();
+
+                string fileName = new FileInfo(fullPath).Name;
+
+                tab.Text = fileName;
+                tab.Controls.Add(userControl);
+                userControl.Dock = DockStyle.Fill;
+                tab.Tag = userControl;
+
+                tabControl.TabPages.Add(tab);
+
+                userControl.LoadMaterial(fullPath);
+                tabControl.SelectedTabPage = tab;
             }
+        }
+
+        private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string path = activeTab.relativePath;
+            string shader = activeTab.shader;
+            activeTab.SaveMaterial(path, shader);
         }
 
         private void xtraTabControl1_CloseButtonClick(object sender, EventArgs e)
         {
             ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
             (arg.Page as XtraTabPage).PageVisible = false;
+        }
+
+        private void tabControl_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
+        {
+            activeTab = (MaterialEditorTab) e.Page.Tag;
         }
     }
 }

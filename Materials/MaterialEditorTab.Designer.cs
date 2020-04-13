@@ -49,9 +49,11 @@
             this.specularSpecularCheck = new DevExpress.XtraEditors.CheckEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.diffuse1Panel = new DevExpress.XtraEditors.PanelControl();
             this.accordionContentContainer2 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.normalPanel = new DevExpress.XtraEditors.PanelControl();
             this.accordionContentContainer3 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
@@ -69,8 +71,6 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp2.Properties)).BeginInit();
@@ -88,9 +88,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.accordionControl1.SuspendLayout();
             this.accordionContentContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diffuse1Panel)).BeginInit();
             this.diffuse1Panel.SuspendLayout();
             this.accordionContentContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.normalPanel)).BeginInit();
             this.normalPanel.SuspendLayout();
             this.accordionContentContainer3.SuspendLayout();
@@ -108,10 +112,6 @@
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboSurfaceProp
@@ -513,6 +513,7 @@
             this.groupControl1.Size = new System.Drawing.Size(245, 61);
             this.groupControl1.TabIndex = 48;
             this.groupControl1.Text = "Specular";
+            this.groupControl1.Visible = false;
             // 
             // specularSpecularCheck
             // 
@@ -551,6 +552,18 @@
             this.accordionContentContainer1.Size = new System.Drawing.Size(298, 157);
             this.accordionContentContainer1.TabIndex = 1;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.labelControl7);
+            this.panelControl1.Controls.Add(this.comboSurfaceProp);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 128);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.panelControl1.Size = new System.Drawing.Size(298, 28);
+            this.panelControl1.TabIndex = 50;
+            // 
             // labelControl7
             // 
             this.labelControl7.Dock = System.Windows.Forms.DockStyle.Left;
@@ -580,6 +593,18 @@
             this.accordionContentContainer2.Name = "accordionContentContainer2";
             this.accordionContentContainer2.Size = new System.Drawing.Size(298, 160);
             this.accordionContentContainer2.TabIndex = 2;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.labelControl11);
+            this.panelControl2.Controls.Add(this.comboDetail);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl2.Location = new System.Drawing.Point(0, 128);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.panelControl2.Size = new System.Drawing.Size(298, 28);
+            this.panelControl2.TabIndex = 50;
             // 
             // labelControl11
             // 
@@ -733,6 +758,8 @@
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.xtraScrollableControl1.Appearance.Options.UseBackColor = true;
             this.xtraScrollableControl1.Controls.Add(this.groupControl1);
             this.xtraScrollableControl1.Controls.Add(this.groupControl2);
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -751,30 +778,6 @@
             this.groupControl2.Size = new System.Drawing.Size(245, 167);
             this.groupControl2.TabIndex = 49;
             this.groupControl2.Text = "Tool Texture";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.labelControl7);
-            this.panelControl1.Controls.Add(this.comboSurfaceProp);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 128);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.panelControl1.Size = new System.Drawing.Size(298, 28);
-            this.panelControl1.TabIndex = 50;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.labelControl11);
-            this.panelControl2.Controls.Add(this.comboDetail);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 128);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.panelControl2.Size = new System.Drawing.Size(298, 28);
-            this.panelControl2.TabIndex = 50;
             // 
             // MaterialEditorTab
             // 
@@ -800,10 +803,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             this.accordionControl1.ResumeLayout(false);
             this.accordionContentContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diffuse1Panel)).EndInit();
             this.diffuse1Panel.ResumeLayout(false);
             this.diffuse1Panel.PerformLayout();
             this.accordionContentContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.normalPanel)).EndInit();
             this.normalPanel.ResumeLayout(false);
             this.normalPanel.PerformLayout();
@@ -826,12 +835,6 @@
             this.xtraScrollableControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
 
         }

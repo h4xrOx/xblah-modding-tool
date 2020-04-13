@@ -36,7 +36,6 @@
             this.barButtonNew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOpen = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
-            this.textPath = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -56,9 +55,7 @@
             this.contextLoad = new DevExpress.XtraBars.BarButtonItem();
             this.contextClear = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.materialEditorTab1 = new SourceModdingTool.MaterialEditorTab();
+            this.tabControl = new DevExpress.XtraTab.XtraTabControl();
             this.openBitmapFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.newVMTDialog = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -72,9 +69,7 @@
             this.dockPanel2_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.SuspendLayout();
             // 
             // openVMTFileDialog
@@ -96,7 +91,6 @@
             this.barButtonNew,
             this.barButtonOpen,
             this.barButtonSave,
-            this.textPath,
             this.contextLoad,
             this.contextClear});
             this.barManager1.MaxItemId = 7;
@@ -113,8 +107,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.textPath)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonSave)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.Text = "Tools";
@@ -142,15 +135,6 @@
             this.barButtonSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonSave.ImageOptions.SvgImage")));
             this.barButtonSave.Name = "barButtonSave";
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSave_ItemClick);
-            // 
-            // textPath
-            // 
-            this.textPath.AutoFillWidth = true;
-            this.textPath.CanOpenEdit = false;
-            this.textPath.Caption = "textPath";
-            this.textPath.Edit = this.repositoryItemTextEdit1;
-            this.textPath.Id = 4;
-            this.textPath.Name = "textPath";
             // 
             // repositoryItemTextEdit1
             // 
@@ -330,34 +314,16 @@
             this.popupMenu.Manager = this.barManager1;
             this.popupMenu.Name = "popupMenu";
             // 
-            // xtraTabControl1
+            // tabControl
             // 
-            this.xtraTabControl1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(200, 28);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(541, 524);
-            this.xtraTabControl1.TabIndex = 47;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1});
-            this.xtraTabControl1.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Controls.Add(this.materialEditorTab1);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(539, 495);
-            this.xtraTabPage1.Text = "xtraTabPage1";
-            // 
-            // materialEditorTab1
-            // 
-            this.materialEditorTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialEditorTab1.Location = new System.Drawing.Point(0, 0);
-            this.materialEditorTab1.Name = "materialEditorTab1";
-            this.materialEditorTab1.shader = "LightmappedGeneric";
-            this.materialEditorTab1.Size = new System.Drawing.Size(539, 495);
-            this.materialEditorTab1.TabIndex = 0;
+            this.tabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(200, 28);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.Size = new System.Drawing.Size(541, 524);
+            this.tabControl.TabIndex = 47;
+            this.tabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl_SelectedPageChanged);
+            this.tabControl.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
             // 
             // newVMTDialog
             // 
@@ -368,7 +334,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 570);
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.dockPanel2);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
@@ -390,9 +356,7 @@
             this.dockPanel2_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,7 +374,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarEditItem textPath;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem contextLoad;
         private DevExpress.XtraBars.BarButtonItem contextClear;
@@ -427,8 +390,6 @@
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private SourceModdingTool.MaterialEditorTab materialEditorTab1;
+        private DevExpress.XtraTab.XtraTabControl tabControl;
     }
 }

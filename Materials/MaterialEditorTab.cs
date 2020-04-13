@@ -46,6 +46,7 @@ namespace SourceModdingTool
         {
             InitializeComponent();
             populatePictureEdits();
+            ClearMaterial();
         }
 
         private void populatePictureEdits()
