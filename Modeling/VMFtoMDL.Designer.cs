@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VMFtoMDL));
             this.vmfListBox = new DevExpress.XtraEditors.ListBoxControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.compileButton = new DevExpress.XtraEditors.SimpleButton();
@@ -94,6 +95,7 @@
             this.ClientSize = new System.Drawing.Size(578, 255);
             this.Controls.Add(this.vmfListBox);
             this.Controls.Add(this.panelControl3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VMFtoMDL";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "VMF to MDL";
