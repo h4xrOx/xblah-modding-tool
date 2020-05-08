@@ -15,7 +15,7 @@ namespace source_modding_tool
 {
     public partial class FogForm : DevExpress.XtraEditors.XtraForm
     {
-        Game game;
+        Instance instance;
 
         Launcher launcher;
         public FogForm(Launcher launcher)
@@ -58,8 +58,8 @@ namespace source_modding_tool
             string fog_maxdensity = ((float)densityTrack.Value / densityTrack.Properties.Maximum).ToString();
             string fog_maxdensityskybox = ((float)skyboxDensityTrack.Value / skyboxDensityTrack.Properties.Maximum).ToString();
 
-            game = new Game(launcher, panelControl1);
-            game.Start("-nomouse +map fog_preview +crosshair 0" +
+            instance = new Instance(launcher, panelControl1);
+            instance.Start("-nomouse +map fog_preview +crosshair 0" +
                 " +fog_override " + fog_override +
                 " +fog_enable " + fog_enabled +
                 " +fog_start " + fog_start +
@@ -103,7 +103,7 @@ namespace source_modding_tool
             string fog_maxdensity = ((float)densityTrack.Value / densityTrack.Properties.Maximum).ToString();
             string fog_maxdensityskybox = ((float)skyboxDensityTrack.Value / skyboxDensityTrack.Properties.Maximum).ToString();
 
-            game.Command("+fog_override " + fog_override + 
+            instance.Command("+fog_override " + fog_override + 
                 " +fog_enable " + fog_enabled +
                 " +fog_start " + fog_start +
                 " +fog_end " + fog_end + 
@@ -135,9 +135,9 @@ namespace source_modding_tool
 
         private void stopPreview()
         {
-            if (game != null && game.modProcess != null)
+            if (instance != null && instance.modProcess != null)
             {
-                game.modProcess.Kill();
+                instance.modProcess.Kill();
             }
         }
 

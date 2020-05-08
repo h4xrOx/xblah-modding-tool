@@ -16,7 +16,7 @@ namespace source_modding_tool
 {
     public partial class MaterialEditor : DevExpress.XtraEditors.XtraForm
     {
-        Game game;
+        Instance instance;
         bool isPreviewing = false;
         Launcher launcher;
 
@@ -57,8 +57,8 @@ namespace source_modding_tool
                 SearchOption.AllDirectories))
                 File.Copy(newPath, newPath.Replace(sourcePath, modPath), true);
 
-            game = new Game(launcher, panelControl1);
-            game.Start("-nomouse +map material_preview +crosshair 0");
+            instance = new Instance(launcher, panelControl1);
+            instance.Start("-nomouse +map material_preview +crosshair 0");
             this.ActiveControl = null;
 
             isPreviewing = true;
@@ -69,7 +69,7 @@ namespace source_modding_tool
             if (isPreviewing)
             {
                 activeTab.SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
-                game.Command("+mat_reloadallmaterials +map material_preview");
+                instance.Command("+mat_reloadallmaterials +map material_preview");
             }
         }
 
@@ -103,9 +103,9 @@ namespace source_modding_tool
 
         private void stopPreview()
         {
-            if (game != null && game.modProcess != null)
+            if (instance != null && instance.modProcess != null)
             {
-                game.modProcess.Kill();
+                instance.modProcess.Kill();
             }
         }
 

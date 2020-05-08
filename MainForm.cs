@@ -12,7 +12,7 @@ namespace source_modding_tool
 {
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
-        Game game = null;
+        Instance instance = null;
         Launcher launcher;
 
         public MainForm() { InitializeComponent(); }
@@ -110,13 +110,13 @@ namespace source_modding_tool
                         string mapName = Map.GetMapNameWithoutVersion(Path.GetFileNameWithoutExtension(fileName));
                         File.Copy(fileName, launcher.GetCurrentMod().installPath + "\\maps\\" + mapName + ".bsp", true);
 
-                        if (game != null)
+                        if (instance != null)
                         {
-                            game.Command("+map " + mapName);
+                            instance.Command("+map " + mapName);
                         } else
                         {
-                            game = new Game(launcher, panel1);
-                            game.Start("+map " + mapName);
+                            instance = new Instance(launcher, panel1);
+                            instance.Start("+map " + mapName);
 
                             FormBorderStyle = FormBorderStyle.Fixed3D;
                             MaximizeBox = false;
@@ -254,8 +254,8 @@ namespace source_modding_tool
             // Run
             if (e.Item == menuModdingRun || e.Item == toolsRun || e.Item == toolsRunPopupRun)
             {
-                game = new Game(launcher, panel1);
-                game.Start();
+                instance = new Instance(launcher, panel1);
+                instance.Start();
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
@@ -265,8 +265,8 @@ namespace source_modding_tool
             // Run Fullscreen
             else if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
             {
-                game = new Game(launcher, panel1);
-                game.StartFullScreen();
+                instance = new Instance(launcher, panel1);
+                instance.StartFullScreen();
 
                 modStarted();
             }
@@ -274,9 +274,9 @@ namespace source_modding_tool
             // Ingame tools
             else if (e.Item == menuModdingIngameTools || e.Item == toolsRunPopupIngameTools)
             {
-                game = new Game(launcher, panel1);
-                game.StartTools();
-                game.modProcess.Exited += new EventHandler(modExited);
+                instance = new Instance(launcher, panel1);
+                instance.StartTools();
+                instance.modProcess.Exited += new EventHandler(modExited);
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
@@ -360,7 +360,7 @@ namespace source_modding_tool
 
         private void modStarted()
         {
-            game.modProcess.Exited += new EventHandler(modExited);
+            instance.modProcess.Exited += new EventHandler(modExited);
 
             modProcessUpdater.Enabled = true;
             toolsRun.Enabled = false;
@@ -372,25 +372,25 @@ namespace source_modding_tool
         }
 
         private void modExited(object sender, EventArgs e) {
-            if (game != null)
-                game.modProcess = null;
+            if (instance != null)
+                instance.modProcess = null;
         }
 
         private void ModForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(game != null)
-                game.Stop();
+            if(instance != null)
+                instance.Stop();
         }
 
         private void ModForm_ResizeEnd(object sender, EventArgs e)
         {
-            if(game != null)
-                game.Resize();
+            if(instance != null)
+                instance.Resize();
         }
 
         private void modProcessUpdater_Tick(object sender, EventArgs e)
         {
-            if(game == null || game.modProcess == null)
+            if(instance == null || instance.modProcess == null)
             {
                 FormBorderStyle = FormBorderStyle.Sizable;
                 modProcessUpdater.Enabled = false;
@@ -456,10 +456,10 @@ namespace source_modding_tool
 
         private void toolsStop_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (game.modProcess != null)
+            if (instance.modProcess != null)
             {
-                game.Stop();
-                game = null;
+                instance.Stop();
+                instance = null;
             }
         }
 
@@ -515,8 +515,8 @@ namespace source_modding_tool
             switch (e.Item.Tag)
             {
                 case "reattach":
-                    if (game != null)
-                        game.AttachProcessTo(game.modProcess, panel1);
+                    if (instance != null)
+                        instance.AttachProcessTo(instance.modProcess, panel1);
                     break;
             }
         }

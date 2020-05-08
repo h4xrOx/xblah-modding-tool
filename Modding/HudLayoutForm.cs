@@ -18,7 +18,7 @@ namespace source_modding_tool
         KeyValue root;
         List<HudItem> items;
 
-        Game game;
+        Instance instance;
         bool isPreviewing = false;
 
         public HudEditorForm(Launcher launcher)
@@ -99,8 +99,8 @@ namespace source_modding_tool
 
         private void startPreview()
         {
-            game = new Game(launcher, panelControl1);
-            game.Start("-nomouse +map hud_preview");
+            instance = new Instance(launcher, panelControl1);
+            instance.Start("-nomouse +map hud_preview");
             this.ActiveControl = null;
 
             isPreviewing = true;
@@ -111,15 +111,15 @@ namespace source_modding_tool
             if (isPreviewing)
             {
                 Save();
-                game.Command("+hud_reloadscheme +net_graph 0");
+                instance.Command("+hud_reloadscheme +net_graph 0");
             }
         }
 
         private void ClientSchemeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (game != null && game.modProcess != null)
+            if (instance != null && instance.modProcess != null)
             {
-                game.modProcess.Kill();
+                instance.modProcess.Kill();
             }
         }
 
