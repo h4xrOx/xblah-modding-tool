@@ -85,6 +85,7 @@
             this.addButton.Size = new System.Drawing.Size(23, 23);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add";
+            this.addButton.ToolTip = "Add";
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // removeButton
@@ -96,6 +97,7 @@
             this.removeButton.Size = new System.Drawing.Size(23, 23);
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = "Remove";
+            this.removeButton.ToolTip = "Remove";
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // browseButton
@@ -107,6 +109,7 @@
             this.browseButton.Size = new System.Drawing.Size(23, 23);
             this.browseButton.TabIndex = 3;
             this.browseButton.Text = "Browse";
+            this.browseButton.ToolTip = "Open library location";
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // panelControl1

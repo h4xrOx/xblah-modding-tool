@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.IO;
 using System.Diagnostics;
 
@@ -16,9 +8,6 @@ namespace source_modding_tool
     public partial class LibrariesForm : DevExpress.XtraEditors.XtraForm
     {
         Launcher launcher;
-
-        List<string> steamLibs;
-        List<string> userLibs;
 
         string selectedPath = "";
         string selectedSource = "";
@@ -39,18 +28,15 @@ namespace source_modding_tool
             if (launcher == null)
                 return;
 
-            steamLibs = launcher.libraries.GetSteamLibraries();
-            userLibs = launcher.libraries.GetUserLibraries();
-
             list.ClearNodes();
             list.BeginUnboundLoad();
 
-            foreach(string path in steamLibs)
+            foreach(string path in launcher.libraries.GetSteamLibraries())
             {
                 list.AppendNode(new object[] { path, "Steam" }, null);
             }
 
-            foreach (string path in userLibs)
+            foreach (string path in launcher.libraries.GetUserLibraries())
             {
                 list.AppendNode(new object[] { path, "User" }, null);
             }
@@ -62,7 +48,7 @@ namespace source_modding_tool
         {
             if (addDialog.ShowDialog() == DialogResult.OK)
             {
-                if (Directory.Exists(addDialog.SelectedPath) && !userLibs.Contains(addDialog.SelectedPath) && !steamLibs.Contains(addDialog.SelectedPath))
+                if (Directory.Exists(addDialog.SelectedPath) && !launcher.libraries.GetList().Contains(addDialog.SelectedPath))
                 {
                     launcher.libraries.AddUserLibrary(addDialog.SelectedPath);
 
