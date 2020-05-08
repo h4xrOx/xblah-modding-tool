@@ -471,7 +471,7 @@ namespace source_modding_tool
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         toolsRunPopupIngameTools.Enabled = false;
                         toolsRunPopupRun.Enabled = true;
-                        toolsRunPopupRunFullscreen.Enabled = false;
+                        toolsRunPopupRunFullscreen.Enabled = true;
                     menuModding.Enabled = false;
                     menuLevelDesign.Enabled = false;
                     menuModeling.Enabled = false;

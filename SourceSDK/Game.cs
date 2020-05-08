@@ -257,7 +257,7 @@ namespace source_modding_tool
                     }
                     break;
                 case Engine.SOURCE2:
-                    return installPath + "\\game\\bin\\win64\\hlvr.exe";
+                    return installPath + "\\game\\bin\\win64\\hlnonvr.exe";
             }
             return string.Empty;
         }

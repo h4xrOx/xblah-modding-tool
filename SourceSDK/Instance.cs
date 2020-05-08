@@ -90,31 +90,35 @@ namespace source_modding_tool.SourceSDK
         {
             KillExistant();
 
-            string gamePath = launcher.GetCurrentGame().installPath;
+            Game game = launcher.GetCurrentGame();
             string modPath = launcher.GetCurrentMod().installPath;
+            string modFolder = new DirectoryInfo(modPath).Name;
 
-            string exePath = string.Empty;
-
-            foreach (string file in Directory.GetFiles(gamePath))
-            {
-                if (new FileInfo(file).Extension == ".exe")
-                {
-                    exePath = file;
-                    break;
-                }
-            }
+            string exePath = launcher.GetCurrentGame().getExePath();
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" +
-                modPath +
-                "\" -windowed -noborder -novid 0 -width " +
-                parent.Width +
-                " -height " +
-                parent.Height + 
-                " -multirun " + 
-                command +
-                " +net_graph 0";
+
+            switch(game.engine)
+            {
+                case Engine.SOURCE:
+                    modProcess.StartInfo.Arguments = "-game \"" +
+                    modPath +
+                    "\" -windowed -noborder -novid 0" +
+                    " -width " + parent.Width +
+                    " -height " + parent.Height +
+                    " -multirun " +
+                    command +
+                    " +net_graph 0";
+                    break;
+                case Engine.SOURCE2:
+                    modProcess.StartInfo.Arguments = " -game " + modFolder + " -windowed -noborder -vr_enable_fake_vr_test" +
+                    " -width " + parent.Width +
+                    " -height " + parent.Height;
+                    break;
+            }
+
+
             modProcess.Start();
 
             AttachProcessTo(modProcess, parent);
@@ -140,21 +144,11 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartFullScreen()
         {
-            string gamePath = launcher.GetCurrentGame().installPath;
             string modPath = launcher.GetCurrentMod().installPath;
 
             Debug.Write(modPath);
 
-            string exePath = string.Empty;
-
-            foreach (string file in Directory.GetFiles(gamePath))
-            {
-                if (new FileInfo(file).Extension == ".exe")
-                {
-                    exePath = file;
-                    break;
-                }
-            }
+            string exePath = launcher.GetCurrentGame().getExePath();
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
@@ -173,19 +167,16 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartVR()
         {
-            string gamePath = launcher.GetCurrentGame().installPath;
             string modPath = launcher.GetCurrentMod().installPath;
+            string modFolder = new DirectoryInfo(modPath).Name;
 
             Debug.Write(modPath);
 
             string exePath = launcher.GetCurrentGame().getExePath();
 
-            Debugger.Break();
-
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" +
-                modPath;
+            modProcess.StartInfo.Arguments = "-vr -game " + modFolder;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
