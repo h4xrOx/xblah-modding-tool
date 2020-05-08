@@ -163,6 +163,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceSDK\BaseGame.cs" />
+    <Compile Include="SourceSDK\Engine.cs" />
     <Compile Include="SourceSDK\Game.cs" />
     <Compile Include="SourceSDK\GameInfo.cs" />
     <Compile Include="SourceSDK\Hammer.cs" />
@@ -176,7 +177,6 @@
     <Compile Include="SourceSDK\FileType\VMF.cs" />
     <Compile Include="SourceSDK\FileType\VMT.cs" />
     <Compile Include="SourceSDK\FileType\VPK.cs" />
-    <Compile Include="SourceSDK\Test.cs" />
     <Compile Include="SourceSDK\VPKManager.cs" />
     <Compile Include="SourceSDK\FileType\VTF.cs" />
     <Compile Include="Materials\TGASharpLib.cs" />

@@ -33,8 +33,15 @@ namespace source_modding_tool
                     {
                         String game = new FileInfo(path).Name;
 
-                        if(File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
-                            games.Add(game, new BaseGame(game, library + "\\steamapps\\common\\" + game));
+                        if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
+                        {
+                            // It's a Source game
+                            games.Add(game, new BaseGame(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                        }
+                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game)) {
+                            // It's a Source 2 game
+                            games.Add(game, new BaseGame(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
+                        }
                     }
             }
 
