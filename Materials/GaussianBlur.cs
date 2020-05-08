@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public class GaussianBlur
     {

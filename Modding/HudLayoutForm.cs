@@ -1,19 +1,19 @@
-﻿using System;
+﻿using DevExpress.XtraTreeList.Nodes;
+using source_modding_tool.SourceSDK;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using SourceModdingTool.SourceSDK;
-using DevExpress.XtraTreeList.Nodes;
-using System.IO;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class HudEditorForm : DevExpress.XtraEditors.XtraForm
     {
         string gamePath = string.Empty;
         string modPath = string.Empty;
-        Steam sourceSDK;
+        Launcher launcher;
 
         KeyValue root;
         List<HudItem> items;
@@ -21,11 +21,11 @@ namespace SourceModdingTool
         Game game;
         bool isPreviewing = false;
 
-        public HudEditorForm(Steam sourceSDK)
+        public HudEditorForm(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void loadFile(string fileName)
@@ -75,8 +75,8 @@ namespace SourceModdingTool
 
         private void ClientSchemeForm_Load(object sender, EventArgs e)
         {
-            gamePath = sourceSDK.GetGamePath();
-            modPath = sourceSDK.GetModPath();
+            gamePath = launcher.GetCurrentGame().installPath;
+            modPath = launcher.GetCurrentMod().installPath;
 
             string path = modPath + "\\scripts\\hudlayout.res";
             Directory.CreateDirectory(Path.GetDirectoryName(path));
@@ -99,7 +99,7 @@ namespace SourceModdingTool
 
         private void startPreview()
         {
-            game = new Game(sourceSDK, panelControl1);
+            game = new Game(launcher, panelControl1);
             game.Start("-nomouse +map hud_preview");
             this.ActiveControl = null;
 

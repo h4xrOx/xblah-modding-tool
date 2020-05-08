@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using TGASharpLib;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     class VTF
     {
@@ -19,15 +19,15 @@ namespace SourceModdingTool.SourceSDK
         /// Converts a bitmap var into a byte array that can be saved as a VTF
         /// </summary>
         /// <param name="bitmap">The image to be converted</param>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static byte[] FromBitmap(Bitmap bitmap, Steam sourceSDK)
+        public static byte[] FromBitmap(Bitmap bitmap, Launcher launcher)
         {
-            if (bitmap == null || sourceSDK == null)
+            if (bitmap == null || launcher == null)
                 return null;
 
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
             string filePath = modPath + "\\materialsrc";
 
             string vtexPath = gamePath + "\\bin\\vtex.exe";
@@ -59,15 +59,15 @@ namespace SourceModdingTool.SourceSDK
         /// Converts a byte array of a VTF file into a bitmap var
         /// </summary>
         /// <param name="vtf">The byte array read from a VTF</param>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static Bitmap ToBitmap(byte[] vtf, Steam sourceSDK)
+        public static Bitmap ToBitmap(byte[] vtf, Launcher launcher)
         {
-            if (vtf == null || vtf.Length == 0 || sourceSDK == null)
+            if (vtf == null || vtf.Length == 0 || launcher == null)
                 return null;
 
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
             string filePath = modPath + "\\materials";
 
             string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";

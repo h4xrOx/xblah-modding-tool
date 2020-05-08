@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     class PCF
     {
@@ -81,19 +81,19 @@ namespace SourceModdingTool.SourceSDK
         /// <summary>
         /// Creates a particles_manifest.txt with the particles included in the base game plus the ones found in the particles folder.
         /// </summary>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
-        public static void CreateManifest(Steam sourceSDK)
+        /// <param name="launcher">An instance of the Source SDK lib</param>
+        public static void CreateManifest(Launcher launcher)
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return;
 
-            VPKManager vpkManager = new VPKManager(sourceSDK);
+            VPKManager vpkManager = new VPKManager(launcher);
             vpkManager.extractFile("particles/particles_manifest.txt");
 
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
-            KeyValue manifest = KeyValue.readChunkfile(sourceSDK.GetModPath() + "\\particles\\particles_manifest.txt");
-            foreach (string file in Directory.GetFiles(sourceSDK.GetModPath() + "\\particles",
+            KeyValue manifest = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\particles\\particles_manifest.txt");
+            foreach (string file in Directory.GetFiles(launcher.GetCurrentMod().installPath + "\\particles",
                                                       "*.pcf",
                                                       SearchOption.AllDirectories))
             {
@@ -103,20 +103,20 @@ namespace SourceModdingTool.SourceSDK
 
                 manifest.addChild(new KeyValue("file", diff.OriginalString));
             }
-            KeyValue.writeChunkFile(sourceSDK.GetModPath() + "\\particles\\particles_manifest.txt", manifest);
+            KeyValue.writeChunkFile(launcher.GetCurrentMod().installPath + "\\particles\\particles_manifest.txt", manifest);
         }
 
         /// <summary>
         /// Returns a list of the full path of all the particles located in the particles folder
         /// </summary>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAllFiles(Steam sourceSDK)
+        public static List<string> GetAllFiles(Launcher launcher)
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return null;
 
-            List<string> searchPaths = sourceSDK.getModSearchPaths();
+            List<string> searchPaths = launcher.GetCurrentMod().GetSearchPaths();
             List<string> files = new List<string>();
             foreach (string path in searchPaths)
                 if (Directory.Exists(path + "\\particles"))
@@ -131,15 +131,15 @@ namespace SourceModdingTool.SourceSDK
         /// <param name="relativePath">Path of the asset relative to the mod folder</param>
         /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string relativePath, string game, string mod, Steam sourceSDK)
+        public static List<string> GetAssets(string relativePath, BaseGame game, Mod mod, Launcher launcher)
         {
-            if (string.IsNullOrEmpty(relativePath) || string.IsNullOrEmpty(game) || string.IsNullOrEmpty(mod) || sourceSDK == null)
+            if (string.IsNullOrEmpty(relativePath) || game == null || mod == null || launcher == null)
                 return null;
 
             List<string> assets = new List<string>();
-            List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
+            List<string> searchPaths = mod.GetSearchPaths();
 
             foreach (string searchPath in searchPaths)
             {
@@ -152,7 +152,7 @@ namespace SourceModdingTool.SourceSDK
                 foreach (string material in materials)
                 {
                     assets.Add(material.Replace("\\", "/"));
-                    assets.AddRange(VMT.GetAssets(material, game, mod, sourceSDK));
+                    assets.AddRange(VMT.GetAssets(material, game, mod, launcher));
                 }
 
                 break;

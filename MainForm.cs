@@ -1,19 +1,19 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using SourceModdingTool.SourceSDK;
-using SourceModdingTool.Tools;
+using source_modding_tool.SourceSDK;
+using source_modding_tool.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         Game game = null;
-        Steam sourceSDK;
+        Launcher launcher;
 
         public MainForm() { InitializeComponent(); }
 
@@ -23,7 +23,7 @@ namespace SourceModdingTool
             string currentGame = Properties.Settings.Default.currentGame;
             string currentMod = Properties.Settings.Default.currentMod;
 
-            sourceSDK = new Steam();
+            launcher = new Launcher();
             updateToolsGames();
 
             if (repositoryGamesCombo.Items.Contains(currentGame))
@@ -44,7 +44,7 @@ namespace SourceModdingTool
             // Faceposer
             if (e.Item == menuChoreographyFaceposer)
             {
-                string gamePath = sourceSDK.GetGamePath(toolsGames.EditValue.ToString());
+                string gamePath = launcher.GetGamesList()[(toolsGames.EditValue.ToString())].installPath;
 
                 string toolPath = gamePath + "\\bin\\hlfaceposer.exe";
                 Process.Start(toolPath);
@@ -60,19 +60,22 @@ namespace SourceModdingTool
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     string folder = form.modFolder;
-                    string title = form.modTitle;
-                    string game = form.game;
+                    string title = form.modFolder;
+                    string gameName = form.gameName;
                     string gameBranch = form.gameBranch;
 
-                    string mod = title + " (" + folder + ")";
+                    BaseGame game = launcher.GetGamesList()[gameName];
 
-                    sourceSDK.setCurrentGame(game);
-                    sourceSDK.setCurrentMod(mod);
+                    string modName = title + " (" + folder + ")";
+
+                    launcher.SetCurrentGame(game);
+                    toolsGames.EditValue = game.name;
 
                     updateToolsMods();
 
-                    toolsGames.EditValue = game;
-                    toolsMods.EditValue = title + " (" + folder + ")";
+                    Mod mod = launcher.GetCurrentGame().GetModsList(launcher)[modName];
+                    launcher.GetCurrentGame().SetCurrentMod(mod);
+                    toolsMods.EditValue = mod.name;
                 }
             }
 
@@ -85,7 +88,7 @@ namespace SourceModdingTool
             // Libraries
             else if (e.Item.Name == menuFileLibraries.Name)
             {
-                LibrariesForm form = new LibrariesForm(sourceSDK);
+                LibrariesForm form = new LibrariesForm(launcher);
                 form.ShowDialog();
 
                 updateToolsGames();
@@ -97,7 +100,7 @@ namespace SourceModdingTool
             // Run Map
             if (e.Item == menuLevelDesignRunMap)
             {
-                RunMapForm form = new RunMapForm(sourceSDK);
+                RunMapForm form = new RunMapForm(launcher);
                 DialogResult result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -105,14 +108,14 @@ namespace SourceModdingTool
                     if (fileName.EndsWith(".bsp") && File.Exists(fileName))
                     {
                         string mapName = Map.GetMapNameWithoutVersion(Path.GetFileNameWithoutExtension(fileName));
-                        File.Copy(fileName, sourceSDK.GetModPath() + "\\maps\\" + mapName + ".bsp", true);
+                        File.Copy(fileName, launcher.GetCurrentMod().installPath + "\\maps\\" + mapName + ".bsp", true);
 
                         if (game != null)
                         {
                             game.Command("+map " + mapName);
                         } else
                         {
-                            game = new Game(sourceSDK, panel1);
+                            game = new Game(launcher, panel1);
                             game.Start("+map " + mapName);
 
                             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -125,20 +128,20 @@ namespace SourceModdingTool
             // Hammer
             if (e.Item == menuLevelDesignHammer)
             {
-                sourceSDK.RunHammer(Application.StartupPath);
+                Hammer.RunHammer(launcher.GetCurrentMod());
             }
 
             // Fog Previewer
             else if (e.Item == menuLevelDesignFogPreviewer)
             {
-                FogForm form = new FogForm(sourceSDK);
+                FogForm form = new FogForm(launcher);
                 form.ShowDialog();
             }
 
             // Prefabs
             else if (e.Item == menuLevelDesignPrefabs)
             {
-                string gamePath = sourceSDK.GetGamePath();
+                string gamePath = launcher.GetCurrentGame().installPath;
                 Process.Start(gamePath + "\\bin\\Prefabs");
             }
 
@@ -172,7 +175,7 @@ namespace SourceModdingTool
             // Material editor
             if (e.Item == menuMaterialsEditor)
             {
-                MaterialEditor form = new MaterialEditor(string.Empty, sourceSDK);
+                MaterialEditor form = new MaterialEditor(string.Empty, launcher);
                 form.ShowDialog();
             }
         }
@@ -182,13 +185,13 @@ namespace SourceModdingTool
             // Open folder
             if (e.Item == menuModdingOpenFolder)
             {
-                sourceSDK.OpenModFolder(toolsMods.EditValue.ToString());
+                launcher.GetCurrentMod().OpenInstallFolder();
             }
 
             // Clean
             else if (e.Item == menuModdingClean)
             {
-                sourceSDK.CleanModFolder();
+                launcher.GetCurrentMod().CleanFolder();
             }
 
             // Import
@@ -197,15 +200,13 @@ namespace SourceModdingTool
                 ModSelectionDialog dialog = new ModSelectionDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    string game = dialog.game;
-                    string mod = dialog.mod;
+                    string gameName = dialog.game;
+                    string modName = dialog.mod;
 
-                    AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game,
-                                                                             mod,
-                                                                             sourceSDK.GetModPath(toolsGames.EditValue
-                        .ToString(),
-                                                                                                  toolsMods.EditValue
-                        .ToString()));
+                    BaseGame game = launcher.GetGamesList()[gameName];
+                    Mod mod = launcher.GetModsList(game)[modName];
+
+                    AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod);
                     if (assetsCopierForm.ShowDialog() == DialogResult.OK)
                     {
                     }
@@ -215,22 +216,24 @@ namespace SourceModdingTool
             // File explorer
             else if (e.Item == menuModdingFileExplorer)
             {
-                FileExplorer form = new FileExplorer(sourceSDK);
+                FileExplorer form = new FileExplorer(launcher);
                 form.ShowDialog();
             }
 
             // Export
             else if (e.Item == menuModdingExport)
             {
-                AssetsCopierForm form = new AssetsCopierForm(toolsGames.EditValue.ToString(),
-                                                             toolsMods.EditValue.ToString());
+                BaseGame game = launcher.GetGamesList()[toolsGames.EditValue.ToString()];
+                Mod mod = launcher.GetModsList(game)[toolsMods.EditValue.ToString()];
+
+                AssetsCopierForm form = new AssetsCopierForm(game, mod);
                 form.ShowDialog();
             }
 
             // Hud Editor
             else if (e.Item == menuModdingHudEditor)
             {
-                HudEditorForm form = new HudEditorForm(sourceSDK);
+                HudEditorForm form = new HudEditorForm(launcher);
                 form.ShowDialog();
             }
 
@@ -239,7 +242,7 @@ namespace SourceModdingTool
             {
                 if (XtraMessageBox.Show("Are you sure you want to delete this mod?", "Delete mod", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    sourceSDK.deleteMod();
+                    launcher.GetCurrentGame().DeleteMod();
                     updateToolsGames();
                     updateToolsMods();
                 }
@@ -251,7 +254,7 @@ namespace SourceModdingTool
             // Run
             if (e.Item == menuModdingRun || e.Item == toolsRun || e.Item == toolsRunPopupRun)
             {
-                game = new Game(sourceSDK, panel1);
+                game = new Game(launcher, panel1);
                 game.Start();
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -262,7 +265,7 @@ namespace SourceModdingTool
             // Run Fullscreen
             else if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
             {
-                game = new Game(sourceSDK, panel1);
+                game = new Game(launcher, panel1);
                 game.StartFullScreen();
 
                 modStarted();
@@ -271,7 +274,7 @@ namespace SourceModdingTool
             // Ingame tools
             else if (e.Item == menuModdingIngameTools || e.Item == toolsRunPopupIngameTools)
             {
-                game = new Game(sourceSDK, panel1);
+                game = new Game(launcher, panel1);
                 game.StartTools();
                 game.modProcess.Exited += new EventHandler(modExited);
 
@@ -286,7 +289,7 @@ namespace SourceModdingTool
             // Game info
             if(e.Item == menuModdingSettingsGameInfo)
             {
-                GameinfoForm form = new GameinfoForm(sourceSDK);
+                GameinfoForm form = new GameinfoForm(launcher);
                 form.ShowDialog();
                 updateToolsGames();
                 updateToolsMods();
@@ -295,21 +298,21 @@ namespace SourceModdingTool
             // Chapters
             else if(e.Item == menuModdingSettingsChapters)
             {
-                ChaptersForm form = new ChaptersForm(sourceSDK);
+                ChaptersForm form = new ChaptersForm(launcher);
                 form.ShowDialog();
             }
 
             // Menu
             else if(e.Item == menuModdingSettingsMenu)
             {
-                GamemenuForm form = new GamemenuForm(sourceSDK);
+                GamemenuForm form = new GamemenuForm(launcher);
                 form.ShowDialog();
             }
 
             // Content Monut
             else if (e.Item == menuModdingSettingsContentMount)
             {
-                SearchPathsForm form = new SearchPathsForm(sourceSDK);
+                SearchPathsForm form = new SearchPathsForm(launcher);
                 form.ShowDialog();
             }
         }
@@ -319,7 +322,7 @@ namespace SourceModdingTool
             // HLMV
             if(e.Item == menuModelingHLMV)
             {
-                string gamePath = sourceSDK.GetGamePath(toolsGames.EditValue.ToString());
+                string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].installPath;
 
                 string toolPath = gamePath + "\\bin\\hlmv.exe";
                 Process.Start(toolPath);
@@ -328,13 +331,13 @@ namespace SourceModdingTool
             // Propper
             else if(e.Item == menuModelingPropper)
             {
-                sourceSDK.RunPropperHammer();
+                Hammer.RunPropperHammer(launcher.GetCurrentMod());
             }
 
             // VMF to MDL
             else if(e.Item == menuModelingVMFtoMDL)
             {
-                VMFtoMDL form = new VMFtoMDL(sourceSDK);
+                VMFtoMDL form = new VMFtoMDL(launcher);
                 form.ShowDialog();
             }
 
@@ -350,7 +353,7 @@ namespace SourceModdingTool
             // Manifest generator
             if(e.Item == menuParticlesManifestGenerator)
             {
-                PCF.CreateManifest(sourceSDK);
+                PCF.CreateManifest(launcher);
                 XtraMessageBox.Show("Particle manifest generated.");
             }
         }
@@ -410,23 +413,32 @@ namespace SourceModdingTool
                 return;
             }
 
-            sourceSDK.setCurrentGame(toolsGames.EditValue.ToString());
+            string gameName = toolsGames.EditValue.ToString();
+            BaseGame game = launcher.GetGamesList()[gameName];
+
+            launcher.SetCurrentGame(game);
             updateToolsMods();
-            Properties.Settings.Default.currentGame = toolsGames.EditValue.ToString();
+            Properties.Settings.Default.currentGame = game.name;
             Properties.Settings.Default.Save();
         }
 
         private void toolsMods_EditValueChanged(object sender, EventArgs e)
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return;
 
-            sourceSDK.setCurrentMod(toolsMods.EditValue.ToString());
-            Properties.Settings.Default.currentMod = toolsMods.EditValue.ToString();
-            Properties.Settings.Default.Save();
+            BaseGame currentGame = launcher.GetCurrentGame();
 
-            UpdateMenus();
+            if (launcher.GetModsList(currentGame).ContainsKey(toolsMods.EditValue.ToString()))
+            {
+                Mod mod = launcher.GetModsList(currentGame)[toolsMods.EditValue.ToString()];
 
+                launcher.GetCurrentGame().SetCurrentMod(mod);
+                Properties.Settings.Default.currentMod = toolsMods.EditValue.ToString();
+                Properties.Settings.Default.Save();
+
+                UpdateMenus();
+            }
         }
 
         private void UpdateMenus()
@@ -453,15 +465,15 @@ namespace SourceModdingTool
 
         private void updateToolsGames()
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return;
 
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
             repositoryGamesCombo.Items.Clear();
-            Dictionary<string, string> gamesList = sourceSDK.GetGamesList();
+            Dictionary<string, BaseGame> gamesList = launcher.GetGamesList();
 
             if (gamesList.Count > 0)
-                foreach (KeyValuePair<string, string> item in gamesList)
+                foreach (KeyValuePair<string, BaseGame> item in gamesList)
                     repositoryGamesCombo.Items.Add(item.Key);
 
             if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
@@ -479,13 +491,13 @@ namespace SourceModdingTool
             string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
             repositoryModsCombo.Items.Clear();
 
-            string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
-            if(currentGame == string.Empty)
+            BaseGame currentGame = (toolsGames.EditValue != null ? launcher.GetGamesList()[toolsGames.EditValue.ToString()] : null);
+            if(currentGame == null)
                 return;
 
-            Dictionary<string, string> modsList = sourceSDK.GetModsList(currentGame);
+            Dictionary<string, Mod> modsList = launcher.GetModsList(currentGame);
             if (modsList.Count > 0)
-                foreach (KeyValuePair<string, string> item in modsList)
+                foreach (KeyValuePair<string, Mod> item in modsList)
                     repositoryModsCombo.Items.Add(item.Key);
 
             if (repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))

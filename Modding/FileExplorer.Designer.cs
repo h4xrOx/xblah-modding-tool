@@ -1,4 +1,4 @@
-﻿namespace SourceModdingTool.Tools
+﻿namespace source_modding_tool.Tools
 {
     partial class FileExplorer
     {

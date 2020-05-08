@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using windows_source1ide.Properties;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class RunMapForm : DevExpress.XtraEditors.XtraForm
     {
@@ -17,22 +17,22 @@ namespace SourceModdingTool
         string modPath;
 
         MapFolder root;
-        Steam sourceSDK;
+        Launcher launcher;
         string bspPath;
         string vmfPath;
 
         public string fileName;
 
-        public RunMapForm(Steam sourceSDK)
+        public RunMapForm(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            foreach(var file in new DirectoryInfo(sourceSDK.GetModPath() + "\\maps\\").EnumerateFiles(bspPath + ".*"))
+            foreach(var file in new DirectoryInfo(launcher.GetCurrentMod().installPath + "\\maps\\").EnumerateFiles(bspPath + ".*"))
                 file.Delete();
             LoadMaps();
         }
@@ -105,9 +105,9 @@ namespace SourceModdingTool
 
         private void LoadMaps()
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
-            List<Map> maps = Map.LoadMaps(sourceSDK).OrderByDescending(i => i.GetLastUpdate()).ToList();
+            List<Map> maps = Map.LoadMaps(launcher).OrderByDescending(i => i.GetLastUpdate()).ToList();
             root = Map.GetMapsByFolder(maps);
 
             ShowMaps(string.Empty);
@@ -115,7 +115,7 @@ namespace SourceModdingTool
 
         private void RunMapForm_Load(object sender, EventArgs e)
         {
-            modPath = sourceSDK.GetModPath();
+            modPath = launcher.GetCurrentMod().installPath;
 
             string gameinfoPath = modPath + "\\gameinfo.txt";
             string instancePath = SourceSDK.KeyValue.readChunkfile(gameinfoPath).getValue("instancepath");
@@ -189,7 +189,7 @@ namespace SourceModdingTool
             }
 
             // Show path 
-            string instancePath = new GameInfo(sourceSDK).getValue("instancepath");
+            string instancePath = new GameInfo(launcher).getValue("instancepath");
             pathEdit.EditValue = instancePath + "\\" + string.Join("\\", dirs);
         }
 

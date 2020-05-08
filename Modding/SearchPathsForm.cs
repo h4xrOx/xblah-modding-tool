@@ -8,26 +8,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using SourceModdingTool.SourceSDK;
+using source_modding_tool.SourceSDK;
 using System.IO;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class SearchPathsForm : DevExpress.XtraEditors.XtraForm
     {
         KeyValue gameinfo;
 
         List<String[]> searchPaths;
-        Steam sourceSDK;
-        public SearchPathsForm(Steam sourceSDK)
+        Launcher launcher;
+        public SearchPathsForm(Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
             InitializeComponent();
         }
 
         private void SearchPathsForm_Load(object sender, EventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             string gameinfoPath = modPath + "\\gameinfo.txt";
 
@@ -35,10 +35,11 @@ namespace SourceModdingTool
 
             comboGames.Properties.Items.Clear();
             string appID = gameinfo.getChildByKey("filesystem").getValue("steamappid");
-            foreach (KeyValuePair<string, string> item in sourceSDK.GetGamesList())
+            foreach (KeyValuePair<string, BaseGame> item in launcher.GetGamesList())
             {
                 comboGames.Properties.Items.Add(item.Key);
-                string gameAppID = sourceSDK.GetGameAppId(item.Key).ToString();
+                BaseGame game = launcher.GetGamesList()[item.Key];
+                string gameAppID = game.GetAppId().ToString();
                 if (appID == gameAppID.ToString())
                 {
                     comboGames.EditValue = item.Key;
@@ -79,9 +80,10 @@ namespace SourceModdingTool
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
-            int appID = sourceSDK.GetGameAppId(comboGames.EditValue.ToString());
+            BaseGame game = launcher.GetGamesList()[comboGames.EditValue.ToString()];
+            int appID = game.GetAppId();
             gameinfo.getChildByKey("filesystem").setValue("steamappid", appID.ToString());
 
             searchPaths.Add(new string[] { "platform", "|all_source_engine_paths|platform/platform_misc.vpk" });
@@ -103,7 +105,7 @@ namespace SourceModdingTool
 
         private void buttonAddVPK_Click(object sender, EventArgs e)
         {
-            string gamePath = sourceSDK.GetGamePath() + "\\";
+            string gamePath = launcher.GetCurrentGame().installPath + "\\";
             vpkDialog.InitialDirectory = gamePath;
             if (vpkDialog.ShowDialog() == DialogResult.OK)
             {
@@ -124,7 +126,7 @@ namespace SourceModdingTool
 
         private void buttonAddDirectory_Click(object sender, EventArgs e)
         {
-            string gamePath = sourceSDK.GetGamePath() + "\\";
+            string gamePath = launcher.GetCurrentGame().installPath + "\\";
             Directory.CreateDirectory(gamePath);
             searchDirDialog.SelectedPath = gamePath;
             if (searchDirDialog.ShowDialog() == DialogResult.OK)

@@ -6,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class GamemenuForm : DevExpress.XtraEditors.XtraForm
     {
         List<MenuAction> actions;
         string gamePath = string.Empty;
         string modPath = string.Empty;
-        Steam sourceSDK;
+        Launcher launcher;
 
-        public GamemenuForm(Steam sourceSDK)
+        public GamemenuForm(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -108,8 +108,8 @@ namespace SourceModdingTool
 
         private void GamemenuForm_Load(object sender, EventArgs e)
         {
-            gamePath = sourceSDK.GetGamePath();
-            modPath = sourceSDK.GetModPath();
+            gamePath = launcher.GetCurrentGame().installPath;
+            modPath = launcher.GetCurrentMod().installPath;
             actions = new List<MenuAction>();
             readGameMenu();
             updateList();

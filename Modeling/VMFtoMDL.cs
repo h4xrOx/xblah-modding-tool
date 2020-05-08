@@ -4,17 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class VMFtoMDL : DevExpress.XtraEditors.XtraForm
     {
-        private Steam sourceSDK;
+        private Launcher launcher;
 
-        public VMFtoMDL(Steam sourceSDK)
+        public VMFtoMDL(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace SourceModdingTool
         {
             foreach(String fileName in vmfListBox.Items)
             {
-                String propperPath = sourceSDK.GetGamePath() + "\\bin\\propper.exe";
+                String propperPath = launcher.GetCurrentGame().installPath + "\\bin\\propper.exe";
 
                 if(!File.Exists(propperPath))
                 {
@@ -50,7 +50,7 @@ namespace SourceModdingTool
                     }
                 }
 
-                String modPath = sourceSDK.GetModPath();
+                String modPath = launcher.GetCurrentMod().installPath;
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = propperPath;

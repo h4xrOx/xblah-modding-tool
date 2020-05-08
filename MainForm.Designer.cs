@@ -1,4 +1,4 @@
-﻿namespace SourceModdingTool
+﻿namespace source_modding_tool
 {
     partial class MainForm
     {
@@ -773,9 +773,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarEditItem toolsGames;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox toolsGamesRepository;
         private DevExpress.XtraBars.BarEditItem toolsMods;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox toolsModsRepository;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem toolsRun;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;

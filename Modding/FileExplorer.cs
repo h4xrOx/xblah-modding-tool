@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SourceModdingTool.Tools
+namespace source_modding_tool.Tools
 {
     public partial class FileExplorer : DevExpress.XtraEditors.XtraForm
     {
@@ -22,15 +22,15 @@ namespace SourceModdingTool.Tools
         string modPath;
         Stack<string> nextDirectories = new Stack<string>();
         Stack<string> previousDirectories = new Stack<string>();
-        Steam sourceSDK;
+        Launcher launcher;
 
         VPKManager vpkManager;
 
-        public FileExplorer(Steam sourceSDK)
+        public FileExplorer(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void buttonBack_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -102,7 +102,7 @@ namespace SourceModdingTool.Tools
 
         private void editSelected()
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             foreach(string filePath in getSelectedPaths())
             {
@@ -138,7 +138,7 @@ namespace SourceModdingTool.Tools
                 vpkManager.extractFile(filePath);
             }
 
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
             Process.Start(modPath);
 
             listFiles(true);
@@ -156,7 +156,7 @@ namespace SourceModdingTool.Tools
 
         private void filePopOpenFileLocationButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             List<string> paths = getSelectedPaths();
             for(int i = 0; i < paths.Count; i++)
@@ -214,7 +214,6 @@ namespace SourceModdingTool.Tools
             if(e.Button == MouseButtons.Right)
             {
                 bool hasFolders = false;
-                bool hasFiles = false;
                 bool fileExists = true;
 
                 List<string> selectedPaths = getSelectedPaths();
@@ -225,7 +224,6 @@ namespace SourceModdingTool.Tools
                     else
                     {
                         fileExists = fileExists && vpkManager.getExtractedPath(filePath) != string.Empty;
-                        hasFiles = true;
                     }
                 }
 
@@ -425,10 +423,10 @@ namespace SourceModdingTool.Tools
 
         private void VPKExplorer_Load(object sender, EventArgs e)
         {
-            gamePath = sourceSDK.GetGamePath();
-            modPath = sourceSDK.GetModPath();
+            gamePath = launcher.GetCurrentGame().installPath;
+            modPath = launcher.GetCurrentMod().installPath;
 
-            vpkManager = new VPKManager(sourceSDK);
+            vpkManager = new VPKManager(launcher);
 
             listFiles();
             traverseFileTree();

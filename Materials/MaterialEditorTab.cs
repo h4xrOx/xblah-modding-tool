@@ -8,12 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using static SourceModdingTool.MaterialEditor;
+using static source_modding_tool.MaterialEditor;
 using System.IO;
-using SourceModdingTool.SourceSDK;
+using source_modding_tool.SourceSDK;
 using DevExpress.XtraBars;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class MaterialEditorTab : DevExpress.XtraEditors.XtraUserControl
     {
@@ -21,7 +21,7 @@ namespace SourceModdingTool
         Dictionary<string, Texture> textures;
         string[] detail = null;
 
-        public Steam sourceSDK;
+        public Launcher launcher;
 
         object popupMenuActivator;
 
@@ -171,7 +171,7 @@ namespace SourceModdingTool
                 }
 
                 textures["tooltexture"].bitmap = tooltexture;
-                textures["tooltexture"].bytes = VTF.FromBitmap(tooltexture, sourceSDK);
+                textures["tooltexture"].bytes = VTF.FromBitmap(tooltexture, launcher);
                 textures["tooltexture"].relativePath = string.Empty;
             }
 
@@ -187,13 +187,13 @@ namespace SourceModdingTool
             if (File.Exists(fullPath))
                 vmt = SourceSDK.KeyValue.readChunkfile(fullPath);
 
-            string relativePath = GetRelativePath(sourceSDK, fullPath);
+            string relativePath = GetRelativePath(launcher, fullPath);
 
             this.relativePath = relativePath.Substring("\\materials\\".Length);
 
             VPKManager vpkManager = null;
             if (vmt != null)
-                vpkManager = new VPKManager(sourceSDK);
+                vpkManager = new VPKManager(launcher);
 
             foreach (KeyValuePair<string, PictureEdit> kv in pictureEdits)
             {
@@ -207,7 +207,7 @@ namespace SourceModdingTool
                         {
                             textures[kv.Key].relativePath = value;
                             textures[kv.Key].bytes = File.ReadAllBytes(texturePath);
-                            textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, sourceSDK);
+                            textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, launcher);
                             kv.Value.Image = textures[kv.Key].bitmap;
                         }
                         else
@@ -234,7 +234,7 @@ namespace SourceModdingTool
                         textures["envmapmask"].bitmap.SetPixel(i, j, Color.FromArgb(alpha, alpha, alpha));
                     }
                 }
-                textures["envmapmask"].bytes = VTF.FromBitmap(textures["envmapmask"].bitmap, sourceSDK);
+                textures["envmapmask"].bytes = VTF.FromBitmap(textures["envmapmask"].bitmap, launcher);
                 textures["envmapmask"].relativePath = "";
                 pictureEnvMapMask.Image = textures["envmapmask"].bitmap;
             }
@@ -251,7 +251,7 @@ namespace SourceModdingTool
             {
                 string type = new FileInfo(openBitmapFileDialog.FileName).Extension;
 
-                string modPath = sourceSDK.GetModPath();
+                string modPath = launcher.GetCurrentMod().installPath;
 
                 Uri path1 = new Uri(modPath + "\\");
                 Uri path2 = new Uri(openBitmapFileDialog.FileName);
@@ -262,13 +262,13 @@ namespace SourceModdingTool
                 {
                     textures[tag].relativePath = diff.OriginalString;
                     textures[tag].bytes = File.ReadAllBytes(openBitmapFileDialog.FileName);
-                    textures[tag].bitmap = VTF.ToBitmap(textures[tag].bytes, sourceSDK);
+                    textures[tag].bitmap = VTF.ToBitmap(textures[tag].bytes, launcher);
                 }
                 else
                 {
                     textures[tag].relativePath = string.Empty;
                     textures[tag].bitmap = new Bitmap(Bitmap.FromFile(openBitmapFileDialog.FileName), width, height);
-                    textures[tag].bytes = VTF.FromBitmap(textures[tag].bitmap, sourceSDK);
+                    textures[tag].bytes = VTF.FromBitmap(textures[tag].bitmap, launcher);
                 }
 
                 if (textures[tag].bitmap != null)
@@ -293,7 +293,7 @@ namespace SourceModdingTool
             SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
             string relativePath = path;
-            string fullPath = (sourceSDK.GetModPath() + "\\materials\\" + relativePath).Replace("/", "\\");
+            string fullPath = (launcher.GetCurrentMod().installPath + "\\materials\\" + relativePath).Replace("/", "\\");
 
             Directory.CreateDirectory(fullPath.Substring(0, fullPath.LastIndexOf("\\")));
 
@@ -352,7 +352,7 @@ namespace SourceModdingTool
                                                              normalColor.B));
                     }
                 }
-                textures["bumpmap"].bytes = VTF.FromBitmap(textures["bumpmap"].bitmap, sourceSDK);
+                textures["bumpmap"].bytes = VTF.FromBitmap(textures["bumpmap"].bitmap, launcher);
                 vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
                 vmt.addChild(new KeyValue("$normalmapalphaenvmapmask", "1"));
                 vmt.addChild(new KeyValue("$envmap", "env_cubemap"));

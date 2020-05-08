@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     class MapFolder
     {

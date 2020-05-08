@@ -8,15 +8,14 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using windows_source1ide.Properties;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class NewModForm : DevExpress.XtraEditors.XtraForm
     {
-        Steam sourceSDK;
-        public string game = string.Empty;
+        Launcher launcher;
+        public string gameName = string.Empty;
         public string gameBranch = string.Empty;
         public string modFolder = string.Empty;
-        public string modTitle = string.Empty;
 
         public bool validFolder = false;
 
@@ -35,16 +34,16 @@ namespace SourceModdingTool
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            string modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
+            string modsPath = Launcher.GetInstallPath() + "\\steamapps\\sourcemods\\";
             modFolder = textFolder.EditValue.ToString();
 
-            modTitle = modFolder;
+            BaseGame game = launcher.GetGamesList()[gameName];
 
-            string appId = sourceSDK.GetGameAppId(game).ToString();
+            string appId = game.GetAppId().ToString();
 
-            string mod = modTitle + " (" + modFolder + ")";
-            string gamePath = sourceSDK.GetGamePath(game);
-            string modPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\" + modFolder;
+            string mod = modFolder + " (" + modFolder + ")";
+            string gamePath = game.installPath;
+            string modPath = Launcher.GetInstallPath() + "\\steamapps\\sourcemods\\" + modFolder;
 
             Directory.CreateDirectory(modPath + "\\bin");
             Directory.CreateDirectory(modPath + "\\resource");
@@ -52,7 +51,7 @@ namespace SourceModdingTool
             // Copy binaries
             string templatePath = AppDomain.CurrentDomain.BaseDirectory +
                 "Templates\\" +
-                game +
+                game.name +
                 "\\" +
                 gameBranch +
                 "\\";
@@ -68,8 +67,8 @@ namespace SourceModdingTool
                       modPath + "\\resource\\" + modFolder + "_english.txt");
 
             SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
-            gameInfo.setValue("game", modTitle);
-            gameInfo.setValue("title", modTitle);
+            gameInfo.setValue("game", modFolder);
+            gameInfo.setValue("title", modFolder);
 
 
             SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.txt", gameInfo, false, new UTF8Encoding(false));
@@ -82,7 +81,7 @@ namespace SourceModdingTool
                                                                 DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
         {
             string branchAndGame = e.Item.Tag.ToString();
-            game = branchAndGame.Split('/')[0];
+            gameName = branchAndGame.Split('/')[0];
             gameBranch = branchAndGame.Split('/')[1];
 
             checkModDetails();
@@ -90,10 +89,10 @@ namespace SourceModdingTool
 
         private void NewModForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
-            modsPath = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
+            launcher = new Launcher();
+            modsPath = Launcher.GetInstallPath() + "\\steamapps\\sourcemods\\";
 
-            List<string> gamesList = sourceSDK.GetGamesList().Keys.ToList();
+            List<string> gamesList = launcher.GetGamesList().Keys.ToList();
             foreach(DevExpress.XtraBars.Ribbon.GalleryItem item in galleryControl1.Gallery.GetAllItems())
             {
                 if (gamesList.Contains(item.Tag.ToString().Split('/')[0]))
@@ -127,7 +126,7 @@ namespace SourceModdingTool
                 }
             }
 
-            textModsPath.EditValue = Steam.GetInstallPath() + "\\steamapps\\sourcemods\\";
+            textModsPath.EditValue = Launcher.GetInstallPath() + "\\steamapps\\sourcemods\\";
             Size size = TextRenderer.MeasureText(textModsPath.EditValue.ToString(), textModsPath.Font);
             textModsPath.Width = size.Width + 8;
 

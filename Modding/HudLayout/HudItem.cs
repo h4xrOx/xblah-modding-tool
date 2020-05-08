@@ -1,4 +1,4 @@
-﻿using SourceModdingTool.SourceSDK;
+﻿using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public class HudItem
     {
@@ -139,8 +139,8 @@ namespace SourceModdingTool
             if (fieldName != null) keyValue.setValue("fieldname", fieldName);
             if (xpos != -1) keyValue.setValue("xpos", xpos.ToString());
             if (ypos != -1) keyValue.setValue("ypos", ypos.ToString());
-            if (wide != null) keyValue.setValue("wide", wide.ToString());
-            if (tall != null) keyValue.setValue("tall", tall.ToString());
+            if (wide != -1) keyValue.setValue("wide", wide.ToString());
+            if (tall != -1) keyValue.setValue("tall", tall.ToString());
             if (Visible != null) keyValue.setValue("visible", (Visible == true ? 1 : 0).ToString());
             if (Enabled != null) keyValue.setValue("enabled", (Enabled == true ? 1 : 0).ToString());
             if (PaintBackgroundType != null) keyValue.setValue("paintbackgroundtype", PaintBackgroundType.ToString());

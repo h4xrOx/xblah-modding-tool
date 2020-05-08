@@ -11,11 +11,11 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Diagnostics;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class LibrariesForm : DevExpress.XtraEditors.XtraForm
     {
-        Steam sourceSDK;
+        Launcher launcher;
 
         List<string> steamLibs;
         List<string> userLibs;
@@ -23,9 +23,9 @@ namespace SourceModdingTool
         string selectedPath = "";
         string selectedSource = "";
 
-        public LibrariesForm(Steam sourceSDK)
+        public LibrariesForm(Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
             InitializeComponent();
         }
 
@@ -36,11 +36,11 @@ namespace SourceModdingTool
 
         private void UpdateLibrariesList()
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return;
 
-            steamLibs = sourceSDK.GetSteamLibraries();
-            userLibs = sourceSDK.GetUserLibraries();
+            steamLibs = launcher.libraries.GetSteamLibraries();
+            userLibs = launcher.libraries.GetUserLibraries();
 
             list.ClearNodes();
             list.BeginUnboundLoad();
@@ -64,7 +64,7 @@ namespace SourceModdingTool
             {
                 if (Directory.Exists(addDialog.SelectedPath) && !userLibs.Contains(addDialog.SelectedPath) && !steamLibs.Contains(addDialog.SelectedPath))
                 {
-                    sourceSDK.AddUserLibrary(addDialog.SelectedPath);
+                    launcher.libraries.AddUserLibrary(addDialog.SelectedPath);
 
                     UpdateLibrariesList();
                 }
@@ -73,7 +73,7 @@ namespace SourceModdingTool
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            sourceSDK.RemoveUserLibrary(selectedPath);
+            launcher.libraries.RemoveUserLibrary(selectedPath);
             UpdateLibrariesList();
         }
 

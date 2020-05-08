@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     static class Program
     {

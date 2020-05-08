@@ -9,21 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
-using SourceModdingTool.SourceSDK;
+using source_modding_tool.SourceSDK;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class FogForm : DevExpress.XtraEditors.XtraForm
     {
         Game game;
-        bool isPreviewing = false;
 
-        Steam sourceSDK;
-        public FogForm(Steam sourceSDK)
+        Launcher launcher;
+        public FogForm(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void FogForm_Load(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace SourceModdingTool
         private void startPreview()
         {
             string sourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews";
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             // Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*",
@@ -59,9 +58,9 @@ namespace SourceModdingTool
             string fog_maxdensity = ((float)densityTrack.Value / densityTrack.Properties.Maximum).ToString();
             string fog_maxdensityskybox = ((float)skyboxDensityTrack.Value / skyboxDensityTrack.Properties.Maximum).ToString();
 
-            game = new Game(sourceSDK, panelControl1);
+            game = new Game(launcher, panelControl1);
             game.Start("-nomouse +map fog_preview +crosshair 0" +
-                " +fog_override 1" + 
+                " +fog_override " + fog_override +
                 " +fog_enable " + fog_enabled +
                 " +fog_start " + fog_start +
                 " +fog_end " + fog_end +
@@ -71,11 +70,10 @@ namespace SourceModdingTool
                 " +fog_color \"" + fog_color + "\"" +
                 " +fog_colorskybox \"" + fog_colorskybox + "\"" +
                 " +fog_maxdensity " + fog_maxdensity +
-                " +fog_maxdensityskybox " + fog_maxdensityskybox
+                " +fog_maxdensityskybox " + fog_maxdensityskybox +
+                " +fog_enable_water_fog " + fog_enable_water_fog
             );
             this.ActiveControl = null;
-
-            isPreviewing = true;
 
             updatePreview();
         }
@@ -105,7 +103,7 @@ namespace SourceModdingTool
             string fog_maxdensity = ((float)densityTrack.Value / densityTrack.Properties.Maximum).ToString();
             string fog_maxdensityskybox = ((float)skyboxDensityTrack.Value / skyboxDensityTrack.Properties.Maximum).ToString();
 
-            game.Command("+fog_override 1" + 
+            game.Command("+fog_override " + fog_override + 
                 " +fog_enable " + fog_enabled +
                 " +fog_start " + fog_start +
                 " +fog_end " + fog_end + 
@@ -115,7 +113,8 @@ namespace SourceModdingTool
                 " +fog_color \"" + fog_color + "\"" + 
                 " +fog_colorskybox \"" + fog_colorskybox + "\"" +
                 " +fog_maxdensity " + fog_maxdensity + 
-                " +fog_maxdensityskybox " + fog_maxdensityskybox
+                " +fog_maxdensityskybox " + fog_maxdensityskybox +
+                " +fog_enable_water_fog " + fog_enable_water_fog
                 );
         }
 

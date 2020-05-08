@@ -1,4 +1,4 @@
-﻿using SourceModdingTool.SourceSDK;
+﻿using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SourceModdingTool.Tools
+namespace source_modding_tool.Tools
 {
     public partial class AssetsCopierForm : DevExpress.XtraEditors.XtraForm
     {
@@ -19,13 +19,13 @@ namespace SourceModdingTool.Tools
         List<string> assets = new List<string>();
 
         string destination = string.Empty;
-        string game;
-        string mod;
-        Steam sourceSDK;
+        BaseGame game;
+        Mod mod;
+        Launcher launcher;
 
         List<string> vmfs = new List<string>();
 
-        public AssetsCopierForm(string game, string mod)
+        public AssetsCopierForm(BaseGame game, Mod mod)
         {
             this.game = game;
             this.mod = mod;
@@ -33,17 +33,17 @@ namespace SourceModdingTool.Tools
             InitializeComponent();
         }
 
-        public AssetsCopierForm(string game, string mod, string destination) : this(game, mod)
+        public AssetsCopierForm(BaseGame game, Mod mod, string destination) : this(game, mod)
         { this.destination = destination; }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
-            sourceSDK.setCurrentGame(game);
-            sourceSDK.setCurrentMod(mod);
+            launcher = new Launcher();
+            launcher.SetCurrentGame(game);
+            game.SetCurrentMod(mod);
 
             updateVMFList();
-            xtraOpenFileDialog1.InitialDirectory = sourceSDK.GetModPath(game, mod);
+            xtraOpenFileDialog1.InitialDirectory = launcher.GetModPath(game, mod);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -59,12 +59,12 @@ namespace SourceModdingTool.Tools
 
         private string copyAssets()
         {
-            string gamePath = sourceSDK.GetGamePath(game);
-            string modPath = sourceSDK.GetModPath(game, mod);
+            string gamePath = game.installPath;
+            string modPath = launcher.GetModPath(game, mod);
 
             String mapName = Path.GetFileNameWithoutExtension(vmfs[0]).ToLower();
 
-            List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
+            List<string> searchPaths = mod.GetSearchPaths();
 
             string customPath = modPath + "\\custom\\" + mapName;
             if(this.destination != string.Empty)
@@ -91,7 +91,7 @@ namespace SourceModdingTool.Tools
         private List<string> getAssetsFromMap(string fullPath)
         {
             setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
-            assets = VMF.GetAssets(fullPath, game, mod, sourceSDK);
+            assets = VMF.GetAssets(fullPath, game, mod, launcher);
 
 
             return assets;
@@ -105,7 +105,7 @@ namespace SourceModdingTool.Tools
             assets = assets.Distinct().ToList();
             string customPath = copyAssets();
 
-            string modPath = sourceSDK.GetModPath(game, mod);
+            string modPath = launcher.GetModPath(game, mod);
             setStatusMessage("Done.", COLOR_GREEN);
             Process.Start(customPath);
         }

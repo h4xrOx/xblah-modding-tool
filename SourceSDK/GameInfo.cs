@@ -1,23 +1,23 @@
-﻿using SourceModdingTool.SourceSDK;
+﻿using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     class GameInfo
     {
-        Steam sourceSDK;
+        Launcher launcher;
 
         KeyValue root;
 
-        public GameInfo(Steam sourceSDK)
+        public GameInfo(Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
 
-            root = KeyValue.readChunkfile(sourceSDK.GetModPath() + "\\gameinfo.txt");
+            root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.txt");
         }
 
         public string getValue(string key)

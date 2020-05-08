@@ -2,7 +2,7 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
-using SourceModdingTool.SourceSDK;
+using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,22 +12,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class MaterialEditor : DevExpress.XtraEditors.XtraForm
     {
         Game game;
         bool isPreviewing = false;
-        Steam sourceSDK;
+        Launcher launcher;
 
         string modPath;
 
         private MaterialEditorTab activeTab = null;
 
-        public MaterialEditor(string relativePath, Steam sourceSDK)
+        public MaterialEditor(string relativePath, Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
-            modPath = sourceSDK.GetModPath();
+            this.launcher = launcher;
+            modPath = launcher.GetCurrentMod().installPath;
 
 
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace SourceModdingTool
                 SearchOption.AllDirectories))
                 File.Copy(newPath, newPath.Replace(sourcePath, modPath), true);
 
-            game = new Game(sourceSDK, panelControl1);
+            game = new Game(launcher, panelControl1);
             game.Start("-nomouse +map material_preview +crosshair 0");
             this.ActiveControl = null;
 
@@ -73,12 +73,12 @@ namespace SourceModdingTool
             }
         }
 
-        public static string GetRelativePath(Steam sourceSDK, string fullPath)
+        public static string GetRelativePath(Launcher launcher, string fullPath)
         {
             string relativePath = fullPath;
 
-            string modPath = sourceSDK.GetModPath();
-            string gamePath = sourceSDK.GetGamePath();
+            string modPath = launcher.GetCurrentMod().installPath;
+            string gamePath = launcher.GetCurrentGame().installPath;
 
             if (fullPath.Contains(modPath))
             {
@@ -129,7 +129,7 @@ namespace SourceModdingTool
                 string fullPath = newVMTDialog.FileName;
 
                 MaterialEditorTab userControl = new MaterialEditorTab();
-                userControl.sourceSDK = sourceSDK;
+                userControl.launcher = launcher;
                 XtraTabPage tab = new XtraTabPage();
 
                 string fileName = new FileInfo(fullPath).Name;
@@ -154,7 +154,7 @@ namespace SourceModdingTool
                 string fullPath = openVMTFileDialog.FileName;
 
                 MaterialEditorTab userControl = new MaterialEditorTab();
-                userControl.sourceSDK = sourceSDK;
+                userControl.launcher = launcher;
                 XtraTabPage tab = new XtraTabPage();
 
                 string fileName = new FileInfo(fullPath).Name;

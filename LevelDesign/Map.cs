@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     class Map
     {
@@ -54,14 +54,14 @@ namespace SourceModdingTool
             return root;
         }
 
-        public static List<Map> LoadMaps(Steam sourceSDK)
+        public static List<Map> LoadMaps(Launcher launcher)
         {
-            if (sourceSDK == null)
+            if (launcher == null)
                 return null;
 
             Dictionary<string, Map> maps = new Dictionary<string, Map>();
 
-            string instancePath = new GameInfo(sourceSDK).getValue("instancepath");
+            string instancePath = new GameInfo(launcher).getValue("instancepath");
 
             if (instancePath != string.Empty && !instancePath.EndsWith("/") && !instancePath.EndsWith("\\"))
                 instancePath = instancePath + "/";

@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     class VMF
     {
@@ -20,14 +20,14 @@ namespace SourceModdingTool.SourceSDK
         /// <param name="fullPath">Full path to the asset</param>
         /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string fullPath, string game, string mod, Steam sourceSDK)
+        public static List<string> GetAssets(string fullPath, BaseGame game, Mod mod, Launcher launcher)
         {
             if (string.IsNullOrEmpty(fullPath) ||
-                string.IsNullOrEmpty(game) ||
-                string.IsNullOrEmpty(mod) ||
-                sourceSDK == null)
+                game == null ||
+                mod == null ||
+                launcher == null)
                 return null;
 
             List<string> assets = new List<string>();
@@ -46,7 +46,7 @@ namespace SourceModdingTool.SourceSDK
                 if (!assets.Contains(value))
                 {
                     assets.Add(value);
-                    assets.AddRange(VMT.GetAssets(value, game, mod, sourceSDK));
+                    assets.AddRange(VMT.GetAssets(value, game, mod, launcher));
                 }
             }
 
@@ -58,7 +58,7 @@ namespace SourceModdingTool.SourceSDK
                 if (!assets.Contains(value))
                 {
                     assets.Add(kv.getValue().ToLower());
-                    assets.AddRange(MDL.GetAssets(value, game, mod, sourceSDK));
+                    assets.AddRange(MDL.GetAssets(value, game, mod, launcher));
                 }
             }
 
@@ -79,7 +79,7 @@ namespace SourceModdingTool.SourceSDK
             // Add particle assets
             List<SourceSDK.KeyValue> effectsKVs = map.findChildrenByKey("effect_name");
             List<string> effects = new List<string>();
-            List<string> pcfFiles = PCF.GetAllFiles(sourceSDK);
+            List<string> pcfFiles = PCF.GetAllFiles(launcher);
             foreach (SourceSDK.KeyValue kv in effectsKVs)
                 effects.Add(kv.getValue());
             effects = effects.Distinct().ToList();
@@ -88,7 +88,7 @@ namespace SourceModdingTool.SourceSDK
                 {
                     string asset = pcf.Substring(pcf.IndexOf("\\particles\\") + 1).Replace("\\", "/");
                     assets.Add(asset);
-                    assets.AddRange(PCF.GetAssets(asset, game, mod, sourceSDK));
+                    assets.AddRange(PCF.GetAssets(asset, game, mod, launcher));
                 }
 
             // Add skybox
@@ -101,7 +101,7 @@ namespace SourceModdingTool.SourceSDK
                 foreach (string part in parts)
                 {
                     assets.Add("materials/skybox/" + value + part + ".vmt");
-                    VMT.GetAssets("materials/skybox/" + value + part + ".vmt", game, mod, sourceSDK);
+                    VMT.GetAssets("materials/skybox/" + value + part + ".vmt", game, mod, launcher);
                 }
             }
 

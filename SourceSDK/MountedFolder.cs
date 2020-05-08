@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public class MountedFolder : VPK
     {
-        public MountedFolder(string fullPath, Steam sourceSDK) : base()
+        public MountedFolder(string fullPath, Launcher launcher) : base()
         {
             this.fullPath = fullPath.Replace("*", string.Empty);
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
 
             ListFiles();
         }

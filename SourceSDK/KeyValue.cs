@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     public class KeyValue
     {
@@ -229,7 +229,7 @@ namespace SourceModdingTool.SourceSDK
                             }
                         }
                     }
-                } catch (Exception e)
+                } catch (Exception)
                 {
                     XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
                     return null;

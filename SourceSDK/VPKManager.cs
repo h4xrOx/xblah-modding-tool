@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public class VPKManager
     {
-        private Steam sourceSDK;
+        private Launcher launcher;
         public Dictionary<string, VPK> vpks;
 
-        public VPKManager(Steam sourceSDK)
+        public VPKManager(Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
             Reload();
         }
 
@@ -46,7 +46,7 @@ namespace SourceModdingTool
 
         public string getExtractedPath(string filePath)
         {
-            foreach(string searchPath in sourceSDK.getModSearchPaths())
+            foreach(string searchPath in launcher.GetCurrentMod().GetSearchPaths())
                 if(File.Exists(searchPath + "\\" + filePath))
                     return searchPath + "\\" + filePath;
 
@@ -57,12 +57,12 @@ namespace SourceModdingTool
         {
             vpks = new Dictionary<string, VPK>();
 
-            foreach(string searchPath in sourceSDK.getModMountedPaths())
+            foreach(string searchPath in launcher.GetCurrentMod().GetMountedPaths())
             {
                 if(searchPath.EndsWith(".vpk"))
-                    vpks.Add(searchPath, new VPK(searchPath, sourceSDK));
+                    vpks.Add(searchPath, new VPK(searchPath, launcher));
                 else
-                    vpks.Add(searchPath, new MountedFolder(searchPath, sourceSDK));
+                    vpks.Add(searchPath, new MountedFolder(searchPath, launcher));
             }
         }
     }

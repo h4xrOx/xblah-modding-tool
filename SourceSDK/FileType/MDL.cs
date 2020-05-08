@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     class MDL
     {
@@ -60,15 +60,15 @@ namespace SourceModdingTool.SourceSDK
         /// <param name="relativePath">Path of the asset relative to the mod folder</param>
         /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
-        /// <param name="sourceSDK">An instance of the Source SDK lib</param>
+        /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string relativePath, string game, string mod, Steam sourceSDK)
+        public static List<string> GetAssets(string relativePath, BaseGame game, Mod mod, Launcher launcher)
         {
-            if (string.IsNullOrEmpty(relativePath) || string.IsNullOrEmpty(game) || string.IsNullOrEmpty(mod) || sourceSDK == null)
+            if (string.IsNullOrEmpty(relativePath) || game == null || mod == null || launcher == null)
                 return null;
 
             List<string> assets = new List<string>();
-            List<string> searchPaths = sourceSDK.getModSearchPaths(game, mod);
+            List<string> searchPaths = mod.GetSearchPaths();
 
             foreach(string searchPath in searchPaths)
             {
@@ -97,7 +97,7 @@ namespace SourceModdingTool.SourceSDK
                 foreach(string material in materials)
                 {
                     assets.Add(material.Replace("\\", "/"));
-                    assets.AddRange(VMT.GetAssets(material, game, mod, sourceSDK));
+                    assets.AddRange(VMT.GetAssets(material, game, mod, launcher));
                 }
 
                 break;

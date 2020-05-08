@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-using SourceModdingTool.SourceSDK;
+using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class ChaptersForm : DevExpress.XtraEditors.XtraForm
     {
@@ -17,13 +17,13 @@ namespace SourceModdingTool
 
         KeyValue lang;
         string modPath = string.Empty;
-        Steam sourceSDK;
+        Launcher launcher;
 
-        public ChaptersForm(Steam sourceSDK)
+        public ChaptersForm(Launcher launcher)
         {
             InitializeComponent();
 
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -108,8 +108,8 @@ namespace SourceModdingTool
 
         private void ChaptersForm_Load(object sender, EventArgs e)
         {
-            gamePath = sourceSDK.GetGamePath();
-            modPath = sourceSDK.GetModPath();
+            gamePath = launcher.GetCurrentGame().installPath;
+            modPath = launcher.GetCurrentMod().installPath;
             readChapters();
             readChapterTitles();
             readChapterBackgrounds();
@@ -281,7 +281,7 @@ namespace SourceModdingTool
                         "\\" +
                         chapters[i].background +
                         ".vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageFile, sourceSDK);
+                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageFile, launcher);
 
                     // Crop image
                     if(src == null)
@@ -303,7 +303,7 @@ namespace SourceModdingTool
                         "\\" +
                         chapters[i].background +
                         "_widescreen.vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageWideFile, sourceSDK);
+                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageWideFile, launcher);
 
 
                     // Crop image
@@ -378,7 +378,7 @@ namespace SourceModdingTool
                 if(File.Exists(filePath + "\\chapter" + (i + 1) + ".vtf"))
                 {
                     chapters[i].thumbnailFile = File.ReadAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].thumbnailFile, sourceSDK);
+                    Bitmap src = VTF.ToBitmap(chapters[i].thumbnailFile, launcher);
 
                     // Crop image
                     Bitmap target = new Bitmap(152, 86);
@@ -477,7 +477,7 @@ namespace SourceModdingTool
                               GraphicsUnit.Pixel);
             }
 
-            chapters[i].backgroundImageFile = VTF.FromBitmap(target, sourceSDK);
+            chapters[i].backgroundImageFile = VTF.FromBitmap(target, launcher);
         }
 
         private void writeBackgroundImages()
@@ -487,10 +487,10 @@ namespace SourceModdingTool
             for(int i = 0; i < chapters.Count; i++)
             {
                 if(chapters[i].backgroundImageFile == null)
-                    chapters[i].backgroundImageFile = VTF.FromBitmap(chapters[i].backgroundImage, sourceSDK);
+                    chapters[i].backgroundImageFile = VTF.FromBitmap(chapters[i].backgroundImage, launcher);
 
                 if(chapters[i].backgroundImageWideFile == null)
-                    chapters[i].backgroundImageWideFile = VTF.FromBitmap(chapters[i].backgroundImageWide, sourceSDK);
+                    chapters[i].backgroundImageWideFile = VTF.FromBitmap(chapters[i].backgroundImageWide, launcher);
 
                 if(chapters[i].backgroundImageFile != null && chapters[i].backgroundImageWideFile != null)
                 {
@@ -539,7 +539,7 @@ namespace SourceModdingTool
                               GraphicsUnit.Pixel);
             }
 
-            chapters[i].backgroundImageWideFile = VTF.FromBitmap(target, sourceSDK);
+            chapters[i].backgroundImageWideFile = VTF.FromBitmap(target, launcher);
         }
 
         private void writeChapterBackgrounds()
@@ -592,7 +592,7 @@ namespace SourceModdingTool
                               new Rectangle(0, 0, src.Width, src.Height),
                               GraphicsUnit.Pixel);
             }
-            chapters[i].thumbnailFile = VTF.FromBitmap(target, sourceSDK);
+            chapters[i].thumbnailFile = VTF.FromBitmap(target, launcher);
         }
 
         private void writeChapterThumbnails()
@@ -602,7 +602,7 @@ namespace SourceModdingTool
             for(int i = 0; i < chapters.Count; i++)
             {
                 if(chapters[i].thumbnailFile == null)
-                    chapters[i].thumbnailFile = VTF.FromBitmap(chapters[i].thumbnail, sourceSDK);
+                    chapters[i].thumbnailFile = VTF.FromBitmap(chapters[i].thumbnail, launcher);
 
                 if(chapters[i].thumbnailFile != null)
                 {

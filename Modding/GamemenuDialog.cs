@@ -3,7 +3,7 @@ using DevExpress.XtraTreeList.Nodes;
 using System;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class GamemenuDialog : DevExpress.XtraEditors.XtraForm
     {

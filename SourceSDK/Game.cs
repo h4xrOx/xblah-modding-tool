@@ -6,17 +6,17 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace SourceModdingTool.SourceSDK
+namespace source_modding_tool.SourceSDK
 {
     class Game
     {
         private Control parent = null;
-        private Steam sourceSDK = null;
+        private Launcher launcher = null;
         public Process modProcess = null;
 
-        public Game(Steam sourceSDK, Control parent)
+        public Game(Launcher launcher, Control parent)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
             this.parent = parent;
         }
 
@@ -34,8 +34,8 @@ namespace SourceModdingTool.SourceSDK
             if (modProcess == null)
                 return;
 
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
 
             Debug.Write(modPath);
 
@@ -90,8 +90,8 @@ namespace SourceModdingTool.SourceSDK
         {
             KillExistant();
 
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
 
             string exePath = string.Empty;
 
@@ -140,8 +140,8 @@ namespace SourceModdingTool.SourceSDK
 
         public Process StartFullScreen()
         {
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
 
             Debug.Write(modPath);
 
@@ -173,8 +173,8 @@ namespace SourceModdingTool.SourceSDK
 
         public Process StartTools()
         {
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
 
             string exePath = string.Empty;
 

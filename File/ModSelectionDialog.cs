@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class ModSelectionDialog : DevExpress.XtraEditors.XtraForm
     {
-        Steam sourceSDK;
+        Launcher launcher;
 
         public string game = string.Empty;
         public string mod = string.Empty;
@@ -16,7 +16,7 @@ namespace SourceModdingTool
 
         private void gamesCombo_TextChanged(object sender, EventArgs e)
         {
-            sourceSDK.setCurrentGame(gamesCombo.EditValue.ToString());
+            launcher.SetCurrentGame(launcher.GetGamesList()[gamesCombo.EditValue.ToString()]);
             game = gamesCombo.EditValue.ToString();
             updateModsCombo();
         }
@@ -25,7 +25,7 @@ namespace SourceModdingTool
 
         private void ModSelectionDialog_Load(object sender, EventArgs e)
         {
-            sourceSDK = new Steam();
+            launcher = new Launcher();
             updateGamesCombo();
         }
 
@@ -33,7 +33,7 @@ namespace SourceModdingTool
         {
             string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty);
             gamesCombo.Properties.Items.Clear();
-            foreach(KeyValuePair<string, string> item in sourceSDK.GetGamesList())
+            foreach(KeyValuePair<string, BaseGame> item in launcher.GetGamesList())
                 gamesCombo.Properties.Items.Add(item.Key);
 
             if(gamesCombo.Properties.Items.Count > 0 && gamesCombo.Properties.Items.Contains(currentGame))
@@ -57,8 +57,8 @@ namespace SourceModdingTool
             if(currentGame == string.Empty)
                 return;
 
-            Dictionary<string, string> dictionary = sourceSDK.GetModsList(currentGame);
-            foreach (KeyValuePair<string, string> item in dictionary)
+            Dictionary<string, Mod> dictionary = launcher.GetModsList(launcher.GetGamesList()[currentGame]);
+            foreach (KeyValuePair<string, Mod> item in dictionary)
                 modsCombo.Properties.Items.Add(item.Key);
 
             if(modsCombo.Properties.Items.Count > 0 && modsCombo.Properties.Items.Contains(currentMod))

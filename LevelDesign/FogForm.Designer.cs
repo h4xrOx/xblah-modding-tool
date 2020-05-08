@@ -1,4 +1,4 @@
-﻿namespace SourceModdingTool
+﻿namespace source_modding_tool
 {
     partial class FogForm
     {

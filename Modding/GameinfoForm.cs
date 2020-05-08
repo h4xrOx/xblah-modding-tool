@@ -1,4 +1,4 @@
-﻿using SourceModdingTool.SourceSDK;
+﻿using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,24 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public partial class GameinfoForm : DevExpress.XtraEditors.XtraForm
     {
         KeyValue gameinfo;
 
-        List<String[]> searchPaths;
-        Steam sourceSDK;
+        //List<String[]> searchPaths;
+        Launcher launcher;
 
-        public GameinfoForm(Steam sourceSDK)
+        public GameinfoForm(Launcher launcher)
         {
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
             InitializeComponent();
         }
 
         private void buttonGamedata_Click(object sender, EventArgs e)
         {
-            string hammerPath = sourceSDK.GetGamePath() + "\\bin\\";
+            string hammerPath = launcher.GetCurrentGame().installPath + "\\bin\\";
             fgdDialog.InitialDirectory = hammerPath;
             if(fgdDialog.ShowDialog() == DialogResult.OK)
             {
@@ -37,7 +37,7 @@ namespace SourceModdingTool
 
         private void buttonInstance_Click(object sender, EventArgs e)
         {
-            string mapsrcPath = sourceSDK.GetModPath() + "\\mapsrc\\";
+            string mapsrcPath = launcher.GetCurrentMod().installPath + "\\mapsrc\\";
             Directory.CreateDirectory(mapsrcPath);
             instanceDialog.SelectedPath = (textGamedata.EditValue.ToString() == string.Empty
                 ? mapsrcPath
@@ -50,7 +50,7 @@ namespace SourceModdingTool
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             gameinfo.setValue("game", textGame.EditValue != null ? textGame.EditValue.ToString() : string.Empty);
             gameinfo.setValue("title", textTitle.EditValue != null ? textTitle.EditValue.ToString() : string.Empty);
@@ -101,10 +101,10 @@ namespace SourceModdingTool
 
             SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
             searchPathsKV.clearChildren();
-            foreach(String[] searchPath in searchPaths)
+            /*foreach(String[] searchPath in searchPaths)
             {
                 searchPathsKV.addChild(new SourceSDK.KeyValue(searchPath[0], searchPath[1]));
-            }
+            }*/
 
             string path = modPath + "\\gameinfo.txt";
 
@@ -115,7 +115,7 @@ namespace SourceModdingTool
 
         private void GameinfoForm_Load(object sender, EventArgs e)
         {
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
 
             string gameinfoPath = modPath + "\\gameinfo.txt";
 

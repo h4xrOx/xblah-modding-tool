@@ -10,11 +10,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace SourceModdingTool
+namespace source_modding_tool
 {
     public class VPK
     {
-        internal Steam sourceSDK;
+        internal Launcher launcher;
         public Dictionary<string, File> files;
         public string fullPath;
 
@@ -24,11 +24,11 @@ namespace SourceModdingTool
         /// Creates an instance of the VPK, reads and stores its content for later usage
         /// </summary>
         /// <param name="fullPath"></param>
-        /// <param name="sourceSDK"></param>
-        public VPK(string fullPath, Steam sourceSDK)
+        /// <param name="launcher"></param>
+        public VPK(string fullPath, Launcher launcher)
         {
             this.fullPath = fullPath;
-            this.sourceSDK = sourceSDK;
+            this.launcher = launcher;
 
             ListFiles();
         }
@@ -39,8 +39,8 @@ namespace SourceModdingTool
         /// <returns></returns>
         internal string GetPackName()
         {
-            string gamePath = sourceSDK.GetGamePath();
-            string modPath = sourceSDK.GetModPath();
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
 
             string packName;
             try
@@ -73,7 +73,7 @@ namespace SourceModdingTool
         /// </summary>
         internal virtual void ListFiles()
         {
-            string gamePath = sourceSDK.GetGamePath();
+            string gamePath = launcher.GetCurrentGame().installPath;
             string toolPath = gamePath + "\\bin\\vpk.exe";
 
             files = new Dictionary<string, File>();
@@ -115,7 +115,7 @@ namespace SourceModdingTool
             if (string.IsNullOrEmpty(filePath))
                 return;
 
-            string modPath = sourceSDK.GetModPath();
+            string modPath = launcher.GetCurrentMod().installPath;
             string toolPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string vpkPath = fullPath;
