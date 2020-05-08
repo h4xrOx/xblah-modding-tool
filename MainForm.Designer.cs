@@ -257,7 +257,7 @@
             // 
             // toolsRunPopupRunFullscreen
             // 
-            this.toolsRunPopupRunFullscreen.Caption = "Run (Full Screen)";
+            this.toolsRunPopupRunFullscreen.Caption = "Run (Windowed)";
             this.toolsRunPopupRunFullscreen.Id = 74;
             this.toolsRunPopupRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRunPopupRunFullscreen.ImageOptions.SvgImage")));
             this.toolsRunPopupRunFullscreen.Name = "toolsRunPopupRunFullscreen";

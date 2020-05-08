@@ -255,7 +255,16 @@ namespace source_modding_tool
             if (e.Item == menuModdingRun || e.Item == toolsRun || e.Item == toolsRunPopupRun)
             {
                 instance = new Instance(launcher, panel1);
-                instance.StartFullScreen();
+                switch(launcher.GetCurrentGame().engine)
+                {
+                    case Engine.SOURCE:
+                        instance.StartFullScreen();
+                        break;
+                    case Engine.SOURCE2:
+                        instance.StartVR();
+                        break;
+                }
+                
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
@@ -460,9 +469,9 @@ namespace source_modding_tool
                     break;
                 case Engine.SOURCE2:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        //toolsRunPopupIngameTools.Enabled = true;
+                        toolsRunPopupIngameTools.Enabled = false;
                         toolsRunPopupRun.Enabled = true;
-                        //toolsRunPopupRunFullscreen.Enabled = true;
+                        toolsRunPopupRunFullscreen.Enabled = false;
                     menuModding.Enabled = false;
                     menuLevelDesign.Enabled = false;
                     menuModeling.Enabled = false;

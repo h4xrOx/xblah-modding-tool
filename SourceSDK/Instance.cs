@@ -171,6 +171,28 @@ namespace source_modding_tool.SourceSDK
             return modProcess;
         }
 
+        public Process StartVR()
+        {
+            string gamePath = launcher.GetCurrentGame().installPath;
+            string modPath = launcher.GetCurrentMod().installPath;
+
+            Debug.Write(modPath);
+
+            string exePath = launcher.GetCurrentGame().getExePath();
+
+            Debugger.Break();
+
+            modProcess = new Process();
+            modProcess.StartInfo.FileName = exePath;
+            modProcess.StartInfo.Arguments = "-game \"" +
+                modPath;
+            modProcess.Start();
+            modProcess.EnableRaisingEvents = true;
+            modProcess.WaitForInputIdle();
+
+            return modProcess;
+        }
+
         public Process StartTools()
         {
             string gamePath = launcher.GetCurrentGame().installPath;

@@ -243,5 +243,23 @@ namespace source_modding_tool
         {
             return currentMod;
         }
+        public string getExePath()
+        {
+            switch(engine)
+            {
+                case Engine.SOURCE:
+                    foreach (string file in Directory.GetFiles(installPath))
+                    {
+                        if (new FileInfo(file).Extension == ".exe")
+                        {
+                            return file;
+                        }
+                    }
+                    break;
+                case Engine.SOURCE2:
+                    return installPath + "\\game\\bin\\win64\\hlvr.exe";
+            }
+            return string.Empty;
+        }
     }
 }
