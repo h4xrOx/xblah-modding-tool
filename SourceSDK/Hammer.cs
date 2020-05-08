@@ -39,7 +39,7 @@ namespace source_modding_tool
 
         private static void CreatePropperConfig(Mod mod)
         {
-            BaseGame game = mod.game;
+            Game game = mod.game;
 
             File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.fgd",
                       game.installPath + "\\bin\\propper.fgd",
@@ -81,7 +81,7 @@ namespace source_modding_tool
 
         private static void CreateGameConfig(Mod mod)
         {
-            BaseGame game = mod.game;
+            Game game = mod.game;
 
             string gameinfoPath = mod.installPath + "\\gameinfo.txt";
             KeyValue gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
@@ -134,7 +134,7 @@ namespace source_modding_tool
             File.WriteAllText(game.installPath + "\\bin\\GameConfig.txt", sb.ToString());
         }
 
-        private static void CopySlartibartysHammer(BaseGame game)
+        private static void CopySlartibartysHammer(Game game)
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 

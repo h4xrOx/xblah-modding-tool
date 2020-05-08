@@ -10,11 +10,11 @@ namespace source_modding_tool
 {
     public class Mod
     {
-        public BaseGame game;
+        public Game game;
         public string name;
         public string installPath;
 
-        public Mod(BaseGame game, string name, string installPath)
+        public Mod(Game game, string name, string installPath)
         {
             this.game = game;
             this.name = name;

@@ -19,13 +19,13 @@ namespace source_modding_tool.Tools
         List<string> assets = new List<string>();
 
         string destination = string.Empty;
-        BaseGame game;
+        Game game;
         Mod mod;
         Launcher launcher;
 
         List<string> vmfs = new List<string>();
 
-        public AssetsCopierForm(BaseGame game, Mod mod)
+        public AssetsCopierForm(Game game, Mod mod)
         {
             this.game = game;
             this.mod = mod;
@@ -33,7 +33,7 @@ namespace source_modding_tool.Tools
             InitializeComponent();
         }
 
-        public AssetsCopierForm(BaseGame game, Mod mod, string destination) : this(game, mod)
+        public AssetsCopierForm(Game game, Mod mod, string destination) : this(game, mod)
         { this.destination = destination; }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)

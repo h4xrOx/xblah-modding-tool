@@ -35,10 +35,10 @@ namespace source_modding_tool
 
             comboGames.Properties.Items.Clear();
             string appID = gameinfo.getChildByKey("filesystem").getValue("steamappid");
-            foreach (KeyValuePair<string, BaseGame> item in launcher.GetGamesList())
+            foreach (KeyValuePair<string, Game> item in launcher.GetGamesList())
             {
                 comboGames.Properties.Items.Add(item.Key);
-                BaseGame game = launcher.GetGamesList()[item.Key];
+                Game game = launcher.GetGamesList()[item.Key];
                 string gameAppID = game.GetAppId().ToString();
                 if (appID == gameAppID.ToString())
                 {
@@ -82,7 +82,7 @@ namespace source_modding_tool
         {
             string modPath = launcher.GetCurrentMod().installPath;
 
-            BaseGame game = launcher.GetGamesList()[comboGames.EditValue.ToString()];
+            Game game = launcher.GetGamesList()[comboGames.EditValue.ToString()];
             int appID = game.GetAppId();
             gameinfo.getChildByKey("filesystem").setValue("steamappid", appID.ToString());
 

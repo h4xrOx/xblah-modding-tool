@@ -37,7 +37,7 @@ namespace source_modding_tool
             string modsPath = Launcher.GetInstallPath() + "\\steamapps\\sourcemods\\";
             modFolder = textFolder.EditValue.ToString();
 
-            BaseGame game = launcher.GetGamesList()[gameName];
+            Game game = launcher.GetGamesList()[gameName];
 
             string appId = game.GetAppId().ToString();
 

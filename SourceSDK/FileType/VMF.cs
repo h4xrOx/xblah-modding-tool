@@ -22,7 +22,7 @@ namespace source_modding_tool.SourceSDK
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string fullPath, BaseGame game, Mod mod, Launcher launcher)
+        public static List<string> GetAssets(string fullPath, Game game, Mod mod, Launcher launcher)
         {
             if (string.IsNullOrEmpty(fullPath) ||
                 game == null ||

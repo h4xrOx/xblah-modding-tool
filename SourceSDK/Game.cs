@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace source_modding_tool
 {
-    public class BaseGame
+    public class Game
     {
         public string name;
         public string installPath;
@@ -19,7 +19,7 @@ namespace source_modding_tool
 
         public Dictionary<string, Mod> mods;
 
-        public BaseGame(string name, string installPath, int engine)
+        public Game(string name, string installPath, int engine)
         {
             mods = new Dictionary<string, Mod>();
 

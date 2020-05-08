@@ -162,7 +162,7 @@
     <Compile Include="Modding\HudLayout\HudItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceSDK\BaseGame.cs" />
+    <Compile Include="SourceSDK\Game.cs" />
     <Compile Include="SourceSDK\Engine.cs" />
     <Compile Include="SourceSDK\Instance.cs" />
     <Compile Include="SourceSDK\GameInfo.cs" />

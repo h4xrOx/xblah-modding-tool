@@ -33,7 +33,7 @@ namespace source_modding_tool
         {
             string currentGame = (gamesCombo.EditValue != null ? gamesCombo.EditValue.ToString() : string.Empty);
             gamesCombo.Properties.Items.Clear();
-            foreach(KeyValuePair<string, BaseGame> item in launcher.GetGamesList())
+            foreach(KeyValuePair<string, Game> item in launcher.GetGamesList())
                 gamesCombo.Properties.Items.Add(item.Key);
 
             if(gamesCombo.Properties.Items.Count > 0 && gamesCombo.Properties.Items.Contains(currentGame))

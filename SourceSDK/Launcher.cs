@@ -12,20 +12,20 @@ namespace source_modding_tool
 {
     public class Launcher
     {
-        BaseGame currentGame = null;
+        Game currentGame = null;
 
         public Libraries libraries;
-        Dictionary<string, BaseGame> games;
+        Dictionary<string, Game> games;
 
         public Launcher()
         {
             libraries = new Libraries();
-            games = new Dictionary<string, BaseGame>();
+            games = new Dictionary<string, Game>();
         }
 
-        private Dictionary<string, BaseGame> LoadGames()
+        private Dictionary<string, Game> LoadGames()
         {
-            games = new Dictionary<string, BaseGame>();
+            games = new Dictionary<string, Game>();
             foreach(string library in this.libraries.GetList())
             {
                 if(Directory.Exists(library + "\\steamapps\\common\\"))
@@ -36,11 +36,11 @@ namespace source_modding_tool
                         if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
                         {
                             // It's a Source game
-                            games.Add(game, new BaseGame(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
                         }
                         else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game)) {
                             // It's a Source 2 game
-                            games.Add(game, new BaseGame(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
+                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
                         }
                     }
             }
@@ -48,10 +48,10 @@ namespace source_modding_tool
             return games;
         }
 
-        public Dictionary<string, BaseGame> GetGamesList()
+        public Dictionary<string, Game> GetGamesList()
         {
             libraries.Load();
-            Dictionary<string, BaseGame> games = LoadGames();
+            Dictionary<string, Game> games = LoadGames();
             return games;
         }
 
@@ -60,7 +60,7 @@ namespace source_modding_tool
             return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString();
         }
 
-        public string GetModPath(BaseGame game, Mod mod)
+        public string GetModPath(Game game, Mod mod)
         {
             if(game != currentGame || !games.ContainsKey(game.name))
             {
@@ -90,18 +90,18 @@ namespace source_modding_tool
             return path;
         }
 
-        public Dictionary<string, Mod> GetModsList(BaseGame game)
+        public Dictionary<string, Mod> GetModsList(Game game)
         {
             return game.LoadMods(this);
         }        
 
-        public void SetCurrentGame(BaseGame game)
+        public void SetCurrentGame(Game game)
         {
             currentGame = game;
             game.LoadMods(this);
         }
 
-        public BaseGame GetCurrentGame()
+        public Game GetCurrentGame()
         {
             return currentGame;
         }
