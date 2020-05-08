@@ -64,7 +64,7 @@ namespace source_modding_tool
                     string gameName = form.gameName;
                     string gameBranch = form.gameBranch;
 
-                    BaseGame game = launcher.GetGamesList()[gameName];
+                    Game game = launcher.GetGamesList()[gameName];
 
                     string modName = title + " (" + folder + ")";
 
@@ -203,7 +203,7 @@ namespace source_modding_tool
                     string gameName = dialog.game;
                     string modName = dialog.mod;
 
-                    BaseGame game = launcher.GetGamesList()[gameName];
+                    Game game = launcher.GetGamesList()[gameName];
                     Mod mod = launcher.GetModsList(game)[modName];
 
                     AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod);
@@ -223,7 +223,7 @@ namespace source_modding_tool
             // Export
             else if (e.Item == menuModdingExport)
             {
-                BaseGame game = launcher.GetGamesList()[toolsGames.EditValue.ToString()];
+                Game game = launcher.GetGamesList()[toolsGames.EditValue.ToString()];
                 Mod mod = launcher.GetModsList(game)[toolsMods.EditValue.ToString()];
 
                 AssetsCopierForm form = new AssetsCopierForm(game, mod);
@@ -255,18 +255,18 @@ namespace source_modding_tool
             if (e.Item == menuModdingRun || e.Item == toolsRun || e.Item == toolsRunPopupRun)
             {
                 instance = new Instance(launcher, panel1);
-                instance.Start();
+                instance.StartFullScreen();
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
                 modStarted();
             }
 
-            // Run Fullscreen
+            // Run Windowed
             else if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
             {
                 instance = new Instance(launcher, panel1);
-                instance.StartFullScreen();
+                instance.Start();
 
                 modStarted();
             }
@@ -414,7 +414,7 @@ namespace source_modding_tool
             }
 
             string gameName = toolsGames.EditValue.ToString();
-            BaseGame game = launcher.GetGamesList()[gameName];
+            Game game = launcher.GetGamesList()[gameName];
 
             launcher.SetCurrentGame(game);
             updateToolsMods();
@@ -427,7 +427,7 @@ namespace source_modding_tool
             if (launcher == null)
                 return;
 
-            BaseGame currentGame = launcher.GetCurrentGame();
+            Game currentGame = launcher.GetCurrentGame();
 
             if (launcher.GetModsList(currentGame).ContainsKey(toolsMods.EditValue.ToString()))
             {
@@ -443,15 +443,46 @@ namespace source_modding_tool
 
         private void UpdateMenus()
         {
-            toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-            menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-            menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-            menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-            menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-            menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+            switch(launcher.GetCurrentGame().engine)
+            {
+                case Engine.SOURCE:
+                    toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        toolsRunPopupIngameTools.Enabled = true;
+                        toolsRunPopupRun.Enabled = true;
+                        toolsRunPopupRunFullscreen.Enabled = true;
+                    menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
 
-            menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null &&
-            toolsMods.EditValue.ToString() != string.Empty);
+                    break;
+                case Engine.SOURCE2:
+                    toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        //toolsRunPopupIngameTools.Enabled = true;
+                        toolsRunPopupRun.Enabled = true;
+                        //toolsRunPopupRunFullscreen.Enabled = true;
+                    menuModding.Enabled = false;
+                    menuLevelDesign.Enabled = false;
+                    menuModeling.Enabled = false;
+                    menuMaterials.Enabled = false;
+                    menuParticles.Enabled = false;
+                    menuChoreographyFaceposer.Enabled = false;
+
+                    break;
+                case Engine.GOLDSRC:
+                    toolsRun.Enabled = false;
+                    menuModding.Enabled = false;
+                    menuLevelDesign.Enabled = false;
+                    menuModeling.Enabled = false;
+                    menuMaterials.Enabled = false;
+                    menuParticles.Enabled = false;
+                    menuChoreographyFaceposer.Enabled = false;
+
+                    break;
+            }
+
         }
 
         private void toolsStop_ItemClick(object sender, ItemClickEventArgs e)
@@ -470,10 +501,10 @@ namespace source_modding_tool
 
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
             repositoryGamesCombo.Items.Clear();
-            Dictionary<string, BaseGame> gamesList = launcher.GetGamesList();
+            Dictionary<string, Game> gamesList = launcher.GetGamesList();
 
             if (gamesList.Count > 0)
-                foreach (KeyValuePair<string, BaseGame> item in gamesList)
+                foreach (KeyValuePair<string, Game> item in gamesList)
                     repositoryGamesCombo.Items.Add(item.Key);
 
             if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
@@ -491,7 +522,7 @@ namespace source_modding_tool
             string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
             repositoryModsCombo.Items.Clear();
 
-            BaseGame currentGame = (toolsGames.EditValue != null ? launcher.GetGamesList()[toolsGames.EditValue.ToString()] : null);
+            Game currentGame = (toolsGames.EditValue != null ? launcher.GetGamesList()[toolsGames.EditValue.ToString()] : null);
             if(currentGame == null)
                 return;
 
