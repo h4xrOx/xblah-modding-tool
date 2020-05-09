@@ -144,7 +144,9 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartFullScreen()
         {
+            Game game = launcher.GetCurrentGame();
             string modPath = launcher.GetCurrentMod().installPath;
+            string modFolder = new DirectoryInfo(modPath).Name;
 
             Debug.Write(modPath);
 
@@ -152,12 +154,25 @@ namespace source_modding_tool.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" +
-                modPath +
-                "\" -fullscreen -width " +
-                Screen.PrimaryScreen.Bounds.Width +
-                " -height " +
-                Screen.PrimaryScreen.Bounds.Height;
+
+            switch (game.engine)
+            {
+                case Engine.SOURCE:
+                    modProcess.StartInfo.Arguments = "-game \"" +
+                    modPath +
+                    "\" -fullscreen -width " +
+                    Screen.PrimaryScreen.Bounds.Width +
+                    " -height " +
+                    Screen.PrimaryScreen.Bounds.Height;
+                    break;
+                case Engine.SOURCE2:
+                    modProcess.StartInfo.Arguments = "-game " + modFolder + " -fullscreen -vr_enable_fake_vr_test -width " +
+                    Screen.PrimaryScreen.Bounds.Width +
+                    " -height " +
+                    Screen.PrimaryScreen.Bounds.Height;
+                    break;
+            }
+            
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();

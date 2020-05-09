@@ -252,10 +252,10 @@ namespace source_modding_tool
         private void menuModdingRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Run
-            if (e.Item == menuModdingRun || e.Item == toolsRun || e.Item == toolsRunPopupRun)
+            if (e.Item == toolsRun)
             {
                 instance = new Instance(launcher, panel1);
-                switch(launcher.GetCurrentGame().engine)
+                switch (launcher.GetCurrentGame().engine)
                 {
                     case Engine.SOURCE:
                         instance.StartFullScreen();
@@ -264,7 +264,18 @@ namespace source_modding_tool
                         instance.StartVR();
                         break;
                 }
-                
+
+
+                FormBorderStyle = FormBorderStyle.Fixed3D;
+                MaximizeBox = false;
+                modStarted();
+            }
+
+            // Run fullscreen
+            if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
+            {
+                instance = new Instance(launcher, panel1);
+                instance.StartFullScreen();
 
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
@@ -272,11 +283,22 @@ namespace source_modding_tool
             }
 
             // Run Windowed
-            else if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
+            else if (e.Item == menuModdingRunWindowed || e.Item == toolsRunPopupRunWindowed)
             {
                 instance = new Instance(launcher, panel1);
                 instance.Start();
 
+                modStarted();
+            }
+
+            // Run VR
+            if (e.Item == menuModdingRunVR || e.Item == toolsRunPopupRunVR)
+            {
+                instance = new Instance(launcher, panel1);
+                instance.StartVR();
+
+                FormBorderStyle = FormBorderStyle.Fixed3D;
+                MaximizeBox = false;
                 modStarted();
             }
 
@@ -373,8 +395,8 @@ namespace source_modding_tool
 
             modProcessUpdater.Enabled = true;
             toolsRun.Enabled = false;
-            menuModdingRun.Enabled = false;
             menuModdingRunFullscreen.Enabled = false;
+            menuModdingRunWindowed.Enabled = false;
             menuModdingIngameTools.Enabled = false;
             menuModdingDelete.Enabled = false;
             toolsStop.Visibility = BarItemVisibility.Always;
@@ -406,8 +428,8 @@ namespace source_modding_tool
                 MaximizeBox = true;
 
                 toolsRun.Enabled = true;
-                menuModdingRun.Enabled = true;
                 menuModdingRunFullscreen.Enabled = true;
+                menuModdingRunWindowed.Enabled = true;
                 menuModdingIngameTools.Enabled = true;
                 menuModdingDelete.Enabled = true;
                 toolsStop.Visibility = BarItemVisibility.Never;
@@ -457,10 +479,13 @@ namespace source_modding_tool
                 case Engine.SOURCE:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         toolsRunPopupIngameTools.Enabled = true;
-                        toolsRunPopupRun.Enabled = true;
                         toolsRunPopupRunFullscreen.Enabled = true;
+                        toolsRunPopupRunVR.Enabled = true;
+                        toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunFullscreen.Enabled = true;
+                        menuModdingRunWindowed.Enabled = true;
+                        menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingImport2.Enabled = true;
@@ -478,10 +503,13 @@ namespace source_modding_tool
                 case Engine.SOURCE2:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         toolsRunPopupIngameTools.Enabled = false;
-                        toolsRunPopupRun.Enabled = true;
                         toolsRunPopupRunFullscreen.Enabled = true;
+                        toolsRunPopupRunVR.Enabled = true;
+                        toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunFullscreen.Enabled = true;
+                        menuModdingRunWindowed.Enabled = true;
+                        menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = false;
                         menuModdingImport2.Enabled = false;
