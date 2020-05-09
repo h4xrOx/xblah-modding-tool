@@ -173,6 +173,26 @@ namespace windows_source1ide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hla {
+            get {
+                object obj = ResourceManager.GetObject("hla", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hla_notinstalled {
+            get {
+                object obj = ResourceManager.GetObject("hla_notinstalled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noScreenshots {
             get {
                 object obj = ResourceManager.GetObject("noScreenshots", resourceCulture);

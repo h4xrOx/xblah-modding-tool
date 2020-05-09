@@ -271,6 +271,207 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_bg_bg.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_cs_cz.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_da_dk.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_de_de.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_el_gr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_en_us.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_es_es.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_es_mx.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_fi_fi.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_fr_fr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_hu_hu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_it_it.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ja_jp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ko_kr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_nb_no.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_nl_nl.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pl_pl.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pt_br.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pt_pt.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ro_ro.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ru_ru.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_sv_se.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_th_th.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_tr_tr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_uk_ua.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_vi_vn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_zh_cn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_zh_tw.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_left.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_single.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_left.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_single.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_left.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_single.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_left.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_single.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_left.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_single.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\boot.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.linux.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.osx.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.pc.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configschema.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\launch.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default_vr.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_vr.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_vr.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\resource_gathering_bindings.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_episodic.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr0.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr1.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr2.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr3.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_manifest.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\cfg\user_keys_default.vcfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Half-Life Alyx\hlvr\gameinfo.gi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\hl2mp.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -418,11 +619,16 @@
     <Content Include="Assets\Posters\hl2mp.png" />
     <Content Include="Assets\Posters\hl2mp_notinstalled.png" />
     <Content Include="Assets\Posters\hl2_notinstalled.png" />
+    <None Include="Assets\Posters\hla_notinstalled.png" />
+    <None Include="Assets\Posters\hla.png" />
     <Content Include="Assets\Posters\portal.png" />
     <Content Include="Assets\Posters\portal2.png" />
     <Content Include="Assets\Posters\portal2_notinstalled.png" />
     <Content Include="Assets\Posters\portal_notinstalled.png" />
     <Content Include="icon.ico" />
+    <Content Include="Templates\Half-Life Alyx\hlvr\cfg\video.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Portal\portal\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
