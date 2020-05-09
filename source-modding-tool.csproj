@@ -8,7 +8,7 @@
     <ProjectGuid>{C18AF47A-90C6-4BA5-9D57-A7322B9699BA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>windows_source1ide</RootNamespace>
+    <RootNamespace>source_modding_tool</RootNamespace>
     <AssemblyName>XBLAH%27s Source Modding Tool</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -177,6 +177,7 @@
     <Compile Include="SourceSDK\FileType\VMF.cs" />
     <Compile Include="SourceSDK\FileType\VMT.cs" />
     <Compile Include="SourceSDK\FileType\VPK.cs" />
+    <Compile Include="SourceSDK\RunMode.cs" />
     <Compile Include="SourceSDK\VPKManager.cs" />
     <Compile Include="SourceSDK\FileType\VTF.cs" />
     <Compile Include="Materials\TGASharpLib.cs" />

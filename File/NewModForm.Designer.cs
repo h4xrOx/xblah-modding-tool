@@ -145,28 +145,28 @@
             galleryItemGroup1.Caption = "Games";
             galleryItem1.Caption = "Half-Life 2";
             galleryItem1.Enabled = false;
-            galleryItem1.ImageOptions.Image = global::windows_source1ide.Properties.Resources.hl2_notinstalled;
+            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2_notinstalled;
             galleryItem1.Tag = "source/Source SDK Base 2013 Singleplayer/hl2";
             galleryItem2.Caption = "Half-Life 2: Episode One";
             galleryItem2.Enabled = false;
             galleryItem2.Hint = "hey";
-            galleryItem2.ImageOptions.Image = global::windows_source1ide.Properties.Resources.episodic_notinstalled;
+            galleryItem2.ImageOptions.Image = global::source_modding_tool.Properties.Resources.episodic_notinstalled;
             galleryItem2.Tag = "source/Source SDK Base 2013 Singleplayer/episodic";
             galleryItem3.Caption = "Half-Life 2: Episode Two";
             galleryItem3.Enabled = false;
-            galleryItem3.ImageOptions.Image = global::windows_source1ide.Properties.Resources.ep2_notinstalled;
+            galleryItem3.ImageOptions.Image = global::source_modding_tool.Properties.Resources.ep2_notinstalled;
             galleryItem3.Tag = "source/Source SDK Base 2013 Singleplayer/ep2";
             galleryItem4.Caption = "Portal";
             galleryItem4.Enabled = false;
-            galleryItem4.ImageOptions.Image = global::windows_source1ide.Properties.Resources.portal_notinstalled;
+            galleryItem4.ImageOptions.Image = global::source_modding_tool.Properties.Resources.portal_notinstalled;
             galleryItem4.Tag = "source/Portal/portal";
             galleryItem5.Caption = "Half-Life 2: Deathmatch";
             galleryItem5.Enabled = false;
-            galleryItem5.ImageOptions.Image = global::windows_source1ide.Properties.Resources.hl2mp_notinstalled;
+            galleryItem5.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2mp_notinstalled;
             galleryItem5.Tag = "source/Source SDK Base 2013 Multiplayer/hl2mp";
             galleryItem6.Caption = "Half-Life: Alyx";
             galleryItem6.Enabled = false;
-            galleryItem6.ImageOptions.Image = global::windows_source1ide.Properties.Resources.hla_notinstalled;
+            galleryItem6.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hla_notinstalled;
             galleryItem6.Tag = "source2/Half-Life Alyx/hlvr";
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,
