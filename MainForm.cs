@@ -460,6 +460,14 @@ namespace source_modding_tool
                         toolsRunPopupRun.Enabled = true;
                         toolsRunPopupRunFullscreen.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuModdingRunFullscreen.Enabled = true;
+                        menuModdingIngameTools.Enabled = true;
+                        menuModdingClean.Enabled = true;
+                        menuModdingImport2.Enabled = true;
+                        menuModdingSettings.Enabled = true;
+                        menuModdingHudEditor.Enabled = true;
+                        menuModdingFileExplorer.Enabled = true;
+                        menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -472,7 +480,17 @@ namespace source_modding_tool
                         toolsRunPopupIngameTools.Enabled = false;
                         toolsRunPopupRun.Enabled = true;
                         toolsRunPopupRunFullscreen.Enabled = true;
-                    menuModding.Enabled = false;
+                    menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuModdingRunFullscreen.Enabled = true;
+                        menuModdingIngameTools.Enabled = false;
+                        menuModdingClean.Enabled = false;
+                        menuModdingImport2.Enabled = false;
+                        menuModdingSettings.Enabled = false;
+                        menuModdingHudEditor.Enabled = false;
+                        menuModdingFileExplorer.Enabled = false;
+                        menuModdingExport.Enabled = false;
+
+
                     menuLevelDesign.Enabled = false;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;

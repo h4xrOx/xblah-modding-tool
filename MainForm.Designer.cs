@@ -365,7 +365,7 @@
             // 
             // menuModdingRunFullscreen
             // 
-            this.menuModdingRunFullscreen.Caption = "Run (Full screen)";
+            this.menuModdingRunFullscreen.Caption = "Run (Windowed)";
             this.menuModdingRunFullscreen.Id = 56;
             this.menuModdingRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunFullscreen.ImageOptions.SvgImage")));
             this.menuModdingRunFullscreen.Name = "menuModdingRunFullscreen";
