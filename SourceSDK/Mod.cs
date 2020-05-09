@@ -38,7 +38,16 @@ namespace source_modding_tool
             string gamePath = game.installPath;
             string modPath = installPath;
 
-            SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+            SourceSDK.KeyValue gameInfo = null;
+            switch(game.engine)
+            {
+                case Engine.SOURCE:
+                    gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+                    break;
+                case Engine.SOURCE2:
+                    gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.gi");
+                    break;
+            }
 
             SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
             foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
