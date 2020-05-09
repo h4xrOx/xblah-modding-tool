@@ -17,7 +17,16 @@ namespace source_modding_tool
         {
             this.launcher = launcher;
 
-            root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.txt");
+            switch(launcher.GetCurrentGame().engine)
+            {
+                case Engine.SOURCE:
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.txt");
+                    break;
+                case Engine.SOURCE2:
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.gi");
+                    break;
+            }
+            
         }
 
         public string getValue(string key)
