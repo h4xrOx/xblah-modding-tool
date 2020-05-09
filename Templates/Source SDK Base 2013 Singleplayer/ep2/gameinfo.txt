@@ -17,10 +17,7 @@
 			game								|all_source_engine_paths|ep2/custom/*
 			game								|all_source_engine_paths|episodic/custom/*
 			game								|all_source_engine_paths|hl2/custom/*
-			game								|all_source_engine_paths|ep2
-			game								|all_source_engine_paths|episodic
-			game								|all_source_engine_paths|hl2
-			platform							|all_source_engine_paths|platform
+
 			game_lv								|all_source_engine_paths|hl2/hl2_lv.vpk
 			game+mod							|all_source_engine_paths|ep2/ep2_sound_vo_english.vpk
 			game+mod							|all_source_engine_paths|ep2/ep2_pak.vpk
@@ -31,7 +28,12 @@
 			game								|all_source_engine_paths|hl2/hl2_textures.vpk
 			game								|all_source_engine_paths|hl2/hl2_sound_misc.vpk
 			game								|all_source_engine_paths|hl2/hl2_misc.vpk
+			game								|all_source_engine_paths|ep2
+			game								|all_source_engine_paths|episodic
+			game								|all_source_engine_paths|hl2
+			
 			platform							|all_source_engine_paths|platform/platform_misc.vpk
+			platform							|all_source_engine_paths|platform
 		}
 	}
 }
