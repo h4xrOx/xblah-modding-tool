@@ -511,7 +511,7 @@ namespace source_modding_tool
                         menuModdingRunWindowed.Enabled = true;
                         menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = false;
-                        menuModdingClean.Enabled = false;
+                        menuModdingClean.Enabled = true;
                         menuModdingImport2.Enabled = false;
                         menuModdingSettings.Enabled = false;
                         menuModdingHudEditor.Enabled = false;

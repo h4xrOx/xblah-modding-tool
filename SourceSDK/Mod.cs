@@ -101,6 +101,12 @@ namespace source_modding_tool
                 Directory.Delete(modPath + "\\save", true);
             if (Directory.Exists(modPath + "\\screenshots"))
                 Directory.Delete(modPath + "\\screenshots", true);
+            if (Directory.Exists(modPath + "\\cfg"))
+                foreach (string file in Directory.GetFiles(modPath + "\\cfg"))
+                {
+                    if (new FileInfo(file).Name.StartsWith("user_") && new FileInfo(file).Name != "user_keys_default.vcfg")
+                        File.Delete(file);
+                }
         }
 
         public List<string> GetFGDs()
