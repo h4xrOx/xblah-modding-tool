@@ -14,16 +14,13 @@ namespace source_modding_tool.Tools
     public partial class FileExplorer : DevExpress.XtraEditors.XtraForm
     {
         string currentDirectory = string.Empty;
+        string filter = string.Empty;
+        Stack<string> nextDirectories = new Stack<string>();
+        Stack<string> previousDirectories = new Stack<string>();
 
         List<VPK.File> files = new List<VPK.File>();
 
-        string filter = string.Empty;
-        string gamePath;
-        string modPath;
-        Stack<string> nextDirectories = new Stack<string>();
-        Stack<string> previousDirectories = new Stack<string>();
         Launcher launcher;
-
         VPKManager vpkManager;
 
         public FileExplorer(Launcher launcher)
@@ -31,65 +28,56 @@ namespace source_modding_tool.Tools
             InitializeComponent();
 
             this.launcher = launcher;
+            vpkManager = new VPKManager(launcher);
+            ListFiles();
+            traverseFileTree();
+            TraverseDirectory(currentDirectory);
         }
 
-        private void buttonBack_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void navigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(previousDirectories.Count > 0)
+            if (e.Item == buttonBack && previousDirectories.Count > 0)
             {
                 nextDirectories.Push(currentDirectory);
-                traverseDirectory(previousDirectories.Pop());
+                TraverseDirectory(previousDirectories.Pop());
             }
-        }
-
-        private void buttonForward_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if(nextDirectories.Count > 0)
+            if (e.Item == buttonForward && nextDirectories.Count > 0)
             {
                 previousDirectories.Push(currentDirectory);
-                traverseDirectory(nextDirectories.Pop());
+                TraverseDirectory(nextDirectories.Pop());
             }
-        }
-
-        private void buttonUp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if(currentDirectory == string.Empty)
-                return;
-
-            previousDirectories.Push(currentDirectory);
-            nextDirectories.Clear();
-
-            if(currentDirectory.Contains("/"))
-                currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/"));
-
-            if(currentDirectory.Contains("/"))
-                currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/") + 1);
-            else
-                currentDirectory = string.Empty;
-
-
-            traverseDirectory(currentDirectory);
-        }
-
-        void deleteSelected()
-        {
-            List<string> selectedPaths = getSelectedPaths();
-            foreach(string filePath in selectedPaths)
+            if (e.Item == buttonUp && currentDirectory != string.Empty)
             {
-                string fullPath = vpkManager.getExtractedPath(filePath);
-                File.Delete(fullPath);
-            }
+                previousDirectories.Push(currentDirectory);
+                nextDirectories.Clear();
 
-            listFiles(true);
-            traverseDirectory(currentDirectory);
+                if (currentDirectory.Contains("/"))
+                    currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/"));
+
+                if (currentDirectory.Contains("/"))
+                    currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/") + 1);
+                else
+                    currentDirectory = string.Empty;
+
+                TraverseDirectory(currentDirectory);
+            }
         }
 
-        private void dirs_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        private void repositoryTextSearch_EditValueChanged(object sender, EventArgs e)
         {
-            if(dirs.FocusedNode == null || dirs.FocusedNode.Tag == null)
+            filter = ((TextEdit)sender).EditValue.ToString();
+            if (filter != string.Empty)
+                TraverseDirectoryFiltered(currentDirectory);
+            else
+                TraverseDirectory(currentDirectory);
+        }
+
+        private void tree_SelectionChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            if(tree.FocusedNode == null || tree.FocusedNode.Tag == null)
                 return;
 
-            string directory = dirs.FocusedNode.Tag.ToString();
+            string directory = tree.FocusedNode.Tag.ToString();
 
             if(directory != currentDirectory)
             {
@@ -97,164 +85,247 @@ namespace source_modding_tool.Tools
                 nextDirectories.Clear();
             }
 
-            traverseDirectory(directory);
+            TraverseDirectory(directory);
         }
 
-        private void editSelected()
+        private void list_SelectionChanged(object sender, EventArgs e) { }
+
+        private void list_MouseClick(object sender, MouseEventArgs e)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
-
-            foreach(string filePath in getSelectedPaths())
+            if (e.Button == MouseButtons.Right)
             {
-                string extractedPath = vpkManager.getExtractedPath(filePath);
+                bool hasFolders = false;
+                bool fileExists = true;
 
-                if(extractedPath == string.Empty)
+                List<string> selectedPaths = GetSelectedPaths();
+                foreach (string filePath in selectedPaths)
                 {
-                    vpkManager.extractFile(filePath);
-                    extractedPath = modPath + "\\" + filePath;
-                } else if(extractedPath != modPath + "\\" + filePath)
-                {
-                    File.Copy(extractedPath, modPath + "\\" + filePath, true);
+                    if (filePath.EndsWith("/"))
+                        // It's a directory
+                        hasFolders = true;
+                    else
+                    {
+                        // It's a file
+                        fileExists = fileExists && vpkManager.getExtractedPath(filePath) != string.Empty;
+                    }
                 }
 
-                Process.Start("notepad", extractedPath);
+                EnableAvailableActions();
+                filePopMenu.ShowPopup(MousePosition);
             }
-
-            listFiles(true);
-            traverseDirectory(currentDirectory);
-        }
-
-        private void extractSelected()
-        {
-            var nodes = list.Selection;
-            List<string> values = new List<string>();
-            foreach(TreeListNode node in nodes)
-            {
-                values.Add(node.Tag.ToString());
-            }
-
-            foreach(string filePath in values)
-            {
-                vpkManager.extractFile(filePath);
-            }
-
-            string modPath = launcher.GetCurrentMod().installPath;
-            Process.Start(modPath);
-
-            listFiles(true);
-            traverseDirectory(currentDirectory);
-        }
-
-        private void filePopDeleteButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        { deleteSelected(); }
-
-        private void filePopExtractButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        { extractSelected(); }
-
-        private void filePopOpenButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        { editSelected(); }
-
-        private void filePopOpenFileLocationButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            string modPath = launcher.GetCurrentMod().installPath;
-
-            List<string> paths = getSelectedPaths();
-            for(int i = 0; i < paths.Count; i++)
-            {
-                paths[i] = vpkManager.getExtractedPath(paths[i]).Replace("/", "\\");
-                if(paths[i].Contains("\\"))
-                {
-                    paths[i] = paths[i].Substring(0, paths[i].LastIndexOf("\\") + 1);
-                }
-            }
-
-            paths = paths.Distinct().ToList();
-            foreach(string path in paths)
-            {
-                Process.Start(path);
-            }
-        }
-
-        private List<string> getSelectedPaths()
-        {
-            List<string> selectedPaths = new List<string>();
-            foreach(TreeListNode node in list.Selection)
-                selectedPaths.Add(node.Tag.ToString());
-
-            return selectedPaths;
         }
 
         private void list_DoubleClick(object sender, EventArgs e)
         {
             TreeList tree = sender as TreeList;
             TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
-            if(hi.Node != null)
+            if (hi.Node != null)
             {
-                string tag = hi.Node.Tag.ToString();
-                if(tag.EndsWith("/"))
+                
+                if (hi.Node.StateImageIndex == 0)
                 {
                     // It's a folder
-                    if(tag != currentDirectory)
+                    string tag = hi.Node.Tag.ToString();
+                    if (tag != currentDirectory)
                     {
                         previousDirectories.Push(currentDirectory);
                         nextDirectories.Clear();
                     }
 
-                    traverseDirectory(tag);
-                } else
+                    TraverseDirectory(tag);
+                }
+                else
                 {
                     // It's a file
-                    editSelected();
+                    FileAction(Action.OPEN);
                 }
             }
         }
 
-        private void list_MouseClick(object sender, MouseEventArgs e)
+        class Action
         {
-            if(e.Button == MouseButtons.Right)
-            {
-                bool hasFolders = false;
-                bool fileExists = true;
+            public const int OPEN = 0;
+            public const int EDIT = 1;
+            public const int OPEN_FILE_LOCATION = 2;
+            public const int DELETE = 3;
+            public const int EXTRACT = 4;
+        }
 
-                List<string> selectedPaths = getSelectedPaths();
-                foreach(string filePath in selectedPaths)
+        private void EnableAvailableActions()
+        {
+            List<string> selectedPaths = GetSelectedPaths();
+
+            filePopOpenButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            filePopDeleteButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            filePopExtractButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            filePopEditButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            filePopOpenFileLocationButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+
+            if (selectedPaths.Count > 1)
+            {
+                filePopOpenButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                filePopEditButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            foreach(string file in selectedPaths)
+            {
+                string extractedPath = vpkManager.getExtractedPath(file);
+                if (extractedPath == string.Empty)
                 {
-                    if(filePath.EndsWith("/"))
-                        hasFolders = true;
-                    else
-                    {
-                        fileExists = fileExists && vpkManager.getExtractedPath(filePath) != string.Empty;
-                    }
+                    filePopOpenFileLocationButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    filePopDeleteButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                } else
+                {
+                    filePopExtractButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 }
 
-                filePopDeleteButton.Enabled = !hasFolders & fileExists;
-                filePopExtractButton.Enabled = !hasFolders;
-                filePopOpenButton.Enabled = selectedPaths.Count == 1;
-                filePopMenu.ShowPopup(MousePosition);
+                if (file.EndsWith("/"))
+                {
+                    filePopEditButton.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                }
             }
         }
 
-        private void list_SelectionChanged(object sender, EventArgs e) { }
+        private void FileAction(int action)
+        {
+            string modPath = launcher.GetCurrentMod().installPath;
 
-        private void listFiles() { listFiles(false); }
+            switch (action)
+            {
+                case Action.OPEN:
+                    {
 
-        private void listFiles(bool reload)
+                    }
+                    break;
+                case Action.EDIT:
+                    {
+                        foreach (string filePath in GetSelectedPaths())
+                        {
+                            string extractedPath = vpkManager.getExtractedPath(filePath);
+
+                            if (extractedPath == string.Empty)
+                            {
+                                vpkManager.extractFile(filePath);
+                                extractedPath = modPath + "\\" + filePath;
+                            }
+                            else if (extractedPath != modPath + "\\" + filePath)
+                            {
+                                File.Copy(extractedPath, modPath + "\\" + filePath, true);
+                            }
+
+                            Process.Start("notepad", extractedPath);
+                        }
+
+                        ListFiles(true);
+                        TraverseDirectory(currentDirectory);
+                    }
+                    break;
+                case Action.OPEN_FILE_LOCATION:
+                    {
+                        List<string> paths = GetSelectedPaths();
+                        for (int i = 0; i < paths.Count; i++)
+                        {
+                            paths[i] = vpkManager.getExtractedPath(paths[i]).Replace("/", "\\");
+                            if (paths[i].Contains("\\"))
+                            {
+                                paths[i] = paths[i].Substring(0, paths[i].LastIndexOf("\\") + 1);
+                            }
+                        }
+
+                        paths = paths.Distinct().ToList();
+                        foreach (string path in paths)
+                        {
+                            Process.Start(path);
+                        }
+                    }
+                    break;
+                case Action.DELETE:
+                    {
+                        List<string> selectedPaths = GetSelectedPaths();
+                        foreach (string filePath in selectedPaths)
+                        {
+                            string fullPath = vpkManager.getExtractedPath(filePath);
+                            if (fullPath != String.Empty)
+                            {
+                                File.Delete(fullPath);
+                            }                            
+                        }
+
+                        ListFiles(true);
+                        TraverseDirectory(currentDirectory);
+                    }
+                    break;
+                case Action.EXTRACT:
+                    {
+                        //var nodes = list.Selection;
+                        //List<string> values = new List<string>();
+                        //foreach (TreeListNode node in nodes)
+                        //{
+                        //    values.Add(node.Tag.ToString());
+                        //}
+                        List<string> selectedPaths = GetSelectedPaths();
+                        foreach (string filePath in selectedPaths)
+                        {
+                            vpkManager.extractFile(filePath);
+                        }
+
+                        Process.Start(modPath);
+
+                        ListFiles(true);
+                        TraverseDirectory(currentDirectory);
+                    }
+                    break;
+            }
+        }
+
+        private void Popup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (e.Item == filePopOpenButton)
+                FileAction(Action.OPEN);
+
+            if (e.Item == filePopEditButton)
+                FileAction(Action.EDIT);
+
+            if (e.Item == filePopExtractButton)
+                FileAction(Action.EXTRACT);
+
+            if (e.Item == filePopDeleteButton)
+                FileAction(Action.DELETE);
+
+            if (e.Item == filePopOpenFileLocationButton)
+                FileAction(Action.OPEN_FILE_LOCATION);
+        }
+
+        private List<string> GetSelectedPaths()
+        {
+            List<string> selectedPaths = new List<string>();
+            foreach (TreeListNode node in list.Selection)
+            {
+                if (!(node.Tag is VPK.File))
+                {
+                    // It's a folder
+                    selectedPaths.Add(node.Tag.ToString());
+                }
+                else
+                {
+                    // It's a file
+                    VPK.File file = node.Tag as VPK.File;
+                    selectedPaths.Add(file.path);
+                }
+            }
+            return selectedPaths;
+        }
+
+        private void ListFiles() { ListFiles(false); }
+
+        private void ListFiles(bool reload)
         {
             if(reload)
                 vpkManager.Reload();
             files = vpkManager.getAllFiles();
         }
 
-        private void repositoryTextSearch_EditValueChanged(object sender, EventArgs e)
-        {
-            filter = ((TextEdit)sender).EditValue.ToString();
-            if(filter != string.Empty)
-                traverseDirectoryFiltered(currentDirectory);
-            else
-                traverseDirectory(currentDirectory);
-        }
-
-        private void traverseDirectory(string directory)
+        private void TraverseDirectory(string directory)
         {
             currentDirectory = directory;
             buttonUp.Enabled = (currentDirectory != string.Empty);
@@ -303,7 +374,8 @@ namespace source_modding_tool.Tools
                 {
                     // It's a file
                     TreeListNode node = list.AppendNode(new object[] { fileSplit[0], file.type, file.pack }, null);
-                    node.Tag = directory + path;
+                    //node.Tag = directory + path;
+                    node.Tag = file;
                     node.StateImageIndex = 1;
                     usedFiles.Add(path);
                 }
@@ -312,7 +384,7 @@ namespace source_modding_tool.Tools
             list.EndUnboundLoad();
         }
 
-        private void traverseDirectoryFiltered(string directory)
+        private void TraverseDirectoryFiltered(string directory)
         {
             buttonUp.Enabled = (currentDirectory != string.Empty);
             buttonBack.Enabled = (previousDirectories.Count > 0);
@@ -359,7 +431,7 @@ namespace source_modding_tool.Tools
                     {
                         // It's a file
                         TreeListNode node = list.AppendNode(new object[] { path, file.type, file.pack }, null);
-                        node.Tag = path;
+                        node.Tag = file;
                         node.StateImageIndex = 1;
                         usedFiles.Add(path);
                     }
@@ -371,13 +443,13 @@ namespace source_modding_tool.Tools
 
         private void traverseFileTree()
         {
-            dirs.BeginUnboundLoad();
-            dirs.Nodes.Clear();
+            tree.BeginUnboundLoad();
+            tree.Nodes.Clear();
 
             Stack<TreeListNode> stack = new Stack<TreeListNode>();
             Stack<string> stackString = new Stack<string>();
 
-            stack.Push(dirs.AppendNode(new object[] { "root" }, null));
+            stack.Push(tree.AppendNode(new object[] { "root" }, null));
             stack.Peek().Tag = string.Empty;
             stack.Peek().StateImageIndex = 0;
 
@@ -409,28 +481,16 @@ namespace source_modding_tool.Tools
                     if(stackString.Count > 0)
                         tag = stack.Peek().Tag.ToString() + tag;
 
-                    stack.Push(dirs.AppendNode(new object[] { fileSplit[i] }, stack.Peek()));
+                    stack.Push(tree.AppendNode(new object[] { fileSplit[i] }, stack.Peek()));
                     stack.Peek().Tag = tag;
                     stack.Peek().StateImageIndex = 0;
                     stackString.Push(fileSplit[i]);
                 }
             }
 
-            dirs.ExpandToLevel(0);
+            tree.ExpandToLevel(0);
 
-            dirs.EndUnboundLoad();
-        }
-
-        private void VPKExplorer_Load(object sender, EventArgs e)
-        {
-            gamePath = launcher.GetCurrentGame().installPath;
-            modPath = launcher.GetCurrentMod().installPath;
-
-            vpkManager = new VPKManager(launcher);
-
-            listFiles();
-            traverseFileTree();
-            traverseDirectory(currentDirectory);
+            tree.EndUnboundLoad();
         }
     }
 }
