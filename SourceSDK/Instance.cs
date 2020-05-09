@@ -73,17 +73,17 @@ namespace source_modding_tool.SourceSDK
             }
         }
 
-        public Process Start()
-        {
-            return Start("");
-        }
-
         public void KillExistant()
         {
             foreach (var process in Process.GetProcessesByName("hl2.exe"))
             {
                 process.Kill();
             }
+        }
+
+        public Process Start()
+        {
+            return Start("");
         }
 
         public Process Start(string command)
@@ -108,8 +108,7 @@ namespace source_modding_tool.SourceSDK
                     " -width " + parent.Width +
                     " -height " + parent.Height +
                     " -multirun " +
-                    command +
-                    " +net_graph 0";
+                    command;
                     break;
                 case Engine.SOURCE2:
                     modProcess.StartInfo.Arguments = " -game " + modFolder + " -windowed -noborder -vr_enable_fake_vr_test" +
@@ -118,7 +117,6 @@ namespace source_modding_tool.SourceSDK
                     break;
             }
 
-
             modProcess.Start();
 
             AttachProcessTo(modProcess, parent);
@@ -126,23 +124,12 @@ namespace source_modding_tool.SourceSDK
             return modProcess;
         }
 
-        public void AttachProcessTo(Process process, Control parent)
+        public Process StartFullScreen()
         {
-            if (modProcess != null)
-            {
-                modProcess.EnableRaisingEvents = true;
-                modProcess.WaitForInputIdle();
-                while(modProcess.MainWindowHandle.ToString() == "0")
-                {
-                    // Just wait until the window is created. Bad, right?
-                }
-                Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
-
-                Resize();
-            }
+            return StartFullScreen("");
         }
 
-        public Process StartFullScreen()
+        public Process StartFullScreen(string command)
         {
             Game game = launcher.GetCurrentGame();
             string modPath = launcher.GetCurrentMod().installPath;
@@ -163,13 +150,15 @@ namespace source_modding_tool.SourceSDK
                     "\" -fullscreen -width " +
                     Screen.PrimaryScreen.Bounds.Width +
                     " -height " +
-                    Screen.PrimaryScreen.Bounds.Height;
+                    Screen.PrimaryScreen.Bounds.Height +
+                    " " + command;
                     break;
                 case Engine.SOURCE2:
                     modProcess.StartInfo.Arguments = "-game " + modFolder + " -fullscreen -vr_enable_fake_vr_test -width " +
                     Screen.PrimaryScreen.Bounds.Width +
                     " -height " +
-                    Screen.PrimaryScreen.Bounds.Height;
+                    Screen.PrimaryScreen.Bounds.Height +
+                    " " + command;
                     break;
             }
             
@@ -182,6 +171,11 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartVR()
         {
+            return StartVR("");
+        }
+
+        public Process StartVR(string command)
+        {
             string modPath = launcher.GetCurrentMod().installPath;
             string modFolder = new DirectoryInfo(modPath).Name;
 
@@ -191,7 +185,7 @@ namespace source_modding_tool.SourceSDK
 
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-vr -game " + modFolder;
+            modProcess.StartInfo.Arguments = "-vr -game " + modFolder + " " + command;
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
@@ -200,6 +194,11 @@ namespace source_modding_tool.SourceSDK
         }
 
         public Process StartTools()
+        {
+            return StartTools("");
+        }
+
+        public Process StartTools(string command)
         {
             string gamePath = launcher.GetCurrentGame().installPath;
             string modPath = launcher.GetCurrentMod().installPath;
@@ -222,11 +221,28 @@ namespace source_modding_tool.SourceSDK
                 "\" -tools -nop4 -windowed -novid -noborder 0 -width " +
                 parent.Width +
                 " -height " +
-                parent.Height;
+                parent.Height +
+                " " + command;
             modProcess.Start();
             AttachProcessTo(modProcess, parent);
 
             return modProcess;
+        }
+
+        public void AttachProcessTo(Process process, Control parent)
+        {
+            if (modProcess != null)
+            {
+                modProcess.EnableRaisingEvents = true;
+                modProcess.WaitForInputIdle();
+                while (modProcess.MainWindowHandle.ToString() == "0")
+                {
+                    // Just wait until the window is created. Bad, right?
+                }
+                Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+
+                Resize();
+            }
         }
     }
 }
