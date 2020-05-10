@@ -184,6 +184,7 @@
     <Compile Include="SourceSDK\FileType\VMT.cs" />
     <Compile Include="SourceSDK\FileType\VPK.cs" />
     <Compile Include="SourceSDK\RunMode.cs" />
+    <Compile Include="SourceSDK\RunPreset.cs" />
     <Compile Include="SourceSDK\VPKManager.cs" />
     <Compile Include="SourceSDK\FileType\VTF.cs" />
     <Compile Include="Materials\TGASharpLib.cs" />
@@ -281,338 +282,341 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions.json">
+    <None Include="Resources\RunPresets.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_bg_bg.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_cs_cz.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_bg_bg.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_da_dk.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_cs_cz.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_de_de.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_da_dk.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_el_gr.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_de_de.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_en_us.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_el_gr.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_es_es.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_en_us.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_es_mx.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_es_es.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_fi_fi.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_es_mx.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_fr_fr.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_fi_fi.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_hu_hu.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_fr_fr.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_it_it.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_hu_hu.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ja_jp.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_it_it.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ko_kr.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_ja_jp.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_nb_no.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_ko_kr.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_nl_nl.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_nb_no.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pl_pl.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_nl_nl.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pt_br.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_pl_pl.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_pt_pt.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_pt_br.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ro_ro.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_pt_pt.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_ru_ru.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_ro_ro.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_sv_se.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_ru_ru.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_th_th.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_sv_se.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_tr_tr.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_th_th.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_uk_ua.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_tr_tr.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_vi_vn.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_uk_ua.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_zh_cn.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_vi_vn.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\actions_zh_tw.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_zh_cn.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions_zh_tw.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_left.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_single.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_left.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_holographic_controller_single.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_left.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_single.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_left.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_knuckles_single.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_left.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_touch.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_single.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_left.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_touch_single.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_left.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_single.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_left.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_controller_single.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_left.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_single.json">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_left.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\boot.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\bindings_vive_cosmos_single.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.linux.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\boot.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.osx.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\configdefaults.linux.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configdefaults.pc.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\configdefaults.osx.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\configschema.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\configdefaults.pc.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\launch.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\configschema.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\launch.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine_convars.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default_vr.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_convars_vr.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine_convars_default_vr.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\machine_vr.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine_convars_vr.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\resource_gathering_bindings.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\machine_vr.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\resource_gathering_bindings.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_episodic.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_episodic.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr0.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr1.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr0.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr2.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr1.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr3.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr2.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\skill_manifest.cfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_hlvr3.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\cfg\user_keys_default.vcfg">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\skill_manifest.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Half-Life Alyx\hlvr\gameinfo.gi">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\user_keys_default.vcfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\hl2mp.ttf">
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\gameinfo.gi">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\hl2mp.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_episodic.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_manifest.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_episodic.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\HL2EP2.ttf">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\cfg\skill_manifest.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\resource\HL2EP2.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_episodic.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_manifest.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_episodic.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\HL2EP2.ttf">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\cfg\skill_manifest.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\resource\HL2EP2.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill_manifest.cfg">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\HL2EP2.ttf">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\cfg\skill_manifest.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\resource\HL2EP2.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tools\BatchCompiler\Specifications\Backup.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Backup.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Batch.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Batch.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Half-Life.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Half-Life.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\HLFix.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\HLFix.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Mapster.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Mapster.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Opt_EntData.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Opt_EntData.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Quake Tools Legacy.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Quake Tools Legacy.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Quake Tools.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Quake Tools.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\RESGen.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\RESGen.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source Batch.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source Batch.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source GLView.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source GLView.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source Texture Utility.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source Texture Utility.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source Tools Advanced.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source Tools Advanced.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source Tools Normal.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source Tools Normal.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Source Tools.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Source Tools.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Steam.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Steam.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Templates.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Templates.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Zoners Tools Advanced.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Zoners Tools Advanced.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Zoners Tools Legacy.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Zoners Tools Legacy.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Zoners Tools Normal.bcs">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Zoners Tools Normal.bcs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Zoners Tools P Series.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Zoners Tools P Series.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\BatchCompiler\Specifications\Zoners Tools.bci">
+    <None Include="Resources\Tools\BatchCompiler\Specifications\Zoners Tools.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Fonts\CourierNew.csf">
+    <None Include="Resources\Tools\Crafty\Fonts\CourierNew.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Fonts\CourierNew.tga">
+    <None Include="Resources\Tools\Crafty\Fonts\CourierNew.tga">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Fonts\FontSchema.csf">
+    <None Include="Resources\Tools\Crafty\Fonts\FontSchema.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Specifications\GameInfo.csf">
+    <None Include="Resources\Tools\Crafty\Specifications\GameInfo.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Specifications\GameInfoCustom.csf">
+    <None Include="Resources\Tools\Crafty\Specifications\GameInfoCustom.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Specifications\GameInfoSchema.csf">
+    <None Include="Resources\Tools\Crafty\Specifications\GameInfoSchema.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\HLExtract\HLExtract.exe">
+    <None Include="Resources\Tools\HLExtract\HLExtract.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\HLExtract\HLLib.dll">
+    <None Include="Resources\Tools\HLExtract\HLLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\template_english.txt">
+    <None Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -636,190 +640,190 @@
     <Content Include="Assets\Posters\portal2_notinstalled.png" />
     <Content Include="Assets\Posters\portal_notinstalled.png" />
     <Content Include="icon.ico" />
-    <Content Include="Templates\Half-Life Alyx\hlvr\cfg\video.txt">
+    <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Portal\portal\gameinfo.txt">
+    <Content Include="Resources\Templates\Portal\portal\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Portal\portal\resource\gamemenu.res">
+    <Content Include="Resources\Templates\Portal\portal\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Portal\portal\resource\template_english.txt">
+    <Content Include="Resources\Templates\Portal\portal\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\client.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\server.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\server.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\gameinfo.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\gamemenu.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\template_english.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\bin\client.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\bin\server.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\bin\server.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\gameinfo.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\clientscheme.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\resource\clientscheme.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\gamemenu.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\ep2\resource\template_english.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\bin\client.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\bin\server.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\bin\server.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\gameinfo.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\clientscheme.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\resource\clientscheme.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\gamemenu.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\episodic\resource\template_english.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\bin\client.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\bin\server.dll">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\bin\server.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\gameinfo.txt">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\clientscheme.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\resource\clientscheme.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Source SDK Base 2013 Singleplayer\hl2\resource\gamemenu.res">
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\BatchCompiler\Automatic Update Core.dll">
+    <Content Include="Resources\Tools\BatchCompiler\Automatic Update Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\BatchCompiler\Batch Compiler Core.dll">
+    <Content Include="Resources\Tools\BatchCompiler\Batch Compiler Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\BatchCompiler\Batch Compiler.exe">
+    <Content Include="Resources\Tools\BatchCompiler\Batch Compiler.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\SlartibartysHammer\sp\vbsp.exe">
+    <Content Include="Resources\Tools\SlartibartysHammer\sp\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Tools\IngamePreviews\maps\material_preview.bsp">
+    <None Include="Resources\Tools\IngamePreviews\maps\material_preview.bsp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\materials\models\tools\material_preview.vmt">
+    <None Include="Resources\Tools\IngamePreviews\materials\models\tools\material_preview.vmt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\materials\models\tools\material_preview_basetexture.vtf">
+    <None Include="Resources\Tools\IngamePreviews\materials\models\tools\material_preview_basetexture.vtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\models\tools\material_preview.dx80.vtx">
+    <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.dx80.vtx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\models\tools\material_preview.dx90.vtx">
+    <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.dx90.vtx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\models\tools\material_preview.mdl">
+    <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.mdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\models\tools\material_preview.sw.vtx">
+    <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.sw.vtx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\IngamePreviews\models\tools\material_preview.vvd">
+    <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.vvd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\hammer.exe">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\hammer_dll.dll">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\vrad.exe">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\vrad_dll.dll">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\vvis.exe">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\SlartibartysHammer\sp\vvis_dll.dll">
+    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Propper\propper.exe">
+    <None Include="Resources\Tools\Propper\propper.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Propper\propper.fgd">
+    <None Include="Resources\Tools\Propper\propper.fgd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\nativegl.dll">
+    <None Include="Resources\Tools\TerrainGenerator\nativegl.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\Readme.txt">
+    <None Include="Resources\Tools\TerrainGenerator\Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\TerrainGenerator.exe">
+    <None Include="Resources\Tools\TerrainGenerator\TerrainGenerator.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crowbar\Crowbar.exe">
+    <None Include="Resources\Tools\Crowbar\Crowbar.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\config\wads\halflife.wdl">
+    <None Include="Resources\Tools\TerrainGenerator\config\wads\halflife.wdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\config\wads\tfc.wdl">
+    <None Include="Resources\Tools\TerrainGenerator\config\wads\tfc.wdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\TerrainGenerator\config\wads\tfc2.wdl">
+    <None Include="Resources\Tools\TerrainGenerator\config\wads\tfc2.wdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\Crafty.exe">
+    <None Include="Resources\Tools\Crafty\Crafty.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\DevIL.dll">
+    <None Include="Resources\Tools\Crafty\DevIL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\gdal12.dll">
+    <None Include="Resources\Tools\Crafty\gdal12.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\HLLib.dll">
+    <None Include="Resources\Tools\Crafty\HLLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\ILU.dll">
+    <None Include="Resources\Tools\Crafty\ILU.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\SketchUpReader.dll">
+    <None Include="Resources\Tools\Crafty\SketchUpReader.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\VTFLib.dll">
+    <None Include="Resources\Tools\Crafty\VTFLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Crafty\xerces-c_2_6.dll">
+    <None Include="Resources\Tools\Crafty\xerces-c_2_6.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -831,7 +835,9 @@ RD /S /Q "$(TargetDir)es"
 RD /S /Q "$(TargetDir)ja"
 RD /S /Q "$(TargetDir)ru"
 ; Move all assemblies and related files to lib folder
-ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF *.exe *.config *.manifest *.vdf /XD Libs logs Tools Templates data /E /IS /MOVE
+ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF *.exe *.config *.manifest *.vdf *.cfg /XD Libs logs Resources Tools Templates data /E /IS /MOVE
+ROBOCOPY "$(TargetDir)Resources\ " "$(TargetDir) " /E /IS /MOVE
+RD /S /Q "$(TargetDir)Resources\"
 ; if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
