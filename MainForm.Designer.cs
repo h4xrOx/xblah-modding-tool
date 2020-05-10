@@ -53,6 +53,7 @@
             this.menuModdingRunWindowed = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingRunVR = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingIngameTools = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingRunExpert = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingOpenFolder = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingClean = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingImport2 = new DevExpress.XtraBars.BarButtonItem();
@@ -98,7 +99,9 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuModdingRun = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingRun = new DevExpress.XtraBars.BarSubItem();
+            this.toolsRunPopupExpert = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -172,9 +175,12 @@
             this.menuModdingSettingsContentMount,
             this.menuModdingRunVR,
             this.toolsRunPopupRunVR,
-            this.menuModdingRun});
+            this.menuModdingRunExpert,
+            this.barButtonItem1,
+            this.menuModdingRun,
+            this.toolsRunPopupExpert});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 88;
+            this.barManager.MaxItemId = 91;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -250,7 +256,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunFullscreen),
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunWindowed),
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunVR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupIngameTools)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupExpert)});
             this.toolsRunPopup.Manager = this.barManager;
             this.toolsRunPopup.Name = "toolsRunPopup";
             // 
@@ -357,10 +363,6 @@
             this.menuModding.Caption = "Modding";
             this.menuModding.Id = 17;
             this.menuModding.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRunFullscreen),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuModdingRunWindowed, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRunVR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingIngameTools),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
@@ -374,7 +376,7 @@
             // 
             // menuModdingRunFullscreen
             // 
-            this.menuModdingRunFullscreen.Caption = "Run (Fullscreen)";
+            this.menuModdingRunFullscreen.Caption = "Fullscreen";
             this.menuModdingRunFullscreen.Id = 18;
             this.menuModdingRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunFullscreen.ImageOptions.SvgImage")));
             this.menuModdingRunFullscreen.Name = "menuModdingRunFullscreen";
@@ -382,7 +384,7 @@
             // 
             // menuModdingRunWindowed
             // 
-            this.menuModdingRunWindowed.Caption = "Run (Windowed)";
+            this.menuModdingRunWindowed.Caption = "Windowed";
             this.menuModdingRunWindowed.Id = 56;
             this.menuModdingRunWindowed.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunWindowed.ImageOptions.SvgImage")));
             this.menuModdingRunWindowed.Name = "menuModdingRunWindowed";
@@ -390,7 +392,7 @@
             // 
             // menuModdingRunVR
             // 
-            this.menuModdingRunVR.Caption = "Run (VR)";
+            this.menuModdingRunVR.Caption = "VR";
             this.menuModdingRunVR.Id = 85;
             this.menuModdingRunVR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunVR.ImageOptions.SvgImage")));
             this.menuModdingRunVR.Name = "menuModdingRunVR";
@@ -403,6 +405,13 @@
             this.menuModdingIngameTools.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingIngameTools.ImageOptions.SvgImage")));
             this.menuModdingIngameTools.Name = "menuModdingIngameTools";
             this.menuModdingIngameTools.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // menuModdingRunExpert
+            // 
+            this.menuModdingRunExpert.Caption = "Expert Mode";
+            this.menuModdingRunExpert.Id = 87;
+            this.menuModdingRunExpert.Name = "menuModdingRunExpert";
+            this.menuModdingRunExpert.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
             // 
             // menuModdingOpenFolder
             // 
@@ -761,12 +770,31 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Run";
+            this.barButtonItem1.Id = 88;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // menuModdingRun
             // 
-            this.menuModdingRun.Caption = "Run (Expert mode)";
-            this.menuModdingRun.Id = 87;
+            this.menuModdingRun.Caption = "Run";
+            this.menuModdingRun.Id = 89;
+            this.menuModdingRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRun.ImageOptions.SvgImage")));
+            this.menuModdingRun.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRunFullscreen),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuModdingRunWindowed, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRunVR),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRunExpert, true)});
             this.menuModdingRun.Name = "menuModdingRun";
-            this.menuModdingRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
+            // 
+            // toolsRunPopupExpert
+            // 
+            this.toolsRunPopupExpert.Caption = "Expert Mode";
+            this.toolsRunPopupExpert.GroupIndex = 1;
+            this.toolsRunPopupExpert.Id = 90;
+            this.toolsRunPopupExpert.Name = "toolsRunPopupExpert";
+            this.toolsRunPopupExpert.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
             // 
             // MainForm
             // 
@@ -864,6 +892,9 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsContentMount;
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupRunVR;
         private DevExpress.XtraBars.BarButtonItem menuModdingRunVR;
-        private DevExpress.XtraBars.BarButtonItem menuModdingRun;
+        private DevExpress.XtraBars.BarButtonItem menuModdingRunExpert;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem toolsRunPopupExpert;
+        private DevExpress.XtraBars.BarSubItem menuModdingRun;
     }
 }

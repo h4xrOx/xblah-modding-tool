@@ -365,14 +365,8 @@ namespace source_modding_tool
                 Run(RunMode.VR);
             }
 
-            // Ingame tools
-            else if (e.Item == menuModdingIngameTools || e.Item == toolsRunPopupIngameTools)
-            {
-                Run(RunMode.INGAME_TOOLS);
-            }
-
             // Expert mode
-            else if(e.Item == menuModdingRun)
+            else if(e.Item == menuModdingRunExpert || e.Item == toolsRunPopupExpert)
             {
                 RunDialog dialog = new RunDialog(launcher);
                 if (dialog.ShowDialog() == DialogResult.OK)
