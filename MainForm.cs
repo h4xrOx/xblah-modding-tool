@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using source_modding_tool.Modding;
 using source_modding_tool.SourceSDK;
 using source_modding_tool.Tools;
 using System;
@@ -117,7 +118,11 @@ namespace source_modding_tool
                         }
                         else
                         {
-                            Run(RunMode.WINDOWED, "+map " + mapName);
+                            RunDialog runDialog = new RunDialog();
+                            if (runDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                Run(runDialog.RunMode, string.Join(" ", new string[] { runDialog.Commands, "+map " + mapName }));
+                            }
                         }
                     }
                 }
