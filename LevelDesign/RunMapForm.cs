@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using source_modding_tool.Properties;
+using source_modding_tool.SourceSDK;
 
 namespace source_modding_tool
 {

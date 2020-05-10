@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -231,6 +233,29 @@ namespace source_modding_tool.SourceSDK
             return modProcess;
         }
 
+        public Process StartExpert(RunPreset runPreset, string command)
+        {
+            KillExistant();
+
+            Game game = launcher.GetCurrentGame();
+            string modPath = launcher.GetCurrentMod().installPath;
+            string modFolder = new DirectoryInfo(modPath).Name;
+
+            string exePath = launcher.GetCurrentGame().getExePath();
+            if (runPreset.exePath != string.Empty)
+                exePath = runPreset.exePath;
+
+            modProcess = new Process();
+            modProcess.StartInfo.FileName = exePath;
+            modProcess.StartInfo.Arguments = runPreset.GetArguments(launcher, parent) + " " + command;
+            modProcess.Start();
+
+            if (runPreset.runMode == RunMode.WINDOWED)
+                AttachProcessTo(modProcess, parent);
+
+            return modProcess;
+        }
+
         public void AttachProcessTo(Process process, Control parent)
         {
             if (modProcess != null)
@@ -241,10 +266,35 @@ namespace source_modding_tool.SourceSDK
                 {
                     // Just wait until the window is created. Bad, right?
                 }
+                RemoveBorders(modProcess.MainWindowHandle);
                 Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
 
                 Resize();
             }
+        }
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        const int WS_BORDER = 0x00800000;
+        const int WS_DLGFRAME = 0x00400000;
+        const int WS_THICKFRAME = 0x00040000;
+        const int WS_CAPTION = WS_BORDER | WS_DLGFRAME;
+        const int WS_MINIMIZE = 0x20000000;
+        const int WS_MAXIMIZE = 0x01000000;
+        const int WS_SYSMENU = 0x00080000;
+        const int WS_VISIBLE = 0x10000000;
+
+        public IntPtr RemoveBorders(IntPtr WindowHandle)
+        {
+            int WindowStyle = GetWindowLong(WindowHandle, -16);
+
+            //SetWindowLong(WindowHandle, -16, (WindowStyle & ~WS_SYSMENU));
+            SetWindowLong(WindowHandle, -16, (WindowStyle & ~WS_BORDER & ~WS_DLGFRAME));
+            return WindowHandle;
         }
     }
 }

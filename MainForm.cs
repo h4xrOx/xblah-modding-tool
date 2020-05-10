@@ -118,10 +118,10 @@ namespace source_modding_tool
                         }
                         else
                         {
-                            RunDialog runDialog = new RunDialog();
+                            RunDialog runDialog = new RunDialog(launcher);
                             if (runDialog.ShowDialog() == DialogResult.OK)
                             {
-                                Run(runDialog.RunMode, string.Join(" ", new string[] { runDialog.Commands, "+map " + mapName }));
+                                Run(runDialog.runPreset.runMode, string.Join(" ", new string[] { runDialog.commands, "+map " + mapName }));
                             }
                         }
                     }
@@ -261,6 +261,19 @@ namespace source_modding_tool
             Run(runMode, "");
         }
 
+        private void ExpertRun(RunPreset runPreset, string command)
+        {
+            instance = new Instance(launcher, panel1);
+            instance.StartExpert(runPreset, command);
+
+            if (runPreset.runMode == RunMode.WINDOWED)
+            {
+                FormBorderStyle = FormBorderStyle.Fixed3D;
+                MaximizeBox = false;
+            }
+            modStarted();
+        }
+
         private void Run(int runMode, string command)
         {
             switch(runMode)
@@ -356,6 +369,18 @@ namespace source_modding_tool
             else if (e.Item == menuModdingIngameTools || e.Item == toolsRunPopupIngameTools)
             {
                 Run(RunMode.INGAME_TOOLS);
+            }
+
+            // Expert mode
+            else if(e.Item == menuModdingRun)
+            {
+                RunDialog dialog = new RunDialog(launcher);
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string arguments = dialog.commands;
+                    RunPreset runPreset = dialog.runPreset;
+                    ExpertRun(runPreset, arguments);
+    }
             }
         }
 

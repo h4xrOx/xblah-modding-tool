@@ -282,7 +282,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\RunPresets.cfg">
+    <None Include="Resources\RunPresets_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions.json">
