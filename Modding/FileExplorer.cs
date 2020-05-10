@@ -16,8 +16,9 @@ namespace source_modding_tool.Tools
         public string CurrentDirectory = null;
         public string RootDirectory = string.Empty;
         public bool MultiSelect = false;
+        public string Filter = "";
 
-        string filter = string.Empty;
+        string keywords = string.Empty;
         Stack<string> nextDirectories = new Stack<string>();
         Stack<string> previousDirectories = new Stack<string>();
 
@@ -77,8 +78,8 @@ namespace source_modding_tool.Tools
 
         private void repositoryTextSearch_EditValueChanged(object sender, EventArgs e)
         {
-            filter = ((TextEdit)sender).EditValue.ToString();
-            if (filter != string.Empty)
+            keywords = ((TextEdit)sender).EditValue.ToString();
+            if (keywords != string.Empty)
                 TraverseDirectoryFiltered(CurrentDirectory);
             else
                 TraverseDirectory(CurrentDirectory);
@@ -106,6 +107,7 @@ namespace source_modding_tool.Tools
 
         private void list_MouseClick(object sender, MouseEventArgs e)
         {
+            SetSelectedFiles();
             if (e.Button == MouseButtons.Right)
             {
                 EnableAvailableActions();
@@ -324,6 +326,12 @@ namespace source_modding_tool.Tools
             if(reload)
                 vpkManager.Reload();
             files = vpkManager.getAllFiles();
+            if (Filter != string.Empty)
+            {
+                string[] types = Filter.Replace("*", "").Split('|');
+                files = files.Where(f => types.Contains(f.type)).ToList();
+            }
+
             files = files.Where(f => f.path.StartsWith(RootDirectory)).ToList();
         }
 
@@ -334,7 +342,7 @@ namespace source_modding_tool.Tools
             buttonBack.Enabled = (previousDirectories.Count > 0);
             buttonForward.Enabled = (nextDirectories.Count > 0);
 
-            filter = string.Empty;
+            keywords = string.Empty;
             textSearch.EditValue = string.Empty;
 
             if(directory.Contains("/"))
@@ -392,12 +400,12 @@ namespace source_modding_tool.Tools
             buttonBack.Enabled = (previousDirectories.Count > 0);
             buttonForward.Enabled = (nextDirectories.Count > 0);
 
-            textDirectory.EditValue = "Search results for " + filter;
+            textDirectory.EditValue = "Search results for " + keywords;
 
             list.BeginUnboundLoad();
             list.Nodes.Clear();
 
-            List<VPK.File> filtered = files.Where(x => x.path.Contains(filter)).ToList();
+            List<VPK.File> filtered = files.Where(x => x.path.Contains(keywords)).ToList();
 
             List<string> usedFiles = new List<string>();
 
@@ -416,7 +424,7 @@ namespace source_modding_tool.Tools
                 {
                     dir = dir + fileSplit[j] + "/";
 
-                    if(!fileSplit[j].Contains(filter))
+                    if(!fileSplit[j].Contains(keywords))
                         continue;
 
                     if(j < fileSplit.Length - 1)
@@ -451,7 +459,13 @@ namespace source_modding_tool.Tools
             Stack<TreeListNode> stack = new Stack<TreeListNode>();
             Stack<string> stackString = new Stack<string>();
 
-            stack.Push(tree.AppendNode(new object[] { "root" }, null));
+            string rootName = "root";
+            if (RootDirectory != string.Empty)
+            {
+                rootName = new DirectoryInfo(RootDirectory).Name;
+            }
+
+            stack.Push(tree.AppendNode(new object[] { rootName }, null));
             stack.Peek().Tag = string.Empty;
             stack.Peek().StateImageIndex = 0;
 
@@ -459,7 +473,7 @@ namespace source_modding_tool.Tools
             {
                 VPK.File file = files[f];
 
-                string[] fileSplit = file.path.Split('/');
+                string[] fileSplit = file.path.Substring(RootDirectory.Length).Split('/');
 
                 while(stackString.Count >= fileSplit.Length)
                 {

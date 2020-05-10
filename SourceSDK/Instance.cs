@@ -117,7 +117,6 @@ namespace source_modding_tool.SourceSDK
                     " " + command;
                     break;
             }
-            Debugger.Break();
             modProcess.Start();
 
             AttachProcessTo(modProcess, parent);
