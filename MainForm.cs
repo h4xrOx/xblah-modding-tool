@@ -104,7 +104,7 @@ namespace source_modding_tool
                 Game game = launcher.GetCurrentGame();
                 FileExplorer form = new FileExplorer(launcher);
                 form.RootDirectory = "maps/";
-                form.Filter = "*.bsp|BSP Files (*.bsp)|*.vpk|VPK Files (*.vpk)";
+                form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     VPK.File file = form.selectedFiles[0];
