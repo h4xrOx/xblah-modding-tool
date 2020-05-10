@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -21,20 +22,28 @@ namespace source_modding_tool
 
             string packName = GetPackName();
 
-            if(Directory.Exists(fullPath))
-                foreach(string filePath in Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories)
+            if (Directory.Exists(fullPath)) {
+                /*string[] filePaths = Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories)
                     .Where(x => !x.EndsWith(".vpk"))
-                    .ToArray())
+                    .ToArray();*/
+                string[] filePaths = Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories);
+                foreach (string filePath in filePaths)
                 {
+                    string fileName = Path.GetFileNameWithoutExtension(filePath);
+                    if (filePath.EndsWith(".vpk") && int.TryParse(fileName.Substring(fileName.Length - 3), out _))
+                        continue;
+
                     string extension = new FileInfo(filePath).Extension;
 
                     Uri path1 = new Uri(fullPath + "\\");
-                    Uri path2 = new Uri(filePath);
+                    Uri path2 = new Uri(filePath.Replace("_dir.vpk", ".vpk"));
                     Uri diff = path1.MakeRelativeUri(path2);
 
                     File file = new File() { path = diff.OriginalString.ToLower(), pack = packName, type = extension };
                     files.Add(file.path, file);
                 }
+                
+            }
         }
 
         public override void ExtractFile(string filePath) { }

@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using windows_source1ide.Properties;
+using source_modding_tool.Properties;
 
 namespace source_modding_tool
 {
@@ -18,10 +18,12 @@ namespace source_modding_tool
 
         MapFolder root;
         Launcher launcher;
-        string bspPath;
-        string vmfPath;
+
+        string compiledPath;
+        string sourcePath;
 
         public string fileName;
+        public int runMode;
 
         public RunMapForm(Launcher launcher)
         {
@@ -30,9 +32,15 @@ namespace source_modding_tool
             this.launcher = launcher;
         }
 
+        private void RunMapForm_Load(object sender, EventArgs e)
+        {
+            modPath = launcher.GetCurrentMod().installPath;
+            LoadMaps();
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            foreach(var file in new DirectoryInfo(launcher.GetCurrentMod().installPath + "\\maps\\").EnumerateFiles(bspPath + ".*"))
+            foreach(var file in new DirectoryInfo(launcher.GetCurrentMod().installPath + "\\maps\\").EnumerateFiles(compiledPath + ".*"))
                 file.Delete();
             LoadMaps();
         }
@@ -65,8 +73,8 @@ namespace source_modding_tool
             else
             {
                 // Nothing
-                bspPath = null;
-                vmfPath = null;
+                compiledPath = null;
+                sourcePath = null;
                 runButton.Enabled = false;
                 editButton.Enabled = false;
                 deleteButton.Enabled = false;
@@ -95,8 +103,8 @@ namespace source_modding_tool
             else
             {
                 // Nothing
-                bspPath = null;
-                vmfPath = null;
+                compiledPath = null;
+                sourcePath = null;
                 runButton.Enabled = false;
                 editButton.Enabled = false;
                 deleteButton.Enabled = false;
@@ -107,20 +115,12 @@ namespace source_modding_tool
         {
             string modPath = launcher.GetCurrentMod().installPath;
 
-            List<Map> maps = Map.LoadMaps(launcher).OrderByDescending(i => i.GetLastUpdate()).ToList();
+            string mapsPath = modPath + "\\maps\\";
+
+            List<Map> maps = Map.LoadMaps(mapsPath).OrderByDescending(i => i.GetLastUpdate()).ToList();
             root = Map.GetMapsByFolder(maps);
 
             ShowMaps(string.Empty);
-        }
-
-        private void RunMapForm_Load(object sender, EventArgs e)
-        {
-            modPath = launcher.GetCurrentMod().installPath;
-
-            string gameinfoPath = modPath + "\\gameinfo.txt";
-            string instancePath = SourceSDK.KeyValue.readChunkfile(gameinfoPath).getValue("instancepath");
-
-            LoadMaps();
         }
 
         private void ShowMaps(string path)
@@ -163,10 +163,13 @@ namespace source_modding_tool
                 string mapName = map.name;
 
                 string screenshotFilter = Path.GetFileName(mapName) + "*.jpg";
-                List<string> screenshots = new DirectoryInfo(modPath + "\\screenshots\\").GetFiles(screenshotFilter)
-                    .OrderByDescending(f => f.LastWriteTime)
-                    .Select(f => f.Name)
-                    .ToList();
+                List<string> screenshots = new List<string>();
+
+                if (Directory.Exists(modPath + "\\screenshots\\"))
+                    screenshots = new DirectoryInfo(modPath + "\\screenshots\\").GetFiles(screenshotFilter)
+                        .OrderByDescending(f => f.LastWriteTime)
+                        .Select(f => f.Name)
+                        .ToList();
 
                 Image bitmap = Resources.noScreenshots;
                 foreach(string screenshot in screenshots)
@@ -208,8 +211,8 @@ namespace source_modding_tool
         {
             if(versionsCombo.Tag == null)
             {
-                bspPath = null;
-                vmfPath = null;
+                compiledPath = null;
+                sourcePath = null;
                 runButton.Enabled = false;
                 editButton.Enabled = false;
                 deleteButton.Enabled = false;
@@ -218,30 +221,58 @@ namespace source_modding_tool
                 Map map = (Map)versionsCombo.Tag;
                 string selectedVersion = versionsCombo.EditValue.ToString();
                 Map.Version version = map.versions[selectedVersion];
-                vmfPath = version.vmfPath;
-                string bspPath = vmfPath.Substring(0, vmfPath.Length - 3) + "bsp";
+                sourcePath = version.vmfPath;
+                string bspPath = sourcePath.Substring(0, sourcePath.Length - 3) + "bsp";
                 if(File.Exists(bspPath))
-                    this.bspPath = bspPath;
+                    this.compiledPath = bspPath;
                 else
-                    this.bspPath = string.Empty;
+                    this.compiledPath = string.Empty;
 
-                if(!File.Exists(vmfPath))
-                    vmfPath = string.Empty;
+                if(!File.Exists(sourcePath))
+                    sourcePath = string.Empty;
 
-                runButton.Enabled = (this.bspPath != string.Empty);
-                editButton.Enabled = (vmfPath != string.Empty);
+                runButton.Enabled = (this.compiledPath != string.Empty);
+                editButton.Enabled = (sourcePath != string.Empty);
                 deleteButton.Enabled = true;
-            }
-        }
 
-        private void runButton_Click(object sender, EventArgs e)
-        {
-            this.fileName = bspPath;
+                Debugger.Break();
+            }
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            this.fileName = vmfPath;
+            this.fileName = sourcePath;
+        }
+
+        private void runPopup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.fileName = compiledPath;
+
+            if (e.Item == runPopupRunFullscreen)
+            {
+                // Fullscreen
+                this.runMode = RunMode.FULLSCREEN;
+            }
+            if (e.Item == runPopupRunWindowed)
+            {
+                // Windowed
+                this.runMode = RunMode.WINDOWED;
+            }
+            if (e.Item == runPopupRunVR)
+            {
+                // VR
+                this.runMode = RunMode.VR;
+            }
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            Close();
+        }
+
+        private void runButton_Click(object sender, EventArgs e)
+        {
+            this.fileName = compiledPath;
+            this.runMode = RunMode.DEFAULT;
+
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

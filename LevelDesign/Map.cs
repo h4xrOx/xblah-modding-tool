@@ -54,20 +54,21 @@ namespace source_modding_tool
             return root;
         }
 
-        public static List<Map> LoadMaps(Launcher launcher)
+        public static List<Map> LoadMaps(string instancePath)
         {
-            if (launcher == null)
+            /*if (launcher == null)
                 return null;
-
-            Dictionary<string, Map> maps = new Dictionary<string, Map>();
 
             string instancePath = new GameInfo(launcher).getValue("instancepath");
 
             if (instancePath != string.Empty && !instancePath.EndsWith("/") && !instancePath.EndsWith("\\"))
-                instancePath = instancePath + "/";
+                instancePath = instancePath + "/";*/
+
+            Dictionary<string, Map> maps = new Dictionary<string, Map>();
 
             if (instancePath != string.Empty && Directory.Exists(instancePath))
-                foreach (string file in Directory.GetFiles(instancePath, "*.vmf", SearchOption.AllDirectories))
+                foreach (string file in Directory.GetFiles(instancePath,"*", SearchOption.AllDirectories).Where(f => new string[] { ".bsp", ".vpk" }.Contains(new FileInfo(f).Extension.ToLower())).ToArray())
+                //foreach (string file in Directory.GetFiles(instancePath, "*.vmf|*.bsp", SearchOption.AllDirectories))
                 {
                     Uri path1 = new Uri(instancePath);
                     Uri path2 = new Uri(file);

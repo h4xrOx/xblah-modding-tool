@@ -74,9 +74,9 @@ namespace source_modding_tool
         internal virtual void ListFiles()
         {
             string gamePath = launcher.GetCurrentGame().installPath;
-            string toolPath = gamePath + "\\bin\\vpk.exe";
-
             files = new Dictionary<string, File>();
+
+            string toolPath = gamePath + "\\bin\\vpk.exe";
 
             Process process = new Process
             {

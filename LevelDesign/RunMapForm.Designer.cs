@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RunMapForm));
             this.galleryControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
             this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.editButton = new DevExpress.XtraEditors.SimpleButton();
-            this.deleteButton = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.runButton = new DevExpress.XtraEditors.SimpleButton();
+            this.runButton = new DevExpress.XtraEditors.DropDownButton();
+            this.runPopup = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.runPopupRunFullscreen = new DevExpress.XtraBars.BarButtonItem();
+            this.runPopupRunWindowed = new DevExpress.XtraBars.BarButtonItem();
+            this.runPopupRunVR = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.toolsUpButton = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +51,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.editButton = new DevExpress.XtraEditors.SimpleButton();
+            this.deleteButton = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.versionsCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -57,6 +61,7 @@
             this.galleryControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.runPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -72,13 +77,13 @@
             // 
             // 
             this.galleryControl.Gallery.ClearSelectionOnClickEmptySpace = true;
-            galleryItemGroup2.Caption = "Maps";
-            galleryItem2.Caption = "Item1";
-            galleryItem2.ImageOptions.Image = global::windows_source1ide.Properties.Resources.folder;
-            galleryItemGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem2});
+            galleryItemGroup1.Caption = "Maps";
+            galleryItem1.Caption = "Item1";
+            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.folder;
+            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem1});
             this.galleryControl.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup1});
             this.galleryControl.Gallery.ImageSize = new System.Drawing.Size(192, 108);
             this.galleryControl.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
             this.galleryControl.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.ZoomInside;
@@ -100,63 +105,61 @@
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.runButton);
             this.panelControl1.Controls.Add(this.editButton);
             this.panelControl1.Controls.Add(this.deleteButton);
             this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.runButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 508);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1248, 39);
             this.panelControl1.TabIndex = 10;
             // 
-            // editButton
-            // 
-            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(1082, 8);
-            this.editButton.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(75, 23);
-            this.editButton.TabIndex = 7;
-            this.editButton.Text = "Edit";
-            this.editButton.Visible = false;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(999, 8);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(8);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 6;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.Visible = false;
-            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 13);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(361, 13);
-            this.labelControl1.TabIndex = 5;
-            this.labelControl1.Text = "Take an ingame screenshot while running the map to update the thumbnail.";
-            // 
             // runButton
             // 
-            this.runButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.runButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.runButton.Enabled = false;
-            this.runButton.Location = new System.Drawing.Point(1165, 8);
-            this.runButton.Margin = new System.Windows.Forms.Padding(8);
+            this.runButton.DropDownControl = this.runPopup;
+            this.runButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.runButton.Location = new System.Drawing.Point(913, 8);
+            this.runButton.MenuManager = this.barManager1;
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 23);
-            this.runButton.TabIndex = 4;
+            this.runButton.TabIndex = 8;
             this.runButton.Text = "Run";
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
+            // 
+            // runPopup
+            // 
+            this.runPopup.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.runPopupRunFullscreen),
+            new DevExpress.XtraBars.LinkPersistInfo(this.runPopupRunWindowed),
+            new DevExpress.XtraBars.LinkPersistInfo(this.runPopupRunVR)});
+            this.runPopup.Manager = this.barManager1;
+            this.runPopup.Name = "runPopup";
+            // 
+            // runPopupRunFullscreen
+            // 
+            this.runPopupRunFullscreen.Caption = "Run (Fullscreen)";
+            this.runPopupRunFullscreen.Id = 2;
+            this.runPopupRunFullscreen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("runPopupRunFullscreen.ImageOptions.SvgImage")));
+            this.runPopupRunFullscreen.Name = "runPopupRunFullscreen";
+            this.runPopupRunFullscreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.runPopup_ItemClick);
+            // 
+            // runPopupRunWindowed
+            // 
+            this.runPopupRunWindowed.Caption = "Run (Windowed)";
+            this.runPopupRunWindowed.Id = 3;
+            this.runPopupRunWindowed.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("runPopupRunWindowed.ImageOptions.SvgImage")));
+            this.runPopupRunWindowed.Name = "runPopupRunWindowed";
+            this.runPopupRunWindowed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.runPopup_ItemClick);
+            // 
+            // runPopupRunVR
+            // 
+            this.runPopupRunVR.Caption = "Run (VR)";
+            this.runPopupRunVR.Id = 4;
+            this.runPopupRunVR.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("runPopupRunVR.ImageOptions.SvgImage")));
+            this.runPopupRunVR.Name = "runPopupRunVR";
+            this.runPopupRunVR.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.runPopup_ItemClick);
             // 
             // barManager1
             // 
@@ -171,9 +174,12 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.toolsUpButton,
-            this.pathEdit});
+            this.pathEdit,
+            this.runPopupRunFullscreen,
+            this.runPopupRunWindowed,
+            this.runPopupRunVR});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 2;
+            this.barManager1.MaxItemId = 5;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bar3;
@@ -267,6 +273,41 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
             // 
+            // editButton
+            // 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.editButton.Enabled = false;
+            this.editButton.Location = new System.Drawing.Point(1082, 8);
+            this.editButton.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(75, 23);
+            this.editButton.TabIndex = 7;
+            this.editButton.Text = "Edit";
+            this.editButton.Visible = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Enabled = false;
+            this.deleteButton.Location = new System.Drawing.Point(999, 8);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(8);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(12, 13);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(361, 13);
+            this.labelControl1.TabIndex = 5;
+            this.labelControl1.Text = "Take an ingame screenshot while running the map to update the thumbnail.";
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -325,6 +366,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.runPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -340,7 +382,6 @@
         private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl;
         private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton runButton;
         private DevExpress.XtraEditors.SimpleButton deleteButton;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraBars.BarManager barManager1;
@@ -358,5 +399,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraBars.BarEditItem pathEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.DropDownButton runButton;
+        private DevExpress.XtraBars.PopupMenu runPopup;
+        private DevExpress.XtraBars.BarButtonItem runPopupRunFullscreen;
+        private DevExpress.XtraBars.BarButtonItem runPopupRunWindowed;
+        private DevExpress.XtraBars.BarButtonItem runPopupRunVR;
     }
 }

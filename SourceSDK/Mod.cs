@@ -58,15 +58,35 @@ namespace source_modding_tool
                     continue;
 
                 string value = searchPath.getValue();
-                value = value.Replace("/", "\\");
-                value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
-                value = value.Replace("|gameinfo_path|", modPath + "\\");
-                value = value.Replace("\\\\", "\\");
-                if (value.EndsWith("/"))
-                    value = value.Substring(0, value.Length - 1);
+
+                switch(game.engine)
+                {
+                    case Engine.SOURCE:
+                        value = value.Replace("/", "\\");
+                        value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
+                        value = value.Replace("|gameinfo_path|", modPath + "\\");
+                        value = value.Replace("\\\\", "\\");
+                        if (value.EndsWith("/"))
+                            value = value.Substring(0, value.Length - 1);
+                        break;
+                    case Engine.SOURCE2:
+                        value = gamePath + "\\game\\" + value;
+                        // We can't mount the vpks because we have no vpk.exe
+                        /*foreach(string file in Directory.GetFiles(value, "*.vpk", SearchOption.AllDirectories))
+                        {
+                            string fileName = Path.GetFileNameWithoutExtension(file);
+                            if (int.TryParse(fileName.Substring(fileName.Length - 3), out _))
+                                continue;
+
+                                result.Add(file.Replace("_dir.vpk", ".vpk"));
+                        }*/
+                        break;
+                }
 
                 result.Add(value);
             }
+
+            
 
             return result.Distinct().ToList();
         }

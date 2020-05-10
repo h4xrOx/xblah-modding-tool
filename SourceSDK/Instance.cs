@@ -113,10 +113,11 @@ namespace source_modding_tool.SourceSDK
                 case Engine.SOURCE2:
                     modProcess.StartInfo.Arguments = " -game " + modFolder + " -windowed -noborder -vr_enable_fake_vr_test" +
                     " -width " + parent.Width +
-                    " -height " + parent.Height;
+                    " -height " + parent.Height +
+                    " " + command;
                     break;
             }
-
+            Debugger.Break();
             modProcess.Start();
 
             AttachProcessTo(modProcess, parent);
@@ -189,6 +190,8 @@ namespace source_modding_tool.SourceSDK
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
+
+
 
             return modProcess;
         }

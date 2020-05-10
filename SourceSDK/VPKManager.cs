@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -41,14 +43,33 @@ namespace source_modding_tool
                 .OrderBy(x => x.path)
                 .ToList();
 
+            List<VPK.File> vpkFiles = files.Where(f => f.type == ".vpk").ToList();
+            foreach (VPK.File file in vpkFiles)
+            {
+                string extractedPath = getExtractedPath(file.path).Replace("_dir.vpk", ".vpk");
+
+                
+                if (vpks.ContainsKey(extractedPath))
+                {
+                    files.Remove(file);
+                    //XtraMessageBox.Show(extractedPath + " is already mounted");
+                }
+ 
+            }
+
             return files;
         }
 
         public string getExtractedPath(string filePath)
         {
-            foreach(string searchPath in launcher.GetCurrentMod().GetSearchPaths())
-                if(File.Exists(searchPath + "\\" + filePath))
+            foreach (string searchPath in launcher.GetCurrentMod().GetSearchPaths())
+            {
+                if (File.Exists(searchPath + "\\" + filePath))
                     return searchPath + "\\" + filePath;
+
+                if (filePath.EndsWith(".vpk") && File.Exists(searchPath + "\\" + filePath.Replace(".vpk", "_dir.vpk")))
+                    return searchPath + "\\" + filePath.Replace(".vpk", "_dir.vpk");
+            }
 
             return string.Empty;
         }
@@ -59,7 +80,7 @@ namespace source_modding_tool
 
             foreach(string searchPath in launcher.GetCurrentMod().GetMountedPaths())
             {
-                if(searchPath.EndsWith(".vpk"))
+                if (searchPath.EndsWith(".vpk"))
                     vpks.Add(searchPath, new VPK(searchPath, launcher));
                 else
                     vpks.Add(searchPath, new MountedFolder(searchPath, launcher));

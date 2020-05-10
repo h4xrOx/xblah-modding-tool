@@ -60,6 +60,9 @@
             this.filePopOpenButton = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filePopMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.okButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cancelButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
@@ -69,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filePopMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tree
@@ -79,7 +84,7 @@
             this.tree.Location = new System.Drawing.Point(8, 8);
             this.tree.Name = "tree";
             this.tree.OptionsBehavior.Editable = false;
-            this.tree.Size = new System.Drawing.Size(260, 592);
+            this.tree.Size = new System.Drawing.Size(260, 560);
             this.tree.StateImageList = this.imageCollection1;
             this.tree.TabIndex = 0;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_SelectionChanged);
@@ -116,7 +121,7 @@
             this.list.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.list.OptionsSelection.MultiSelect = true;
             this.list.OptionsSelection.SelectNodesOnRightClick = true;
-            this.list.Size = new System.Drawing.Size(692, 592);
+            this.list.Size = new System.Drawing.Size(692, 560);
             this.list.StateImageList = this.imageCollection1;
             this.list.TabIndex = 1;
             this.list.SelectionChanged += new System.EventHandler(this.list_SelectionChanged);
@@ -268,6 +273,7 @@
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
             // 
             // barDockControlTop
             // 
@@ -363,7 +369,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.list);
             this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(978, 608);
+            this.splitContainerControl1.Size = new System.Drawing.Size(978, 576);
             this.splitContainerControl1.SplitterPosition = 268;
             this.splitContainerControl1.TabIndex = 7;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -371,7 +377,6 @@
             // filePopMenu
             // 
             this.filePopMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.filePopOpenButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopEditButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopOpenFileLocationButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.filePopExtractButton),
@@ -379,12 +384,42 @@
             this.filePopMenu.Manager = this.barManager1;
             this.filePopMenu.Name = "filePopMenu";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.okButton);
+            this.panelControl1.Controls.Add(this.cancelButton);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 604);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(978, 32);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // okButton
+            // 
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Location = new System.Drawing.Point(817, 4);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "Open";
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(898, 5);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 0;
+            this.cancelButton.Text = "Cancel";
+            // 
             // FileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 654);
             this.Controls.Add(this.splitContainerControl1);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -392,6 +427,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FileExplorer";
             this.Text = "File Explorer";
+            this.Load += new System.EventHandler(this.FileExplorer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.list)).EndInit();
@@ -401,6 +437,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filePopMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,5 +476,8 @@
         private DevExpress.XtraBars.BarButtonItem filePopDeleteButton;
         private DevExpress.XtraBars.BarButtonItem filePopOpenFileLocationButton;
         private DevExpress.XtraBars.BarButtonItem filePopOpenButton;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton okButton;
+        private DevExpress.XtraEditors.SimpleButton cancelButton;
     }
 }

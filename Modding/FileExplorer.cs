@@ -13,7 +13,10 @@ namespace source_modding_tool.Tools
 {
     public partial class FileExplorer : DevExpress.XtraEditors.XtraForm
     {
-        string currentDirectory = string.Empty;
+        public string CurrentDirectory = null;
+        public string RootDirectory = string.Empty;
+        public bool MultiSelect = false;
+
         string filter = string.Empty;
         Stack<string> nextDirectories = new Stack<string>();
         Stack<string> previousDirectories = new Stack<string>();
@@ -23,43 +26,52 @@ namespace source_modding_tool.Tools
         Launcher launcher;
         VPKManager vpkManager;
 
+        public List<VPK.File> selectedFiles = new List<VPK.File>();
+
         public FileExplorer(Launcher launcher)
         {
             InitializeComponent();
 
             this.launcher = launcher;
             vpkManager = new VPKManager(launcher);
+        }
+
+        private void FileExplorer_Load(object sender, EventArgs e)
+        {
+            if (CurrentDirectory == null)
+                this.CurrentDirectory = RootDirectory;
+
             ListFiles();
             traverseFileTree();
-            TraverseDirectory(currentDirectory);
+            TraverseDirectory(CurrentDirectory);
         }
 
         private void navigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (e.Item == buttonBack && previousDirectories.Count > 0)
             {
-                nextDirectories.Push(currentDirectory);
+                nextDirectories.Push(CurrentDirectory);
                 TraverseDirectory(previousDirectories.Pop());
             }
             if (e.Item == buttonForward && nextDirectories.Count > 0)
             {
-                previousDirectories.Push(currentDirectory);
+                previousDirectories.Push(CurrentDirectory);
                 TraverseDirectory(nextDirectories.Pop());
             }
-            if (e.Item == buttonUp && currentDirectory != string.Empty)
+            if (e.Item == buttonUp && CurrentDirectory != string.Empty)
             {
-                previousDirectories.Push(currentDirectory);
+                previousDirectories.Push(CurrentDirectory);
                 nextDirectories.Clear();
 
-                if (currentDirectory.Contains("/"))
-                    currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/"));
+                if (CurrentDirectory.Contains("/"))
+                    CurrentDirectory = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("/"));
 
-                if (currentDirectory.Contains("/"))
-                    currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf("/") + 1);
+                if (CurrentDirectory.Contains("/"))
+                    CurrentDirectory = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("/") + 1);
                 else
-                    currentDirectory = string.Empty;
+                    CurrentDirectory = string.Empty;
 
-                TraverseDirectory(currentDirectory);
+                TraverseDirectory(CurrentDirectory);
             }
         }
 
@@ -67,9 +79,9 @@ namespace source_modding_tool.Tools
         {
             filter = ((TextEdit)sender).EditValue.ToString();
             if (filter != string.Empty)
-                TraverseDirectoryFiltered(currentDirectory);
+                TraverseDirectoryFiltered(CurrentDirectory);
             else
-                TraverseDirectory(currentDirectory);
+                TraverseDirectory(CurrentDirectory);
         }
 
         private void tree_SelectionChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -79,37 +91,23 @@ namespace source_modding_tool.Tools
 
             string directory = tree.FocusedNode.Tag.ToString();
 
-            if(directory != currentDirectory)
+            if(directory != CurrentDirectory)
             {
-                previousDirectories.Push(currentDirectory);
+                previousDirectories.Push(CurrentDirectory);
                 nextDirectories.Clear();
             }
 
             TraverseDirectory(directory);
         }
 
-        private void list_SelectionChanged(object sender, EventArgs e) { }
+        private void list_SelectionChanged(object sender, EventArgs e) {
+            SetSelectedFiles();
+        }
 
         private void list_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                bool hasFolders = false;
-                bool fileExists = true;
-
-                List<string> selectedPaths = GetSelectedPaths();
-                foreach (string filePath in selectedPaths)
-                {
-                    if (filePath.EndsWith("/"))
-                        // It's a directory
-                        hasFolders = true;
-                    else
-                    {
-                        // It's a file
-                        fileExists = fileExists && vpkManager.getExtractedPath(filePath) != string.Empty;
-                    }
-                }
-
                 EnableAvailableActions();
                 filePopMenu.ShowPopup(MousePosition);
             }
@@ -121,14 +119,13 @@ namespace source_modding_tool.Tools
             TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
             if (hi.Node != null)
             {
-                
                 if (hi.Node.StateImageIndex == 0)
                 {
                     // It's a folder
                     string tag = hi.Node.Tag.ToString();
-                    if (tag != currentDirectory)
+                    if (tag != CurrentDirectory)
                     {
-                        previousDirectories.Push(currentDirectory);
+                        previousDirectories.Push(CurrentDirectory);
                         nextDirectories.Clear();
                     }
 
@@ -194,9 +191,13 @@ namespace source_modding_tool.Tools
             {
                 case Action.OPEN:
                     {
-
+                        if (okButton.Enabled)
+                        {
+                            DialogResult = DialogResult.OK;
+                            Close();
+                        }
+                        break;
                     }
-                    break;
                 case Action.EDIT:
                     {
                         foreach (string filePath in GetSelectedPaths())
@@ -217,7 +218,7 @@ namespace source_modding_tool.Tools
                         }
 
                         ListFiles(true);
-                        TraverseDirectory(currentDirectory);
+                        TraverseDirectory(CurrentDirectory);
                     }
                     break;
                 case Action.OPEN_FILE_LOCATION:
@@ -252,7 +253,7 @@ namespace source_modding_tool.Tools
                         }
 
                         ListFiles(true);
-                        TraverseDirectory(currentDirectory);
+                        TraverseDirectory(CurrentDirectory);
                     }
                     break;
                 case Action.EXTRACT:
@@ -272,7 +273,7 @@ namespace source_modding_tool.Tools
                         Process.Start(modPath);
 
                         ListFiles(true);
-                        TraverseDirectory(currentDirectory);
+                        TraverseDirectory(CurrentDirectory);
                     }
                     break;
             }
@@ -323,12 +324,13 @@ namespace source_modding_tool.Tools
             if(reload)
                 vpkManager.Reload();
             files = vpkManager.getAllFiles();
+            files = files.Where(f => f.path.StartsWith(RootDirectory)).ToList();
         }
 
         private void TraverseDirectory(string directory)
         {
-            currentDirectory = directory;
-            buttonUp.Enabled = (currentDirectory != string.Empty);
+            CurrentDirectory = directory;
+            buttonUp.Enabled = (CurrentDirectory != string.Empty);
             buttonBack.Enabled = (previousDirectories.Count > 0);
             buttonForward.Enabled = (nextDirectories.Count > 0);
 
@@ -386,7 +388,7 @@ namespace source_modding_tool.Tools
 
         private void TraverseDirectoryFiltered(string directory)
         {
-            buttonUp.Enabled = (currentDirectory != string.Empty);
+            buttonUp.Enabled = (CurrentDirectory != string.Empty);
             buttonBack.Enabled = (previousDirectories.Count > 0);
             buttonForward.Enabled = (nextDirectories.Count > 0);
 
@@ -491,6 +493,30 @@ namespace source_modding_tool.Tools
             tree.ExpandToLevel(0);
 
             tree.EndUnboundLoad();
+        }
+
+        private void SetSelectedFiles()
+        {
+            selectedFiles.Clear();
+            foreach (TreeListNode node in list.Selection)
+            {
+                if (node.Tag is VPK.File)
+                {
+                    // It's a file
+                    VPK.File file = node.Tag as VPK.File;
+                    this.selectedFiles.Add(file);
+                } else {
+                    // It's a folder
+                }
+            }
+
+            if ((selectedFiles.Count == 1 && MultiSelect == false) || (selectedFiles.Count > 0 && MultiSelect == true))
+            {
+                okButton.Enabled = true;
+            } else
+            {
+                okButton.Enabled = false;
+            }
         }
     }
 }

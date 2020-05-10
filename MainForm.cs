@@ -100,27 +100,23 @@ namespace source_modding_tool
             // Run Map
             if (e.Item == menuLevelDesignRunMap)
             {
-                RunMapForm form = new RunMapForm(launcher);
-                DialogResult result = form.ShowDialog();
-                if (result == DialogResult.OK)
+                Game game = launcher.GetCurrentGame();
+                FileExplorer form = new FileExplorer(launcher);
+                form.RootDirectory = "maps/";
+                if (form.ShowDialog() == DialogResult.OK)
                 {
-                    string fileName = form.fileName;
-                    if (fileName.EndsWith(".bsp") && File.Exists(fileName))
+                    VPK.File file = form.selectedFiles[0];
+                    if ((file.type == ".bsp" && game.engine == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.engine == Engine.SOURCE2))
                     {
-                        string mapName = Map.GetMapNameWithoutVersion(Path.GetFileNameWithoutExtension(fileName));
-                        File.Copy(fileName, launcher.GetCurrentMod().installPath + "\\maps\\" + mapName + ".bsp", true);
-
+                        // It's a map
+                        string mapName = Path.GetFileNameWithoutExtension(file.path);
                         if (instance != null)
                         {
                             instance.Command("+map " + mapName);
-                        } else
+                        }
+                        else
                         {
-                            instance = new Instance(launcher, panel1);
-                            instance.Start("+map " + mapName);
-
-                            FormBorderStyle = FormBorderStyle.Fixed3D;
-                            MaximizeBox = false;
-                            modStarted();
+                            Run(RunMode.WINDOWED, "+map " + mapName);
                         }
                     }
                 }
@@ -249,69 +245,111 @@ namespace source_modding_tool
             }
         }
 
+        private void Run()
+        {
+            Run(RunMode.DEFAULT);
+        }
+
+        private void Run(int runMode)
+        {
+            Run(runMode, "");
+        }
+
+        private void Run(int runMode, string command)
+        {
+            switch(runMode)
+            {
+                case RunMode.DEFAULT:
+                    {
+                        instance = new Instance(launcher, panel1);
+                        switch (launcher.GetCurrentGame().engine)
+                        {
+                            case Engine.SOURCE:
+                                instance.StartFullScreen(command);
+                                break;
+                            case Engine.SOURCE2:
+                                instance.StartVR(command);
+                                break;
+                        }
+
+
+                        FormBorderStyle = FormBorderStyle.Fixed3D;
+                        MaximizeBox = false;
+                        modStarted();
+                    }
+                    break;
+                case RunMode.FULLSCREEN:
+                    {
+                        instance = new Instance(launcher, panel1);
+                        instance.StartFullScreen(command);
+
+                        FormBorderStyle = FormBorderStyle.Fixed3D;
+                        MaximizeBox = false;
+                        modStarted();
+                    }
+                    break;
+                case RunMode.WINDOWED:
+                    {
+                        instance = new Instance(launcher, panel1);
+                        instance.Start(command);
+
+                        modStarted();
+                    }
+                    break;
+                case RunMode.VR:
+                    {
+                        instance = new Instance(launcher, panel1);
+                        instance.StartVR(command);
+
+                        FormBorderStyle = FormBorderStyle.Fixed3D;
+                        MaximizeBox = false;
+                        modStarted();
+                    }
+                    break;
+                case RunMode.INGAME_TOOLS:
+                    {
+                        instance = new Instance(launcher, panel1);
+                        instance.StartTools(command);
+                        instance.modProcess.Exited += new EventHandler(modExited);
+
+                        FormBorderStyle = FormBorderStyle.Fixed3D;
+                        MaximizeBox = false;
+                        modStarted();
+                    }
+                    break;
+            }
+        }
+
         private void menuModdingRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Run
             if (e.Item == toolsRun)
             {
-                instance = new Instance(launcher, panel1);
-                switch (launcher.GetCurrentGame().engine)
-                {
-                    case Engine.SOURCE:
-                        instance.StartFullScreen();
-                        break;
-                    case Engine.SOURCE2:
-                        instance.StartVR();
-                        break;
-                }
-
-
-                FormBorderStyle = FormBorderStyle.Fixed3D;
-                MaximizeBox = false;
-                modStarted();
+                Run();
             }
 
             // Run fullscreen
             if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
             {
-                instance = new Instance(launcher, panel1);
-                instance.StartFullScreen();
-
-                FormBorderStyle = FormBorderStyle.Fixed3D;
-                MaximizeBox = false;
-                modStarted();
+                Run(RunMode.FULLSCREEN);
             }
 
             // Run Windowed
             else if (e.Item == menuModdingRunWindowed || e.Item == toolsRunPopupRunWindowed)
             {
-                instance = new Instance(launcher, panel1);
-                instance.Start();
-
-                modStarted();
+                Run(RunMode.WINDOWED);
             }
 
             // Run VR
             if (e.Item == menuModdingRunVR || e.Item == toolsRunPopupRunVR)
             {
-                instance = new Instance(launcher, panel1);
-                instance.StartVR();
-
-                FormBorderStyle = FormBorderStyle.Fixed3D;
-                MaximizeBox = false;
-                modStarted();
+                Run(RunMode.VR);
             }
 
             // Ingame tools
             else if (e.Item == menuModdingIngameTools || e.Item == toolsRunPopupIngameTools)
             {
-                instance = new Instance(launcher, panel1);
-                instance.StartTools();
-                instance.modProcess.Exited += new EventHandler(modExited);
-
-                FormBorderStyle = FormBorderStyle.Fixed3D;
-                MaximizeBox = false;
-                modStarted();
+                Run(RunMode.INGAME_TOOLS);
             }
         }
 
@@ -494,6 +532,14 @@ namespace source_modding_tool
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignBatchCompiler.Enabled = true;
+                        menuLevelDesignCrafty.Enabled = true;
+                        menuLevelDesignFogPreviewer.Enabled = true;
+                        menuLevelDesignHammer.Enabled = true;
+                        menuLevelDesignMapsrc.Enabled = true;
+                        menuLevelDesignPrefabs.Enabled = true;
+                        menuLevelDesignTerrainGenerator.Enabled = true;
+                        menuLevelDesignRunMap.Enabled = true;
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -515,11 +561,17 @@ namespace source_modding_tool
                         menuModdingImport2.Enabled = false;
                         menuModdingSettings.Enabled = false;
                         menuModdingHudEditor.Enabled = false;
-                        menuModdingFileExplorer.Enabled = false;
+                        menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
-
-
-                    menuLevelDesign.Enabled = false;
+                    menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignBatchCompiler.Enabled = false;
+                        menuLevelDesignCrafty.Enabled = false;
+                        menuLevelDesignFogPreviewer.Enabled = false;
+                        menuLevelDesignHammer.Enabled = false;
+                        menuLevelDesignMapsrc.Enabled = false;
+                        menuLevelDesignPrefabs.Enabled = false;
+                        menuLevelDesignTerrainGenerator.Enabled = false;
+                        menuLevelDesignRunMap.Enabled = true;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
