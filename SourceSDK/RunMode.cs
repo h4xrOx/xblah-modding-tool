@@ -12,7 +12,6 @@ namespace source_modding_tool.SourceSDK
         public const int FULLSCREEN = 1;
         public const int WINDOWED = 2;
         public const int VR = 3;
-        public const int INGAME_TOOLS = 4;
 
         public static string ToString(int engine)
         {

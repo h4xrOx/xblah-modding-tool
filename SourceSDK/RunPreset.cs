@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,10 @@ namespace source_modding_tool.SourceSDK
             Game game = launcher.GetCurrentGame();
             Mod mod = launcher.GetCurrentMod();
             string arguments = "";
-            switch(runMode)
+
+            Point location = parent.PointToScreen(Point.Empty);
+
+            switch (runMode)
             {
                 case SourceSDK.RunMode.DEFAULT:
                     {
@@ -33,6 +37,8 @@ namespace source_modding_tool.SourceSDK
                         {
                             case Engine.SOURCE:
                                 arguments = "-game \"" + mod.installPath + "\" -windowed -noborder" +
+                                 " -x " + location.X +
+                                " -y " + location.Y +
                                 " -width " + parent.Width +
                                 " -height " + parent.Height +
                                 " -multirun" +
@@ -40,6 +46,8 @@ namespace source_modding_tool.SourceSDK
                                 break;
                             case Engine.SOURCE2:
                                 arguments = " -game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
+                                " -x " + location.X +
+                                " -y " + location.Y +
                                 " -width " + parent.Width +
                                 " -height " + parent.Height +
                                 " " + command;
@@ -53,12 +61,16 @@ namespace source_modding_tool.SourceSDK
                         {
                             case Engine.SOURCE:
                                 arguments = "-game \"" + mod.installPath + "\" -fullscreen" +
+                                " -x 0" +
+                                " -y 0" +
                                 " -width " + Screen.PrimaryScreen.Bounds.Width +
                                 " -height " + Screen.PrimaryScreen.Bounds.Height +
                                 " " + command;
                                 break;
                             case Engine.SOURCE2:
                                 arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -fullscreen -vr_enable_fake_vr_test" +
+                                " -x 0" +
+                                " -y 0" +
                                 " -width " + Screen.PrimaryScreen.Bounds.Width +
                                 " -height " + Screen.PrimaryScreen.Bounds.Height +
                                 " " + command;
@@ -71,12 +83,16 @@ namespace source_modding_tool.SourceSDK
                     {
                         case Engine.SOURCE:
                             arguments = "-game \"" + mod.installPath + "\" -windowed -noborder -multirun" +
+                            " -x " + location.X +
+                            " -y " + location.Y +
                             " -width " + parent.Width +
                             " -height " + parent.Height +
                             " " + command;
                             break;
                         case Engine.SOURCE2:
                             arguments = " -game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
+                            " -x " + location.X +
+                            " -y " + location.Y +
                             " -width " + parent.Width +
                             " -height " + parent.Height +
                             " " + command;

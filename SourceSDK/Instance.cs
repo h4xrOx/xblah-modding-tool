@@ -16,6 +16,8 @@ namespace source_modding_tool.SourceSDK
         private Launcher launcher = null;
         public Process modProcess = null;
 
+        public bool isLoading = false;
+
         public Instance(Launcher launcher, Control parent)
         {
             this.launcher = launcher;
@@ -90,6 +92,7 @@ namespace source_modding_tool.SourceSDK
 
         public Process Start(string command)
         {
+            isLoading = true;
             KillExistant();
 
             Game game = launcher.GetCurrentGame();
@@ -101,12 +104,16 @@ namespace source_modding_tool.SourceSDK
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
 
-            switch(game.engine)
+            Point location = parent.PointToScreen(Point.Empty);
+
+            switch (game.engine)
             {
                 case Engine.SOURCE:
                     modProcess.StartInfo.Arguments = "-game \"" +
                     modPath +
                     "\" -windowed -noborder -novid 0" +
+                    " -x " + location.X +
+                    " -y " + location.Y +
                     " -width " + parent.Width +
                     " -height " + parent.Height +
                     " -multirun " +
@@ -114,6 +121,8 @@ namespace source_modding_tool.SourceSDK
                     break;
                 case Engine.SOURCE2:
                     modProcess.StartInfo.Arguments = " -game " + modFolder + " -windowed -noborder -vr_enable_fake_vr_test" +
+                    " -x " + location.X +
+                    " -y " + location.Y +
                     " -width " + parent.Width +
                     " -height " + parent.Height +
                     " " + command;
@@ -122,6 +131,7 @@ namespace source_modding_tool.SourceSDK
             modProcess.Start();
 
             AttachProcessTo(modProcess, parent);
+            isLoading = false;
 
             return modProcess;
         }
@@ -133,6 +143,7 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartFullScreen(string command)
         {
+            isLoading = true;
             Game game = launcher.GetCurrentGame();
             string modPath = launcher.GetCurrentMod().installPath;
             string modFolder = new DirectoryInfo(modPath).Name;
@@ -167,6 +178,7 @@ namespace source_modding_tool.SourceSDK
             modProcess.Start();
             modProcess.EnableRaisingEvents = true;
             modProcess.WaitForInputIdle();
+            isLoading = false;
 
             return modProcess;
         }
@@ -178,6 +190,7 @@ namespace source_modding_tool.SourceSDK
 
         public Process StartVR(string command)
         {
+            isLoading = true;
             string modPath = launcher.GetCurrentMod().installPath;
             string modFolder = new DirectoryInfo(modPath).Name;
 
@@ -193,48 +206,13 @@ namespace source_modding_tool.SourceSDK
             modProcess.WaitForInputIdle();
 
 
-
-            return modProcess;
-        }
-
-        public Process StartTools()
-        {
-            return StartTools("");
-        }
-
-        public Process StartTools(string command)
-        {
-            string gamePath = launcher.GetCurrentGame().installPath;
-            string modPath = launcher.GetCurrentMod().installPath;
-
-            string exePath = string.Empty;
-
-            foreach (string file in Directory.GetFiles(gamePath))
-            {
-                if (new FileInfo(file).Extension == ".exe")
-                {
-                    exePath = file;
-                    break;
-                }
-            }
-
-            modProcess = new Process();
-            modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-game \"" +
-                modPath +
-                "\" -tools -nop4 -windowed -novid -noborder 0 -width " +
-                parent.Width +
-                " -height " +
-                parent.Height +
-                " " + command;
-            modProcess.Start();
-            AttachProcessTo(modProcess, parent);
-
+            isLoading = false;
             return modProcess;
         }
 
         public Process StartExpert(RunPreset runPreset, string command)
         {
+            isLoading = true;
             KillExistant();
 
             Game game = launcher.GetCurrentGame();
@@ -252,6 +230,8 @@ namespace source_modding_tool.SourceSDK
 
             if (runPreset.runMode == RunMode.WINDOWED)
                 AttachProcessTo(modProcess, parent);
+
+            isLoading = false;
 
             return modProcess;
         }
