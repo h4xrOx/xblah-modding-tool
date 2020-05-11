@@ -621,6 +621,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Misc\background_loading.png" />
     <Content Include="Assets\Misc\folder.png" />
     <Content Include="Assets\Misc\noScreenshots.png" />
     <Content Include="Assets\Posters\bms.png" />
@@ -639,6 +640,7 @@
     <Content Include="Assets\Posters\portal2.png" />
     <Content Include="Assets\Posters\portal2_notinstalled.png" />
     <Content Include="Assets\Posters\portal_notinstalled.png" />
+    <None Include="Assets\Misc\background.png" />
     <Content Include="icon.ico" />
     <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

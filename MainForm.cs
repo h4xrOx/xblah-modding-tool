@@ -6,6 +6,7 @@ using source_modding_tool.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -38,6 +39,7 @@ namespace source_modding_tool
                 toolsMods.EditValue = "";
 
             UpdateMenus();
+            updateBackground();
         }
 
         private void menuChoreography_ItemClick(object sender, ItemClickEventArgs e)
@@ -264,6 +266,9 @@ namespace source_modding_tool
         private void ExpertRun(RunPreset runPreset, string command)
         {
             instance = new Instance(launcher, panel1);
+            updateBackground();
+            Application.DoEvents();
+
             instance.StartExpert(runPreset, command);
 
             if (runPreset.runMode == RunMode.WINDOWED)
@@ -281,6 +286,9 @@ namespace source_modding_tool
                 case RunMode.DEFAULT:
                     {
                         instance = new Instance(launcher, panel1);
+                        updateBackground();
+                        Application.DoEvents();
+
                         switch (launcher.GetCurrentGame().engine)
                         {
                             case Engine.SOURCE:
@@ -300,6 +308,9 @@ namespace source_modding_tool
                 case RunMode.FULLSCREEN:
                     {
                         instance = new Instance(launcher, panel1);
+                        updateBackground();
+                        Application.DoEvents();
+
                         instance.StartFullScreen(command);
 
                         FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -310,6 +321,9 @@ namespace source_modding_tool
                 case RunMode.WINDOWED:
                     {
                         instance = new Instance(launcher, panel1);
+                        updateBackground();
+                        Application.DoEvents();
+
                         instance.Start(command);
 
                         modStarted();
@@ -318,18 +332,10 @@ namespace source_modding_tool
                 case RunMode.VR:
                     {
                         instance = new Instance(launcher, panel1);
-                        instance.StartVR(command);
+                        updateBackground();
+                        Application.DoEvents();
 
-                        FormBorderStyle = FormBorderStyle.Fixed3D;
-                        MaximizeBox = false;
-                        modStarted();
-                    }
-                    break;
-                case RunMode.INGAME_TOOLS:
-                    {
-                        instance = new Instance(launcher, panel1);
-                        instance.StartTools(command);
-                        instance.modProcess.Exited += new EventHandler(modExited);
+                        instance.StartVR(command);
 
                         FormBorderStyle = FormBorderStyle.Fixed3D;
                         MaximizeBox = false;
@@ -478,14 +484,17 @@ namespace source_modding_tool
 
         private void ModForm_ResizeEnd(object sender, EventArgs e)
         {
-            if(instance != null)
+            if (instance != null)
                 instance.Resize();
+            else
+                updateBackground();
         }
 
         private void modProcessUpdater_Tick(object sender, EventArgs e)
         {
             if(instance == null || instance.modProcess == null)
             {
+                instance = null;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 modProcessUpdater.Enabled = false;
                 MaximizeBox = true;
@@ -496,6 +505,8 @@ namespace source_modding_tool
                 menuModdingIngameTools.Enabled = true;
                 menuModdingDelete.Enabled = true;
                 toolsStop.Visibility = BarItemVisibility.Never;
+
+                updateBackground();
             }
         }
 
@@ -682,6 +693,28 @@ namespace source_modding_tool
                         instance.AttachProcessTo(instance.modProcess, panel1);
                     break;
             }
+        }
+
+        private void updateBackground()
+        {
+            Bitmap bitmap = new Bitmap(panel1.Width, panel1.Height);
+            using (Graphics gfx = Graphics.FromImage(bitmap))
+            {
+                Image src = Properties.Resources.background;
+
+                if (instance != null && instance.isLoading)
+                    src = Properties.Resources.background_loading;
+
+                int squareSize = Math.Max(panel1.Width, panel1.Height);
+                gfx.DrawImage(
+                    src,
+                    new Rectangle((panel1.Width - squareSize) / 2, (panel1.Height - squareSize) / 2, squareSize, squareSize),
+                    new Rectangle(0, 0, src.Width, src.Height),
+                    GraphicsUnit.Pixel);
+            }
+            if (panel1.BackgroundImage != null)
+                panel1.BackgroundImage.Dispose();
+            panel1.BackgroundImage = bitmap;
         }
     }
 }

@@ -130,11 +130,17 @@
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Misc\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\portal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="episodic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\episodic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hla_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hla_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ep2_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\ep2_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +163,8 @@
   <data name="bms" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\bms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hl2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\portal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ep2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\ep2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,10 +172,10 @@
   <data name="portal2_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Posters\portal2_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hla_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hla_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Misc\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hla" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Posters\hla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background_loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Misc\background_loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
