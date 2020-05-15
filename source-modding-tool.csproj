@@ -836,6 +836,7 @@
 RD /S /Q "$(TargetDir)es"
 RD /S /Q "$(TargetDir)ja"
 RD /S /Q "$(TargetDir)ru"
+del "$(TargetDir)*.xml"
 ; Move all assemblies and related files to lib folder
 ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF *.exe *.config *.manifest *.vdf *.cfg /XD Libs logs Resources Tools Templates data /E /IS /MOVE
 ROBOCOPY "$(TargetDir)Resources\ " "$(TargetDir) " /E /IS /MOVE
