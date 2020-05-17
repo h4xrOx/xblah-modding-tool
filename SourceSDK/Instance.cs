@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -242,6 +243,13 @@ namespace source_modding_tool.SourceSDK
             if (runPreset.exePath != string.Empty)
                 exePath = runPreset.exePath;
 
+            if (!File.Exists(exePath))
+            {
+                XtraMessageBox.Show("Can't find executable file \"" + exePath + "\"");
+                isLoading = false;
+                return null;
+            }
+
             modProcess = new Process();
             modProcess.StartInfo.FileName = exePath;
             modProcess.StartInfo.Arguments = runPreset.GetArguments(launcher, parent) + " " + command;
@@ -265,7 +273,7 @@ namespace source_modding_tool.SourceSDK
                 {
                     // Just wait until the window is created. Bad, right?
                 }
-                RemoveBorders(modProcess.MainWindowHandle);
+                //RemoveBorders(modProcess.MainWindowHandle);
                 Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
 
                 Resize();
