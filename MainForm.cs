@@ -110,7 +110,7 @@ namespace source_modding_tool
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     VPK.File file = form.selectedFiles[0];
-                    if ((file.type == ".bsp" && game.engine == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.engine == Engine.SOURCE2))
+                    if ((file.type == ".bsp" && game.engine == Engine.GOLDSRC) || (file.type == ".bsp" && game.engine == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.engine == Engine.SOURCE2))
                     {
                         // It's a map
                         string mapName = Path.GetFileNameWithoutExtension(file.path);
@@ -631,7 +631,15 @@ namespace source_modding_tool
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
-                    menuLevelDesign.Enabled = false;
+                    menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignBatchCompiler.Enabled = false;
+                        menuLevelDesignCrafty.Enabled = false;
+                        menuLevelDesignFogPreviewer.Enabled = false;
+                        menuLevelDesignHammer.Enabled = false;
+                        menuLevelDesignMapsrc.Enabled = false;
+                        menuLevelDesignPrefabs.Enabled = false;
+                        menuLevelDesignTerrainGenerator.Enabled = false;
+                        menuLevelDesignRunMap.Enabled = true;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
