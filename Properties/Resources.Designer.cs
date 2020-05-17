@@ -103,6 +103,26 @@ namespace source_modding_tool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bshift {
+            get {
+                object obj = ResourceManager.GetObject("bshift", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bshift_notinstalled {
+            get {
+                object obj = ResourceManager.GetObject("bshift_notinstalled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ep2 {
             get {
                 object obj = ResourceManager.GetObject("ep2", resourceCulture);
@@ -146,6 +166,26 @@ namespace source_modding_tool.Properties {
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hl {
+            get {
+                object obj = ResourceManager.GetObject("hl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hl_notinstalled {
+            get {
+                object obj = ResourceManager.GetObject("hl_notinstalled", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +256,26 @@ namespace source_modding_tool.Properties {
         internal static System.Drawing.Bitmap noScreenshots {
             get {
                 object obj = ResourceManager.GetObject("noScreenshots", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap op4 {
+            get {
+                object obj = ResourceManager.GetObject("op4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap op4_notinstalled {
+            get {
+                object obj = ResourceManager.GetObject("op4_notinstalled", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -178,4 +178,22 @@
   <data name="background_loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Misc\background_loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bshift" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\bshift.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bshift_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\bshift_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hl_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\hl_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="op4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\op4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="op4_notinstalled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Posters\op4_notinstalled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
