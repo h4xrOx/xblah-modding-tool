@@ -70,11 +70,16 @@ namespace source_modding_tool
                 {
                     case Engine.SOURCE:
                         value = value.Replace("/", "\\");
-                        value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
-                        value = value.Replace("|gameinfo_path|", modPath + "\\");
+                        if (value.Contains("|all_source_engine_paths|"))
+                            value = value.Replace("|all_source_engine_paths|", gamePath + "\\");
+                        else if (value.Contains("|gameinfo_path|"))
+                            value = value.Replace("|gameinfo_path|", modPath + "\\");
+                        else if (!Directory.Exists(value))
+                            value = gamePath + "\\" + value;
                         value = value.Replace("\\\\", "\\");
                         if (value.EndsWith("/"))
                             value = value.Substring(0, value.Length - 1);
+
                         break;
                     case Engine.SOURCE2:
                         value = gamePath + "\\game\\" + value;
