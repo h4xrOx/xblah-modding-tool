@@ -204,7 +204,9 @@ namespace source_modding_tool
             // Clean
             else if (e.Item == menuModdingClean)
             {
-                launcher.GetCurrentMod().CleanFolder();
+                CleanDialog dialog = new CleanDialog(launcher);
+                if (dialog.files.Count > 0)
+                    dialog.ShowDialog();
             }
 
             // Import

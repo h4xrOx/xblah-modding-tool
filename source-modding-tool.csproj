@@ -111,6 +111,12 @@
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Materials\GaussianBlur.cs" />
+    <Compile Include="Modding\CleanDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\CleanDialog.Designer.cs">
+      <DependentUpon>CleanDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\CleanDialog.resx">
+      <DependentUpon>CleanDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>

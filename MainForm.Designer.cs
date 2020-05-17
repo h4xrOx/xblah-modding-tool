@@ -427,7 +427,7 @@
             // 
             // menuModdingClean
             // 
-            this.menuModdingClean.Caption = "Clean for Release";
+            this.menuModdingClean.Caption = "Clean";
             this.menuModdingClean.Id = 34;
             this.menuModdingClean.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingClean.ImageOptions.SvgImage")));
             this.menuModdingClean.Name = "menuModdingClean";
