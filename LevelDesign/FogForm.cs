@@ -59,7 +59,7 @@ namespace source_modding_tool
             string fog_maxdensityskybox = ((float)skyboxDensityTrack.Value / skyboxDensityTrack.Properties.Maximum).ToString();
 
             instance = new Instance(launcher, panelControl1);
-            instance.Start("-nomouse +map fog_preview +crosshair 0" +
+            instance.Start(new RunPreset(RunMode.WINDOWED), "-nomouse +map fog_preview +crosshair 0" +
                 " +fog_override " + fog_override +
                 " +fog_enable " + fog_enabled +
                 " +fog_start " + fog_start +

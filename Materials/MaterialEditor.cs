@@ -58,7 +58,7 @@ namespace source_modding_tool
                 File.Copy(newPath, newPath.Replace(sourcePath, modPath), true);
 
             instance = new Instance(launcher, panelControl1);
-            instance.Start("-nomouse +map material_preview +crosshair 0");
+            instance.Start(new RunPreset(RunMode.WINDOWED), "-nomouse +map material_preview +crosshair 0");
             this.ActiveControl = null;
 
             isPreviewing = true;

@@ -21,6 +21,16 @@ namespace source_modding_tool.SourceSDK
         public string exePath = "";
         public string command;
 
+        public RunPreset()
+        {
+
+        }
+
+        public RunPreset(int runMode) : this()
+        {
+            this.runMode = runMode;
+        }
+
         public string GetArguments(Launcher launcher, Control parent)
         {
             Game game = launcher.GetCurrentGame();

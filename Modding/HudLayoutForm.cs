@@ -100,7 +100,7 @@ namespace source_modding_tool
         private void startPreview()
         {
             instance = new Instance(launcher, panelControl1);
-            instance.Start("-nomouse +map hud_preview");
+            instance.Start(new RunPreset(RunMode.WINDOWED), "-nomouse +map hud_preview");
             this.ActiveControl = null;
 
             isPreviewing = true;

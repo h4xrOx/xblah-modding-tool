@@ -70,12 +70,16 @@ namespace source_modding_tool.SourceSDK
 
         public void Resize()
         {
-            if (modProcess != null)
+            try
             {
-                //Command("-width " + parent.Width + " -height " + parent.Height);
-                //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
-                Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
+                if (modProcess != null)
+                {
+                    //Command("-width " + parent.Width + " -height " + parent.Height);
+                    //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
+                    Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
+                }
             }
+            catch (Exception) { }
         }
 
         public void KillExistant()
@@ -86,151 +90,7 @@ namespace source_modding_tool.SourceSDK
             }
         }
 
-        public Process Start()
-        {
-            return Start("");
-        }
-
-        public Process Start(string command)
-        {
-            isLoading = true;
-            KillExistant();
-
-            Game game = launcher.GetCurrentGame();
-            string modPath = launcher.GetCurrentMod().installPath;
-            string modFolder = new DirectoryInfo(modPath).Name;
-
-            string exePath = launcher.GetCurrentGame().getExePath();
-
-            modProcess = new Process();
-            modProcess.StartInfo.FileName = exePath;
-
-            Point location = parent.PointToScreen(Point.Empty);
-
-            switch (game.engine)
-            {
-                case Engine.SOURCE:
-                    modProcess.StartInfo.Arguments = "-game \"" +
-                    modPath +
-                    "\" -windowed -noborder -novid 0" +
-                    " -x " + location.X +
-                    " -y " + location.Y +
-                    " -width " + parent.Width +
-                    " -height " + parent.Height +
-                    " -multirun " +
-                    command;
-                    break;
-                case Engine.SOURCE2:
-                    modProcess.StartInfo.Arguments = " -game " + modFolder + " -windowed -noborder -vr_enable_fake_vr_test" +
-                    " -x " + location.X +
-                    " -y " + location.Y +
-                    " -width " + parent.Width +
-                    " -height " + parent.Height +
-                    " " + command;
-                    break;
-                case Engine.GOLDSRC:
-                    modProcess.StartInfo.Arguments = "-game " +
-                    modFolder +
-                    " -windowed -noborder" +
-                    " -x " + location.X +
-                    " -y " + location.Y +
-                    " -width " + parent.Width +
-                    " -height " + parent.Height +
-                    command;
-                    break;
-            }
-            modProcess.Start();
-
-            AttachProcessTo(modProcess, parent);
-            isLoading = false;
-
-            return modProcess;
-        }
-
-        public Process StartFullScreen()
-        {
-            return StartFullScreen("");
-        }
-
-        public Process StartFullScreen(string command)
-        {
-            isLoading = true;
-            Game game = launcher.GetCurrentGame();
-            string modPath = launcher.GetCurrentMod().installPath;
-            string modFolder = new DirectoryInfo(modPath).Name;
-
-            Debug.Write(modPath);
-
-            string exePath = launcher.GetCurrentGame().getExePath();
-
-            modProcess = new Process();
-            modProcess.StartInfo.FileName = exePath;
-
-            switch (game.engine)
-            {
-                case Engine.SOURCE:
-                    modProcess.StartInfo.Arguments = "-game \"" +
-                    modPath +
-                    "\" -fullscreen -width " +
-                    Screen.PrimaryScreen.Bounds.Width +
-                    " -height " +
-                    Screen.PrimaryScreen.Bounds.Height +
-                    " " + command;
-                    break;
-                case Engine.SOURCE2:
-                    modProcess.StartInfo.Arguments = "-game " + modFolder + " -fullscreen -vr_enable_fake_vr_test -width " +
-                    Screen.PrimaryScreen.Bounds.Width +
-                    " -height " +
-                    Screen.PrimaryScreen.Bounds.Height +
-                    " " + command;
-                    break;
-                case Engine.GOLDSRC:
-                    modProcess.StartInfo.Arguments = "-game " +
-                    modFolder +
-                    " -fullscreen -width " +
-                    Screen.PrimaryScreen.Bounds.Width +
-                    " -height " +
-                    Screen.PrimaryScreen.Bounds.Height +
-                    " " + command;
-                    break;
-            }
-            
-            modProcess.Start();
-            modProcess.EnableRaisingEvents = true;
-            modProcess.WaitForInputIdle();
-            isLoading = false;
-
-            return modProcess;
-        }
-
-        public Process StartVR()
-        {
-            return StartVR("");
-        }
-
-        public Process StartVR(string command)
-        {
-            isLoading = true;
-            string modPath = launcher.GetCurrentMod().installPath;
-            string modFolder = new DirectoryInfo(modPath).Name;
-
-            Debug.Write(modPath);
-
-            string exePath = launcher.GetCurrentGame().getExePath();
-
-            modProcess = new Process();
-            modProcess.StartInfo.FileName = exePath;
-            modProcess.StartInfo.Arguments = "-vr -game " + modFolder + " " + command;
-            modProcess.Start();
-            modProcess.EnableRaisingEvents = true;
-            modProcess.WaitForInputIdle();
-
-
-            isLoading = false;
-            return modProcess;
-        }
-
-        public Process StartExpert(RunPreset runPreset, string command)
+        public Process Start(RunPreset runPreset, string command)
         {
             isLoading = true;
             KillExistant();
@@ -273,7 +133,7 @@ namespace source_modding_tool.SourceSDK
                 {
                     // Just wait until the window is created. Bad, right?
                 }
-                //RemoveBorders(modProcess.MainWindowHandle);
+                RemoveBorders(modProcess.MainWindowHandle);
                 Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
 
                 Resize();

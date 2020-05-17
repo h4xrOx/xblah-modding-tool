@@ -123,7 +123,7 @@ namespace source_modding_tool
                             RunDialog runDialog = new RunDialog(launcher);
                             if (runDialog.ShowDialog() == DialogResult.OK)
                             {
-                                Run(runDialog.runPreset.runMode, string.Join(" ", new string[] { runDialog.commands, "+map " + mapName }));
+                                Run(runDialog.runPreset, string.Join(" ", new string[] { runDialog.commands, "+map " + mapName }));
                             }
                         }
                     }
@@ -262,23 +262,13 @@ namespace source_modding_tool
             }
         }
 
-        private void Run()
-        {
-            Run(RunMode.DEFAULT);
-        }
-
-        private void Run(int runMode)
-        {
-            Run(runMode, "");
-        }
-
-        private void ExpertRun(RunPreset runPreset, string command)
+        private void Run(RunPreset runPreset, string command)
         {
             instance = new Instance(launcher, panel1);
             updateBackground();
             Application.DoEvents();
 
-            instance.StartExpert(runPreset, command);
+            instance.Start(runPreset, command);
 
             if (runPreset.runMode == RunMode.WINDOWED && (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2))
             {
@@ -290,76 +280,8 @@ namespace source_modding_tool
 
         private void Run(int runMode, string command)
         {
-            switch (runMode)
-            {
-                case RunMode.DEFAULT:
-                    {
-                        instance = new Instance(launcher, panel1);
-                        updateBackground();
-                        Application.DoEvents();
-
-                        switch (launcher.GetCurrentGame().engine)
-                        {
-                            case Engine.SOURCE:
-                                instance.StartFullScreen(command);
-                                break;
-                            case Engine.SOURCE2:
-                                instance.StartVR(command);
-                                break;
-                            case Engine.GOLDSRC:
-                                instance.StartFullScreen(command);
-                                break;
-                        }
-
-
-                        FormBorderStyle = FormBorderStyle.Fixed3D;
-                        MaximizeBox = false;
-                        modStarted();
-                    }
-                    break;
-                case RunMode.FULLSCREEN:
-                    {
-                        instance = new Instance(launcher, panel1);
-                        updateBackground();
-                        Application.DoEvents();
-
-                        instance.StartFullScreen(command);
-
-                        modStarted();
-                    }
-                    break;
-                case RunMode.WINDOWED:
-                    {
-                        instance = new Instance(launcher, panel1);
-                        updateBackground();
-                        Application.DoEvents();
-
-                        instance.Start(command);
-                        if (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2)
-                        {
-                            FormBorderStyle = FormBorderStyle.Fixed3D;
-                            MaximizeBox = false;
-                        }
-
-                        modStarted();
-                    }
-                    break;
-                case RunMode.VR:
-                    {
-                        instance = new Instance(launcher, panel1);
-                        updateBackground();
-                        Application.DoEvents();
-
-                        instance.StartVR(command);
-
-                        FormBorderStyle = FormBorderStyle.Fixed3D;
-                        MaximizeBox = false;
-
-
-                        modStarted();
-                    }
-                    break;
-            }
+            RunPreset preset = new RunPreset(runMode);
+            Run(preset, command);
         }
 
         private void menuModdingRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -367,25 +289,25 @@ namespace source_modding_tool
             // Run
             if (e.Item == toolsRun)
             {
-                Run();
+                Run(RunMode.DEFAULT, "");
             }
 
             // Run fullscreen
             if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
             {
-                Run(RunMode.FULLSCREEN);
+                Run(RunMode.FULLSCREEN, "");
             }
 
             // Run Windowed
             else if (e.Item == menuModdingRunWindowed || e.Item == toolsRunPopupRunWindowed)
             {
-                Run(RunMode.WINDOWED);
+                Run(RunMode.WINDOWED, "");
             }
 
             // Run VR
             if (e.Item == menuModdingRunVR || e.Item == toolsRunPopupRunVR)
             {
-                Run(RunMode.VR);
+                Run(RunMode.VR, "");
             }
 
             // Expert mode
@@ -396,7 +318,7 @@ namespace source_modding_tool
                 {
                     string arguments = dialog.commands;
                     RunPreset runPreset = dialog.runPreset;
-                    ExpertRun(runPreset, arguments);
+                    Run(runPreset, arguments);
                 }
             }
         }
