@@ -79,7 +79,6 @@
             this.galleryControl.Gallery.ClearSelectionOnClickEmptySpace = true;
             galleryItemGroup1.Caption = "Maps";
             galleryItem1.Caption = "Item1";
-            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.folder;
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1});
             this.galleryControl.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {

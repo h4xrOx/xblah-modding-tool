@@ -847,30 +847,86 @@
     <None Include="Assets\Misc\background_loading.png" />
     <Content Include="Assets\Misc\folder.png" />
     <Content Include="Assets\Misc\noScreenshots.png" />
-    <Content Include="Assets\Posters\bms.png" />
-    <Content Include="Assets\Posters\bms_notinstalled.png" />
-    <None Include="Assets\Posters\bshift.png" />
-    <None Include="Assets\Posters\bshift_notinstalled.png" />
-    <Content Include="Assets\Posters\ep2.png" />
-    <Content Include="Assets\Posters\ep2_notinstalled.png" />
-    <Content Include="Assets\Posters\episodic.png" />
-    <Content Include="Assets\Posters\episodic_notinstalled.png" />
-    <None Include="Assets\Posters\hl.png" />
-    <Content Include="Assets\Posters\hl2.png" />
-    <Content Include="Assets\Posters\hl2mp.png" />
-    <Content Include="Assets\Posters\hl2mp_notinstalled.png" />
-    <Content Include="Assets\Posters\hl2_notinstalled.png" />
-    <None Include="Assets\Posters\hla_notinstalled.png" />
-    <None Include="Assets\Posters\hla.png" />
-    <None Include="Assets\Posters\hl_notinstalled.png" />
-    <None Include="Assets\Posters\op4.png" />
-    <None Include="Assets\Posters\op4_notinstalled.png" />
-    <Content Include="Assets\Posters\portal.png" />
-    <Content Include="Assets\Posters\portal2.png" />
-    <Content Include="Assets\Posters\portal2_notinstalled.png" />
-    <Content Include="Assets\Posters\portal_notinstalled.png" />
     <None Include="Assets\Misc\background.png" />
     <Content Include="icon.ico" />
+    <None Include="Resources\Assets\Misc\background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Misc\background_loading.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Assets\Misc\folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Misc\noScreenshots.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\bms.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\bms_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Assets\Posters\bshift.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Posters\bshift_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Assets\Posters\ep2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\ep2_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\episodic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\episodic_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Assets\Posters\valve.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Posters\valve_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Assets\Posters\hl2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\hl2mp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\hl2mp_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\hl2_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Assets\Posters\hlvr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Posters\hlvr_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Posters\gearbox.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Assets\Posters\gearbox_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Assets\Posters\portal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\portal2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\portal2_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Posters\portal_notinstalled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1127,9 +1183,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"

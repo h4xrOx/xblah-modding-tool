@@ -146,32 +146,25 @@
             galleryItemGroup1.Caption = "Games";
             galleryItem1.Caption = "Half-Life: Alyx";
             galleryItem1.Enabled = false;
-            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl_notinstalled;
             galleryItem1.Tag = "goldsrc/Half-Life/valve";
             galleryItem2.Caption = "Half-Life 2";
             galleryItem2.Enabled = false;
-            galleryItem2.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2_notinstalled;
             galleryItem2.Tag = "source/Source SDK Base 2013 Singleplayer/hl2";
             galleryItem3.Caption = "Half-Life 2: Deathmatch";
             galleryItem3.Enabled = false;
-            galleryItem3.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2mp_notinstalled;
             galleryItem3.Tag = "source/Source SDK Base 2013 Multiplayer/hl2mp";
             galleryItem4.Caption = "Half-Life 2: Episode One";
             galleryItem4.Enabled = false;
             galleryItem4.Hint = "hey";
-            galleryItem4.ImageOptions.Image = global::source_modding_tool.Properties.Resources.episodic_notinstalled;
             galleryItem4.Tag = "source/Source SDK Base 2013 Singleplayer/episodic";
             galleryItem5.Caption = "Half-Life 2: Episode Two";
             galleryItem5.Enabled = false;
-            galleryItem5.ImageOptions.Image = global::source_modding_tool.Properties.Resources.ep2_notinstalled;
             galleryItem5.Tag = "source/Source SDK Base 2013 Singleplayer/ep2";
             galleryItem6.Caption = "Portal";
             galleryItem6.Enabled = false;
-            galleryItem6.ImageOptions.Image = global::source_modding_tool.Properties.Resources.portal_notinstalled;
             galleryItem6.Tag = "source/Portal/portal";
             galleryItem7.Caption = "Half-Life: Alyx";
             galleryItem7.Enabled = false;
-            galleryItem7.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hla_notinstalled;
             galleryItem7.Tag = "source2/Half-Life Alyx/hlvr";
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,

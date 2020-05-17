@@ -34,46 +34,17 @@ namespace source_modding_tool
             List<string> gamesList = launcher.GetGamesList().Keys.ToList();
             foreach (DevExpress.XtraBars.Ribbon.GalleryItem item in gameGallery.Gallery.GetAllItems())
             {
+                string branchName = item.Tag.ToString().Split('/')[2];
+
                 if (gamesList.Contains(item.Tag.ToString().Split('/')[1]))
                 {
                     item.Enabled = true;
-                    switch (item.Tag.ToString().Split('/')[2])
-                    {
-                        case "hl2":
-                            item.ImageOptions.Image = Resources.hl2;
-                            break;
-                        case "episodic":
-                            item.ImageOptions.Image = Resources.episodic;
-                            break;
-                        case "ep2":
-                            item.ImageOptions.Image = Resources.ep2;
-                            break;
-                        case "portal":
-                            item.ImageOptions.Image = Resources.portal;
-                            break;
-                        case "portal2":
-                            item.ImageOptions.Image = Resources.portal2;
-                            break;
-                        case "hl2mp":
-                            item.ImageOptions.Image = Resources.hl2mp;
-                            break;
-                        case "bms":
-                            item.ImageOptions.Image = Resources.bms;
-                            item.Enabled = false;
-                            break;
-                        case "hlvr":
-                            item.ImageOptions.Image = Resources.hla;
-                            break;
-                        case "valve":
-                            item.ImageOptions.Image = Resources.hl;
-                            break;
-                        case "gearbox":
-                            item.ImageOptions.Image = Resources.op4;
-                            break;
-                        case "bshift":
-                            item.ImageOptions.Image = Resources.bshift;
-                            break;
-                    }
+                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + ".png"))
+                        item.ImageOptions.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + ".png");
+                } else
+                {
+                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + "_notinstalled.png"))
+                        item.ImageOptions.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + "_notinstalled.png");
                 }
             }
 

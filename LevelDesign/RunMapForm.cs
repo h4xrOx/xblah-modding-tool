@@ -150,7 +150,7 @@ namespace source_modding_tool
             {
                 string mapName = map.Key;
 
-                Image bitmap = Resources.folder;
+                Image bitmap = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Misc\\folder.png");
 
                 string mapDescription = string.Empty;
                 GalleryItem item = new GalleryItem(bitmap, mapName, mapDescription);
@@ -172,7 +172,7 @@ namespace source_modding_tool
                         .Select(f => f.Name)
                         .ToList();
 
-                Image bitmap = Resources.noScreenshots;
+                Image bitmap = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Misc\\noScreenshots.png");
                 foreach(string screenshot in screenshots)
                 {
                     int i;
