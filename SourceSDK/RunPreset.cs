@@ -52,6 +52,14 @@ namespace source_modding_tool.SourceSDK
                                 " -height " + parent.Height +
                                 " " + command;
                                 break;
+                            case Engine.GOLDSRC:
+                                arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder" +
+                                 " -x " + location.X +
+                                " -y " + location.Y +
+                                " -width " + parent.Width +
+                                " -height " + parent.Height +
+                                " " + command;
+                                break;
                         }
                     }
                     break;
@@ -75,6 +83,14 @@ namespace source_modding_tool.SourceSDK
                                 " -height " + Screen.PrimaryScreen.Bounds.Height +
                                 " " + command;
                                 break;
+                            case Engine.GOLDSRC:
+                                arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -fullscreen" +
+                                " -x 0" +
+                                " -y 0" +
+                                " -width " + Screen.PrimaryScreen.Bounds.Width +
+                                " -height " + Screen.PrimaryScreen.Bounds.Height +
+                                " " + command;
+                                break;
                         }
                     }
                     break;
@@ -91,6 +107,14 @@ namespace source_modding_tool.SourceSDK
                             break;
                         case Engine.SOURCE2:
                             arguments = " -game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
+                            " -x " + location.X +
+                            " -y " + location.Y +
+                            " -width " + parent.Width +
+                            " -height " + parent.Height +
+                            " " + command;
+                            break;
+                        case Engine.GOLDSRC:
+                            arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder" +
                             " -x " + location.X +
                             " -y " + location.Y +
                             " -width " + parent.Width +

@@ -42,6 +42,11 @@ namespace source_modding_tool
                             // It's a Source 2 game
                             games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
                         }
+                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\valve\\dlls\\hl.dll") && !games.ContainsKey(game))
+                        {
+                            // It's a Goldsrc game
+                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.GOLDSRC));
+                        }
                     }
             }
 

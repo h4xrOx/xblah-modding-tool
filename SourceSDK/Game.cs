@@ -44,6 +44,14 @@ namespace source_modding_tool
                     if (name == "Half-Life Alyx")
                         return 546560;
                     break;
+                case Engine.GOLDSRC:
+                    string modName = "";
+                    if (File.Exists(gamePath + "\\" + modName + "\\steam_appid.txt"))
+                    {
+                        string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
+                        return int.Parse(steam_appid);
+                    }
+                    break;
             }
             return -1;
         }
@@ -60,7 +68,7 @@ namespace source_modding_tool
             int gameAppId = GetAppId();
             string gamePath = installPath;
 
-            if (gameAppId == -1 || gamePath == null)
+            if ((gameAppId == -1 && engine != Engine.GOLDSRC) || gamePath == null)
                 return mods;
 
             List<string> paths = new List<string>();
@@ -75,6 +83,10 @@ namespace source_modding_tool
                 case Engine.SOURCE2:
                     foreach (string path in GetAllBaseGameinfoFolders())
                         paths.Add(gamePath + "\\game\\" + path);
+                    break;
+                case Engine.GOLDSRC:
+                    foreach (string path in GetAllBaseGameinfoFolders())
+                        paths.Add(gamePath + "\\" + path);
                     break;
             }
 
@@ -153,7 +165,43 @@ namespace source_modding_tool
                                 XtraMessageBox.Show("Could not load mod " + path + ". It's gameinfo.gi is broken.");
                             }
                         }
-                        
+                        break;
+                    case Engine.GOLDSRC:
+                        {
+                            SourceSDK.KeyValue gameInfo = SourceSDK.Config.readChunkfile(path + "\\liblist.gam");
+
+                            if (gameInfo != null)
+                            {
+
+                                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                                //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
+    
+                                if (path.Contains(gamePath))
+                                {
+                                    bool containsMod = false;
+                                    string newModPath = new FileInfo(path).Name;
+                                    foreach (Mod mod in mods.Values)
+                                    {
+                                        if (new FileInfo(mod.installPath).Name == newModPath)
+                                        {
+                                            containsMod = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!containsMod)
+                                    {
+                                        while (mods.Keys.Contains(name))
+                                            name = name + "_";
+                                        mods.Add(name, new Mod(this, name, path));
+                                    }
+                                }
+                                
+                            }
+                            else
+                            {
+                                XtraMessageBox.Show("Could not load mod " + path + ". It's liblist.gam is broken.");
+                            }
+                        }
                         break;
                 }
                 
@@ -191,8 +239,17 @@ namespace source_modding_tool
                             if (File.Exists(installPath + "\\game\\" + gameBranch + "\\gameinfo.gi"))
                                 mods.Add(gameBranch);
                         }
+                    break;
+                case Engine.GOLDSRC:
+                    foreach (String path in Directory.GetDirectories(installPath))
+                    {
+                        String gameBranch = new FileInfo(path).Name;
 
-                   
+                        if (File.Exists(installPath + "\\" + gameBranch + "\\liblist.gam"))
+                        {
+                            mods.Add(gameBranch);
+                        }
+                    }
                     break;
             }
             
@@ -258,6 +315,8 @@ namespace source_modding_tool
                     break;
                 case Engine.SOURCE2:
                     return installPath + "\\game\\bin\\win64\\hlnonvr.exe";
+                case Engine.GOLDSRC:
+                    return installPath + "\\hl.exe";
             }
             return string.Empty;
         }

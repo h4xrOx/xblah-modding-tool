@@ -615,8 +615,22 @@ namespace source_modding_tool
 
                     break;
                 case Engine.GOLDSRC:
-                    toolsRun.Enabled = false;
-                    menuModding.Enabled = false;
+                    toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        toolsRunPopupIngameTools.Enabled = false;
+                        toolsRunPopupRunFullscreen.Enabled = true;
+                        toolsRunPopupRunVR.Enabled = false;
+                        toolsRunPopupRunWindowed.Enabled = true;
+                    menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuModdingRunFullscreen.Enabled = true;
+                        menuModdingRunWindowed.Enabled = true;
+                        menuModdingRunVR.Enabled = false;
+                        menuModdingIngameTools.Enabled = false;
+                        menuModdingClean.Enabled = false;
+                        menuModdingImport2.Enabled = false;
+                        menuModdingSettings.Enabled = false;
+                        menuModdingHudEditor.Enabled = false;
+                        menuModdingFileExplorer.Enabled = false;
+                        menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = false;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;

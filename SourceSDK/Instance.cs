@@ -127,6 +127,16 @@ namespace source_modding_tool.SourceSDK
                     " -height " + parent.Height +
                     " " + command;
                     break;
+                case Engine.GOLDSRC:
+                    modProcess.StartInfo.Arguments = "-game " +
+                    modFolder +
+                    " -windowed -noborder" +
+                    " -x " + location.X +
+                    " -y " + location.Y +
+                    " -width " + parent.Width +
+                    " -height " + parent.Height +
+                    command;
+                    break;
             }
             modProcess.Start();
 
@@ -168,6 +178,15 @@ namespace source_modding_tool.SourceSDK
                     break;
                 case Engine.SOURCE2:
                     modProcess.StartInfo.Arguments = "-game " + modFolder + " -fullscreen -vr_enable_fake_vr_test -width " +
+                    Screen.PrimaryScreen.Bounds.Width +
+                    " -height " +
+                    Screen.PrimaryScreen.Bounds.Height +
+                    " " + command;
+                    break;
+                case Engine.GOLDSRC:
+                    modProcess.StartInfo.Arguments = "-game " +
+                    modFolder +
+                    " -fullscreen -width " +
                     Screen.PrimaryScreen.Bounds.Width +
                     " -height " +
                     Screen.PrimaryScreen.Bounds.Height +
