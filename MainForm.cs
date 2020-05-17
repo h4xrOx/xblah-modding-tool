@@ -325,8 +325,6 @@ namespace source_modding_tool
 
                         instance.StartFullScreen(command);
 
-                        FormBorderStyle = FormBorderStyle.Fixed3D;
-                        MaximizeBox = false;
                         modStarted();
                     }
                     break;
@@ -336,9 +334,12 @@ namespace source_modding_tool
                         updateBackground();
                         Application.DoEvents();
 
-                        FormBorderStyle = FormBorderStyle.Fixed3D;
-                        MaximizeBox = false;
                         instance.Start(command);
+                        if (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2)
+                        {
+                            FormBorderStyle = FormBorderStyle.Fixed3D;
+                            MaximizeBox = false;
+                        }
 
                         modStarted();
                     }
@@ -351,11 +352,9 @@ namespace source_modding_tool
 
                         instance.StartVR(command);
 
-                        if (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2)
-                        {
-                            FormBorderStyle = FormBorderStyle.Fixed3D;
-                            MaximizeBox = false;
-                        }
+                        FormBorderStyle = FormBorderStyle.Fixed3D;
+                        MaximizeBox = false;
+
 
                         modStarted();
                     }
