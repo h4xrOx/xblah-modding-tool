@@ -306,6 +306,9 @@ namespace source_modding_tool
                             case Engine.SOURCE2:
                                 instance.StartVR(command);
                                 break;
+                            case Engine.GOLDSRC:
+                                instance.StartFullScreen(command);
+                                break;
                         }
 
 
