@@ -99,8 +99,8 @@ namespace source_modding_tool
                               textInstance.EditValue != null ? textInstance.EditValue.ToString() : string.Empty);
             gameinfo.setValue("supportsvr", switchVR.IsOn ? "1" : "0");
 
-            SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
-            searchPathsKV.clearChildren();
+            //SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
+            //searchPathsKV.clearChildren();
             /*foreach(String[] searchPath in searchPaths)
             {
                 searchPathsKV.addChild(new SourceSDK.KeyValue(searchPath[0], searchPath[1]));
