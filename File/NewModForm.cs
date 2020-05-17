@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using source_modding_tool.Properties;
+using System.Diagnostics;
 
 namespace source_modding_tool
 {

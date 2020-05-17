@@ -12,10 +12,11 @@ namespace source_modding_tool.SourceSDK
     public class KeyValue
     {
         private List<KeyValue> children = null;
-
         private Dictionary<string, List<KeyValue>> childrenIndex = null;
+
         private string key = string.Empty;
         private string value = null;
+        private string comment = string.Empty;
 
         public KeyValue(string key)
         {
@@ -28,43 +29,6 @@ namespace source_modding_tool.SourceSDK
         {
             this.key = key;
             this.value = value;
-        }
-
-        private static List<string> writeChunkFileTraverse(KeyValue node, int level, bool quotes)
-        {
-            List<string> lines = new List<string>();
-
-            string tabs = string.Empty;
-            for(int i = 0; i < level; i++)
-            {
-                tabs = tabs + "\t";
-            }
-
-            if(node.isParentKey())
-            {
-                if(node.key != string.Empty)
-                {
-                    lines.Add(tabs + (quotes ? "\"" : string.Empty) + node.key + (quotes ? "\"" : string.Empty));
-                    lines.Add(tabs + "{");
-                }
-
-                foreach(KeyValue entry in node.getChildren())
-                    lines.AddRange(writeChunkFileTraverse(entry, level + 1, quotes));
-
-                if(node.key != string.Empty)
-                    lines.Add(tabs + "}");
-            } else if(node.getValue() != null)
-            {
-                lines.Add(tabs +
-                    (quotes ? "\"" : string.Empty) +
-                    node.key +
-                    (quotes ? "\"" : string.Empty) +
-                    "\t\"" +
-                    node.value +
-                    "\"");
-            }
-
-            return lines;
         }
 
         public void addChild(KeyValue value)
@@ -156,100 +120,7 @@ namespace source_modding_tool.SourceSDK
             return string.Empty;
         }
 
-        public bool isParentKey() { return (childrenIndex != null && value == null); }
-
-        public static KeyValue readChunkfile(String path)
-        {
-            return readChunkfile(path, false);
-        }
-
-        public static KeyValue readChunkfile(String path, bool hasOSInfo)
-        {
-            // Parse Valve chunkfile format
-            KeyValue root = null;
-            List<KeyValue> list = new List<KeyValue>();
-            Stack<KeyValuePair<string, KeyValue>> stack = new Stack<KeyValuePair<string, KeyValue>>();
-
-            if(File.Exists(path))
-            {
-                try
-                {
-                    using (StreamReader r = new StreamReader(path))
-                    {
-                        while (r.Peek() >= 0)
-                        {
-                            String line = r.ReadLine();
-                            line = line.Trim();
-                            line = Regex.Replace(line, @"\s+", " ");
-
-                            // Ignore the commented part of the line
-                            if (line.StartsWith("//"))
-                                continue;
-
-                            string[] words = splitByWords(line);
-
-                            if (words.Length > 0 && words[0].Contains("{")) // It opens a group
-                            {
-                                // We actually don't need to do anything.
-                            }
-                            else if (words.Length > 0 && words[0].Contains("}"))    // It closes a group
-                            {
-                                KeyValuePair<string, KeyValue> child = stack.Pop();
-                                if (stack.Count > 0)
-                                    stack.Peek().Value.addChild(child.Key, child.Value);
-                                else
-                                    list.Add(child.Value);
-                                //root = child.Value;
-                            }
-                            else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
-                            {
-                                line = line.Replace("\"", string.Empty).ToLower();
-                                KeyValue parent = new KeyValue(line);
-                                stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
-                            }
-                            else if (words.Length >= 2)
-                            {
-                                // Workaround: Valve decided to use spaces in some .res files to identify the OS the key is used by.
-                                // So, this code will result in a false positive. Right now, the only example I have is of this kind:
-                                // HudHealth [$WIN32]
-                                // So, the workaround will be if the second word starts and ends with brackets
-                                if (hasOSInfo && words[1].StartsWith("[") && words[1].EndsWith("]")) // It's a parent key with a target OS
-                                {
-                                    line = line.Replace("\"", string.Empty);
-                                    KeyValue parent = new KeyValue(line);
-                                    stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
-                                }
-                                else // It's a value key
-                                {
-                                    string key = words[0].Replace("\"", string.Empty).ToLower();
-                                    KeyValue value = new KeyValue(key, words[1]);
-                                    stack.Peek().Value.addChild(key, value);
-                                }
-
-                            }
-                        }
-                    }
-                } catch (Exception)
-                {
-                    XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
-                    return null;
-                }
-            } else
-            {
-                XtraMessageBox.Show("Could not find file \"" + path + "\" to read.");
-                return null;
-            }
-
-            if(list.Count > 1)
-            {
-                root = new KeyValue(string.Empty);
-                foreach(KeyValue keyValue in list)
-                    root.addChild(keyValue);
-
-                return root;
-            } else
-                return list[0];;
-        }
+        public bool isParentKey() { return (childrenIndex != null && key != string.Empty && value == null); }
 
         public void setValue(string value)
         {
@@ -311,6 +182,166 @@ namespace source_modding_tool.SourceSDK
             List<string> lines = writeChunkFileTraverse(root, 0, quotes);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllLines(path, lines, encoding);
+        }
+
+        private static List<string> writeChunkFileTraverse(KeyValue node, int level, bool quotes)
+        {
+            List<string> lines = new List<string>();
+
+            string tabs = string.Empty;
+            for (int i = 0; i < level; i++)
+            {
+                tabs = tabs + "\t";
+            }
+
+            if (node.isParentKey()) // It's a parent key
+            {
+                if (node.key != string.Empty)
+                {
+                    lines.Add(tabs + (quotes ? "\"" : string.Empty) + node.key + (quotes ? "\"" : string.Empty));
+                    lines.Add(tabs + "{");
+                }
+
+                foreach (KeyValue entry in node.getChildren())
+                    lines.AddRange(writeChunkFileTraverse(entry, level + 1, quotes));
+
+                if (node.key != string.Empty)
+                    lines.Add(tabs + "}");
+            }
+            else if (node.getKey() != string.Empty && node.getValue() != null)   // It's a value key
+            {
+                string line = tabs;
+                if (node.key != string.Empty)
+                {
+                    line = line + 
+                        (quotes ? "\"" : string.Empty) +
+                        node.key +
+                        (quotes ? "\"" : string.Empty) +
+                        "\t\"" +
+                        node.value +
+                        "\"";
+                }
+                if (node.comment != string.Empty)
+                {
+                    if (node.key != string.Empty)
+                        line = line + "\t";
+
+                    line = line + "//" + node.comment;
+                }
+
+                lines.Add(line);
+            }
+            else if(node.comment != string.Empty)   // Comment line
+            {
+                string line = tabs + "//" + node.comment;
+                lines.Add(line);
+            } else if(node.key == string.Empty)     // Blank line
+            {
+                lines.Add("");
+            }
+
+            return lines;
+        }
+
+        public static KeyValue readChunkfile(String path, bool hasOSInfo)
+        {
+            // Parse Valve chunkfile format
+            KeyValue root = null;
+            List<KeyValue> list = new List<KeyValue>();
+            Stack<KeyValuePair<string, KeyValue>> stack = new Stack<KeyValuePair<string, KeyValue>>();
+
+            if (File.Exists(path))
+            {
+                try
+                {
+                    using (StreamReader r = new StreamReader(path))
+                    {
+                        while (r.Peek() >= 0)
+                        {
+                            String line = r.ReadLine();
+                            line = line.Trim();
+                            line = Regex.Replace(line, @"\s+", " ");
+
+                            string[] words = splitByWords(line);
+
+                            if (line.StartsWith("//"))  // It's a standalone comment line
+                            {
+                                KeyValue comment = new KeyValue("");
+                                comment.comment = line.Substring(2);
+                                stack.Peek().Value.addChild(comment);
+                            } else if(words.Length == 0)    // It's a blank line
+                            {
+                                KeyValue blank = new KeyValue("");
+                                stack.Peek().Value.addChild(blank);
+                            } else if (words.Length > 0 && words[0].Contains("{")) // It opens a group
+                            {
+                                // We actually don't need to do anything.
+                            }
+                            else if (words.Length > 0 && words[0].Contains("}"))    // It closes a group
+                            {
+                                KeyValuePair<string, KeyValue> child = stack.Pop();
+                                if (stack.Count > 0)
+                                    stack.Peek().Value.addChild(child.Key, child.Value);
+                                else
+                                    list.Add(child.Value);
+                                //root = child.Value;
+                            }
+                            else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
+                            {
+                                line = line.Replace("\"", string.Empty).ToLower();
+                                KeyValue parent = new KeyValue(line);
+                                stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
+                            }
+                            else if (words.Length >= 2)
+                            {
+                                // Workaround: Valve decided to use spaces in some .res files to identify the OS the key is used by.
+                                // So, this code will result in a false positive. Right now, the only example I have is of this kind:
+                                // HudHealth [$WIN32]
+                                // So, the workaround will be if the second word starts and ends with brackets
+                                if (hasOSInfo && words[1].StartsWith("[") && words[1].EndsWith("]")) // It's a parent key with a target OS
+                                {
+                                    line = line.Replace("\"", string.Empty);
+                                    KeyValue parent = new KeyValue(line);
+                                    stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
+                                }
+                                else // It's a value key
+                                {
+                                    string key = words[0].Replace("\"", string.Empty).ToLower();
+                                    KeyValue value = new KeyValue(key, words[1]);
+                                    stack.Peek().Value.addChild(key, value);
+                                }
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
+                    return null;
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Could not find file \"" + path + "\" to read.");
+                return null;
+            }
+
+            if (list.Count > 1)
+            {
+                root = new KeyValue(string.Empty);
+                foreach (KeyValue keyValue in list)
+                    root.addChild(keyValue);
+
+                return root;
+            }
+            else
+                return list[0];
+        }
+
+        public static KeyValue readChunkfile(String path)
+        {
+            return readChunkfile(path, false);
         }
     }
 }

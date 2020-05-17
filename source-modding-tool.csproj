@@ -844,10 +844,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Misc\background_loading.png" />
-    <Content Include="Assets\Misc\folder.png" />
-    <Content Include="Assets\Misc\noScreenshots.png" />
-    <None Include="Assets\Misc\background.png" />
     <Content Include="icon.ico" />
     <None Include="Resources\Assets\Misc\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
