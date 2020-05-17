@@ -26,15 +26,38 @@ namespace source_modding_tool
 
         public static void RunHammer(Mod mod)
         {
-            CopySlartibartysHammer(mod.game);
-            CreateGameConfig(mod);
+            switch(mod.game.engine)
+            {
+                case Engine.SOURCE:
+                    {
+                        CopySlartibartysHammer(mod.game);
+                        CreateGameConfig(mod);
 
-            string hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
+                        string hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
 
-            Process process = new Process();
-            process.StartInfo.FileName = hammerPath;
-            process.StartInfo.Arguments = string.Empty;
-            process.Start();
+                        Process process = new Process();
+                        process.StartInfo.FileName = hammerPath;
+                        process.StartInfo.Arguments = string.Empty;
+                        process.Start();
+                    }
+                    break;
+                case Engine.SOURCE2:
+                    {
+
+                    }
+                    break;
+                case Engine.GOLDSRC:
+                    {
+                        string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\hammer.exe";
+
+                        Process process = new Process();
+                        process.StartInfo.FileName = hammerPath;
+                        process.StartInfo.Arguments = string.Empty;
+                        process.Start();
+                    }
+                    break;
+            }
+
         }
 
         private static void CreatePropperConfig(Mod mod)

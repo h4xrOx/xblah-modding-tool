@@ -145,8 +145,17 @@ namespace source_modding_tool
             // Prefabs
             else if (e.Item == menuLevelDesignPrefabs)
             {
-                string gamePath = launcher.GetCurrentGame().installPath;
-                Process.Start(gamePath + "\\bin\\Prefabs");
+                switch (launcher.GetCurrentGame().engine)
+                {
+                    case Engine.SOURCE:
+                        string gamePath = launcher.GetCurrentGame().installPath;
+                        Process.Start(gamePath + "\\bin\\Prefabs");
+                        break;
+                    case Engine.GOLDSRC:
+                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\prefabs");
+                        break;
+                }
+
             }
 
             // Mapsrc
@@ -635,9 +644,9 @@ namespace source_modding_tool
                         menuLevelDesignBatchCompiler.Enabled = false;
                         menuLevelDesignCrafty.Enabled = false;
                         menuLevelDesignFogPreviewer.Enabled = false;
-                        menuLevelDesignHammer.Enabled = false;
+                        menuLevelDesignHammer.Enabled = true;
                         menuLevelDesignMapsrc.Enabled = false;
-                        menuLevelDesignPrefabs.Enabled = false;
+                        menuLevelDesignPrefabs.Enabled = true;
                         menuLevelDesignTerrainGenerator.Enabled = false;
                         menuLevelDesignRunMap.Enabled = true;
                     menuModeling.Enabled = false;
