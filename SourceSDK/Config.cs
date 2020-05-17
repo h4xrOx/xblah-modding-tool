@@ -148,5 +148,36 @@ namespace source_modding_tool.SourceSDK
             }
             return words.ToArray();
         }
+
+        public static void writeChunkFile(string path, KeyValue root) { writeChunkFile(path, root, Encoding.UTF8); }
+
+        public static void writeChunkFile(string path, KeyValue root, bool quotes)
+        { writeChunkFile(path, root, quotes, Encoding.UTF8); }
+
+        public static void writeChunkFile(string path, KeyValue root, Encoding encoding)
+        { writeChunkFile(path, root, true, encoding); }
+
+        public static void writeChunkFile(string path, KeyValue root, bool quotes, Encoding encoding)
+        {
+            List<string> lines = writeChunkFileTraverse(root, 0, quotes);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            File.WriteAllLines(path, lines, encoding);
+        }
+
+        private static List<string> writeChunkFileTraverse(KeyValue root, int level, bool quotes)
+        {
+            List<string> lines = new List<string>();
+
+            foreach(KeyValue node in root.getChildren())
+                lines.Add(
+                    (quotes ? "\"" : string.Empty) +
+                    node.getKey() +
+                    (quotes ? "\"" : string.Empty) +
+                    "\t\"" +
+                    node.getValue() +
+                    "\"");
+
+            return lines;
+        }
     }
 }

@@ -35,6 +35,7 @@
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem5 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem6 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewModForm));
             this.textFolder = new DevExpress.XtraEditors.TextEdit();
             this.createButton = new DevExpress.XtraEditors.SimpleButton();
@@ -67,7 +68,7 @@
             this.textFolder.Dock = System.Windows.Forms.DockStyle.Top;
             this.textFolder.Location = new System.Drawing.Point(0, 0);
             this.textFolder.Name = "textFolder";
-            this.textFolder.Size = new System.Drawing.Size(217, 20);
+            this.textFolder.Size = new System.Drawing.Size(350, 20);
             this.textFolder.TabIndex = 1;
             this.textFolder.EditValueChanged += new System.EventHandler(this.textFolder_EditValueChanged);
             // 
@@ -76,7 +77,7 @@
             this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.createButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.createButton.Enabled = false;
-            this.createButton.Location = new System.Drawing.Point(769, 8);
+            this.createButton.Location = new System.Drawing.Point(902, 8);
             this.createButton.Margin = new System.Windows.Forms.Padding(8);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 23);
@@ -92,13 +93,13 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(617, 2);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(217, 35);
+            this.panelControl4.Size = new System.Drawing.Size(350, 35);
             this.panelControl4.TabIndex = 1;
             // 
             // labelFolderInfo
             // 
             this.labelFolderInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelFolderInfo.Location = new System.Drawing.Point(154, 20);
+            this.labelFolderInfo.Location = new System.Drawing.Point(287, 20);
             this.labelFolderInfo.Name = "labelFolderInfo";
             this.labelFolderInfo.Size = new System.Drawing.Size(63, 13);
             this.labelFolderInfo.TabIndex = 7;
@@ -109,9 +110,9 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.createButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 273);
+            this.panelControl1.Location = new System.Drawing.Point(0, 286);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(852, 39);
+            this.panelControl1.Size = new System.Drawing.Size(985, 39);
             this.panelControl1.TabIndex = 9;
             // 
             // textModsPath
@@ -132,7 +133,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.panelControl2.Size = new System.Drawing.Size(852, 273);
+            this.panelControl2.Size = new System.Drawing.Size(985, 286);
             this.panelControl2.TabIndex = 10;
             // 
             // gameGallery
@@ -143,38 +144,43 @@
             // 
             // 
             galleryItemGroup1.Caption = "Games";
-            galleryItem1.Caption = "Half-Life 2";
+            galleryItem1.Caption = "Half-Life: Alyx";
             galleryItem1.Enabled = false;
-            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2_notinstalled;
-            galleryItem1.Tag = "source/Source SDK Base 2013 Singleplayer/hl2";
-            galleryItem2.Caption = "Half-Life 2: Episode One";
+            galleryItem1.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl_notinstalled;
+            galleryItem1.Tag = "goldsrc/Half-Life/valve";
+            galleryItem2.Caption = "Half-Life 2";
             galleryItem2.Enabled = false;
-            galleryItem2.Hint = "hey";
-            galleryItem2.ImageOptions.Image = global::source_modding_tool.Properties.Resources.episodic_notinstalled;
-            galleryItem2.Tag = "source/Source SDK Base 2013 Singleplayer/episodic";
-            galleryItem3.Caption = "Half-Life 2: Episode Two";
+            galleryItem2.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2_notinstalled;
+            galleryItem2.Tag = "source/Source SDK Base 2013 Singleplayer/hl2";
+            galleryItem3.Caption = "Half-Life 2: Deathmatch";
             galleryItem3.Enabled = false;
-            galleryItem3.ImageOptions.Image = global::source_modding_tool.Properties.Resources.ep2_notinstalled;
-            galleryItem3.Tag = "source/Source SDK Base 2013 Singleplayer/ep2";
-            galleryItem4.Caption = "Portal";
+            galleryItem3.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2mp_notinstalled;
+            galleryItem3.Tag = "source/Source SDK Base 2013 Multiplayer/hl2mp";
+            galleryItem4.Caption = "Half-Life 2: Episode One";
             galleryItem4.Enabled = false;
-            galleryItem4.ImageOptions.Image = global::source_modding_tool.Properties.Resources.portal_notinstalled;
-            galleryItem4.Tag = "source/Portal/portal";
-            galleryItem5.Caption = "Half-Life 2: Deathmatch";
+            galleryItem4.Hint = "hey";
+            galleryItem4.ImageOptions.Image = global::source_modding_tool.Properties.Resources.episodic_notinstalled;
+            galleryItem4.Tag = "source/Source SDK Base 2013 Singleplayer/episodic";
+            galleryItem5.Caption = "Half-Life 2: Episode Two";
             galleryItem5.Enabled = false;
-            galleryItem5.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hl2mp_notinstalled;
-            galleryItem5.Tag = "source/Source SDK Base 2013 Multiplayer/hl2mp";
-            galleryItem6.Caption = "Half-Life: Alyx";
+            galleryItem5.ImageOptions.Image = global::source_modding_tool.Properties.Resources.ep2_notinstalled;
+            galleryItem5.Tag = "source/Source SDK Base 2013 Singleplayer/ep2";
+            galleryItem6.Caption = "Portal";
             galleryItem6.Enabled = false;
-            galleryItem6.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hla_notinstalled;
-            galleryItem6.Tag = "source2/Half-Life Alyx/hlvr";
+            galleryItem6.ImageOptions.Image = global::source_modding_tool.Properties.Resources.portal_notinstalled;
+            galleryItem6.Tag = "source/Portal/portal";
+            galleryItem7.Caption = "Half-Life: Alyx";
+            galleryItem7.Enabled = false;
+            galleryItem7.ImageOptions.Image = global::source_modding_tool.Properties.Resources.hla_notinstalled;
+            galleryItem7.Tag = "source2/Half-Life Alyx/hlvr";
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,
             galleryItem2,
             galleryItem3,
             galleryItem4,
             galleryItem5,
-            galleryItem6});
+            galleryItem6,
+            galleryItem7});
             this.gameGallery.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
             this.gameGallery.Gallery.ImageSize = new System.Drawing.Size(111, 166);
@@ -183,7 +189,7 @@
             this.gameGallery.Gallery.ItemCheckedChanged += new DevExpress.XtraBars.Ribbon.GalleryItemEventHandler(this.gameGallery_ItemCheckedChanged);
             this.gameGallery.Location = new System.Drawing.Point(8, 8);
             this.gameGallery.Name = "gameGallery";
-            this.gameGallery.Size = new System.Drawing.Size(836, 226);
+            this.gameGallery.Size = new System.Drawing.Size(969, 239);
             this.gameGallery.TabIndex = 1;
             this.gameGallery.Text = "galleryGames";
             // 
@@ -191,16 +197,16 @@
             // 
             this.galleryControlClient1.GalleryControl = this.gameGallery;
             this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
-            this.galleryControlClient1.Size = new System.Drawing.Size(815, 222);
+            this.galleryControlClient1.Size = new System.Drawing.Size(948, 235);
             // 
             // panelControl5
             // 
             this.panelControl5.Controls.Add(this.panelControl4);
             this.panelControl5.Controls.Add(this.textModsPath);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl5.Location = new System.Drawing.Point(8, 234);
+            this.panelControl5.Location = new System.Drawing.Point(8, 247);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(836, 39);
+            this.panelControl5.Size = new System.Drawing.Size(969, 39);
             this.panelControl5.TabIndex = 2;
             // 
             // panelControl3
@@ -216,7 +222,7 @@
             this.AcceptButton = this.createButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 312);
+            this.ClientSize = new System.Drawing.Size(985, 325);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

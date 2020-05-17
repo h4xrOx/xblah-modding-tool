@@ -64,6 +64,15 @@ namespace source_modding_tool
                         case "hlvr":
                             item.ImageOptions.Image = Resources.hla;
                             break;
+                        case "valve":
+                            item.ImageOptions.Image = Resources.hl;
+                            break;
+                        case "gearbox":
+                            item.ImageOptions.Image = Resources.op4;
+                            break;
+                        case "bshift":
+                            item.ImageOptions.Image = Resources.bshift;
+                            break;
                     }
                 }
             }
@@ -228,7 +237,12 @@ namespace source_modding_tool
                     }
                     break;
                 case Engine.GOLDSRC:
+                    {
+                        SourceSDK.KeyValue gameInfo = SourceSDK.Config.readChunkfile(modPath + "\\liblist.gam");
+                        gameInfo.setValue("game", modFolder);
 
+                        SourceSDK.Config.writeChunkFile(modPath + "\\liblist.gam", gameInfo, false, new UTF8Encoding(false));
+                    }
                     break;
             }
 
