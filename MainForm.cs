@@ -251,7 +251,7 @@ namespace source_modding_tool
             }
 
             // Delete mod
-            else if(e.Item == menuModdingDelete)
+            else if (e.Item == menuModdingDelete)
             {
                 if (XtraMessageBox.Show("Are you sure you want to delete this mod?", "Delete mod", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -290,7 +290,7 @@ namespace source_modding_tool
 
         private void Run(int runMode, string command)
         {
-            switch(runMode)
+            switch (runMode)
             {
                 case RunMode.DEFAULT:
                     {
@@ -381,7 +381,7 @@ namespace source_modding_tool
             }
 
             // Expert mode
-            else if(e.Item == menuModdingRunExpert || e.Item == toolsRunPopupExpert)
+            else if (e.Item == menuModdingRunExpert || e.Item == toolsRunPopupExpert)
             {
                 RunDialog dialog = new RunDialog(launcher);
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -389,14 +389,14 @@ namespace source_modding_tool
                     string arguments = dialog.commands;
                     RunPreset runPreset = dialog.runPreset;
                     ExpertRun(runPreset, arguments);
-    }
+                }
             }
         }
 
         private void menuModdingSettings_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Game info
-            if(e.Item == menuModdingSettingsGameInfo)
+            if (e.Item == menuModdingSettingsGameInfo)
             {
                 GameinfoForm form = new GameinfoForm(launcher);
                 form.ShowDialog();
@@ -405,14 +405,14 @@ namespace source_modding_tool
             }
 
             // Chapters
-            else if(e.Item == menuModdingSettingsChapters)
+            else if (e.Item == menuModdingSettingsChapters)
             {
                 ChaptersForm form = new ChaptersForm(launcher);
                 form.ShowDialog();
             }
 
             // Menu
-            else if(e.Item == menuModdingSettingsMenu)
+            else if (e.Item == menuModdingSettingsMenu)
             {
                 GamemenuForm form = new GamemenuForm(launcher);
                 form.ShowDialog();
@@ -429,7 +429,7 @@ namespace source_modding_tool
         private void menuModeling_ItemClick(object sender, ItemClickEventArgs e)
         {
             // HLMV
-            if(e.Item == menuModelingHLMV)
+            if (e.Item == menuModelingHLMV)
             {
                 string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].installPath;
 
@@ -438,20 +438,20 @@ namespace source_modding_tool
             }
 
             // Propper
-            else if(e.Item == menuModelingPropper)
+            else if (e.Item == menuModelingPropper)
             {
                 Hammer.RunPropperHammer(launcher.GetCurrentMod());
             }
 
             // VMF to MDL
-            else if(e.Item == menuModelingVMFtoMDL)
+            else if (e.Item == menuModelingVMFtoMDL)
             {
                 VMFtoMDL form = new VMFtoMDL(launcher);
                 form.ShowDialog();
             }
 
             // Crowbar
-            else if(e.Item == menuModelingCrowbar)
+            else if (e.Item == menuModelingCrowbar)
             {
                 Process.Start("Tools\\Crowbar\\Crowbar.exe");
             }
@@ -460,7 +460,7 @@ namespace source_modding_tool
         private void menuParticles_ItemClick(object sender, ItemClickEventArgs e)
         {
             // Manifest generator
-            if(e.Item == menuParticlesManifestGenerator)
+            if (e.Item == menuParticlesManifestGenerator)
             {
                 PCF.CreateManifest(launcher);
                 XtraMessageBox.Show("Particle manifest generated.");
@@ -469,6 +469,9 @@ namespace source_modding_tool
 
         private void modStarted()
         {
+            if (instance == null || instance.modProcess == null)
+                return;
+
             instance.modProcess.Exited += new EventHandler(modExited);
 
             modProcessUpdater.Enabled = true;
