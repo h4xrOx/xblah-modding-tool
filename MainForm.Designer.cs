@@ -813,6 +813,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResizeEnd += new System.EventHandler(this.ModForm_ResizeEnd);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).EndInit();

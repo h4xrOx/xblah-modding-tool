@@ -17,7 +17,13 @@ namespace source_modding_tool
         Instance instance = null;
         Launcher launcher;
 
-        public MainForm() { InitializeComponent(); }
+        FormWindowState PreviousWindowState;
+
+        public MainForm() {
+            InitializeComponent();
+
+            PreviousWindowState = WindowState;
+        }
 
         private void Form_Load(object sender, EventArgs e)
         {
@@ -681,6 +687,19 @@ namespace source_modding_tool
             if (panel1.BackgroundImage != null)
                 panel1.BackgroundImage.Dispose();
             panel1.BackgroundImage = bitmap;
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                ModForm_ResizeEnd(sender, e);
+            }
+            else if(PreviousWindowState == FormWindowState.Maximized && WindowState == FormWindowState.Normal)
+            {
+                ModForm_ResizeEnd(sender, e);
+            }
+            PreviousWindowState = WindowState;
         }
     }
 }
