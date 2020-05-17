@@ -25,7 +25,7 @@
 * Run maps directly from the BSP/VPK.
 * Run Slartibarty's hammer with auto-generated configuration. (Source 1)
 * Preview a env_fog_controller in-game. (Source 1)
-* Link to the prefabs folder. (Source 1)
+* Link to the prefabs folder. (Goldsrc and Source 1)
 * Link to Crafty. (Source 1)
 * Link to Terrain Generator. (Source 1)
 * Link to Batch Compiler. (Source 1)
