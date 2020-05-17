@@ -629,7 +629,7 @@ namespace source_modding_tool
                         menuModdingImport2.Enabled = false;
                         menuModdingSettings.Enabled = false;
                         menuModdingHudEditor.Enabled = false;
-                        menuModdingFileExplorer.Enabled = false;
+                        menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = false;
                     menuModeling.Enabled = false;

@@ -39,17 +39,24 @@ namespace source_modding_tool
             string modPath = installPath;
 
             SourceSDK.KeyValue gameInfo = null;
-            switch(game.engine)
+            SourceSDK.KeyValue searchPaths = null;
+            switch (game.engine)
             {
                 case Engine.SOURCE:
                     gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+                    searchPaths = gameInfo.findChildByKey("searchpaths");
                     break;
                 case Engine.SOURCE2:
                     gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.gi");
+                    searchPaths = gameInfo.findChildByKey("searchpaths");
+                    break;
+                case Engine.GOLDSRC:
+                    searchPaths = new SourceSDK.KeyValue("searchpaths");
+                    searchPaths.addChild(new SourceSDK.KeyValue("game", new DirectoryInfo(installPath).Name));
+                    searchPaths.addChild(new SourceSDK.KeyValue("game", "valve"));
                     break;
             }
 
-            SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
             foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
             {
                 string[] keys = searchPath.getKey().Split('+');
@@ -80,6 +87,9 @@ namespace source_modding_tool
 
                                 result.Add(file.Replace("_dir.vpk", ".vpk"));
                         }*/
+                        break;
+                    case Engine.GOLDSRC:
+                        value = gamePath + "\\" + value;
                         break;
                 }
 
