@@ -65,6 +65,9 @@ namespace source_modding_tool
         {
             mods = new Dictionary<string, Mod>();
 
+            if (launcher == null)
+                return mods;
+
             int gameAppId = GetAppId();
             string gamePath = installPath;
 
@@ -101,8 +104,11 @@ namespace source_modding_tool
                             if (gameInfo != null)
                             {
 
-                                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
-                                string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
+                                string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
+                                SourceSDK.KeyValue steamAppIdKV = gameInfo.findChildByKey("steamappid");
+                                string modAppId = "-1";
+                                if (steamAppIdKV != null)
+                                    modAppId = steamAppIdKV.getValue();
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
                                 {
@@ -137,7 +143,7 @@ namespace source_modding_tool
                             if (gameInfo != null)
                             {
 
-                                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                                string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
                                 if (path.Contains(gamePath) && (mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
@@ -173,7 +179,7 @@ namespace source_modding_tool
                             if (gameInfo != null)
                             {
 
-                                string name = gameInfo.getChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                                string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
     
                                 if (path.Contains(gamePath))
