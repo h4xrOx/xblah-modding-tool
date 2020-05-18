@@ -25,6 +25,9 @@ namespace source_modding_tool
                 case Engine.SOURCE2:
                     root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.gi");
                     break;
+                case Engine.GOLDSRC:
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\liblist.gam");
+                    break;
             }
             
         }
@@ -32,6 +35,11 @@ namespace source_modding_tool
         public string getValue(string key)
         {
             return root.getValue(key);
+        }
+
+        public KeyValue getRoot()
+        {
+            return root;
         }
     }
 }

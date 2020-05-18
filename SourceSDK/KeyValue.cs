@@ -120,7 +120,7 @@ namespace source_modding_tool.SourceSDK
             return string.Empty;
         }
 
-        public bool isParentKey() { return (childrenIndex != null && key != string.Empty && value == null); }
+        public bool isParentKey() { return (childrenIndex != null && value == null); }
 
         public void setValue(string value)
         {
@@ -203,7 +203,7 @@ namespace source_modding_tool.SourceSDK
                 }
 
                 foreach (KeyValue entry in node.getChildren())
-                    lines.AddRange(writeChunkFileTraverse(entry, level + 1, quotes));
+                    lines.AddRange(writeChunkFileTraverse(entry, (node.key != string.Empty ? level + 1 : level), quotes));
 
                 if (node.key != string.Empty)
                     lines.Add(tabs + "}");
@@ -268,11 +268,17 @@ namespace source_modding_tool.SourceSDK
                             {
                                 KeyValue comment = new KeyValue("");
                                 comment.comment = line.Substring(2);
-                                stack.Peek().Value.addChild(comment);
+                                if (stack.Count > 0)
+                                    stack.Peek().Value.addChild(comment);
+                                else
+                                    list.Add(comment);
                             } else if(words.Length == 0)    // It's a blank line
                             {
                                 KeyValue blank = new KeyValue("");
-                                stack.Peek().Value.addChild(blank);
+                                if (stack.Count > 0)
+                                    stack.Peek().Value.addChild(blank);
+                                else
+                                    list.Add(blank);
                             } else if (words.Length > 0 && words[0].Contains("{")) // It opens a group
                             {
                                 // We actually don't need to do anything.
@@ -308,7 +314,11 @@ namespace source_modding_tool.SourceSDK
                                 {
                                     string key = words[0].Replace("\"", string.Empty).ToLower();
                                     KeyValue value = new KeyValue(key, words[1]);
-                                    stack.Peek().Value.addChild(key, value);
+
+                                    if (stack.Count > 0)
+                                        stack.Peek().Value.addChild(key, value);
+                                    else
+                                        list.Add(value);
                                 }
 
                             }
@@ -318,6 +328,8 @@ namespace source_modding_tool.SourceSDK
                 catch (Exception)
                 {
                     XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
+
+                    Debugger.Break();
                     return null;
                 }
             }

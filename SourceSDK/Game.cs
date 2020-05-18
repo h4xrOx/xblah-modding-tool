@@ -326,5 +326,82 @@ namespace source_modding_tool
             }
             return string.Empty;
         }
+
+        public string[] getGameinfoFields()
+        {
+            switch(engine)
+            {
+                case Engine.SOURCE:
+                    return new string[] {
+                        "game",
+                        "title",
+                        "title2",
+                        "type",
+                        "nodifficulty",
+                        "hasportals",
+                        "nocrosshair",
+                        "advcrosshair",
+                        "nomodels",
+                        "nohimodel",
+                        "developer",
+                        "developer_url",
+                        "manual",
+                        "icon",
+                        "nodegraph",
+                        "gamedata",
+                        "instancepath",
+                        "supportsdx8",
+                        "supportsvr",
+                        "supportsxbox360",
+                        "steamappid",
+                        "filesystem",
+                        "searchpaths"
+                    };
+                case Engine.SOURCE2:
+                    return new string[] {
+                        "game",
+                        "title",
+                        "type",
+                        "nomodels",
+                        "nohimodel",
+                        "developer",
+                        "developer_url",
+                        "manual",
+                        "icon",
+                        "nodegraph",
+                        "gamedata",
+                        "instancepath",
+                        "filesystem",
+                        "searchpaths"
+                    };
+                case Engine.GOLDSRC:
+                    return new string[] {
+                        "game",
+                        "icon",
+                        "developer",
+                        "developer_url",
+                        "manual",
+                        "type",
+                        "nomodels",
+                        "nohimodel",
+                        "secure",
+                        "svonly",
+                        "gamedll",
+                        "gamedll_linux",
+                        "gamedll_osx",
+                        "cldll",
+                        "startmap",
+                        "trainmap",
+                        "mpentity",
+                        "mpfilter",
+                        "fallback_dir",
+                        "fallback_maps",
+                        "detailed_textures"
+                       
+                    };
+            }
+
+            return new string[] { };
+        }
     }
 }

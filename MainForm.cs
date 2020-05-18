@@ -514,6 +514,10 @@ namespace source_modding_tool
                         menuModdingClean.Enabled = true;
                         menuModdingImport2.Enabled = true;
                         menuModdingSettings.Enabled = true;
+                            menuModdingSettingsGameInfo.Enabled = true;
+                            menuModdingSettingsChapters.Enabled = true;
+                            menuModdingSettingsContentMount.Enabled = true;
+                            menuModdingSettingsMenu.Enabled = true;
                         menuModdingHudEditor.Enabled = true;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
@@ -545,7 +549,11 @@ namespace source_modding_tool
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = true;
                         menuModdingImport2.Enabled = false;
-                        menuModdingSettings.Enabled = false;
+                        menuModdingSettings.Enabled = true;
+                            menuModdingSettingsGameInfo.Enabled = true;
+                            menuModdingSettingsChapters.Enabled = false;
+                            menuModdingSettingsContentMount.Enabled = false;
+                            menuModdingSettingsMenu.Enabled = false;
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
@@ -577,7 +585,11 @@ namespace source_modding_tool
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = false;
                         menuModdingImport2.Enabled = false;
-                        menuModdingSettings.Enabled = false;
+                        menuModdingSettings.Enabled = true;
+                            menuModdingSettingsGameInfo.Enabled = true;
+                            menuModdingSettingsChapters.Enabled = false;
+                            menuModdingSettingsContentMount.Enabled = false;
+                            menuModdingSettingsMenu.Enabled = false;
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;

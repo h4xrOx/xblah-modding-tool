@@ -1,6 +1,9 @@
-﻿using source_modding_tool.SourceSDK;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraLayout;
+using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,7 +16,6 @@ namespace source_modding_tool
     {
         KeyValue gameinfo;
 
-        //List<String[]> searchPaths;
         Launcher launcher;
 
         public GameinfoForm(Launcher launcher)
@@ -51,114 +53,229 @@ namespace source_modding_tool
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string modPath = launcher.GetCurrentMod().installPath;
+            GetFieldValues();
 
-            gameinfo.setValue("game", textGame.EditValue != null ? textGame.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("title", textTitle.EditValue != null ? textTitle.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("title2", textTitle2.EditValue != null ? textTitle2.EditValue.ToString() : string.Empty);
+            string path = "";
+            switch (launcher.GetCurrentGame().engine)
+            {
+                case Engine.SOURCE:
+                    path = modPath + "\\gameinfo.txt";
+                    break;
+                case Engine.SOURCE2:
+                    path = modPath + "\\gameinfo.gi";
+                    break;
+                case Engine.GOLDSRC:
+                    path = modPath + "\\liblist.gam";
+                    break;
 
-            string type;
-            if(textType.EditValue.ToString() == "Multi-player")
-            {
-                type = "multiplayer_only";
-            } else if(textType.EditValue.ToString() == "Single-player")
-            {
-                type = "singleplayer_only";
-            } else
-            {
-                type = "both";
             }
-            gameinfo.setValue("type", type);
 
-            gameinfo.setValue("nodifficulty", (switchDifficulty.IsOn ? "0" : "1"));
-            gameinfo.setValue("hasportals", (switchPortals.IsOn ? "1" : "0"));
-            gameinfo.setValue("nocrosshair", (switchCrosshair.IsOn ? "0" : "1"));
-            gameinfo.setValue("advcrosshair", (switchAdvCrosshair.IsOn ? "1" : "0"));
-            gameinfo.setValue("nomodels", (switchModels.IsOn ? "0" : "1"));
-
-            gameinfo.setValue("developer",
-                              textDeveloper.EditValue != null ? textDeveloper.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("developer_url",
-                              textDeveloperURL.EditValue != null ? textDeveloperURL.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("manual", textManual.EditValue != null ? textManual.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("icon", "resource/icon");
-
-            if(pictureEdit2.Image != null)
-                new TGASharpLib.TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
-            else if(File.Exists(modPath + "\\resource\\icon.tga"))
-                File.Delete(modPath + "\\resource\\icon.tga");
-
-            if(pictureEdit1.Image != null)
-                new TGASharpLib.TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
-            else if(File.Exists(modPath + "\\resource\\icon_big.tga"))
-                File.Delete(modPath + "\\resource\\icon_big.tga");
-
-            gameinfo.setValue("nodegraph", switchNodegraph.IsOn ? "1" : "0");
-            gameinfo.setValue("gamedata",
-                              textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("instancepath",
-                              textInstance.EditValue != null ? textInstance.EditValue.ToString() : string.Empty);
-            gameinfo.setValue("supportsvr", switchVR.IsOn ? "1" : "0");
-
-            //SourceSDK.KeyValue searchPathsKV = gameinfo.getChildByKey("filesystem").getChildByKey("searchpaths");
-            //searchPathsKV.clearChildren();
-            /*foreach(String[] searchPath in searchPaths)
-            {
-                searchPathsKV.addChild(new SourceSDK.KeyValue(searchPath[0], searchPath[1]));
-            }*/
-
-            string path = modPath + "\\gameinfo.txt";
-
-            SourceSDK.KeyValue.writeChunkFile(path, gameinfo, false, new UTF8Encoding(false));
+            if (File.Exists(path))
+                SourceSDK.KeyValue.writeChunkFile(path, gameinfo, false, new UTF8Encoding(false));
 
             Close();
         }
 
-        private void GameinfoForm_Load(object sender, EventArgs e)
+        Dictionary<string, BaseLayoutItem> fields;
+
+        private void ShowFields()
+        {
+            fields = new Dictionary<string, BaseLayoutItem>();
+
+            List<BaseLayoutItem> controls = new List<BaseLayoutItem>();
+            controls.AddRange(layoutControl1.Items);
+            controls.AddRange(layoutControl2.Items);
+            controls.AddRange(layoutControl3.Items);
+            controls.AddRange(layoutControl4.Items);
+
+            foreach (BaseLayoutItem item in controls)
+                if (item.Tag != null)
+                    fields.Add(item.Tag.ToString(), item);
+
+            foreach (BaseLayoutItem item in fields.Values)
+                item.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+
+            foreach(string field in launcher.GetCurrentGame().getGameinfoFields())
+            {
+                if (fields.ContainsKey(field))
+                    fields[field].Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
+            }
+        }
+
+        private void SetFieldValues()
         {
             string modPath = launcher.GetCurrentMod().installPath;
 
-            string gameinfoPath = modPath + "\\gameinfo.txt";
-
-            gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
-
-            textGame.EditValue = gameinfo.getValue("game");
-            textTitle.EditValue = gameinfo.getValue("title");
-            textTitle2.EditValue = gameinfo.getValue("title2");
-
-            string type = gameinfo.getValue("type");
-            if(type == "multiplayer_only")
+            foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {
-                textType.EditValue = "Multi-player";
-            } else if(type == "singleplayer_only")
-            {
-                textType.EditValue = "Single-player";
-            } else
-            {
-                textType.EditValue = "Both";
+                SourceSDK.KeyValue childKV = gameinfo.findChildByKey(field);
+                if (childKV == null)
+                    continue;
+
+                if (!fields.ContainsKey(field))
+                    continue;
+
+                BaseEdit control = (fields[field] as LayoutControlItem).Control as BaseEdit;
+
+                switch (field)
+                {
+                    case "type":
+                        {
+                            string type = childKV.getValue();
+                            if (type == "multiplayer_only")
+                            {
+                                control.EditValue = "Multi-player";
+                            }
+                            else if (type == "singleplayer_only")
+                            {
+                                control.EditValue = "Single-player";
+                            } else
+                            {
+                                control.EditValue = "Both";
+                            }
+                        }
+                        break;
+                    case "nodifficulty":
+                        control.EditValue = (childKV.getValue() == "1" ? false : true);
+                        break;
+                    case "hasportals":
+                        control.EditValue = (childKV.getValue() == "1" ? true : false);
+                        break;
+                    case "nocrosshair":
+                        control.EditValue = (childKV.getValue() == "1" ? false : true);
+                        break;
+                    case "advcrosshair":
+                        control.EditValue = (childKV.getValue() == "1" ? true : false);
+                        break;
+                    case "nomodels":
+                        control.EditValue = (childKV.getValue() == "1" ? false : true);
+                        break;
+                    case "nodegraph":
+                        control.EditValue = (childKV.getValue() == "0" ? false : true);
+                        break;
+                    case "supportsvr":
+                        control.EditValue = (childKV.getValue() == "1" ? true : false);
+                        break;
+                    case "icon":
+                        {
+                            string icon = childKV.getValue();
+
+                            if (File.Exists(modPath + "\\" + icon + ".tga"))
+                                pictureEdit2.Image = new TGASharpLib.TGA(modPath + "\\" + icon + ".tga").ToBitmap();
+
+                            if (File.Exists(modPath + "\\" + icon + "_big.tga"))
+                                pictureEdit1.Image = new TGASharpLib.TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
+
+                            pictureEdit1.Properties.ContextMenuStrip = new ContextMenuStrip();
+                        }
+                        break;
+                    case "gamedata":
+                        textGamedata.EditValue = childKV.getValue();
+                        break;
+                    case "instancepath":
+                        textInstance.EditValue = childKV.getValue();
+                        break;
+                    default:
+                        if (fields.ContainsKey(field) && (fields[field] as LayoutControlItem).Control is BaseEdit)
+                            ((fields[field] as LayoutControlItem).Control as BaseEdit).EditValue = childKV.getValue();
+                        break;
+                }
             }
-            switchDifficulty.EditValue = (gameinfo.getValue("nodifficulty") == "1" ? false : true);
-            switchPortals.EditValue = (gameinfo.getValue("hasportals") == "1" ? true : false);
-            switchCrosshair.EditValue = (gameinfo.getValue("nocrosshair") == "1" ? false : true);
-            switchAdvCrosshair.EditValue = (gameinfo.getValue("advcrosshair") == "1" ? true : false);
-            switchModels.EditValue = (gameinfo.getValue("nomodels") == "1" ? false : true);
+        }
 
-            textDeveloper.EditValue = gameinfo.getValue("developer");
-            textDeveloperURL.EditValue = gameinfo.getValue("developer_url");
-            textManual.EditValue = gameinfo.getValue("manual");
-            string icon = gameinfo.getValue("icon");
+        private void GetFieldValues()
+        {
+            string modPath = launcher.GetCurrentMod().installPath;
 
-            if(File.Exists(modPath + "\\" + icon + ".tga"))
-                pictureEdit2.Image = new TGASharpLib.TGA(modPath + "\\" + icon + ".tga").ToBitmap();
+            foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
+            {
+                SourceSDK.KeyValue childKV = gameinfo.findChildByKey(field);
 
-            if(File.Exists(modPath + "\\" + icon + "_big.tga"))
-                pictureEdit1.Image = new TGASharpLib.TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
+                if (!fields.ContainsKey(field))
+                    continue;
 
-            switchNodegraph.EditValue = (gameinfo.getValue("nodegraph") == "0" ? false : true);
-            textGamedata.EditValue = gameinfo.getValue("gamedata");
-            textInstance.EditValue = gameinfo.getValue("instancepath");
-            switchVR.EditValue = (gameinfo.getValue("supportsvr") == "1" ? true : false);
+                BaseEdit control = (fields[field] as LayoutControlItem).Control as BaseEdit;
 
-            pictureEdit1.Properties.ContextMenuStrip = new ContextMenuStrip();
+                switch (field)
+                {
+                    case "type":
+                        {
+                            string type;
+                            if (textType.EditValue.ToString() == "Multi-player")
+                            {
+                                type = "multiplayer_only";
+                            }
+                            else if (textType.EditValue.ToString() == "Single-player")
+                            {
+                                type = "singleplayer_only";
+                            }
+                            else
+                            {
+                                type = "both";
+                            }
+                            gameinfo.setValue("type", type);
+                        }
+                        break; 
+                    case "nodifficulty":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "0" : "1"));
+                        break;
+                    case "hasportals":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "1" : "0"));
+                        break;
+                    case "nocrosshair":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "0" : "1"));
+                        break;
+                    case "advcrosshair":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "1" : "0"));
+                        break;
+                    case "nomodels":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "0" : "1"));
+                        break;
+                    case "nodegraph":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "1" : "0"));
+                        break;
+                    case "supportsvr":
+                        gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "1" : "0"));
+                        break;
+                    case "icon":
+                        {
+                            gameinfo.setValue("icon", "resource/icon");
+
+                            if (pictureEdit2.Image != null)
+                                new TGASharpLib.TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
+                            else if (File.Exists(modPath + "\\resource\\icon.tga"))
+                                File.Delete(modPath + "\\resource\\icon.tga");
+
+                            if (pictureEdit1.Image != null)
+                                new TGASharpLib.TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
+                            else if (File.Exists(modPath + "\\resource\\icon_big.tga"))
+                                File.Delete(modPath + "\\resource\\icon_big.tga");
+                        }
+                        break;
+                    case "gamedata":
+                        gameinfo.setValue(field, (textGamedata.EditValue != null ? textGamedata.EditValue.ToString() : ""));
+                        break;
+                    case "instancepath":
+                        gameinfo.setValue(field, (textInstance.EditValue != null ? textInstance.EditValue.ToString() : ""));
+                        break;
+                    default:
+                        if ((fields[field] as LayoutControlItem).Control is BaseEdit)
+                        {
+                            BaseEdit baseEdit = (fields[field] as LayoutControlItem).Control as BaseEdit;
+                            gameinfo.setValue(field, (baseEdit.EditValue != null ? baseEdit.EditValue.ToString() : ""));
+                        }
+
+                        
+                        break;
+                }
+            }
+        }
+
+        private void GameinfoForm_Load(object sender, EventArgs e)
+        {
+            ShowFields();
+            gameinfo = new GameInfo(launcher).getRoot();
+            SetFieldValues();
         }
 
         private void pictureEdit1_Click(object sender, EventArgs e)
