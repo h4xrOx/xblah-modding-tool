@@ -110,49 +110,6 @@ namespace source_modding_tool
             return GetMountedPaths().Where(x => x.EndsWith(".vpk")).ToList();
         }
 
-        public void CleanFolder()
-        {
-            //string modPath = sourceSDK.GetModPath(toolsGames.EditValue.ToString(), toolsMods.EditValue.ToString());
-            string modPath = installPath;
-
-            if (File.Exists(modPath + "\\Gamestate.txt"))
-                File.Delete(modPath + "\\Gamestate.txt");
-            if (File.Exists(modPath + "\\demoheader.tmp"))
-                File.Delete(modPath + "\\demoheader.tmp");
-            if (File.Exists(modPath + "\\ep1_gamestats.dat"))
-                File.Delete(modPath + "\\ep1_gamestats.dat");
-            if (File.Exists(modPath + "\\modelsounds.cache"))
-                File.Delete(modPath + "\\modelsounds.cache");
-            if (File.Exists(modPath + "\\stats.txt"))
-                File.Delete(modPath + "\\stats.txt");
-            if (File.Exists(modPath + "\\voice_ban.dt"))
-                File.Delete(modPath + "\\voice_ban.dt");
-            if (File.Exists(modPath + "\\cfg\\config.cfg"))
-                File.Delete(modPath + "\\cfg\\config.cfg");
-            if (File.Exists(modPath + "\\cfg\\server_blacklist.txt"))
-                File.Delete(modPath + "\\cfg\\server_blacklist.txt");
-            if (File.Exists(modPath + "\\sound\\sound.cache"))
-                File.Delete(modPath + "\\sound\\sound.cache");
-            if (File.Exists(modPath + "\\voice_ban.dt"))
-                File.Delete(modPath + "\\voice_ban.dt");
-            if (Directory.Exists(modPath + "\\materialsrc"))
-                Directory.Delete(modPath + "\\materialsrc", true);
-            if (Directory.Exists(modPath + "\\downloadlists"))
-                Directory.Delete(modPath + "\\downloadlists", true);
-            if (Directory.Exists(modPath + "\\mapsrc"))
-                Directory.Delete(modPath + "\\mapsrc", true);
-            if (Directory.Exists(modPath + "\\save"))
-                Directory.Delete(modPath + "\\save", true);
-            if (Directory.Exists(modPath + "\\screenshots"))
-                Directory.Delete(modPath + "\\screenshots", true);
-            if (Directory.Exists(modPath + "\\cfg"))
-                foreach (string file in Directory.GetFiles(modPath + "\\cfg"))
-                {
-                    if (new FileInfo(file).Name.StartsWith("user_") && new FileInfo(file).Name != "user_keys_default.vcfg")
-                        File.Delete(file);
-                }
-        }
-
         public List<string> GetFGDs()
         {
             List<string> result = new List<string>();
