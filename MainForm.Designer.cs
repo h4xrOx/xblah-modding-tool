@@ -60,6 +60,7 @@
             this.menuModdingSettings = new DevExpress.XtraBars.BarSubItem();
             this.menuModdingSettingsGameInfo = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsChapters = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
@@ -178,9 +179,10 @@
             this.menuModdingRunExpert,
             this.barButtonItem1,
             this.menuModdingRun,
-            this.toolsRunPopupExpert});
+            this.toolsRunPopupExpert,
+            this.menuModdingSettingsStartingMaps});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 91;
+            this.barManager.MaxItemId = 92;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -448,6 +450,7 @@
             this.menuModdingSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsGameInfo),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount)});
             this.menuModdingSettings.Name = "menuModdingSettings";
@@ -467,6 +470,14 @@
             this.menuModdingSettingsChapters.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsChapters.ImageOptions.SvgImage")));
             this.menuModdingSettingsChapters.Name = "menuModdingSettingsChapters";
             this.menuModdingSettingsChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
+            // menuModdingSettingsStartingMaps
+            // 
+            this.menuModdingSettingsStartingMaps.Caption = "Starting Maps";
+            this.menuModdingSettingsStartingMaps.Id = 91;
+            this.menuModdingSettingsStartingMaps.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsStartingMaps.ImageOptions.SvgImage")));
+            this.menuModdingSettingsStartingMaps.Name = "menuModdingSettingsStartingMaps";
+            this.menuModdingSettingsStartingMaps.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingSettingsMenu
             // 
@@ -898,5 +909,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupExpert;
         private DevExpress.XtraBars.BarSubItem menuModdingRun;
+        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsStartingMaps;
     }
 }

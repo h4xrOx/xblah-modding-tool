@@ -349,6 +349,13 @@ namespace source_modding_tool
                 form.ShowDialog();
             }
 
+            // Starting maps
+            else if (e.Item == menuModdingSettingsStartingMaps)
+            {
+                StartMap form = new StartMap(launcher);
+                form.ShowDialog();
+            }
+
             // Menu
             else if (e.Item == menuModdingSettingsMenu)
             {
@@ -518,6 +525,7 @@ namespace source_modding_tool
                             menuModdingSettingsChapters.Enabled = true;
                             menuModdingSettingsContentMount.Enabled = true;
                             menuModdingSettingsMenu.Enabled = true;
+                            menuModdingSettingsStartingMaps.Enabled = false;
                         menuModdingHudEditor.Enabled = true;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
@@ -554,6 +562,7 @@ namespace source_modding_tool
                             menuModdingSettingsChapters.Enabled = false;
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
+                            menuModdingSettingsStartingMaps.Enabled = false;
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
@@ -590,6 +599,7 @@ namespace source_modding_tool
                             menuModdingSettingsChapters.Enabled = false;
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
+                            menuModdingSettingsStartingMaps.Enabled = true;
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
