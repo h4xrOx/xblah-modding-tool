@@ -7,7 +7,7 @@
 * Add custom non-steam libraries of base games.
 
 ### Modding
-* Run mods in fullscreen, windowed or VR mode directly from the tool.
+* Run mods from any game in fullscreen, windowed or VR mode (Source 2) directly from the tool.
 * Create custom launch presets.
 * Link to the mod install folder.
 * Clean the mod folder for release.
