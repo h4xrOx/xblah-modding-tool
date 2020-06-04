@@ -12,7 +12,7 @@
 * Link to the mod install folder.
 * Clean the mod folder for release.
 * Import assets from another mod based on what's used in a VMF. (Source 1)
-* Edit the gameinfo. (Source 1)
+* Edit the game info.
 * Edit the chapters and create images and backgrounds for them. (Source 1)
 * Choose the starting map and the training map (Goldsrc)
 * Edit the game menu. (Source 1)
