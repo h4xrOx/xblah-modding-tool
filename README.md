@@ -14,6 +14,7 @@
 * Import assets from another mod based on what's used in a VMF. (Source 1)
 * Edit the gameinfo. (Source 1)
 * Edit the chapters and create images and backgrounds for them. (Source 1)
+* Choose the starting map and the training map (Goldsrc)
 * Edit the game menu. (Source 1)
 * Manage the content mounted. (Source 1)
 * Explore all the mounted files. (Source 1)
