@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace source_modding_tool
@@ -272,6 +273,9 @@ namespace source_modding_tool
 
         private void Run(RunPreset runPreset, string command)
         {
+            if (launcher.GetCurrentGame().engine == Engine.SOURCE2)
+                launcher.GetCurrentGame().ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
+
             instance = new Instance(launcher, panel1);
             updateBackground();
             Application.DoEvents();

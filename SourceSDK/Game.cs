@@ -403,5 +403,48 @@ namespace source_modding_tool
 
             return new string[] { };
         }
+
+        internal void ApplyNonVRPatch()
+        {
+            string fullPath = installPath + "\\game\\bin\\win64\\hlvr.exe";
+            Dictionary<int, string> strings = new Dictionary<int, string>();
+
+            byte[] byteArray = File.ReadAllBytes(fullPath);
+
+            List<char> chars = new List<char>();
+            for (int i = 0; i < byteArray.Length; i++)
+            {
+                byte b = byteArray[i];
+
+                if (b == 0 && chars.Count > 0)
+                {
+                    string word = new String(chars.ToArray());
+                    strings.Add(i - word.Length, word);
+                    chars.Clear();
+                }
+                else if (b > 0)
+                    chars.Add(Convert.ToChar(b));
+            }
+
+            strings = strings.Where(x => x.Value.Contains("engine2"))
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (KeyValuePair<int, string> kv in strings)
+            {
+                string value = kv.Value.Replace("engine2", "hlnonvr");
+                char[] charArray = value.ToCharArray();
+                for (int i = 0; i < charArray.Length; i++)
+                {
+                    byteArray[kv.Key + i] = Convert.ToByte(charArray[i]);
+                }
+            }
+
+            try
+            {
+                File.WriteAllBytes(fullPath.Replace("hlvr.exe", "hlnonvr.exe"), byteArray);
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "/Tools/HLnonVR/hlnonvr.dll", installPath + "\\game\\bin\\win64\\hlnonvr.dll");
+            }
+            catch (Exception) { }
+        }
     }
 }

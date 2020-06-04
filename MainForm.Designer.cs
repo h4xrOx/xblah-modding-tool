@@ -182,7 +182,7 @@
             this.toolsRunPopupExpert,
             this.menuModdingSettingsStartingMaps});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 92;
+            this.barManager.MaxItemId = 93;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
