@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using source_modding_tool.SourceSDK;
+using source_modding_tool.Tools;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,8 +35,21 @@ namespace source_modding_tool
 
         private void buttonBackground_Click(object sender, EventArgs e)
         {
-            if(selectBSPDialog.ShowDialog() == DialogResult.OK)
-                textBackground.EditValue = Path.GetFileNameWithoutExtension(selectBSPDialog.FileName);
+            Game game = launcher.GetCurrentGame();
+            FileExplorer form = new FileExplorer(launcher);
+            form.RootDirectory = "maps/";
+            form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                VPK.File file = form.selectedFiles[0];
+                if (file.type == ".bsp" && game.engine == Engine.SOURCE)
+                {
+                    // It's a map
+                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    textBackground.EditValue = mapName;
+
+                }
+            }
         }
 
         private void buttonLeft_Click(object sender, EventArgs e)
@@ -61,8 +75,21 @@ namespace source_modding_tool
 
         private void buttonMap_Click(object sender, EventArgs e)
         {
-            if(selectBSPDialog.ShowDialog() == DialogResult.OK)
-                textMap.EditValue = Path.GetFileNameWithoutExtension(selectBSPDialog.FileName);
+            Game game = launcher.GetCurrentGame();
+            FileExplorer form = new FileExplorer(launcher);
+            form.RootDirectory = "maps/";
+            form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                VPK.File file = form.selectedFiles[0];
+                if (file.type == ".bsp" && game.engine == Engine.SOURCE)
+                {
+                    // It's a map
+                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    textMap.EditValue = mapName;
+
+                }
+            }
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -148,14 +175,27 @@ namespace source_modding_tool
                 pictureThumbnail.Image = chapters[index].thumbnail;
                 pictureBackground.Image = chapters[index].backgroundImage;
                 pictureBackgroundWide.Image = chapters[index].backgroundImageWide;
-                table.Visible = true;
+
+                textName.Enabled = true;
+                buttonMap.Enabled = true;
+                buttonBackground.Enabled = true;
+                pictureBackgroundWide.Enabled = true;
+                pictureThumbnail.Enabled = true;
+                pictureBackground.Enabled = true;
+                //table.Visible = true;
 
                 buttonLeft.Enabled = (index > 0);
                 buttonRight.Enabled = (index < chapters.Count - 1);
                 buttonRemove.Enabled = true;
             } else
             {
-                table.Visible = false;
+                //table.Visible = false;
+                textName.Enabled = false;
+                buttonMap.Enabled = false;
+                buttonBackground.Enabled = false;
+                pictureBackgroundWide.Enabled = false;
+                pictureThumbnail.Enabled = false;
+                pictureBackground.Enabled = false;
 
                 buttonLeft.Enabled = false;
                 buttonRight.Enabled = false;
@@ -454,7 +494,13 @@ namespace source_modding_tool
                 galleryControl1.Gallery.SetItemCheck(galleryControl1.Gallery.Groups[0].Items[0], true);
             } else
             {
-                table.Visible = false;
+                //table.Visible = false;
+                textName.Enabled = false;
+                buttonMap.Enabled = false;
+                buttonBackground.Enabled = false;
+                pictureBackgroundWide.Enabled = false;
+                pictureBackground.Enabled = false;
+                pictureThumbnail.Enabled = false;
 
                 buttonLeft.Enabled = false;
                 buttonRight.Enabled = false;
