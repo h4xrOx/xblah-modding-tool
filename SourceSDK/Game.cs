@@ -34,11 +34,46 @@ namespace source_modding_tool
             switch(engine)
             {
                 case Engine.SOURCE:
-                    if (File.Exists(gamePath + "\\steam_appid.txt"))
+                    switch(name)
                     {
-                        string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
-                        return int.Parse(steam_appid);
+                        case "Source SDK Base 2013 Singleplayer":
+                            return 243730;
+                        case "Black Mesa":
+                            return 362890;
+                        case "Counter-Strike Global Offensive":
+                            return 730;
+                        case "Half-Life 2":
+                            return 220;
+                        case "Half-Life 2: Episode One":
+                            return 380;
+                        case "Half-Life 2: Episode Two":
+                            return 420;
+                        case "Counter-Strike Source":
+                            return 240;
+                        case "Day of Defeat Source":
+                            return 300;
+                        case "Half-Life 2 Deathmatch":
+                            return 320;
+                        case "Portal":
+                            return 400;
+                        case "Source SDK Base 2013 Multiplayer":
+                            return 243750;
+                        case "Team Fortress 2":
+                            return 440;
+                        case "Half-Life 1 Source Deathmatch":
+                            return 360;
+                        default:
+                            if (File.Exists(gamePath + "\\steam_appid.txt"))
+                            {
+                                string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
+                                return int.Parse(steam_appid);
+                            }
+                        else
+                            {
+                                return -1;
+                            }
                     }
+
                     break;
                 case Engine.SOURCE2:
                     if (name == "Half-Life Alyx")
@@ -109,6 +144,11 @@ namespace source_modding_tool
                                 string modAppId = "-1";
                                 if (steamAppIdKV != null)
                                     modAppId = steamAppIdKV.getValue();
+
+                                /*if (modAppId == 380 || // HL2:EP1 games
+                                    modAppId == 420
+
+                                    )*/
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
                                 {

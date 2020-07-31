@@ -139,7 +139,7 @@ namespace source_modding_tool
             // Hammer
             if (e.Item == menuLevelDesignHammer)
             {
-                Hammer.RunHammer(launcher.GetCurrentMod());
+                Hammer.RunHammer(launcher.GetCurrentMod(), this);
             }
 
             // Fog Previewer
@@ -271,7 +271,7 @@ namespace source_modding_tool
             }
         }
 
-        private void Run(RunPreset runPreset, string command)
+        public void Run(RunPreset runPreset, string command)
         {
             if (launcher.GetCurrentGame().engine == Engine.SOURCE2)
                 launcher.GetCurrentGame().ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
@@ -290,7 +290,7 @@ namespace source_modding_tool
             modStarted();
         }
 
-        private void Run(int runMode, string command)
+        public void Run(int runMode, string command)
         {
             RunPreset preset = new RunPreset(runMode);
             Run(preset, command);
@@ -574,7 +574,7 @@ namespace source_modding_tool
                         menuLevelDesignBatchCompiler.Enabled = false;
                         menuLevelDesignCrafty.Enabled = false;
                         menuLevelDesignFogPreviewer.Enabled = false;
-                        menuLevelDesignHammer.Enabled = false;
+                        menuLevelDesignHammer.Enabled = true;
                         menuLevelDesignMapsrc.Enabled = false;
                         menuLevelDesignPrefabs.Enabled = false;
                         menuLevelDesignTerrainGenerator.Enabled = false;
@@ -602,7 +602,7 @@ namespace source_modding_tool
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = false;
                             menuModdingSettingsContentMount.Enabled = false;
-                            menuModdingSettingsMenu.Enabled = false;
+                            menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
                         menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;

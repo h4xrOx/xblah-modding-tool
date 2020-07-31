@@ -935,6 +935,12 @@
     <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Templates\Portal\portal\bin\client.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Portal\portal\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Templates\Portal\portal\gameinfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -942,6 +948,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Portal\portal\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Portal\portal\scripts\hudlayout.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\bin\client.dll">
@@ -957,6 +966,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\scripts\hudlayout.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\bin\client.dll">
@@ -977,6 +989,9 @@
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\ep2\scripts\hudlayout.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -995,6 +1010,9 @@
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\resource\template_english.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\episodic\scripts\hudlayout.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1008,6 +1026,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\scripts\hudlayout.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Tools\BatchCompiler\Automatic Update Core.dll">
