@@ -36,7 +36,24 @@ namespace source_modding_tool
                         if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
                         {
                             // It's a Source game
-                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                            switch(game)
+                            {
+                                case "half-life 2":
+                                    { 
+                                        games.Add("Half-Life 2", new Game("Half-Life 2", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                        games.Add("Half-Life 2: Episode One", new Game("Half-Life 2: Episode One", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                        games.Add("Half-Life 2: Episode Two", new Game("Half-Life 2: Episode Two", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                        
+                                    }
+                                    break;
+                            }
+
+                            
                         }
                         else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game)) {
                             // It's a Source 2 game
