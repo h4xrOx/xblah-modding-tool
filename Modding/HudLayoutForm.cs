@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraTreeList.Nodes;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraTreeList.Nodes;
 using source_modding_tool.SourceSDK;
+using source_modding_tool.Tools;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -83,6 +85,12 @@ namespace source_modding_tool
 
             if (!File.Exists(path))
             {
+                XtraMessageBox.Show("hudlayout.res not found. Creating a new one.");
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Templates/Source SDK Base 2013 Singleplayer/hl2/scripts/hudlayout.res", path);
+            }
+
+            if (!File.Exists(path))
+            { 
                 MessageBox.Show("File does not exist.");
                 Close();
             }
@@ -131,7 +139,7 @@ namespace source_modding_tool
 
         private void panelControl2_SizeChanged(object sender, EventArgs e)
         {
-            panelControl1.Location = new Point(panelControl2.Size.Width / 2 - panelControl1.Size.Width / 2, panelControl2.Size.Height / 2 - panelControl1.Size.Height / 2);
+            //panelControl1.Location = new Point(panelControl2.Size.Width / 2 - panelControl1.Size.Width / 2, panelControl2.Size.Height / 2 - panelControl1.Size.Height / 2);
         }
     }
 }
