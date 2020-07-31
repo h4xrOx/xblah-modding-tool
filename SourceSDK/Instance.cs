@@ -29,7 +29,12 @@ namespace source_modding_tool.SourceSDK
         {
             if (modProcess != null)
             {
-                modProcess.Kill();
+                try
+                {
+                    modProcess.Kill();
+                }
+                catch (Exception) { }
+                
                 modProcess = null;
             }
         }

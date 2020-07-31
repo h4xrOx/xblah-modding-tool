@@ -13,10 +13,12 @@ using System.Windows.Forms;
 
 namespace source_modding_tool
 {
-    public partial class MainForm : DevExpress.XtraEditors.XtraForm
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm, Updater.UpdaterInterface
     {
         Instance instance = null;
         Launcher launcher;
+
+        Updater updater;
 
         FormWindowState PreviousWindowState;
 
@@ -47,6 +49,8 @@ namespace source_modding_tool
 
             UpdateMenus();
             updateBackground();
+
+            updater = new Updater(this);
         }
 
         private void menuChoreography_ItemClick(object sender, ItemClickEventArgs e)
@@ -726,6 +730,39 @@ namespace source_modding_tool
                 ModForm_ResizeEnd(sender, e);
             }
             PreviousWindowState = WindowState;
+        }
+
+        public void OnUpdateReady(string version, DateTime date)
+        {
+            updateDownloadedPanel.Visible = true;
+        }
+
+        public void OnUpdateAvailable(string version, DateTime date)
+        {
+            updateAvailableLabel.Text = updateAvailableLabel.Text + " (v" + version + " - " + date.ToString("dd/MM/yyyy") + ")";
+            updateAvailablePanel.Visible = true;
+        }
+
+        private void updateLaterButton_Click(object sender, EventArgs e)
+        {
+            updateAvailablePanel.Visible = false;
+        }
+
+        private void downloadUpdateButton_Click(object sender, EventArgs e)
+        {
+            updateAvailablePanel.Visible = false;
+            updater.DownloadUpdate();
+        }
+
+        private void applyUpdateLaterButton_Click(object sender, EventArgs e)
+        {
+            updateDownloadedPanel.Visible = false;
+        }
+
+        private void applyUpdateButton_Click(object sender, EventArgs e)
+        {
+            updateDownloadedPanel.Visible = false;
+            updater.ApplyUpdate();
         }
     }
 }
