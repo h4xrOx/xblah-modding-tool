@@ -24,12 +24,15 @@ namespace source_modding_tool
             process.Start();
         }
 
-        public static void RunHammer(Mod mod)
+        public static void RunHammer(Mod mod, MainForm mainForm)
         {
             switch(mod.game.engine)
             {
                 case Engine.SOURCE:
                     {
+                        string mapsDir = launcher.GetCurrentMod().installPath + "\\maps\\";
+                        Directory.CreateDirectory(mapsDir);
+
                         CopySlartibartysHammer(mod.game);
                         CreateGameConfig(mod);
 
@@ -43,11 +46,18 @@ namespace source_modding_tool
                     break;
                 case Engine.SOURCE2:
                     {
+                        if (mod.game.engine == Engine.SOURCE2)
+                            mod.game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
 
+                        mainForm.Run(RunMode.WINDOWED, "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole");
+                        
                     }
                     break;
                 case Engine.GOLDSRC:
                     {
+                        string mapsDir = launcher.GetCurrentMod().installPath + "\\maps\\";
+                        Directory.CreateDirectory(mapsDir);
+
                         string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\hammer.exe";
 
                         Process process = new Process();
