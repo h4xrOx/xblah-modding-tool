@@ -30,7 +30,8 @@ namespace source_modding_tool
             {
                 case Engine.SOURCE:
                     {
-                        string mapsDir = launcher.GetCurrentMod().installPath + "\\maps\\";
+                        // Create a maps folder if it's not existant
+                        string mapsDir = mod.installPath + "\\maps\\";
                         Directory.CreateDirectory(mapsDir);
 
                         CopySlartibartysHammer(mod.game);
@@ -55,7 +56,8 @@ namespace source_modding_tool
                     break;
                 case Engine.GOLDSRC:
                     {
-                        string mapsDir = launcher.GetCurrentMod().installPath + "\\maps\\";
+                        // Create a maps folder if it's not existant
+                        string mapsDir = mod.installPath + "\\maps\\";
                         Directory.CreateDirectory(mapsDir);
 
                         string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\hammer.exe";
