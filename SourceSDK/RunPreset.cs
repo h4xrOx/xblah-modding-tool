@@ -39,40 +39,17 @@ namespace source_modding_tool.SourceSDK
 
             Point location = parent.PointToScreen(Point.Empty);
 
+            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.SOURCE)
+                runMode = SourceSDK.RunMode.WINDOWED;
+
+            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.GOLDSRC)
+                runMode = SourceSDK.RunMode.WINDOWED;
+
+            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.SOURCE2)
+                runMode = SourceSDK.RunMode.VR;
+
             switch (runMode)
             {
-                case SourceSDK.RunMode.DEFAULT:
-                    {
-                        switch (game.engine)
-                        {
-                            case Engine.SOURCE:
-                                arguments = "-game \"" + mod.installPath + "\" -windowed -noborder" +
-                                 " -x " + location.X +
-                                " -y " + location.Y +
-                                " -width " + parent.Width +
-                                " -height " + parent.Height +
-                                " -multirun" +
-                                " " + command;
-                                break;
-                            case Engine.SOURCE2:
-                                arguments = " -game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
-                                " -x " + location.X +
-                                " -y " + location.Y +
-                                " -width " + parent.Width +
-                                " -height " + parent.Height +
-                                " " + command;
-                                break;
-                            case Engine.GOLDSRC:
-                                arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder" +
-                                 " -x " + location.X +
-                                " -y " + location.Y +
-                                " -width " + parent.Width +
-                                " -height " + parent.Height +
-                                " " + command;
-                                break;
-                        }
-                    }
-                    break;
                 case SourceSDK.RunMode.FULLSCREEN:
                     {
                         switch (game.engine)
