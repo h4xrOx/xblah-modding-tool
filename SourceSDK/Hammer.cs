@@ -178,16 +178,17 @@ namespace source_modding_tool
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            if (game.name == "Source SDK Base 2013 Singleplayer")
+            if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
             {
                 foreach (string file in Directory.GetFiles(startupPath + "\\Tools\\SlartibartysHammer\\sp\\"))
                 {
                     try
                     {
-                        File.Copy(file, game.installPath + "\\bin\\" + new FileInfo(file).Name);
+                        File.Copy(file, game.installPath + "\\bin\\" + new FileInfo(file).Name, true);
                     }
-                    catch (IOException)
+                    catch (IOException e)
                     {
+
                     }
                 }
             }
