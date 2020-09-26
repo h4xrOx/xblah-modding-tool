@@ -517,6 +517,12 @@
     <None Include="Resources\Templates\Half-Life\valve\liblist.gam">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_episodic_template\resource\HL2EP2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\resource\HL2EP2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Templates\Source SDK Base 2013 Multiplayer\hl2mp\resource\hl2mp.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -555,6 +561,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Templates\Mapbase\mapbase_episodic_template\cfg\chapter1.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_episodic_template\cfg\chapter2.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_episodic_template\cfg\chapter3.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\cfg\chapter1.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\cfg\chapter2.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\cfg\chapter3.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\mapbase_demo02.bsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Tools\BatchCompiler\Specifications\Backup.bci">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -887,6 +914,9 @@
     <None Include="Resources\Assets\Posters\bshift_notinstalled.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Resources\Assets\Posters\mapbase_episodic_template.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Assets\Posters\ep2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -944,6 +974,24 @@
     <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\resource\clientscheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\resource\clientscheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\resource\gamemenu.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Templates\Mapbase\mapbase_hl2_template\resource\template_english.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Templates\Portal\portal\bin\client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1038,6 +1086,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Source SDK Base 2013 Singleplayer\hl2\scripts\hudlayout.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\cfg\server_blacklist.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\scripts\chapters.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\scripts\mapbase_rpc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\cfg\server_blacklist.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\gameinfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\scripts\chapters.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\scripts\mapbase_rpc.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Tools\BatchCompiler\Automatic Update Core.dll">
@@ -1221,7 +1299,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Templates\Mapbase\mapbase_episodic_template\custom\" />
+    <Folder Include="Resources\Templates\Mapbase\mapbase_episodic_template\maps\graphs\" />
+    <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\custom\" />
+    <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\graphs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"

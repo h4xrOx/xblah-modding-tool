@@ -47,7 +47,22 @@ namespace source_modding_tool
                     if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + "_notinstalled.png"))
                         item.ImageOptions.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + "_notinstalled.png");
                 }
+
+                // Mapbase specific
+                if (branchName == "mapbase_episodic_template")
+                    if (gamesList.Contains(item.Tag.ToString().Split('/')[1]))
+                    {
+                        // Mapbase is installed
+                        item.Visible = true;
+                        item.ImageOptions.Image = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Posters\\" + branchName + ".png");
+                    }
+                    else
+                    {
+                        item.Visible = false;
+                    }
             }
+
+            
 
             checkModDetails();
 
