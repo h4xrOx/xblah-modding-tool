@@ -67,6 +67,21 @@ namespace source_modding_tool
                     }
             }
 
+            // Mapbase, since they don't have their own gameid and I have to hardcode stuff
+            foreach (string library in this.libraries.GetList())
+            {
+                if (games.ContainsKey("Source SDK Base 2013 Singleplayer") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_shared") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_hl2") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_episodic"))
+                {
+
+                    games.Add("Mapbase", new Game("Mapbase", games["Source SDK Base 2013 Singleplayer"].installPath, Engine.SOURCE));
+
+                    break;
+                }
+            }
+
             return games;
         }
 

@@ -62,6 +62,8 @@ namespace source_modding_tool
                             return 440;
                         case "Half-Life 1 Source Deathmatch":
                             return 360;
+                        case "Mapbase":
+                            return 243731;  // Hard coded fake mapbase appid
                         default:
                             if (File.Exists(gamePath + "\\steam_appid.txt"))
                             {
@@ -98,6 +100,7 @@ namespace source_modding_tool
         /// <returns></returns>
         public Dictionary<string, Mod> LoadMods(Launcher launcher)
         {
+
             mods = new Dictionary<string, Mod>();
 
             if (launcher == null)
@@ -149,6 +152,25 @@ namespace source_modding_tool
                                     modAppId == 420
 
                                     )*/
+
+                                if (modAppId == "243730")
+                                {
+                                    // Check if is a Mapbase mod (Since mapbase doesn't have its own appid)
+                                    SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
+
+                                    foreach(SourceSDK.KeyValue searchPath in searchPaths.getChildren())
+                                    {
+
+                                        // Simple yet effective way of detecting mapbase dependency
+                                        string value = searchPath.getValue();
+
+                                        if (value != null && value.Contains("mapbase_shared"))
+                                        {
+                                            modAppId = "243731";    // Hardcoded fake mapbase gameappid
+                                            break;
+                                        }
+                                    }
+                                }
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
                                 {
