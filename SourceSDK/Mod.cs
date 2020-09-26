@@ -114,7 +114,15 @@ namespace source_modding_tool
         {
             List<string> result = new List<string>();
 
-            result.AddRange(Directory.GetFiles(game.installPath, "*.fgd", SearchOption.AllDirectories));
+            if (game.name == "Mapbase")
+            {
+                // Mapbase specific fgd directory
+                result.Add(installPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
+            } else
+            {
+                result.AddRange(Directory.GetFiles(game.installPath, "*.fgd", SearchOption.AllDirectories));
+            }
+            
             result.AddRange(Directory.GetFiles(installPath, "*.fgd", SearchOption.AllDirectories));
 
             List<string> alreadyIncluded = new List<string>();

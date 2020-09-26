@@ -387,7 +387,15 @@ namespace source_modding_tool
                 string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].installPath;
 
                 string toolPath = gamePath + "\\bin\\hlmv.exe";
-                Process.Start(toolPath);
+
+                Process process = new Process();
+                process.StartInfo.FileName = toolPath ;
+                process.StartInfo.Arguments = string.Empty;
+
+                if (launcher.GetCurrentGame().name == "Mapbase")
+                    process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().installPath;
+
+                process.Start();
             }
 
             // Propper

@@ -42,6 +42,11 @@ namespace source_modding_tool
                         Process process = new Process();
                         process.StartInfo.FileName = hammerPath;
                         process.StartInfo.Arguments = string.Empty;
+
+                        // Mapbase specfic hammer launch.
+                        if (mod.game.name == "Mapbase")
+                            process.StartInfo.Arguments = "-game " + mod.installPath;
+
                         process.Start();
                     }
                     break;
