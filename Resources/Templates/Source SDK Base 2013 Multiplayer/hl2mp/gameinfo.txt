@@ -20,7 +20,7 @@
 		SearchPaths
 		{
 			game		|gameinfo_path|custom/*.
-			mod+mod_write+default_write_path		|gameinfo_path|.
+			game+mod+mod_write+default_write_path		|gameinfo_path|.
 			gamebin				|gameinfo_path|bin
 			game				|all_source_engine_paths|hl2mp/custom/*
 			game				|all_source_engine_paths|hl2mp/hl2mp_english.vpk
