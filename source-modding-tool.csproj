@@ -125,11 +125,11 @@
     <Compile Include="Modding\CleanDialog.Designer.cs">
       <DependentUpon>CleanDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\HudEditor2.cs">
+    <Compile Include="Modding\HudEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\HudEditor2.Designer.cs">
-      <DependentUpon>HudEditor2.cs</DependentUpon>
+    <Compile Include="Modding\HudEditor.Designer.cs">
+      <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
@@ -142,12 +142,6 @@
     </Compile>
     <Compile Include="Modding\SearchPathsForm.Designer.cs">
       <DependentUpon>SearchPathsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modding\HudLayoutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modding\HudLayoutForm.Designer.cs">
-      <DependentUpon>HudLayoutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\GamemenuDialog.cs">
       <SubType>Form</SubType>
@@ -185,7 +179,6 @@
     <Compile Include="File\NewModForm.Designer.cs">
       <DependentUpon>NewModForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\HudLayout\HudItem.cs" />
     <Compile Include="Modding\StartMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,8 +248,8 @@
     <EmbeddedResource Include="Modding\CleanDialog.resx">
       <DependentUpon>CleanDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\HudEditor2.resx">
-      <DependentUpon>HudEditor2.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\HudEditor.resx">
+      <DependentUpon>HudEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
@@ -281,9 +274,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="File\NewModForm.resx">
       <DependentUpon>NewModForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modding\HudLayoutForm.resx">
-      <DependentUpon>HudLayoutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\StartMap.resx">
       <DependentUpon>StartMap.cs</DependentUpon>
@@ -1211,6 +1201,9 @@
     <Content Include="Resources\Tools\SlartibartysHammer\sp\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Tools\IngamePreviews\maps\hud_preview.bsp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Tools\IngamePreviews\maps\material_preview.bsp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

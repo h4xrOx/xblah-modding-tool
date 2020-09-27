@@ -1,6 +1,6 @@
 ﻿namespace source_modding_tool.Modding
 {
-    partial class HudEditor2
+    partial class HudEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HudEditor));
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HudEditor2));
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
@@ -78,18 +81,13 @@
             DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.baseSettingsLayout = new DevExpress.XtraLayout.LayoutControl();
-            this.colorPickEdit10 = new DevExpress.XtraEditors.ColorPickEdit();
+            this.colorPickEdit11 = new DevExpress.XtraEditors.ColorPickEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.reloadButton = new DevExpress.XtraBars.BarButtonItem();
-            this.restartButton = new DevExpress.XtraBars.BarButtonItem();
             this.saveChangesButton = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -99,6 +97,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.colorPickEdit10 = new DevExpress.XtraEditors.ColorPickEdit();
             this.colorPickEdit9 = new DevExpress.XtraEditors.ColorPickEdit();
             this.colorPickEdit8 = new DevExpress.XtraEditors.ColorPickEdit();
             this.colorPickEdit7 = new DevExpress.XtraEditors.ColorPickEdit();
@@ -138,24 +137,24 @@
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.playerHealthSpin = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.colorPickEdit11 = new DevExpress.XtraEditors.ColorPickEdit();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseSettingsLayout)).BeginInit();
             this.baseSettingsLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit10.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit7.Properties)).BeginInit();
@@ -195,15 +194,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerHealthSpin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit11.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -258,26 +256,26 @@
             this.baseSettingsLayout.TabIndex = 0;
             this.baseSettingsLayout.Text = "layoutControl1";
             // 
-            // colorPickEdit10
+            // colorPickEdit11
             // 
-            this.colorPickEdit10.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit10.Location = new System.Drawing.Point(127, 562);
-            this.colorPickEdit10.MenuManager = this.barManager1;
-            this.colorPickEdit10.Name = "colorPickEdit10";
-            this.colorPickEdit10.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.colorPickEdit10.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.colorPickEdit11.EditValue = System.Drawing.Color.Empty;
+            this.colorPickEdit11.Location = new System.Drawing.Point(127, 558);
+            this.colorPickEdit11.MenuManager = this.barManager1;
+            this.colorPickEdit11.Name = "colorPickEdit11";
+            this.colorPickEdit11.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.colorPickEdit11.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.colorPickEdit10.Size = new System.Drawing.Size(226, 20);
-            this.colorPickEdit10.StyleController = this.baseSettingsLayout;
-            toolTipTitleItem2.Text = "HL1 Caution";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "-Low health and low ammo crosshair indicator color.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.colorPickEdit10.SuperTip = superToolTip2;
-            this.colorPickEdit10.TabIndex = 19;
-            this.colorPickEdit10.Tag = "caution";
-            this.colorPickEdit10.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit11.Size = new System.Drawing.Size(226, 20);
+            this.colorPickEdit11.StyleController = this.baseSettingsLayout;
+            toolTipTitleItem1.Text = "Zoom Reticle Color";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "-Crosshair color when zoomed in.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.colorPickEdit11.SuperTip = superToolTip1;
+            this.colorPickEdit11.TabIndex = 20;
+            this.colorPickEdit11.Tag = "zoomreticlecolor";
+            this.colorPickEdit11.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // barManager1
             // 
@@ -291,8 +289,6 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.reloadButton,
-            this.restartButton,
             this.saveChangesButton});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 10;
@@ -308,26 +304,9 @@
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.reloadButton),
-            new DevExpress.XtraBars.LinkPersistInfo(this.restartButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.saveChangesButton)});
+            this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.Text = "Tools";
-            // 
-            // reloadButton
-            // 
-            this.reloadButton.Caption = "Reload";
-            this.reloadButton.Id = 0;
-            this.reloadButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("reloadButton.ImageOptions.SvgImage")));
-            this.reloadButton.Name = "reloadButton";
-            this.reloadButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.reloadButton_ItemClick);
-            // 
-            // restartButton
-            // 
-            this.restartButton.Caption = "Restart";
-            this.restartButton.Id = 1;
-            this.restartButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("restartButton.ImageOptions.SvgImage")));
-            this.restartButton.Name = "restartButton";
-            this.restartButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.restartButton_ItemClick);
             // 
             // saveChangesButton
             // 
@@ -344,6 +323,7 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.FloatLocation = new System.Drawing.Point(313, 156);
+            this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -439,10 +419,31 @@
             this.repositoryItemSpinEdit2.Name = "repositoryItemSpinEdit2";
             this.repositoryItemSpinEdit2.EditValueChanged += new System.EventHandler(this.playerHealthSpin_EditValueChanged);
             // 
+            // colorPickEdit10
+            // 
+            this.colorPickEdit10.EditValue = System.Drawing.Color.Empty;
+            this.colorPickEdit10.Location = new System.Drawing.Point(127, 679);
+            this.colorPickEdit10.MenuManager = this.barManager1;
+            this.colorPickEdit10.Name = "colorPickEdit10";
+            this.colorPickEdit10.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.colorPickEdit10.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.colorPickEdit10.Size = new System.Drawing.Size(226, 20);
+            this.colorPickEdit10.StyleController = this.baseSettingsLayout;
+            toolTipTitleItem2.Text = "HL1 Caution";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "-Low health and low ammo crosshair indicator color.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.colorPickEdit10.SuperTip = superToolTip2;
+            this.colorPickEdit10.TabIndex = 19;
+            this.colorPickEdit10.Tag = "caution";
+            this.colorPickEdit10.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
+            // 
             // colorPickEdit9
             // 
             this.colorPickEdit9.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit9.Location = new System.Drawing.Point(127, 538);
+            this.colorPickEdit9.Location = new System.Drawing.Point(127, 655);
             this.colorPickEdit9.MenuManager = this.barManager1;
             this.colorPickEdit9.Name = "colorPickEdit9";
             this.colorPickEdit9.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -459,12 +460,12 @@
             this.colorPickEdit9.SuperTip = superToolTip3;
             this.colorPickEdit9.TabIndex = 18;
             this.colorPickEdit9.Tag = "normal";
-            this.colorPickEdit9.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit9.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit8
             // 
             this.colorPickEdit8.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit8.Location = new System.Drawing.Point(127, 514);
+            this.colorPickEdit8.Location = new System.Drawing.Point(127, 631);
             this.colorPickEdit8.MenuManager = this.barManager1;
             this.colorPickEdit8.Name = "colorPickEdit8";
             this.colorPickEdit8.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -480,12 +481,12 @@
             this.colorPickEdit8.SuperTip = superToolTip4;
             this.colorPickEdit8.TabIndex = 17;
             this.colorPickEdit8.Tag = "yellowish";
-            this.colorPickEdit8.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit8.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit7
             // 
             this.colorPickEdit7.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit7.Location = new System.Drawing.Point(127, 368);
+            this.colorPickEdit7.Location = new System.Drawing.Point(127, 485);
             this.colorPickEdit7.MenuManager = this.barManager1;
             this.colorPickEdit7.Name = "colorPickEdit7";
             this.colorPickEdit7.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -501,12 +502,12 @@
             this.colorPickEdit7.SuperTip = superToolTip5;
             this.colorPickEdit7.TabIndex = 16;
             this.colorPickEdit7.Tag = "selectionselectedboxbg";
-            this.colorPickEdit7.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit7.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit6
             // 
             this.colorPickEdit6.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit6.Location = new System.Drawing.Point(127, 320);
+            this.colorPickEdit6.Location = new System.Drawing.Point(127, 437);
             this.colorPickEdit6.MenuManager = this.barManager1;
             this.colorPickEdit6.Name = "colorPickEdit6";
             this.colorPickEdit6.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -522,12 +523,12 @@
             this.colorPickEdit6.SuperTip = superToolTip6;
             this.colorPickEdit6.TabIndex = 15;
             this.colorPickEdit6.Tag = "selectionboxbg";
-            this.colorPickEdit6.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit6.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit5
             // 
             this.colorPickEdit5.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit5.Location = new System.Drawing.Point(127, 344);
+            this.colorPickEdit5.Location = new System.Drawing.Point(127, 461);
             this.colorPickEdit5.MenuManager = this.barManager1;
             this.colorPickEdit5.Name = "colorPickEdit5";
             this.colorPickEdit5.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -543,12 +544,12 @@
             this.colorPickEdit5.SuperTip = superToolTip7;
             this.colorPickEdit5.TabIndex = 14;
             this.colorPickEdit5.Tag = "selectionemptyboxbg";
-            this.colorPickEdit5.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit5.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit4
             // 
             this.colorPickEdit4.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit4.Location = new System.Drawing.Point(127, 296);
+            this.colorPickEdit4.Location = new System.Drawing.Point(127, 413);
             this.colorPickEdit4.MenuManager = this.barManager1;
             this.colorPickEdit4.Name = "colorPickEdit4";
             this.colorPickEdit4.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -564,12 +565,12 @@
             this.colorPickEdit4.SuperTip = superToolTip8;
             this.colorPickEdit4.TabIndex = 13;
             this.colorPickEdit4.Tag = "selectiontextfg";
-            this.colorPickEdit4.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit4.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit3
             // 
             this.colorPickEdit3.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit3.Location = new System.Drawing.Point(127, 272);
+            this.colorPickEdit3.Location = new System.Drawing.Point(127, 389);
             this.colorPickEdit3.MenuManager = this.barManager1;
             this.colorPickEdit3.Name = "colorPickEdit3";
             this.colorPickEdit3.Properties.AutomaticColor = System.Drawing.Color.Black;
@@ -585,12 +586,12 @@
             this.colorPickEdit3.SuperTip = superToolTip9;
             this.colorPickEdit3.TabIndex = 12;
             this.colorPickEdit3.Tag = "selectionnumberfg";
-            this.colorPickEdit3.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit3.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit2
             // 
             this.colorPickEdit2.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit2.Location = new System.Drawing.Point(127, 78);
+            this.colorPickEdit2.Location = new System.Drawing.Point(127, 195);
             this.colorPickEdit2.Name = "colorPickEdit2";
             this.colorPickEdit2.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.colorPickEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -605,12 +606,12 @@
             this.colorPickEdit2.SuperTip = superToolTip10;
             this.colorPickEdit2.TabIndex = 11;
             this.colorPickEdit2.Tag = "panel.bgcolor";
-            this.colorPickEdit2.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit2.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // colorPickEdit1
             // 
             this.colorPickEdit1.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit1.Location = new System.Drawing.Point(127, 54);
+            this.colorPickEdit1.Location = new System.Drawing.Point(127, 171);
             this.colorPickEdit1.Name = "colorPickEdit1";
             this.colorPickEdit1.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.colorPickEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -625,12 +626,12 @@
             this.colorPickEdit1.SuperTip = superToolTip11;
             this.colorPickEdit1.TabIndex = 10;
             this.colorPickEdit1.Tag = "panel.fgcolor";
-            this.colorPickEdit1.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.colorPickEdit1.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsBrightDamagedFgEdit
             // 
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsBrightDamagedFgEdit.Location = new System.Drawing.Point(127, 199);
+            this.clientSchemeBaseSettingsBrightDamagedFgEdit.Location = new System.Drawing.Point(127, 316);
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.Name = "clientSchemeBaseSettingsBrightDamagedFgEdit";
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -645,12 +646,12 @@
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.SuperTip = superToolTip12;
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.TabIndex = 9;
             this.clientSchemeBaseSettingsBrightDamagedFgEdit.Tag = "brightdamagedfg";
-            this.clientSchemeBaseSettingsBrightDamagedFgEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsBrightDamagedFgEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsDamagedBgColorEdit
             // 
             this.clientSchemeBaseSettingsDamagedBgColorEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsDamagedBgColorEdit.Location = new System.Drawing.Point(127, 175);
+            this.clientSchemeBaseSettingsDamagedBgColorEdit.Location = new System.Drawing.Point(127, 292);
             this.clientSchemeBaseSettingsDamagedBgColorEdit.Name = "clientSchemeBaseSettingsDamagedBgColorEdit";
             this.clientSchemeBaseSettingsDamagedBgColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsDamagedBgColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -665,12 +666,12 @@
             this.clientSchemeBaseSettingsDamagedBgColorEdit.SuperTip = superToolTip13;
             this.clientSchemeBaseSettingsDamagedBgColorEdit.TabIndex = 8;
             this.clientSchemeBaseSettingsDamagedBgColorEdit.Tag = "damagedbg";
-            this.clientSchemeBaseSettingsDamagedBgColorEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsDamagedBgColorEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsDamagedFgColorEdit
             // 
             this.clientSchemeBaseSettingsDamagedFgColorEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsDamagedFgColorEdit.Location = new System.Drawing.Point(127, 151);
+            this.clientSchemeBaseSettingsDamagedFgColorEdit.Location = new System.Drawing.Point(127, 268);
             this.clientSchemeBaseSettingsDamagedFgColorEdit.Name = "clientSchemeBaseSettingsDamagedFgColorEdit";
             this.clientSchemeBaseSettingsDamagedFgColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsDamagedFgColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -685,12 +686,12 @@
             this.clientSchemeBaseSettingsDamagedFgColorEdit.SuperTip = superToolTip14;
             this.clientSchemeBaseSettingsDamagedFgColorEdit.TabIndex = 7;
             this.clientSchemeBaseSettingsDamagedFgColorEdit.Tag = "damagedfg";
-            this.clientSchemeBaseSettingsDamagedFgColorEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsDamagedFgColorEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsBrightFgEdit
             // 
             this.clientSchemeBaseSettingsBrightFgEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsBrightFgEdit.Location = new System.Drawing.Point(127, -20);
+            this.clientSchemeBaseSettingsBrightFgEdit.Location = new System.Drawing.Point(127, 97);
             this.clientSchemeBaseSettingsBrightFgEdit.Name = "clientSchemeBaseSettingsBrightFgEdit";
             this.clientSchemeBaseSettingsBrightFgEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsBrightFgEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -706,12 +707,12 @@
             this.clientSchemeBaseSettingsBrightFgEdit.SuperTip = superToolTip15;
             this.clientSchemeBaseSettingsBrightFgEdit.TabIndex = 6;
             this.clientSchemeBaseSettingsBrightFgEdit.Tag = "brightfg";
-            this.clientSchemeBaseSettingsBrightFgEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsBrightFgEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsBgColorEdit
             // 
             this.clientSchemeBaseSettingsBgColorEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsBgColorEdit.Location = new System.Drawing.Point(127, -44);
+            this.clientSchemeBaseSettingsBgColorEdit.Location = new System.Drawing.Point(127, 73);
             this.clientSchemeBaseSettingsBgColorEdit.Name = "clientSchemeBaseSettingsBgColorEdit";
             this.clientSchemeBaseSettingsBgColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsBgColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -726,12 +727,12 @@
             this.clientSchemeBaseSettingsBgColorEdit.SuperTip = superToolTip16;
             this.clientSchemeBaseSettingsBgColorEdit.TabIndex = 5;
             this.clientSchemeBaseSettingsBgColorEdit.Tag = "bgcolor";
-            this.clientSchemeBaseSettingsBgColorEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsBgColorEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // clientSchemeBaseSettingsFgColorEdit
             // 
             this.clientSchemeBaseSettingsFgColorEdit.EditValue = System.Drawing.Color.Empty;
-            this.clientSchemeBaseSettingsFgColorEdit.Location = new System.Drawing.Point(127, -68);
+            this.clientSchemeBaseSettingsFgColorEdit.Location = new System.Drawing.Point(127, 49);
             this.clientSchemeBaseSettingsFgColorEdit.Name = "clientSchemeBaseSettingsFgColorEdit";
             this.clientSchemeBaseSettingsFgColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.clientSchemeBaseSettingsFgColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -746,7 +747,7 @@
             this.clientSchemeBaseSettingsFgColorEdit.SuperTip = superToolTip17;
             this.clientSchemeBaseSettingsFgColorEdit.TabIndex = 4;
             this.clientSchemeBaseSettingsFgColorEdit.Tag = "fgcolor";
-            this.clientSchemeBaseSettingsFgColorEdit.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            this.clientSchemeBaseSettingsFgColorEdit.EditValueChanged += new System.EventHandler(this.clientSchemeColorPickEdit_EditValueChanged);
             // 
             // Root
             // 
@@ -877,7 +878,6 @@
             this.layoutControlItem7.Size = new System.Drawing.Size(333, 24);
             this.layoutControlItem7.Text = "Foreground";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(100, 13);
-            this.layoutControlItem7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem8
             // 
@@ -909,7 +909,6 @@
             this.layoutControlItem9.Size = new System.Drawing.Size(333, 24);
             this.layoutControlItem9.Text = "Number Foreground";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(100, 13);
-            this.layoutControlItem9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem10
             // 
@@ -919,7 +918,6 @@
             this.layoutControlItem10.Size = new System.Drawing.Size(333, 24);
             this.layoutControlItem10.Text = "Text Foreground";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(100, 13);
-            this.layoutControlItem10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem11
             // 
@@ -967,7 +965,6 @@
             this.layoutControlItem14.Size = new System.Drawing.Size(333, 24);
             this.layoutControlItem14.Text = "Yellowish";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(100, 13);
-            this.layoutControlItem14.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem15
             // 
@@ -986,6 +983,24 @@
             this.layoutControlItem16.Size = new System.Drawing.Size(333, 24);
             this.layoutControlItem16.Text = "Caution";
             this.layoutControlItem16.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlGroup7
+            // 
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem18});
+            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 509);
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(357, 73);
+            this.layoutControlGroup7.Text = "Zoom";
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.colorPickEdit11;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(333, 24);
+            this.layoutControlItem18.Text = "Reticle Color";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(100, 13);
             // 
             // playerHealthSpin
             // 
@@ -1061,46 +1076,7 @@
             this.emptySpaceItem3.Size = new System.Drawing.Size(679, 25);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // colorPickEdit11
-            // 
-            this.colorPickEdit11.EditValue = System.Drawing.Color.Empty;
-            this.colorPickEdit11.Location = new System.Drawing.Point(127, 441);
-            this.colorPickEdit11.MenuManager = this.barManager1;
-            this.colorPickEdit11.Name = "colorPickEdit11";
-            this.colorPickEdit11.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.colorPickEdit11.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.colorPickEdit11.Size = new System.Drawing.Size(226, 20);
-            this.colorPickEdit11.StyleController = this.baseSettingsLayout;
-            toolTipTitleItem1.Text = "Zoom Reticle Color";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "-Crosshair color when zoomed in.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.colorPickEdit11.SuperTip = superToolTip1;
-            this.colorPickEdit11.TabIndex = 20;
-            this.colorPickEdit11.Tag = "zoomreticlecolor";
-            this.colorPickEdit11.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.colorPickEdit11;
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(333, 24);
-            this.layoutControlItem18.Text = "Reticle Color";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(100, 13);
-            // 
-            // layoutControlGroup7
-            // 
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem18});
-            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 509);
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(357, 73);
-            this.layoutControlGroup7.Text = "Zoom";
-            // 
-            // HudEditor2
+            // HudEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1115,7 +1091,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "HudEditor2";
+            this.Name = "HudEditor";
             this.Text = "Hud Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HudEditor2_FormClosing);
             this.Load += new System.EventHandler(this.HudEditor2_Load);
@@ -1126,10 +1102,11 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.baseSettingsLayout)).EndInit();
             this.baseSettingsLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit10.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit7.Properties)).EndInit();
@@ -1169,15 +1146,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerHealthSpin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit11.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1213,8 +1189,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem reloadButton;
-        private DevExpress.XtraBars.BarButtonItem restartButton;
         private DevExpress.XtraBars.BarButtonItem saveChangesButton;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private DevExpress.XtraBars.Bar bar2;

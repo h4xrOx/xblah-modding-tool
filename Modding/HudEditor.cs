@@ -15,7 +15,7 @@ using DevExpress.XtraLayout;
 
 namespace source_modding_tool.Modding
 {
-    public partial class HudEditor2 : DevExpress.XtraEditors.XtraForm
+    public partial class HudEditor : DevExpress.XtraEditors.XtraForm
     {
         Launcher launcher;
         Mod mod;
@@ -24,7 +24,9 @@ namespace source_modding_tool.Modding
 
         KeyValue clientSchemeKV;
 
-        public HudEditor2(Launcher launcher, Mod mod)
+        bool requiresRestart = true;
+
+        public HudEditor(Launcher launcher, Mod mod)
         {
             InitializeComponent();
 
@@ -34,6 +36,10 @@ namespace source_modding_tool.Modding
 
         private void HudEditor2_Load(object sender, EventArgs e)
         {
+            // Copy the preview map
+            Directory.CreateDirectory(mod.installPath + "\\maps\\");
+            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews\\maps\\hud_preview.bsp", mod.installPath + "\\maps\\hud_preview.bsp", true);
+
             startPreview();
             loadClientScheme();
         }
@@ -44,6 +50,7 @@ namespace source_modding_tool.Modding
             {
                 XtraMessageBox.Show("ClientScheme.res not found in /resource/");
                 Close();
+                return;
             }
 
             clientSchemeKV = KeyValue.readChunkfile(mod.installPath + "\\resource\\clientscheme.res", true);
@@ -83,7 +90,7 @@ namespace source_modding_tool.Modding
             instance.Stop();
         }
 
-        private void colorPickEdit1_EditValueChanged(object sender, EventArgs e)
+        private void clientSchemeColorPickEdit_EditValueChanged(object sender, EventArgs e)
         {
             if (sender is ColorPickEdit)
             {
@@ -94,6 +101,8 @@ namespace source_modding_tool.Modding
                 KeyValue colorKV = clientSchemeKV.findChildByKey(tag);
                 if (colorKV != null)
                     colorKV.setValue(color);
+
+                requiresRestart = true;
             }
             
         }
@@ -108,7 +117,9 @@ namespace source_modding_tool.Modding
             RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
             instance = new Instance(launcher, panelControl1);
 
-            instance.Start(runPreset, "-nomouse -novid +map hud_preview +sv_cheats 1 +ent_fire \"!player sethealth " + (int)playerHealthSpin.Value + "\"");
+            requiresRestart = false;
+
+            instance.Start(runPreset, "-nomouse -novid +map hud_preview");
         }
 
         private void playerHealthSpin_EditValueChanged(object sender, EventArgs e)
@@ -116,27 +127,26 @@ namespace source_modding_tool.Modding
             instance.Command("+ent_fire \"!player sethealth " + (int)playerHealthSpin.Value + "\"");
         }
 
-        private void reloadButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void reloadHUD()
         {
             instance.Command("+hud_reloadscheme");
-        }
-
-        private void restartButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            startPreview();
         }
 
         private void saveChangesButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             KeyValue.writeChunkFile(mod.installPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
+
+            if (requiresRestart)
+                startPreview();
+            else
+                reloadHUD();
+
         }
 
         private void HudEditor2_ResizeEnd(object sender, EventArgs e)
         {
             if (instance != null)
                 instance.Resize();
-
-            //instance.Command("-w " + panelControl1.Width + " -h " + panelControl1.Height + " +mat_setvideomode \"" + panelControl1.Width + " " + panelControl1.Height + " 1\"");
         }
     }
 }

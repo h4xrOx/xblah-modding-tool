@@ -63,10 +63,10 @@
             this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
             this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
@@ -508,6 +508,14 @@
             this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
             this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
+            // menuModdingHudEditor
+            // 
+            this.menuModdingHudEditor.Caption = "Hud";
+            this.menuModdingHudEditor.Id = 93;
+            this.menuModdingHudEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingHudEditor.ImageOptions.SvgImage")));
+            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
+            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
             // menuModdingFileExplorer
             // 
             this.menuModdingFileExplorer.Caption = "File Explorer";
@@ -534,13 +542,6 @@
             this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
             this.menuModdingDelete.Name = "menuModdingDelete";
             this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
-            // 
-            // menuModdingHudEditor
-            // 
-            this.menuModdingHudEditor.Caption = "Hud";
-            this.menuModdingHudEditor.Id = 93;
-            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
-            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuLevelDesign
             // 

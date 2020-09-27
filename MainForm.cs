@@ -259,7 +259,7 @@ namespace source_modding_tool
             // Hud Editor
             else if (e.Item == menuModdingHudEditor)
             {
-                HudEditor2 form = new HudEditor2(launcher, launcher.GetCurrentMod());
+                HudEditor form = new HudEditor(launcher, launcher.GetCurrentMod());
                 form.ShowDialog();
             }
 
@@ -542,7 +542,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = true;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = false;
-                        menuModdingHudEditor.Enabled = true;
+                            menuModdingHudEditor.Enabled = true;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -579,7 +579,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
-                        menuModdingHudEditor.Enabled = false;
+                            menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -616,7 +616,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
-                        menuModdingHudEditor.Enabled = false;
+                            menuModdingHudEditor.Enabled = false;
                         menuModdingFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
