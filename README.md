@@ -22,6 +22,7 @@
 * Explore the files in the mod folder. (Goldsrc and Source 2)
 * Copy only the assets used by a VMF to a /custom/ folder. (Source 1)
 * Delete mods.
+* Edit the HUD. (Source 1)
 
 ### Level Design
 * Run maps directly from the BSP/VPK.
