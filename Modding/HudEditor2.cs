@@ -103,6 +103,8 @@ namespace source_modding_tool.Modding
             if (instance != null)
                 instance.Stop();
 
+            playerHealthSpin.Value = 100;
+
             RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
             instance = new Instance(launcher, panelControl1);
 
@@ -127,6 +129,14 @@ namespace source_modding_tool.Modding
         private void saveChangesButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             KeyValue.writeChunkFile(mod.installPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
+        }
+
+        private void HudEditor2_ResizeEnd(object sender, EventArgs e)
+        {
+            if (instance != null)
+                instance.Resize();
+
+            //instance.Command("-w " + panelControl1.Width + " -h " + panelControl1.Height + " +mat_setvideomode \"" + panelControl1.Width + " " + panelControl1.Height + " 1\"");
         }
     }
 }

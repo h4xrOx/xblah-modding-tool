@@ -66,6 +66,7 @@
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
             this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
@@ -110,7 +111,6 @@
             this.downloadUpdateButton = new DevExpress.XtraEditors.SimpleButton();
             this.downloadUpdateLaterButton = new DevExpress.XtraEditors.SimpleButton();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -385,8 +385,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
             this.menuModding.Name = "menuModding";
             // 
             // menuModdingRun
@@ -465,7 +464,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor)});
             this.menuModdingSettings.Name = "menuModdingSettings";
             // 
             // menuModdingSettingsGameInfo
@@ -534,6 +534,13 @@
             this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
             this.menuModdingDelete.Name = "menuModdingDelete";
             this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingHudEditor
+            // 
+            this.menuModdingHudEditor.Caption = "Hud";
+            this.menuModdingHudEditor.Id = 93;
+            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
+            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuLevelDesign
             // 
@@ -897,13 +904,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // menuModdingHudEditor
-            // 
-            this.menuModdingHudEditor.Caption = "Hud Editor";
-            this.menuModdingHudEditor.Id = 93;
-            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
-            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // MainForm
             // 
