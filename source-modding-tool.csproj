@@ -125,6 +125,12 @@
     <Compile Include="Modding\CleanDialog.Designer.cs">
       <DependentUpon>CleanDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modding\HudEditor2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\HudEditor2.Designer.cs">
+      <DependentUpon>HudEditor2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\CleanDialog.resx">
       <DependentUpon>CleanDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\HudEditor2.resx">
+      <DependentUpon>HudEditor2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>

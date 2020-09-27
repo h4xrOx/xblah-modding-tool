@@ -259,7 +259,7 @@ namespace source_modding_tool
             // Hud Editor
             else if (e.Item == menuModdingHudEditor)
             {
-                HudEditorForm form = new HudEditorForm(launcher);
+                HudEditor2 form = new HudEditor2(launcher, launcher.GetCurrentMod());
                 form.ShowDialog();
             }
 

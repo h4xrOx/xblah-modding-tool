@@ -325,7 +325,7 @@ namespace source_modding_tool.SourceSDK
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
 

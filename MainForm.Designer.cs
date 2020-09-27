@@ -63,7 +63,6 @@
             this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -111,6 +110,7 @@
             this.downloadUpdateButton = new DevExpress.XtraEditors.SimpleButton();
             this.downloadUpdateLaterButton = new DevExpress.XtraEditors.SimpleButton();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -174,7 +174,6 @@
             this.menuLevelDesignMapsrc,
             this.menuModdingRunWindowed,
             this.menuMaterialsEditor,
-            this.menuModdingHudEditor,
             this.barButtonItem6,
             this.barButtonItem7,
             this.barButtonItem8,
@@ -193,9 +192,10 @@
             this.barButtonItem1,
             this.menuModdingRun,
             this.toolsRunPopupExpert,
-            this.menuModdingSettingsStartingMaps});
+            this.menuModdingSettingsStartingMaps,
+            this.menuModdingHudEditor});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 93;
+            this.barManager.MaxItemId = 94;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -383,10 +383,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingImport2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingHudEditor, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor)});
             this.menuModding.Name = "menuModding";
             // 
             // menuModdingRun
@@ -507,13 +507,6 @@
             this.menuModdingSettingsContentMount.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsContentMount.ImageOptions.SvgImage")));
             this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
             this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
-            // 
-            // menuModdingHudEditor
-            // 
-            this.menuModdingHudEditor.Caption = "Hud Editor";
-            this.menuModdingHudEditor.Id = 59;
-            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
-            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingFileExplorer
             // 
@@ -905,6 +898,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuModdingHudEditor
+            // 
+            this.menuModdingHudEditor.Caption = "Hud Editor";
+            this.menuModdingHudEditor.Id = 93;
+            this.menuModdingHudEditor.Name = "menuModdingHudEditor";
+            this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,7 +990,6 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingRunWindowed;
         private System.Windows.Forms.Timer modProcessUpdater;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsEditor;
-        private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
@@ -1022,5 +1021,6 @@
         private DevExpress.XtraEditors.LabelControl updateAvailableLabel;
         private DevExpress.XtraEditors.SimpleButton downloadUpdateButton;
         private DevExpress.XtraEditors.SimpleButton downloadUpdateLaterButton;
+        private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
     }
 }

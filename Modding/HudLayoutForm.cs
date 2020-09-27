@@ -125,7 +125,7 @@ namespace source_modding_tool
 
         private void ClientSchemeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (instance != null && instance.modProcess != null)
+            if (instance != null && instance.modProcess != null && !instance.modProcess.HasExited)
             {
                 instance.modProcess.Kill();
             }
