@@ -212,7 +212,7 @@ namespace source_modding_tool
                         gameInfo.setValue("game", modFolder);
                         gameInfo.setValue("title", modFolder);
 
-                        SourceSDK.KeyValue searchPaths = gameInfo.getChildByKey("filesystem").getChildByKey("searchpaths");
+                        SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("filesystem").getChildByKey("searchpaths");
                         searchPaths.clearChildren();
                         searchPaths.addChild("game", modFolder);
                         searchPaths.addChild("game", "hlvr");
