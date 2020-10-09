@@ -178,9 +178,14 @@ namespace source_modding_tool
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
+            string hammerPath = startupPath + "\\Tools\\SlartibartysHammer\\sp\\";
+            // Mapbase specfic hammer launch.
+            if (game.name == "Mapbase")
+                hammerPath = startupPath + "\\Tools\\SlartibartysHammer\\mapbase\\";
+
+                if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
             {
-                foreach (string file in Directory.GetFiles(startupPath + "\\Tools\\SlartibartysHammer\\sp\\"))
+                foreach (string file in Directory.GetFiles(hammerPath))
                 {
                     try
                     {
