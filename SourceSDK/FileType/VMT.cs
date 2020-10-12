@@ -32,6 +32,8 @@ namespace source_modding_tool.SourceSDK
             List<string> assets = new List<string>();
             List<string> searchPaths = mod.GetSearchPaths();
 
+            
+
             foreach (string searchPath in searchPaths)
             {
                 string materialPath = searchPath + "\\" + relativePath;

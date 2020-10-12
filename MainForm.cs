@@ -229,13 +229,22 @@ namespace source_modding_tool
                     string gameName = dialog.game;
                     string modName = dialog.mod;
 
-                    Game game = launcher.GetGamesList()[gameName];
-                    Mod mod = launcher.GetModsList(game)[modName];
+                    Game currentGame = launcher.GetCurrentGame();
+                    Mod currentMod = launcher.GetCurrentMod();
 
-                    AssetsCopierForm assetsCopierForm = new AssetsCopierForm(game, mod);
+                    Game sourceGame = launcher.GetGamesList()[gameName];
+                    Mod sourceMod = launcher.GetModsList(sourceGame)[modName];
+
+                    AssetsCopierForm assetsCopierForm = new AssetsCopierForm(launcher, sourceMod);
+                    assetsCopierForm.OpenDestination = false;
+                    assetsCopierForm.destination = currentMod.installPath;
                     if (assetsCopierForm.ShowDialog() == DialogResult.OK)
                     {
+                        
                     }
+
+                    launcher.SetCurrentGame(currentGame);
+                    launcher.SetCurrentMod(currentMod);
                 }
             }
 
@@ -252,7 +261,7 @@ namespace source_modding_tool
                 Game game = launcher.GetGamesList()[toolsGames.EditValue.ToString()];
                 Mod mod = launcher.GetModsList(game)[toolsMods.EditValue.ToString()];
 
-                AssetsCopierForm form = new AssetsCopierForm(game, mod);
+                AssetsCopierForm form = new AssetsCopierForm(launcher, mod);
                 form.ShowDialog();
             }
 

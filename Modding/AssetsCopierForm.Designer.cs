@@ -72,7 +72,7 @@
             // 
             this.readMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.readMapButton.Enabled = false;
-            this.readMapButton.Location = new System.Drawing.Point(355, 8);
+            this.readMapButton.Location = new System.Drawing.Point(324, 8);
             this.readMapButton.Margin = new System.Windows.Forms.Padding(8);
             this.readMapButton.Name = "readMapButton";
             this.readMapButton.Size = new System.Drawing.Size(75, 23);
@@ -88,7 +88,7 @@
             this.vmfList.Location = new System.Drawing.Point(8, 8);
             this.vmfList.Name = "vmfList";
             this.vmfList.OptionsBehavior.Editable = false;
-            this.vmfList.Size = new System.Drawing.Size(393, 194);
+            this.vmfList.Size = new System.Drawing.Size(362, 194);
             this.vmfList.TabIndex = 5;
             this.vmfList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.vmfList_FocusedNodeChanged);
             // 
@@ -157,7 +157,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(438, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(407, 0);
             // 
             // barDockControlBottom
             // 
@@ -165,7 +165,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 241);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(438, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(407, 24);
             // 
             // barDockControlLeft
             // 
@@ -179,7 +179,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(438, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(407, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 241);
             // 
@@ -191,7 +191,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 202);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(438, 39);
+            this.panelControl1.Size = new System.Drawing.Size(407, 39);
             this.panelControl1.TabIndex = 11;
             // 
             // panelControl3
@@ -200,7 +200,7 @@
             this.panelControl3.Controls.Add(this.buttonSearch);
             this.panelControl3.Controls.Add(this.removeButton);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl3.Location = new System.Drawing.Point(401, 8);
+            this.panelControl3.Location = new System.Drawing.Point(370, 8);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(29, 194);
             this.panelControl3.TabIndex = 6;
@@ -219,14 +219,14 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 0);
-            this.panelControl2.Size = new System.Drawing.Size(438, 202);
+            this.panelControl2.Size = new System.Drawing.Size(407, 202);
             this.panelControl2.TabIndex = 18;
             // 
             // AssetsCopierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 265);
+            this.ClientSize = new System.Drawing.Size(407, 265);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);

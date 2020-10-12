@@ -28,7 +28,11 @@ namespace source_modding_tool
 
         public List<string> GetSearchPaths()
         {
-            return GetMountedPaths().Where(x => Directory.Exists(x)).ToList();
+            List<string> mountedPaths = GetMountedPaths();
+
+            List<string> existingPaths = mountedPaths.Where(x => Directory.Exists(x)).ToList();
+
+            return existingPaths;
         }
 
         public List<string> GetMountedPaths()
@@ -98,10 +102,24 @@ namespace source_modding_tool
                         break;
                 }
 
-                result.Add(value);
-            }
+                if (value.EndsWith("*"))
+                {
+                    // Ends with wildcard. Add all subdirectories.
+                    value = value.Substring(0, value.Length - 1);
 
-            
+                    if (Directory.Exists(value))
+                        foreach(string subdir in Directory.GetDirectories(value))
+                        {
+                            result.Add(subdir);
+                        }
+                } else
+                {
+                    // Add directory.
+                    result.Add(value);
+                }
+
+                
+            }
 
             return result.Distinct().ToList();
         }

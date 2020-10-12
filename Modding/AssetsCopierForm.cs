@@ -10,6 +10,8 @@ namespace source_modding_tool.Tools
 {
     public partial class AssetsCopierForm : DevExpress.XtraEditors.XtraForm
     {
+        public bool OpenDestination = true;
+
         private const int COLOR_BLUE = 0;
 
         private const int COLOR_GREEN = 1;
@@ -18,30 +20,27 @@ namespace source_modding_tool.Tools
 
         List<string> assets = new List<string>();
 
-        string destination = string.Empty;
+        public string destination = string.Empty;
         Game game;
         Mod mod;
         Launcher launcher;
 
         List<string> vmfs = new List<string>();
 
-        public AssetsCopierForm(Game game, Mod mod)
+        public AssetsCopierForm(Launcher launcher, Mod mod)
         {
-            this.game = game;
+            this.launcher = launcher;
+            this.game = mod.game;
             this.mod = mod;
 
             InitializeComponent();
         }
 
-        public AssetsCopierForm(Game game, Mod mod, string destination) : this(game, mod)
+        public AssetsCopierForm(Launcher launcher, Mod mod, string destination) : this(launcher, mod)
         { this.destination = destination; }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)
         {
-            launcher = new Launcher();
-            launcher.SetCurrentGame(game);
-            game.SetCurrentMod(mod);
-
             updateVMFList();
             xtraOpenFileDialog1.InitialDirectory = launcher.GetModPath(game, mod);
         }
@@ -72,15 +71,23 @@ namespace source_modding_tool.Tools
 
             Directory.CreateDirectory(customPath);
 
-            foreach(string asset in assets)
+            foreach (string asset in assets)
             {
                 foreach(string searchPath in searchPaths)
                 {
-                    if(File.Exists(searchPath + "\\" + asset))
+
+                    if (File.Exists(searchPath + "\\" + asset))
                     {
+
                         Directory.CreateDirectory(Path.GetDirectoryName(customPath + "\\" + asset));
 
-                        File.Copy(searchPath + "\\" + asset, customPath + "\\" + asset, true);
+                        try
+                        {
+                            File.Copy(searchPath + "\\" + asset, customPath + "\\" + asset, true);
+                        } catch (Exception)
+                        {
+
+                        }
                     }
                 }
             }
@@ -103,11 +110,18 @@ namespace source_modding_tool.Tools
                 assets.AddRange(getAssetsFromMap(vmf));
 
             assets = assets.Distinct().ToList();
+
             string customPath = copyAssets();
 
             string modPath = launcher.GetModPath(game, mod);
             setStatusMessage("Done.", COLOR_GREEN);
-            Process.Start(customPath);
+
+            if (OpenDestination)
+                Process.Start(customPath);
+            else
+                DialogResult = DialogResult.OK;
+
+            Close();
         }
 
         private void removeButton_Click(object sender, EventArgs e)

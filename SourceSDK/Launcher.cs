@@ -99,9 +99,9 @@ namespace source_modding_tool
 
         public string GetModPath(Game game, Mod mod)
         {
-            if(game != currentGame || !games.ContainsKey(game.name))
+            if (game != currentGame || !games.ContainsKey(game.name))
             {
-                if(!games.ContainsKey(game.name))
+                if (!games.ContainsKey(game.name))
                     LoadGames();
 
                 if(games.ContainsKey(game.name))
@@ -112,7 +112,7 @@ namespace source_modding_tool
 
             if(mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.name))
             {
-                if(!game.mods.ContainsKey(mod.name))
+                if (!game.mods.ContainsKey(mod.name))
                     game.LoadMods(this);
 
                 if(!game.mods.ContainsKey(mod.name))
@@ -121,7 +121,7 @@ namespace source_modding_tool
 
             string path = mod.installPath;
 
-            if(game != currentGame)
+            if (game != currentGame)
                 currentGame.LoadMods(this);
 
             return path;
