@@ -44,21 +44,27 @@ namespace source_modding_tool.SourceSDK
                 SourceSDK.KeyValue material = SourceSDK.KeyValue.readChunkfile(materialPath);
                 List<SourceSDK.KeyValue> textures = new List<SourceSDK.KeyValue>();
 
-                textures.Add(material.getChildByKey("$basetexture"));
-                textures.Add(material.getChildByKey("$detail"));
-                textures.Add(material.getChildByKey("$blendmodulatetexture"));
-                textures.Add(material.getChildByKey("$envmapmask"));
-                textures.Add(material.getChildByKey("$bumpmap"));
-                textures.Add(material.getChildByKey("$parallaxmap"));
-                textures.Add(material.getChildByKey("$basetexture2"));
-                textures.Add(material.getChildByKey("%tooltexture"));
+                KeyValue baseTexture = material.findChildByKey("$basetexture");
+
+                textures.Add(material.findChildByKey("$basetexture"));
+                textures.Add(material.findChildByKey("$detail"));
+                textures.Add(material.findChildByKey("$blendmodulatetexture"));
+                textures.Add(material.findChildByKey("$envmapmask"));
+                textures.Add(material.findChildByKey("$bumpmap"));
+                textures.Add(material.findChildByKey("$parallaxmap"));
+                textures.Add(material.findChildByKey("$basetexture2"));
+                textures.Add(material.findChildByKey("%tooltexture"));
 
                 foreach (SourceSDK.KeyValue textureKv in textures)
                 {
                     if (textureKv == null)
                         continue;
 
-                    string textureValue = "materials/" + textureKv.getValue().ToLower() + ".vtf";
+                    string textureRelativePath = textureKv.getValue().ToLower();
+                    if (textureRelativePath.EndsWith(".vtf"))
+                        textureRelativePath = textureRelativePath.Substring(0, textureRelativePath.Length - 4);
+
+                    string textureValue = "materials/" + textureRelativePath + ".vtf";
 
                     if (!assets.Contains(textureValue))
                         assets.Add(textureValue);
