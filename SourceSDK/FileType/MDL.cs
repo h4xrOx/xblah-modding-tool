@@ -49,7 +49,7 @@ namespace source_modding_tool.SourceSDK
 
             string materialPath = materials.Last();
 
-            if (materialPath.EndsWith("\\"))
+            if (materialPath.EndsWith("\\") || materialPath.EndsWith("/"))
             {
                 // Last string is the path, and all the previous ones are individual file names.
                 materials.RemoveAt(materials.Count - 1);
