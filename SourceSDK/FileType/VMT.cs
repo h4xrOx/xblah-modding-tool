@@ -54,6 +54,7 @@ namespace source_modding_tool.SourceSDK
                 textures.Add(material.findChildByKey("$parallaxmap"));
                 textures.Add(material.findChildByKey("$basetexture2"));
                 textures.Add(material.findChildByKey("%tooltexture"));
+                textures.Add(material.findChildByKey("$selfillummask"));
 
                 foreach (SourceSDK.KeyValue textureKv in textures)
                 {
