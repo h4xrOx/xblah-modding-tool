@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -35,20 +36,30 @@ namespace source_modding_tool.SourceSDK
                 if(b == 0 && chars.Count > 0)
                 {
                     string word = new String(chars.ToArray());
-                    materials.Add(word);
+                    materials.Add(word.ToLower());
+
                     chars.Clear();
                 } else if(b > 0)
                     chars.Add(Convert.ToChar(b));
 
-            if(!materials.Contains("Body"))
+            if (!materials.Contains("body"))
                 return new List<string>();
 
-            materials.RemoveRange(0, materials.IndexOf("Body") + 1);
+            materials.RemoveRange(0, materials.IndexOf("body") + 1);
 
             string materialPath = materials.Last();
-            materials.RemoveAt(materials.Count - 1);
 
-            for(int i = 0; i < materials.Count; i++)
+            if (materialPath.EndsWith("\\"))
+            {
+                // Last string is the path, and all the previous ones are individual file names.
+                materials.RemoveAt(materials.Count - 1);
+            } else
+            {
+                // All strings are individual file names (apparently...)
+                materialPath = "";
+            }
+
+            for (int i = 0; i < materials.Count; i++)
                 materials[i] = "materials\\" + materialPath + materials[i] + ".vmt";
 
             return materials;
