@@ -1314,7 +1314,7 @@
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\graphs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="packages\ModTool.Core\SourceSDK.csproj">
+    <ProjectReference Include="SourceSDK\SourceSDK.csproj">
       <Project>{e9ead908-dfc2-45cc-b326-fcc2cafe7f79}</Project>
       <Name>SourceSDK</Name>
     </ProjectReference>
