@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace source_modding_tool
 {
-    class GameInfo
+    public class GameInfo
     {
         Launcher launcher;
 

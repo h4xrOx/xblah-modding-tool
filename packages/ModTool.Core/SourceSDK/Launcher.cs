@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using source_modding_tool.SourceSDK;
 using System;
 using System.Collections.Generic;

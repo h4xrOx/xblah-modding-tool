@@ -1,17 +1,13 @@
-﻿using DevExpress.XtraEditors;
+﻿using ModTool.Core;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace source_modding_tool.SourceSDK
 {
-    class Instance
+    public class Instance
     {
         private Control parent = null;
         private Launcher launcher = null;
@@ -25,7 +21,7 @@ namespace source_modding_tool.SourceSDK
             this.parent = parent;
         }
 
-        internal void Stop()
+        public void Stop()
         {
             if (modProcess != null)
             {
@@ -60,8 +56,8 @@ namespace source_modding_tool.SourceSDK
                 }
             }
 
-            Program.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
-            Program.ShowWindow((int)modProcess.MainWindowHandle, 0);
+            Core.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
+            Core.ShowWindow((int)modProcess.MainWindowHandle, 0);
 
             Process process = new Process();
             process.StartInfo.FileName = exePath;
@@ -69,8 +65,8 @@ namespace source_modding_tool.SourceSDK
             process.Start();
             process.EnableRaisingEvents = true;
             process.WaitForInputIdle();
-            Program.ShowWindow((int)modProcess.MainWindowHandle, 9);
-            Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+            Core.ShowWindow((int)modProcess.MainWindowHandle, 9);
+            Core.SetParent(modProcess.MainWindowHandle, parent.Handle);
         }
 
         public void Resize()
@@ -81,7 +77,7 @@ namespace source_modding_tool.SourceSDK
                 {
                     //Command("-width " + parent.Width + " -height " + parent.Height);
                     //File.WriteAllText(sourceSDK.GetModPath() + "\\cfg\\cmd.cfg", "mat_setvideomode " + parent.Width + " " + parent.Height + " 1");
-                    Program.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
+                    Core.MoveWindow(modProcess.MainWindowHandle, 0, 0, parent.Width, parent.Height, true);
                 }
             }
             catch (Exception) { }
@@ -110,7 +106,7 @@ namespace source_modding_tool.SourceSDK
 
             if (!File.Exists(exePath))
             {
-                XtraMessageBox.Show("Can't find executable file \"" + exePath + "\"");
+                MessageBox.Show("Can't find executable file \"" + exePath + "\"");
                 isLoading = false;
                 return null;
             }
@@ -139,7 +135,7 @@ namespace source_modding_tool.SourceSDK
                     // Just wait until the window is created. Bad, right?
                 }
                 RemoveBorders(modProcess.MainWindowHandle);
-                Program.SetParent(modProcess.MainWindowHandle, parent.Handle);
+                Core.SetParent(modProcess.MainWindowHandle, parent.Handle);
 
                 Resize();
             }

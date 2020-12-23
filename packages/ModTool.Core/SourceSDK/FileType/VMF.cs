@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace source_modding_tool.SourceSDK
 {
-    class VMF
+    public class VMF
     {
         /// <summary>
         /// Returns a list of the relative paths of the assets used by this asset, including the bsp

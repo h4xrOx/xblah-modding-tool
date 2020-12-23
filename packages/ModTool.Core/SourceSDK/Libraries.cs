@@ -1,10 +1,10 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace source_modding_tool
 {
@@ -80,7 +80,7 @@ namespace source_modding_tool
                 }
                 else
                 {
-                    XtraMessageBox.Show("Could not find file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
+                    MessageBox.Show("Could not find file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
                 }
             }
             else

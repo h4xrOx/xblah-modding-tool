@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace source_modding_tool.SourceSDK
 {
-    class PCF
+    public class PCF
     {
         /// <summary>
         /// Returns a list of the relative paths of the materials used by this asset

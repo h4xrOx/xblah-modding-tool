@@ -4,16 +4,14 @@
 //     Copyright (c) 2019-2020. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using TGASharpLib;
 
 namespace source_modding_tool.SourceSDK
 {
-    class VTF
+    public class VTF
     {
         /// <summary>
         /// Converts a bitmap var into a byte array that can be saved as a VTF

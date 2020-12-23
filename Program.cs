@@ -33,26 +33,7 @@ namespace source_modding_tool
             Application.Run(new MainForm());
         }
 
-        [DllImport("user32.dll", SetLastError = true)]
-        internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        internal static extern IntPtr SendMessage(IntPtr hWnd, Int32 Msg, Int32 wParam, Int32 lParam);
-
-        [DllImport("user32.dll")]
-        internal static extern IntPtr SetParent(IntPtr hwndChild, IntPtr hwndNewParent);
-
-        [DllImport("user32.dll")]
-        internal static extern bool SetWindowPos(IntPtr hWnd,
-                                                 IntPtr hWndInsertAfter,
-                                                 int X,
-                                                 int Y,
-                                                 int cx,
-                                                 int cy,
-                                                 uint uFlags);
-
-        [DllImport("User32")]
-        internal static extern int ShowWindow(int hwnd, int nCmdShow);
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();

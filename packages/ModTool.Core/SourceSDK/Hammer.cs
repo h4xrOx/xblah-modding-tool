@@ -24,7 +24,7 @@ namespace source_modding_tool
             process.Start();
         }
 
-        public static void RunHammer(Mod mod, MainForm mainForm)
+        public static void RunHammer(Mod mod)
         {
             switch(mod.game.engine)
             {
@@ -55,8 +55,21 @@ namespace source_modding_tool
                         if (mod.game.engine == Engine.SOURCE2)
                             mod.game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
 
-                        mainForm.Run(RunMode.WINDOWED, "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole");
-                        
+                        RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
+                        string command = "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole";
+
+                        /*instance = new Instance(launcher, panel1);
+
+                        instance.Start(runPreset, command);
+
+                        if (runPreset.runMode == RunMode.WINDOWED && (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2))
+                        {
+                            FormBorderStyle = FormBorderStyle.Fixed3D;
+                            MaximizeBox = false;
+                        }
+                        modStarted();*/
+
+
                     }
                     break;
                 case Engine.GOLDSRC:

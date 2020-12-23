@@ -139,7 +139,8 @@ namespace source_modding_tool
             // Hammer
             if (e.Item == menuLevelDesignHammer)
             {
-                Hammer.RunHammer(launcher.GetCurrentMod(), this);
+                // TODO run source 2 hammer as a mod.
+                Hammer.RunHammer(launcher.GetCurrentMod());
             }
 
             // Fog Previewer

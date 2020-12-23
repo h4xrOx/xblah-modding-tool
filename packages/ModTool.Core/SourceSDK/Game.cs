@@ -1,11 +1,8 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace source_modding_tool
 {
@@ -194,7 +191,7 @@ namespace source_modding_tool
                             }
                             else
                             {
-                                XtraMessageBox.Show("Could not load mod " + path + ". It's gameinfo.txt is broken.");
+                                MessageBox.Show("Could not load mod " + path + ". It's gameinfo.txt is broken.");
                             }
                         }
                         break;
@@ -230,7 +227,7 @@ namespace source_modding_tool
                             }
                             else
                             {
-                                XtraMessageBox.Show("Could not load mod " + path + ". It's gameinfo.gi is broken.");
+                                MessageBox.Show("Could not load mod " + path + ". It's gameinfo.gi is broken.");
                             }
                         }
                         break;
@@ -267,7 +264,7 @@ namespace source_modding_tool
                             }
                             else
                             {
-                                XtraMessageBox.Show("Could not load mod " + path + ". It's liblist.gam is broken.");
+                                MessageBox.Show("Could not load mod " + path + ". It's liblist.gam is broken.");
                             }
                         }
                         break;
@@ -466,7 +463,7 @@ namespace source_modding_tool
             return new string[] { };
         }
 
-        internal void ApplyNonVRPatch()
+        public void ApplyNonVRPatch()
         {
             string fullPath = installPath + "\\game\\bin\\win64\\hlvr.exe";
             Dictionary<int, string> strings = new Dictionary<int, string>();

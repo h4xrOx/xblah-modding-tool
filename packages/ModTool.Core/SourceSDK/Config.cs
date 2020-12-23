@@ -1,12 +1,9 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace source_modding_tool.SourceSDK
 {
@@ -62,7 +59,7 @@ namespace source_modding_tool.SourceSDK
             }
             else
             {
-                XtraMessageBox.Show("Could not find file \"" + path + "\" to read.");
+                MessageBox.Show("Could not find file \"" + path + "\" to read.");
                 return null;
             }
 
