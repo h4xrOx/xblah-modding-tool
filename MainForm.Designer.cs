@@ -102,14 +102,6 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.updateDownloadedPanel = new DevExpress.XtraEditors.PanelControl();
-            this.updateReadyLabel = new DevExpress.XtraEditors.LabelControl();
-            this.applyUpdateButton = new DevExpress.XtraEditors.SimpleButton();
-            this.applyUpdateLaterButton = new DevExpress.XtraEditors.SimpleButton();
-            this.updateAvailablePanel = new DevExpress.XtraEditors.PanelControl();
-            this.updateAvailableLabel = new DevExpress.XtraEditors.LabelControl();
-            this.downloadUpdateButton = new DevExpress.XtraEditors.SimpleButton();
-            this.downloadUpdateLaterButton = new DevExpress.XtraEditors.SimpleButton();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
@@ -117,11 +109,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateDownloadedPanel)).BeginInit();
-            this.updateDownloadedPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateAvailablePanel)).BeginInit();
-            this.updateAvailablePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager
@@ -724,7 +711,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(944, 54);
+            this.barDockControlTop.Size = new System.Drawing.Size(944, 52);
             // 
             // barDockControlBottom
             // 
@@ -738,17 +725,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 54);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 521);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(944, 54);
+            this.barDockControlRight.Location = new System.Drawing.Point(944, 52);
             this.barDockControlRight.Manager = this.barManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 521);
             // 
             // barButtonItem4
             // 
@@ -811,95 +798,11 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.updateDownloadedPanel);
-            this.panel1.Controls.Add(this.updateAvailablePanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 54);
+            this.panel1.Location = new System.Drawing.Point(0, 52);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 519);
+            this.panel1.Size = new System.Drawing.Size(944, 521);
             this.panel1.TabIndex = 9;
-            // 
-            // updateDownloadedPanel
-            // 
-            this.updateDownloadedPanel.Controls.Add(this.updateReadyLabel);
-            this.updateDownloadedPanel.Controls.Add(this.applyUpdateButton);
-            this.updateDownloadedPanel.Controls.Add(this.applyUpdateLaterButton);
-            this.updateDownloadedPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.updateDownloadedPanel.Location = new System.Drawing.Point(0, 35);
-            this.updateDownloadedPanel.Name = "updateDownloadedPanel";
-            this.updateDownloadedPanel.Size = new System.Drawing.Size(944, 35);
-            this.updateDownloadedPanel.TabIndex = 25;
-            this.updateDownloadedPanel.Visible = false;
-            // 
-            // updateReadyLabel
-            // 
-            this.updateReadyLabel.Location = new System.Drawing.Point(10, 10);
-            this.updateReadyLabel.Margin = new System.Windows.Forms.Padding(8);
-            this.updateReadyLabel.Name = "updateReadyLabel";
-            this.updateReadyLabel.Size = new System.Drawing.Size(147, 13);
-            this.updateReadyLabel.TabIndex = 2;
-            this.updateReadyLabel.Text = "The update is ready for install.";
-            // 
-            // applyUpdateButton
-            // 
-            this.applyUpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.applyUpdateButton.Location = new System.Drawing.Point(782, 5);
-            this.applyUpdateButton.Name = "applyUpdateButton";
-            this.applyUpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.applyUpdateButton.TabIndex = 1;
-            this.applyUpdateButton.Text = "Update now";
-            this.applyUpdateButton.Click += new System.EventHandler(this.applyUpdateButton_Click);
-            // 
-            // applyUpdateLaterButton
-            // 
-            this.applyUpdateLaterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.applyUpdateLaterButton.Location = new System.Drawing.Point(863, 5);
-            this.applyUpdateLaterButton.Name = "applyUpdateLaterButton";
-            this.applyUpdateLaterButton.Size = new System.Drawing.Size(75, 23);
-            this.applyUpdateLaterButton.TabIndex = 0;
-            this.applyUpdateLaterButton.Text = "Later";
-            this.applyUpdateLaterButton.Click += new System.EventHandler(this.applyUpdateLaterButton_Click);
-            // 
-            // updateAvailablePanel
-            // 
-            this.updateAvailablePanel.Controls.Add(this.updateAvailableLabel);
-            this.updateAvailablePanel.Controls.Add(this.downloadUpdateButton);
-            this.updateAvailablePanel.Controls.Add(this.downloadUpdateLaterButton);
-            this.updateAvailablePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.updateAvailablePanel.Location = new System.Drawing.Point(0, 0);
-            this.updateAvailablePanel.Name = "updateAvailablePanel";
-            this.updateAvailablePanel.Size = new System.Drawing.Size(944, 35);
-            this.updateAvailablePanel.TabIndex = 19;
-            this.updateAvailablePanel.Visible = false;
-            // 
-            // updateAvailableLabel
-            // 
-            this.updateAvailableLabel.Location = new System.Drawing.Point(10, 10);
-            this.updateAvailableLabel.Margin = new System.Windows.Forms.Padding(8);
-            this.updateAvailableLabel.Name = "updateAvailableLabel";
-            this.updateAvailableLabel.Size = new System.Drawing.Size(283, 13);
-            this.updateAvailableLabel.TabIndex = 2;
-            this.updateAvailableLabel.Text = "A new version of XBLAH\'s Source Modding Tool is available.";
-            // 
-            // downloadUpdateButton
-            // 
-            this.downloadUpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.downloadUpdateButton.Location = new System.Drawing.Point(782, 5);
-            this.downloadUpdateButton.Name = "downloadUpdateButton";
-            this.downloadUpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.downloadUpdateButton.TabIndex = 1;
-            this.downloadUpdateButton.Text = "Download";
-            this.downloadUpdateButton.Click += new System.EventHandler(this.downloadUpdateButton_Click);
-            // 
-            // downloadUpdateLaterButton
-            // 
-            this.downloadUpdateLaterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.downloadUpdateLaterButton.Location = new System.Drawing.Point(863, 5);
-            this.downloadUpdateLaterButton.Name = "downloadUpdateLaterButton";
-            this.downloadUpdateLaterButton.Size = new System.Drawing.Size(75, 23);
-            this.downloadUpdateLaterButton.TabIndex = 0;
-            this.downloadUpdateLaterButton.Text = "Later";
-            this.downloadUpdateLaterButton.Click += new System.EventHandler(this.updateLaterButton_Click);
             // 
             // modProcessUpdater
             // 
@@ -916,7 +819,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
             this.Name = "MainForm";
             this.Text = "XBLAH\'s Source Modding Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModForm_FormClosing);
@@ -929,13 +832,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.toolsRunPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.updateDownloadedPanel)).EndInit();
-            this.updateDownloadedPanel.ResumeLayout(false);
-            this.updateDownloadedPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateAvailablePanel)).EndInit();
-            this.updateAvailablePanel.ResumeLayout(false);
-            this.updateAvailablePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1014,14 +910,6 @@
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupExpert;
         private DevExpress.XtraBars.BarSubItem menuModdingRun;
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsStartingMaps;
-        private DevExpress.XtraEditors.PanelControl updateDownloadedPanel;
-        private DevExpress.XtraEditors.LabelControl updateReadyLabel;
-        private DevExpress.XtraEditors.SimpleButton applyUpdateButton;
-        private DevExpress.XtraEditors.SimpleButton applyUpdateLaterButton;
-        private DevExpress.XtraEditors.PanelControl updateAvailablePanel;
-        private DevExpress.XtraEditors.LabelControl updateAvailableLabel;
-        private DevExpress.XtraEditors.SimpleButton downloadUpdateButton;
-        private DevExpress.XtraEditors.SimpleButton downloadUpdateLaterButton;
         private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
     }
 }

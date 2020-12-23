@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>source_modding_tool</RootNamespace>
     <AssemblyName>XBLAH%27s Source Modding Tool</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,9 +43,6 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="7z.NET, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\7z.NET.1.0.3\lib\net452\7z.NET.dll</HintPath>
-    </Reference>
     <Reference Include="Accessibility" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dialogs.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -200,7 +198,6 @@
     <Compile Include="SourceSDK\Instance.cs" />
     <Compile Include="SourceSDK\GameInfo.cs" />
     <Compile Include="SourceSDK\Hammer.cs" />
-    <Compile Include="SourceSDK\KeyValue.cs" />
     <Compile Include="SourceSDK\FileType\MDL.cs" />
     <Compile Include="SourceSDK\Libraries.cs" />
     <Compile Include="SourceSDK\Mod.cs" />
@@ -210,7 +207,6 @@
     <Compile Include="SourceSDK\FileType\VMF.cs" />
     <Compile Include="SourceSDK\FileType\VMT.cs" />
     <Compile Include="SourceSDK\FileType\VPK.cs" />
-    <Compile Include="SourceSDK\RunMode.cs" />
     <Compile Include="SourceSDK\RunPreset.cs" />
     <Compile Include="SourceSDK\VPKManager.cs" />
     <Compile Include="SourceSDK\FileType\VTF.cs" />
@@ -233,7 +229,6 @@
     <Compile Include="Modding\FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Updater.cs" />
     <EmbeddedResource Include="File\LibrariesForm.resx">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1338,6 +1333,12 @@
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\custom\" />
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\graphs\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="packages\ModTool.Core\ModTool.Core.csproj">
+      <Project>{e9ead908-dfc2-45cc-b326-fcc2cafe7f79}</Project>
+      <Name>ModTool.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"
@@ -1351,13 +1352,6 @@ ROBOCOPY "$(TargetDir)Resources\ " "$(TargetDir) " /E /IS /MOVE
 RD /S /Q "$(TargetDir)Resources\"
 ; if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\7z.NET.1.0.3\build\7z.NET.targets" Condition="Exists('packages\7z.NET.1.0.3\build\7z.NET.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\7z.NET.1.0.3\build\7z.NET.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\7z.NET.1.0.3\build\7z.NET.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
