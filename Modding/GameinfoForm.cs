@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
-using source_modding_tool.SourceSDK;
+ 
+using SourceSDK;
+using SourceSDK.Materials;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -161,10 +163,10 @@ namespace source_modding_tool
                             string icon = childKV.getValue();
 
                             if (File.Exists(modPath + "\\" + icon + ".tga"))
-                                pictureEdit2.Image = new TGASharpLib.TGA(modPath + "\\" + icon + ".tga").ToBitmap();
+                                pictureEdit2.Image = new TGA(modPath + "\\" + icon + ".tga").ToBitmap();
 
                             if (File.Exists(modPath + "\\" + icon + "_big.tga"))
-                                pictureEdit1.Image = new TGASharpLib.TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
+                                pictureEdit1.Image = new TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
 
                             pictureEdit1.Properties.ContextMenuStrip = new ContextMenuStrip();
                         }
@@ -242,12 +244,12 @@ namespace source_modding_tool
                             gameinfo.setValue("icon", "resource/icon");
 
                             if (pictureEdit2.Image != null)
-                                new TGASharpLib.TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
+                                new TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
                             else if (File.Exists(modPath + "\\resource\\icon.tga"))
                                 File.Delete(modPath + "\\resource\\icon.tga");
 
                             if (pictureEdit1.Image != null)
-                                new TGASharpLib.TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
+                                new TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
                             else if (File.Exists(modPath + "\\resource\\icon_big.tga"))
                                 File.Delete(modPath + "\\resource\\icon_big.tga");
                         }
@@ -282,7 +284,7 @@ namespace source_modding_tool
         {
             if(dialogIcon.ShowDialog() == DialogResult.OK)
             {
-                Bitmap original = new TGASharpLib.TGA(dialogIcon.FileName).ToBitmap();
+                Bitmap original = new TGA(dialogIcon.FileName).ToBitmap();
 
 
                 Bitmap large = new Bitmap(32, 32);
@@ -302,7 +304,7 @@ namespace source_modding_tool
         {
             if(dialogIcon.ShowDialog() == DialogResult.OK)
             {
-                Bitmap original = new TGASharpLib.TGA(dialogIcon.FileName).ToBitmap();
+                Bitmap original = new TGA(dialogIcon.FileName).ToBitmap();
 
 
                 Bitmap large = new Bitmap(32, 32);

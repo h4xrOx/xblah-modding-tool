@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SourceSDK;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace source_modding_tool
+namespace SourceSDK.Packages
 {
     public class MountedFolder : VPK
     {
@@ -22,7 +23,8 @@ namespace source_modding_tool
 
             string packName = GetPackName();
 
-            if (Directory.Exists(fullPath)) {
+            if (Directory.Exists(fullPath))
+            {
                 /*string[] filePaths = Directory.GetFiles(fullPath, "*", SearchOption.AllDirectories)
                     .Where(x => !x.EndsWith(".vpk"))
                     .ToArray();*/
@@ -42,7 +44,7 @@ namespace source_modding_tool
                     File file = new File() { path = diff.OriginalString.ToLower(), pack = packName, type = extension };
                     files.Add(file.path, file);
                 }
-                
+
             }
         }
 

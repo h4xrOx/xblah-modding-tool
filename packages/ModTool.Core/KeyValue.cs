@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK
 {
     public class KeyValue
     {
@@ -32,7 +32,7 @@ namespace source_modding_tool.SourceSDK
 
         public void addChild(KeyValue value)
         {
-            if(!childrenIndex.ContainsKey(value.getKey()))
+            if (!childrenIndex.ContainsKey(value.getKey()))
                 childrenIndex.Add(value.getKey(), new List<KeyValue>());
 
             childrenIndex[value.getKey()].Add(value);
@@ -55,15 +55,15 @@ namespace source_modding_tool.SourceSDK
 
         public KeyValue findChildByKey(string key)
         {
-            if(childrenIndex != null && childrenIndex.ContainsKey(key))
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key][0];
 
-            if(childrenIndex != null)
-                foreach(string k in childrenIndex.Keys)
-                    foreach(KeyValue child in childrenIndex[k])
+            if (childrenIndex != null)
+                foreach (string k in childrenIndex.Keys)
+                    foreach (KeyValue child in childrenIndex[k])
                     {
                         KeyValue result = child.findChildByKey(key);
-                        if(result != null)
+                        if (result != null)
                             return result;
                     }
 
@@ -73,12 +73,12 @@ namespace source_modding_tool.SourceSDK
         public List<KeyValue> findChildrenByKey(string key)
         {
             List<KeyValue> result = new List<KeyValue>();
-            if(childrenIndex != null && childrenIndex.ContainsKey(key))
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 result.AddRange(childrenIndex[key]);
 
-            if(childrenIndex != null)
-                foreach(string k in childrenIndex.Keys)
-                    foreach(KeyValue child in childrenIndex[k])
+            if (childrenIndex != null)
+                foreach (string k in childrenIndex.Keys)
+                    foreach (KeyValue child in childrenIndex[k])
                     {
                         result.AddRange(child.findChildrenByKey(key));
                     }
@@ -88,7 +88,7 @@ namespace source_modding_tool.SourceSDK
 
         public KeyValue getChildByKey(string key)
         {
-            if(childrenIndex != null && childrenIndex.ContainsKey(key))
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key][0];
 
             return null;
@@ -100,7 +100,7 @@ namespace source_modding_tool.SourceSDK
 
         public List<KeyValue> getChildrenByKey(string key)
         {
-            if(childrenIndex != null && childrenIndex.ContainsKey(key))
+            if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key];
 
             return null;
@@ -113,27 +113,27 @@ namespace source_modding_tool.SourceSDK
         public string getValue(string key)
         {
             KeyValue child = getChildByKey(key);
-            if(child != null)
+            if (child != null)
                 return child.getValue();
 
             return string.Empty;
         }
 
-        public bool isParentKey() { return (childrenIndex != null && value == null); }
+        public bool isParentKey() { return childrenIndex != null && value == null; }
 
         public void setValue(string value)
         {
-            if(this.value != null && childrenIndex == null)
+            if (this.value != null && childrenIndex == null)
                 this.value = value;
         }
 
         public void setValue(string key, string value)
         {
-            if(this.value != null || childrenIndex == null)
+            if (this.value != null || childrenIndex == null)
                 return;
 
             KeyValue child = getChildByKey(key);
-            if(child != null)
+            if (child != null)
             {
                 child.setValue(value);
                 return;
@@ -147,20 +147,21 @@ namespace source_modding_tool.SourceSDK
             List<string> words = new List<string>();
 
             string[] parts = fullString.Split('\"');
-            for(int i = 0; i < parts.Length; i++)
+            for (int i = 0; i < parts.Length; i++)
             {
-                if(i % 2 == 1)
+                if (i % 2 == 1)
                 {
                     // between quotes
                     string subpart = parts[i].Replace("\"", string.Empty);
                     words.Add(subpart);
-                } else
+                }
+                else
                 {
                     string[] subparts = parts[i].Split(null);
                     // outside quotes
-                    foreach(string subpart in subparts)
+                    foreach (string subpart in subparts)
                     {
-                        if(subpart != string.Empty && subpart != " ")
+                        if (subpart != string.Empty && subpart != " ")
                             words.Add(subpart);
                     }
                 }
@@ -202,7 +203,7 @@ namespace source_modding_tool.SourceSDK
                 }
 
                 foreach (KeyValue entry in node.getChildren())
-                    lines.AddRange(writeChunkFileTraverse(entry, (node.key != string.Empty ? level + 1 : level), quotes));
+                    lines.AddRange(writeChunkFileTraverse(entry, node.key != string.Empty ? level + 1 : level, quotes));
 
                 if (node.key != string.Empty)
                     lines.Add(tabs + "}");
@@ -212,7 +213,7 @@ namespace source_modding_tool.SourceSDK
                 string line = tabs;
                 if (node.key != string.Empty)
                 {
-                    line = line + 
+                    line = line +
                         (quotes ? "\"" : string.Empty) +
                         node.key +
                         (quotes ? "\"" : string.Empty) +
@@ -230,11 +231,12 @@ namespace source_modding_tool.SourceSDK
 
                 lines.Add(line);
             }
-            else if(node.comment != string.Empty)   // Comment line
+            else if (node.comment != string.Empty)   // Comment line
             {
                 string line = tabs + "//" + node.comment;
                 lines.Add(line);
-            } else if(node.key == string.Empty)     // Blank line
+            }
+            else if (node.key == string.Empty)     // Blank line
             {
                 lines.Add("");
             }
@@ -242,7 +244,7 @@ namespace source_modding_tool.SourceSDK
             return lines;
         }
 
-        public static KeyValue readChunkfile(String path, bool hasOSInfo)
+        public static KeyValue readChunkfile(string path, bool hasOSInfo)
         {
             // Parse Valve chunkfile format
             KeyValue root = null;
@@ -257,7 +259,7 @@ namespace source_modding_tool.SourceSDK
                     {
                         while (r.Peek() >= 0)
                         {
-                            String line = r.ReadLine();
+                            string line = r.ReadLine();
                             line = line.Trim();
                             line = Regex.Replace(line, @"\s+", " ");
 
@@ -271,14 +273,16 @@ namespace source_modding_tool.SourceSDK
                                     stack.Peek().Value.addChild(comment);
                                 else
                                     list.Add(comment);
-                            } else if(words.Length == 0)    // It's a blank line
+                            }
+                            else if (words.Length == 0)    // It's a blank line
                             {
                                 KeyValue blank = new KeyValue("");
                                 if (stack.Count > 0)
                                     stack.Peek().Value.addChild(blank);
                                 else
                                     list.Add(blank);
-                            } else if (words.Length > 0 && words[0].Contains("{")) // It opens a group
+                            }
+                            else if (words.Length > 0 && words[0].Contains("{")) // It opens a group
                             {
                                 // We actually don't need to do anything.
                             }
@@ -350,7 +354,7 @@ namespace source_modding_tool.SourceSDK
                 return list[0];
         }
 
-        public static KeyValue readChunkfile(String path)
+        public static KeyValue readChunkfile(string path)
         {
             return readChunkfile(path, false);
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK
 {
     public class Config
     {
@@ -18,7 +18,7 @@ namespace source_modding_tool.SourceSDK
             childrenIndex = new Dictionary<string, List<KeyValue>>();
         }
 
-        public static KeyValue readChunkfile(String path)
+        public static KeyValue readChunkfile(string path)
         {
             // Parse Valve chunkfile format
             KeyValue list = new KeyValue("root");
@@ -27,19 +27,19 @@ namespace source_modding_tool.SourceSDK
             {
                 //try
                 //{
-                    using (StreamReader r = new StreamReader(path))
+                using (StreamReader r = new StreamReader(path))
+                {
+                    while (r.Peek() >= 0)
                     {
-                        while (r.Peek() >= 0)
-                        {
-                            String line = r.ReadLine();
-                            line = line.Trim();
-                            line = Regex.Replace(line, @"\s+", " ");
+                        string line = r.ReadLine();
+                        line = line.Trim();
+                        line = Regex.Replace(line, @"\s+", " ");
 
-                            // Ignore the commented part of the line
-                            if (line.StartsWith("//"))
-                                continue;
+                        // Ignore the commented part of the line
+                        if (line.StartsWith("//"))
+                            continue;
 
-                            string[] words = splitByWords(line);
+                        string[] words = splitByWords(line);
 
                         if (words.Length >= 1)
                         {
@@ -47,14 +47,14 @@ namespace source_modding_tool.SourceSDK
                             KeyValue value = new KeyValue(key, words[1]);
                             list.addChild(value);
                         }
-                        }
                     }
+                }
                 //}
                 //catch (Exception e)
                 //{
-                   // Debugger.Break();
-                  //  XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
-                   // return null;
+                // Debugger.Break();
+                //  XtraMessageBox.Show("Could not read file \"" + path + "\". It's structure is broken.");
+                // return null;
                 //}
             }
             else
@@ -165,7 +165,7 @@ namespace source_modding_tool.SourceSDK
         {
             List<string> lines = new List<string>();
 
-            foreach(KeyValue node in root.getChildren())
+            foreach (KeyValue node in root.getChildren())
                 lines.Add(
                     (quotes ? "\"" : string.Empty) +
                     node.getKey() +

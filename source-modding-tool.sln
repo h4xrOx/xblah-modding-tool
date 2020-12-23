@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "source-modding-tool", "source-modding-tool.csproj", "{C18AF47A-90C6-4BA5-9D57-A7322B9699BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTool.Core", "packages\ModTool.Core\ModTool.Core.csproj", "{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceSDK", "packages\ModTool.Core\SourceSDK.csproj", "{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

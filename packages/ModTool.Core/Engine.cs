@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Engine
     {
@@ -14,7 +14,7 @@ namespace source_modding_tool
 
         public static string ToString(int engine)
         {
-            switch(engine)
+            switch (engine)
             {
                 case SOURCE:
                     return "source";

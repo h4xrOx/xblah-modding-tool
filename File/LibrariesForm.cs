@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using SourceSDK;
 
 namespace source_modding_tool
 {

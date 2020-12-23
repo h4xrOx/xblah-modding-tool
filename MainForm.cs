@@ -1,8 +1,11 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using source_modding_tool.Modding;
-using source_modding_tool.SourceSDK;
+ 
 using source_modding_tool.Tools;
+using SourceSDK;
+using SourceSDK.Packages;
+using SourceSDK.Particles;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

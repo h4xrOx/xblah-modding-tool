@@ -1,17 +1,9 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="D:\Development\CS\windows-source-modding-tool\SourceSDK\FileType\VMT.cs" company="">
-//     Author: Jean XBLAH Knapp
-//     Copyright (c) 2019-2020. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK.Materials
 {
-    class VMT
+    public class VMT
     {
         /// <summary>
         /// Returns a list of the relative paths of the assets used by this asset, excluding the asset itself
@@ -32,7 +24,7 @@ namespace source_modding_tool.SourceSDK
             List<string> assets = new List<string>();
             List<string> searchPaths = mod.GetSearchPaths();
 
-            
+
 
             foreach (string searchPath in searchPaths)
             {
@@ -41,8 +33,8 @@ namespace source_modding_tool.SourceSDK
                 if (!File.Exists(materialPath))
                     continue;
 
-                SourceSDK.KeyValue material = SourceSDK.KeyValue.readChunkfile(materialPath);
-                List<SourceSDK.KeyValue> textures = new List<SourceSDK.KeyValue>();
+                KeyValue material = KeyValue.readChunkfile(materialPath);
+                List<KeyValue> textures = new List<KeyValue>();
 
                 KeyValue baseTexture = material.findChildByKey("$basetexture");
 
@@ -56,7 +48,7 @@ namespace source_modding_tool.SourceSDK
                 textures.Add(material.findChildByKey("%tooltexture"));
                 textures.Add(material.findChildByKey("$selfillummask"));
 
-                foreach (SourceSDK.KeyValue textureKv in textures)
+                foreach (KeyValue textureKv in textures)
                 {
                     if (textureKv == null)
                         continue;

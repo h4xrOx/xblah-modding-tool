@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using source_modding_tool.Properties;
 using System.Diagnostics;
+using SourceSDK;
 
 namespace source_modding_tool
 {

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Game
     {
@@ -27,11 +27,11 @@ namespace source_modding_tool
 
         public int GetAppId()
         {
-            string gamePath = this.installPath;
-            switch(engine)
+            string gamePath = installPath;
+            switch (engine)
             {
                 case Engine.SOURCE:
-                    switch(name)
+                    switch (name)
                     {
                         case "Source SDK Base 2013 Singleplayer":
                             return 243730;
@@ -67,7 +67,7 @@ namespace source_modding_tool
                                 string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
                                 return int.Parse(steam_appid);
                             }
-                        else
+                            else
                             {
                                 return -1;
                             }
@@ -106,7 +106,7 @@ namespace source_modding_tool
             int gameAppId = GetAppId();
             string gamePath = installPath;
 
-            if ((gameAppId == -1 && engine != Engine.GOLDSRC) || gamePath == null)
+            if (gameAppId == -1 && engine != Engine.GOLDSRC || gamePath == null)
                 return mods;
 
             List<string> paths = new List<string>();
@@ -155,7 +155,7 @@ namespace source_modding_tool
                                     // Check if is a Mapbase mod (Since mapbase doesn't have its own appid)
                                     SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
 
-                                    foreach(SourceSDK.KeyValue searchPath in searchPaths.getChildren())
+                                    foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
                                     {
 
                                         // Simple yet effective way of detecting mapbase dependency
@@ -205,7 +205,7 @@ namespace source_modding_tool
                                 string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
-                                if (path.Contains(gamePath) && (mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
+                                if (path.Contains(gamePath) && mods.Values.Where(p => p.installPath == path).ToList().Count == 0)
                                 {
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
@@ -233,14 +233,14 @@ namespace source_modding_tool
                         break;
                     case Engine.GOLDSRC:
                         {
-                            SourceSDK.KeyValue gameInfo = SourceSDK.Config.readChunkfile(path + "\\liblist.gam");
+                            SourceSDK.KeyValue gameInfo = Config.readChunkfile(path + "\\liblist.gam");
 
                             if (gameInfo != null)
                             {
 
                                 string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
-    
+
                                 if (path.Contains(gamePath))
                                 {
                                     bool containsMod = false;
@@ -260,7 +260,7 @@ namespace source_modding_tool
                                         mods.Add(name, new Mod(this, name, path));
                                     }
                                 }
-                                
+
                             }
                             else
                             {
@@ -269,7 +269,7 @@ namespace source_modding_tool
                         }
                         break;
                 }
-                
+
             }
 
             return mods;
@@ -284,12 +284,12 @@ namespace source_modding_tool
         {
             List<string> mods = new List<string>();
 
-            switch(engine)
+            switch (engine)
             {
                 case Engine.SOURCE:
-                    foreach (String path in Directory.GetDirectories(installPath))
+                    foreach (string path in Directory.GetDirectories(installPath))
                     {
-                        String gameBranch = new FileInfo(path).Name;
+                        string gameBranch = new FileInfo(path).Name;
 
                         if (File.Exists(installPath + "\\" + gameBranch + "\\gameinfo.txt"))
                             mods.Add(gameBranch);
@@ -297,18 +297,18 @@ namespace source_modding_tool
                     break;
                 case Engine.SOURCE2:
                     if (Directory.Exists(installPath + "\\"))
-                        foreach (String path in Directory.GetDirectories(installPath + "\\game\\"))
+                        foreach (string path in Directory.GetDirectories(installPath + "\\game\\"))
                         {
-                            String gameBranch = new FileInfo(path).Name;
+                            string gameBranch = new FileInfo(path).Name;
 
                             if (File.Exists(installPath + "\\game\\" + gameBranch + "\\gameinfo.gi"))
                                 mods.Add(gameBranch);
                         }
                     break;
                 case Engine.GOLDSRC:
-                    foreach (String path in Directory.GetDirectories(installPath))
+                    foreach (string path in Directory.GetDirectories(installPath))
                     {
-                        String gameBranch = new FileInfo(path).Name;
+                        string gameBranch = new FileInfo(path).Name;
 
                         if (File.Exists(installPath + "\\" + gameBranch + "\\liblist.gam"))
                         {
@@ -317,7 +317,7 @@ namespace source_modding_tool
                     }
                     break;
             }
-            
+
             return mods;
         }
 
@@ -336,9 +336,9 @@ namespace source_modding_tool
             {
                 if (Directory.Exists(library + "\\steamapps\\sourcemods\\"))
                 {
-                    foreach (String path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
+                    foreach (string path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
                     {
-                        String game = new FileInfo(path).Name;
+                        string game = new FileInfo(path).Name;
 
                         if (File.Exists(library + "\\steamapps\\sourcemods\\" + game + "\\gameinfo.txt"))
                         {
@@ -367,7 +367,7 @@ namespace source_modding_tool
         }
         public string getExePath()
         {
-            switch(engine)
+            switch (engine)
             {
                 case Engine.SOURCE:
                     foreach (string file in Directory.GetFiles(installPath))
@@ -388,7 +388,7 @@ namespace source_modding_tool
 
         public string[] getGameinfoFields()
         {
-            switch(engine)
+            switch (engine)
             {
                 case Engine.SOURCE:
                     return new string[] {
@@ -456,7 +456,7 @@ namespace source_modding_tool
                         "fallback_dir",
                         "fallback_maps",
                         "detailed_textures"
-                       
+
                     };
             }
 
@@ -477,7 +477,7 @@ namespace source_modding_tool
 
                 if (b == 0 && chars.Count > 0)
                 {
-                    string word = new String(chars.ToArray());
+                    string word = new string(chars.ToArray());
                     strings.Add(i - word.Length, word);
                     chars.Clear();
                 }

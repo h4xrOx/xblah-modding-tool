@@ -1,4 +1,4 @@
-﻿namespace source_modding_tool.SourceSDK
+﻿namespace SourceSDK
 {
     public class RunMode
     {

@@ -1,11 +1,10 @@
-﻿using source_modding_tool.SourceSDK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class GameInfo
     {
@@ -17,7 +16,7 @@ namespace source_modding_tool
         {
             this.launcher = launcher;
 
-            switch(launcher.GetCurrentGame().engine)
+            switch (launcher.GetCurrentGame().engine)
             {
                 case Engine.SOURCE:
                     root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.txt");
@@ -29,7 +28,7 @@ namespace source_modding_tool
                     root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\liblist.gam");
                     break;
             }
-            
+
         }
 
         public string getValue(string key)

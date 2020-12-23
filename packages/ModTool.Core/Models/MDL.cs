@@ -1,18 +1,12 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="windows-source-modding-tool\SourceSDK\FileType\MDL.cs" company="">
-//     Author: Jean XBLAH Knapp
-//     Copyright (c) 2019-2020. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
+﻿using SourceSDK.Materials;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK.Models
 {
-    class MDL
+    public class MDL
     {
         /// <summary>
         /// Returns a list of the relative paths of the materials used by this asset
@@ -26,20 +20,21 @@ namespace source_modding_tool.SourceSDK
 
             List<string> materials = new List<string>();
 
-            if(!File.Exists(fullPath))
+            if (!File.Exists(fullPath))
                 return materials;
 
             byte[] byteArray = File.ReadAllBytes(fullPath);
 
             List<char> chars = new List<char>();
-            foreach(byte b in byteArray)
-                if(b == 0 && chars.Count > 0)
+            foreach (byte b in byteArray)
+                if (b == 0 && chars.Count > 0)
                 {
-                    string word = new String(chars.ToArray());
+                    string word = new string(chars.ToArray());
                     materials.Add(word.ToLower());
 
                     chars.Clear();
-                } else if(b > 0)
+                }
+                else if (b > 0)
                     chars.Add(Convert.ToChar(b));
 
             if (!materials.Contains("body"))
@@ -53,7 +48,8 @@ namespace source_modding_tool.SourceSDK
             {
                 // Last string is the path, and all the previous ones are individual file names.
                 materials.RemoveAt(materials.Count - 1);
-            } else
+            }
+            else
             {
                 // All strings are individual file names (apparently...)
                 materialPath = "";
@@ -81,22 +77,22 @@ namespace source_modding_tool.SourceSDK
             List<string> assets = new List<string>();
             List<string> searchPaths = mod.GetSearchPaths();
 
-            foreach(string searchPath in searchPaths)
+            foreach (string searchPath in searchPaths)
             {
                 string modelPath = searchPath + "\\" + relativePath;
 
                 // Check if the model exists in the current search path.
-                if(!File.Exists(modelPath))
+                if (!File.Exists(modelPath))
                     continue;
 
                 string directory = Path.GetDirectoryName(modelPath);
                 string modelName = Path.GetFileNameWithoutExtension(modelPath).ToLower();
 
                 // Search for files with the same name as the model, but with different extensions
-                foreach(string file in Directory.GetFiles(directory))
+                foreach (string file in Directory.GetFiles(directory))
                 {
                     string fileName = Path.GetFileName(file.ToLower());
-                    if(fileName.Substring(0, fileName.IndexOf(".")) == modelName)
+                    if (fileName.Substring(0, fileName.IndexOf(".")) == modelName)
                     {
                         string filePath = relativePath.Replace(modelName + ".mdl", string.Empty) + fileName;
                         assets.Add(filePath);
@@ -105,7 +101,7 @@ namespace source_modding_tool.SourceSDK
 
                 // Search for materials used by the model
                 List<string> materials = GetMaterials(modelPath);
-                foreach(string material in materials)
+                foreach (string material in materials)
                 {
                     assets.Add(material.Replace("\\", "/"));
                     assets.AddRange(VMT.GetAssets(material, game, mod, launcher));

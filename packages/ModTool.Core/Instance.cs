@@ -1,11 +1,10 @@
-﻿using ModTool.Core;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK
 {
     public class Instance
     {
@@ -30,7 +29,7 @@ namespace source_modding_tool.SourceSDK
                     modProcess.Kill();
                 }
                 catch (Exception) { }
-                
+
                 modProcess = null;
             }
         }
@@ -161,7 +160,7 @@ namespace source_modding_tool.SourceSDK
             int WindowStyle = GetWindowLong(WindowHandle, -16);
 
             //SetWindowLong(WindowHandle, -16, (WindowStyle & ~WS_SYSMENU));
-            SetWindowLong(WindowHandle, -16, (WindowStyle & ~WS_BORDER & ~WS_DLGFRAME));
+            SetWindowLong(WindowHandle, -16, WindowStyle & ~WS_BORDER & ~WS_DLGFRAME);
             return WindowHandle;
         }
     }

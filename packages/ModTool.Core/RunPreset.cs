@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK
 {
     public class RunPreset
     {
@@ -17,7 +17,7 @@ namespace source_modding_tool.SourceSDK
         public string game = "";
         public string mod = "";
 
-        public int runMode = SourceSDK.RunMode.DEFAULT;
+        public int runMode = RunMode.DEFAULT;
         public string exePath = "";
         public string command;
 
@@ -39,18 +39,18 @@ namespace source_modding_tool.SourceSDK
 
             Point location = parent.PointToScreen(Point.Empty);
 
-            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.SOURCE)
-                runMode = SourceSDK.RunMode.WINDOWED;
+            if (runMode == RunMode.DEFAULT && game.engine == Engine.SOURCE)
+                runMode = RunMode.WINDOWED;
 
-            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.GOLDSRC)
-                runMode = SourceSDK.RunMode.WINDOWED;
+            if (runMode == RunMode.DEFAULT && game.engine == Engine.GOLDSRC)
+                runMode = RunMode.WINDOWED;
 
-            if (runMode == SourceSDK.RunMode.DEFAULT && game.engine == Engine.SOURCE2)
-                runMode = SourceSDK.RunMode.VR;
+            if (runMode == RunMode.DEFAULT && game.engine == Engine.SOURCE2)
+                runMode = RunMode.VR;
 
             switch (runMode)
             {
-                case SourceSDK.RunMode.FULLSCREEN:
+                case RunMode.FULLSCREEN:
                     {
                         switch (game.engine)
                         {
@@ -81,8 +81,8 @@ namespace source_modding_tool.SourceSDK
                         }
                     }
                     break;
-                case SourceSDK.RunMode.WINDOWED:
-                    switch(game.engine)
+                case RunMode.WINDOWED:
+                    switch (game.engine)
                     {
                         case Engine.SOURCE:
                             arguments = "-game \"" + mod.installPath + "\" -windowed -noborder -multirun" +
@@ -110,8 +110,8 @@ namespace source_modding_tool.SourceSDK
                             break;
                     }
                     break;
-                case SourceSDK.RunMode.VR:
-                    switch(game.engine)
+                case RunMode.VR:
+                    switch (game.engine)
                     {
                         case Engine.SOURCE:
                             arguments = "-game \"" + mod.installPath + "\" -vr" +

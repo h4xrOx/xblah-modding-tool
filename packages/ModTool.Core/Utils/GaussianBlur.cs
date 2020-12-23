@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class GaussianBlur
     {
@@ -43,13 +43,13 @@ namespace source_modding_tool
                 _alpha[i] = (int)((source[i] & 0xff000000) >> 24);
                 _red[i] = (source[i] & 0xff0000) >> 16;
                 _green[i] = (source[i] & 0x00ff00) >> 8;
-                _blue[i] = (source[i] & 0x0000ff);
+                _blue[i] = source[i] & 0x0000ff;
             });
         }
 
         private void boxBlur_4(int[] source, int[] dest, int w, int h, int r)
         {
-            for(var i = 0; i < source.Length; i++)
+            for (var i = 0; i < source.Length; i++)
                 dest[i] = source[i];
             boxBlurH_4(dest, source, w, h, r);
             boxBlurT_4(source, dest, w, h, r);
@@ -69,19 +69,19 @@ namespace source_modding_tool
                 var fv = source[ti];
                 var lv = source[ti + w - 1];
                 var val = (r + 1) * fv;
-                for(var j = 0; j < r; j++)
+                for (var j = 0; j < r; j++)
                     val += source[ti + j];
-                for(var j = 0; j <= r; j++)
+                for (var j = 0; j <= r; j++)
                 {
                     val += source[ri++] - fv;
                     dest[ti++] = (int)Math.Round(val * iar);
                 }
-                for(var j = r + 1; j < w - r; j++)
+                for (var j = r + 1; j < w - r; j++)
                 {
                     val += source[ri++] - dest[li++];
                     dest[ti++] = (int)Math.Round(val * iar);
                 }
-                for(var j = w - r; j < w; j++)
+                for (var j = w - r; j < w; j++)
                 {
                     val += lv - source[li++];
                     dest[ti++] = (int)Math.Round(val * iar);
@@ -103,16 +103,16 @@ namespace source_modding_tool
                 var fv = source[ti];
                 var lv = source[ti + w * (h - 1)];
                 var val = (r + 1) * fv;
-                for(var j = 0; j < r; j++)
+                for (var j = 0; j < r; j++)
                     val += source[ti + j * w];
-                for(var j = 0; j <= r; j++)
+                for (var j = 0; j <= r; j++)
                 {
                     val += source[ri] - fv;
                     dest[ti] = (int)Math.Round(val * iar);
                     ri += w;
                     ti += w;
                 }
-                for(var j = r + 1; j < h - r; j++)
+                for (var j = r + 1; j < h - r; j++)
                 {
                     val += source[ri] - source[li];
                     dest[ti] = (int)Math.Round(val * iar);
@@ -120,7 +120,7 @@ namespace source_modding_tool
                     ri += w;
                     ti += w;
                 }
-                for(var j = h - r; j < h; j++)
+                for (var j = h - r; j < h; j++)
                 {
                     val += lv - source[li];
                     dest[ti] = (int)Math.Round(val * iar);
@@ -132,9 +132,9 @@ namespace source_modding_tool
 
         private int[] boxesForGauss(int sigma, int n)
         {
-            var wIdeal = Math.Sqrt((12 * sigma * sigma / n) + 1);
+            var wIdeal = Math.Sqrt(12 * sigma * sigma / n + 1);
             var wl = (int)Math.Floor(wIdeal);
-            if(wl % 2 == 0)
+            if (wl % 2 == 0)
                 wl--;
             var wu = wl + 2;
 
@@ -142,7 +142,7 @@ namespace source_modding_tool
             var m = Math.Round(mIdeal);
 
             var sizes = new List<int>();
-            for(var i = 0; i < n; i++)
+            for (var i = 0; i < n; i++)
                 sizes.Add(i < m ? wl : wu);
             return sizes.ToArray();
         }
@@ -173,22 +173,22 @@ namespace source_modding_tool
                          _pOptions,
                          i =>
             {
-                if(newAlpha[i] > 255)
+                if (newAlpha[i] > 255)
                     newAlpha[i] = 255;
-                if(newRed[i] > 255)
+                if (newRed[i] > 255)
                     newRed[i] = 255;
-                if(newGreen[i] > 255)
+                if (newGreen[i] > 255)
                     newGreen[i] = 255;
-                if(newBlue[i] > 255)
+                if (newBlue[i] > 255)
                     newBlue[i] = 255;
 
-                if(newAlpha[i] < 0)
+                if (newAlpha[i] < 0)
                     newAlpha[i] = 0;
-                if(newRed[i] < 0)
+                if (newRed[i] < 0)
                     newRed[i] = 0;
-                if(newGreen[i] < 0)
+                if (newGreen[i] < 0)
                     newGreen[i] = 0;
-                if(newBlue[i] < 0)
+                if (newBlue[i] < 0)
                     newBlue[i] = 0;
 
                 dest[i] = (int)((uint)(newAlpha[i] << 24) |

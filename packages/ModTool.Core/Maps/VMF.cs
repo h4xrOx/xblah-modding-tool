@@ -1,16 +1,11 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="windows-source-modding-tool\SourceSDK\FileType\VMF.cs" company="">
-//     Author: Jean XBLAH Knapp
-//     Copyright (c) 2019-2020. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-using System;
+﻿using SourceSDK.Materials;
+using SourceSDK.Models;
+using SourceSDK.Particles;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK.Maps
 {
     public class VMF
     {
@@ -32,15 +27,15 @@ namespace source_modding_tool.SourceSDK
 
             List<string> assets = new List<string>();
 
-            SourceSDK.KeyValue map = SourceSDK.KeyValue.readChunkfile(fullPath, false);
+            KeyValue map = KeyValue.readChunkfile(fullPath, false);
 
             // Add maps assets
-            String mapName = Path.GetFileNameWithoutExtension(fullPath).ToLower();
+            string mapName = Path.GetFileNameWithoutExtension(fullPath).ToLower();
             assets.Add("maps/" + mapName + ".bsp");
 
             // Add material assets
-            List<SourceSDK.KeyValue> materials = map.findChildrenByKey("material");
-            foreach (SourceSDK.KeyValue kv in materials)
+            List<KeyValue> materials = map.findChildrenByKey("material");
+            foreach (KeyValue kv in materials)
             {
                 string value = "materials/" + kv.getValue().ToLower() + ".vmt";
                 if (!assets.Contains(value))
@@ -51,8 +46,8 @@ namespace source_modding_tool.SourceSDK
             }
 
             // Add model and sprite assets
-            List<SourceSDK.KeyValue> models = map.findChildrenByKey("model");
-            foreach (SourceSDK.KeyValue kv in models)
+            List<KeyValue> models = map.findChildrenByKey("model");
+            foreach (KeyValue kv in models)
             {
                 string value = kv.getValue().ToLower();
                 if (!assets.Contains(value))
@@ -63,8 +58,8 @@ namespace source_modding_tool.SourceSDK
             }
 
             // Add sound assets
-            List<SourceSDK.KeyValue> sounds = map.findChildrenByKey("message");
-            foreach (SourceSDK.KeyValue kv in sounds)
+            List<KeyValue> sounds = map.findChildrenByKey("message");
+            foreach (KeyValue kv in sounds)
             {
                 string value = kv.getValue().ToLower();
                 if ((value.EndsWith(".wav") || value.EndsWith(".mp3")) && !assets.Contains(value))
@@ -77,10 +72,10 @@ namespace source_modding_tool.SourceSDK
             }
 
             // Add particle assets
-            List<SourceSDK.KeyValue> effectsKVs = map.findChildrenByKey("effect_name");
+            List<KeyValue> effectsKVs = map.findChildrenByKey("effect_name");
             List<string> effects = new List<string>();
             List<string> pcfFiles = PCF.GetAllFiles(launcher);
-            foreach (SourceSDK.KeyValue kv in effectsKVs)
+            foreach (KeyValue kv in effectsKVs)
                 effects.Add(kv.getValue());
             effects = effects.Distinct().ToList();
             foreach (string pcf in pcfFiles)
@@ -92,7 +87,7 @@ namespace source_modding_tool.SourceSDK
                 }
 
             // Add skybox
-            SourceSDK.KeyValue skybox = map.findChildByKey("skyname");
+            KeyValue skybox = map.findChildByKey("skyname");
             if (skybox != null)
             {
                 string value = skybox.getValue().ToLower();

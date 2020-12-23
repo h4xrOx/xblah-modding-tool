@@ -2,7 +2,8 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
-using source_modding_tool.SourceSDK;
+ 
+using SourceSDK;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

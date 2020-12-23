@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using static source_modding_tool.MaterialEditor;
 using System.IO;
-using source_modding_tool.SourceSDK;
+ 
 using DevExpress.XtraBars;
+using SourceSDK.Materials;
+using SourceSDK;
 
 namespace source_modding_tool
 {

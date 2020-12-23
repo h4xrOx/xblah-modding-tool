@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Mod
     {
@@ -42,26 +42,26 @@ namespace source_modding_tool
             string gamePath = game.installPath;
             string modPath = installPath;
 
-            SourceSDK.KeyValue gameInfo = null;
-            SourceSDK.KeyValue searchPaths = null;
+            KeyValue gameInfo = null;
+            KeyValue searchPaths = null;
             switch (game.engine)
             {
                 case Engine.SOURCE:
-                    gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
+                    gameInfo = KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
                     searchPaths = gameInfo.findChildByKey("searchpaths");
                     break;
                 case Engine.SOURCE2:
-                    gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.gi");
+                    gameInfo = KeyValue.readChunkfile(modPath + "\\gameinfo.gi");
                     searchPaths = gameInfo.findChildByKey("searchpaths");
                     break;
                 case Engine.GOLDSRC:
-                    searchPaths = new SourceSDK.KeyValue("searchpaths");
-                    searchPaths.addChild(new SourceSDK.KeyValue("game", new DirectoryInfo(installPath).Name));
-                    searchPaths.addChild(new SourceSDK.KeyValue("game", "valve"));
+                    searchPaths = new KeyValue("searchpaths");
+                    searchPaths.addChild(new KeyValue("game", new DirectoryInfo(installPath).Name));
+                    searchPaths.addChild(new KeyValue("game", "valve"));
                     break;
             }
 
-            foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
+            foreach (KeyValue searchPath in searchPaths.getChildren())
             {
                 string[] keys = searchPath.getKey().Split('+');
 
@@ -70,7 +70,7 @@ namespace source_modding_tool
 
                 string value = searchPath.getValue();
 
-                switch(game.engine)
+                switch (game.engine)
                 {
                     case Engine.SOURCE:
                         value = value.Replace("/", "\\");
@@ -108,23 +108,25 @@ namespace source_modding_tool
                     value = value.Substring(0, value.Length - 1);
 
                     if (Directory.Exists(value))
-                        foreach(string subdir in Directory.GetDirectories(value))
+                        foreach (string subdir in Directory.GetDirectories(value))
                         {
                             result.Add(subdir);
                         }
-                } else
+                }
+                else
                 {
                     // Add directory.
                     result.Add(value);
                 }
 
-                
+
             }
 
             return result.Distinct().ToList();
         }
 
-        public List<string> GetMountedVPKs() {
+        public List<string> GetMountedVPKs()
+        {
             return GetMountedPaths().Where(x => x.EndsWith(".vpk")).ToList();
         }
 
@@ -136,11 +138,12 @@ namespace source_modding_tool
             {
                 // Mapbase specific fgd directory
                 result.Add(installPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
-            } else
+            }
+            else
             {
                 result.AddRange(Directory.GetFiles(game.installPath, "*.fgd", SearchOption.AllDirectories));
             }
-            
+
             result.AddRange(Directory.GetFiles(installPath, "*.fgd", SearchOption.AllDirectories));
 
             List<string> alreadyIncluded = new List<string>();

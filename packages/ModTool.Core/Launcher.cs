@@ -1,13 +1,8 @@
 ﻿using Microsoft.Win32;
-using source_modding_tool.SourceSDK;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Launcher
     {
@@ -25,20 +20,20 @@ namespace source_modding_tool
         private Dictionary<string, Game> LoadGames()
         {
             games = new Dictionary<string, Game>();
-            foreach(string library in this.libraries.GetList())
+            foreach (string library in libraries.GetList())
             {
-                if(Directory.Exists(library + "\\steamapps\\common\\"))
-                    foreach(String path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
+                if (Directory.Exists(library + "\\steamapps\\common\\"))
+                    foreach (string path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
                     {
-                        String game = new FileInfo(path).Name;
+                        string game = new FileInfo(path).Name;
 
                         if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
                         {
                             // It's a Source game
-                            switch(game)
+                            switch (game)
                             {
                                 case "half-life 2":
-                                    { 
+                                    {
                                         games.Add("Half-Life 2", new Game("Half-Life 2", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
                                         games.Add("Half-Life 2: Episode One", new Game("Half-Life 2: Episode One", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
                                         games.Add("Half-Life 2: Episode Two", new Game("Half-Life 2: Episode Two", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
@@ -47,14 +42,15 @@ namespace source_modding_tool
                                 default:
                                     {
                                         games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
-                                        
+
                                     }
                                     break;
                             }
 
-                            
+
                         }
-                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game)) {
+                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game))
+                        {
                             // It's a Source 2 game
                             games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
                         }
@@ -67,7 +63,7 @@ namespace source_modding_tool
             }
 
             // Mapbase, since they don't have their own gameid and I have to hardcode stuff
-            foreach (string library in this.libraries.GetList())
+            foreach (string library in libraries.GetList())
             {
                 if (games.ContainsKey("Source SDK Base 2013 Singleplayer") &&
                     Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_shared") &&
@@ -103,18 +99,18 @@ namespace source_modding_tool
                 if (!games.ContainsKey(game.name))
                     LoadGames();
 
-                if(games.ContainsKey(game.name))
+                if (games.ContainsKey(game.name))
                     game.LoadMods(this);
                 else
                     return null;
             }
 
-            if(mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.name))
+            if (mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.name))
             {
                 if (!game.mods.ContainsKey(mod.name))
                     game.LoadMods(this);
 
-                if(!game.mods.ContainsKey(mod.name))
+                if (!game.mods.ContainsKey(mod.name))
                     return null;
             }
 
@@ -129,7 +125,7 @@ namespace source_modding_tool
         public Dictionary<string, Mod> GetModsList(Game game)
         {
             return game.LoadMods(this);
-        }        
+        }
 
         public void SetCurrentGame(Game game)
         {

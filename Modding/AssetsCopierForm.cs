@@ -1,4 +1,5 @@
-﻿using source_modding_tool.SourceSDK;
+﻿using SourceSDK;
+using SourceSDK.Maps;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -1,15 +1,8 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="D:\Development\CS\windows-source-modding-tool\SourceSDK\FileType\VTF.cs" company="">
-//     Author: Jean XBLAH Knapp
-//     Copyright (c) 2019-2020. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using TGASharpLib;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK.Materials
 {
     public class VTF
     {
@@ -39,7 +32,7 @@ namespace source_modding_tool.SourceSDK
             process.StartInfo.FileName = vtexPath;
             process.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
             process.StartInfo.WorkingDirectory = filePath;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
 
@@ -77,7 +70,7 @@ namespace source_modding_tool.SourceSDK
             process.StartInfo.FileName = vtf2tgaPath;
             process.StartInfo.Arguments = "-i temp -o temp";
             process.StartInfo.WorkingDirectory = filePath;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
 

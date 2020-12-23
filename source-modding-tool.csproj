@@ -1314,9 +1314,9 @@
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\graphs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="packages\ModTool.Core\ModTool.Core.csproj">
+    <ProjectReference Include="packages\ModTool.Core\SourceSDK.csproj">
       <Project>{e9ead908-dfc2-45cc-b326-fcc2cafe7f79}</Project>
-      <Name>ModTool.Core</Name>
+      <Name>SourceSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

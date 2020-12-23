@@ -1,16 +1,9 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="D:\Development\CS\windows-source-modding-tool\SourceSDK\FileType\VPK.cs" company="">
-//     Author:  
-//     Copyright (c) . All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
-namespace source_modding_tool
+namespace SourceSDK.Packages
 {
     public class VPK
     {
@@ -140,7 +133,7 @@ namespace source_modding_tool
             Process process = new Process();
             process.StartInfo.FileName = toolPath;
             process.StartInfo.Arguments = args;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();
         }

@@ -1,6 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using source_modding_tool.SourceSDK;
+ 
 using source_modding_tool.Tools;
+using SourceSDK;
+using SourceSDK.Materials;
+using SourceSDK.Packages;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

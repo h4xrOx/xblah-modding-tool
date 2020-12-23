@@ -1,5 +1,4 @@
-﻿using source_modding_tool.SourceSDK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Hammer
     {
@@ -26,7 +25,7 @@ namespace source_modding_tool
 
         public static void RunHammer(Mod mod)
         {
-            switch(mod.game.engine)
+            switch (mod.game.engine)
             {
                 case Engine.SOURCE:
                     {
@@ -196,7 +195,7 @@ namespace source_modding_tool
             if (game.name == "Mapbase")
                 hammerPath = startupPath + "\\Tools\\SlartibartysHammer\\mapbase\\";
 
-                if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
+            if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
             {
                 foreach (string file in Directory.GetFiles(hammerPath))
                 {

@@ -1,16 +1,10 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="windows-source-modding-tool\SourceSDK\FileType\PCF.cs" company="">
-//     Author: Jean XBLAH Knapp
-//     Copyright (c) 2019-2020. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
+﻿using SourceSDK.Materials;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace source_modding_tool.SourceSDK
+namespace SourceSDK.Particles
 {
     public class PCF
     {
@@ -32,7 +26,7 @@ namespace source_modding_tool.SourceSDK
             foreach (byte b in byteArray)
                 if (b == 0 && chars.Count > 0)
                 {
-                    string word = new String(chars.ToArray());
+                    string word = new string(chars.ToArray());
                     materials.Add(word);
                     chars.Clear();
                 }
@@ -64,7 +58,7 @@ namespace source_modding_tool.SourceSDK
             foreach (byte b in byteArray)
                 if (b == 0 && chars.Count > 0)
                 {
-                    string word = new String(chars.ToArray());
+                    string word = new string(chars.ToArray());
                     list.Add(word);
                     chars.Clear();
                 }

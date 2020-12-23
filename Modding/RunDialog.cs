@@ -8,9 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using source_modding_tool.SourceSDK;
+ 
 using System.IO;
 using System.Diagnostics;
+using SourceSDK;
 
 namespace source_modding_tool.Modding
 {

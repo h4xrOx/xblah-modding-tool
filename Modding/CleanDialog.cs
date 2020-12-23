@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Diagnostics;
 using DevExpress.XtraTreeList.Nodes;
+using SourceSDK;
 
 namespace source_modding_tool.Modding
 {

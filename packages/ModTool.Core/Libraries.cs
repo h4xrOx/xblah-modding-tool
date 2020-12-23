@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class Libraries
     {
@@ -31,14 +31,14 @@ namespace source_modding_tool
         {
             string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
 
-            SourceSDK.KeyValue root = new SourceSDK.KeyValue("LibraryFolders");
+            KeyValue root = new KeyValue("LibraryFolders");
 
             for (int i = 0; i < userLibs.Count; i++)
             {
-                root.addChild(new SourceSDK.KeyValue(i.ToString(), userLibs[i]));
+                root.addChild(new KeyValue(i.ToString(), userLibs[i]));
             }
 
-            SourceSDK.KeyValue.writeChunkFile(userPath, root);
+            KeyValue.writeChunkFile(userPath, root);
         }
 
         public void AddUserLibrary(string path)
@@ -59,7 +59,7 @@ namespace source_modding_tool
 
         public void LoadSteamLibraries()
         {
-            String steamPath = Launcher.GetInstallPath();
+            string steamPath = Launcher.GetInstallPath();
 
             steamLibs = new List<string>();
             if (Directory.Exists(steamPath))
@@ -68,10 +68,10 @@ namespace source_modding_tool
 
                 if (File.Exists(steamPath + "\\steamapps\\libraryfolders.vdf"))
                 {
-                    SourceSDK.KeyValue root = SourceSDK.KeyValue
+                    KeyValue root = KeyValue
                         .readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
 
-                    foreach (SourceSDK.KeyValue child in root.getChildren())
+                    foreach (KeyValue child in root.getChildren())
                     {
                         string dir = child.getValue().Replace("\\\\", "\\");
                         if (Directory.Exists(dir))
@@ -95,9 +95,9 @@ namespace source_modding_tool
             string userPath = AppDomain.CurrentDomain.BaseDirectory + "/libraryfolders.vdf";
             if (File.Exists(userPath))
             {
-                SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(userPath);
+                KeyValue root = KeyValue.readChunkfile(userPath);
 
-                foreach (SourceSDK.KeyValue child in root.getChildren())
+                foreach (KeyValue child in root.getChildren())
                 {
                     string dir = child.getValue().Replace("\\\\", "\\");
                     if (Directory.Exists(dir))

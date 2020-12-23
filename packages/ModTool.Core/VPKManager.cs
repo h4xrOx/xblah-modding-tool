@@ -1,10 +1,9 @@
-﻿using System;
+﻿using SourceSDK.Packages;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace source_modding_tool
+namespace SourceSDK
 {
     public class VPKManager
     {
@@ -19,9 +18,9 @@ namespace source_modding_tool
 
         public void extractFile(string filePath)
         {
-            foreach(KeyValuePair<string, VPK> vpk in vpks)
+            foreach (KeyValuePair<string, VPK> vpk in vpks)
             {
-                if(vpk.Value.files.ContainsKey(filePath))
+                if (vpk.Value.files.ContainsKey(filePath))
                 {
                     vpk.Value.ExtractFile(filePath);
 
@@ -34,7 +33,7 @@ namespace source_modding_tool
         public List<VPK.File> getAllFiles()
         {
             List<VPK.File> files = new List<VPK.File>();
-            foreach(VPK vpk in vpks.Values)
+            foreach (VPK vpk in vpks.Values)
                 files.AddRange(vpk.files.Values);
             files = files
                 .GroupBy(x => x.path)
@@ -47,13 +46,13 @@ namespace source_modding_tool
             {
                 string extractedPath = getExtractedPath(file.path).Replace("_dir.vpk", ".vpk");
 
-                
+
                 if (vpks.ContainsKey(extractedPath))
                 {
                     files.Remove(file);
                     //XtraMessageBox.Show(extractedPath + " is already mounted");
                 }
- 
+
             }
 
             return files;
@@ -77,7 +76,7 @@ namespace source_modding_tool
         {
             vpks = new Dictionary<string, VPK>();
 
-            foreach(string searchPath in launcher.GetCurrentMod().GetMountedPaths())
+            foreach (string searchPath in launcher.GetCurrentMod().GetMountedPaths())
             {
                 if (searchPath.EndsWith(".vpk"))
                     vpks.Add(searchPath, new VPK(searchPath, launcher));

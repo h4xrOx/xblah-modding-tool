@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using source_modding_tool.Tools;
 using System.IO;
-using source_modding_tool.SourceSDK;
+ 
 using DevExpress.XtraLayout;
+using SourceSDK.Packages;
+using SourceSDK;
 
 namespace source_modding_tool.Modding
 {
