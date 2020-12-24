@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SourceSDK
 {
@@ -23,8 +24,9 @@ namespace SourceSDK
             process.Start();
         }
 
-        public static void RunHammer(Mod mod)
+        public static void RunHammer(Launcher launcher, Instance instance, Control parent)
         {
+            Mod mod = launcher.GetCurrentMod();
             switch (mod.game.engine)
             {
                 case Engine.SOURCE:
@@ -57,18 +59,8 @@ namespace SourceSDK
                         RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
                         string command = "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole";
 
-                        /*instance = new Instance(launcher, panel1);
-
+                        instance = new Instance(launcher, parent);
                         instance.Start(runPreset, command);
-
-                        if (runPreset.runMode == RunMode.WINDOWED && (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2))
-                        {
-                            FormBorderStyle = FormBorderStyle.Fixed3D;
-                            MaximizeBox = false;
-                        }
-                        modStarted();*/
-
-
                     }
                     break;
                 case Engine.GOLDSRC:

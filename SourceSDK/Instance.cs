@@ -44,16 +44,7 @@ namespace SourceSDK
 
             Debug.Write(modPath);
 
-            string exePath = string.Empty;
-
-            foreach (string file in Directory.GetFiles(gamePath))
-            {
-                if (new FileInfo(file).Extension == ".exe")
-                {
-                    exePath = file;
-                    break;
-                }
-            }
+            string exePath = launcher.GetCurrentGame().getExePath();
 
             Core.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
             Core.ShowWindow((int)modProcess.MainWindowHandle, 0);

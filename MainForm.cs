@@ -142,8 +142,16 @@ namespace source_modding_tool
             // Hammer
             if (e.Item == menuLevelDesignHammer)
             {
+                Hammer.RunHammer(launcher, instance, panel1);
+
                 // TODO run source 2 hammer as a mod.
-                Hammer.RunHammer(launcher.GetCurrentMod());
+                if (launcher.GetCurrentGame().engine == Engine.SOURCE2)
+                {
+                    FormBorderStyle = FormBorderStyle.Fixed3D;
+                    MaximizeBox = false;
+
+                    modStarted();
+                }
             }
 
             // Fog Previewer
