@@ -97,7 +97,6 @@ namespace SourceSDK
         /// <returns></returns>
         public Dictionary<string, Mod> LoadMods(Launcher launcher)
         {
-
             mods = new Dictionary<string, Mod>();
 
             if (launcher == null)
@@ -202,7 +201,7 @@ namespace SourceSDK
                             if (gameInfo != null)
                             {
 
-                                string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
+                                string name = gameInfo.findChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
                                 if (path.Contains(gamePath) && mods.Values.Where(p => p.installPath == path).ToList().Count == 0)
