@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -13,6 +14,12 @@ namespace SourceSDK
         public Process modProcess = null;
 
         public bool isLoading = false;
+
+        [Browsable(true)]
+        public event EventHandler OnStop;
+
+        [Browsable(true)]
+        public event EventHandler OnStart;
 
         public Instance(Launcher launcher, Control parent)
         {
@@ -102,14 +109,25 @@ namespace SourceSDK
             }
 
             modProcess = new Process();
+            modProcess.EnableRaisingEvents = true;
             modProcess.StartInfo.FileName = exePath;
             modProcess.StartInfo.Arguments = runPreset.GetArguments(launcher, parent) + " " + command;
+            modProcess.Exited += (sender, e) =>
+            {
+                if (OnStop != null)
+                    OnStop.Invoke(this, new EventArgs());
+                //execute.ExitCode.ToString()
+            };
+
             modProcess.Start();
 
             if (runPreset.runMode == RunMode.WINDOWED)
                 AttachProcessTo(modProcess, parent);
 
             isLoading = false;
+
+            if (OnStart != null)
+                OnStart.Invoke(this, new EventArgs());
 
             return modProcess;
         }
