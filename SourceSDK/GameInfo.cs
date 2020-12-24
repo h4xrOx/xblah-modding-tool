@@ -33,7 +33,7 @@ namespace SourceSDK
 
         public string getValue(string key)
         {
-            return root.getValue(key);
+            return root.findChildByKey(key).getValue();
         }
 
         public KeyValue getRoot()
