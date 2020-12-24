@@ -133,6 +133,11 @@ namespace SourceSDK
             game.LoadMods(this);
         }
 
+        public void SetCurrentGame(string game)
+        {
+            SetCurrentGame(games[game]);
+        }
+
         public Game GetCurrentGame()
         {
             return currentGame;
@@ -142,6 +147,11 @@ namespace SourceSDK
         {
             if (currentGame != null)
                 currentGame.SetCurrentMod(mod);
+        }
+
+        public void SetCurrentMod(string mod)
+        {
+            SetCurrentMod(currentGame.mods[mod]);
         }
 
         public Mod GetCurrentMod()
