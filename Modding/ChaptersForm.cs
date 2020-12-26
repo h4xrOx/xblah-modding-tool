@@ -94,6 +94,13 @@ namespace source_modding_tool
                     textMap.EditValue = mapName;
 
                 }
+                else if (file.type == ".vpk" && game.engine == Engine.SOURCE2)
+                {
+                    // It's a map
+                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    textMap.EditValue = mapName;
+
+                }
             }
         }
 
@@ -380,11 +387,11 @@ namespace source_modding_tool
                         break;
                     case Engine.SOURCE2:
                         {
-                            if (File.Exists(filePath + "\\" + chapters[i].background + ".jpg"))
+                            if (File.Exists(filePath + "\\" + chapters[i].background + ".png"))
                             {
                                 Bitmap src;
 
-                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + ".jpg", System.IO.FileMode.Open))
+                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + ".png", System.IO.FileMode.Open))
                                 {
                                     var bmp = new Bitmap(fs);
                                     src = (Bitmap)bmp.Clone();
@@ -405,11 +412,11 @@ namespace source_modding_tool
                                 chapters[i].backgroundImage = target;
                             }
 
-                            if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.jpg"))
+                            if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.png"))
                             {
                                 Bitmap src;
 
-                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + "_widescreen.jpg", System.IO.FileMode.Open))
+                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + "_widescreen.png", System.IO.FileMode.Open))
                                 {
                                     var bmp = new Bitmap(fs);
                                     src = (Bitmap)bmp.Clone();
@@ -514,7 +521,7 @@ namespace source_modding_tool
                         break;
                     case Engine.SOURCE2:
                         {
-                            string bitmapPath = filePath + "\\chapter" + (i + 1) + ".jpg";
+                            string bitmapPath = filePath + "\\chapter" + (i + 1) + ".png";
                             if (File.Exists(bitmapPath))
                             {
                                 Bitmap src;
@@ -687,12 +694,12 @@ namespace source_modding_tool
                         {
                             Directory.CreateDirectory(filePath);
                             if (chapters[i].backgroundImage != null) {
-                                chapters[i].backgroundImage.Save(filePath + "\\" + chapters[i].background + ".jpg", ImageFormat.Jpeg);
+                                chapters[i].backgroundImage.Save(filePath + "\\" + chapters[i].background + ".png", ImageFormat.Png);
                             }
                             
                             if (chapters[i].backgroundImageWide != null)
                             {
-                                chapters[i].backgroundImageWide.Save(filePath + "\\" + chapters[i].background + "_widescreen.jpg", ImageFormat.Jpeg);
+                                chapters[i].backgroundImageWide.Save(filePath + "\\" + chapters[i].background + "_widescreen.png", ImageFormat.Png);
                             }
                         }
                         break;
@@ -816,7 +823,7 @@ namespace source_modding_tool
                     case Engine.SOURCE2:
                     {
                         Directory.CreateDirectory(filePath);
-                        chapters[i].thumbnail.Save(filePath + "\\chapter" + (i + 1) + ".jpg", ImageFormat.Jpeg);
+                        chapters[i].thumbnail.Save(filePath + "\\chapter" + (i + 1) + ".png", ImageFormat.Png);
                     }
                     break;
                 }
