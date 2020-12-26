@@ -41,6 +41,14 @@ namespace SourceSDK
             }
         }
 
+        private string hijackFilePath;
+        private DateTime hijackWriteTime;
+        private Timer hijackTimer = new Timer()
+        {
+            Interval = 30, // every 30 ms
+            Enabled = false
+        };
+
         public void Command(string command)
         {
             if (modProcess == null)
@@ -49,21 +57,52 @@ namespace SourceSDK
             string gamePath = launcher.GetCurrentGame().installPath;
             string modPath = launcher.GetCurrentMod().installPath;
 
-            Debug.Write(modPath);
+            switch(launcher.GetCurrentGame().engine)
+            {
+                case Engine.SOURCE2:
+                    {
+                        // You can only hijack source2 (for now) if there is a map runnning with the hijack prefab.
+                        // Add a logic_timer triggering a point_clientcommand with the output Command "exec hijack" and that's it.
+                        // Use this with caution (basically like everything else).
 
-            string exePath = launcher.GetCurrentGame().getExePath();
+                        hijackFilePath = launcher.GetCurrentMod().installPath + "\\cfg\\hijack.cfg";
+                        File.WriteAllText(hijackFilePath, command);
+                        hijackWriteTime = File.GetLastAccessTime(hijackFilePath);
 
-            Core.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
-            Core.ShowWindow((int)modProcess.MainWindowHandle, 0);
+                        hijackTimer.Tick += new EventHandler(hijacjTimer_Tick);
+                        hijackTimer.Enabled = true;
+                    }
+                    break;
+                case Engine.SOURCE:
+                default:
+                    {
+                        string exePath = launcher.GetCurrentGame().getExePath();
 
-            Process process = new Process();
-            process.StartInfo.FileName = exePath;
-            process.StartInfo.Arguments = "-hijack " + command;
-            process.Start();
-            process.EnableRaisingEvents = true;
-            process.WaitForInputIdle();
-            Core.ShowWindow((int)modProcess.MainWindowHandle, 9);
-            Core.SetParent(modProcess.MainWindowHandle, parent.Handle);
+                        Core.SetParent(modProcess.MainWindowHandle, IntPtr.Zero);
+                        Core.ShowWindow((int)modProcess.MainWindowHandle, 0);
+
+                        Process process = new Process();
+                        process.StartInfo.FileName = exePath;
+                        process.StartInfo.Arguments = "-hijack " + command;
+                        process.Start();
+                        process.EnableRaisingEvents = true;
+                        process.WaitForInputIdle();
+                        Core.ShowWindow((int)modProcess.MainWindowHandle, 9);
+                        Core.SetParent(modProcess.MainWindowHandle, parent.Handle);
+                    }
+                    break;
+            } 
+        }
+
+        void hijacjTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime hijackAccessTime = File.GetLastAccessTime(hijackFilePath);
+            if (hijackAccessTime != hijackWriteTime)
+            {
+                hijackWriteTime = hijackAccessTime;
+                File.Delete(hijackFilePath);
+                hijackTimer.Enabled = false;
+            }
         }
 
         public void Resize()
