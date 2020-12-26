@@ -6,7 +6,9 @@ using SourceSDK.Materials;
 using SourceSDK.Packages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -218,9 +220,13 @@ namespace source_modding_tool
 
                 Bitmap src = Image.FromFile(filePath) as Bitmap;
 
-                // Blur image
-                GaussianBlur blur = new GaussianBlur(src);
-                src = blur.Process(30);
+                if (XtraMessageBox.Show("Do you want to blur the selected image?", "Blur image", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    // Blur image
+                    GaussianBlur blur = new GaussianBlur(src);
+                    src = blur.Process(30);
+                }
 
                 // Crop image
                 Bitmap targetWide = new Bitmap(1920, 1080);
@@ -267,8 +273,11 @@ namespace source_modding_tool
                 chapters[index].backgroundImage = target;
                 pictureBackground.Image = target;
 
-                writeBackgroundImage(index);
-                writeBackgroundImageWide(index);
+                if (launcher.GetCurrentGame().engine == Engine.SOURCE)
+                {
+                    writeBackgroundImage(index);
+                    writeBackgroundImageWide(index);
+                }
             }
         }
 
@@ -306,7 +315,8 @@ namespace source_modding_tool
                 pictureThumbnail.Image = target;
                 galleryControl1.Gallery.GetCheckedItem().ImageOptions.Image = target;
 
-                writeChapterThumbnail(index);
+                if (launcher.GetCurrentGame().engine == Engine.SOURCE)
+                    writeChapterThumbnail(index);
             }
         }
 
@@ -318,49 +328,109 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                if(File.Exists(filePath + "\\" + chapters[i].background + ".vtf"))
+                switch(launcher.GetCurrentGame().engine)
                 {
-                    chapters[i].backgroundImageFile = File.ReadAllBytes(filePath +
-                        "\\" +
-                        chapters[i].background +
-                        ".vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageFile, launcher);
+                    case Engine.SOURCE:
+                        {
+                            if (File.Exists(filePath + "\\" + chapters[i].background + ".vtf"))
+                            {
+                                chapters[i].backgroundImageFile = File.ReadAllBytes(filePath +
+                                    "\\" +
+                                    chapters[i].background +
+                                    ".vtf");
+                                Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageFile, launcher);
 
-                    // Crop image
-                    if(src == null)
-                        continue;
+                                // Crop image
+                                if (src == null)
+                                    continue;
 
-                    Bitmap target = new Bitmap(1024, 768);
-                    using(Graphics gfx = Graphics.FromImage(target))
-                        gfx.DrawImage(src,
-                                      new Rectangle(0, 0, target.Width, target.Height),
-                                      new Rectangle(0, 0, src.Width, src.Height),
-                                      GraphicsUnit.Pixel);
+                                Bitmap target = new Bitmap(1024, 768);
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, src.Width, src.Height),
+                                                  GraphicsUnit.Pixel);
 
-                    chapters[i].backgroundImage = target;
-                }
+                                chapters[i].backgroundImage = target;
+                            }
 
-                if(File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.vtf"))
-                {
-                    chapters[i].backgroundImageWideFile = File.ReadAllBytes(filePath +
-                        "\\" +
-                        chapters[i].background +
-                        "_widescreen.vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageWideFile, launcher);
+                            if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.vtf"))
+                            {
+                                chapters[i].backgroundImageWideFile = File.ReadAllBytes(filePath +
+                                    "\\" +
+                                    chapters[i].background +
+                                    "_widescreen.vtf");
+                                Bitmap src = VTF.ToBitmap(chapters[i].backgroundImageWideFile, launcher);
 
 
-                    // Crop image
-                    if(src == null)
-                        continue;
+                                // Crop image
+                                if (src == null)
+                                    continue;
 
-                    Bitmap target = new Bitmap(1920, 1080);
-                    using(Graphics gfx = Graphics.FromImage(target))
-                        gfx.DrawImage(src,
-                                      new Rectangle(0, 0, target.Width, target.Height),
-                                      new Rectangle(0, 0, src.Width, src.Height),
-                                      GraphicsUnit.Pixel);
+                                Bitmap target = new Bitmap(1920, 1080);
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, src.Width, src.Height),
+                                                  GraphicsUnit.Pixel);
 
-                    chapters[i].backgroundImageWide = target;
+                                chapters[i].backgroundImageWide = target;
+                            }
+                        }
+                        break;
+                    case Engine.SOURCE2:
+                        {
+                            if (File.Exists(filePath + "\\" + chapters[i].background + ".jpg"))
+                            {
+                                Bitmap src;
+
+                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + ".jpg", System.IO.FileMode.Open))
+                                {
+                                    var bmp = new Bitmap(fs);
+                                    src = (Bitmap)bmp.Clone();
+                                    bmp.Dispose();
+                                }
+
+                                // Crop image
+                                if (src == null)
+                                    continue;
+
+                                Bitmap target = new Bitmap(1024, 768);
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, src.Width, src.Height),
+                                                  GraphicsUnit.Pixel);
+
+                                chapters[i].backgroundImage = target;
+                            }
+
+                            if (File.Exists(filePath + "\\" + chapters[i].background + "_widescreen.jpg"))
+                            {
+                                Bitmap src;
+
+                                using (var fs = new System.IO.FileStream(filePath + "\\" + chapters[i].background + "_widescreen.jpg", System.IO.FileMode.Open))
+                                {
+                                    var bmp = new Bitmap(fs);
+                                    src = (Bitmap)bmp.Clone();
+                                    bmp.Dispose();
+                                }
+
+                                // Crop image
+                                if (src == null)
+                                    continue;
+
+                                Bitmap target = new Bitmap(1920, 1080);
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, src.Width, src.Height),
+                                                  GraphicsUnit.Pixel);
+
+                                chapters[i].backgroundImageWide = target;
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -418,22 +488,59 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                if(File.Exists(filePath + "\\chapter" + (i + 1) + ".vtf"))
+                switch(launcher.GetCurrentGame().engine)
                 {
-                    chapters[i].thumbnailFile = File.ReadAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf");
-                    Bitmap src = VTF.ToBitmap(chapters[i].thumbnailFile, launcher);
+                    case Engine.SOURCE:
+                        {
+                            if (File.Exists(filePath + "\\chapter" + (i + 1) + ".vtf"))
+                            {
+                                chapters[i].thumbnailFile = File.ReadAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf");
+                                Bitmap src = VTF.ToBitmap(chapters[i].thumbnailFile, launcher);
 
-                    // Crop image
-                    Bitmap target = new Bitmap(152, 86);
+                                // Crop image
+                                Bitmap target = new Bitmap(152, 86);
 
-                    using(Graphics gfx = Graphics.FromImage(target))
-                        gfx.DrawImage(src,
-                                      new Rectangle(0, 0, target.Width, target.Height),
-                                      new Rectangle(0, 0, target.Width, target.Height),
-                                      GraphicsUnit.Pixel);
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  GraphicsUnit.Pixel);
 
-                    chapters[i].thumbnail = target;
+                                src.Dispose();
+
+                                chapters[i].thumbnail = target;
+                            }
+                        }
+                        break;
+                    case Engine.SOURCE2:
+                        {
+                            string bitmapPath = filePath + "\\chapter" + (i + 1) + ".jpg";
+                            if (File.Exists(bitmapPath))
+                            {
+                                Bitmap src;
+
+                                using (var fs = new System.IO.FileStream(bitmapPath, System.IO.FileMode.Open))
+                                {
+                                    var bmp = new Bitmap(fs);
+                                    src = (Bitmap)bmp.Clone();
+                                    bmp.Dispose();
+                                }
+
+                                // Crop image
+                                Bitmap target = new Bitmap(152, 86);
+
+                                using (Graphics gfx = Graphics.FromImage(target))
+                                    gfx.DrawImage(src,
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  new Rectangle(0, 0, target.Width, target.Height),
+                                                  GraphicsUnit.Pixel);
+
+                                chapters[i].thumbnail = target;
+                            }
+                        }
+                        break;
                 }
+                
             }
         }
 
@@ -535,41 +642,62 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                if(chapters[i].backgroundImageFile == null)
-                    chapters[i].backgroundImageFile = VTF.FromBitmap(chapters[i].backgroundImage, launcher);
-
-                if(chapters[i].backgroundImageWideFile == null)
-                    chapters[i].backgroundImageWideFile = VTF.FromBitmap(chapters[i].backgroundImageWide, launcher);
-
-                if(chapters[i].backgroundImageFile != null && chapters[i].backgroundImageWideFile != null)
+                switch(launcher.GetCurrentGame().engine)
                 {
-                    Directory.CreateDirectory(filePath);
+                    case Engine.SOURCE:
+                        {
+                            if (chapters[i].backgroundImageFile == null)
+                                chapters[i].backgroundImageFile = VTF.FromBitmap(chapters[i].backgroundImage, launcher);
 
-                    File.WriteAllBytes(filePath + "\\" + chapters[i].background + ".vtf",
-                                       chapters[i].backgroundImageFile);
-                    File.WriteAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf",
-                                       chapters[i].backgroundImageWideFile);
+                            if (chapters[i].backgroundImageWideFile == null)
+                                chapters[i].backgroundImageWideFile = VTF.FromBitmap(chapters[i].backgroundImageWide, launcher);
 
-                    KeyValue root = new KeyValue("UnlitGeneric");
-                    root.addChild(new KeyValue("$basetexture", "console/" + chapters[i].background));
-                    root.addChild(new KeyValue("$vertexcolor", "1"));
-                    root.addChild(new KeyValue("$vertexalpha", "1"));
-                    root.addChild(new KeyValue("$ignorez", "1"));
-                    root.addChild(new KeyValue("$no_fullbright", "1"));
-                    root.addChild(new KeyValue("$nolod", "1"));
-                    SourceSDK.KeyValue
-                        .writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt",
-                                        root,
-                                        false,
-                                        new UTF8Encoding(false));
+                            if (chapters[i].backgroundImageFile != null && chapters[i].backgroundImageWideFile != null)
+                            {
+                                Directory.CreateDirectory(filePath);
 
-                    root.getChildByKey("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
-                    SourceSDK.KeyValue
-                        .writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt",
-                                        root,
-                                        false,
-                                        new UTF8Encoding(false));
+                                File.WriteAllBytes(filePath + "\\" + chapters[i].background + ".vtf",
+                                                   chapters[i].backgroundImageFile);
+                                File.WriteAllBytes(filePath + "\\" + chapters[i].background + "_widescreen.vtf",
+                                                   chapters[i].backgroundImageWideFile);
+
+                                KeyValue root = new KeyValue("UnlitGeneric");
+                                root.addChild(new KeyValue("$basetexture", "console/" + chapters[i].background));
+                                root.addChild(new KeyValue("$vertexcolor", "1"));
+                                root.addChild(new KeyValue("$vertexalpha", "1"));
+                                root.addChild(new KeyValue("$ignorez", "1"));
+                                root.addChild(new KeyValue("$no_fullbright", "1"));
+                                root.addChild(new KeyValue("$nolod", "1"));
+                                SourceSDK.KeyValue
+                                    .writeChunkFile(filePath + "\\" + chapters[i].background + ".vmt",
+                                                    root,
+                                                    false,
+                                                    new UTF8Encoding(false));
+
+                                root.getChildByKey("$basetexture").setValue("console/" + chapters[i].background + "_widescreen");
+                                SourceSDK.KeyValue
+                                    .writeChunkFile(filePath + "\\" + chapters[i].background + "_widescreen.vmt",
+                                                    root,
+                                                    false,
+                                                    new UTF8Encoding(false));
+                            }
+                        }
+                        break;
+                    case Engine.SOURCE2:
+                        {
+                            Directory.CreateDirectory(filePath);
+                            if (chapters[i].backgroundImage != null) {
+                                chapters[i].backgroundImage.Save(filePath + "\\" + chapters[i].background + ".jpg", ImageFormat.Jpeg);
+                            }
+                            
+                            if (chapters[i].backgroundImageWide != null)
+                            {
+                                chapters[i].backgroundImageWide.Save(filePath + "\\" + chapters[i].background + "_widescreen.jpg", ImageFormat.Jpeg);
+                            }
+                        }
+                        break;
                 }
+                
             }
         }
 
@@ -600,8 +728,23 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                if(chapters[i].background == string.Empty)
-                    chapters[i].background = "default";
+                if (chapters[i].background == string.Empty)
+                {
+                    switch(launcher.GetCurrentGame().engine)
+                    {
+                        case Engine.SOURCE:
+                            {
+                                chapters[i].background = "default";
+                            }
+                            break;
+                        case Engine.SOURCE2:
+                            {
+                                chapters[i].background = "chapter" + (i + 1);
+                            }
+                            break;
+                    }
+                    
+                }
 
                 root.addChild(new KeyValue((i + 1).ToString(), chapters[i].background));
             }
@@ -648,22 +791,34 @@ namespace source_modding_tool
         {
             string filePath = modPath + "\\materials\\vgui\\chapters";
 
-            for(int i = 0; i < chapters.Count; i++)
+            for (int i = 0; i < chapters.Count; i++)
             {
-                if(chapters[i].thumbnailFile == null)
-                    chapters[i].thumbnailFile = VTF.FromBitmap(chapters[i].thumbnail, launcher);
+                switch (launcher.GetCurrentGame().engine) { 
+                    case Engine.SOURCE:
+                    {
+                        if (chapters[i].thumbnailFile == null)
+                            chapters[i].thumbnailFile = VTF.FromBitmap(chapters[i].thumbnail, launcher);
 
-                if(chapters[i].thumbnailFile != null)
-                {
-                    Directory.CreateDirectory(filePath);
-                    File.WriteAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf", chapters[i].thumbnailFile);
+                        if (chapters[i].thumbnailFile != null)
+                        {
+                            Directory.CreateDirectory(filePath);
+                            File.WriteAllBytes(filePath + "\\chapter" + (i + 1) + ".vtf", chapters[i].thumbnailFile);
 
-                    KeyValue root = new KeyValue("UnlitGeneric");
-                    root.addChild(new KeyValue("$basetexture", "VGUI/chapters/chapter" + (i + 1)));
-                    root.addChild(new KeyValue("$vertexalpha", "1"));
+                            KeyValue root = new KeyValue("UnlitGeneric");
+                            root.addChild(new KeyValue("$basetexture", "VGUI/chapters/chapter" + (i + 1)));
+                            root.addChild(new KeyValue("$vertexalpha", "1"));
 
-                    SourceSDK.KeyValue
-                        .writeChunkFile(filePath + "\\chapter" + (i + 1) + ".vmt", root, false, new UTF8Encoding(false));
+                            SourceSDK.KeyValue
+                                .writeChunkFile(filePath + "\\chapter" + (i + 1) + ".vmt", root, false, new UTF8Encoding(false));
+                        }
+                    }
+                    break;
+                    case Engine.SOURCE2:
+                    {
+                        Directory.CreateDirectory(filePath);
+                        chapters[i].thumbnail.Save(filePath + "\\chapter" + (i + 1) + ".jpg", ImageFormat.Jpeg);
+                    }
+                    break;
                 }
             }
         }
