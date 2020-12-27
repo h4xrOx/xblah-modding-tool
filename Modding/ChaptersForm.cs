@@ -34,7 +34,7 @@ namespace source_modding_tool
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            chapters.Add(new Chapter());
+            chapters.Add(new Chapter(launcher.GetCurrentGame().engine));
             updateChaptersList();
         }
 
@@ -482,7 +482,7 @@ namespace source_modding_tool
             foreach(int i in available)
             {
                 string map = File.ReadAllText(path + "\\chapter" + i + ".cfg").Replace("map ", string.Empty);
-                Chapter chapter = new Chapter() { map = map };
+                Chapter chapter = new Chapter(launcher.GetCurrentGame().engine) { map = map };
                 chapters.Add(chapter);
             }
         }
@@ -823,7 +823,8 @@ namespace source_modding_tool
                     case Engine.SOURCE2:
                     {
                         Directory.CreateDirectory(filePath);
-                        chapters[i].thumbnail.Save(filePath + "\\chapter" + (i + 1) + ".png", ImageFormat.Png);
+                        if (chapters[i].thumbnail != null)
+                            chapters[i].thumbnail.Save(filePath + "\\chapter" + (i + 1) + ".png", ImageFormat.Png);
                     }
                     break;
                 }
@@ -841,17 +842,29 @@ namespace source_modding_tool
             KeyValue.writeChunkFile(filePath, lang, Encoding.Unicode);
         }
 
-        class Chapter
+        internal class Chapter
         {
             internal string background = string.Empty;
-            internal Bitmap backgroundImage = new Bitmap(4, 4);
+            //internal Bitmap backgroundImage = new Bitmap(4, 4);
+            internal Bitmap backgroundImage = null;
             internal byte[] backgroundImageFile = null;
-            internal Bitmap backgroundImageWide = new Bitmap(4, 4);
+            //internal Bitmap backgroundImageWide = new Bitmap(4, 4);
+            internal Bitmap backgroundImageWide = null;
             internal byte[] backgroundImageWideFile = null;
             internal string map = string.Empty;
-            internal Bitmap thumbnail = new Bitmap(256, 128);
+            //internal Bitmap thumbnail = new Bitmap(256, 128);
+            internal Bitmap thumbnail = null;
             internal byte[] thumbnailFile = null;
             internal string title = string.Empty;
+
+            internal Chapter(int engine) {
+                if (engine == Engine.SOURCE)
+                {
+                    backgroundImage = new Bitmap(4, 4);
+                    backgroundImageWide = new Bitmap(4, 4);
+                    thumbnail = new Bitmap(256, 128);
+                }
+            }
         }
     }
 }

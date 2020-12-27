@@ -592,7 +592,7 @@ namespace source_modding_tool
                         menuModdingImport2.Enabled = false;
                         menuModdingSettings.Enabled = true;
                             menuModdingSettingsGameInfo.Enabled = true;
-                            menuModdingSettingsChapters.Enabled = false;
+                            menuModdingSettingsChapters.Enabled = true;
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
