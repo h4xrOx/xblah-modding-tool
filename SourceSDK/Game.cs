@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace SourceSDK
@@ -118,6 +120,8 @@ namespace SourceSDK
                         paths.Add(gamePath + "\\" + path);
                     break;
                 case Engine.SOURCE2:
+                    paths.AddRange(GetAllModPaths(launcher));
+
                     foreach (string path in GetAllBaseGameinfoFolders())
                         paths.Add(gamePath + "\\game\\" + path);
                     break;
@@ -170,6 +174,7 @@ namespace SourceSDK
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
                                 {
+
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
                                     foreach (Mod mod in mods.Values)
@@ -204,8 +209,27 @@ namespace SourceSDK
                                 string name = gameInfo.findChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
-                                if (path.Contains(gamePath) && mods.Values.Where(p => p.installPath == path).ToList().Count == 0)
-                                {
+                                if (!File.Exists(path + "\\gameinfo_branchspecific.gi"))
+                                    continue;
+
+                                SourceSDK.KeyValue steamAppIdKV = KeyValue.readChunkfile(path + "\\gameinfo_branchspecific.gi").findChildByKey("steamappid");
+                                string modAppId = "-1";
+                                if (steamAppIdKV != null)
+                                    modAppId = steamAppIdKV.getValue();
+
+                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
+                                {        
+                                    // Create a symbolic link in Half-Life: Alyx, so the mod can run.
+                                    if (!path.Contains(gamePath))
+                                    {
+                                        string symbolicLink = gamePath + "\\game\\" + Path.GetFileName(path);
+
+                                        var psi = new ProcessStartInfo("cmd.exe", " /C mklink /d \"" + symbolicLink + "\" \"" + path + "\"");
+                                        psi.CreateNoWindow = true;
+                                        psi.UseShellExecute = false;
+                                        Process.Start(psi).WaitForExit();
+                                    }
+
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
                                     foreach (Mod mod in mods.Values)
@@ -333,18 +357,45 @@ namespace SourceSDK
             List<string> mods = new List<string>();
             foreach (string library in launcher.libraries.GetList())
             {
-                if (Directory.Exists(library + "\\steamapps\\sourcemods\\"))
+                switch(launcher.GetCurrentGame().engine)
                 {
-                    foreach (string path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
-                    {
-                        string game = new FileInfo(path).Name;
-
-                        if (File.Exists(library + "\\steamapps\\sourcemods\\" + game + "\\gameinfo.txt"))
+                    case Engine.SOURCE:
                         {
-                            mods.Add(library + "\\steamapps\\sourcemods\\" + game);
+                            if (Directory.Exists(library + "\\steamapps\\sourcemods\\"))
+                            {
+                                foreach (string path in Directory.GetDirectories(library + "\\steamapps\\sourcemods\\"))
+                                {
+                                    string game = new FileInfo(path).Name;
+
+                                    if (File.Exists(library + "\\steamapps\\sourcemods\\" + game + "\\gameinfo.txt"))
+                                    {
+                                        mods.Add(library + "\\steamapps\\sourcemods\\" + game);
+                                    }
+                                }
+                            }
                         }
-                    }
+                        break;
+                    case Engine.SOURCE2:
+                        {
+                            if (Directory.Exists(library + "\\steamapps\\source2mods\\"))
+                            {
+                                foreach (string path in Directory.GetDirectories(library + "\\steamapps\\source2mods\\"))
+                                {
+                                    string game = new FileInfo(path).Name;
+
+                                    if (File.Exists(library + "\\steamapps\\source2mods\\" + game + "\\gameinfo.gi"))
+                                    {
+                                        mods.Add(library + "\\steamapps\\source2mods\\" + game);
+                                    }
+                                }
+                            } else
+                            {
+                                Directory.CreateDirectory(library + "\\steamapps\\source2mods\\");
+                            }
+                        }
+                        break;
                 }
+
             }
             return mods;
         }

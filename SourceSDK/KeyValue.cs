@@ -17,6 +17,8 @@ namespace SourceSDK
         private string value = null;
         private string comment = string.Empty;
 
+        public static bool KeyCasing { get; set; } = false;
+
         public KeyValue(string key)
         {
             this.key = key;
@@ -120,6 +122,15 @@ namespace SourceSDK
         }
 
         public bool isParentKey() { return childrenIndex != null && value == null; }
+
+        public void removeChild(KeyValue value)
+        {
+            if (children.Contains(value))
+                children.Remove(value);
+
+            if (childrenIndex.ContainsKey(value.key) && childrenIndex[value.key].Contains(value))
+                childrenIndex[value.key].Remove(value);
+        }
 
         public void setValue(string value)
         {
@@ -297,7 +308,9 @@ namespace SourceSDK
                             }
                             else if (words.Length == 1 || words.Length > 1 && words[1].StartsWith("//"))    // It's a parent key
                             {
-                                line = line.Replace("\"", string.Empty).ToLower();
+                                line = line.Replace("\"", string.Empty);
+                                if (!KeyCasing)
+                                    line = line.ToLower();
                                 KeyValue parent = new KeyValue(line);
                                 stack.Push(new KeyValuePair<string, KeyValue>(line, new KeyValue(line)));
                             }
@@ -315,7 +328,9 @@ namespace SourceSDK
                                 }
                                 else // It's a value key
                                 {
-                                    string key = words[0].Replace("\"", string.Empty).ToLower();
+                                    string key = words[0].Replace("\"", string.Empty);
+                                    if (!KeyCasing)
+                                        key = key.ToLower();
                                     KeyValue value = new KeyValue(key, words[1]);
 
                                     if (stack.Count > 0)
