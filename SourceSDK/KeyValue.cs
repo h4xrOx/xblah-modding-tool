@@ -57,6 +57,7 @@ namespace SourceSDK
 
         public KeyValue findChildByKey(string key)
         {
+            
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key][0];
 

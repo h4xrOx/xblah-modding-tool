@@ -305,7 +305,7 @@
             this.ClientSize = new System.Drawing.Size(985, 549);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("NewModForm.IconOptions.Icon")));
             this.Name = "NewModForm";
             this.Text = "New Mod";
             this.Load += new System.EventHandler(this.NewModForm_Load);

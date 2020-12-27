@@ -102,6 +102,16 @@ namespace source_modding_tool
                 if (fields.ContainsKey(field))
                     fields[field].Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
             }
+
+            switch(launcher.GetCurrentGame().engine)
+            {
+                case Engine.SOURCE2:
+                    {
+                        layoutGame.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                        layoutScreenmode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
+                    }
+                    break;
+            }
         }
 
         private void SetFieldValues()
@@ -134,6 +144,23 @@ namespace source_modding_tool
                             } else
                             {
                                 control.EditValue = "Both";
+                            }
+                        }
+                        break;
+                    case "screenmode":
+                        {
+                            string type = childKV.getValue();
+                            if (type == "both")
+                            {
+                                control.EditValue = "Both";
+                            }
+                            else if (type == "flat_only")
+                            {
+                                control.EditValue = "Flat";
+                            }
+                            else
+                            {
+                                control.EditValue = "VR";
                             }
                         }
                         break;
@@ -217,7 +244,25 @@ namespace source_modding_tool
                             }
                             gameinfo.setValue("type", type);
                         }
-                        break; 
+                        break;
+                    case "screenmode":
+                        {
+                            string type;
+                            if (textType.EditValue.ToString() == "Both")
+                            {
+                                type = "both";
+                            }
+                            else if (textType.EditValue.ToString() == "Flat")
+                            {
+                                type = "flat_only";
+                            }
+                            else
+                            {
+                                type = "vr_only";
+                            }
+                            gameinfo.setValue("screenmode", type);
+                        }
+                        break;
                     case "nodifficulty":
                         gameinfo.setValue(field, ((control as ToggleSwitch).IsOn ? "0" : "1"));
                         break;

@@ -206,7 +206,7 @@ namespace SourceSDK
                             if (gameInfo != null)
                             {
 
-                                string name = gameInfo.findChildByKey("game").getValue() + " (" + new DirectoryInfo(path).Name + ")";
+                                string name = gameInfo.findChildByKey("title").getValue() + " (" + new DirectoryInfo(path).Name + ")";
                                 //string modAppId = gameInfo.getChildByKey("filesystem").getChildByKey("steamappid").getValue();
 
                                 if (!File.Exists(path + "\\gameinfo_branchspecific.gi"))
@@ -390,7 +390,7 @@ namespace SourceSDK
                                 }
                             } else
                             {
-                                Directory.CreateDirectory(library + "\\steamapps\\source2mods\\");
+                                Directory.CreateDirectory(Launcher.GetInstallPath() + "\\steamapps\\source2mods\\");
                             }
                         }
                         break;

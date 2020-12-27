@@ -107,7 +107,9 @@ namespace source_modding_tool
                     break;
                 case "source2":
                     engine = Engine.SOURCE2;
-                    SetBaseModPath(launcher.GetGamesList()[gameName].installPath + "\\game\\");
+                    Directory.CreateDirectory(Launcher.GetInstallPath() + "\\steamapps\\source2mods\\");
+                    SetBaseModPath(Launcher.GetInstallPath() + "\\steamapps\\source2mods\\");
+                    //SetBaseModPath(launcher.GetGamesList()[gameName].installPath + "\\game\\");
                     break;
                 case "goldsrc":
                     engine = Engine.GOLDSRC;
@@ -210,8 +212,7 @@ namespace source_modding_tool
                 case Engine.SOURCE2:
                     {
                         SourceSDK.KeyValue gameInfo = SourceSDK.KeyValue.readChunkfile(modPath + "\\gameinfo.gi");
-                        gameInfo.setValue("game", modFolder);
-                        gameInfo.setValue("title", modFolder);
+                        gameInfo.getChildren()[0].getChildByKey("title").setValue(modFolder);
 
                         SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("filesystem").getChildByKey("searchpaths");
                         searchPaths.clearChildren();
@@ -220,6 +221,7 @@ namespace source_modding_tool
                         searchPaths.addChild("game", "core");
                         searchPaths.addChild("mod", modFolder);
                         searchPaths.addChild("write", modFolder);
+                        searchPaths.addChild("addonroot", "hlvr_addons");
 
                         SourceSDK.KeyValue.writeChunkFile(modPath + "\\gameinfo.gi", gameInfo, false, new UTF8Encoding(false));
                     }

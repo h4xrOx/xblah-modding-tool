@@ -59,12 +59,12 @@
             DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
@@ -74,6 +74,9 @@
             DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
@@ -106,13 +109,22 @@
             this.layoutAdvCrosshair = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutModels = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.textDeveloper = new DevExpress.XtraEditors.TextEdit();
-            this.textDeveloperURL = new DevExpress.XtraEditors.TextEdit();
             this.textManual = new DevExpress.XtraEditors.TextEdit();
+            this.textDeveloperURL = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.switchVR = new DevExpress.XtraEditors.ToggleSwitch();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.textInstance = new DevExpress.XtraEditors.TextEdit();
             this.buttonInstance = new DevExpress.XtraEditors.SimpleButton();
@@ -120,7 +132,12 @@
             this.textGamedata = new DevExpress.XtraEditors.TextEdit();
             this.buttonGamedata = new DevExpress.XtraEditors.SimpleButton();
             this.switchNodegraph = new DevExpress.XtraEditors.ToggleSwitch();
-            this.switchVR = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.buttonSave = new DevExpress.XtraEditors.SimpleButton();
             this.buttonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -129,20 +146,8 @@
             this.instanceDialog = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.vpkDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.searchDirDialog = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.textScreenmode = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.layoutScreenmode = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.textGame.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -174,14 +179,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutAdvCrosshair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutModels)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloper.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textManual.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
+            this.layoutControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textInstance.Properties)).BeginInit();
@@ -189,25 +205,16 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNodegraph.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            this.layoutControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
-            this.layoutControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textScreenmode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutScreenmode)).BeginInit();
             this.SuspendLayout();
             // 
             // textGame
@@ -576,15 +583,29 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(617, 301);
             this.xtraTabPage2.Text = "Steam games list";
             // 
+            // layoutControl3
+            // 
+            this.layoutControl3.Controls.Add(this.panelControl2);
+            this.layoutControl3.Controls.Add(this.textDeveloper);
+            this.layoutControl3.Controls.Add(this.textManual);
+            this.layoutControl3.Controls.Add(this.textDeveloperURL);
+            this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.Root = this.layoutControlGroup2;
+            this.layoutControl3.Size = new System.Drawing.Size(617, 301);
+            this.layoutControl3.TabIndex = 1;
+            this.layoutControl3.Text = "layoutControl3";
+            // 
             // panelControl2
             // 
             this.panelControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.pictureEdit2);
             this.panelControl2.Controls.Add(this.pictureEdit1);
-            this.panelControl2.Location = new System.Drawing.Point(95, 84);
+            this.panelControl2.Location = new System.Drawing.Point(86, 84);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(510, 32);
+            this.panelControl2.Size = new System.Drawing.Size(519, 32);
             this.panelControl2.TabIndex = 5;
             // 
             // pictureEdit2
@@ -612,10 +633,10 @@
             // 
             // textDeveloper
             // 
-            this.textDeveloper.Location = new System.Drawing.Point(95, 12);
+            this.textDeveloper.Location = new System.Drawing.Point(86, 12);
             this.textDeveloper.Name = "textDeveloper";
             this.textDeveloper.Properties.Tag = "";
-            this.textDeveloper.Size = new System.Drawing.Size(510, 20);
+            this.textDeveloper.Size = new System.Drawing.Size(519, 20);
             this.textDeveloper.StyleController = this.layoutControl3;
             toolTipTitleItem10.Text = "Developer <string>";
             toolTipItem10.LeftIndent = 6;
@@ -627,28 +648,12 @@
             this.textDeveloper.TabIndex = 4;
             this.textDeveloper.Tag = "developer";
             // 
-            // textDeveloperURL
-            // 
-            this.textDeveloperURL.Location = new System.Drawing.Point(95, 36);
-            this.textDeveloperURL.Name = "textDeveloperURL";
-            this.textDeveloperURL.Properties.Tag = "";
-            this.textDeveloperURL.Size = new System.Drawing.Size(510, 20);
-            this.textDeveloperURL.StyleController = this.layoutControl3;
-            toolTipTitleItem12.Text = "Developer_URL <string>";
-            toolTipItem12.LeftIndent = 6;
-            toolTipItem12.Text = "Your or the mod\'s URL. Must start with http://.";
-            superToolTip12.Items.Add(toolTipTitleItem12);
-            superToolTip12.Items.Add(toolTipItem12);
-            this.textDeveloperURL.SuperTip = superToolTip12;
-            this.textDeveloperURL.TabIndex = 5;
-            this.textDeveloperURL.Tag = "developer_url";
-            // 
             // textManual
             // 
-            this.textManual.Location = new System.Drawing.Point(95, 60);
+            this.textManual.Location = new System.Drawing.Point(86, 60);
             this.textManual.Name = "textManual";
             this.textManual.Properties.Tag = "";
-            this.textManual.Size = new System.Drawing.Size(510, 20);
+            this.textManual.Size = new System.Drawing.Size(519, 20);
             this.textManual.StyleController = this.layoutControl3;
             toolTipTitleItem11.Text = "Manual <string>";
             toolTipItem11.LeftIndent = 6;
@@ -659,189 +664,21 @@
             this.textManual.TabIndex = 6;
             this.textManual.Tag = "manual";
             // 
-            // xtraTabPage4
+            // textDeveloperURL
             // 
-            this.xtraTabPage4.Controls.Add(this.layoutControl4);
-            this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(617, 301);
-            this.xtraTabPage4.Text = "Engine and tools";
-            // 
-            // panelControl4
-            // 
-            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl4.Controls.Add(this.textInstance);
-            this.panelControl4.Controls.Add(this.buttonInstance);
-            this.panelControl4.Location = new System.Drawing.Point(107, 60);
-            this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(498, 20);
-            this.panelControl4.TabIndex = 5;
-            // 
-            // textInstance
-            // 
-            this.textInstance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textInstance.Location = new System.Drawing.Point(0, 0);
-            this.textInstance.Name = "textInstance";
-            this.textInstance.Properties.ReadOnly = true;
-            this.textInstance.Size = new System.Drawing.Size(423, 20);
-            toolTipTitleItem14.Text = "InstancePath <string>";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "The default location in which to look for Instance VMFs.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            this.textInstance.SuperTip = superToolTip14;
-            this.textInstance.TabIndex = 7;
-            this.textInstance.Tag = "instancepath";
-            // 
-            // buttonInstance
-            // 
-            this.buttonInstance.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonInstance.Location = new System.Drawing.Point(423, 0);
-            this.buttonInstance.Name = "buttonInstance";
-            this.buttonInstance.Size = new System.Drawing.Size(75, 20);
-            this.buttonInstance.TabIndex = 8;
-            this.buttonInstance.Text = "Search";
-            this.buttonInstance.Click += new System.EventHandler(this.buttonInstance_Click);
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl3.Controls.Add(this.textGamedata);
-            this.panelControl3.Controls.Add(this.buttonGamedata);
-            this.panelControl3.Location = new System.Drawing.Point(107, 36);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(498, 20);
-            this.panelControl3.TabIndex = 5;
-            // 
-            // textGamedata
-            // 
-            this.textGamedata.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textGamedata.Location = new System.Drawing.Point(0, 0);
-            this.textGamedata.Name = "textGamedata";
-            this.textGamedata.Properties.ReadOnly = true;
-            this.textGamedata.Size = new System.Drawing.Size(423, 20);
-            toolTipTitleItem15.Text = "GameData <string>";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
-    "o be compiled into maps. It is not used by Hammer itself.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            this.textGamedata.SuperTip = superToolTip15;
-            this.textGamedata.TabIndex = 6;
-            this.textGamedata.Tag = "gamedata";
-            // 
-            // buttonGamedata
-            // 
-            this.buttonGamedata.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonGamedata.Location = new System.Drawing.Point(423, 0);
-            this.buttonGamedata.Name = "buttonGamedata";
-            this.buttonGamedata.Size = new System.Drawing.Size(75, 20);
-            this.buttonGamedata.TabIndex = 0;
-            this.buttonGamedata.Text = "Search";
-            this.buttonGamedata.Click += new System.EventHandler(this.buttonGamedata_Click);
-            // 
-            // switchNodegraph
-            // 
-            this.switchNodegraph.Location = new System.Drawing.Point(107, 12);
-            this.switchNodegraph.Name = "switchNodegraph";
-            this.switchNodegraph.Properties.OffText = "Off";
-            this.switchNodegraph.Properties.OnText = "On";
-            this.switchNodegraph.Properties.Tag = "";
-            this.switchNodegraph.Size = new System.Drawing.Size(498, 20);
-            this.switchNodegraph.StyleController = this.layoutControl4;
-            toolTipTitleItem16.Text = "Nodegraph <boolean>";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            superToolTip16.Items.Add(toolTipItem16);
-            this.switchNodegraph.SuperTip = superToolTip16;
-            this.switchNodegraph.TabIndex = 0;
-            this.switchNodegraph.Tag = "nodegraph";
-            // 
-            // switchVR
-            // 
-            this.switchVR.Location = new System.Drawing.Point(107, 84);
-            this.switchVR.Name = "switchVR";
-            this.switchVR.Properties.OffText = "Off";
-            this.switchVR.Properties.OnText = "On";
-            this.switchVR.Size = new System.Drawing.Size(498, 20);
-            this.switchVR.StyleController = this.layoutControl4;
-            toolTipTitleItem13.Text = "SupportsVR <boolean>";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = "Whether or not the game supports being ran in VR mode.";
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            this.switchVR.SuperTip = superToolTip13;
-            this.switchVR.TabIndex = 1;
-            this.switchVR.Tag = "supportsvr";
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSave.Location = new System.Drawing.Point(544, 8);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 3;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(463, 8);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "Cancel";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.buttonCancel);
-            this.panelControl1.Controls.Add(this.buttonSave);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(8, 338);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(619, 31);
-            this.panelControl1.TabIndex = 5;
-            // 
-            // dialogIcon
-            // 
-            this.dialogIcon.Filter = "Icon files(*.tga|*.tga";
-            // 
-            // fgdDialog
-            // 
-            this.fgdDialog.Filter = "Forge Game Data (*.fgd)|*.fgd";
-            this.fgdDialog.Title = "Select the FGD file";
-            // 
-            // instanceDialog
-            // 
-            this.instanceDialog.Title = "Select the instance path";
-            // 
-            // vpkDialog
-            // 
-            this.vpkDialog.Filter = "Valve Pack (*.vpk)|*.vpk";
-            this.vpkDialog.Title = "Select a VPK";
-            // 
-            // searchDirDialog
-            // 
-            this.searchDirDialog.Title = "Select a search directory";
-            // 
-            // layoutControl3
-            // 
-            this.layoutControl3.Controls.Add(this.panelControl2);
-            this.layoutControl3.Controls.Add(this.textDeveloper);
-            this.layoutControl3.Controls.Add(this.textManual);
-            this.layoutControl3.Controls.Add(this.textDeveloperURL);
-            this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.layoutControlGroup2;
-            this.layoutControl3.Size = new System.Drawing.Size(617, 301);
-            this.layoutControl3.TabIndex = 1;
-            this.layoutControl3.Text = "layoutControl3";
+            this.textDeveloperURL.Location = new System.Drawing.Point(86, 36);
+            this.textDeveloperURL.Name = "textDeveloperURL";
+            this.textDeveloperURL.Properties.Tag = "";
+            this.textDeveloperURL.Size = new System.Drawing.Size(519, 20);
+            this.textDeveloperURL.StyleController = this.layoutControl3;
+            toolTipTitleItem12.Text = "Developer_URL <string>";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Your or the mod\'s URL. Must start with http://.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.textDeveloperURL.SuperTip = superToolTip12;
+            this.textDeveloperURL.TabIndex = 5;
+            this.textDeveloperURL.Tag = "developer_url";
             // 
             // layoutControlGroup2
             // 
@@ -908,8 +745,16 @@
             this.layoutControlItem4.Text = "Icon";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
             // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.layoutControl4);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(617, 301);
+            this.xtraTabPage4.Text = "Engine and tools";
+            // 
             // layoutControl4
             // 
+            this.layoutControl4.Controls.Add(this.textScreenmode);
             this.layoutControl4.Controls.Add(this.switchVR);
             this.layoutControl4.Controls.Add(this.panelControl4);
             this.layoutControl4.Controls.Add(this.panelControl3);
@@ -922,6 +767,114 @@
             this.layoutControl4.TabIndex = 1;
             this.layoutControl4.Text = "layoutControl4";
             // 
+            // switchVR
+            // 
+            this.switchVR.Location = new System.Drawing.Point(98, 84);
+            this.switchVR.Name = "switchVR";
+            this.switchVR.Properties.OffText = "Off";
+            this.switchVR.Properties.OnText = "On";
+            this.switchVR.Size = new System.Drawing.Size(507, 20);
+            this.switchVR.StyleController = this.layoutControl4;
+            toolTipTitleItem14.Text = "SupportsVR <boolean>";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "Whether or not the game supports being ran in VR mode.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.switchVR.SuperTip = superToolTip14;
+            this.switchVR.TabIndex = 1;
+            this.switchVR.Tag = "supportsvr";
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl4.Controls.Add(this.textInstance);
+            this.panelControl4.Controls.Add(this.buttonInstance);
+            this.panelControl4.Location = new System.Drawing.Point(98, 60);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(507, 20);
+            this.panelControl4.TabIndex = 5;
+            // 
+            // textInstance
+            // 
+            this.textInstance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textInstance.Location = new System.Drawing.Point(0, 0);
+            this.textInstance.Name = "textInstance";
+            this.textInstance.Properties.ReadOnly = true;
+            this.textInstance.Size = new System.Drawing.Size(432, 20);
+            toolTipTitleItem15.Text = "InstancePath <string>";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "The default location in which to look for Instance VMFs.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            this.textInstance.SuperTip = superToolTip15;
+            this.textInstance.TabIndex = 7;
+            this.textInstance.Tag = "instancepath";
+            // 
+            // buttonInstance
+            // 
+            this.buttonInstance.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonInstance.Location = new System.Drawing.Point(432, 0);
+            this.buttonInstance.Name = "buttonInstance";
+            this.buttonInstance.Size = new System.Drawing.Size(75, 20);
+            this.buttonInstance.TabIndex = 8;
+            this.buttonInstance.Text = "Search";
+            this.buttonInstance.Click += new System.EventHandler(this.buttonInstance_Click);
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl3.Controls.Add(this.textGamedata);
+            this.panelControl3.Controls.Add(this.buttonGamedata);
+            this.panelControl3.Location = new System.Drawing.Point(98, 36);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(507, 20);
+            this.panelControl3.TabIndex = 5;
+            // 
+            // textGamedata
+            // 
+            this.textGamedata.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textGamedata.Location = new System.Drawing.Point(0, 0);
+            this.textGamedata.Name = "textGamedata";
+            this.textGamedata.Properties.ReadOnly = true;
+            this.textGamedata.Size = new System.Drawing.Size(432, 20);
+            toolTipTitleItem16.Text = "GameData <string>";
+            toolTipItem16.LeftIndent = 6;
+            toolTipItem16.Text = "Path to a FGD file, relative to Hammer\'s location. This is needed for instances t" +
+    "o be compiled into maps. It is not used by Hammer itself.";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            this.textGamedata.SuperTip = superToolTip16;
+            this.textGamedata.TabIndex = 6;
+            this.textGamedata.Tag = "gamedata";
+            // 
+            // buttonGamedata
+            // 
+            this.buttonGamedata.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonGamedata.Location = new System.Drawing.Point(432, 0);
+            this.buttonGamedata.Name = "buttonGamedata";
+            this.buttonGamedata.Size = new System.Drawing.Size(75, 20);
+            this.buttonGamedata.TabIndex = 0;
+            this.buttonGamedata.Text = "Search";
+            this.buttonGamedata.Click += new System.EventHandler(this.buttonGamedata_Click);
+            // 
+            // switchNodegraph
+            // 
+            this.switchNodegraph.Location = new System.Drawing.Point(98, 12);
+            this.switchNodegraph.Name = "switchNodegraph";
+            this.switchNodegraph.Properties.OffText = "Off";
+            this.switchNodegraph.Properties.OnText = "On";
+            this.switchNodegraph.Properties.Tag = "";
+            this.switchNodegraph.Size = new System.Drawing.Size(507, 20);
+            this.switchNodegraph.StyleController = this.layoutControl4;
+            toolTipTitleItem17.Text = "Nodegraph <boolean>";
+            toolTipItem17.LeftIndent = 6;
+            toolTipItem17.Text = "Whether or not to enable building nodegraphs (.ain files) for maps.";
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            superToolTip17.Items.Add(toolTipItem17);
+            this.switchNodegraph.SuperTip = superToolTip17;
+            this.switchNodegraph.TabIndex = 0;
+            this.switchNodegraph.Tag = "nodegraph";
+            // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -931,7 +884,8 @@
             this.emptySpaceItem4,
             this.layoutControlItem6,
             this.layoutControlItem7,
-            this.layoutControlItem8});
+            this.layoutControlItem8,
+            this.layoutScreenmode});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(617, 301);
             this.layoutControlGroup3.TextVisible = false;
@@ -949,9 +903,9 @@
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 96);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 120);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(597, 185);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(597, 161);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
@@ -990,6 +944,96 @@
             this.layoutControlItem8.Text = "Supports VR";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(83, 13);
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSave.Location = new System.Drawing.Point(544, 8);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(463, 8);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Cancel";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.buttonCancel);
+            this.panelControl1.Controls.Add(this.buttonSave);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(8, 338);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(619, 31);
+            this.panelControl1.TabIndex = 5;
+            // 
+            // dialogIcon
+            // 
+            this.dialogIcon.Filter = "Icon files(*.tga|*.tga";
+            // 
+            // fgdDialog
+            // 
+            this.fgdDialog.Filter = "Forge Game Data (*.fgd)|*.fgd";
+            this.fgdDialog.Title = "Select the FGD file";
+            // 
+            // instanceDialog
+            // 
+            this.instanceDialog.Title = "Select the instance path";
+            // 
+            // vpkDialog
+            // 
+            this.vpkDialog.Filter = "Valve Pack (*.vpk)|*.vpk";
+            this.vpkDialog.Title = "Select a VPK";
+            // 
+            // searchDirDialog
+            // 
+            this.searchDirDialog.Title = "Select a search directory";
+            // 
+            // textScreenmode
+            // 
+            this.textScreenmode.Location = new System.Drawing.Point(98, 108);
+            this.textScreenmode.Name = "textScreenmode";
+            this.textScreenmode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textScreenmode.Properties.Items.AddRange(new object[] {
+            "Both",
+            "VR",
+            "Flat"});
+            this.textScreenmode.Properties.Tag = "";
+            this.textScreenmode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.textScreenmode.Size = new System.Drawing.Size(507, 20);
+            this.textScreenmode.StyleController = this.layoutControl4;
+            toolTipTitleItem13.Text = "Type <string>";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "Affects which tabs appear in which order in the Options panel, the value will eit" +
+    "her be Singleplayer_Only or Multiplayer_Only. Omit this key if your mod has both" +
+    " SP and MP modes.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            this.textScreenmode.SuperTip = superToolTip13;
+            this.textScreenmode.TabIndex = 6;
+            this.textScreenmode.Tag = "screenmode";
+            // 
+            // layoutScreenmode
+            // 
+            this.layoutScreenmode.Control = this.textScreenmode;
+            this.layoutScreenmode.Location = new System.Drawing.Point(0, 96);
+            this.layoutScreenmode.Name = "layoutScreenmode";
+            this.layoutScreenmode.Size = new System.Drawing.Size(597, 24);
+            this.layoutScreenmode.Tag = "screenmode";
+            this.layoutScreenmode.Text = "Screen mode";
+            this.layoutScreenmode.TextSize = new System.Drawing.Size(83, 13);
+            // 
             // GameinfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -997,7 +1041,7 @@
             this.ClientSize = new System.Drawing.Size(635, 377);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("GameinfoForm.IconOptions.Icon")));
             this.Name = "GameinfoForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Game info";
@@ -1033,14 +1077,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutAdvCrosshair)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutModels)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDeveloper.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textManual.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textDeveloperURL.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
+            this.layoutControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textInstance.Properties)).EndInit();
@@ -1048,25 +1103,16 @@
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textGamedata.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNodegraph.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchVR.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            this.layoutControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
-            this.layoutControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textScreenmode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutScreenmode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1138,5 +1184,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraEditors.ComboBoxEdit textScreenmode;
+        private DevExpress.XtraLayout.LayoutControlItem layoutScreenmode;
     }
 }
