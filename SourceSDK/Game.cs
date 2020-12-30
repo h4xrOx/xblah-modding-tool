@@ -222,9 +222,7 @@ namespace SourceSDK
                                     // Create a symbolic link in Half-Life: Alyx, so the mod can run.
                                     if (!path.Contains(gamePath))
                                     {
-                                        string symbolicLink = gamePath + "\\game\\" + Path.GetFileName(path);
-
-                                        var psi = new ProcessStartInfo("cmd.exe", " /C mklink /d \"" + symbolicLink + "\" \"" + path + "\"");
+                                        var psi = new ProcessStartInfo("cmd.exe", " /C mklink /d \"" + gamePath + "\\game\\" + Path.GetFileName(path) + "\" \"" + path + "\"");
                                         psi.CreateNoWindow = true;
                                         psi.UseShellExecute = false;
                                         Process.Start(psi).WaitForExit();
