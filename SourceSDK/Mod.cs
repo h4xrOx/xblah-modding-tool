@@ -14,6 +14,12 @@ namespace SourceSDK
         public string name;
         public string installPath;
 
+        public string folderName {
+            get {
+                return Path.GetFileName(installPath);
+            }
+        }
+
         public Mod(Game game, string name, string installPath)
         {
             this.game = game;

@@ -79,6 +79,10 @@ namespace SourceSDK
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 result.AddRange(childrenIndex[key]);
 
+            foreach (string indexKey in childrenIndex.Keys)
+                if (indexKey.ToLower() == key.ToLower())
+                    result.AddRange(childrenIndex[indexKey]);
+
             if (childrenIndex != null)
                 foreach (string k in childrenIndex.Keys)
                     foreach (KeyValue child in childrenIndex[k])
@@ -94,6 +98,14 @@ namespace SourceSDK
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key][0];
 
+            foreach (string indexKey in childrenIndex.Keys)
+            {
+                if (indexKey.ToLower() == key.ToLower())
+                {
+                    return childrenIndex[indexKey][0];
+                }
+            }
+
             return null;
         }
 
@@ -105,6 +117,10 @@ namespace SourceSDK
         {
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key];
+
+            foreach (string indexKey in childrenIndex.Keys)
+                if (indexKey.ToLower() == key.ToLower())
+                    return childrenIndex[indexKey];
 
             return null;
         }
