@@ -14,11 +14,18 @@ namespace SourceSDK.Utils
         private static Dictionary<int, string> GetUserShortcutFiles()
         {
             Dictionary<int, string> result = new Dictionary<int, string>();
-            foreach (string file in Directory.GetFiles(Launcher.GetInstallPath() + "\\userdata\\", "shortcuts.vdf", SearchOption.AllDirectories))
+            foreach(string directory in Directory.GetDirectories(Launcher.GetInstallPath() + "\\userdata\\", "*config", SearchOption.AllDirectories))
+            {
+                if (int.TryParse(directory.Replace(Launcher.GetInstallPath() + "\\userdata\\", "").Replace("\\config", ""), out int userId))
+                {
+                    result.Add(userId, directory + "\\shortcuts.vdf");
+                }
+            }
+            /*foreach (string file in Directory.GetFiles(Launcher.GetInstallPath() + "\\userdata\\", "shortcuts.vdf", SearchOption.AllDirectories))
             {
                 int userId = int.Parse(file.Replace(Launcher.GetInstallPath() + "\\userdata\\", "").Replace("\\config\\shortcuts.vdf", ""));
                 result.Add(userId, file);
-            }
+            }*/
             return result;
         }
 
@@ -27,7 +34,10 @@ namespace SourceSDK.Utils
             Dictionary<int, List<Shortcut>> shortcuts = new Dictionary<int, List<Shortcut>>();
             foreach (KeyValuePair<int, string> kvp in GetUserShortcutFiles())
             {
-                List<Shortcut> userShortcuts = ParseShortcuts(File.ReadAllText(kvp.Value));
+                List<Shortcut> userShortcuts = new List<Shortcut>();
+                if (File.Exists(kvp.Value))
+                    userShortcuts.AddRange(ParseShortcuts(File.ReadAllText(kvp.Value)));
+                    
                 shortcuts.Add(kvp.Key, userShortcuts);
             }
 

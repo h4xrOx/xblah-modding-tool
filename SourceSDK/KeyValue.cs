@@ -62,6 +62,11 @@ namespace SourceSDK
                 return childrenIndex[key][0];
 
             if (childrenIndex != null)
+                foreach (string indexKey in childrenIndex.Keys)
+                    if (indexKey.ToLower() == key.ToLower())
+                        return childrenIndex[indexKey][0];
+
+            if (childrenIndex != null)
                 foreach (string k in childrenIndex.Keys)
                     foreach (KeyValue child in childrenIndex[k])
                     {
