@@ -67,6 +67,7 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Packages\MountedFolder.cs" />
     <Compile Include="RunPreset.cs" />
+    <Compile Include="Utils\SteamShortcuts.cs" />
     <Compile Include="VPKManager.cs" />
   </ItemGroup>
   <ItemGroup />
