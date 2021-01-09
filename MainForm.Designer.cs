@@ -208,9 +208,9 @@
             // 
             // toolsGames
             // 
-            this.toolsGames.Caption = "barEditItem1";
+            this.toolsGames.Caption = "Select a game";
             this.toolsGames.Edit = this.repositoryGamesCombo;
-            this.toolsGames.EditWidth = 128;
+            this.toolsGames.EditWidth = 192;
             this.toolsGames.Id = 2;
             this.toolsGames.Name = "toolsGames";
             this.toolsGames.EditValueChanged += new System.EventHandler(this.toolsGames_EditValueChanged);
@@ -225,9 +225,9 @@
             // 
             // toolsMods
             // 
-            this.toolsMods.Caption = "barEditItem2";
+            this.toolsMods.Caption = "Select a mod";
             this.toolsMods.Edit = this.repositoryModsCombo;
-            this.toolsMods.EditWidth = 128;
+            this.toolsMods.EditWidth = 256;
             this.toolsMods.Id = 3;
             this.toolsMods.Name = "toolsMods";
             this.toolsMods.EditValueChanged += new System.EventHandler(this.toolsMods_EditValueChanged);
