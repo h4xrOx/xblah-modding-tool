@@ -223,6 +223,7 @@
             // 
             // panelControl5
             // 
+            this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl5.Controls.Add(this.panelControl4);
             this.panelControl5.Controls.Add(this.textModsPath);
             this.panelControl5.Location = new System.Drawing.Point(40, 36);
