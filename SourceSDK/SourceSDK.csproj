@@ -45,6 +45,25 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="KeyCode.cs" />
+    <Compile Include="Packages\PackageArchive.cs" />
+    <Compile Include="Packages\PackageDirectory.cs" />
+    <Compile Include="Packages\PackageFile.cs" />
+    <Compile Include="Packages\PackageManager.cs" />
+    <Compile Include="Packages\UnpackedPackage\UnpackedArchive.cs" />
+    <Compile Include="Packages\UnpackedPackage\UnpackedDirectory.cs" />
+    <Compile Include="Packages\UnpackedPackage\UnpackedFile.cs" />
+    <Compile Include="Packages\UnpackedPackage\UnpackedReader.cs" />
+    <Compile Include="Packages\VPKPackage\ArchivePart.cs" />
+    <Compile Include="Packages\Exceptions\ArchiveParsingException.cs" />
+    <Compile Include="Packages\VPKPackage\IVpkArchiveHeader.cs" />
+    <Compile Include="Packages\VPKPackage\V1\VpkReaderV1.cs" />
+    <Compile Include="Packages\VPKPackage\V2\VpkArchiveHeaderV2.cs" />
+    <Compile Include="Packages\VPKPackage\V2\VpkReaderV2.cs" />
+    <Compile Include="Packages\VPKPackage\VpkArchive.cs" />
+    <Compile Include="Packages\VPKPackage\VpkDirectory.cs" />
+    <Compile Include="Packages\VPKPackage\VpkFile.cs" />
+    <Compile Include="Packages\VPKPackage\VpkReaderBase.cs" />
+    <Compile Include="Packages\VPKPackage\V1\VpkArchiveHeaderV1.cs" />
     <Compile Include="Utils\GaussianBlur.cs" />
     <Compile Include="KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,7 +75,7 @@
     <Compile Include="Particles\PCF.cs" />
     <Compile Include="Maps\VMF.cs" />
     <Compile Include="Materials\VMT.cs" />
-    <Compile Include="Packages\VPK.cs" />
+    <Compile Include="PackagesLegacy\VPK.cs" />
     <Compile Include="Materials\VTF.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameInfo.cs" />
@@ -65,10 +84,10 @@
     <Compile Include="Launcher.cs" />
     <Compile Include="Libraries.cs" />
     <Compile Include="Mod.cs" />
-    <Compile Include="Packages\MountedFolder.cs" />
+    <Compile Include="PackagesLegacy\MountedFolder.cs" />
     <Compile Include="RunPreset.cs" />
     <Compile Include="Utils\SteamShortcuts.cs" />
-    <Compile Include="VPKManager.cs" />
+    <Compile Include="PackagesLegacy\VPKManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

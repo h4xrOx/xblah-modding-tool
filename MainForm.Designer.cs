@@ -64,7 +64,7 @@
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingLegacyFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
@@ -103,6 +103,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -140,7 +141,7 @@
             this.toolsStop,
             this.menuModdingExport,
             this.menuModdingSettingsMenu,
-            this.menuModdingFileExplorer,
+            this.menuModdingLegacyFileExplorer,
             this.menuModdingClean,
             this.menuLevelDesignCrafty,
             this.menuLevelDesignBatchCompiler,
@@ -180,9 +181,10 @@
             this.menuModdingRun,
             this.toolsRunPopupExpert,
             this.menuModdingSettingsStartingMaps,
-            this.menuModdingHudEditor});
+            this.menuModdingHudEditor,
+            this.menuModdingFileExplorer});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 94;
+            this.barManager.MaxItemId = 95;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -370,6 +372,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingImport2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingLegacyFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
@@ -503,13 +506,13 @@
             this.menuModdingHudEditor.Name = "menuModdingHudEditor";
             this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
-            // menuModdingFileExplorer
+            // menuModdingLegacyFileExplorer
             // 
-            this.menuModdingFileExplorer.Caption = "File Explorer";
-            this.menuModdingFileExplorer.Id = 33;
-            this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
-            this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
-            this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            this.menuModdingLegacyFileExplorer.Caption = "File Explorer (Legacy)";
+            this.menuModdingLegacyFileExplorer.Id = 33;
+            this.menuModdingLegacyFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
+            this.menuModdingLegacyFileExplorer.Name = "menuModdingLegacyFileExplorer";
+            this.menuModdingLegacyFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingExport
             // 
@@ -809,6 +812,14 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuModdingFileExplorer
+            // 
+            this.menuModdingFileExplorer.Caption = "File Explorer";
+            this.menuModdingFileExplorer.Id = 94;
+            this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage1")));
+            this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
+            this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -864,7 +875,7 @@
         private DevExpress.XtraBars.BarButtonItem toolsStop;
         private DevExpress.XtraBars.BarButtonItem menuModdingExport;
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsMenu;
-        private DevExpress.XtraBars.BarButtonItem menuModdingFileExplorer;
+        private DevExpress.XtraBars.BarButtonItem menuModdingLegacyFileExplorer;
         private DevExpress.XtraBars.BarButtonItem menuModdingClean;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignCrafty;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignBatchCompiler;
@@ -911,5 +922,6 @@
         private DevExpress.XtraBars.BarSubItem menuModdingRun;
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsStartingMaps;
         private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
+        private DevExpress.XtraBars.BarButtonItem menuModdingFileExplorer;
     }
 }

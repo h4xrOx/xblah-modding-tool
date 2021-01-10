@@ -256,10 +256,17 @@ namespace source_modding_tool
                 }
             }
 
+            // File explorer (Legacy)
+            else if (e.Item == menuModdingLegacyFileExplorer)
+            {
+                FileExplorer form = new FileExplorer(launcher);
+                form.ShowDialog();
+            }
+
             // File explorer
             else if (e.Item == menuModdingFileExplorer)
             {
-                FileExplorer form = new FileExplorer(launcher);
+                NewFileExplorer form = new NewFileExplorer(launcher);
                 form.ShowDialog();
             }
 
@@ -560,7 +567,7 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuModdingHudEditor.Enabled = true;
-                        menuModdingFileExplorer.Enabled = true;
+                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = true;
@@ -597,7 +604,7 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuModdingHudEditor.Enabled = false;
-                        menuModdingFileExplorer.Enabled = true;
+                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;
@@ -634,7 +641,7 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
                             menuModdingHudEditor.Enabled = false;
-                        menuModdingFileExplorer.Enabled = true;
+                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;

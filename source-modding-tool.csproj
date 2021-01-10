@@ -135,6 +135,12 @@
     <Compile Include="Modding\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modding\NewFileExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\NewFileExplorer.Designer.cs">
+      <DependentUpon>NewFileExplorer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\NewFileExplorer.resx">
+      <DependentUpon>NewFileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
