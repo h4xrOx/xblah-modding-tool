@@ -109,6 +109,7 @@ namespace SourceSDK
             sb.AppendLine("             \"GameExe\"		\"" + game.installPath + "\\hl2.exe\"");
             sb.AppendLine("             \"DefaultSolidEntity\"		\"propper_model\"");
             sb.AppendLine("             \"DefaultPointEntity\"		\"propper_skins\"");
+            sb.AppendLine("             \"BSP\"       \"" + game.installPath + "\\bin\\vbsp.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + game.installPath + "\"");
             sb.AppendLine("             \"MapDir\"		\"" + game.installPath + "\\sourcesdk_content\\ep2\\mapsrc\"");
             sb.AppendLine("             \"BSPDir\"		\"" + mod.installPath + "\\maps\"");
