@@ -114,7 +114,7 @@ namespace source_modding_tool
             if (e.Item == menuLevelDesignRunMap)
             {
                 Game game = launcher.GetCurrentGame();
-                FileExplorer form = new FileExplorer(launcher);
+                LegacyFileExplorer form = new LegacyFileExplorer(launcher);
                 form.RootDirectory = "maps/";
                 form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
                 if (form.ShowDialog() == DialogResult.OK)
@@ -259,14 +259,14 @@ namespace source_modding_tool
             // File explorer (Legacy)
             else if (e.Item == menuModdingLegacyFileExplorer)
             {
-                FileExplorer form = new FileExplorer(launcher);
+                LegacyFileExplorer form = new LegacyFileExplorer(launcher);
                 form.ShowDialog();
             }
 
             // File explorer
             else if (e.Item == menuModdingFileExplorer)
             {
-                NewFileExplorer form = new NewFileExplorer(launcher);
+                FileExplorer form = new FileExplorer(launcher);
                 form.ShowDialog();
             }
 

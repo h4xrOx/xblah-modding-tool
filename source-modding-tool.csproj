@@ -135,11 +135,11 @@
     <Compile Include="Modding\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\NewFileExplorer.cs">
+    <Compile Include="Modding\FileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\NewFileExplorer.Designer.cs">
-      <DependentUpon>NewFileExplorer.cs</DependentUpon>
+    <Compile Include="Modding\FileExplorer.Designer.cs">
+      <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
@@ -209,11 +209,11 @@
     <Compile Include="Modeling\VMFtoMDL.Designer.cs">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\FileExplorer.cs">
+    <Compile Include="Modding\LegacyFileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\FileExplorer.Designer.cs">
-      <DependentUpon>FileExplorer.cs</DependentUpon>
+    <Compile Include="Modding\LegacyFileExplorer.Designer.cs">
+      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="File\LibrariesForm.resx">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
@@ -239,8 +239,8 @@
     <EmbeddedResource Include="Modding\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\NewFileExplorer.resx">
-      <DependentUpon>NewFileExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\FileExplorer.resx">
+      <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
@@ -286,8 +286,8 @@
     <EmbeddedResource Include="Modeling\VMFtoMDL.resx">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\FileExplorer.resx">
-      <DependentUpon>FileExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\LegacyFileExplorer.resx">
+      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

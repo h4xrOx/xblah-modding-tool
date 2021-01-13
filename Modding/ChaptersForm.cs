@@ -41,7 +41,7 @@ namespace source_modding_tool
         private void buttonBackground_Click(object sender, EventArgs e)
         {
             Game game = launcher.GetCurrentGame();
-            FileExplorer form = new FileExplorer(launcher);
+            LegacyFileExplorer form = new LegacyFileExplorer(launcher);
             form.RootDirectory = "maps/";
             form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
             if (form.ShowDialog() == DialogResult.OK)
@@ -81,7 +81,7 @@ namespace source_modding_tool
         private void buttonMap_Click(object sender, EventArgs e)
         {
             Game game = launcher.GetCurrentGame();
-            FileExplorer form = new FileExplorer(launcher);
+            LegacyFileExplorer form = new LegacyFileExplorer(launcher);
             form.RootDirectory = "maps/";
             form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
             if (form.ShowDialog() == DialogResult.OK)

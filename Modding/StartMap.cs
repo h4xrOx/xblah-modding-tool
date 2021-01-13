@@ -50,7 +50,7 @@ namespace source_modding_tool.Modding
         private void startMapButton_Click(object sender, EventArgs e)
         {
             Game game = launcher.GetCurrentGame();
-            FileExplorer form = new FileExplorer(launcher);
+            LegacyFileExplorer form = new LegacyFileExplorer(launcher);
             form.RootDirectory = "maps/";
             form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
             if (form.ShowDialog() == DialogResult.OK)
