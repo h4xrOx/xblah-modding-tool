@@ -63,7 +63,7 @@ namespace source_modding_tool.Modding
 
             Dictionary<string, TreeListNode> folders = new Dictionary<string, TreeListNode>();
 
-            foreach(PackageDirectory directory in directories)
+            foreach (PackageDirectory directory in directories)
             {
                 string[] pathArray = null;
 
@@ -117,9 +117,11 @@ namespace source_modding_tool.Modding
             CurrentDirectory = directoryPath;
             textDirectory.EditValue = CurrentDirectory;
 
+            textSearch.EditValue = "";
+
             List<PackageFile> files = new List<PackageFile>();
 
-            foreach(PackageDirectory directory in directories.Where(d => d.Path == directoryPath))
+            foreach (PackageDirectory directory in directories.Where(d => d.Path == directoryPath))
                 files.AddRange(directory.Entries);
 
             files = files.OrderBy(f => f.Filename).ToList();
@@ -138,9 +140,9 @@ namespace source_modding_tool.Modding
                 node.StateImageIndex = 0;
             }
 
-            foreach(PackageFile file in files.GroupBy(f => f.Filename).Select(g => g.First()))
+            foreach (PackageFile file in files.GroupBy(f => f.Filename).Select(g => g.First()))
             {
-                TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name}, null);
+                TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
                 node.Tag = file;
                 node.StateImageIndex = 1;
             }
@@ -148,13 +150,32 @@ namespace source_modding_tool.Modding
             fileTree.EndUnboundLoad();
         }
 
-        private void directoryTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        private void SearchFileTree(string searchString)
         {
-            /*string directoryPath = "";
-            if (e.Node.Tag != null)
-                directoryPath = e.Node.Tag.ToString();
+            textDirectory.EditValue = "Searching in " + CurrentDirectory;
 
-            UpdateFileTree(directoryPath);*/
+            List<PackageFile> files = new List<PackageFile>();
+
+            foreach (PackageDirectory directory in directories.Where(d => d.Path == CurrentDirectory || d.Path.StartsWith((CurrentDirectory != "" ? CurrentDirectory + "/" : ""))))
+                files.AddRange(directory.Entries);
+
+            files = files.OrderBy(f => f.Filename).ToList();
+
+            fileTree.BeginUnboundLoad();
+            fileTree.Nodes.Clear();
+
+            foreach (PackageFile file in files.GroupBy(f => f.Filename).Select(g => g.First()))
+            {
+                // Search pattern
+                if (!(file.Directory.Path + "/" + file.Filename).Contains(searchString))
+                    continue;
+
+                TreeListNode node = fileTree.AppendNode(new object[] { file.Directory.Path + "/" + file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
+                node.Tag = file;
+                node.StateImageIndex = 1;
+            }
+
+            fileTree.EndUnboundLoad();
         }
 
         private void fileTree_DoubleClick(object sender, EventArgs e)
@@ -199,6 +220,20 @@ namespace source_modding_tool.Modding
 
                 UpdateFileTree(tag);
             }
+        }
+
+        private void repositoryTextSearch_EditValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textSearch_EditValueChanged(object sender, EventArgs e)
+        {
+            string searchString = textSearch.EditValue.ToString();
+            if (searchString != "")
+                SearchFileTree(searchString);
+            else
+                UpdateFileTree(CurrentDirectory);
         }
     }
 }

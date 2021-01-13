@@ -47,7 +47,7 @@ namespace source_modding_tool.Modding
             this.textDirectory = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.textSearch = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryTextSearch = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -64,7 +64,7 @@ namespace source_modding_tool.Modding
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryTextSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,6 @@ namespace source_modding_tool.Modding
             this.directoryTree.Size = new System.Drawing.Size(222, 430);
             this.directoryTree.StateImageList = this.imageCollection1;
             this.directoryTree.TabIndex = 1;
-            this.directoryTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.directoryTree_FocusedNodeChanged);
             this.directoryTree.Click += new System.EventHandler(this.directoryTree_Click);
             // 
             // treeListColumn1
@@ -173,7 +172,7 @@ namespace source_modding_tool.Modding
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
-            this.repositoryItemTextEdit3});
+            this.repositoryTextSearch});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -228,15 +227,17 @@ namespace source_modding_tool.Modding
             // textSearch
             // 
             this.textSearch.Caption = "Search";
-            this.textSearch.Edit = this.repositoryItemTextEdit3;
+            this.textSearch.Edit = this.repositoryTextSearch;
             this.textSearch.EditWidth = 128;
             this.textSearch.Id = 5;
             this.textSearch.Name = "textSearch";
+            this.textSearch.EditValueChanged += new System.EventHandler(this.textSearch_EditValueChanged);
             // 
-            // repositoryItemTextEdit3
+            // repositoryTextSearch
             // 
-            this.repositoryItemTextEdit3.AutoHeight = false;
-            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            this.repositoryTextSearch.AutoHeight = false;
+            this.repositoryTextSearch.Name = "repositoryTextSearch";
+            this.repositoryTextSearch.EditValueChanged += new System.EventHandler(this.repositoryTextSearch_EditValueChanged);
             // 
             // bar2
             // 
@@ -338,7 +339,7 @@ namespace source_modding_tool.Modding
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryTextSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -370,7 +371,7 @@ namespace source_modding_tool.Modding
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarEditItem textSearch;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryTextSearch;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
     }
 }
