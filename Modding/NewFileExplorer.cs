@@ -150,11 +150,11 @@ namespace source_modding_tool.Modding
 
         private void directoryTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            string directoryPath = "";
+            /*string directoryPath = "";
             if (e.Node.Tag != null)
                 directoryPath = e.Node.Tag.ToString();
 
-            UpdateFileTree(directoryPath);
+            UpdateFileTree(directoryPath);*/
         }
 
         private void fileTree_DoubleClick(object sender, EventArgs e)
@@ -180,6 +180,24 @@ namespace source_modding_tool.Modding
                     // It's a file
                     //FileAction(Action.OPEN);
                 }
+            }
+        }
+
+        private void directoryTree_Click(object sender, EventArgs e)
+        {
+            TreeList tree = sender as TreeList;
+            TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
+            if (hi.Node != null)
+            {
+                // It's a folder
+                string tag = hi.Node.Tag.ToString();
+                if (tag != CurrentDirectory)
+                {
+                    previousDirectories.Push(CurrentDirectory);
+                    nextDirectories.Clear();
+                }
+
+                UpdateFileTree(tag);
             }
         }
     }

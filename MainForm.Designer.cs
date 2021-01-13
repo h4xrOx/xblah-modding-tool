@@ -65,6 +65,7 @@
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingLegacyFileExplorer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
@@ -103,7 +104,6 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -510,9 +510,17 @@
             // 
             this.menuModdingLegacyFileExplorer.Caption = "File Explorer (Legacy)";
             this.menuModdingLegacyFileExplorer.Id = 33;
-            this.menuModdingLegacyFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
+            this.menuModdingLegacyFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingLegacyFileExplorer.ImageOptions.SvgImage")));
             this.menuModdingLegacyFileExplorer.Name = "menuModdingLegacyFileExplorer";
             this.menuModdingLegacyFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingFileExplorer
+            // 
+            this.menuModdingFileExplorer.Caption = "File Explorer";
+            this.menuModdingFileExplorer.Id = 94;
+            this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
+            this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
+            this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingExport
             // 
@@ -811,14 +819,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // menuModdingFileExplorer
-            // 
-            this.menuModdingFileExplorer.Caption = "File Explorer";
-            this.menuModdingFileExplorer.Id = 94;
-            this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage1")));
-            this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
-            this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // MainForm
             // 

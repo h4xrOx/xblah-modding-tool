@@ -80,6 +80,7 @@ namespace source_modding_tool.Modding
             this.directoryTree.StateImageList = this.imageCollection1;
             this.directoryTree.TabIndex = 1;
             this.directoryTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.directoryTree_FocusedNodeChanged);
+            this.directoryTree.Click += new System.EventHandler(this.directoryTree_Click);
             // 
             // treeListColumn1
             // 
