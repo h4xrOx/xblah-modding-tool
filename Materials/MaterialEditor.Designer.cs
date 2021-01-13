@@ -33,41 +33,46 @@
             this.openVMTFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonNew = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonOpen = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.bar4 = new DevExpress.XtraBars.Bar();
+            this.menuFile = new DevExpress.XtraBars.BarSubItem();
+            this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileOpen = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.buttonPreview = new DevExpress.XtraEditors.SimpleButton();
-            this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel3_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.vmtEdit = new DevExpress.XtraEditors.MemoEdit();
             this.contextLoad = new DevExpress.XtraBars.BarButtonItem();
             this.contextClear = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tabControl = new DevExpress.XtraTab.XtraTabControl();
             this.openBitmapFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.newVMTDialog = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.panelContainer1.SuspendLayout();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            this.dockPanel2.SuspendLayout();
-            this.dockPanel2_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            this.dockPanel3.SuspendLayout();
+            this.dockPanel3_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vmtEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +85,8 @@
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1,
-            this.bar3});
+            this.bar3,
+            this.bar4});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -88,12 +94,17 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonNew,
-            this.barButtonOpen,
             this.barButtonSave,
             this.contextLoad,
-            this.contextClear});
-            this.barManager1.MaxItemId = 7;
+            this.contextClear,
+            this.menuFile,
+            this.menuFileNew,
+            this.menuFileOpen,
+            this.menuFileSave,
+            this.menuFileExit,
+            this.barButtonItem1});
+            this.barManager1.MainMenu = this.bar4;
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bar3;
@@ -102,31 +113,13 @@
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
+            this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonNew),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonOpen),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonSave)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.Text = "Tools";
-            // 
-            // barButtonNew
-            // 
-            this.barButtonNew.Caption = "New";
-            this.barButtonNew.Id = 0;
-            this.barButtonNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonNew.ImageOptions.SvgImage")));
-            this.barButtonNew.Name = "barButtonNew";
-            this.barButtonNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNew_ItemClick);
-            // 
-            // barButtonOpen
-            // 
-            this.barButtonOpen.Caption = "Open";
-            this.barButtonOpen.Id = 1;
-            this.barButtonOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonOpen.ImageOptions.SvgImage")));
-            this.barButtonOpen.Name = "barButtonOpen";
-            this.barButtonOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonOpen_ItemClick);
             // 
             // barButtonSave
             // 
@@ -135,11 +128,6 @@
             this.barButtonSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonSave.ImageOptions.SvgImage")));
             this.barButtonSave.Name = "barButtonSave";
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSave_ItemClick);
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // bar3
             // 
@@ -153,45 +141,102 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
             // 
+            // bar4
+            // 
+            this.bar4.BarName = "Custom 5";
+            this.bar4.DockCol = 0;
+            this.bar4.DockRow = 0;
+            this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFile)});
+            this.bar4.OptionsBar.MultiLine = true;
+            this.bar4.OptionsBar.UseWholeRow = true;
+            this.bar4.Text = "Custom 5";
+            // 
+            // menuFile
+            // 
+            this.menuFile.Caption = "File";
+            this.menuFile.Id = 8;
+            this.menuFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileOpen),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileSave),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit)});
+            this.menuFile.Name = "menuFile";
+            // 
+            // menuFileNew
+            // 
+            this.menuFileNew.Caption = "New";
+            this.menuFileNew.Id = 9;
+            this.menuFileNew.Name = "menuFileNew";
+            this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
+            // 
+            // menuFileOpen
+            // 
+            this.menuFileOpen.Caption = "Open";
+            this.menuFileOpen.Id = 10;
+            this.menuFileOpen.Name = "menuFileOpen";
+            this.menuFileOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
+            // 
+            // menuFileSave
+            // 
+            this.menuFileSave.Caption = "Save";
+            this.menuFileSave.Id = 11;
+            this.menuFileSave.Name = "menuFileSave";
+            this.menuFileSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Save As";
+            this.barButtonItem1.Id = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // menuFileExit
+            // 
+            this.menuFileExit.Caption = "Exit";
+            this.menuFileExit.Id = 12;
+            this.menuFileExit.Name = "menuFileExit";
+            this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1132, 28);
+            this.barDockControlTop.Size = new System.Drawing.Size(1056, 52);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 552);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 674);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1132, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1056, 18);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 622);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1132, 28);
+            this.barDockControlRight.Location = new System.Drawing.Point(1056, 52);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 622);
             // 
             // dockManager1
             // 
             this.dockManager1.Form = this;
             this.dockManager1.MenuManager = this.barManager1;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1,
-            this.dockPanel2});
+            this.panelContainer1});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -205,15 +250,28 @@
             "DevExpress.XtraBars.TabFormControl",
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl"});
             // 
+            // panelContainer1
+            // 
+            this.panelContainer1.Controls.Add(this.dockPanel1);
+            this.panelContainer1.Controls.Add(this.dockPanel3);
+            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.panelContainer1.ID = new System.Guid("c7e22a9e-a18d-4e67-89d9-0999f73d1cf1");
+            this.panelContainer1.Location = new System.Drawing.Point(665, 52);
+            this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(391, 200);
+            this.panelContainer1.Size = new System.Drawing.Size(391, 622);
+            this.panelContainer1.Text = "panelContainer1";
+            // 
             // dockPanel1
             // 
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanel1.ID = new System.Guid("67027259-8967-426a-9466-ee71a6c608fd");
-            this.dockPanel1.Location = new System.Drawing.Point(741, 28);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
             this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Options.ShowMaximizeButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(391, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(391, 524);
+            this.dockPanel1.Size = new System.Drawing.Size(391, 419);
             this.dockPanel1.Text = "Preview";
             // 
             // dockPanel1_Container
@@ -221,7 +279,7 @@
             this.dockPanel1_Container.Controls.Add(this.panelControl1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 30);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(384, 491);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(384, 385);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // panelControl1
@@ -245,52 +303,36 @@
             this.buttonPreview.Text = "Preview";
             this.buttonPreview.Click += new System.EventHandler(this.buttonPreview_Click);
             // 
-            // dockPanel2
+            // dockPanel3
             // 
-            this.dockPanel2.Controls.Add(this.dockPanel2_Container);
-            this.dockPanel2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel2.ID = new System.Guid("241aea45-5747-4a62-b26c-40a692dd627c");
-            this.dockPanel2.Location = new System.Drawing.Point(0, 28);
-            this.dockPanel2.Name = "dockPanel2";
-            this.dockPanel2.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel2.Size = new System.Drawing.Size(200, 524);
-            this.dockPanel2.Text = "Files";
+            this.dockPanel3.Controls.Add(this.dockPanel3_Container);
+            this.dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel3.FloatVertical = true;
+            this.dockPanel3.ID = new System.Guid("bc8573f6-f9ac-4e41-9fcf-41f9ad73aa75");
+            this.dockPanel3.Location = new System.Drawing.Point(0, 419);
+            this.dockPanel3.Name = "dockPanel3";
+            this.dockPanel3.Options.ShowMaximizeButton = false;
+            this.dockPanel3.OriginalSize = new System.Drawing.Size(384, 438);
+            this.dockPanel3.Size = new System.Drawing.Size(391, 203);
+            this.dockPanel3.Text = "VMT";
             // 
-            // dockPanel2_Container
+            // dockPanel3_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.treeList1);
-            this.dockPanel2_Container.Location = new System.Drawing.Point(3, 30);
-            this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(193, 491);
-            this.dockPanel2_Container.TabIndex = 0;
+            this.dockPanel3_Container.Controls.Add(this.vmtEdit);
+            this.dockPanel3_Container.Location = new System.Drawing.Point(4, 30);
+            this.dockPanel3_Container.Name = "dockPanel3_Container";
+            this.dockPanel3_Container.Size = new System.Drawing.Size(384, 170);
+            this.dockPanel3_Container.TabIndex = 0;
             // 
-            // treeList1
+            // vmtEdit
             // 
-            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
-            this.treeListColumn2});
-            this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeList1.Location = new System.Drawing.Point(0, 0);
-            this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(193, 491);
-            this.treeList1.TabIndex = 0;
-            // 
-            // treeListColumn1
-            // 
-            this.treeListColumn1.Caption = "Name";
-            this.treeListColumn1.FieldName = "name";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "Path";
-            this.treeListColumn2.FieldName = "path";
-            this.treeListColumn2.Name = "treeListColumn2";
-            this.treeListColumn2.Visible = true;
-            this.treeListColumn2.VisibleIndex = 1;
+            this.vmtEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vmtEdit.Location = new System.Drawing.Point(0, 0);
+            this.vmtEdit.MenuManager = this.barManager1;
+            this.vmtEdit.Name = "vmtEdit";
+            this.vmtEdit.Properties.ReadOnly = true;
+            this.vmtEdit.Size = new System.Drawing.Size(384, 170);
+            this.vmtEdit.TabIndex = 0;
             // 
             // contextLoad
             // 
@@ -306,6 +348,11 @@
             this.contextClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextClear.ImageOptions.SvgImage")));
             this.contextClear.Name = "contextClear";
             // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // popupMenu
             // 
             this.popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -318,9 +365,9 @@
             // 
             this.tabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(200, 28);
+            this.tabControl.Location = new System.Drawing.Point(0, 52);
             this.tabControl.Name = "tabControl";
-            this.tabControl.Size = new System.Drawing.Size(541, 524);
+            this.tabControl.Size = new System.Drawing.Size(665, 622);
             this.tabControl.TabIndex = 47;
             this.tabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl_SelectedPageChanged);
             this.tabControl.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
@@ -333,28 +380,28 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 570);
+            this.ClientSize = new System.Drawing.Size(1056, 692);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.dockPanel2);
-            this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.panelContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MaterialEditor.IconOptions.Icon")));
             this.Name = "MaterialEditor";
             this.Text = "Material Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MaterialEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.panelContainer1.ResumeLayout(false);
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.dockPanel2.ResumeLayout(false);
-            this.dockPanel2_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            this.dockPanel3.ResumeLayout(false);
+            this.dockPanel3_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vmtEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.ResumeLayout(false);
@@ -366,8 +413,6 @@
         private DevExpress.XtraEditors.XtraOpenFileDialog openVMTFileDialog;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonNew;
-        private DevExpress.XtraBars.BarButtonItem barButtonOpen;
         private DevExpress.XtraBars.BarButtonItem barButtonSave;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
@@ -385,11 +430,17 @@
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel2;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
-        private DevExpress.XtraTreeList.TreeList treeList1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTab.XtraTabControl tabControl;
+        private DevExpress.XtraBars.Bar bar4;
+        private DevExpress.XtraBars.BarSubItem menuFile;
+        private DevExpress.XtraBars.BarButtonItem menuFileNew;
+        private DevExpress.XtraBars.BarButtonItem menuFileOpen;
+        private DevExpress.XtraBars.BarButtonItem menuFileSave;
+        private DevExpress.XtraBars.BarButtonItem menuFileExit;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel3_Container;
+        private DevExpress.XtraEditors.MemoEdit vmtEdit;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
     }
 }

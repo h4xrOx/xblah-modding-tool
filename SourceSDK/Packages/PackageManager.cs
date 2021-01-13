@@ -64,5 +64,20 @@ namespace SourceSDK.Packages
                     
             }
         }
+
+        public PackageFile GetFile(string path)
+        {
+            string directoryPath = Path.GetDirectoryName(path).Replace("\\", "/").ToLower();
+            string fileName = Path.GetFileName(path).ToLower();
+
+            foreach(PackageDirectory directory in Directories.Where(p => p.Path == directoryPath).ToList())
+            {
+                List<PackageFile> files = directory.Entries.Where(e => e.Filename + "." + e.Extension == fileName).ToList();
+                if (files.Count > 0)
+                    return files[0];
+            }
+
+            return null;
+        }
     }
 }

@@ -14,6 +14,9 @@ using System.IO;
 using DevExpress.XtraBars;
 using SourceSDK.Materials;
 using SourceSDK;
+using SourceSDK.Packages;
+using System.Diagnostics;
+using SourceSDK.Packages.VPKPackage;
 
 namespace source_modding_tool
 {
@@ -24,13 +27,24 @@ namespace source_modding_tool
         string[] detail = null;
 
         public Launcher launcher;
-
+        private PackageManager packageManager;
         object popupMenuActivator;
 
         public string relativePath = "";
 
         int textureWidth = 512;
         int textureHeight = 512;
+
+        [Browsable(true)]
+        public event EventHandler OnUpdated;
+
+        public string VMT
+        {
+            get
+            {
+                return KeyValue.writeChunk(GetVMT(relativePath), true);
+            }
+        }
 
         public string shader
         {
@@ -44,11 +58,15 @@ namespace source_modding_tool
             }
         }
 
-        public MaterialEditorTab()
+        public MaterialEditorTab(Launcher launcher, PackageManager packageManager)
         {
+            this.launcher = launcher;
+            this.packageManager = packageManager;
             InitializeComponent();
             populatePictureEdits();
             ClearMaterial();
+
+            UpdatePreview();
         }
 
         private void populatePictureEdits()
@@ -115,6 +133,8 @@ namespace source_modding_tool
                     detail = null;
                     break;
             }
+
+            UpdatePreview();
         }
 
         private void contextClear_ItemClick(object sender, ItemClickEventArgs e)
@@ -178,41 +198,35 @@ namespace source_modding_tool
             }
 
             pictureToolTexture.Image = textures["tooltexture"].bitmap;
-
-            // TODO CALLBACK
-            //updatePreview();
         }
 
-        public void LoadMaterial(string fullPath)
+        public void LoadMaterial(PackageFile file)
         {
-            SourceSDK.KeyValue vmt = null;
-            if (File.Exists(fullPath))
-                vmt = SourceSDK.KeyValue.readChunkfile(fullPath);
+            string data = System.Text.Encoding.UTF8.GetString(file.Data);
 
-            string relativePath = GetRelativePath(launcher, fullPath);
+            string fullPath = "";
 
-            this.relativePath = relativePath.Substring("\\materials\\".Length);
+            SourceSDK.KeyValue vmt = SourceSDK.KeyValue.ReadChunk(data);
 
-            VPKManager vpkManager = null;
-            if (vmt != null)
-                vpkManager = new VPKManager(launcher);
+            string relativePath = file.Path + "/" + file.Filename;
+
+            this.relativePath = relativePath.Substring("materials/".Length);
 
             foreach (KeyValuePair<string, PictureEdit> kv in pictureEdits)
             {
                 if (vmt != null)
                 {
-                    string value = vmt.getValue("$" + kv.Key);
-                    if (value != null)
+                    string value = vmt.getChildren()[0].getValue("$" + kv.Key);
+                    if (value != null && value != "")
                     {
-                        string texturePath = vpkManager.getExtractedPath("materials/" + value + ".vtf");
-                        if (texturePath != "" && File.Exists(texturePath))
+                        PackageFile textureFile = packageManager.GetFile("materials/" + value + ".vtf");
+                        if (textureFile != null)
                         {
-                            textures[kv.Key].relativePath = value;
-                            textures[kv.Key].bytes = File.ReadAllBytes(texturePath);
+                            textures[kv.Key].relativePath = textureFile.Path + "/" + textureFile.Filename + ".vtf";
+                            textures[kv.Key].bytes = textureFile.Data;
                             textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, launcher);
                             kv.Value.Image = textures[kv.Key].bitmap;
-                        }
-                        else
+                        } else
                         {
                             ClearTexture(kv.Value);
                         }
@@ -259,7 +273,6 @@ namespace source_modding_tool
                 Uri path2 = new Uri(openBitmapFileDialog.FileName);
                 Uri diff = path1.MakeRelativeUri(path2);
 
-
                 if (type == ".vtf")
                 {
                     textures[tag].relativePath = diff.OriginalString;
@@ -286,6 +299,8 @@ namespace source_modding_tool
             {
                 LoadTexture((PictureEdit)sender);
             }
+
+            UpdatePreview();
         }
 
         private void popupMenu_Popup(object sender, EventArgs e) { popupMenuActivator = popupMenu.Activator; }
@@ -386,9 +401,89 @@ namespace source_modding_tool
             SourceSDK.KeyValue.writeChunkFile(fullPath + ".vmt", vmt, false, new UTF8Encoding(false));
         }
 
-        private void specularSpecularCheck_CheckedChanged(object sender, EventArgs e)
+        private KeyValue GetVMT(string relativePath)
         {
-            specularPanel.Visible = specularSpecularCheck.Checked;
+            SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
+
+            string fullPath = (launcher.GetCurrentMod().installPath + "\\materials\\" + relativePath).Replace("/", "\\");
+
+            bool hasNormalMap = false;
+            bool hasSpecularMap = false;
+
+            foreach (KeyValuePair<string, Texture> texture in textures)
+            {
+                if (texture.Value.bitmap != null)
+                {
+                    switch (texture.Key)
+                    {
+                        case "tooltexture":
+                            if (texture.Value.bytes == textures["basetexture"].bytes)
+                            {
+                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_basetexture"));
+                            }
+                            else
+                            {
+                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
+                            }
+                            break;
+                        case "envmapmask":
+                            hasSpecularMap = true;
+                            break;
+                        case "bumpmap":
+                            hasNormalMap = true;
+                            break;
+                        default:
+                            vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
+                            break;
+                    }
+                }
+            }
+
+            if (hasNormalMap && hasSpecularMap)
+            {
+                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
+                vmt.addChild(new KeyValue("$normalmapalphaenvmapmask", "1"));
+                vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
+            }
+            else if (hasNormalMap)
+            {
+                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
+            }
+            else if (hasSpecularMap)
+            {
+                vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
+                vmt.addChild(new KeyValue("$envmapmask", relativePath + "_envmapmask"));
+            }
+
+            if (detail != null)
+            {
+                vmt.addChild(new KeyValue("$detail", detail[0]));
+                vmt.addChild(new KeyValue("$detailscale", detail[1]));
+                vmt.addChild(new KeyValue("$detailblendfactor", detail[2]));
+                vmt.addChild(new KeyValue("$detailblendmode", detail[3]));
+            }
+
+            vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
+            vmt.addChild(new KeyValue("$surfaceprop2", comboSurfaceProp2.EditValue.ToString()));
+
+            return vmt;
+        }
+
+        private void UpdatePreview()
+        {
+            if (OnUpdated != null) {
+                OnUpdated.Invoke(this, new EventArgs());
+            };
+        }
+
+        private void pictureBaseTexture_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditValueChanged(object sender, EventArgs e)
+        {
+            UpdatePreview();
         }
     }
 }

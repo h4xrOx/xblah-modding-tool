@@ -3,10 +3,9 @@ using System.Linq;
 
 namespace SourceSDK.Packages.VPKPackage
 {
-    public class VpkEntry : PackageFile
+    public class VpkFile : PackageFile
     {
         public byte[] PreloadData { get { return ReadPreloadData(); } }
-        public byte[] Data { get { return ReadData(); } }
         public bool HasPreloadData { get; set; }
 
         internal uint CRC;
@@ -17,7 +16,7 @@ namespace SourceSDK.Packages.VPKPackage
         internal uint EntryLength;
         internal VpkArchive ParentArchive;
 
-        internal VpkEntry(VpkArchive parentArchive, uint crc, ushort preloadBytes, uint preloadDataOffset, ushort archiveIndex, uint entryOffset,
+        internal VpkFile(VpkArchive parentArchive, uint crc, ushort preloadBytes, uint preloadDataOffset, ushort archiveIndex, uint entryOffset,
             uint entryLength, string extension, string path, string filename)
         {
             ParentArchive = parentArchive;
@@ -54,7 +53,7 @@ namespace SourceSDK.Packages.VPKPackage
             return null;
         }
 
-        private byte[] ReadData()
+        protected override byte[] ReadData()
         {
             var partFile = ParentArchive.Parts.FirstOrDefault(part => part.Index == ArchiveIndex);
             if (partFile == null)

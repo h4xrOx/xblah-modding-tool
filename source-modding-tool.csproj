@@ -135,10 +135,10 @@
     <Compile Include="Modding\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\FileExplorer.cs">
+    <Compile Include="File\FileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\FileExplorer.Designer.cs">
+    <Compile Include="File\FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\RunDialog.cs">
@@ -239,7 +239,7 @@
     <EmbeddedResource Include="Modding\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\FileExplorer.resx">
+    <EmbeddedResource Include="File\FileExplorer.resx">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">

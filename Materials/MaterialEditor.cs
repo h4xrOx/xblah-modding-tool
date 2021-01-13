@@ -1,16 +1,13 @@
 ﻿using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
- 
+using source_modding_tool.Modding;
 using SourceSDK;
+using SourceSDK.Packages;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace source_modding_tool
@@ -19,7 +16,9 @@ namespace source_modding_tool
     {
         Instance instance;
         bool isPreviewing = false;
+
         Launcher launcher;
+        PackageManager packageManager;
 
         string modPath;
 
@@ -30,13 +29,91 @@ namespace source_modding_tool
             this.launcher = launcher;
             modPath = launcher.GetCurrentMod().installPath;
 
+            packageManager = new PackageManager(launcher, "materials");
 
             InitializeComponent();
 
             activeTab = null;
-
-            
         }
+
+        #region MainMenu
+        private void menu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // New material
+            if (e.Item == menuFileNew)
+            {
+                MaterialEditorTab materialEditorTab = new MaterialEditorTab(launcher, packageManager);
+                materialEditorTab.OnUpdated += MaterialEditorTab_OnUpdated;
+
+                XtraTabPage tab = new XtraTabPage();
+
+                string fileName = "";
+
+                tab.Text = (fileName != "" ? fileName : "Untited");
+                tab.Controls.Add(materialEditorTab);
+                materialEditorTab.Dock = DockStyle.Fill;
+                tab.Tag = materialEditorTab;
+
+                tabControl.TabPages.Add(tab);
+
+                tabControl.SelectedTabPage = tab;
+
+                vmtEdit.Text = materialEditorTab.VMT;
+            } 
+            
+            // Load material
+            else if(e.Item == menuFileOpen)
+            {
+                FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                {
+                    packageManager = packageManager,
+                    RootDirectory = "materials"
+                };
+                if (fileExplorer.ShowDialog() == DialogResult.OK)
+                {
+                    if (fileExplorer.Selection != null)
+                        foreach(PackageFile file in fileExplorer.Selection)
+                        {
+                            MaterialEditorTab materialEditorTab = new MaterialEditorTab(launcher ,packageManager);
+
+                            XtraTabPage tab = new XtraTabPage();
+
+                            tab.Text = file.Filename;
+                            tab.Controls.Add(materialEditorTab);
+                            materialEditorTab.Dock = DockStyle.Fill;
+                            tab.Tag = materialEditorTab;
+
+                            materialEditorTab.LoadMaterial(file);
+
+                            tabControl.TabPages.Add(tab);
+                            tabControl.SelectedTabPage = tab;
+                        }
+                }
+            }
+
+            // Save material
+            else if(e.Item == menuFileSave)
+            {
+
+            }
+            else if(e.Item == menuFileExit)
+            {
+                Close();
+            }
+        }
+
+        private void MaterialEditorTab_OnUpdated(object sender, EventArgs e)
+        {
+            vmtEdit.Text = activeTab.VMT;
+
+            if (isPreviewing)
+            {
+                activeTab.SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
+                instance.Command("+mat_reloadallmaterials +map material_preview");
+                //instance.Command("+mat_reloadallmaterials");
+            }
+        }
+        #endregion
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
@@ -63,15 +140,6 @@ namespace source_modding_tool
             this.ActiveControl = null;
 
             isPreviewing = true;
-        }
-
-        private void updatePreview()
-        {
-            if (isPreviewing)
-            {
-                activeTab.SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
-                instance.Command("+mat_reloadallmaterials +map material_preview");
-            }
         }
 
         public static string GetRelativePath(Launcher launcher, string fullPath)
@@ -122,56 +190,6 @@ namespace source_modding_tool
             public string relativePath = string.Empty;
         }
 
-        private void barButtonNew_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            newVMTDialog.InitialDirectory = modPath + "/materials";
-            if (newVMTDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fullPath = newVMTDialog.FileName;
-
-                MaterialEditorTab userControl = new MaterialEditorTab();
-                userControl.launcher = launcher;
-                XtraTabPage tab = new XtraTabPage();
-
-                string fileName = new FileInfo(fullPath).Name;
-
-                tab.Text = fileName;
-                tab.Controls.Add(userControl);
-                userControl.Dock = DockStyle.Fill;
-                tab.Tag = userControl;
-
-                tabControl.TabPages.Add(tab);
-
-                userControl.LoadMaterial(fullPath);
-                tabControl.SelectedTabPage = tab;
-            }  
-        }
-
-        private void barButtonOpen_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openVMTFileDialog.InitialDirectory = modPath + "\\materials\\";
-            if (openVMTFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fullPath = openVMTFileDialog.FileName;
-
-                MaterialEditorTab userControl = new MaterialEditorTab();
-                userControl.launcher = launcher;
-                XtraTabPage tab = new XtraTabPage();
-
-                string fileName = new FileInfo(fullPath).Name;
-
-                tab.Text = fileName;
-                tab.Controls.Add(userControl);
-                userControl.Dock = DockStyle.Fill;
-                tab.Tag = userControl;
-
-                tabControl.TabPages.Add(tab);
-
-                userControl.LoadMaterial(fullPath);
-                tabControl.SelectedTabPage = tab;
-            }
-        }
-
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string path = activeTab.relativePath;
@@ -187,7 +205,13 @@ namespace source_modding_tool
 
         private void tabControl_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
         {
-            activeTab = (MaterialEditorTab) e.Page.Tag;
+            if (e.Page != null)
+            {
+                activeTab = (MaterialEditorTab)e.Page.Tag;
+                MaterialEditorTab_OnUpdated(e.Page.Tag, new EventArgs());
+            }
+            else
+                activeTab = null;
         }
     }
 }

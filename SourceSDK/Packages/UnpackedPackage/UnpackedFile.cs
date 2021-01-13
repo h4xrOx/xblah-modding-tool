@@ -8,5 +8,9 @@ namespace SourceSDK.Packages.UnpackedPackage
 {
     public class UnpackedFile : PackageFile
     {
+        protected override byte[] ReadData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

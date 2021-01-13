@@ -29,10 +29,19 @@ namespace source_modding_tool.Modding
         Stack<string> nextDirectories = new Stack<string>();
         Stack<string> previousDirectories = new Stack<string>();
 
-        PackageManager packageManager;
+        public PackageManager packageManager;
         List<PackageDirectory> directories;
 
         Launcher launcher;
+
+        public PackageFile[] Selection { get; internal set; }
+
+        public enum Mode
+        {
+            BROWSE = 0,
+            OPEN = 1,
+            SAVE = 2
+        };
 
         public FileExplorer(Launcher launcher)
         {
@@ -40,14 +49,39 @@ namespace source_modding_tool.Modding
             this.launcher = launcher;
         }
 
+        public FileExplorer(Launcher launcher, Mode mode) : this(launcher)
+        {
+            switch(mode)
+            {
+                case Mode.OPEN:
+                    {
+                        openFileDialogPanel.Visible = true;
+                        statusBar.Visible = false;
+                        okButton.Text = "Open";
+                    }
+                    break;
+                case Mode.SAVE:
+                    {
+                        openFileDialogPanel.Visible = true;
+                        statusBar.Visible = false;
+                        okButton.Text = "Save";
+                    }
+                    break;
+                default:
+                    {
+
+                    }
+                    break;
+            }
+        }
+
         private void NewFileExplorer_Load(object sender, EventArgs e)
         {
             if (CurrentDirectory == null)
                 this.CurrentDirectory = RootDirectory;
 
-            //RootDirectory = "materials";
-
-            packageManager = new PackageManager(launcher, RootDirectory);
+            if (packageManager == null)
+                packageManager = new PackageManager(launcher, RootDirectory);
 
             UpdateDirectoryTree();
             UpdateFileTree(RootDirectory);
@@ -234,6 +268,23 @@ namespace source_modding_tool.Modding
                 SearchFileTree(searchString);
             else
                 UpdateFileTree(CurrentDirectory);
+        }
+
+        private void fileTree_SelectionChanged(object sender, EventArgs e)
+        {
+            List<PackageFile> result = new List<PackageFile>();
+            foreach(TreeListNode node in fileTree.Selection)
+            {
+                if (node.Tag is PackageFile)
+                {
+                    result.Add(node.Tag as PackageFile);
+                }
+            }
+
+            Selection = result.ToArray();
+            okButton.Enabled = (Selection.Length > 0);
+
+            fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
         }
     }
 }

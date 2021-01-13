@@ -89,7 +89,7 @@ namespace SourceSDK.Packages.VPKPackage
                 if (preloadBytes > 0)
                     Reader.BaseStream.Position += preloadBytes;
 
-                yield return new VpkEntry(parentArchive, crc, preloadBytes, preloadDataOffset, archiveIdx, entryOffset, entryLen, ext.ToLower(), path.ToLower(), fileName.ToLower());
+                yield return new VpkFile(parentArchive, crc, preloadBytes, preloadDataOffset, archiveIdx, entryOffset, entryLen, ext.ToLower(), path.ToLower(), fileName.ToLower());
             }
         }
         #endregion
