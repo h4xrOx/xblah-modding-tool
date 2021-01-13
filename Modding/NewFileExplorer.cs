@@ -127,9 +127,12 @@ namespace source_modding_tool.Modding
             fileTree.BeginUnboundLoad();
             fileTree.Nodes.Clear();
 
-            foreach(string directory in directories.Select(d => d.Path).Where(d => d.StartsWith(directoryPath + "/") && d.Remove(0, (directoryPath + "/").Length).Split('/').Length == 1).Distinct())
+            foreach (string directory in directories.Select(d => d.Path).Where(d => d.StartsWith(directoryPath.Length > 0 ? directoryPath + "/" : "") && d.Remove(0, (directoryPath.Length > 0 ? directoryPath + "/" : "").Length).Split('/').Length == 1).Distinct())
             {
-                string folderName = directory.Remove(0, (directoryPath + "/").Length);
+                if (directory == directoryPath)
+                    continue;
+
+                string folderName = directory.Remove(0, (directoryPath.Length > 0 ? directoryPath + "/" : "").Length);
                 TreeListNode node = fileTree.AppendNode(new object[] { folderName, "", "" }, null);
                 node.Tag = directory;
                 node.StateImageIndex = 0;
