@@ -95,7 +95,11 @@ namespace source_modding_tool
             // Save material
             else if(e.Item == menuFileSave)
             {
+                if (activeTab.relativePath != "")
+                    activeTab.SaveMaterial(activeTab.relativePath);
 
+                else
+                    menuFileSaveAs.PerformClick();
             }
 
             // Save material as
