@@ -217,11 +217,15 @@ namespace source_modding_tool
                 if (vmt != null)
                 {
                     string value = vmt.getChildren()[0].getValue("$" + kv.Key);
+
                     if (value != null && value != "")
                     {
                         PackageFile textureFile = packageManager.GetFile("materials/" + value + ".vtf");
+
                         if (textureFile != null)
                         {
+
+
                             textures[kv.Key].relativePath = textureFile.Path + "/" + textureFile.Filename + ".vtf";
                             textures[kv.Key].bytes = textureFile.Data;
                             textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, launcher);

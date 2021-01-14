@@ -70,11 +70,18 @@ namespace SourceSDK.Packages
             string directoryPath = Path.GetDirectoryName(path).Replace("\\", "/").ToLower();
             string fileName = Path.GetFileName(path).ToLower();
 
+            Debugger.Break();
+
             foreach(PackageDirectory directory in Directories.Where(p => p.Path == directoryPath).ToList())
             {
+                Debugger.Break();
+
                 List<PackageFile> files = directory.Entries.Where(e => e.Filename + "." + e.Extension == fileName).ToList();
+                Debugger.Break();
                 if (files.Count > 0)
+                {
                     return files[0];
+                }
             }
 
             return null;

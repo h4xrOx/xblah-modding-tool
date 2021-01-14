@@ -45,6 +45,8 @@ namespace SourceSDK.Packages.UnpackedPackage
                     continue;
 
                 string extension = new FileInfo(filePath).Extension;
+                if (extension.StartsWith("."))
+                    extension = extension.Substring(1);
 
                 Uri path1 = new Uri(parentArchive.ArchivePath + "\\");
                 Uri path2 = new Uri(filePath.Replace("_dir.vpk", ".vpk"));
