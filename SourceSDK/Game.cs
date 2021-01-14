@@ -212,7 +212,11 @@ namespace SourceSDK
                                 if (!File.Exists(path + "\\gameinfo_branchspecific.gi"))
                                     continue;
 
-                                SourceSDK.KeyValue steamAppIdKV = KeyValue.readChunkfile(path + "\\gameinfo_branchspecific.gi").findChildByKey("steamappid");
+                                KeyValue gameInfoBranch = KeyValue.readChunkfile(path + "\\gameinfo_branchspecific.gi");
+                                if (gameInfoBranch == null)
+                                    continue;
+
+                                SourceSDK.KeyValue steamAppIdKV = gameInfoBranch.findChildByKey("steamappid");
                                 string modAppId = "-1";
                                 if (steamAppIdKV != null)
                                     modAppId = steamAppIdKV.getValue();
