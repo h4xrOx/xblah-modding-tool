@@ -188,9 +188,11 @@ namespace source_modding_tool.Modding
         {
             textDirectory.EditValue = "Searching in " + CurrentDirectory;
 
+            searchString = searchString.ToLower();
+
             List<PackageFile> files = new List<PackageFile>();
 
-            foreach (PackageDirectory directory in directories.Where(d => d.Path == CurrentDirectory || d.Path.StartsWith((CurrentDirectory != "" ? CurrentDirectory + "/" : ""))))
+            foreach (PackageDirectory directory in directories.Where(d => d.Path.ToLower() == CurrentDirectory.ToLower() || d.Path.ToLower().StartsWith((CurrentDirectory != "" ? CurrentDirectory + "/" : "").ToLower())))
                 files.AddRange(directory.Entries);
 
             files = files.OrderBy(f => f.Filename).ToList();
@@ -201,7 +203,7 @@ namespace source_modding_tool.Modding
             foreach (PackageFile file in files.GroupBy(f => f.Filename).Select(g => g.First()))
             {
                 // Search pattern
-                if (!(file.Directory.Path + "/" + file.Filename).Contains(searchString))
+                if (!(file.Directory.Path + "/" + file.Filename).ToLower().Contains(searchString))
                     continue;
 
                 TreeListNode node = fileTree.AppendNode(new object[] { file.Directory.Path + "/" + file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
