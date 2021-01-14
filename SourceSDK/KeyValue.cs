@@ -439,8 +439,10 @@ namespace SourceSDK
 
                 return root;
             }
-            else
+            else if (list.Count > 0)
                 return list[0];
+            else
+                return null;
         }
     }
 }
