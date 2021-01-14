@@ -289,8 +289,6 @@ namespace source_modding_tool
                     Image originalBitmap = Bitmap.FromFile(openBitmapFileDialog.FileName);
                     width = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Width, 2)));
                     height = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Height, 2)));
-
-                    Debugger.Break();
                     textures[tag].bitmap = new Bitmap(originalBitmap, width, height);
                     originalBitmap.Dispose();
                     textures[tag].bytes = VTF.FromBitmap(textures[tag].bitmap, launcher);
