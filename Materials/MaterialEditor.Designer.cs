@@ -40,7 +40,7 @@
             this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileOpen = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileSave = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -102,7 +102,7 @@
             this.menuFileOpen,
             this.menuFileSave,
             this.menuFileExit,
-            this.barButtonItem1});
+            this.menuFileSaveAs});
             this.barManager1.MainMenu = this.bar4;
             this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -161,7 +161,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileOpen),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileSaveAs),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit)});
             this.menuFile.Name = "menuFile";
             // 
@@ -186,11 +186,12 @@
             this.menuFileSave.Name = "menuFileSave";
             this.menuFileSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
             // 
-            // barButtonItem1
+            // menuFileSaveAs
             // 
-            this.barButtonItem1.Caption = "Save As";
-            this.barButtonItem1.Id = 13;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.menuFileSaveAs.Caption = "Save As";
+            this.menuFileSaveAs.Id = 13;
+            this.menuFileSaveAs.Name = "menuFileSaveAs";
+            this.menuFileSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
             // 
             // menuFileExit
             // 
@@ -440,7 +441,7 @@
         private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel3_Container;
         private DevExpress.XtraEditors.MemoEdit vmtEdit;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem menuFileSaveAs;
         private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
     }
 }

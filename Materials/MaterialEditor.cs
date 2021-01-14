@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 using source_modding_tool.Modding;
@@ -96,6 +97,29 @@ namespace source_modding_tool
             {
 
             }
+
+            // Save material as
+            else if (e.Item == menuFileSaveAs)
+            {
+                XtraSaveFileDialog dialog = new XtraSaveFileDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string path = dialog.FileName;
+                    if (path.EndsWith(".vmt"))
+                        path = path.Substring(0, path.Length - 4);
+
+                    string relativePath = activeTab.GetRelativePath(path);
+
+                    string vtfRelativePath = relativePath;
+                    if (vtfRelativePath.Contains("/materials/"))
+                        vtfRelativePath = vtfRelativePath.Substring(relativePath.LastIndexOf("/materials/"));
+
+                    activeTab.SetRelativePath(vtfRelativePath);
+
+                    activeTab.SaveMaterial(relativePath);
+                    
+                }
+            }
             else if(e.Item == menuFileExit)
             {
                 Close();
@@ -117,7 +141,7 @@ namespace source_modding_tool
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            activeTab.SaveMaterial("models/tools/material_preview", "VertexLitGeneric");
+            activeTab.SaveMaterial("materials/models/tools/material_preview", "VertexLitGeneric");
             startPreview();
         }
 

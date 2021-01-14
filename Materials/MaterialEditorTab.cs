@@ -286,7 +286,13 @@ namespace source_modding_tool
                 else
                 {
                     textures[tag].relativePath = string.Empty;
-                    textures[tag].bitmap = new Bitmap(Bitmap.FromFile(openBitmapFileDialog.FileName), width, height);
+                    Image originalBitmap = Bitmap.FromFile(openBitmapFileDialog.FileName);
+                    width = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Width, 2)));
+                    height = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Height, 2)));
+
+                    Debugger.Break();
+                    textures[tag].bitmap = new Bitmap(originalBitmap, width, height);
+                    originalBitmap.Dispose();
                     textures[tag].bytes = VTF.FromBitmap(textures[tag].bitmap, launcher);
                 }
 
@@ -309,12 +315,31 @@ namespace source_modding_tool
 
         private void popupMenu_Popup(object sender, EventArgs e) { popupMenuActivator = popupMenu.Activator; }
 
-        public void SaveMaterial(string path, string shader)
+        public void SaveMaterial(string path)
+        {
+            SaveMaterial(path, this.shader);
+        }
+
+        public string GetRelativePath(string fullPath)
+        {
+            Uri path1 = new Uri(launcher.GetCurrentMod().installPath + "\\");
+            Uri path2 = new Uri(fullPath);
+            Uri diff = path1.MakeRelativeUri(path2);
+            return diff.OriginalString;
+        }
+
+        public void SetRelativePath(string path)
+        {
+            this.relativePath = path;
+
+            UpdatePreview();
+        }
+
+        public void SaveMaterial(string relativePath, string shader)
         {
             SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
-            string relativePath = path;
-            string fullPath = (launcher.GetCurrentMod().installPath + "\\materials\\" + relativePath).Replace("/", "\\");
+            string fullPath = (launcher.GetCurrentMod().installPath + "\\" + relativePath).Replace(" / ", "\\");
 
             Directory.CreateDirectory(fullPath.Substring(0, fullPath.LastIndexOf("\\")));
 
@@ -328,15 +353,9 @@ namespace source_modding_tool
                     switch (texture.Key)
                     {
                         case "tooltexture":
-                            if (texture.Value.bytes == textures["basetexture"].bytes)
-                            {
-                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_basetexture"));
-                            }
-                            else
-                            {
-                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
+                            if (texture.Value.bytes != textures["basetexture"].bytes)
                                 File.WriteAllBytes(fullPath + "_" + texture.Key + ".vtf", texture.Value.bytes);
-                            }
+
                             break;
                         case "envmapmask":
                             hasSpecularMap = true;
@@ -345,7 +364,6 @@ namespace source_modding_tool
                             hasNormalMap = true;
                             break;
                         default:
-                            vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
                             File.WriteAllBytes(fullPath + "_" + texture.Key + ".vtf", texture.Value.bytes);
                             break;
                     }
@@ -374,45 +392,27 @@ namespace source_modding_tool
                     }
                 }
                 textures["bumpmap"].bytes = VTF.FromBitmap(textures["bumpmap"].bitmap, launcher);
-                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
-                vmt.addChild(new KeyValue("$normalmapalphaenvmapmask", "1"));
-                vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
                 File.WriteAllBytes(fullPath + "_bumpmap.vtf", textures["bumpmap"].bytes);
             }
             else if (hasNormalMap)
-            {
-                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
                 File.WriteAllBytes(fullPath + "_bumpmap.vtf", textures["bumpmap"].bytes);
-            }
+            
             else if (hasSpecularMap)
-            {
-                vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
-                vmt.addChild(new KeyValue("$envmapmask", relativePath + "_envmapmask"));
                 File.WriteAllBytes(fullPath + "_envmapmask.vtf", textures["envmapmask"].bytes);
-            }
 
-            if (detail != null)
-            {
-                vmt.addChild(new KeyValue("$detail", detail[0]));
-                vmt.addChild(new KeyValue("$detailscale", detail[0]));
-                vmt.addChild(new KeyValue("$detailblendfactor", detail[0]));
-                vmt.addChild(new KeyValue("$detailblendmode", detail[0]));
-            }
-
-            vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
-            vmt.addChild(new KeyValue("$surfaceprop2", comboSurfaceProp2.EditValue.ToString()));
-
-            SourceSDK.KeyValue.writeChunkFile(fullPath + ".vmt", vmt, false, new UTF8Encoding(false));
+            File.WriteAllText(fullPath + ".vmt", VMT, new UTF8Encoding(false));
         }
 
         private KeyValue GetVMT(string relativePath)
         {
             SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
-            string fullPath = (launcher.GetCurrentMod().installPath + "\\materials\\" + relativePath).Replace("/", "\\");
-
             bool hasNormalMap = false;
             bool hasSpecularMap = false;
+
+            string materialRelativePath = relativePath;
+            if (relativePath.StartsWith("/materials/"))
+                materialRelativePath = relativePath.Substring("/materials/".Length);
 
             foreach (KeyValuePair<string, Texture> texture in textures)
             {
@@ -423,11 +423,11 @@ namespace source_modding_tool
                         case "tooltexture":
                             if (texture.Value.bytes == textures["basetexture"].bytes)
                             {
-                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_basetexture"));
+                                vmt.addChild(new KeyValue("$" + texture.Key, materialRelativePath + "_basetexture"));
                             }
                             else
                             {
-                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
+                                vmt.addChild(new KeyValue("$" + texture.Key, materialRelativePath + "_" + texture.Key));
                             }
                             break;
                         case "envmapmask":
@@ -437,7 +437,7 @@ namespace source_modding_tool
                             hasNormalMap = true;
                             break;
                         default:
-                            vmt.addChild(new KeyValue("$" + texture.Key, relativePath + "_" + texture.Key));
+                            vmt.addChild(new KeyValue("$" + texture.Key, materialRelativePath + "_" + texture.Key));
                             break;
                     }
                 }
@@ -445,18 +445,18 @@ namespace source_modding_tool
 
             if (hasNormalMap && hasSpecularMap)
             {
-                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
+                vmt.addChild(new KeyValue("$bumpmap", materialRelativePath + "_bumpmap"));
                 vmt.addChild(new KeyValue("$normalmapalphaenvmapmask", "1"));
                 vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
             }
             else if (hasNormalMap)
             {
-                vmt.addChild(new KeyValue("$bumpmap", relativePath + "_bumpmap"));
+                vmt.addChild(new KeyValue("$bumpmap", materialRelativePath + "_bumpmap"));
             }
             else if (hasSpecularMap)
             {
                 vmt.addChild(new KeyValue("$envmap", "env_cubemap"));
-                vmt.addChild(new KeyValue("$envmapmask", relativePath + "_envmapmask"));
+                vmt.addChild(new KeyValue("$envmapmask", materialRelativePath + "_envmapmask"));
             }
 
             if (detail != null)
