@@ -516,7 +516,31 @@ namespace source_modding_tool
             }
 
             string gameName = toolsGames.EditValue.ToString();
-            Game game = launcher.GetGamesList()[gameName];
+
+            Dictionary<string, Game> gamesList = launcher.GetGamesList();
+
+            if (!gamesList.ContainsKey(gameName))
+            {
+                XtraMessageBox.Show("Could not find game " + gameName);
+                return;
+            }
+
+            Game game = gamesList[gameName];
+
+            if (game == null)
+            {
+                XtraMessageBox.Show("Game " + gameName + " is null.");
+                return;
+            }
+
+            if (launcher == null)
+            {
+                XtraMessageBox.Show("Launcher is null, and it really shouldn't be. Let XBLAH know.");
+                return;
+            }
+                
+
+            
 
             launcher.SetCurrentGame(game);
             updateToolsMods();

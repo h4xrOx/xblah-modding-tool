@@ -219,6 +219,7 @@
             // 
             // repositoryGamesCombo
             // 
+            this.repositoryGamesCombo.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.repositoryGamesCombo.AutoHeight = false;
             this.repositoryGamesCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -236,6 +237,7 @@
             // 
             // repositoryModsCombo
             // 
+            this.repositoryModsCombo.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.repositoryModsCombo.AutoHeight = false;
             this.repositoryModsCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});

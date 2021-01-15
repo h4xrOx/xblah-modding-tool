@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SourceSDK
 {
@@ -124,12 +125,20 @@ namespace SourceSDK
 
         public Dictionary<string, Mod> GetModsList(Game game)
         {
-            return game.LoadMods(this);
+            if (game != null)
+                return game.LoadMods(this);
+
+            return new Dictionary<string, Mod>();
         }
 
         public void SetCurrentGame(Game game)
         {
             currentGame = game;
+            if (game == null)
+            {
+                MessageBox.Show("Current game is null. Can't load mods.");
+                return;
+            }
             game.LoadMods(this);
         }
 

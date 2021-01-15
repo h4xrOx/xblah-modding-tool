@@ -84,8 +84,11 @@ namespace SourceSDK
                     string modName = "";
                     if (File.Exists(gamePath + "\\" + modName + "\\steam_appid.txt"))
                     {
-                        string steam_appid = File.ReadAllText(gamePath + "\\steam_appid.txt");
-                        return int.Parse(steam_appid);
+                        string steam_appid_string = File.ReadAllText(gamePath + "\\steam_appid.txt");
+                        int steam_appid = -1;
+                        int.TryParse(steam_appid_string, out steam_appid);
+
+                        return steam_appid;
                     }
                     break;
             }
@@ -141,7 +144,6 @@ namespace SourceSDK
 
                             if (gameInfo != null)
                             {
-
                                 string name = gameInfo.getValue("game") + " (" + new DirectoryInfo(path).Name + ")";
                                 SourceSDK.KeyValue steamAppIdKV = gameInfo.findChildByKey("steamappid");
                                 string modAppId = "-1";
@@ -158,18 +160,19 @@ namespace SourceSDK
                                     // Check if is a Mapbase mod (Since mapbase doesn't have its own appid)
                                     SourceSDK.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
 
-                                    foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
-                                    {
-
-                                        // Simple yet effective way of detecting mapbase dependency
-                                        string value = searchPath.getValue();
-
-                                        if (value != null && value.Contains("mapbase_shared"))
+                                    if (searchPaths != null && searchPaths.getChildren() != null)
+                                        foreach (SourceSDK.KeyValue searchPath in searchPaths.getChildren())
                                         {
-                                            modAppId = "243731";    // Hardcoded fake mapbase gameappid
-                                            break;
+
+                                            // Simple yet effective way of detecting mapbase dependency
+                                            string value = searchPath.getValue();
+
+                                            if (value != null && value.Contains("mapbase_shared"))
+                                            {
+                                                modAppId = "243731";    // Hardcoded fake mapbase gameappid
+                                                break;
+                                            }
                                         }
-                                    }
                                 }
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
@@ -294,7 +297,6 @@ namespace SourceSDK
                         }
                         break;
                 }
-
             }
 
             return mods;
