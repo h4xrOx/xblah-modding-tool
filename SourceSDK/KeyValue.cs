@@ -362,9 +362,40 @@ namespace SourceSDK
             line = line.Trim();
             line = Regex.Replace(line, @"\s+", " ");
 
+            // Remove comments of line
+            if (line.Contains("//"))
+                line = line.Substring(0, line.IndexOf("//"));
+
             string[] words = splitByWords(line);
 
-            if (line.StartsWith("//"))  // It's a standalone comment line
+            // If a line has a curly bracket inline (ex: gameinfo { ), let's split the lines, re-read them and return.
+            if (line.Split('{').Length > 1 && !words[0].Contains("{"))
+            {
+                // Found a first case
+                var lineSplit = line.Split('{');
+                for(int i = 0; i < lineSplit.Length; i++)
+                {
+                    string substring = lineSplit[i];
+                    if (i > 0)
+                        substring = "{" + substring;
+
+                    readChunkLine(substring, hasOSInfo, stack, list);
+                }
+            }
+            else if(line.Split('}').Length > 1 && !words[0].Contains("}"))
+            {
+                var lineSplit = line.Split('}');
+                for (int i = 0; i < lineSplit.Length; i++)
+                {
+                    string substring = lineSplit[i];
+                    if (i > 0)
+                        substring = "}" + substring;
+
+                    readChunkLine(substring, hasOSInfo, stack, list);
+                }
+            }
+
+            else if (line.StartsWith("//"))  // It's a standalone comment line
             {
                 KeyValue comment = new KeyValue("");
                 comment.comment = line.Substring(2);
@@ -440,7 +471,11 @@ namespace SourceSDK
                 return root;
             }
             else if (list.Count > 0)
+            {
+                //Debugger.Break();
                 return list[0];
+            }
+                
             else
                 return null;
         }
