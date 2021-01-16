@@ -84,16 +84,22 @@ namespace SourceSDK
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 result.AddRange(childrenIndex[key]);
 
-            foreach (string indexKey in childrenIndex.Keys)
-                if (indexKey.ToLower() == key.ToLower())
-                    result.AddRange(childrenIndex[indexKey]);
-
             if (childrenIndex != null)
-                foreach (string k in childrenIndex.Keys)
-                    foreach (KeyValue child in childrenIndex[k])
-                    {
-                        result.AddRange(child.findChildrenByKey(key));
-                    }
+            {
+                foreach (string indexKey in childrenIndex.Keys)
+                    if (indexKey.ToLower() == key.ToLower())
+                        result.AddRange(childrenIndex[indexKey]);
+
+                if (childrenIndex != null)
+                    foreach (string k in childrenIndex.Keys)
+                        foreach (KeyValue child in childrenIndex[k])
+                        {
+                            result.AddRange(child.findChildrenByKey(key));
+                        }
+            }
+
+
+            
 
             return result;
         }
