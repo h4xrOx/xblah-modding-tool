@@ -758,10 +758,10 @@ namespace source_modding_tool
             Bitmap bitmap = new Bitmap(panel1.Width, panel1.Height);
             using (Graphics gfx = Graphics.FromImage(bitmap))
             {
-                Image src = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Misc\\background.png");
+                Image src = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets\\Misc\\background.png");
 
                 if (instance != null && instance.isLoading)
-                    src = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Assets\\Misc\\background_loading.png");
+                    src = Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets\\Misc\\background_loading.png");
 
                 int squareSize = Math.Max(panel1.Width, panel1.Height);
                 gfx.DrawImage(
