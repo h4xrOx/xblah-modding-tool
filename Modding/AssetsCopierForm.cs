@@ -1,183 +1,112 @@
-﻿using SourceSDK;
-using SourceSDK.Maps;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraTreeList.Nodes;
+using SourceSDK;
+using SourceSDK.Packages;
+using SourceSDK.Packages.UnpackedPackage;
+using SourceSDK.Packages.VPKPackage;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace source_modding_tool.Tools
+namespace source_modding_tool.Modding
 {
     public partial class AssetsCopierForm : DevExpress.XtraEditors.XtraForm
     {
-        public bool OpenDestination = true;
-
-        private const int COLOR_BLUE = 0;
-
-        private const int COLOR_GREEN = 1;
-        private const int COLOR_ORANGE = 2;
-        private const int COLOR_RED = 3;
-
-        List<string> assets = new List<string>();
-
-        public string destination = string.Empty;
-        Game game;
-        Mod mod;
+        List<PackageArchive> archives;
+        PackageManager packageManager;
         Launcher launcher;
 
-        List<string> vmfs = new List<string>();
+        public string RootPath;
 
-        public AssetsCopierForm(Launcher launcher, Mod mod)
+        public List<string> filePaths;
+
+        public AssetsCopierForm(Launcher launcher)
         {
-            this.launcher = launcher;
-            this.game = mod.game;
-            this.mod = mod;
-
             InitializeComponent();
-        }
 
-        public AssetsCopierForm(Launcher launcher, Mod mod, string destination) : this(launcher, mod)
-        { this.destination = destination; }
+            this.launcher = launcher;
+            packageManager = new PackageManager(launcher, "");
+        }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)
         {
-            updateVMFList();
-            xtraOpenFileDialog1.InitialDirectory = launcher.GetModPath(game, mod);
+            PopulateFilePathTree();
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void PopulateFilePathTree()
         {
-            if(xtraOpenFileDialog1.ShowDialog() == DialogResult.OK)
+            filesTreeList.BeginUnboundLoad();
+            packagesTree.BeginUnboundLoad();
+
+            filesTreeList.Nodes.Clear();
+            packagesTree.Nodes.Clear();
+            archives = new List<PackageArchive>();
+
+            foreach(string filePath in filePaths)
             {
-                if(!vmfs.Contains(xtraOpenFileDialog1.FileName))
-                    vmfs.Add(xtraOpenFileDialog1.FileName);
+                PackageFile file = packageManager.GetFile(filePath);
 
-                updateVMFList();
-            }
-        }
+                if (file == null)
+                    continue;
 
-        private string copyAssets()
-        {
-            string gamePath = game.installPath;
-            string modPath = launcher.GetModPath(game, mod);
-
-            String mapName = Path.GetFileNameWithoutExtension(vmfs[0]).ToLower();
-
-            List<string> searchPaths = mod.GetSearchPaths();
-
-            string customPath = modPath + "\\custom\\" + mapName;
-            if(this.destination != string.Empty)
-                customPath = destination;
-
-            Directory.CreateDirectory(customPath);
-
-            foreach (string asset in assets)
-            {
-                foreach(string searchPath in searchPaths)
+                if (!archives.Contains(file.Directory.ParentArchive))
                 {
+                    TreeListNode packageNode = packagesTree.AppendNode(new object[] { file.Directory.ParentArchive.Name, (file.Directory.ParentArchive is VpkArchive ? "VPK" : "Directory") }, null);
+                    packageNode.Tag = file.Directory.ParentArchive;
+                    if (file.Directory.ParentArchive is UnpackedArchive)
+                        packageNode.Checked = true;
 
-                    if (File.Exists(searchPath + "\\" + asset))
-                    {
-
-                        Directory.CreateDirectory(Path.GetDirectoryName(customPath + "\\" + asset));
-
-                        try
-                        {
-                            File.Copy(searchPath + "\\" + asset, customPath + "\\" + asset, true);
-                        } catch (Exception)
-                        {
-
-                        }
-                    }
+                    archives.Add(file.Directory.ParentArchive);
                 }
+                TreeListNode node = filesTreeList.AppendNode(new object[] { filePath, (file != null ? file.Directory.ParentArchive.Name : "null") }, null);
+                node.Tag = file;
+                if (file.Directory.ParentArchive is UnpackedArchive)
+                    node.Checked = true;
             }
 
-            return customPath;
+            filesTreeList.Sort(null, packagesTree.Columns["filePath"], SortOrder.Ascending, false);
+            packagesTree.Sort(null, packagesTree.Columns["type"], SortOrder.Ascending, false);
+
+            filesTreeList.EndUnboundLoad();
+            packagesTree.EndUnboundLoad();
         }
 
-        private List<string> getAssetsFromMap(string fullPath)
+        private void packagesTree_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
         {
-            setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
-            assets = VMF.GetAssets(fullPath, game, mod, launcher);
+            TreeListNode node = e.Node;
+            PackageArchive archive = node.Tag as PackageArchive;
 
-
-            return assets;
+            foreach (TreeListNode fileNode in filesTreeList.Nodes.Where(n => n.Tag != null && (n.Tag as PackageFile).Directory.ParentArchive == archive))
+            {
+                fileNode.Checked = node.Checked;
+            }
         }
 
-        private void readMapButton_Click(object sender, EventArgs e)
+        private void copyButton_Click(object sender, EventArgs e)
         {
-            foreach(string vmf in vmfs)
-                assets.AddRange(getAssetsFromMap(vmf));
+            List<PackageFile> files = filesTreeList.Nodes.Where(n => n.Tag != null && n.Tag is PackageFile).Select(m => m.Tag as PackageFile).ToList();
 
-            assets = assets.Distinct().ToList();
+            RootPath = launcher.GetCurrentMod().installPath + "\\custom\\assets-copier-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "\\";
 
-            string customPath = copyAssets();
+            foreach (PackageFile file in files)
+            {
+                string destinationPath = (RootPath + file.Path).Replace("/", "\\");
 
-            string modPath = launcher.GetModPath(game, mod);
-            setStatusMessage("Done.", COLOR_GREEN);
+                Directory.CreateDirectory(destinationPath);
 
-            if (OpenDestination)
-                Process.Start(customPath);
-            else
-                DialogResult = DialogResult.OK;
+                file.CopyTo(destinationPath + "\\" + file.Filename + "." + file.Extension);
+            }
 
+            DialogResult = DialogResult.OK;
             Close();
-        }
-
-        private void removeButton_Click(object sender, EventArgs e)
-        {
-            if(vmfList.FocusedNode == null)
-                return;
-            vmfs.RemoveAt(vmfList.FocusedNode.Id);
-            updateVMFList();
-        }
-
-        private void setStatusMessage(string message, int color)
-        {
-            statusLabel.Caption = message;
-            /*switch(color)
-            {
-                case COLOR_ORANGE:
-                    statusBar.Appearance.BackColor = Color.FromArgb(230,81,0);
-                    break;
-                case COLOR_GREEN:
-                    statusBar.Appearance.BackColor = Color.FromArgb(27,94,32);
-                    break;
-                case COLOR_RED:
-                    statusBar.Appearance.BackColor = Color.FromArgb(183,28,28);
-                    break;
-                case COLOR_BLUE:
-                default:
-                    statusBar.Appearance.BackColor = Color.FromArgb(13, 71, 161);
-                    break;
-            }*/
-
-            Application.DoEvents();
-        }
-
-        private void updateVMFList()
-        {
-            vmfList.BeginUnboundLoad();
-            vmfList.Nodes.Clear();
-            foreach(string vmf in vmfs)
-            {
-                vmfList.AppendNode(new object[] { vmf }, null);
-            }
-            vmfList.EndUnboundLoad();
-            if(vmfs.Count > 0)
-            {
-                setStatusMessage("Ready to copy.", COLOR_BLUE);
-            } else
-            {
-                setStatusMessage("Choose at least one VMF to start.", COLOR_RED);
-            }
-        }
-
-        private void vmfList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-            removeButton.Enabled = (vmfList.FocusedNode != null);
-            readMapButton.Enabled = (vmfList.FocusedNode != null);
         }
     }
 }

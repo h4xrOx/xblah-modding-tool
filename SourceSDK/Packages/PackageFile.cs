@@ -15,5 +15,7 @@ namespace SourceSDK.Packages
         public byte[] Data { get { return ReadData(); } }
 
         protected abstract byte[] ReadData();
+
+        public abstract void CopyTo(string destinationPath);
     }
 }

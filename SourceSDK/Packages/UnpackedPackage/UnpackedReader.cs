@@ -54,7 +54,7 @@ namespace SourceSDK.Packages.UnpackedPackage
 
                 PackageFile file = new UnpackedFile()
                 {
-                    Path = diff.OriginalString.ToLower(),
+                    Path = Path.GetDirectoryName(diff.OriginalString.ToLower()),
                     Extension = extension,
                     Filename = Path.GetFileNameWithoutExtension(filePath),
                 };

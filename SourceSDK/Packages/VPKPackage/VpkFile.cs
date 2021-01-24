@@ -69,6 +69,11 @@ namespace SourceSDK.Packages.VPKPackage
             return buff;
         }
 
+        public override void CopyTo(string destinationPath)
+        {
+            File.WriteAllBytes(destinationPath, Data);
+        }
+
         public byte[] AnyData { get { if (HasPreloadData) return ReadPreloadData(); else return ReadData(); } }
 
     }
