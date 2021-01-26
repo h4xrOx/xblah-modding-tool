@@ -372,7 +372,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingImport2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingLegacyFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
