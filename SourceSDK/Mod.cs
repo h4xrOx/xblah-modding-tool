@@ -29,6 +29,7 @@ namespace SourceSDK
 
         public void OpenInstallFolder()
         {
+            Debugger.Break();
             Process.Start(installPath);
         }
 
