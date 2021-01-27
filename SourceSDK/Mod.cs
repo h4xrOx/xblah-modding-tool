@@ -29,8 +29,7 @@ namespace SourceSDK
 
         public void OpenInstallFolder()
         {
-            Debugger.Break();
-            Process.Start(installPath);
+            Process.Start("explorer.exe", @installPath);
         }
 
         public List<string> GetSearchPaths()

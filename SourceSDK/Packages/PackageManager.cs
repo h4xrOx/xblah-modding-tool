@@ -44,8 +44,12 @@ namespace SourceSDK.Packages
             Archives.Clear();
 
             List<string> mountedPaths = launcher.GetCurrentMod().GetMountedPaths();
-            foreach (string searchPath in mountedPaths)
+            foreach (string mountedPath in mountedPaths)
             {
+                string searchPath = mountedPath;
+                if (searchPath.EndsWith("\\."))
+                    searchPath = searchPath.Substring(0, searchPath.Length - "\\.".Length);
+
                 if (searchPath.EndsWith(".vpk"))
                 {
                     VpkArchive archive = new VpkArchive();
@@ -53,15 +57,40 @@ namespace SourceSDK.Packages
                     archive.Name = archive.GetPackName(launcher);
                     Archives.Add(archive);
                 }
-                    
+
                 else if (Directory.Exists(searchPath))
                 {
                     UnpackedArchive archive = new UnpackedArchive();
                     archive.Load(searchPath, rootPath);
                     archive.Name = archive.GetPackName(launcher);
                     Archives.Add(archive);
+
+                    // In Portal 2, the gameinfo also loads the unlisted vpks in the search dirs.
+                    foreach (string loseVPKfile in Directory.GetFiles(searchPath, "*.vpk"))
+                    {
+                        string fileName = loseVPKfile;
+
+                        if (loseVPKfile.Contains("_"))
+                        {
+                            string partIdxString = loseVPKfile.Substring(loseVPKfile.LastIndexOf("_") + 1, loseVPKfile.Length - loseVPKfile.LastIndexOf("_") - ".vpk".Length - 1);
+
+                            if (int.TryParse(partIdxString, out int ignore))
+                                continue;
+
+                            if (partIdxString == "dir")
+                                fileName = loseVPKfile.Replace("_dir.vpk", ".vpk");
+                        }
+
+                        if (Archives.Where(a => a.ArchivePath == fileName).ToList().Count == 0)
+                        {
+                            VpkArchive vpkArchive = new VpkArchive();
+                            vpkArchive.Load(fileName, rootPath);
+                            vpkArchive.Name = vpkArchive.GetPackName(launcher);
+                            Archives.Add(vpkArchive);
+                        }
+
+                    }
                 }
-                    
             }
         }
 
