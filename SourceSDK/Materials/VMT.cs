@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SourceSDK.Packages;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SourceSDK.Materials
@@ -13,27 +14,19 @@ namespace SourceSDK.Materials
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string relativePath, Game game, Mod mod, Launcher launcher)
+        public static List<string> GetAssets(string relativePath, PackageManager packageManager)
         {
             if (string.IsNullOrEmpty(relativePath) ||
-                game == null ||
-                mod == null ||
-                launcher == null)
+                packageManager == null)
                 return null;
 
             List<string> assets = new List<string>();
-            List<string> searchPaths = mod.GetSearchPaths();
 
+            PackageFile packageFile = packageManager.GetFile(relativePath);
 
-
-            foreach (string searchPath in searchPaths)
-            {
-                string materialPath = searchPath + "\\" + relativePath;
-
-                if (!File.Exists(materialPath))
-                    continue;
-
-                KeyValue material = KeyValue.readChunkfile(materialPath);
+            if (packageFile != null)
+            { 
+                KeyValue material = KeyValue.ReadChunk(System.Text.Encoding.UTF8.GetString(packageFile.Data));
                 List<KeyValue> textures = new List<KeyValue>();
 
                 KeyValue baseTexture = material.findChildByKey("$basetexture");
@@ -62,8 +55,6 @@ namespace SourceSDK.Materials
                     if (!assets.Contains(textureValue))
                         assets.Add(textureValue);
                 }
-
-                break;
             }
 
             return assets;

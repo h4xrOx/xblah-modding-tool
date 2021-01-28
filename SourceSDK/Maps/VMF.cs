@@ -1,5 +1,6 @@
 ﻿using SourceSDK.Materials;
 using SourceSDK.Models;
+using SourceSDK.Packages;
 using SourceSDK.Particles;
 using System.Collections.Generic;
 using System.IO;
@@ -17,12 +18,10 @@ namespace SourceSDK.Maps
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string fullPath, Game game, Mod mod, Launcher launcher)
+        public static List<string> GetAssets(string fullPath, PackageManager packageManager)
         {
             if (string.IsNullOrEmpty(fullPath) ||
-                game == null ||
-                mod == null ||
-                launcher == null)
+               packageManager == null)
                 return null;
 
             List<string> assets = new List<string>();
@@ -41,7 +40,7 @@ namespace SourceSDK.Maps
                 if (!assets.Contains(value))
                 {
                     assets.Add(value);
-                    assets.AddRange(VMT.GetAssets(value, game, mod, launcher));
+                    assets.AddRange(VMT.GetAssets(value, packageManager));
                 }
             }
 
@@ -53,7 +52,7 @@ namespace SourceSDK.Maps
                 if (!assets.Contains(value))
                 {
                     assets.Add(kv.getValue().ToLower());
-                    assets.AddRange(MDL.GetAssets(value, game, mod, launcher));
+                    assets.AddRange(MDL.GetAssets(value, packageManager));
                 }
             }
 
@@ -74,16 +73,18 @@ namespace SourceSDK.Maps
             // Add particle assets
             List<KeyValue> effectsKVs = map.findChildrenByKey("effect_name");
             List<string> effects = new List<string>();
-            List<string> pcfFiles = PCF.GetAllFiles(launcher);
+            
             foreach (KeyValue kv in effectsKVs)
                 effects.Add(kv.getValue());
+
             effects = effects.Distinct().ToList();
-            foreach (string pcf in pcfFiles)
+
+            List<PackageFile> pcfFiles = PCF.GetAllPackageFiles(packageManager);
+            foreach (PackageFile pcf in pcfFiles)
                 if (PCF.ContainsEffect(effects, pcf))
                 {
-                    string asset = pcf.Substring(pcf.IndexOf("\\particles\\") + 1).Replace("\\", "/");
-                    assets.Add(asset);
-                    assets.AddRange(PCF.GetAssets(asset, game, mod, launcher));
+                    assets.Add(pcf.Path + "/" + pcf.Filename + "." + pcf.Extension);
+                    assets.AddRange(PCF.GetAssets(pcf.Path + "/" + pcf.Filename + "." + pcf.Extension, packageManager));
                 }
 
             // Add skybox
@@ -96,7 +97,7 @@ namespace SourceSDK.Maps
                 foreach (string part in parts)
                 {
                     assets.Add("materials/skybox/" + value + part + ".vmt");
-                    VMT.GetAssets("materials/skybox/" + value + part + ".vmt", game, mod, launcher);
+                    VMT.GetAssets("materials/skybox/" + value + part + ".vmt", packageManager);
                 }
             }
 

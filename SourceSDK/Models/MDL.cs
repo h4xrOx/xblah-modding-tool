@@ -1,4 +1,5 @@
 ﻿using SourceSDK.Materials;
+using SourceSDK.Packages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,17 +14,11 @@ namespace SourceSDK.Models
         /// </summary>
         /// <param name="fullPath">Full path to the asset</param>
         /// <returns></returns>
-        private static List<string> GetMaterials(string fullPath)
+        private static List<string> GetMaterials(PackageFile packageFile)
         {
-            if (string.IsNullOrEmpty(fullPath))
-                return null;
-
             List<string> materials = new List<string>();
 
-            if (!File.Exists(fullPath))
-                return materials;
-
-            byte[] byteArray = File.ReadAllBytes(fullPath);
+            byte[] byteArray = packageFile.Data;
 
             List<char> chars = new List<char>();
             foreach (byte b in byteArray)
@@ -69,45 +64,35 @@ namespace SourceSDK.Models
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string relativePath, Game game, Mod mod, Launcher launcher)
+        public static List<string> GetAssets(string relativePath, PackageManager packageManager)
         {
-            if (string.IsNullOrEmpty(relativePath) || game == null || mod == null || launcher == null)
+            if (string.IsNullOrEmpty(relativePath) || packageManager == null)
                 return null;
 
             List<string> assets = new List<string>();
-            List<string> searchPaths = mod.GetSearchPaths();
 
-            foreach (string searchPath in searchPaths)
+            PackageFile packageFile = packageManager.GetFile(relativePath);
+            if (packageFile != null)
             {
-                string modelPath = searchPath + "\\" + relativePath;
-
-                // Check if the model exists in the current search path.
-                if (!File.Exists(modelPath))
-                    continue;
-
-                string directory = Path.GetDirectoryName(modelPath);
-                string modelName = Path.GetFileNameWithoutExtension(modelPath).ToLower();
+                PackageDirectory directory = packageFile.Directory;
+                string modelName = Path.GetFileNameWithoutExtension(relativePath).ToLower();
 
                 // Search for files with the same name as the model, but with different extensions
-                foreach (string file in Directory.GetFiles(directory))
+                foreach(PackageFile file in directory.Entries)
                 {
-                    string fileName = Path.GetFileName(file.ToLower());
-                    if (fileName.Substring(0, fileName.IndexOf(".")) == modelName)
+                    if (file.Filename == modelName)
                     {
-                        string filePath = relativePath.Replace(modelName + ".mdl", string.Empty) + fileName;
-                        assets.Add(filePath);
+                        assets.Add(file.Path + "/" + file.Filename + "." + file.Extension);
                     }
                 }
 
                 // Search for materials used by the model
-                List<string> materials = GetMaterials(modelPath);
+                List<string> materials = GetMaterials(packageFile);
                 foreach (string material in materials)
                 {
                     assets.Add(material.Replace("\\", "/"));
-                    assets.AddRange(VMT.GetAssets(material, game, mod, launcher));
+                    assets.AddRange(VMT.GetAssets(material, packageManager));
                 }
-
-                break;
             }
 
             return assets;

@@ -1,4 +1,5 @@
 ﻿using SourceSDK.Materials;
+using SourceSDK.Packages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,14 +14,11 @@ namespace SourceSDK.Particles
         /// </summary>
         /// <param name="fullPath">Full path to the asset</param>
         /// <returns></returns>
-        private static List<string> GetMaterials(string fullPath)
+        private static List<string> GetMaterials(PackageFile packageFile)
         {
             List<string> materials = new List<string>();
 
-            if (!File.Exists(fullPath))
-                return materials;
-
-            byte[] byteArray = File.ReadAllBytes(fullPath);
+            byte[] byteArray = packageFile.Data;
 
             List<char> chars = new List<char>();
             foreach (byte b in byteArray)
@@ -46,12 +44,12 @@ namespace SourceSDK.Particles
         /// <param name="effects">The effect name to look up.</param>
         /// <param name="fullPath">Full path to the asset</param>
         /// <returns></returns>
-        public static bool ContainsEffect(List<string> effects, string fullPath)
+        public static bool ContainsEffect(List<string> effects, PackageFile packageFile)
         {
-            if (effects == null || effects.Count == 0 || string.IsNullOrEmpty(fullPath))
+            if (effects == null || effects.Count == 0)
                 return false;
 
-            byte[] byteArray = File.ReadAllBytes(fullPath);
+            byte[] byteArray = packageFile.Data;
             List<string> list = new List<string>();
 
             List<char> chars = new List<char>();
@@ -105,16 +103,16 @@ namespace SourceSDK.Particles
         /// </summary>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAllFiles(Launcher launcher)
+        public static List<PackageFile> GetAllPackageFiles(PackageManager packageManager)
         {
-            if (launcher == null)
+            if (packageManager == null)
                 return null;
 
-            List<string> searchPaths = launcher.GetCurrentMod().GetSearchPaths();
-            List<string> files = new List<string>();
-            foreach (string path in searchPaths)
-                if (Directory.Exists(path + "\\particles"))
-                    files.AddRange(Directory.GetFiles(path + "\\particles", "*.pcf", SearchOption.AllDirectories));
+            List<PackageFile> files = new List<PackageFile>();
+            foreach (PackageDirectory directory in packageManager.Directories.Where(d => d.Path.StartsWith("particles")))
+            {
+                files.AddRange(directory.Entries.Where(a => a.Extension == "pcf").ToList());
+            }
 
             return files;
         }
@@ -127,29 +125,21 @@ namespace SourceSDK.Particles
         /// <param name="mod">The mod and folder name, in the following format: Mod Title (mod_folder)</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static List<string> GetAssets(string relativePath, Game game, Mod mod, Launcher launcher)
+        public static List<string> GetAssets(string relativePath, PackageManager packageManager)
         {
-            if (string.IsNullOrEmpty(relativePath) || game == null || mod == null || launcher == null)
+            if (string.IsNullOrEmpty(relativePath) || packageManager == null)
                 return null;
 
             List<string> assets = new List<string>();
-            List<string> searchPaths = mod.GetSearchPaths();
-
-            foreach (string searchPath in searchPaths)
+            PackageFile packageFile = packageManager.GetFile(relativePath);
+            if (packageFile != null)
             {
-                string particlePath = searchPath + "\\" + relativePath;
-
-                if (!File.Exists(particlePath))
-                    continue;
-
-                List<string> materials = GetMaterials(particlePath);
+                List<string> materials = GetMaterials(packageFile);
                 foreach (string material in materials)
                 {
                     assets.Add(material.Replace("\\", "/"));
-                    assets.AddRange(VMT.GetAssets(material, game, mod, launcher));
+                    assets.AddRange(VMT.GetAssets(material, packageManager));
                 }
-
-                break;
             }
 
             return assets;

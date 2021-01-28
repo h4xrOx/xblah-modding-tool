@@ -1,6 +1,7 @@
 ﻿using source_modding_tool.Modding;
 using SourceSDK;
 using SourceSDK.Maps;
+using SourceSDK.Packages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace source_modding_tool.Tools
         Game game;
         Mod mod;
         Launcher launcher;
+        PackageManager packageManager;
 
         List<string> vmfs = new List<string>();
 
@@ -34,6 +36,7 @@ namespace source_modding_tool.Tools
             this.launcher = launcher;
             this.game = mod.game;
             this.mod = mod;
+            this.packageManager = new PackageManager(launcher, "");
 
             InitializeComponent();
         }
@@ -61,7 +64,7 @@ namespace source_modding_tool.Tools
         private List<string> getAssetsFromMap(string fullPath)
         {
             setStatusMessage("Reading VMF " + fullPath, COLOR_ORANGE);
-            assets = VMF.GetAssets(fullPath, game, mod, launcher);
+            assets = VMF.GetAssets(fullPath, packageManager);
 
 
             return assets;
@@ -74,12 +77,10 @@ namespace source_modding_tool.Tools
 
             assets = assets.Distinct().ToList();
 
-            AssetsCopierForm form = new AssetsCopierForm(launcher);
+            AssetsCopierForm form = new AssetsCopierForm(launcher, packageManager);
             form.filePaths = assets;
             if (form.ShowDialog() == DialogResult.OK)
             {
-                //string customPath = copyAssets();
-
                 string modPath = launcher.GetModPath(game, mod);
                 setStatusMessage("Done.", COLOR_GREEN);
 

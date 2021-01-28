@@ -224,8 +224,6 @@ namespace source_modding_tool
 
                         if (textureFile != null)
                         {
-
-
                             textures[kv.Key].relativePath = textureFile.Path + "/" + textureFile.Filename + ".vtf";
                             textures[kv.Key].bytes = textureFile.Data;
                             textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, launcher);

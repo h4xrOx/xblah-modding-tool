@@ -25,15 +25,14 @@ namespace source_modding_tool.Modding
         Launcher launcher;
 
         public string RootPath;
-
         public List<string> filePaths;
 
-        public AssetsCopierForm(Launcher launcher)
+        public AssetsCopierForm(Launcher launcher, PackageManager packageManager)
         {
             InitializeComponent();
 
             this.launcher = launcher;
-            packageManager = new PackageManager(launcher, "");
+            this.packageManager = packageManager;
         }
 
         private void AssetsCopierForm_Load(object sender, EventArgs e)
