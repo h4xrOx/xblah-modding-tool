@@ -117,6 +117,12 @@
     <Compile Include="Materials\MaterialEditorTab.Designer.cs">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materials\SkyboxEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materials\SkyboxEditor.Designer.cs">
+      <DependentUpon>SkyboxEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\AssetsCopierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\SkyboxEditor.resx">
+      <DependentUpon>SkyboxEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>

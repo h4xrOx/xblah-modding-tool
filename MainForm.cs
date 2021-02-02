@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using source_modding_tool.Materials;
 using source_modding_tool.Modding;
  
 using source_modding_tool.Tools;
@@ -208,6 +209,11 @@ namespace source_modding_tool
             if (e.Item == menuMaterialsEditor)
             {
                 MaterialEditor form = new MaterialEditor(string.Empty, launcher);
+                form.ShowDialog();
+            }
+            else if(e.Item == menuMaterialsSkyboxEditor)
+            {
+                SkyboxEditor form = new SkyboxEditor(launcher);
                 form.ShowDialog();
             }
         }

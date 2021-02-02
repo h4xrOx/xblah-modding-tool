@@ -6,13 +6,18 @@ namespace SourceSDK.Materials
 {
     public class VTF
     {
+        public static byte[] FromBitmap(Bitmap bitmap, Launcher launcher)
+        {
+            return FromBitmap(bitmap, launcher, new string[] { "nolod 1", "nomip 1" });
+        }
+
         /// <summary>
         /// Converts a bitmap var into a byte array that can be saved as a VTF
         /// </summary>
         /// <param name="bitmap">The image to be converted</param>
         /// <param name="launcher">An instance of the Source SDK lib</param>
         /// <returns></returns>
-        public static byte[] FromBitmap(Bitmap bitmap, Launcher launcher)
+        public static byte[] FromBitmap(Bitmap bitmap, Launcher launcher, string[] properties)
         {
             if (bitmap == null || launcher == null)
                 return null;
@@ -26,7 +31,7 @@ namespace SourceSDK.Materials
             var tga = new TGA(bitmap);
             Directory.CreateDirectory(filePath);
             tga.Save(filePath + "\\temp.tga");
-            File.WriteAllText(filePath + "\\temp.txt", "nolod 1\r\nnomip 1");
+            File.WriteAllText(filePath + "\\temp.txt", string.Join("\r\n", properties));
 
             Process process = new Process();
             process.StartInfo.FileName = vtexPath;

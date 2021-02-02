@@ -104,6 +104,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuMaterialsSkyboxEditor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -182,9 +183,10 @@
             this.toolsRunPopupExpert,
             this.menuModdingSettingsStartingMaps,
             this.menuModdingHudEditor,
-            this.menuModdingFileExplorer});
+            this.menuModdingFileExplorer,
+            this.menuMaterialsSkyboxEditor});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 95;
+            this.barManager.MaxItemId = 96;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -663,7 +665,8 @@
             this.menuMaterials.Caption = "Materials";
             this.menuMaterials.Id = 48;
             this.menuMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor)});
             this.menuMaterials.Name = "menuMaterials";
             // 
             // menuMaterialsEditor
@@ -822,6 +825,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuMaterialsSkyboxEditor
+            // 
+            this.menuMaterialsSkyboxEditor.Caption = "Skybox Editor";
+            this.menuMaterialsSkyboxEditor.Id = 95;
+            this.menuMaterialsSkyboxEditor.Name = "menuMaterialsSkyboxEditor";
+            this.menuMaterialsSkyboxEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -925,5 +935,6 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsStartingMaps;
         private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
         private DevExpress.XtraBars.BarButtonItem menuModdingFileExplorer;
+        private DevExpress.XtraBars.BarButtonItem menuMaterialsSkyboxEditor;
     }
 }

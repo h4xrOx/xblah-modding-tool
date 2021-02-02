@@ -26,7 +26,7 @@ namespace SourceSDK.Packages.UnpackedPackage
                     Uri path2 = new Uri(directory);
                     Uri diff = path1.MakeRelativeUri(path2);
 
-                    PackageDirectory packageDirectory = new UnpackedDirectory(parentArchive, diff.OriginalString.ToLower(), entries);
+                    PackageDirectory packageDirectory = new UnpackedDirectory(parentArchive, diff.OriginalString.ToLower().Replace("\\", "/"), entries);
                     result.Add(packageDirectory);
                 }
             }
@@ -54,7 +54,7 @@ namespace SourceSDK.Packages.UnpackedPackage
 
                 PackageFile file = new UnpackedFile()
                 {
-                    Path = Path.GetDirectoryName(diff.OriginalString.ToLower()),
+                    Path = Path.GetDirectoryName(diff.OriginalString.ToLower()).Replace("\\", "/"),
                     Extension = extension,
                     Filename = Path.GetFileNameWithoutExtension(filePath),
                 };

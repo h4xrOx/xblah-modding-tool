@@ -6,6 +6,11 @@ namespace SourceSDK.Materials
 {
     public class VMT
     {
+        public static KeyValue FromData(byte[] data)
+        {
+            return KeyValue.ReadChunk(System.Text.Encoding.UTF8.GetString(data));
+        }
+
         /// <summary>
         /// Returns a list of the relative paths of the assets used by this asset, excluding the asset itself
         /// </summary>
@@ -26,7 +31,7 @@ namespace SourceSDK.Materials
 
             if (packageFile != null)
             { 
-                KeyValue material = KeyValue.ReadChunk(System.Text.Encoding.UTF8.GetString(packageFile.Data));
+                KeyValue material = VMT.FromData(packageFile.Data);
                 List<KeyValue> textures = new List<KeyValue>();
 
                 KeyValue baseTexture = material.findChildByKey("$basetexture");
