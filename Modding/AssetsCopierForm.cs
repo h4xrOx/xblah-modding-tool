@@ -91,7 +91,7 @@ namespace source_modding_tool.Modding
 
         private void copyButton_Click(object sender, EventArgs e)
         {
-            List<PackageFile> files = filesTreeList.Nodes.Where(n => n.Tag != null && n.Tag is PackageFile).Select(m => m.Tag as PackageFile).ToList();
+            List<PackageFile> files = filesTreeList.Nodes.Where(n => n.Tag != null && n.Tag is PackageFile && n.Checked == true).Select(m => m.Tag as PackageFile).ToList();
 
             RootPath = launcher.GetCurrentMod().installPath + "\\custom\\assets-copier-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "\\";
 
