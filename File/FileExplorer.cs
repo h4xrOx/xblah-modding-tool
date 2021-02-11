@@ -33,6 +33,7 @@ namespace source_modding_tool.Modding
         List<PackageDirectory> directories;
 
         Launcher launcher;
+        private Mode mode = Mode.BROWSE;
 
         public PackageFile[] Selection { get; internal set; }
 
@@ -51,6 +52,7 @@ namespace source_modding_tool.Modding
 
         public FileExplorer(Launcher launcher, Mode mode) : this(launcher)
         {
+            this.mode = mode;
             switch(mode)
             {
                 case Mode.OPEN:
@@ -265,11 +267,10 @@ namespace source_modding_tool.Modding
 
                     UpdateFileTree(tag);
                 }
-                else if (hi.Node.Tag is PackageFile)
+                else if (hi.Node.Tag is PackageFile && mode == Mode.BROWSE)
                 {
                     // It's a file;
                     OpenFile(hi.Node.Tag as PackageFile);
-                    //FileAction(Action.OPEN);
                 } else
                 {
                     // Unknown listing type.
