@@ -163,6 +163,20 @@ namespace source_modding_tool.Modding
 
             files = files.OrderBy(f => f.Filename).ToList();
 
+            if (Filter != string.Empty)
+            {
+                List<string> types = Filter.Replace("*", "").Split('|').ToList();
+
+                for (int i = 0; i < types.Count; i++)
+                    types.RemoveAt(i);
+
+                for (int i = 0; i < types.Count; i++)
+                    if (types[i].Contains("."))
+                        types[i] = types[i].Substring(types[i].IndexOf(".") + 1);
+
+                files = files.Where(f => types.Contains(f.Extension)).ToList();
+            }
+
             fileTree.BeginUnboundLoad();
             fileTree.Nodes.Clear();
 

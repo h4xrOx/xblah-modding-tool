@@ -68,8 +68,9 @@ namespace source_modding_tool
                 FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
                 {
                     packageManager = packageManager,
-                    RootDirectory = "materials"
-                };
+                    RootDirectory = "materials",
+                    Filter = "VMT Files (*.vmt)|*.vmt"
+            };
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     if (fileExplorer.Selection != null)
