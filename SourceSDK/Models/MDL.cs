@@ -80,7 +80,8 @@ namespace SourceSDK.Models
                 // Search for files with the same name as the model, but with different extensions
                 foreach(PackageFile file in directory.Entries)
                 {
-                    if (file.Filename == modelName)
+
+                    if (file.Filename == modelName || file.Filename == modelName + ".dx80" || file.Filename == modelName + ".dx90" || file.Filename == modelName + ".sw")
                     {
                         assets.Add(file.Path + "/" + file.Filename + "." + file.Extension);
                     }
