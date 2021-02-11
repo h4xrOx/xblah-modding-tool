@@ -256,6 +256,8 @@ namespace source_modding_tool
                 textures["envmapmask"].relativePath = "";
                 pictureEnvMapMask.Image = textures["envmapmask"].bitmap;
             }
+
+            UpdatePreview();
         }
 
         private void LoadTexture(PictureEdit pictureEdit)

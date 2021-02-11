@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions customHeaderButtonImageOptions1 = new DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MaterialEditor));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.openVMTFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -243,6 +245,10 @@
             // dockPanel1
             // 
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            customHeaderButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("customHeaderButtonImageOptions1.SvgImage")));
+            customHeaderButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.dockPanel1.CustomHeaderButtons.AddRange(new DevExpress.XtraBars.Docking2010.IButton[] {
+            new DevExpress.XtraBars.Docking.CustomHeaderButton("Refresh", false, customHeaderButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, serializableAppearanceObject1, "refresh", -1)});
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanel1.ID = new System.Guid("67027259-8967-426a-9466-ee71a6c608fd");
             this.dockPanel1.Location = new System.Drawing.Point(0, 0);
@@ -251,13 +257,14 @@
             this.dockPanel1.OriginalSize = new System.Drawing.Size(391, 419);
             this.dockPanel1.Size = new System.Drawing.Size(391, 438);
             this.dockPanel1.Text = "Preview";
+            this.dockPanel1.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.dockPanel1_CustomButtonClick);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.panelControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 30);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 36);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(384, 404);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(384, 398);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // panelControl1

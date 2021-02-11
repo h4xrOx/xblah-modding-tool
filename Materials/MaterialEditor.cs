@@ -25,7 +25,7 @@ namespace source_modding_tool
 
         private MaterialEditorTab activeTab = null;
 
-        public MaterialEditor(string relativePath, Launcher launcher)
+        public MaterialEditor(Launcher launcher)
         {
             this.launcher = launcher;
             modPath = launcher.GetCurrentMod().installPath;
@@ -35,6 +35,11 @@ namespace source_modding_tool
             InitializeComponent();
 
             activeTab = null;
+        }
+
+        public MaterialEditor(Launcher launcher, PackageFile file) : this(launcher)
+        {
+            LoadMaterial(file);
         }
 
         #region MainMenu
@@ -69,26 +74,14 @@ namespace source_modding_tool
                 {
                     packageManager = packageManager,
                     RootDirectory = "materials",
-                    Filter = "VMT Files (*.vmt)|*.vmt"
-            };
+                    Filter = "Valve Material Type Files (*.vmt)|*.vmt"
+                };
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     if (fileExplorer.Selection != null)
                         foreach(PackageFile file in fileExplorer.Selection)
                         {
-                            MaterialEditorTab materialEditorTab = new MaterialEditorTab(launcher ,packageManager);
-
-                            XtraTabPage tab = new XtraTabPage();
-
-                            tab.Text = file.Filename;
-                            tab.Controls.Add(materialEditorTab);
-                            materialEditorTab.Dock = DockStyle.Fill;
-                            tab.Tag = materialEditorTab;
-
-                            materialEditorTab.LoadMaterial(file);
-
-                            tabControl.TabPages.Add(tab);
-                            tabControl.SelectedTabPage = tab;
+                            LoadMaterial(file);
                         }
                 }
             }
@@ -129,6 +122,23 @@ namespace source_modding_tool
             {
                 Close();
             }
+        }
+
+        private void LoadMaterial(PackageFile file)
+        {
+            MaterialEditorTab materialEditorTab = new MaterialEditorTab(launcher, packageManager);
+
+            XtraTabPage tab = new XtraTabPage();
+
+            tab.Text = file.Filename;
+            tab.Controls.Add(materialEditorTab);
+            materialEditorTab.Dock = DockStyle.Fill;
+            tab.Tag = materialEditorTab;
+
+            materialEditorTab.LoadMaterial(file);
+
+            tabControl.TabPages.Add(tab);
+            tabControl.SelectedTabPage = tab;
         }
 
         private void MaterialEditorTab_OnUpdated(object sender, EventArgs e)
@@ -241,6 +251,14 @@ namespace source_modding_tool
             }
             else
                 activeTab = null;
+        }
+
+        private void dockPanel1_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        {
+            if (e.Button.Properties.Tag.ToString() == "refresh")
+            {
+                MaterialEditorTab_OnUpdated(null, new EventArgs());
+            }
         }
     }
 }

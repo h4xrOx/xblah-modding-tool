@@ -208,7 +208,7 @@ namespace source_modding_tool
             // Material editor
             if (e.Item == menuMaterialsEditor)
             {
-                MaterialEditor form = new MaterialEditor(string.Empty, launcher);
+                MaterialEditor form = new MaterialEditor(launcher);
                 form.ShowDialog();
             }
             else if(e.Item == menuMaterialsSkyboxEditor)
