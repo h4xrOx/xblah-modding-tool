@@ -177,7 +177,7 @@ namespace source_modding_tool.Modding
                 node.StateImageIndex = 0;
             }
 
-            foreach (PackageFile file in files.GroupBy(f => f.Filename).Select(g => g.First()))
+            foreach (PackageFile file in files.GroupBy(f => new { f.Filename, f.Extension }).Select(g => g.First()))
             {
                 TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
                 node.Tag = file;

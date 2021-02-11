@@ -51,7 +51,6 @@ namespace SourceSDK.Packages.VPKPackage
             }
 
             Directories.AddRange(_reader.ReadDirectories(this, rootPath).Where(i => i.Entries.Count > 0));
-
         }
 
         private void LoadParts(string filename)
