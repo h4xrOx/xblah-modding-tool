@@ -3,6 +3,7 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using SourceSDK;
 using SourceSDK.Packages;
+using SourceSDK.Packages.UnpackedPackage;
 using SourceSDK.Packages.VPKPackage;
 using System;
 using System.Collections.Generic;
@@ -205,6 +206,15 @@ namespace source_modding_tool.Modding
                     case "vtf":
                         node.StateImageIndex = 7;
                         break;
+                    case "vmf":
+                        node.StateImageIndex = 6;
+                        break;
+                    case "vmx":
+                        node.StateImageIndex = 6;
+                        break;
+                    case "bsp":
+                        node.StateImageIndex = 2;
+                        break;
                     default:
                         node.StateImageIndex = 1;
                         break;
@@ -286,10 +296,16 @@ namespace source_modding_tool.Modding
                 MaterialEditor materialEditor = new MaterialEditor(launcher, packageFile);
                 materialEditor.ShowDialog();
             }
-            else if(packageFile.Extension == "vmf")
+            else if(packageFile.Extension == "vmf" || packageFile.Extension == "vmx")
             {
                 // It's a map file.
                 Hammer.RunHammer(launcher, null, null, packageFile);
+            }
+            else if(new string[] { "txt", "gi" }.Contains(packageFile.Extension))
+            {
+                // TODO temp method. This will only work for unpacked files.
+                if (packageFile is UnpackedFile)
+                    Process.Start("NOTEPAD", packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension);
             }
         }
 
