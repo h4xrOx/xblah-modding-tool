@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SourceSDK.Packages;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -26,6 +27,11 @@ namespace SourceSDK
 
         public static void RunHammer(Launcher launcher, Instance instance, Control parent)
         {
+            RunHammer(launcher, instance, parent, null);
+        }
+
+        public static void RunHammer(Launcher launcher, Instance instance, Control parent, PackageFile packageFile)
+        {
             Mod mod = launcher.GetCurrentMod();
             switch (mod.game.engine)
             {
@@ -46,7 +52,12 @@ namespace SourceSDK
 
                         // Mapbase specfic hammer launch.
                         if (mod.game.name == "Mapbase")
-                            process.StartInfo.Arguments = "-game " + mod.installPath;
+                            process.StartInfo.Arguments += "-game " + mod.installPath;
+
+                        if (packageFile != null)
+                        {
+                            process.StartInfo.Arguments += " \"" + packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension + "\"" + " ";
+                        }
 
                         process.Start();
                     }

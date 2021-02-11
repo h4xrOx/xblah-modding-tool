@@ -286,6 +286,11 @@ namespace source_modding_tool.Modding
                 MaterialEditor materialEditor = new MaterialEditor(launcher, packageFile);
                 materialEditor.ShowDialog();
             }
+            else if(packageFile.Extension == "vmf")
+            {
+                // It's a map file.
+                Hammer.RunHammer(launcher, null, null, packageFile);
+            }
         }
 
         private void directoryTree_Click(object sender, EventArgs e)
