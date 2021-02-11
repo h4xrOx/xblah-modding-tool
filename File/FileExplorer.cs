@@ -207,7 +207,14 @@ namespace source_modding_tool.Modding
                         node.StateImageIndex = 7;
                         break;
                     case "vmf":
-                        node.StateImageIndex = 6;
+                        if (file.Path.StartsWith("modelsrc"))
+                        {
+                            node.StateImageIndex = 3;
+                        } else
+                        {
+                            node.StateImageIndex = 6;
+                        }
+                            
                         break;
                     case "vmx":
                         node.StateImageIndex = 6;
@@ -298,8 +305,16 @@ namespace source_modding_tool.Modding
             }
             else if(packageFile.Extension == "vmf" || packageFile.Extension == "vmx")
             {
-                // It's a map file.
-                Hammer.RunHammer(launcher, null, null, packageFile);
+                if (packageFile.Path.StartsWith("modelsrc"))
+                {
+                    // It's a map file.
+                    Hammer.RunPropperHammer(launcher.GetCurrentMod(), packageFile);
+                } else
+                {
+                    // It's a map file.
+                    Hammer.RunHammer(launcher, null, null, packageFile);
+                }
+
             }
             else if(new string[] { "txt", "gi" }.Contains(packageFile.Extension))
             {

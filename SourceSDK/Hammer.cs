@@ -14,6 +14,10 @@ namespace SourceSDK
     {
         public static void RunPropperHammer(Mod mod)
         {
+            RunPropperHammer(mod, null);
+        }
+        public static void RunPropperHammer(Mod mod, PackageFile packageFile)
+        {
             CopySlartibartysHammer(mod.game);
             CreatePropperConfig(mod);
 
@@ -22,6 +26,15 @@ namespace SourceSDK
             Process process = new Process();
             process.StartInfo.FileName = hammerPath;
             process.StartInfo.Arguments = string.Empty;
+
+            // Mapbase specfic hammer launch.
+            if (mod.game.name == "Mapbase")
+                process.StartInfo.Arguments += "-game " + mod.installPath;
+
+            // Open file in hammer.
+            if (packageFile != null)
+                process.StartInfo.Arguments += " \"" + packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension + "\"" + " ";
+
             process.Start();
         }
 
@@ -54,10 +67,9 @@ namespace SourceSDK
                         if (mod.game.name == "Mapbase")
                             process.StartInfo.Arguments += "-game " + mod.installPath;
 
+                        // Open file in hammer.
                         if (packageFile != null)
-                        {
                             process.StartInfo.Arguments += " \"" + packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension + "\"" + " ";
-                        }
 
                         process.Start();
                     }
