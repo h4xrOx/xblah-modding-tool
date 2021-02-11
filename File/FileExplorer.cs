@@ -195,7 +195,19 @@ namespace source_modding_tool.Modding
             {
                 TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
                 node.Tag = file;
-                node.StateImageIndex = 1;
+                switch(file.Extension)
+                {
+                    case "vmt":
+                        node.StateImageIndex = 5;
+                        break;
+                    case "vtf":
+                        node.StateImageIndex = 7;
+                        break;
+                    default:
+                        node.StateImageIndex = 1;
+                        break;
+                }
+                
             }
 
             fileTree.EndUnboundLoad();
@@ -238,6 +250,7 @@ namespace source_modding_tool.Modding
         {
             TreeList tree = sender as TreeList;
             TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
+
             if (hi.Node != null)
             {
                 if (hi.Node.Tag is string)
@@ -252,11 +265,25 @@ namespace source_modding_tool.Modding
 
                     UpdateFileTree(tag);
                 }
-                else
+                else if (hi.Node.Tag is PackageFile)
                 {
-                    // It's a file
+                    // It's a file;
+                    OpenFile(hi.Node.Tag as PackageFile);
                     //FileAction(Action.OPEN);
+                } else
+                {
+                    // Unknown listing type.
                 }
+            }
+        }
+
+        private void OpenFile(PackageFile packageFile)
+        {
+            if (packageFile.Extension == "vmt")
+            {
+                // It's a material file.
+                MaterialEditor materialEditor = new MaterialEditor(launcher, packageFile);
+                materialEditor.ShowDialog();
             }
         }
 

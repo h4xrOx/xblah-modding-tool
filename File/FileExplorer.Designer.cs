@@ -104,8 +104,14 @@ namespace source_modding_tool.Modding
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.InsertGalleryImage("open_16x16.png", "office2013/actions/open_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/actions/open_16x16.png"), 0);
             this.imageCollection1.Images.SetKeyName(0, "open_16x16.png");
-            this.imageCollection1.InsertGalleryImage("new_16x16.png", "office2013/actions/new_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/actions/new_16x16.png"), 1);
-            this.imageCollection1.Images.SetKeyName(1, "new_16x16.png");
+            this.imageCollection1.Images.SetKeyName(1, "file.png");
+            this.imageCollection1.Images.SetKeyName(2, "bsp_file.png");
+            this.imageCollection1.Images.SetKeyName(3, "mdl_file.png");
+            this.imageCollection1.Images.SetKeyName(4, "mp3_file.png");
+            this.imageCollection1.Images.SetKeyName(5, "vdf_file.png");
+            this.imageCollection1.Images.SetKeyName(6, "vmf_file.png");
+            this.imageCollection1.Images.SetKeyName(7, "vtf_file.png");
+            this.imageCollection1.Images.SetKeyName(8, "wav_file.png");
             // 
             // fileTree
             // 
