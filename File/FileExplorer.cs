@@ -150,6 +150,9 @@ namespace source_modding_tool.Modding
         {
             CurrentDirectory = directoryPath;
             textDirectory.EditValue = CurrentDirectory;
+            buttonUp.Enabled = (CurrentDirectory != string.Empty);
+            buttonBack.Enabled = (previousDirectories.Count > 0);
+            buttonForward.Enabled = (nextDirectories.Count > 0);
 
             textSearch.EditValue = "";
 
@@ -187,6 +190,9 @@ namespace source_modding_tool.Modding
         private void SearchFileTree(string searchString)
         {
             textDirectory.EditValue = "Searching in " + CurrentDirectory;
+            buttonUp.Enabled = (CurrentDirectory != string.Empty);
+            buttonBack.Enabled = (previousDirectories.Count > 0);
+            buttonForward.Enabled = (nextDirectories.Count > 0);
 
             searchString = searchString.ToLower();
 
@@ -287,6 +293,35 @@ namespace source_modding_tool.Modding
             okButton.Enabled = (Selection.Length > 0);
 
             fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
+        }
+
+        private void navigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (e.Item == buttonBack && previousDirectories.Count > 0)
+            {
+                nextDirectories.Push(CurrentDirectory);
+                UpdateFileTree(previousDirectories.Pop());
+            }
+            if (e.Item == buttonForward && nextDirectories.Count > 0)
+            {
+                previousDirectories.Push(CurrentDirectory);
+                UpdateFileTree(nextDirectories.Pop());
+            }
+            if (e.Item == buttonUp && CurrentDirectory != string.Empty)
+            {
+                previousDirectories.Push(CurrentDirectory);
+                nextDirectories.Clear();
+
+                if (CurrentDirectory.Contains("/"))
+                    CurrentDirectory = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("/"));
+
+                if (CurrentDirectory.Contains("/"))
+                    CurrentDirectory = CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("/") + 1);
+                else
+                    CurrentDirectory = string.Empty;
+
+                UpdateFileTree(CurrentDirectory);
+            }
         }
     }
 }

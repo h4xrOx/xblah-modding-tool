@@ -206,6 +206,7 @@ namespace source_modding_tool.Modding
             this.buttonBack.Id = 1;
             this.buttonBack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonBack.ImageOptions.SvgImage")));
             this.buttonBack.Name = "buttonBack";
+            this.buttonBack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.navigation_ItemClick);
             // 
             // buttonForward
             // 
@@ -213,6 +214,7 @@ namespace source_modding_tool.Modding
             this.buttonForward.Id = 2;
             this.buttonForward.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonForward.ImageOptions.SvgImage")));
             this.buttonForward.Name = "buttonForward";
+            this.buttonForward.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.navigation_ItemClick);
             // 
             // buttonUp
             // 
@@ -220,6 +222,7 @@ namespace source_modding_tool.Modding
             this.buttonUp.Id = 3;
             this.buttonUp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonUp.ImageOptions.SvgImage")));
             this.buttonUp.Name = "buttonUp";
+            this.buttonUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.navigation_ItemClick);
             // 
             // textDirectory
             // 
