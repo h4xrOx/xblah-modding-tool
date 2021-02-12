@@ -901,6 +901,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vrad_patch_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\SlartibartysHammer\sp\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\SlartibartysHammer\sp\vrad_patch_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Assets\Misc\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1225,12 +1237,6 @@
     <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vrad.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vrad_dll.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\Tools\SlartibartysHammer\mapbase\vvis.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1274,12 +1280,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\SlartibartysHammer\sp\vvis.exe">
