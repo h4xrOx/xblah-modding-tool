@@ -901,16 +901,112 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vrad.exe">
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vrad_patch_dll.dll">
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\bass.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Tools\SlartibartysHammer\sp\vrad.exe">
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\discord-rpc.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Tools\SlartibartysHammer\sp\vrad_patch_dll.dll">
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vrad_patch_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vrad_patch_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Assets\Misc\background.png">
@@ -1225,25 +1321,52 @@
     <Content Include="Resources\Tools\HLnonVR\hlnonvr.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\hammerplusplus_fgd.fgd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\hammerplusplus_sequences_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer_run_map_launcher.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blue.vtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vbsp.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blur_x.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vvis.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\vvis.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vvis_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\vvis_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\Tools\SlartibartysHammer\sp\vbsp.exe">
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Tools\IngamePreviews\maps\hud_preview.bsp">
@@ -1273,19 +1396,46 @@
     <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.vvd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\hammerplusplus_fgd.fgd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\hammerplusplus_sequences_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blue.vtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blur_x.vmt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\vvis.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\vvis_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\Propper\propper.exe">

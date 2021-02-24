@@ -18,13 +18,14 @@ namespace SourceSDK
         }
         public static void RunPropperHammer(Mod mod, PackageFile packageFile)
         {
-            CopySlartibartysHammer(mod.game);
+            CopyHammerPlusPlus(mod.game);
             CreatePropperConfig(mod);
 
-            string hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
+            string hammerPath = mod.game.installPath + "\\bin\\hammerplusplus.exe";
 
             Process process = new Process();
             process.StartInfo.FileName = hammerPath;
+            process.StartInfo.WorkingDirectory = Path.GetDirectoryName(hammerPath);
             process.StartInfo.Arguments = string.Empty;
 
             // Mapbase specfic hammer launch.
@@ -54,13 +55,14 @@ namespace SourceSDK
                         string mapsDir = mod.installPath + "\\maps\\";
                         Directory.CreateDirectory(mapsDir);
 
-                        CopySlartibartysHammer(mod.game);
+                        CopyHammerPlusPlus(mod.game);
                         CreateGameConfig(mod);
 
-                        string hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
+                        string hammerPath = mod.game.installPath + "\\bin\\hammerplusplus.exe";
 
                         Process process = new Process();
                         process.StartInfo.FileName = hammerPath;
+                        process.StartInfo.WorkingDirectory = Path.GetDirectoryName(hammerPath);
                         process.StartInfo.Arguments = string.Empty;
 
                         // Mapbase specfic hammer launch.
@@ -145,6 +147,8 @@ namespace SourceSDK
             sb.AppendLine("}");
 
             File.WriteAllText(game.installPath + "\\bin\\GameConfig.txt", sb.ToString());
+            Directory.CreateDirectory(game.installPath + "\\bin\\hammerplusplus\\");
+            File.WriteAllText(game.installPath + "\\bin\\hammerplusplus\\hammerplusplus_gameconfig.txt", sb.ToString());
         }
 
         private static void CreateGameConfig(Mod mod)
@@ -163,6 +167,9 @@ namespace SourceSDK
                 File.Delete(game.installPath + "\\bin\\propper.exe");
 
             List<string> fgds = mod.GetFGDs();
+
+            // Hammer plus plus
+            fgds.Add(game.installPath + "\\bin\\hammerplusplus\\hammerplusplus_fgd.fgd");
 
             StringBuilder sb = new StringBuilder();
 
@@ -200,24 +207,32 @@ namespace SourceSDK
             sb.AppendLine("}");
 
             File.WriteAllText(game.installPath + "\\bin\\GameConfig.txt", sb.ToString());
+            Directory.CreateDirectory(game.installPath + "\\bin\\hammerplusplus\\");
+            File.WriteAllText(game.installPath + "\\bin\\hammerplusplus\\hammerplusplus_gameconfig.txt", sb.ToString());
         }
 
-        private static void CopySlartibartysHammer(Game game)
+        private static void CopyHammerPlusPlus(Game game)
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            string hammerPath = startupPath + "\\Tools\\SlartibartysHammer\\sp\\";
+            string hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\sp\\";
             // Mapbase specfic hammer launch.
             if (game.name == "Mapbase")
-                hammerPath = startupPath + "\\Tools\\SlartibartysHammer\\mapbase\\";
+                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mapbase\\";
 
             if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
             {
-                foreach (string file in Directory.GetFiles(hammerPath))
+                foreach (string file in Directory.GetFiles(hammerPath, "*.*", SearchOption.AllDirectories))
                 {
                     try
                     {
-                        File.Copy(file, game.installPath + "\\bin\\" + new FileInfo(file).Name, true);
+                        Uri path1 = new Uri(hammerPath);
+                        Uri path2 = new Uri(file);
+                        Uri diff = path1.MakeRelativeUri(path2);
+                        string relPath = diff.OriginalString;
+
+                        Directory.CreateDirectory(Path.GetDirectoryName(game.installPath + "\\bin\\" + relPath));
+                        File.Copy(file, game.installPath + "\\bin\\" + relPath, true);
                     }
                     catch (IOException e)
                     {
