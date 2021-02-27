@@ -62,6 +62,7 @@ namespace source_modding_tool.Modding
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.fileNameEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.previewButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.directoryTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileTree)).BeginInit();
@@ -330,6 +331,7 @@ namespace source_modding_tool.Modding
             // 
             // openFileDialogPanel
             // 
+            this.openFileDialogPanel.Controls.Add(this.previewButton);
             this.openFileDialogPanel.Controls.Add(this.okButton);
             this.openFileDialogPanel.Controls.Add(this.cancelButton);
             this.openFileDialogPanel.Controls.Add(this.panelControl2);
@@ -398,6 +400,17 @@ namespace source_modding_tool.Modding
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "File name:";
             // 
+            // previewButton
+            // 
+            this.previewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewButton.Enabled = false;
+            this.previewButton.Location = new System.Drawing.Point(505, 38);
+            this.previewButton.Name = "previewButton";
+            this.previewButton.Size = new System.Drawing.Size(75, 23);
+            this.previewButton.TabIndex = 4;
+            this.previewButton.Text = "Preview";
+            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
+            // 
             // FileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,5 +478,6 @@ namespace source_modding_tool.Modding
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton okButton;
         private DevExpress.XtraEditors.SimpleButton cancelButton;
+        private DevExpress.XtraEditors.SimpleButton previewButton;
     }
 }

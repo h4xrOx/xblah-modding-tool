@@ -222,6 +222,9 @@ namespace source_modding_tool.Modding
                     case "bsp":
                         node.StateImageIndex = 2;
                         break;
+                    case "wav":
+                        node.StateImageIndex = 8;
+                        break;
                     default:
                         node.StateImageIndex = 1;
                         break;
@@ -322,6 +325,14 @@ namespace source_modding_tool.Modding
                 if (packageFile is UnpackedFile)
                     Process.Start("NOTEPAD", packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension);
             }
+            else if(packageFile.Extension == "wav")
+            {
+                using (Stream s = new MemoryStream(packageFile.Data))
+                {
+                    System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer(s);
+                    myPlayer.Play();
+                }
+            }
         }
 
         private void directoryTree_Click(object sender, EventArgs e)
@@ -370,6 +381,14 @@ namespace source_modding_tool.Modding
             Selection = result.ToArray();
             okButton.Enabled = (Selection.Length > 0);
 
+            if (result.Count == 1 && result[0].Extension == "wav")
+            {
+                previewButton.Enabled = true;
+            } else
+            {
+                previewButton.Enabled = false;
+            }
+
             fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
         }
 
@@ -399,6 +418,20 @@ namespace source_modding_tool.Modding
                     CurrentDirectory = string.Empty;
 
                 UpdateFileTree(CurrentDirectory);
+            }
+        }
+
+        private void previewButton_Click(object sender, EventArgs e)
+        {
+            PackageFile file = Selection[0];
+
+            if (file.Extension == "wav")
+            {
+                using (Stream s = new MemoryStream(file.Data))
+                {
+                    System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer(s);
+                    myPlayer.Play();
+                }
             }
         }
     }
