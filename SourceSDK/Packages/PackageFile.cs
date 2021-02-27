@@ -14,6 +14,14 @@ namespace SourceSDK.Packages
         public PackageDirectory Directory { get; set; }
         public byte[] Data { get { return ReadData(); } }
 
+        public string FullPath
+        {
+            get
+            {
+                return Path + "/" + Filename + "." + Extension;
+            }
+        }
+
         protected abstract byte[] ReadData();
 
         public abstract void CopyTo(string destinationPath);
