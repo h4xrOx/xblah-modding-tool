@@ -1,8 +1,9 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using Microsoft.Win32;
 using source_modding_tool.Materials;
 using source_modding_tool.Modding;
- 
+using source_modding_tool.Sound;
 using source_modding_tool.Tools;
 using SourceSDK;
 using SourceSDK.Packages;
@@ -200,6 +201,11 @@ namespace source_modding_tool
             else if (e.Item == menuLevelDesignBatchCompiler)
             {
                 Process.Start("Tools\\BatchCompiler\\Batch Compiler.exe");
+            }
+
+            else if(e.Item == menuLevelDesignResetHammerConfigsButton)
+            {
+                Registry.CurrentUser.DeleteSubKeyTree("SOFTWARE\\Valve\\Hammer", false);
             }
         }
 
@@ -792,6 +798,15 @@ namespace source_modding_tool
                 ModForm_ResizeEnd(sender, e);
             }
             PreviousWindowState = WindowState;
+        }
+
+        private void menuSound_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.Item == menuSoundSoundscapeEditor)
+            {
+                SoundscapeEditor editor = new SoundscapeEditor(launcher);
+                editor.ShowDialog();
+            }
         }
     }
 }

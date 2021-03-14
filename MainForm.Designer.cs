@@ -84,10 +84,13 @@
             this.menuModelingCrowbar = new DevExpress.XtraBars.BarButtonItem();
             this.menuMaterials = new DevExpress.XtraBars.BarSubItem();
             this.menuMaterialsEditor = new DevExpress.XtraBars.BarButtonItem();
+            this.menuMaterialsSkyboxEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuParticles = new DevExpress.XtraBars.BarSubItem();
             this.menuParticlesManifestGenerator = new DevExpress.XtraBars.BarButtonItem();
             this.menuChoreography = new DevExpress.XtraBars.BarSubItem();
             this.menuChoreographyFaceposer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuSound = new DevExpress.XtraBars.BarSubItem();
+            this.menuSoundSoundscapeEditor = new DevExpress.XtraBars.BarButtonItem();
             this.status = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -104,7 +107,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuMaterialsSkyboxEditor = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignResetHammerConfigsButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -184,9 +187,12 @@
             this.menuModdingSettingsStartingMaps,
             this.menuModdingHudEditor,
             this.menuModdingFileExplorer,
-            this.menuMaterialsSkyboxEditor});
+            this.menuMaterialsSkyboxEditor,
+            this.menuSound,
+            this.menuSoundSoundscapeEditor,
+            this.menuLevelDesignResetHammerConfigsButton});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 96;
+            this.barManager.MaxItemId = 99;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -324,7 +330,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModeling),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterials),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuParticles),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuChoreography)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuChoreography),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuSound)});
             this.menu.OptionsBar.AllowQuickCustomization = false;
             this.menu.OptionsBar.DrawDragBorder = false;
             this.menu.OptionsBar.MultiLine = true;
@@ -555,6 +562,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignFogPreviewer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignResetHammerConfigsButton, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler)});
@@ -677,6 +685,13 @@
             this.menuMaterialsEditor.Name = "menuMaterialsEditor";
             this.menuMaterialsEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
             // 
+            // menuMaterialsSkyboxEditor
+            // 
+            this.menuMaterialsSkyboxEditor.Caption = "Skybox Editor";
+            this.menuMaterialsSkyboxEditor.Id = 95;
+            this.menuMaterialsSkyboxEditor.Name = "menuMaterialsSkyboxEditor";
+            this.menuMaterialsSkyboxEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
             // menuParticles
             // 
             this.menuParticles.Caption = "Particles";
@@ -708,6 +723,21 @@
             this.menuChoreographyFaceposer.Id = 41;
             this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
             this.menuChoreographyFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuChoreography_ItemClick);
+            // 
+            // menuSound
+            // 
+            this.menuSound.Caption = "Sound";
+            this.menuSound.Id = 96;
+            this.menuSound.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuSoundSoundscapeEditor)});
+            this.menuSound.Name = "menuSound";
+            // 
+            // menuSoundSoundscapeEditor
+            // 
+            this.menuSoundSoundscapeEditor.Caption = "Soundscape Editor";
+            this.menuSoundSoundscapeEditor.Id = 97;
+            this.menuSoundSoundscapeEditor.Name = "menuSoundSoundscapeEditor";
+            this.menuSoundSoundscapeEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuSound_ItemClick);
             // 
             // status
             // 
@@ -825,12 +855,12 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
-            // menuMaterialsSkyboxEditor
+            // menuLevelDesignResetHammerConfigsButton
             // 
-            this.menuMaterialsSkyboxEditor.Caption = "Skybox Editor";
-            this.menuMaterialsSkyboxEditor.Id = 95;
-            this.menuMaterialsSkyboxEditor.Name = "menuMaterialsSkyboxEditor";
-            this.menuMaterialsSkyboxEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            this.menuLevelDesignResetHammerConfigsButton.Caption = "Reset Hammer Configs";
+            this.menuLevelDesignResetHammerConfigsButton.Id = 98;
+            this.menuLevelDesignResetHammerConfigsButton.Name = "menuLevelDesignResetHammerConfigsButton";
+            this.menuLevelDesignResetHammerConfigsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // MainForm
             // 
@@ -936,5 +966,8 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingHudEditor;
         private DevExpress.XtraBars.BarButtonItem menuModdingFileExplorer;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsSkyboxEditor;
+        private DevExpress.XtraBars.BarSubItem menuSound;
+        private DevExpress.XtraBars.BarButtonItem menuSoundSoundscapeEditor;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignResetHammerConfigsButton;
     }
 }
