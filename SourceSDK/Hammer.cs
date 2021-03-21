@@ -59,6 +59,8 @@ namespace SourceSDK
                         CreateGameConfig(mod);
 
                         string hammerPath = mod.game.installPath + "\\bin\\hammerplusplus.exe";
+                        if (!File.Exists(hammerPath))
+                            hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
 
                         Process process = new Process();
                         process.StartInfo.FileName = hammerPath;
@@ -215,13 +217,28 @@ namespace SourceSDK
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            string hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\sp\\";
-            // Mapbase specfic hammer launch.
-            if (game.name == "Mapbase")
-                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mapbase\\";
+            string hammerPath = "";
 
-            if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase")
+            if (game.name == "Source SDK Base 2013 Singleplayer" || game.name == "Mapbase" || game.name == "Half-Life 2" || game.name == "Portal")
             {
+                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\sp\\";
+                // Mapbase specfic hammer launch.
+                if (game.name == "Mapbase")
+                    hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mapbase\\";
+
+                
+            } else if(game.name == "Source SDK Base 2013 Multiplayer" || game.name == "Half-Life 2 Deathmatch" )
+            {
+                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mp\\";
+            } else if(game.name == "Team Fortress 2")
+            {
+                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\tf2\\";
+            } else if(game.name == "Counter-Strike Source")
+            {
+                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\css\\";
+            }
+
+            if (hammerPath != "")
                 foreach (string file in Directory.GetFiles(hammerPath, "*.*", SearchOption.AllDirectories))
                 {
                     try
@@ -239,7 +256,6 @@ namespace SourceSDK
 
                     }
                 }
-            }
         }
     }
 }

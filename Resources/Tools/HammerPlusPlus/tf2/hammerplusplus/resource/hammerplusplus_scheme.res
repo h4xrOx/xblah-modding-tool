@@ -28,32 +28,32 @@ Scheme
 		"AchievementsDarkGrey"		"55 55 55 255"
 		"AchievementsInactiveFG"	"130 130 130 255"
 		
-	    "GameDarkBrown"               "55 55 55 255"
-	    "GameDarkBrownTransparent"    "55 55 55 190"
-	    "GameTanBright"               "227 227 227 150"
-	    "GameTanLight"                "188 188 188 150"
-	    "GameTanMedium"               "121 121 121 150"
+	    "GameDarkBrown"               "60 56 53 255"
+	    "GameDarkBrownTransparent"    "60 56 53 190"
+	    "GameTanBright"               "236 227 203 150"
+	    "GameTanLight"                "201 188 162 150"
+	    "GameTanMedium"               "131 121 104 150"
 	    
-	    "GameTanLightDark"            "80 80 80 90"
+	    "GameTanLightDark"            "96 90 78 90"
 	    
 	    "GameOrangeBright"            "156 82 33 255"
 	    
-	    "GameTextBright"              "236 236 236 150"
-	    "GameTextLight"               "188 188 188 255"
-	    "GameTextMedium"              "121 121 121 255"
-	    "GameTextMediumDark"          "96 96 96 255"
-	    "GameTextDull"                "131 131 131 255"
+	    "GameTextBright"              "251 236 203 150"
+	    "GameTextLight"               "201 188 162 255"
+	    "GameTextMedium"              "131 121 104 255"
+	    "GameTextMediumDark"          "104 96 83 255"
+	    "GameTextDull"                "131 121 104 255"
 
-	    "QuickListBGDeselected"		"69 69 69 255" // funny
-	    "QuickListBGSelected"               "131 131 131 150"
+	    "QuickListBGDeselected"		"69 64 58 255"
+	    "QuickListBGSelected"               "131 121 104 150"
 	    
 	    // background colors
-		"ControlBG"			"76 76 76 255"		// background color of controls
-		"ControlDarkBG"		"90 90 90 255"		// darker background color; used for background of scrollbars
-		"WindowBG"			"62 62 62 255"		// background color of text edit panes (chat, text entries, etc.)
-		"SelectionBG"		"80 80 80 255"	// background color of any selected text or menu item
-		"SelectionBG2"		"64 64 64 255"		// selection background in window w/o focus
-		"ListBG"			"36 36 36 255"		// background of server browser, buddy list, etc.
+		"ControlBG"			"76 88 68 255"		// background color of controls
+		"ControlDarkBG"		"90 106 80 255"		// darker background color; used for background of scrollbars
+		"WindowBG"			"62 70 55 255"		// background color of text edit panes (chat, text entries, etc.)
+		"SelectionBG"		"90 84 75 255"	// background color of any selected text or menu item
+		"SelectionBG2"		"69 64 57 255"		// selection background in window w/o focus
+		"ListBG"			"39 36 34 255"		// background of server browser, buddy list, etc.
 	}
 	///////////////////// BASE SETTINGS ////////////////////////
 	//
@@ -463,6 +463,7 @@ Scheme
 				"symbol"	"1"
 			}
 		}
+
 
 		"Trebuchet24"
 		{
