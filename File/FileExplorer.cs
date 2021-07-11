@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
+using source_modding_tool.Sound;
 using SourceSDK;
 using SourceSDK.Packages;
 using SourceSDK.Packages.UnpackedPackage;
@@ -209,36 +210,44 @@ namespace source_modding_tool.Modding
             {
                 TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
                 node.Tag = file;
-                switch(file.Extension)
+                if (file.Filename.StartsWith("soundscapes_") && file.Filename != "soundscapes_manifest" && file.Extension == ".txt")
                 {
-                    case "vmt":
-                        node.StateImageIndex = 5;
-                        break;
-                    case "vtf":
-                        node.StateImageIndex = 7;
-                        break;
-                    case "vmf":
-                        if (file.Path.StartsWith("modelsrc"))
-                        {
-                            node.StateImageIndex = 3;
-                        } else
-                        {
+                    node.StateImageIndex = 8;
+                }
+                else
+                {
+                    switch (file.Extension)
+                    {
+                        case "vmt":
+                            node.StateImageIndex = 5;
+                            break;
+                        case "vtf":
+                            node.StateImageIndex = 7;
+                            break;
+                        case "vmf":
+                            if (file.Path.StartsWith("modelsrc"))
+                            {
+                                node.StateImageIndex = 3;
+                            }
+                            else
+                            {
+                                node.StateImageIndex = 6;
+                            }
+
+                            break;
+                        case "vmx":
                             node.StateImageIndex = 6;
-                        }
-                            
-                        break;
-                    case "vmx":
-                        node.StateImageIndex = 6;
-                        break;
-                    case "bsp":
-                        node.StateImageIndex = 2;
-                        break;
-                    case "wav":
-                        node.StateImageIndex = 8;
-                        break;
-                    default:
-                        node.StateImageIndex = 1;
-                        break;
+                            break;
+                        case "bsp":
+                            node.StateImageIndex = 2;
+                            break;
+                        case "wav":
+                            node.StateImageIndex = 8;
+                            break;
+                        default:
+                            node.StateImageIndex = 1;
+                            break;
+                    }
                 }
                 
             }
@@ -329,6 +338,12 @@ namespace source_modding_tool.Modding
                     Hammer.RunHammer(launcher, null, null, packageFile);
                 }
 
+            }
+            else if (packageFile.Filename.StartsWith("soundscapes_") && packageFile.Filename != "soundscapes_manifest" && packageFile.Extension == "txt")
+            {
+                // It's a soundscape.
+                SoundscapeEditor soundscapeEditor = new SoundscapeEditor(launcher, packageFile);
+                soundscapeEditor.ShowDialog();
             }
             else if(new string[] { "txt", "gi" }.Contains(packageFile.Extension))
             {
