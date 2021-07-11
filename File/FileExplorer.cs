@@ -131,7 +131,7 @@ namespace source_modding_tool.Modding
                     folders.Add(directoryPath, node);
                 }
 
-                else
+                else if(directoryPath != "")
                 {
                     string parentPath = Path.GetDirectoryName(directoryPath).Replace("\\", "/");
 
@@ -168,16 +168,27 @@ namespace source_modding_tool.Modding
 
             if (Filter != string.Empty)
             {
-                List<string> types = Filter.Replace("*", "").Split('|').ToList();
+                List<string> types = Filter.Split('|').ToList();
 
                 for (int i = 0; i < types.Count; i++)
                     types.RemoveAt(i);
 
-                for (int i = 0; i < types.Count; i++)
-                    if (types[i].Contains("."))
-                        types[i] = types[i].Substring(types[i].IndexOf(".") + 1);
+                List<PackageFile> filteredFiles = new List<PackageFile>();
+                foreach(PackageFile packageFile in files)
+                {
+                    foreach(string type in types)
+                    {
+                        string[] filters = type.Split('*');
 
-                files = files.Where(f => types.Contains(f.Extension)).ToList();
+                        string str = (packageFile.Filename + "." + packageFile.Extension);
+
+                        if ((packageFile.Filename + "." + packageFile.Extension).StartsWith(filters.First()) && (packageFile.Filename + "." + packageFile.Extension).EndsWith(filters.Last())) {
+                            filteredFiles.Add(packageFile);
+                            break;
+                        }
+                    }
+                }
+                files = filteredFiles;
             }
 
             fileTree.BeginUnboundLoad();
