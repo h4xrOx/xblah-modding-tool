@@ -109,6 +109,9 @@ namespace SourceSDK
             if (childrenIndex != null && childrenIndex.ContainsKey(key))
                 return childrenIndex[key][0];
 
+            if (childrenIndex == null)
+                return null;
+
             foreach (string indexKey in childrenIndex.Keys)
             {
                 if (indexKey.ToLower() == key.ToLower())

@@ -71,11 +71,21 @@ namespace SourceSDK
                     KeyValue root = KeyValue
                         .readChunkfile(steamPath + "\\steamapps\\libraryfolders.vdf");
 
-                    foreach (KeyValue child in root.getChildren())
+                    try
                     {
-                        string dir = child.getValue().Replace("\\\\", "\\");
-                        if (Directory.Exists(dir))
-                            steamLibs.Add(dir);
+                        foreach (KeyValue child in root.getChildren())
+                        {
+                            if (child.getValue("path") != null)
+                            {
+                                string dir = child.getValue("path").Replace("\\\\", "\\");
+                                if (Directory.Exists(dir))
+                                    steamLibs.Add(dir);
+                            }
+                            
+                        }
+                    } catch (Exception e)
+                    {
+                        MessageBox.Show("Could not read file \"" + steamPath + "\\steamapps\\libraryfolders.vdf\".");
                     }
                 }
                 else
