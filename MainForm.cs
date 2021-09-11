@@ -222,6 +222,10 @@ namespace source_modding_tool
                 SkyboxEditor form = new SkyboxEditor(launcher);
                 form.ShowDialog();
             }
+            else if(e.Item == menuMaterialsReload)
+            {
+                instance?.Command("+mat_reloadallmaterials");
+            }
         }
 
         private void menuModding_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -241,7 +245,7 @@ namespace source_modding_tool
             }
 
             // Import
-            else if (e.Item == menuModdingImport2)
+            else if (e.Item == menuModdingImport)
             {
                 ModSelectionDialog dialog = new ModSelectionDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -452,6 +456,11 @@ namespace source_modding_tool
             {
                 Process.Start("Tools\\Crowbar\\Crowbar.exe");
             }
+
+            else if(e.Item == menuModelingReload)
+            {
+                instance?.Command("+r_flushlod");
+            }
         }
 
         private void menuParticles_ItemClick(object sender, ItemClickEventArgs e)
@@ -478,6 +487,7 @@ namespace source_modding_tool
             menuModdingIngameTools.Enabled = false;
             menuModdingDelete.Enabled = false;
             toolsStop.Visibility = BarItemVisibility.Always;
+            toolsReload.Visibility = BarItemVisibility.Always;
         }
 
         private void modExited(object sender, EventArgs e) {
@@ -514,6 +524,7 @@ namespace source_modding_tool
                 menuModdingIngameTools.Enabled = true;
                 menuModdingDelete.Enabled = true;
                 toolsStop.Visibility = BarItemVisibility.Never;
+                toolsReload.Visibility = BarItemVisibility.Never;
 
                 updateBackground();
             }
@@ -595,8 +606,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = true;
                         menuModdingClean.Enabled = true;
-                        menuModdingImport2.Enabled = true;
-                        menuModdingSettings.Enabled = true;
+                        menuModdingImport.Enabled = true;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
                             menuModdingSettingsContentMount.Enabled = true;
@@ -632,8 +642,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = true;
-                        menuModdingImport2.Enabled = false;
-                        menuModdingSettings.Enabled = true;
+                        menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
                             menuModdingSettingsContentMount.Enabled = false;
@@ -669,8 +678,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = false;
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = false;
-                        menuModdingImport2.Enabled = false;
-                        menuModdingSettings.Enabled = true;
+                        menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = false;
                             menuModdingSettingsContentMount.Enabled = false;
@@ -704,6 +712,14 @@ namespace source_modding_tool
             {
                 instance.Stop();
                 instance = null;
+            }
+        }
+
+        private void toolsReload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (instance.modProcess != null)
+            {
+                instance.Command("+reload");
             }
         }
 
@@ -806,6 +822,10 @@ namespace source_modding_tool
             {
                 SoundscapeEditor editor = new SoundscapeEditor(launcher);
                 editor.ShowDialog();
+            }
+            else if(e.Item == menuSoundCreateManifest)
+            {
+                Soundscape.CreateManifest(launcher);
             }
         }
     }

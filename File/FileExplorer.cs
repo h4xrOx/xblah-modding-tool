@@ -208,48 +208,53 @@ namespace source_modding_tool.Modding
 
             foreach (PackageFile file in files.GroupBy(f => new { f.Filename, f.Extension }).Select(g => g.First()))
             {
-                TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, file.Extension, file.Directory.ParentArchive.Name }, null);
-                node.Tag = file;
-                if (file.Filename.StartsWith("soundscapes_") && file.Filename != "soundscapes_manifest" && file.Extension == ".txt")
+                string extension = file.Extension;
+                int stateImageIndex = 0;
+                if (file.Filename.StartsWith("soundscapes_") && file.Filename != "soundscapes_manifest" && file.Extension == "txt")
                 {
-                    node.StateImageIndex = 8;
+                    stateImageIndex = 8;
+                    extension = "soundscape";
                 }
                 else
                 {
                     switch (file.Extension)
                     {
                         case "vmt":
-                            node.StateImageIndex = 5;
+                            stateImageIndex = 5;
                             break;
                         case "vtf":
-                            node.StateImageIndex = 7;
+                            stateImageIndex = 7;
                             break;
                         case "vmf":
                             if (file.Path.StartsWith("modelsrc"))
                             {
-                                node.StateImageIndex = 3;
+                                stateImageIndex = 3;
                             }
                             else
                             {
-                                node.StateImageIndex = 6;
+                                stateImageIndex = 6;
                             }
 
                             break;
                         case "vmx":
-                            node.StateImageIndex = 6;
+                            stateImageIndex = 6;
                             break;
                         case "bsp":
-                            node.StateImageIndex = 2;
+                            stateImageIndex = 2;
                             break;
                         case "wav":
-                            node.StateImageIndex = 8;
+                            stateImageIndex = 8;
                             break;
                         default:
-                            node.StateImageIndex = 1;
+                            stateImageIndex = 1;
                             break;
                     }
                 }
-                
+
+
+                TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, extension, file.Directory.ParentArchive.Name }, null);
+                node.StateImageIndex = stateImageIndex;
+                node.Tag = file;                
             }
 
             fileTree.EndUnboundLoad();

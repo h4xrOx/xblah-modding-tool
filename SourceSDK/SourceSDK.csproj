@@ -64,6 +64,8 @@
     <Compile Include="Packages\VPKPackage\VpkFile.cs" />
     <Compile Include="Packages\VPKPackage\VpkReaderBase.cs" />
     <Compile Include="Packages\VPKPackage\V1\VpkArchiveHeaderV1.cs" />
+    <Compile Include="Sounds\Soundscape.cs" />
+    <Compile Include="Sounds\SoundscapeRule.cs" />
     <Compile Include="Utils\GaussianBlur.cs" />
     <Compile Include="KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

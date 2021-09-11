@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XBLAH's Source Modding Tool")]
+[assembly: AssemblyTitle("XBLAH's Modding Tool")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jean Knapp")]
-[assembly: AssemblyProduct("XBLAH's Source Modding Tool")]
-[assembly: AssemblyCopyright("Copyright © 2019 - 2020")]
+[assembly: AssemblyProduct("XBLAH's Modding Tool")]
+[assembly: AssemblyCopyright("Copyright © 2019 - 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

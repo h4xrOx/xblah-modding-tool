@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>source_modding_tool</RootNamespace>
     <AssemblyName>XBLAH%27s Source Modding Tool</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,25 +43,48 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="7z.NET, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\7z.NET.1.0.3\lib\net452\7z.NET.dll</HintPath>
-    </Reference>
     <Reference Include="Accessibility" />
-    <Reference Include="DevExpress.Data.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dialogs.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraDialogs.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.2.0.0\lib\netstandard2.0\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Asio.2.0.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Core.2.0.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Midi.2.0.0\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Wasapi.2.0.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinForms.2.0.0\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinMM.2.0.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -73,6 +97,12 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Text.Encoding" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -117,13 +147,24 @@
     <Compile Include="Materials\MaterialEditorTab.Designer.cs">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materials\SkyboxEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materials\SkyboxEditor.Designer.cs">
+      <DependentUpon>SkyboxEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modding\AssetsCopierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\AssetsCopierForm.Designer.cs">
+      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\ChaptersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modding\ChaptersForm.Designer.cs">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materials\GaussianBlur.cs" />
     <Compile Include="Modding\CleanDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +176,12 @@
     </Compile>
     <Compile Include="Modding\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\FileExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\FileExplorer.Designer.cs">
+      <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
@@ -192,32 +239,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceSDK\Config.cs" />
-    <Compile Include="SourceSDK\Game.cs" />
-    <Compile Include="SourceSDK\Engine.cs" />
-    <Compile Include="SourceSDK\Instance.cs" />
-    <Compile Include="SourceSDK\GameInfo.cs" />
-    <Compile Include="SourceSDK\Hammer.cs" />
-    <Compile Include="SourceSDK\KeyValue.cs" />
-    <Compile Include="SourceSDK\FileType\MDL.cs" />
-    <Compile Include="SourceSDK\Libraries.cs" />
-    <Compile Include="SourceSDK\Mod.cs" />
-    <Compile Include="SourceSDK\MountedFolder.cs" />
-    <Compile Include="SourceSDK\FileType\PCF.cs" />
-    <Compile Include="SourceSDK\Launcher.cs" />
-    <Compile Include="SourceSDK\FileType\VMF.cs" />
-    <Compile Include="SourceSDK\FileType\VMT.cs" />
-    <Compile Include="SourceSDK\FileType\VPK.cs" />
-    <Compile Include="SourceSDK\RunMode.cs" />
-    <Compile Include="SourceSDK\RunPreset.cs" />
-    <Compile Include="SourceSDK\VPKManager.cs" />
-    <Compile Include="SourceSDK\FileType\VTF.cs" />
-    <Compile Include="Materials\TGASharpLib.cs" />
-    <Compile Include="Modding\AssetsCopierForm.cs">
+    <Compile Include="Modding\AssetsRequiredForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\AssetsCopierForm.Designer.cs">
-      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    <Compile Include="Modding\AssetsRequiredForm.Designer.cs">
+      <DependentUpon>AssetsRequiredForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeling\VMFtoMDL.cs">
       <SubType>Form</SubType>
@@ -225,13 +251,21 @@
     <Compile Include="Modeling\VMFtoMDL.Designer.cs">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\FileExplorer.cs">
+    <Compile Include="Modding\LegacyFileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\FileExplorer.Designer.cs">
-      <DependentUpon>FileExplorer.cs</DependentUpon>
+    <Compile Include="Modding\LegacyFileExplorer.Designer.cs">
+      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Updater.cs" />
+    <Compile Include="Sound\LoopStream.cs" />
+    <Compile Include="Sound\Soundscape.cs" />
+    <Compile Include="Sound\SoundscapeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sound\SoundscapeEditor.Designer.cs">
+      <DependentUpon>SoundscapeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sound\SoundscapeRule.cs" />
     <EmbeddedResource Include="File\LibrariesForm.resx">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +281,12 @@
     <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Materials\SkyboxEditor.resx">
+      <DependentUpon>SkyboxEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
+      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\FileExplorer.resx">
+      <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
@@ -294,14 +337,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
-      <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\AssetsRequiredForm.resx">
+      <DependentUpon>AssetsRequiredForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modeling\VMFtoMDL.resx">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\FileExplorer.resx">
-      <DependentUpon>FileExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\LegacyFileExplorer.resx">
+      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sound\SoundscapeEditor.resx">
+      <DependentUpon>SoundscapeEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -516,6 +562,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Templates\Half-Life Alyx\hlvr\gameinfo.gi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Templates\Half-Life Alyx\hlvr\gameinfo_branchspecific.gi">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Templates\Half-Life\valve\liblist.gam">
@@ -880,6 +929,114 @@
     <None Include="Resources\Tools\HammerEditor\tools\valve.rad">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\hammerplusplus_fgd.fgd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\hammerplusplus_sequences_default.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_blue.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_blur_x.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\hammerplusplus_fgd.fgd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\hammerplusplus_sequences_default.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_blue.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_blur_x.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\hammerplusplus_fgd.fgd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\hammerplusplus_sequences_default.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_blue.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_blur_x.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Tools\HLExtract\HLExtract.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -894,6 +1051,210 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vrad_patch_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\mp\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vrad.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vrad_patch_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Assets\Misc\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -976,6 +1337,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\video.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Templates\Half-Life Alyx\hlvr\resource\gamemenu.res">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\resource\clientscheme.res">
@@ -1200,34 +1564,103 @@
     <Content Include="Resources\Tools\HammerEditor\valve.inf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\bin\bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\bin\discord-rpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\bin\hammerplusplus_compiler.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\bin\hammerplusplus_dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\bin\hammerplusplus_shader_dx9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\hammerplusplus_scheme.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlpicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlpickerfilter.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlpickerframe.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlpickerinfo.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlpickerrender.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\mdlsequencepicker.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\particlesystempreviewpanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\resource\particlesystempropertiespanel.res">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\HammerPlusPlus\tf2\hammerplusplus\scripts\sprinkle\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Tools\HLnonVR\hlnonvr.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\hammerplusplus_fgd.fgd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\hammerplusplus_sequences_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\hammer_run_map_launcher.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blue.vtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\Tools\SlartibartysHammer\mapbase\vbsp.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blur_x.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_blur_y.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_color.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Tools\HammerPlusPlus\mapbase\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vrad.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\vvis.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vrad_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\mapbase\vvis_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vvis.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\Tools\SlartibartysHammer\mapbase\vvis_dll.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="Resources\Tools\SlartibartysHammer\sp\vbsp.exe">
+    <Content Include="Resources\Tools\HammerPlusPlus\sp\vbsp.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Tools\IngamePreviews\maps\hud_preview.bsp">
@@ -1257,25 +1690,46 @@
     <None Include="Resources\Tools\IngamePreviews\models\tools\material_preview.vvd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\hammerplusplus_fgd.fgd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\hammerplusplus_sequences_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\hammer_run_map_launcher.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blue.vtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blur_x.vmt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vrad_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_blur_y.vmt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis.exe">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_color.vmt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Tools\SlartibartysHammer\sp\vvis_dll.dll">
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_downsample.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_red.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\glow_white.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\dev\halo_add_to_screen.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\editor\worldtext.vmt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\hammerplusplus\materials\editor\worldtextsheet.vtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\vvis.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\HammerPlusPlus\sp\vvis_dll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\Propper\propper.exe">
@@ -1336,6 +1790,12 @@
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\custom\" />
     <Folder Include="Resources\Templates\Mapbase\mapbase_hl2_template\maps\graphs\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SourceSDK\SourceSDK.csproj">
+      <Project>{e9ead908-dfc2-45cc-b326-fcc2cafe7f79}</Project>
+      <Name>SourceSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)de"
@@ -1349,13 +1809,6 @@ ROBOCOPY "$(TargetDir)Resources\ " "$(TargetDir) " /E /IS /MOVE
 RD /S /Q "$(TargetDir)Resources\"
 ; if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\7z.NET.1.0.3\build\7z.NET.targets" Condition="Exists('packages\7z.NET.1.0.3\build\7z.NET.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\7z.NET.1.0.3\build\7z.NET.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\7z.NET.1.0.3\build\7z.NET.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
