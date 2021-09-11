@@ -931,21 +931,20 @@
             // 
             // menuChoreography
             // 
-            this.menuChoreography.Caption = "Choreography";
+            this.menuChoreography.Caption = "Animations";
             this.menuChoreography.Id = 46;
             this.menuChoreography.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuChoreographyFaceposer)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuChoreographyFaceposer, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.menuChoreography.Name = "menuChoreography";
             toolTipTitleItem18.Text = "Choreography";
             toolTipItem24.Text = "Create scenes to use in the levels.";
             superToolTip18.Items.Add(toolTipTitleItem18);
             superToolTip18.Items.Add(toolTipItem24);
             this.menuChoreography.SuperTip = superToolTip18;
-            this.menuChoreography.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // menuChoreographyFaceposer
             // 
-            this.menuChoreographyFaceposer.Caption = "Faceposer";
+            this.menuChoreographyFaceposer.Caption = "Editor";
             this.menuChoreographyFaceposer.Id = 41;
             this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
             this.menuChoreographyFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuChoreography_ItemClick);

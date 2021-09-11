@@ -59,10 +59,34 @@ namespace source_modding_tool
             // Faceposer
             if (e.Item == menuChoreographyFaceposer)
             {
-                string gamePath = launcher.GetGamesList()[(toolsGames.EditValue.ToString())].installPath;
+                string gamePath = launcher.GetCurrentGame().installPath;
 
-                string toolPath = gamePath + "\\bin\\hlfaceposer.exe";
-                Process.Start(toolPath);
+                // Copy files
+                string path = AppDomain.CurrentDomain.BaseDirectory + "Tools\\Faceposer\\";
+                foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
+                {
+                    try
+                    {
+                        Uri path1 = new Uri(path);
+                        Uri path2 = new Uri(file);
+                        Uri diff = path1.MakeRelativeUri(path2);
+                        string relPath = diff.OriginalString;
+
+                        Directory.CreateDirectory(Path.GetDirectoryName(gamePath + "\\bin\\" + relPath));
+                        File.Copy(file, gamePath + "\\bin\\" + relPath, true);
+                    }
+                    catch (IOException e2)
+                    {
+
+                    }
+                }
+
+                // Run faceposer
+                Process process = new Process();
+                process.StartInfo.FileName = gamePath + "\\bin\\hlfaceposer.exe";
+                process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().installPath;
+
+                process.Start();
             }
         }
 

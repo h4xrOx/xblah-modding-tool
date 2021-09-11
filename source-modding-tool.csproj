@@ -719,6 +719,9 @@
     <None Include="Resources\Tools\Crafty\Specifications\GameInfoSchema.csf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Tools\Faceposer\gfx\hlfaceposer\Thumbs.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Tools\HammerEditor\CmdSeq.wc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1054,6 +1057,81 @@
     <Content Include="icon_32.ico" />
     <Content Include="icon_48.ico" />
     <Content Include="icon_48_2.ico" />
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\channelclose.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\channelopen.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\delete.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_expression.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_face.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_firetrigger.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_flexanimation.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_generic.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_gesture.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_interrupt.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_lookat.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_moveto.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_permit_response.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_sequence.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_speak.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_stoppoint.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\ev_subscene.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\lock.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\pause.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\play.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\play_reverse.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\redo.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\save.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\stop.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Faceposer\gfx\hlfaceposer\undo.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Tools\HammerPlusPlus\css\hammerplusplus.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
