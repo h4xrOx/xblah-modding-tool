@@ -799,6 +799,7 @@
             // 
             this.menuLevelDesignCrafty.Caption = "Crafty (external)";
             this.menuLevelDesignCrafty.Id = 36;
+            this.menuLevelDesignCrafty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignCrafty.ImageOptions.Image")));
             this.menuLevelDesignCrafty.Name = "menuLevelDesignCrafty";
             this.menuLevelDesignCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
@@ -806,6 +807,7 @@
             // 
             this.menuLevelDesignTerrainGenerator.Caption = "Terrain Generator (external)";
             this.menuLevelDesignTerrainGenerator.Id = 42;
+            this.menuLevelDesignTerrainGenerator.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignTerrainGenerator.ImageOptions.Image")));
             this.menuLevelDesignTerrainGenerator.Name = "menuLevelDesignTerrainGenerator";
             this.menuLevelDesignTerrainGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
@@ -813,6 +815,7 @@
             // 
             this.menuLevelDesignBatchCompiler.Caption = "Batch Compiler (external)";
             this.menuLevelDesignBatchCompiler.Id = 38;
+            this.menuLevelDesignBatchCompiler.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignBatchCompiler.ImageOptions.Image")));
             this.menuLevelDesignBatchCompiler.Name = "menuLevelDesignBatchCompiler";
             this.menuLevelDesignBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
@@ -845,6 +848,7 @@
             // 
             this.menuModelingHLMV.Caption = "HLMV";
             this.menuModelingHLMV.Id = 40;
+            this.menuModelingHLMV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingHLMV.ImageOptions.Image")));
             this.menuModelingHLMV.Name = "menuModelingHLMV";
             this.menuModelingHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
@@ -867,6 +871,7 @@
             // 
             this.menuModelingCrowbar.Caption = "Crowbar (external)";
             this.menuModelingCrowbar.Id = 39;
+            this.menuModelingCrowbar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingCrowbar.ImageOptions.Image")));
             this.menuModelingCrowbar.Name = "menuModelingCrowbar";
             this.menuModelingCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
@@ -946,12 +951,13 @@
             // 
             this.menuChoreographyFaceposer.Caption = "Editor";
             this.menuChoreographyFaceposer.Id = 41;
+            this.menuChoreographyFaceposer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuChoreographyFaceposer.ImageOptions.Image")));
             this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
             this.menuChoreographyFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuChoreography_ItemClick);
             // 
             // menuSound
             // 
-            this.menuSound.Caption = "Sound";
+            this.menuSound.Caption = "Sounds";
             this.menuSound.Id = 96;
             this.menuSound.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuSoundSoundscapeEditor, false),
@@ -974,6 +980,7 @@
             // 
             this.menuSoundCreateManifest.Caption = "Generate Manifest";
             this.menuSoundCreateManifest.Id = 103;
+            this.menuSoundCreateManifest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuSoundCreateManifest.ImageOptions.SvgImage")));
             this.menuSoundCreateManifest.Name = "menuSoundCreateManifest";
             toolTipTitleItem19.Text = "Generate manifest";
             toolTipItem25.Text = "Auto-generate the scripts/soundscapes_manifest.txt with all the soundscapes mount" +
