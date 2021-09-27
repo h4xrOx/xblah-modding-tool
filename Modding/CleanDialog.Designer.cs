@@ -100,7 +100,8 @@
             this.ClientSize = new System.Drawing.Size(612, 425);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.treeList);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("CleanDialog.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CleanDialog.IconOptions.Image")));
             this.Name = "CleanDialog";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Clean Mod";

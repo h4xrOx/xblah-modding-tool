@@ -180,6 +180,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuLevelDesignBspSource = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -267,9 +268,10 @@
             this.menuSoundCreateManifest,
             this.menuMaterialsReload,
             this.menuModelingReload,
-            this.menuLevelDesignReload});
+            this.menuLevelDesignReload,
+            this.menuLevelDesignBspSource});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 107;
+            this.barManager.MaxItemId = 108;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -729,13 +731,14 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignRunMap),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignHammer, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignFogPreviewer),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignFogPreviewer, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignResetHammerConfigsButton, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBspSource)});
             this.menuLevelDesign.Name = "menuLevelDesign";
             toolTipTitleItem14.Text = "Level Design";
             toolTipItem20.Text = "Create levels for the mod.";
@@ -759,7 +762,7 @@
             // 
             // menuLevelDesignHammer
             // 
-            this.menuLevelDesignHammer.Caption = "Editor";
+            this.menuLevelDesignHammer.Caption = "Map Editor";
             this.menuLevelDesignHammer.Id = 16;
             this.menuLevelDesignHammer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignHammer.ImageOptions.Image")));
             this.menuLevelDesignHammer.Name = "menuLevelDesignHammer";
@@ -854,7 +857,7 @@
             // 
             // menuModelingPropper
             // 
-            this.menuModelingPropper.Caption = "Hammer (Propper)";
+            this.menuModelingPropper.Caption = "Model Editor (Propper)";
             this.menuModelingPropper.Id = 51;
             this.menuModelingPropper.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingPropper.ImageOptions.Image")));
             this.menuModelingPropper.Name = "menuModelingPropper";
@@ -900,7 +903,7 @@
             // 
             // menuMaterialsEditor
             // 
-            this.menuMaterialsEditor.Caption = "Editor";
+            this.menuMaterialsEditor.Caption = "Material Editor";
             this.menuMaterialsEditor.Id = 58;
             this.menuMaterialsEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsEditor.ImageOptions.SvgImage")));
             this.menuMaterialsEditor.Name = "menuMaterialsEditor";
@@ -949,7 +952,7 @@
             // 
             // menuChoreographyFaceposer
             // 
-            this.menuChoreographyFaceposer.Caption = "Editor";
+            this.menuChoreographyFaceposer.Caption = "Choreography Editor";
             this.menuChoreographyFaceposer.Id = 41;
             this.menuChoreographyFaceposer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuChoreographyFaceposer.ImageOptions.Image")));
             this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
@@ -960,7 +963,7 @@
             this.menuSound.Caption = "Sounds";
             this.menuSound.Id = 96;
             this.menuSound.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuSoundSoundscapeEditor, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuSoundSoundscapeEditor),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuSoundCreateManifest)});
             this.menuSound.Name = "menuSound";
             toolTipTitleItem20.Text = "Sound";
@@ -973,12 +976,13 @@
             // 
             this.menuSoundSoundscapeEditor.Caption = "Soundscape Editor";
             this.menuSoundSoundscapeEditor.Id = 97;
+            this.menuSoundSoundscapeEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuSoundSoundscapeEditor.ImageOptions.SvgImage")));
             this.menuSoundSoundscapeEditor.Name = "menuSoundSoundscapeEditor";
             this.menuSoundSoundscapeEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuSound_ItemClick);
             // 
             // menuSoundCreateManifest
             // 
-            this.menuSoundCreateManifest.Caption = "Generate Manifest";
+            this.menuSoundCreateManifest.Caption = "Generate Soundscape Manifest";
             this.menuSoundCreateManifest.Id = 103;
             this.menuSoundCreateManifest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuSoundCreateManifest.ImageOptions.SvgImage")));
             this.menuSoundCreateManifest.Name = "menuSoundCreateManifest";
@@ -1106,6 +1110,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuLevelDesignBspSource
+            // 
+            this.menuLevelDesignBspSource.Caption = "BSP Source (external)";
+            this.menuLevelDesignBspSource.Id = 107;
+            this.menuLevelDesignBspSource.Name = "menuLevelDesignBspSource";
+            this.menuLevelDesignBspSource.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1219,5 +1230,6 @@
         private DevExpress.XtraBars.BarButtonItem menuModelingReload;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsReload;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignReload;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignBspSource;
     }
 }

@@ -534,6 +534,7 @@ namespace source_modding_tool.Materials
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("SkyboxEditor.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("SkyboxEditor.IconOptions.Image")));
             this.MaximizeBox = false;
             this.Name = "SkyboxEditor";
             this.Text = "Skybox Editor";

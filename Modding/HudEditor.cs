@@ -56,8 +56,8 @@ namespace source_modding_tool.Modding
         private void HudEditor2_Load(object sender, EventArgs e)
         {
             // Copy the preview map
-            Directory.CreateDirectory(mod.installPath + "\\maps\\");
-            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews\\maps\\hud_preview.bsp", mod.installPath + "\\maps\\hud_preview.bsp", true);
+            Directory.CreateDirectory(mod.InstallPath + "\\maps\\");
+            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews\\maps\\hud_preview.bsp", mod.InstallPath + "\\maps\\hud_preview.bsp", true);
 
             startPreview();
             loadClientScheme();
@@ -68,7 +68,7 @@ namespace source_modding_tool.Modding
 
         private void loadClientScheme()
         {
-            string path = mod.installPath + "\\resource\\clientscheme.res";
+            string path = mod.InstallPath + "\\resource\\clientscheme.res";
             if (!File.Exists(path))
             {
                 XtraMessageBox.Show("ClientScheme.res not found in \\resource\\");
@@ -81,7 +81,7 @@ namespace source_modding_tool.Modding
 
         private void loadHudLayout()
         {
-            string path = mod.installPath + "\\scripts\\hudlayout.res";
+            string path = mod.InstallPath + "\\scripts\\hudlayout.res";
             if (!File.Exists(path))
             {
                 XtraMessageBox.Show("HudLayout.res not found in \\scripts\\");
@@ -326,8 +326,8 @@ namespace source_modding_tool.Modding
 
         private void saveChangesButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            KeyValue.writeChunkFile(mod.installPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
-            KeyValue.writeChunkFile(mod.installPath + "\\scripts\\hudlayout.res", hudLayoutKV, false, Encoding.UTF8);
+            KeyValue.writeChunkFile(mod.InstallPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
+            KeyValue.writeChunkFile(mod.InstallPath + "\\scripts\\hudlayout.res", hudLayoutKV, false, Encoding.UTF8);
 
             if (requiresRestart)
                 startPreview();

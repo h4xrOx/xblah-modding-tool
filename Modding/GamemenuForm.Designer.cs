@@ -43,9 +43,9 @@
             this.removeButton = new DevExpress.XtraEditors.SimpleButton();
             this.addButton = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.buttonEdit = new DevExpress.XtraEditors.SimpleButton();
             this.buttonUp = new DevExpress.XtraEditors.SimpleButton();
             this.buttonDown = new DevExpress.XtraEditors.SimpleButton();
-            this.buttonEdit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
@@ -204,6 +204,20 @@
             this.panelControl3.Size = new System.Drawing.Size(29, 336);
             this.panelControl3.TabIndex = 1;
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEdit.Enabled = false;
+            this.buttonEdit.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.buttonEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonEdit.ImageOptions.SvgImage")));
+            this.buttonEdit.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.buttonEdit.Location = new System.Drawing.Point(6, 87);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(23, 23);
+            this.buttonEdit.TabIndex = 5;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // buttonUp
             // 
             this.buttonUp.Enabled = false;
@@ -228,20 +242,6 @@
             this.buttonDown.Text = "Down";
             this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
             // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonEdit.Enabled = false;
-            this.buttonEdit.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.buttonEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.buttonEdit.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.buttonEdit.Location = new System.Drawing.Point(6, 87);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(23, 23);
-            this.buttonEdit.TabIndex = 5;
-            this.buttonEdit.Text = "Edit";
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
-            // 
             // GamemenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,7 +250,8 @@
             this.Controls.Add(this.list);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("GamemenuForm.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("GamemenuForm.IconOptions.Image")));
             this.Name = "GamemenuForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Game Menu";

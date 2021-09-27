@@ -26,6 +26,35 @@ namespace source_modding_tool.Modding
         public string RootDirectory = string.Empty;
         public bool MultiSelect = false;
         public string Filter = "";
+        public string FileName { 
+            get
+            {
+                switch(mode)
+                {
+                    case Mode.SAVE:
+                        return CurrentDirectory + "/" + fileNameEdit.EditValue.ToString();
+                    case Mode.OPEN:
+                    default:
+                        return Selection[0].FullPath;
+                }
+            }
+            set
+            {
+                switch (mode)
+                {
+                    case Mode.SAVE:
+                        CurrentDirectory = Path.GetDirectoryName(value);
+                        fileNameEdit.EditValue = Path.GetFileName(value);
+
+                        break;
+                    case Mode.OPEN:
+                    default:
+                        CurrentDirectory = Path.GetDirectoryName(value);
+                        fileNameEdit.EditValue = Path.GetFileName(value);
+                        break;
+                }
+            }
+        }
 
         string keywords = string.Empty;
         Stack<string> nextDirectories = new Stack<string>();
@@ -347,7 +376,10 @@ namespace source_modding_tool.Modding
             else if (packageFile.Filename.StartsWith("soundscapes_") && packageFile.Filename != "soundscapes_manifest" && packageFile.Extension == "txt")
             {
                 // It's a soundscape.
-                SoundscapeEditor soundscapeEditor = new SoundscapeEditor(launcher, packageFile);
+                SoundscapeEditor soundscapeEditor = new SoundscapeEditor(launcher)
+                {
+                    PackageFile = packageFile
+                };
                 soundscapeEditor.ShowDialog();
             }
             else if(new string[] { "txt", "gi" }.Contains(packageFile.Extension))
@@ -420,7 +452,8 @@ namespace source_modding_tool.Modding
                 previewButton.Enabled = false;
             }
 
-            fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
+            if (Selection.Length > 0)
+                fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
         }
 
         private void navigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -463,6 +496,14 @@ namespace source_modding_tool.Modding
                     System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer(s);
                     myPlayer.Play();
                 }
+            }
+        }
+
+        private void fileNameEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (mode == Mode.SAVE)
+            {
+                okButton.Enabled = (fileNameEdit.EditValue.ToString().Length > 0);
             }
         }
     }

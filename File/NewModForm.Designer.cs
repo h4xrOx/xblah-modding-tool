@@ -82,7 +82,7 @@
             this.textFolder.Dock = System.Windows.Forms.DockStyle.Top;
             this.textFolder.Location = new System.Drawing.Point(0, 0);
             this.textFolder.Name = "textFolder";
-            this.textFolder.Size = new System.Drawing.Size(308, 20);
+            this.textFolder.Size = new System.Drawing.Size(303, 20);
             this.textFolder.TabIndex = 1;
             this.textFolder.EditValueChanged += new System.EventHandler(this.textFolder_EditValueChanged);
             // 
@@ -105,15 +105,15 @@
             this.panelControl4.Controls.Add(this.labelFolderInfo);
             this.panelControl4.Controls.Add(this.textFolder);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(617, 2);
+            this.panelControl4.Location = new System.Drawing.Point(615, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(308, 33);
+            this.panelControl4.Size = new System.Drawing.Size(303, 37);
             this.panelControl4.TabIndex = 1;
             // 
             // labelFolderInfo
             // 
             this.labelFolderInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelFolderInfo.Location = new System.Drawing.Point(245, 20);
+            this.labelFolderInfo.Location = new System.Drawing.Point(240, 20);
             this.labelFolderInfo.Name = "labelFolderInfo";
             this.labelFolderInfo.Size = new System.Drawing.Size(63, 13);
             this.labelFolderInfo.TabIndex = 7;
@@ -132,7 +132,7 @@
             // textModsPath
             // 
             this.textModsPath.Dock = System.Windows.Forms.DockStyle.Left;
-            this.textModsPath.Location = new System.Drawing.Point(2, 2);
+            this.textModsPath.Location = new System.Drawing.Point(0, 0);
             this.textModsPath.Name = "textModsPath";
             this.textModsPath.Properties.ReadOnly = true;
             this.textModsPath.Size = new System.Drawing.Size(615, 20);
@@ -226,22 +226,22 @@
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl5.Controls.Add(this.panelControl4);
             this.panelControl5.Controls.Add(this.textModsPath);
-            this.panelControl5.Location = new System.Drawing.Point(40, 36);
+            this.panelControl5.Location = new System.Drawing.Point(49, 36);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(927, 37);
+            this.panelControl5.Size = new System.Drawing.Size(918, 37);
             this.panelControl5.TabIndex = 2;
             // 
             // comboBoxEdit1
             // 
             this.comboBoxEdit1.EditValue = "Default";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(40, 12);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(49, 12);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
             "Default"});
             this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(927, 20);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(918, 20);
             this.comboBoxEdit1.StyleController = this.layoutControl1;
             this.comboBoxEdit1.TabIndex = 0;
             // 
@@ -307,6 +307,7 @@
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("NewModForm.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("NewModForm.IconOptions.Image")));
             this.Name = "NewModForm";
             this.Text = "New Mod";
             this.Load += new System.EventHandler(this.NewModForm_Load);

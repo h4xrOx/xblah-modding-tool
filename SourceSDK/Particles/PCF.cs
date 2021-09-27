@@ -82,10 +82,10 @@ namespace SourceSDK.Particles
             VPKManager vpkManager = new VPKManager(launcher);
             vpkManager.extractFile("particles/particles_manifest.txt");
 
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
-            KeyValue manifest = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\particles\\particles_manifest.txt");
-            foreach (string file in Directory.GetFiles(launcher.GetCurrentMod().installPath + "\\particles",
+            KeyValue manifest = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\particles\\particles_manifest.txt");
+            foreach (string file in Directory.GetFiles(launcher.GetCurrentMod().InstallPath + "\\particles",
                                                       "*.pcf",
                                                       SearchOption.AllDirectories))
             {
@@ -95,7 +95,7 @@ namespace SourceSDK.Particles
 
                 manifest.addChild(new KeyValue("file", diff.OriginalString));
             }
-            KeyValue.writeChunkFile(launcher.GetCurrentMod().installPath + "\\particles\\particles_manifest.txt", manifest);
+            KeyValue.writeChunkFile(launcher.GetCurrentMod().InstallPath + "\\particles\\particles_manifest.txt", manifest);
         }
 
         /// <summary>

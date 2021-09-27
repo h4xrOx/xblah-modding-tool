@@ -103,7 +103,7 @@ namespace source_modding_tool.Modding
 
         private void SetFieldValues()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {
@@ -128,7 +128,7 @@ namespace source_modding_tool.Modding
 
         private void GetFieldValues()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {

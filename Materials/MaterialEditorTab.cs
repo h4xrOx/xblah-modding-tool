@@ -271,7 +271,7 @@ namespace source_modding_tool
             {
                 string type = new FileInfo(openBitmapFileDialog.FileName).Extension;
 
-                string modPath = launcher.GetCurrentMod().installPath;
+                string modPath = launcher.GetCurrentMod().InstallPath;
 
                 Uri path1 = new Uri(modPath + "\\");
                 Uri path2 = new Uri(openBitmapFileDialog.FileName);
@@ -320,7 +320,7 @@ namespace source_modding_tool
 
         public string GetRelativePath(string fullPath)
         {
-            Uri path1 = new Uri(launcher.GetCurrentMod().installPath + "\\");
+            Uri path1 = new Uri(launcher.GetCurrentMod().InstallPath + "\\");
             Uri path2 = new Uri(fullPath);
             Uri diff = path1.MakeRelativeUri(path2);
             return diff.OriginalString;
@@ -337,7 +337,7 @@ namespace source_modding_tool
         {
             SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
-            string fullPath = (launcher.GetCurrentMod().installPath + "\\" + relativePath).Replace(" / ", "\\");
+            string fullPath = (launcher.GetCurrentMod().InstallPath + "\\" + relativePath).Replace(" / ", "\\");
 
             Directory.CreateDirectory(fullPath.Substring(0, fullPath.LastIndexOf("\\")));
 

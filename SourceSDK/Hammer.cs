@@ -18,10 +18,10 @@ namespace SourceSDK
         }
         public static void RunPropperHammer(Mod mod, PackageFile packageFile)
         {
-            CopyHammerPlusPlus(mod.game);
+            CopyHammerPlusPlus(mod.Game);
             CreatePropperConfig(mod);
 
-            string hammerPath = mod.game.installPath + "\\bin\\hammerplusplus.exe";
+            string hammerPath = mod.Game.installPath + "\\bin\\hammerplusplus.exe";
 
             Process process = new Process();
             process.StartInfo.FileName = hammerPath;
@@ -29,8 +29,8 @@ namespace SourceSDK
             process.StartInfo.Arguments = string.Empty;
 
             // Mapbase specfic hammer launch.
-            if (mod.game.name == "Mapbase")
-                process.StartInfo.Arguments += "-game " + mod.installPath;
+            if (mod.Game.name == "Mapbase")
+                process.StartInfo.Arguments += "-game " + mod.InstallPath;
 
             // Open file in hammer.
             if (packageFile != null)
@@ -47,20 +47,20 @@ namespace SourceSDK
         public static void RunHammer(Launcher launcher, Instance instance, Control parent, PackageFile packageFile)
         {
             Mod mod = launcher.GetCurrentMod();
-            switch (mod.game.engine)
+            switch (mod.Game.engine)
             {
                 case Engine.SOURCE:
                     {
                         // Create a maps folder if it's not existant
-                        string mapsDir = mod.installPath + "\\maps\\";
+                        string mapsDir = mod.InstallPath + "\\maps\\";
                         Directory.CreateDirectory(mapsDir);
 
-                        CopyHammerPlusPlus(mod.game);
+                        CopyHammerPlusPlus(mod.Game);
                         CreateGameConfig(mod);
 
-                        string hammerPath = mod.game.installPath + "\\bin\\hammerplusplus.exe";
+                        string hammerPath = mod.Game.installPath + "\\bin\\hammerplusplus.exe";
                         if (!File.Exists(hammerPath))
-                            hammerPath = mod.game.installPath + "\\bin\\hammer.exe";
+                            hammerPath = mod.Game.installPath + "\\bin\\hammer.exe";
 
                         Process process = new Process();
                         process.StartInfo.FileName = hammerPath;
@@ -68,8 +68,8 @@ namespace SourceSDK
                         process.StartInfo.Arguments = string.Empty;
 
                         // Mapbase specfic hammer launch.
-                        if (mod.game.name == "Mapbase")
-                            process.StartInfo.Arguments += "-game " + mod.installPath;
+                        if (mod.Game.name == "Mapbase")
+                            process.StartInfo.Arguments += "-game " + mod.InstallPath;
 
                         // Open file in hammer.
                         if (packageFile != null)
@@ -80,8 +80,8 @@ namespace SourceSDK
                     break;
                 case Engine.SOURCE2:
                     {
-                        if (mod.game.engine == Engine.SOURCE2)
-                            mod.game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
+                        if (mod.Game.engine == Engine.SOURCE2)
+                            mod.Game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
 
                         RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
                         string command = "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole";
@@ -93,7 +93,7 @@ namespace SourceSDK
                 case Engine.GOLDSRC:
                     {
                         // Create a maps folder if it's not existant
-                        string mapsDir = mod.installPath + "\\maps\\";
+                        string mapsDir = mod.InstallPath + "\\maps\\";
                         Directory.CreateDirectory(mapsDir);
 
                         string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\hammer.exe";
@@ -110,7 +110,7 @@ namespace SourceSDK
 
         private static void CreatePropperConfig(Mod mod)
         {
-            Game game = mod.game;
+            Game game = mod.Game;
 
             File.Copy(AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\Propper\\propper.fgd",
                       game.installPath + "\\bin\\propper.fgd",
@@ -127,7 +127,7 @@ namespace SourceSDK
             sb.AppendLine(" {");
             sb.AppendLine("     \"My game\"");
             sb.AppendLine("     {");
-            sb.AppendLine("         \"GameDir\"		\"" + mod.installPath + "\"");
+            sb.AppendLine("         \"GameDir\"		\"" + mod.InstallPath + "\"");
             sb.AppendLine("         \"Hammer\"");
             sb.AppendLine("         {");
             sb.AppendLine("             \"GameData0\"		\"" + game.installPath + "\\bin\\propper.fgd\"");
@@ -139,7 +139,7 @@ namespace SourceSDK
             sb.AppendLine("             \"BSP\"       \"" + game.installPath + "\\bin\\propper.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + game.installPath + "\"");
             sb.AppendLine("             \"MapDir\"		\"" + game.installPath + "\\sourcesdk_content\\ep2\\mapsrc\"");
-            sb.AppendLine("             \"BSPDir\"		\"" + mod.installPath + "\\maps\"");
+            sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
             sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
             sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
             sb.AppendLine("         }");
@@ -155,9 +155,9 @@ namespace SourceSDK
 
         private static void CreateGameConfig(Mod mod)
         {
-            Game game = mod.game;
+            Game game = mod.Game;
 
-            string gameinfoPath = mod.installPath + "\\gameinfo.txt";
+            string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
             KeyValue gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
             string instancePath = gameinfo.getValue("instancepath");
             string modName = gameinfo.getValue("name");
@@ -181,7 +181,7 @@ namespace SourceSDK
             sb.AppendLine(" {");
             sb.AppendLine("     \"My game\"");
             sb.AppendLine("     {");
-            sb.AppendLine("         \"GameDir\"		\"" + mod.installPath + "\"");
+            sb.AppendLine("         \"GameDir\"		\"" + mod.InstallPath + "\"");
             sb.AppendLine("         \"Hammer\"");
             sb.AppendLine("         {");
             for (int i = 0; i < fgds.Count; i++)
@@ -199,7 +199,7 @@ namespace SourceSDK
             sb.AppendLine("             \"Light\"		\"" + game.installPath + "\\bin\\vrad.exe\"");
             sb.AppendLine("             \"GameExeDir\"		\"" + game.installPath + "\"");
             sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
-            sb.AppendLine("             \"BSPDir\"		\"" + mod.installPath + "\\maps\"");
+            sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
             sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
             sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
             sb.AppendLine("         }");

@@ -20,6 +20,6 @@ namespace source_modding_tool.Sound
         public bool positionRandom = false;
         public float attenuation = 1;
         public string soundlevel = "";
-
+        internal string name = "";
     }
 }

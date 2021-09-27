@@ -63,7 +63,7 @@ namespace source_modding_tool.Modding
                 presets.Add(preset);
 
                 if (
-                    (preset.mod == string.Empty || preset.mod == new DirectoryInfo(launcher.GetCurrentMod().installPath).Name) &&
+                    (preset.mod == string.Empty || preset.mod == new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name) &&
                     (preset.game == string.Empty || preset.game == launcher.GetCurrentGame().name) &&
                     (preset.engine == string.Empty || preset.engine == Engine.ToString(launcher.GetCurrentGame().engine))
                 )
@@ -150,7 +150,7 @@ namespace source_modding_tool.Modding
 
                 RunPreset currentPreset = getSelectedPreset();
                 presetNameText.EditValue = currentPreset.name;
-                if (currentPreset.mod == new DirectoryInfo(launcher.GetCurrentMod().installPath).Name)
+                if (currentPreset.mod == new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name)
                 {
                     presetCoverageCombo.EditValue = "Current mod only";
                 }
@@ -221,7 +221,7 @@ namespace source_modding_tool.Modding
                     case "Current mod only":
                         preset.engine = Engine.ToString(launcher.GetCurrentGame().engine);
                         preset.game = launcher.GetCurrentGame().name;
-                        preset.mod = new DirectoryInfo(launcher.GetCurrentMod().installPath).Name;
+                        preset.mod = new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name;
                         break;
                 }
                 preset.runMode = RunMode.FromString(presetRunModeCombo.EditValue.ToString());

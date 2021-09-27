@@ -407,6 +407,7 @@ namespace source_modding_tool.Modding
             this.fileNameEdit.Name = "fileNameEdit";
             this.fileNameEdit.Size = new System.Drawing.Size(540, 20);
             this.fileNameEdit.TabIndex = 1;
+            this.fileNameEdit.EditValueChanged += new System.EventHandler(this.fileNameEdit_EditValueChanged);
             // 
             // labelControl1
             // 

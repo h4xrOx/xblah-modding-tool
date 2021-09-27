@@ -131,7 +131,8 @@
             this.ClientSize = new System.Drawing.Size(630, 323);
             this.Controls.Add(this.list);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("LibrariesForm.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("LibrariesForm.IconOptions.Image")));
             this.Name = "LibrariesForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Libraries";

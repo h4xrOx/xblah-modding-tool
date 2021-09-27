@@ -3,35 +3,51 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SourceSDK
 {
     public class Mod
     {
-        public Game game;
-        public string name;
-        public string installPath;
+        /// <summary>
+        /// The game associated to this mod.
+        /// </summary>
+        public Game Game { get; private set; }
+
+        /// <summary>
+        /// The mod name.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// The mod full install path.
+        /// </summary>
+        public string InstallPath { get; private set; }
 
         public string folderName {
             get {
-                return Path.GetFileName(installPath);
+                return Path.GetFileName(InstallPath);
             }
         }
 
         public Mod(Game game, string name, string installPath)
         {
-            this.game = game;
-            this.name = name;
-            this.installPath = installPath;
+            this.Game = game;
+            this.Name = name;
+            this.InstallPath = installPath;
         }
 
+        /// <summary>
+        /// Opens the mod install folder in the Windows file explorer.
+        /// </summary>
         public void OpenInstallFolder()
         {
-            Process.Start("explorer.exe", @installPath);
+            Process.Start("explorer.exe", InstallPath);
         }
 
+        /// <summary>
+        /// Returns the full path of all the extracted mounted paths. This will not include the vpk files.
+        /// </summary>
+        /// <returns>List of the full path of the mounted paths, without the vpks.</returns>
         public List<string> GetSearchPaths()
         {
             List<string> mountedPaths = GetMountedPaths();
@@ -41,16 +57,20 @@ namespace SourceSDK
             return existingPaths;
         }
 
+        /// <summary>
+        /// Returns the full path of all the mounted paths. This will include the vpk files.
+        /// </summary>
+        /// <returns>List of the full path of the mounted paths, with the vpks.</returns>
         public List<string> GetMountedPaths()
         {
             List<string> result = new List<string>();
 
-            string gamePath = game.installPath;
-            string modPath = installPath;
+            string gamePath = Game.installPath;
+            string modPath = InstallPath;
 
             KeyValue gameInfo = null;
             KeyValue searchPaths = null;
-            switch (game.engine)
+            switch (Game.engine)
             {
                 case Engine.SOURCE:
                     gameInfo = KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
@@ -62,7 +82,7 @@ namespace SourceSDK
                     break;
                 case Engine.GOLDSRC:
                     searchPaths = new KeyValue("searchpaths");
-                    searchPaths.addChild(new KeyValue("game", new DirectoryInfo(installPath).Name));
+                    searchPaths.addChild(new KeyValue("game", new DirectoryInfo(InstallPath).Name));
                     searchPaths.addChild(new KeyValue("game", "valve"));
                     break;
             }
@@ -76,7 +96,7 @@ namespace SourceSDK
 
                 string value = searchPath.getValue();
 
-                switch (game.engine)
+                switch (Game.engine)
                 {
                     case Engine.SOURCE:
                         value = value.Replace("/", "\\");
@@ -131,26 +151,34 @@ namespace SourceSDK
             return result.Distinct().ToList();
         }
 
+        /// <summary>
+        /// Returns the full path of all the mounted vpks.
+        /// </summary>
+        /// <returns>List of the full path of the mounted vpks.</returns>
         public List<string> GetMountedVPKs()
         {
             return GetMountedPaths().Where(x => x.EndsWith(".vpk")).ToList();
         }
 
+        /// <summary>
+        /// Search for fgd files inside the game install path, and then searches for fgs inside the mod install path, in this order.
+        /// </summary>
+        /// <returns>List of the full path of the fgds.</returns>
         public List<string> GetFGDs()
         {
             List<string> result = new List<string>();
 
-            if (game.name == "Mapbase")
+            if (Game.name == "Mapbase")
             {
                 // Mapbase specific fgd directory
-                result.Add(installPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
+                result.Add(InstallPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
             }
             else
             {
-                result.AddRange(Directory.GetFiles(game.installPath, "*.fgd", SearchOption.AllDirectories));
+                result.AddRange(Directory.GetFiles(Game.installPath, "*.fgd", SearchOption.AllDirectories));
             }
 
-            result.AddRange(Directory.GetFiles(installPath, "*.fgd", SearchOption.AllDirectories));
+            result.AddRange(Directory.GetFiles(InstallPath, "*.fgd", SearchOption.AllDirectories));
 
             List<string> alreadyIncluded = new List<string>();
 
@@ -164,7 +192,7 @@ namespace SourceSDK
                     {
                         line = line.Replace("@include", string.Empty).Replace("\"", string.Empty).Trim();
                         alreadyIncluded.Add(new FileInfo(fgd).Directory.FullName + "\\" + line);
-                        alreadyIncluded.Add(game.installPath + "\\bin\\" + line);
+                        alreadyIncluded.Add(Game.installPath + "\\bin\\" + line);
                     }
                 }
             }
@@ -175,6 +203,19 @@ namespace SourceSDK
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Returns the path relative to the mod root.
+        /// </summary>
+        /// <param name="fullPath">The full path of the file. (ex: D:\Steam\steamapps\sourcemods\mod_template\scripts\file_name.txt)</param>
+        /// <returns>The relative path of the file. (ex: scripts/file_name.txt)</returns>
+        public string GetRelativePath(string fullPath)
+        {
+            Uri path1 = new Uri(InstallPath + "\\");
+            Uri path2 = new Uri(fullPath);
+            Uri diff = path1.MakeRelativeUri(path2);
+            return diff.OriginalString;
         }
     }
 }

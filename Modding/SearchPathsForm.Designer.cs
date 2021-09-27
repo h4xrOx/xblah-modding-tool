@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchPathsForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.searchList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -66,7 +66,7 @@
             this.treeListColumn1,
             this.treeListColumn2});
             this.searchList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.searchList.CustomizationFormBounds = new System.Drawing.Rectangle(-1632, -9, 250, 280);
+            this.searchList.CustomizationFormBounds = new System.Drawing.Rectangle(0, -9, 250, 280);
             this.searchList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchList.Location = new System.Drawing.Point(8, 36);
             this.searchList.Name = "searchList";
@@ -228,12 +228,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboGames.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.comboGames.Size = new System.Drawing.Size(701, 20);
-            toolTipTitleItem1.Text = "SteamAppID <integer>";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = resources.GetString("toolTipItem1.Text");
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.comboGames.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "SteamAppID <integer>";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = resources.GetString("toolTipItem2.Text");
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.comboGames.SuperTip = superToolTip2;
             this.comboGames.TabIndex = 2;
             // 
             // labelControl18
@@ -255,7 +255,8 @@
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("SearchPathsForm.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("SearchPathsForm.IconOptions.Image")));
             this.Name = "SearchPathsForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Content Mount";

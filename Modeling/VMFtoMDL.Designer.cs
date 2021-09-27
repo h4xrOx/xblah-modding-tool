@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VMFtoMDL));
             this.vmfListBox = new DevExpress.XtraEditors.ListBoxControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.compileButton = new DevExpress.XtraEditors.SimpleButton();
             this.addButton = new DevExpress.XtraEditors.SimpleButton();
             this.removeButton = new DevExpress.XtraEditors.SimpleButton();
+            this.compileButton = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.vmfListBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -62,16 +62,6 @@
             this.panelControl3.Size = new System.Drawing.Size(28, 208);
             this.panelControl3.TabIndex = 20;
             // 
-            // compileButton
-            // 
-            this.compileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.compileButton.Location = new System.Drawing.Point(459, 7);
-            this.compileButton.Name = "compileButton";
-            this.compileButton.Size = new System.Drawing.Size(75, 23);
-            this.compileButton.TabIndex = 20;
-            this.compileButton.Text = "Compile";
-            this.compileButton.Click += new System.EventHandler(this.compileButton_Click);
-            // 
             // addButton
             // 
             this.addButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("addButton.ImageOptions.SvgImage")));
@@ -94,6 +84,16 @@
             this.removeButton.Text = "Remove";
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
+            // compileButton
+            // 
+            this.compileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.compileButton.Location = new System.Drawing.Point(459, 7);
+            this.compileButton.Name = "compileButton";
+            this.compileButton.Size = new System.Drawing.Size(75, 23);
+            this.compileButton.TabIndex = 20;
+            this.compileButton.Text = "Compile";
+            this.compileButton.Click += new System.EventHandler(this.compileButton_Click);
+            // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -112,7 +112,8 @@
             this.Controls.Add(this.vmfListBox);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("VMFtoMDL.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("VMFtoMDL.IconOptions.Image")));
             this.Name = "VMFtoMDL";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "VMF to MDL";

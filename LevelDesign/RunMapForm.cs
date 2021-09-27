@@ -36,13 +36,13 @@ namespace source_modding_tool
 
         private void RunMapForm_Load(object sender, EventArgs e)
         {
-            modPath = launcher.GetCurrentMod().installPath;
+            modPath = launcher.GetCurrentMod().InstallPath;
             LoadMaps();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            foreach(var file in new DirectoryInfo(launcher.GetCurrentMod().installPath + "\\maps\\").EnumerateFiles(compiledPath + ".*"))
+            foreach(var file in new DirectoryInfo(launcher.GetCurrentMod().InstallPath + "\\maps\\").EnumerateFiles(compiledPath + ".*"))
                 file.Delete();
             LoadMaps();
         }
@@ -115,7 +115,7 @@ namespace source_modding_tool
 
         private void LoadMaps()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             string mapsPath = modPath + "\\maps\\";
 

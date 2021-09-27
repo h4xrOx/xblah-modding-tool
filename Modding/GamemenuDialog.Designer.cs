@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GamemenuDialog));
             this.list = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
@@ -297,6 +298,7 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.list);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("GamemenuDialog.IconOptions.Image")));
             this.Name = "GamemenuDialog";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Menu item";

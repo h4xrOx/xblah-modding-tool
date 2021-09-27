@@ -148,7 +148,7 @@ namespace source_modding_tool
         private void ChaptersForm_Load(object sender, EventArgs e)
         {
             gamePath = launcher.GetCurrentGame().installPath;
-            modPath = launcher.GetCurrentMod().installPath;
+            modPath = launcher.GetCurrentMod().InstallPath;
             readChapters();
             readChapterTitles();
             readChapterBackgrounds();

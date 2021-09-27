@@ -41,7 +41,7 @@ namespace source_modding_tool
 
         private void buttonInstance_Click(object sender, EventArgs e)
         {
-            string mapsrcPath = launcher.GetCurrentMod().installPath + "\\mapsrc\\";
+            string mapsrcPath = launcher.GetCurrentMod().InstallPath + "\\mapsrc\\";
             Directory.CreateDirectory(mapsrcPath);
             instanceDialog.SelectedPath = (textGamedata.EditValue.ToString() == string.Empty
                 ? mapsrcPath
@@ -54,7 +54,7 @@ namespace source_modding_tool
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             GetFieldValues();
 
             string path = "";
@@ -116,7 +116,7 @@ namespace source_modding_tool
 
         private void SetFieldValues()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {
@@ -214,7 +214,7 @@ namespace source_modding_tool
 
         private void GetFieldValues()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {

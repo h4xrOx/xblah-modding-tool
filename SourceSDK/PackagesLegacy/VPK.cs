@@ -33,7 +33,7 @@ namespace SourceSDK.Packages
         internal string GetPackName()
         {
             string gamePath = launcher.GetCurrentGame().installPath;
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             string packName;
             try
@@ -108,7 +108,7 @@ namespace SourceSDK.Packages
             if (string.IsNullOrEmpty(filePath))
                 return;
 
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             string toolPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HLExtract\\HLExtract.exe";
 
             string vpkPath = fullPath;

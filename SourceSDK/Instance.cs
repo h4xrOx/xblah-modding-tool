@@ -55,7 +55,7 @@ namespace SourceSDK
                 return;
 
             string gamePath = launcher.GetCurrentGame().installPath;
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             switch(launcher.GetCurrentGame().engine)
             {
@@ -65,7 +65,7 @@ namespace SourceSDK
                         // Add a logic_timer triggering a point_clientcommand with the output Command "exec hijack" and that's it.
                         // Use this with caution (basically like everything else).
 
-                        hijackFilePath = launcher.GetCurrentMod().installPath + "\\cfg\\hijack.cfg";
+                        hijackFilePath = launcher.GetCurrentMod().InstallPath + "\\cfg\\hijack.cfg";
                         File.WriteAllText(hijackFilePath, command);
                         hijackWriteTime = File.GetLastAccessTime(hijackFilePath);
 
@@ -133,7 +133,7 @@ namespace SourceSDK
             KillExistant();
 
             Game game = launcher.GetCurrentGame();
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             string modFolder = new DirectoryInfo(modPath).Name;
 
             string exePath = launcher.GetCurrentGame().getExePath();

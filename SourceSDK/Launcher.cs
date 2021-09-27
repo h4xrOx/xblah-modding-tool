@@ -47,8 +47,6 @@ namespace SourceSDK
                                     }
                                     break;
                             }
-
-
                         }
                         else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game))
                         {
@@ -106,16 +104,16 @@ namespace SourceSDK
                     return null;
             }
 
-            if (mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.name))
+            if (mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.Name))
             {
-                if (!game.mods.ContainsKey(mod.name))
+                if (!game.mods.ContainsKey(mod.Name))
                     game.LoadMods(this);
 
-                if (!game.mods.ContainsKey(mod.name))
+                if (!game.mods.ContainsKey(mod.Name))
                     return null;
             }
 
-            string path = mod.installPath;
+            string path = mod.InstallPath;
 
             if (game != currentGame)
                 currentGame.LoadMods(this);

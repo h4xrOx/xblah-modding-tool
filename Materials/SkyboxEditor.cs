@@ -154,7 +154,7 @@ namespace source_modding_tool.Materials
 
         private void saveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string skyboxesPath = launcher.GetCurrentMod().installPath + "\\materials\\skybox\\";
+            string skyboxesPath = launcher.GetCurrentMod().InstallPath + "\\materials\\skybox\\";
             string skyName = skyListCombo.EditValue.ToString();
 
             Directory.CreateDirectory(skyboxesPath);

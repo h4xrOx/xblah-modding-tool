@@ -50,7 +50,7 @@ namespace source_modding_tool.Modding
 
         private void ListFiles()
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             files = new List<string>();
             files.Add("Gamestate.txt");
             files.Add("demoheader.tmp");
@@ -92,7 +92,7 @@ namespace source_modding_tool.Modding
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             foreach (TreeListNode node in treeList.GetAllCheckedNodes())
             {

@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartMap));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.cancelButton = new DevExpress.XtraEditors.SimpleButton();
+            this.trainingMapClearButton = new DevExpress.XtraEditors.SimpleButton();
+            this.okButton = new DevExpress.XtraEditors.SimpleButton();
+            this.startMapClearButton = new DevExpress.XtraEditors.SimpleButton();
+            this.trainingMapButton = new DevExpress.XtraEditors.SimpleButton();
+            this.trainingMapText = new DevExpress.XtraEditors.TextEdit();
+            this.startMapButton = new DevExpress.XtraEditors.SimpleButton();
             this.startMapText = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.startMapButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.trainingMapText = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.trainingMapButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.trainingMapClearButton = new DevExpress.XtraEditors.SimpleButton();
-            this.startMapClearButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.okButton = new DevExpress.XtraEditors.SimpleButton();
-            this.cancelButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -54,14 +54,14 @@
             this.item = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainingMapText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startMapText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainingMapText.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
@@ -91,6 +91,92 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // cancelButton
+            // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(166, 90);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(71, 22);
+            this.cancelButton.StyleController = this.layoutControl1;
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Cancel";
+            // 
+            // trainingMapClearButton
+            // 
+            this.trainingMapClearButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("trainingMapClearButton.ImageOptions.SvgImage")));
+            this.trainingMapClearButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.trainingMapClearButton.Location = new System.Drawing.Point(290, 36);
+            this.trainingMapClearButton.Name = "trainingMapClearButton";
+            this.trainingMapClearButton.Size = new System.Drawing.Size(22, 22);
+            this.trainingMapClearButton.StyleController = this.layoutControl1;
+            this.trainingMapClearButton.TabIndex = 10;
+            this.trainingMapClearButton.Text = "Clear";
+            this.trainingMapClearButton.Click += new System.EventHandler(this.trainingMapClearButton_Click);
+            // 
+            // okButton
+            // 
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Location = new System.Drawing.Point(241, 90);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(71, 22);
+            this.okButton.StyleController = this.layoutControl1;
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "Save";
+            // 
+            // startMapClearButton
+            // 
+            this.startMapClearButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("startMapClearButton.ImageOptions.SvgImage")));
+            this.startMapClearButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.startMapClearButton.Location = new System.Drawing.Point(290, 10);
+            this.startMapClearButton.Name = "startMapClearButton";
+            this.startMapClearButton.Size = new System.Drawing.Size(22, 22);
+            this.startMapClearButton.StyleController = this.layoutControl1;
+            this.startMapClearButton.TabIndex = 11;
+            this.startMapClearButton.Text = "Clear";
+            this.startMapClearButton.Click += new System.EventHandler(this.startMapClearButton_Click);
+            // 
+            // trainingMapButton
+            // 
+            this.trainingMapButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("trainingMapButton.ImageOptions.SvgImage")));
+            this.trainingMapButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.trainingMapButton.Location = new System.Drawing.Point(264, 36);
+            this.trainingMapButton.Name = "trainingMapButton";
+            this.trainingMapButton.Size = new System.Drawing.Size(22, 22);
+            this.trainingMapButton.StyleController = this.layoutControl1;
+            this.trainingMapButton.TabIndex = 7;
+            this.trainingMapButton.Text = "Browse";
+            this.trainingMapButton.Click += new System.EventHandler(this.startMapButton_Click);
+            // 
+            // trainingMapText
+            // 
+            this.trainingMapText.Location = new System.Drawing.Point(83, 36);
+            this.trainingMapText.Name = "trainingMapText";
+            this.trainingMapText.Size = new System.Drawing.Size(177, 20);
+            this.trainingMapText.StyleController = this.layoutControl1;
+            this.trainingMapText.TabIndex = 6;
+            this.trainingMapText.Tag = "trainmap";
+            // 
+            // startMapButton
+            // 
+            this.startMapButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("startMapButton.ImageOptions.SvgImage")));
+            this.startMapButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.startMapButton.Location = new System.Drawing.Point(264, 10);
+            this.startMapButton.Name = "startMapButton";
+            this.startMapButton.Size = new System.Drawing.Size(22, 22);
+            this.startMapButton.StyleController = this.layoutControl1;
+            this.startMapButton.TabIndex = 5;
+            this.startMapButton.Text = "Browse";
+            this.startMapButton.Click += new System.EventHandler(this.startMapButton_Click);
+            // 
+            // startMapText
+            // 
+            this.startMapText.Location = new System.Drawing.Point(83, 10);
+            this.startMapText.Name = "startMapText";
+            this.startMapText.Size = new System.Drawing.Size(177, 20);
+            this.startMapText.StyleController = this.layoutControl1;
+            this.startMapText.TabIndex = 4;
+            this.startMapText.Tag = "startmap";
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -111,15 +197,6 @@
             this.Root.Size = new System.Drawing.Size(322, 122);
             this.Root.TextVisible = false;
             // 
-            // startMapText
-            // 
-            this.startMapText.Location = new System.Drawing.Point(83, 10);
-            this.startMapText.Name = "startMapText";
-            this.startMapText.Size = new System.Drawing.Size(177, 20);
-            this.startMapText.StyleController = this.layoutControl1;
-            this.startMapText.TabIndex = 4;
-            this.startMapText.Tag = "startmap";
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.startMapText;
@@ -138,18 +215,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(306, 28);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // startMapButton
-            // 
-            this.startMapButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("startMapButton.ImageOptions.SvgImage")));
-            this.startMapButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.startMapButton.Location = new System.Drawing.Point(264, 10);
-            this.startMapButton.Name = "startMapButton";
-            this.startMapButton.Size = new System.Drawing.Size(22, 22);
-            this.startMapButton.StyleController = this.layoutControl1;
-            this.startMapButton.TabIndex = 5;
-            this.startMapButton.Text = "Browse";
-            this.startMapButton.Click += new System.EventHandler(this.startMapButton_Click);
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.startMapButton;
@@ -161,37 +226,6 @@
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // trainingMapText
-            // 
-            this.trainingMapText.Location = new System.Drawing.Point(83, 36);
-            this.trainingMapText.Name = "trainingMapText";
-            this.trainingMapText.Size = new System.Drawing.Size(177, 20);
-            this.trainingMapText.StyleController = this.layoutControl1;
-            this.trainingMapText.TabIndex = 6;
-            this.trainingMapText.Tag = "trainmap";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.trainingMapText;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(254, 26);
-            this.layoutControlItem3.Tag = "trainmap";
-            this.layoutControlItem3.Text = "Training map";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(61, 13);
-            // 
-            // trainingMapButton
-            // 
-            this.trainingMapButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("trainingMapButton.ImageOptions.SvgImage")));
-            this.trainingMapButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.trainingMapButton.Location = new System.Drawing.Point(264, 36);
-            this.trainingMapButton.Name = "trainingMapButton";
-            this.trainingMapButton.Size = new System.Drawing.Size(22, 22);
-            this.trainingMapButton.StyleController = this.layoutControl1;
-            this.trainingMapButton.TabIndex = 7;
-            this.trainingMapButton.Text = "Browse";
-            this.trainingMapButton.Click += new System.EventHandler(this.startMapButton_Click);
             // 
             // layoutControlItem4
             // 
@@ -205,29 +239,15 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // trainingMapClearButton
+            // layoutControlItem3
             // 
-            this.trainingMapClearButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("trainingMapClearButton.ImageOptions.SvgImage")));
-            this.trainingMapClearButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.trainingMapClearButton.Location = new System.Drawing.Point(290, 36);
-            this.trainingMapClearButton.Name = "trainingMapClearButton";
-            this.trainingMapClearButton.Size = new System.Drawing.Size(22, 22);
-            this.trainingMapClearButton.StyleController = this.layoutControl1;
-            this.trainingMapClearButton.TabIndex = 10;
-            this.trainingMapClearButton.Text = "Clear";
-            this.trainingMapClearButton.Click += new System.EventHandler(this.trainingMapClearButton_Click);
-            // 
-            // startMapClearButton
-            // 
-            this.startMapClearButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("startMapClearButton.ImageOptions.SvgImage")));
-            this.startMapClearButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.startMapClearButton.Location = new System.Drawing.Point(290, 10);
-            this.startMapClearButton.Name = "startMapClearButton";
-            this.startMapClearButton.Size = new System.Drawing.Size(22, 22);
-            this.startMapClearButton.StyleController = this.layoutControl1;
-            this.startMapClearButton.TabIndex = 11;
-            this.startMapClearButton.Text = "Clear";
-            this.startMapClearButton.Click += new System.EventHandler(this.startMapClearButton_Click);
+            this.layoutControlItem3.Control = this.trainingMapText;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(254, 26);
+            this.layoutControlItem3.Tag = "trainmap";
+            this.layoutControlItem3.Text = "Training map";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(61, 13);
             // 
             // layoutControlItem5
             // 
@@ -252,26 +272,6 @@
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
-            // 
-            // okButton
-            // 
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(241, 90);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(71, 22);
-            this.okButton.StyleController = this.layoutControl1;
-            this.okButton.TabIndex = 1;
-            this.okButton.Text = "Save";
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(166, 90);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(71, 22);
-            this.cancelButton.StyleController = this.layoutControl1;
-            this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Cancel";
             // 
             // layoutControlItem7
             // 
@@ -338,20 +338,21 @@
             this.ClientSize = new System.Drawing.Size(322, 122);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.layoutControl1layoutControl2ConvertedLayout);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("StartMap.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("StartMap.IconOptions.Image")));
             this.Name = "StartMap";
             this.Text = "Starting maps";
             this.Load += new System.EventHandler(this.StartMap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainingMapText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startMapText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainingMapText.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();

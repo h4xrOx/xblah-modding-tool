@@ -44,6 +44,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.resetButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.presetCommandText = new DevExpress.XtraEditors.TextEdit();
             this.presetNameText = new DevExpress.XtraEditors.TextEdit();
@@ -63,7 +64,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.presetSaveButton = new DevExpress.XtraEditors.SimpleButton();
             this.presetCancelButton = new DevExpress.XtraEditors.SimpleButton();
-            this.resetButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.presetCombo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -75,6 +75,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            this.splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -113,7 +117,7 @@
             "VR",
             "Ingame Tools"});
             this.presetCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.presetCombo.Size = new System.Drawing.Size(121, 20);
+            this.presetCombo.Size = new System.Drawing.Size(112, 20);
             this.presetCombo.TabIndex = 0;
             // 
             // okButton
@@ -141,9 +145,9 @@
             // 
             // commandText
             // 
-            this.commandText.Location = new System.Drawing.Point(106, 26);
+            this.commandText.Location = new System.Drawing.Point(115, 26);
             this.commandText.Name = "commandText";
-            this.commandText.Size = new System.Drawing.Size(181, 20);
+            this.commandText.Size = new System.Drawing.Size(172, 20);
             this.commandText.StyleController = this.layoutControl2;
             this.commandText.TabIndex = 3;
             // 
@@ -166,9 +170,9 @@
             this.panelControl4.Controls.Add(this.addButton);
             this.panelControl4.Controls.Add(this.editButton);
             this.panelControl4.Controls.Add(this.deleteButton);
-            this.panelControl4.Location = new System.Drawing.Point(106, 2);
+            this.panelControl4.Location = new System.Drawing.Point(115, 2);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(181, 20);
+            this.panelControl4.Size = new System.Drawing.Size(172, 20);
             this.panelControl4.TabIndex = 10;
             // 
             // addButton
@@ -176,7 +180,7 @@
             this.addButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.addButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("addButton.ImageOptions.SvgImage")));
             this.addButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.addButton.Location = new System.Drawing.Point(121, 0);
+            this.addButton.Location = new System.Drawing.Point(112, 0);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(20, 20);
             this.addButton.TabIndex = 3;
@@ -188,7 +192,7 @@
             this.editButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.editButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editButton.ImageOptions.SvgImage")));
             this.editButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.editButton.Location = new System.Drawing.Point(141, 0);
+            this.editButton.Location = new System.Drawing.Point(132, 0);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(20, 20);
             this.editButton.TabIndex = 8;
@@ -200,7 +204,7 @@
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.deleteButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("deleteButton.ImageOptions.SvgImage")));
             this.deleteButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.deleteButton.Location = new System.Drawing.Point(161, 0);
+            this.deleteButton.Location = new System.Drawing.Point(152, 0);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(20, 20);
             this.deleteButton.TabIndex = 9;
@@ -254,9 +258,15 @@
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Location = new System.Drawing.Point(8, 8);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
             this.splitContainerControl1.Panel1.Controls.Add(this.layoutControl2);
             this.splitContainerControl1.Panel1.Controls.Add(this.panelControl3);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
             this.splitContainerControl1.Panel2.Controls.Add(this.layoutControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
@@ -277,6 +287,15 @@
             this.panelControl3.Size = new System.Drawing.Size(289, 31);
             this.panelControl3.TabIndex = 7;
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(0, 8);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 3;
+            this.resetButton.Text = "Reset";
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.presetCommandText);
@@ -295,17 +314,17 @@
             // 
             // presetCommandText
             // 
-            this.presetCommandText.Location = new System.Drawing.Point(62, 98);
+            this.presetCommandText.Location = new System.Drawing.Point(71, 98);
             this.presetCommandText.Name = "presetCommandText";
-            this.presetCommandText.Size = new System.Drawing.Size(173, 20);
+            this.presetCommandText.Size = new System.Drawing.Size(164, 20);
             this.presetCommandText.StyleController = this.layoutControl1;
             this.presetCommandText.TabIndex = 7;
             // 
             // presetNameText
             // 
-            this.presetNameText.Location = new System.Drawing.Point(62, 2);
+            this.presetNameText.Location = new System.Drawing.Point(71, 2);
             this.presetNameText.Name = "presetNameText";
-            this.presetNameText.Size = new System.Drawing.Size(173, 20);
+            this.presetNameText.Size = new System.Drawing.Size(164, 20);
             this.presetNameText.StyleController = this.layoutControl1;
             this.presetNameText.TabIndex = 6;
             this.presetNameText.TextChanged += new System.EventHandler(this.presetNameText_TextChanged);
@@ -316,9 +335,9 @@
             this.panelControl1.Controls.Add(this.presetExecutableText);
             this.panelControl1.Controls.Add(this.presetExecutableBrowseButton);
             this.panelControl1.Controls.Add(this.presetExecutableClearButton);
-            this.panelControl1.Location = new System.Drawing.Point(62, 74);
+            this.panelControl1.Location = new System.Drawing.Point(71, 74);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(173, 20);
+            this.panelControl1.Size = new System.Drawing.Size(164, 20);
             this.panelControl1.TabIndex = 5;
             // 
             // presetExecutableText
@@ -328,7 +347,7 @@
             this.presetExecutableText.Name = "presetExecutableText";
             this.presetExecutableText.Properties.ReadOnly = true;
             this.presetExecutableText.Properties.UseReadOnlyAppearance = false;
-            this.presetExecutableText.Size = new System.Drawing.Size(133, 20);
+            this.presetExecutableText.Size = new System.Drawing.Size(124, 20);
             this.presetExecutableText.TabIndex = 6;
             // 
             // presetExecutableBrowseButton
@@ -336,7 +355,7 @@
             this.presetExecutableBrowseButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.presetExecutableBrowseButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("presetExecutableBrowseButton.ImageOptions.SvgImage")));
             this.presetExecutableBrowseButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.presetExecutableBrowseButton.Location = new System.Drawing.Point(133, 0);
+            this.presetExecutableBrowseButton.Location = new System.Drawing.Point(124, 0);
             this.presetExecutableBrowseButton.Name = "presetExecutableBrowseButton";
             this.presetExecutableBrowseButton.Size = new System.Drawing.Size(20, 20);
             this.presetExecutableBrowseButton.TabIndex = 7;
@@ -348,7 +367,7 @@
             this.presetExecutableClearButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.presetExecutableClearButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("presetExecutableClearButton.ImageOptions.SvgImage")));
             this.presetExecutableClearButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.presetExecutableClearButton.Location = new System.Drawing.Point(153, 0);
+            this.presetExecutableClearButton.Location = new System.Drawing.Point(144, 0);
             this.presetExecutableClearButton.Name = "presetExecutableClearButton";
             this.presetExecutableClearButton.Size = new System.Drawing.Size(20, 20);
             this.presetExecutableClearButton.TabIndex = 8;
@@ -358,7 +377,7 @@
             // presetCoverageCombo
             // 
             this.presetCoverageCombo.EditValue = "Global";
-            this.presetCoverageCombo.Location = new System.Drawing.Point(62, 50);
+            this.presetCoverageCombo.Location = new System.Drawing.Point(71, 50);
             this.presetCoverageCombo.Name = "presetCoverageCombo";
             this.presetCoverageCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -368,14 +387,14 @@
             "Current game only",
             "Current mod only"});
             this.presetCoverageCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.presetCoverageCombo.Size = new System.Drawing.Size(173, 20);
+            this.presetCoverageCombo.Size = new System.Drawing.Size(164, 20);
             this.presetCoverageCombo.StyleController = this.layoutControl1;
             this.presetCoverageCombo.TabIndex = 1;
             // 
             // presetRunModeCombo
             // 
             this.presetRunModeCombo.EditValue = "Windowed";
-            this.presetRunModeCombo.Location = new System.Drawing.Point(62, 26);
+            this.presetRunModeCombo.Location = new System.Drawing.Point(71, 26);
             this.presetRunModeCombo.Name = "presetRunModeCombo";
             this.presetRunModeCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -384,7 +403,7 @@
             "Fullscreen",
             "VR"});
             this.presetRunModeCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.presetRunModeCombo.Size = new System.Drawing.Size(173, 20);
+            this.presetRunModeCombo.Size = new System.Drawing.Size(164, 20);
             this.presetRunModeCombo.StyleController = this.layoutControl1;
             this.presetRunModeCombo.TabIndex = 0;
             // 
@@ -495,22 +514,14 @@
             this.presetCancelButton.Text = "Cancel";
             this.presetCancelButton.Click += new System.EventHandler(this.presetOptions_Click);
             // 
-            // resetButton
-            // 
-            this.resetButton.Location = new System.Drawing.Point(0, 8);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
-            this.resetButton.TabIndex = 3;
-            this.resetButton.Text = "Reset";
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
-            // 
             // RunDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 178);
             this.Controls.Add(this.splitContainerControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("RunDialog.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("RunDialog.IconOptions.Image")));
             this.Name = "RunDialog";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Run";
@@ -524,6 +535,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            this.splitContainerControl1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();

@@ -19,13 +19,13 @@ namespace SourceSDK
             switch (launcher.GetCurrentGame().engine)
             {
                 case Engine.SOURCE:
-                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.txt");
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\gameinfo.txt");
                     break;
                 case Engine.SOURCE2:
-                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\gameinfo.gi");
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\gameinfo.gi");
                     break;
                 case Engine.GOLDSRC:
-                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().installPath + "\\liblist.gam");
+                    root = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\liblist.gam");
                     break;
             }
 

@@ -84,7 +84,7 @@ namespace source_modding_tool
                 // Run faceposer
                 Process process = new Process();
                 process.StartInfo.FileName = gamePath + "\\bin\\hlfaceposer.exe";
-                process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().installPath;
+                process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().InstallPath;
 
                 process.Start();
             }
@@ -114,7 +114,7 @@ namespace source_modding_tool
 
                     Mod mod = launcher.GetCurrentGame().GetModsList(launcher)[modName];
                     launcher.GetCurrentGame().SetCurrentMod(mod);
-                    toolsMods.EditValue = mod.name;
+                    toolsMods.EditValue = mod.Name;
                 }
             }
 
@@ -227,6 +227,12 @@ namespace source_modding_tool
                 Process.Start("Tools\\BatchCompiler\\Batch Compiler.exe");
             }
 
+            // BSP Source
+            else if (e.Item == menuLevelDesignBspSource)
+            {
+                Process.Start("Tools\\BSPSource\\bspsrc.jar");
+            }
+
             else if(e.Item == menuLevelDesignResetHammerConfigsButton)
             {
                 Registry.CurrentUser.DeleteSubKeyTree("SOFTWARE\\Valve\\Hammer", false);
@@ -285,7 +291,7 @@ namespace source_modding_tool
 
                     AssetsRequiredForm assetsCopierForm = new AssetsRequiredForm(launcher, sourceMod);
                     assetsCopierForm.OpenDestination = false;
-                    assetsCopierForm.destination = currentMod.installPath;
+                    assetsCopierForm.destination = currentMod.InstallPath;
                     if (assetsCopierForm.ShowDialog() == DialogResult.OK)
                     {
                         
@@ -457,7 +463,7 @@ namespace source_modding_tool
                 process.StartInfo.Arguments = string.Empty;
 
                 if (launcher.GetCurrentGame().name == "Mapbase")
-                    process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().installPath;
+                    process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().InstallPath;
 
                 process.Start();
             }

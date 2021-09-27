@@ -373,6 +373,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MaterialEditor.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("MaterialEditor.IconOptions.Image")));
             this.Name = "MaterialEditor";
             this.Text = "Material Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MaterialEditor_FormClosing);

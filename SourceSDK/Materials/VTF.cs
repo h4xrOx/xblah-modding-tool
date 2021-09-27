@@ -23,7 +23,7 @@ namespace SourceSDK.Materials
                 return null;
 
             string gamePath = launcher.GetCurrentGame().installPath;
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             string filePath = modPath + "\\materialsrc";
 
             string vtexPath = gamePath + "\\bin\\vtex.exe";
@@ -63,7 +63,7 @@ namespace SourceSDK.Materials
                 return null;
 
             string gamePath = launcher.GetCurrentGame().installPath;
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             string filePath = modPath + "\\materials";
 
             string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";

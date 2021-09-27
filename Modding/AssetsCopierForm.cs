@@ -93,7 +93,7 @@ namespace source_modding_tool.Modding
         {
             List<PackageFile> files = filesTreeList.Nodes.Where(n => n.Tag != null && n.Tag is PackageFile && n.Checked == true).Select(m => m.Tag as PackageFile).ToList();
 
-            RootPath = launcher.GetCurrentMod().installPath + "\\custom\\assets-copier-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "\\";
+            RootPath = launcher.GetCurrentMod().InstallPath + "\\custom\\assets-copier-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "\\";
 
             foreach (PackageFile file in files)
             {

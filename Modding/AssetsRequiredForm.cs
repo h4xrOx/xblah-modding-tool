@@ -34,7 +34,7 @@ namespace source_modding_tool.Tools
         public AssetsRequiredForm(Launcher launcher, Mod mod)
         {
             this.launcher = launcher;
-            this.game = mod.game;
+            this.game = mod.Game;
             this.mod = mod;
             this.packageManager = new PackageManager(launcher, "");
 

@@ -28,7 +28,7 @@ namespace source_modding_tool
         public MaterialEditor(Launcher launcher)
         {
             this.launcher = launcher;
-            modPath = launcher.GetCurrentMod().installPath;
+            modPath = launcher.GetCurrentMod().InstallPath;
 
             packageManager = new PackageManager(launcher, "materials");
 
@@ -185,7 +185,7 @@ namespace source_modding_tool
         {
             string relativePath = fullPath;
 
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
             string gamePath = launcher.GetCurrentGame().installPath;
 
             if (fullPath.Contains(modPath))

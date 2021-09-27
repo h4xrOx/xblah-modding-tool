@@ -189,7 +189,7 @@ namespace source_modding_tool.Tools
 
         private void FileAction(int action)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             switch (action)
             {

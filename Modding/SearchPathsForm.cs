@@ -28,7 +28,7 @@ namespace source_modding_tool
 
         private void SearchPathsForm_Load(object sender, EventArgs e)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             string gameinfoPath = modPath + "\\gameinfo.txt";
 
@@ -81,7 +81,7 @@ namespace source_modding_tool
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             Game game = launcher.GetGamesList()[comboGames.EditValue.ToString()];
             int appID = game.GetAppId();

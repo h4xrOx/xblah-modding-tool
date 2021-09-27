@@ -51,7 +51,7 @@ namespace source_modding_tool
                     }
                 }
 
-                String modPath = launcher.GetCurrentMod().installPath;
+                String modPath = launcher.GetCurrentMod().InstallPath;
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = propperPath;

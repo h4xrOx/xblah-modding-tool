@@ -34,7 +34,7 @@ namespace source_modding_tool
         private void startPreview()
         {
             string sourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\IngamePreviews";
-            string modPath = launcher.GetCurrentMod().installPath;
+            string modPath = launcher.GetCurrentMod().InstallPath;
 
             // Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*",

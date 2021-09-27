@@ -175,14 +175,14 @@ namespace SourceSDK
                                         }
                                 }
 
-                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
+                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
                                 {
 
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
                                     foreach (Mod mod in mods.Values)
                                     {
-                                        if (new FileInfo(mod.installPath).Name == newModPath)
+                                        if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
                                             containsMod = true;
                                             break;
@@ -224,7 +224,7 @@ namespace SourceSDK
                                 if (steamAppIdKV != null)
                                     modAppId = steamAppIdKV.getValue();
 
-                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.installPath == path).ToList().Count == 0))
+                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
                                 {        
                                     // Create a symbolic link in Half-Life: Alyx, so the mod can run.
                                     if (!path.Contains(gamePath))
@@ -239,7 +239,7 @@ namespace SourceSDK
                                     string newModPath = new FileInfo(path).Name;
                                     foreach (Mod mod in mods.Values)
                                     {
-                                        if (new FileInfo(mod.installPath).Name == newModPath)
+                                        if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
                                             containsMod = true;
                                             break;
@@ -275,7 +275,7 @@ namespace SourceSDK
                                     string newModPath = new FileInfo(path).Name;
                                     foreach (Mod mod in mods.Values)
                                     {
-                                        if (new FileInfo(mod.installPath).Name == newModPath)
+                                        if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
                                             containsMod = true;
                                             break;
@@ -350,7 +350,7 @@ namespace SourceSDK
 
         public void DeleteMod()
         {
-            string modPath = GetCurrentMod().installPath;
+            string modPath = GetCurrentMod().InstallPath;
 
             if (Directory.Exists(modPath))
                 Directory.Delete(modPath, true);

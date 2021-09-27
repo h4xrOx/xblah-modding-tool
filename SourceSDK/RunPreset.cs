@@ -55,7 +55,7 @@ namespace SourceSDK
                         switch (game.engine)
                         {
                             case Engine.SOURCE:
-                                arguments = "-game \"" + mod.installPath + "\" -fullscreen" +
+                                arguments = "-game \"" + mod.InstallPath + "\" -fullscreen" +
                                 " -x 0" +
                                 " -y 0" +
                                 " -width " + Screen.PrimaryScreen.Bounds.Width +
@@ -63,7 +63,7 @@ namespace SourceSDK
                                 " " + command;
                                 break;
                             case Engine.SOURCE2:
-                                arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -fullscreen -vr_enable_fake_vr_test" +
+                                arguments = "-game " + new DirectoryInfo(mod.InstallPath).Name + " -fullscreen -vr_enable_fake_vr_test" +
                                 " -x 0" +
                                 " -y 0" +
                                 " -width " + Screen.PrimaryScreen.Bounds.Width +
@@ -71,7 +71,7 @@ namespace SourceSDK
                                 " " + command;
                                 break;
                             case Engine.GOLDSRC:
-                                arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -fullscreen" +
+                                arguments = "-game " + new DirectoryInfo(mod.InstallPath).Name + " -fullscreen" +
                                 " -x 0" +
                                 " -y 0" +
                                 " -width " + Screen.PrimaryScreen.Bounds.Width +
@@ -85,7 +85,7 @@ namespace SourceSDK
                     switch (game.engine)
                     {
                         case Engine.SOURCE:
-                            arguments = "-game \"" + mod.installPath + "\" -windowed -noborder -multirun" +
+                            arguments = "-game \"" + mod.InstallPath + "\" -windowed -noborder -multirun" +
                             " -x " + location.X +
                             " -y " + location.Y +
                             " -width " + parent.Width +
@@ -93,7 +93,7 @@ namespace SourceSDK
                             " " + command;
                             break;
                         case Engine.SOURCE2:
-                            arguments = " -game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
+                            arguments = " -game " + new DirectoryInfo(mod.InstallPath).Name + " -windowed -noborder -vr_enable_fake_vr_test" +
                             " -x " + location.X +
                             " -y " + location.Y +
                             " -width " + parent.Width +
@@ -101,7 +101,7 @@ namespace SourceSDK
                             " " + command;
                             break;
                         case Engine.GOLDSRC:
-                            arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -windowed -noborder" +
+                            arguments = "-game " + new DirectoryInfo(mod.InstallPath).Name + " -windowed -noborder" +
                             " -x " + location.X +
                             " -y " + location.Y +
                             " -width " + parent.Width +
@@ -114,11 +114,11 @@ namespace SourceSDK
                     switch (game.engine)
                     {
                         case Engine.SOURCE:
-                            arguments = "-game \"" + mod.installPath + "\" -vr" +
+                            arguments = "-game \"" + mod.InstallPath + "\" -vr" +
                             " " + command;
                             break;
                         case Engine.SOURCE2:
-                            arguments = "-game " + new DirectoryInfo(mod.installPath).Name + " -vr" +
+                            arguments = "-game " + new DirectoryInfo(mod.InstallPath).Name + " -vr" +
                             " " + command;
                             break;
                     }
