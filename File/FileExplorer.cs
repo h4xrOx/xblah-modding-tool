@@ -3,6 +3,7 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using source_modding_tool.Sound;
 using SourceSDK;
+using SourceSDK.Maps;
 using SourceSDK.Packages;
 using SourceSDK.Packages.UnpackedPackage;
 using SourceSDK.Packages.VPKPackage;
@@ -504,6 +505,169 @@ namespace source_modding_tool.Modding
             if (mode == Mode.SAVE)
             {
                 okButton.Enabled = (fileNameEdit.EditValue.ToString().Length > 0);
+            }
+        }
+
+        // Context menu
+        private void fileTree_MouseUp(object sender, MouseEventArgs e)
+        {
+            TreeListHitInfo hitInfo = fileTree.CalcHitInfo(e.Location);
+
+            if (e.Button == MouseButtons.Right && ModifierKeys == Keys.None
+                   && fileTree.State == TreeListState.Regular)
+            {
+                Point pt = fileTree.PointToClient(MousePosition);
+                TreeListHitInfo info = fileTree.CalcHitInfo(pt);
+
+                if (info.Node == null)
+                {
+                    fileTree.ClearSelection();
+                }
+                else
+                {
+                    fileTree.SetFocusedNode(info.Node);
+
+                    if (!info.Node.IsSelected)
+                    {
+                        fileTree.ClearSelection();
+                        fileTree.SelectNode(info.Node);
+                    }
+                }
+
+                if (fileTree.Selection.Count > 0)
+                {
+                    bool isFile = false;
+                    bool isFolder = false;
+                    bool multiple = fileTree.Selection.Count > 1;
+
+                    bool isFilePacked = true;
+                    bool isFileUnpacked = true;
+
+                    bool isFolderUnpacked = true;
+
+                    contextFolderOpen.Visibility = (!multiple ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never);
+
+                    foreach (TreeListNode node in fileTree.Selection)
+                    {
+                        if (node.Tag is PackageFile)
+                        {
+                            isFile = true;
+
+                            PackageFile packageFile = node.Tag as PackageFile;
+
+                            if (packageFile is UnpackedFile)
+                            {
+                                isFilePacked = false;
+                            } else
+                            {
+                                isFileUnpacked = false;
+                            }                            
+                        } else
+                        {
+                            isFolder = true;
+
+                            if (!Directory.Exists(launcher.GetCurrentMod().InstallPath + "\\" + node.Tag.ToString().Replace("/", "\\")))
+                            {
+                                isFolderUnpacked = false;
+                            }
+                        }
+                    }
+
+                    contextFileExtractFromVPK.Visibility = (isFilePacked ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never);
+                    contextFileDelete.Visibility = (isFileUnpacked ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never);
+                    contextFileShowInWindowsExplorer.Visibility = (isFileUnpacked ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never);
+
+                    contextFolderOpenInWindows.Visibility = (!multiple && isFolderUnpacked ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never);
+
+                    if (isFile && !isFolder)
+                    {
+                        fileMenu.ShowPopup(MousePosition);
+                    }
+                    if (isFolder && !isFile)
+                    {
+                        folderMenu.ShowPopup(MousePosition);
+                    }
+                }
+            }
+        }
+
+        private void contextFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (e.Item == contextFileDelete)
+            {
+                foreach(TreeListNode node in fileTree.Selection)
+                {
+                    string path = launcher.GetCurrentMod().InstallPath + "\\" + (node.Tag as PackageFile).FullPath;
+                    File.Delete(path);
+                }
+
+                packageManager.Refresh();
+                UpdateDirectoryTree();
+                UpdateFileTree(CurrentDirectory);
+            }
+            else if(e.Item == contextFileExtractFromVPK)
+            {
+                Directory.CreateDirectory(launcher.GetCurrentMod().InstallPath + "\\" + CurrentDirectory);
+                foreach (TreeListNode node in fileTree.Selection)
+                {
+                    PackageFile packageFile = (node.Tag as PackageFile);
+                    string path = launcher.GetCurrentMod().InstallPath + "\\" + packageFile.FullPath;
+                    File.WriteAllBytes(path, packageFile.Data);
+                }
+
+                packageManager.Refresh();
+                UpdateDirectoryTree();
+                UpdateFileTree(CurrentDirectory);
+            }
+            else if (e.Item == contextFileShowInWindowsExplorer)
+            {
+                PackageFile packageFile = (fileTree.Selection[0].Tag as PackageFile);
+                string path = Path.GetDirectoryName(launcher.GetCurrentMod().InstallPath + "\\" + packageFile.FullPath);
+                Process.Start(path);
+            }
+            else if(e.Item == contextFileDecompile)
+            {
+                List<PackageFile> bspFiles = new List<PackageFile>();
+                foreach (TreeListNode node in fileTree.Selection)
+                {
+                    PackageFile packageFile = (node.Tag as PackageFile);
+                    if (packageFile.Extension == "bsp")
+                    {
+                        // Map files
+                        bspFiles.Add(packageFile);
+                    }
+                }
+
+                if (bspFiles.Count > 0)
+                {
+                    foreach(PackageFile packageFile in bspFiles)
+                        BSP.Decompile(packageFile, launcher);
+
+                    if ("mapsrc" != CurrentDirectory)
+                    {
+                        previousDirectories.Push(CurrentDirectory);
+                        nextDirectories.Clear();
+                    }
+
+                    UpdateFileTree("mapsrc");
+                }
+            }
+            else if (e.Item == contextFolderOpen)
+            {
+                string tag = fileTree.Selection[0].Tag.ToString();
+                if (tag != CurrentDirectory)
+                {
+                    previousDirectories.Push(CurrentDirectory);
+                    nextDirectories.Clear();
+                }
+
+                UpdateFileTree(tag);
+            }
+            else if(e.Item == contextFolderOpenInWindows)
+            {
+                string tag = fileTree.Selection[0].Tag.ToString();
+                string path = launcher.GetCurrentMod().InstallPath + "\\" + tag.Replace("/", "\\");
+                Process.Start(path);
             }
         }
     }

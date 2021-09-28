@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="KeyCode.cs" />
+    <Compile Include="Maps\BSP.cs" />
+    <Compile Include="Maps\MAP.cs" />
     <Compile Include="Packages\PackageArchive.cs" />
     <Compile Include="Packages\PackageDirectory.cs" />
     <Compile Include="Packages\PackageFile.cs" />

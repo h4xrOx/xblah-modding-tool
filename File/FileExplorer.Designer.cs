@@ -53,6 +53,10 @@ namespace source_modding_tool.Modding
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.contextFileExtractFromVPK = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFileDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFolderOpen = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFolderOpenInWindows = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -63,6 +67,10 @@ namespace source_modding_tool.Modding
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.fileNameEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.fileMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.folderMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.contextFileShowInWindowsExplorer = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFileDecompile = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.directoryTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileTree)).BeginInit();
@@ -81,6 +89,8 @@ namespace source_modding_tool.Modding
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileNameEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // directoryTree
@@ -136,6 +146,7 @@ namespace source_modding_tool.Modding
             this.fileTree.TabIndex = 2;
             this.fileTree.SelectionChanged += new System.EventHandler(this.fileTree_SelectionChanged);
             this.fileTree.DoubleClick += new System.EventHandler(this.fileTree_DoubleClick);
+            this.fileTree.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileTree_MouseUp);
             // 
             // treeListColumn2
             // 
@@ -195,8 +206,14 @@ namespace source_modding_tool.Modding
             this.buttonBack,
             this.buttonForward,
             this.buttonUp,
-            this.textSearch});
-            this.barManager1.MaxItemId = 6;
+            this.textSearch,
+            this.contextFileExtractFromVPK,
+            this.contextFileDelete,
+            this.contextFolderOpen,
+            this.contextFolderOpenInWindows,
+            this.contextFileShowInWindowsExplorer,
+            this.contextFileDecompile});
+            this.barManager1.MaxItemId = 12;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -314,6 +331,39 @@ namespace source_modding_tool.Modding
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 450);
             // 
+            // contextFileExtractFromVPK
+            // 
+            this.contextFileExtractFromVPK.Caption = "Extract from VPK";
+            this.contextFileExtractFromVPK.Id = 6;
+            this.contextFileExtractFromVPK.Name = "contextFileExtractFromVPK";
+            this.contextFileExtractFromVPK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFileDelete
+            // 
+            this.contextFileDelete.Caption = "Delete";
+            this.contextFileDelete.Id = 7;
+            this.contextFileDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextDelete.ImageOptions.SvgImage")));
+            this.contextFileDelete.Name = "contextFileDelete";
+            this.contextFileDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFolderOpen
+            // 
+            this.contextFolderOpen.Caption = "Open";
+            this.contextFolderOpen.Id = 8;
+            this.contextFolderOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFolderOpen.ImageOptions.SvgImage")));
+            this.contextFolderOpen.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextFolderOpen.ItemAppearance.Normal.Options.UseFont = true;
+            this.contextFolderOpen.Name = "contextFolderOpen";
+            this.contextFolderOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFolderOpenInWindows
+            // 
+            this.contextFolderOpenInWindows.Caption = "Open in Windows";
+            this.contextFolderOpenInWindows.Id = 9;
+            this.contextFolderOpenInWindows.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFolderOpenInWindows.ImageOptions.SvgImage")));
+            this.contextFolderOpenInWindows.Name = "contextFolderOpenInWindows";
+            this.contextFolderOpenInWindows.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
             // repositoryItemTextEdit2
             // 
             this.repositoryItemTextEdit2.AutoHeight = false;
@@ -422,6 +472,40 @@ namespace source_modding_tool.Modding
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "File name:";
             // 
+            // fileMenu
+            // 
+            this.fileMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileExtractFromVPK),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileShowInWindowsExplorer),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDelete),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDecompile)});
+            this.fileMenu.Manager = this.barManager1;
+            this.fileMenu.Name = "fileMenu";
+            // 
+            // folderMenu
+            // 
+            this.folderMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFolderOpen),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFolderOpenInWindows)});
+            this.folderMenu.Manager = this.barManager1;
+            this.folderMenu.Name = "folderMenu";
+            // 
+            // contextFileShowInWindowsExplorer
+            // 
+            this.contextFileShowInWindowsExplorer.Caption = "Show in Windows Explorer";
+            this.contextFileShowInWindowsExplorer.Id = 10;
+            this.contextFileShowInWindowsExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileShowInWindowsExplorer.ImageOptions.SvgImage")));
+            this.contextFileShowInWindowsExplorer.Name = "contextFileShowInWindowsExplorer";
+            this.contextFileShowInWindowsExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFileDecompile
+            // 
+            this.contextFileDecompile.Caption = "Decompile";
+            this.contextFileDecompile.Id = 11;
+            this.contextFileDecompile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileDecompile.ImageOptions.SvgImage")));
+            this.contextFileDecompile.Name = "contextFileDecompile";
+            this.contextFileDecompile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
             // FileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +540,8 @@ namespace source_modding_tool.Modding
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fileNameEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,5 +580,13 @@ namespace source_modding_tool.Modding
         private DevExpress.XtraEditors.SimpleButton okButton;
         private DevExpress.XtraEditors.SimpleButton cancelButton;
         private DevExpress.XtraEditors.SimpleButton previewButton;
+        private DevExpress.XtraBars.PopupMenu fileMenu;
+        private DevExpress.XtraBars.BarButtonItem contextFileExtractFromVPK;
+        private DevExpress.XtraBars.BarButtonItem contextFileDelete;
+        private DevExpress.XtraBars.BarButtonItem contextFolderOpen;
+        private DevExpress.XtraBars.BarButtonItem contextFolderOpenInWindows;
+        private DevExpress.XtraBars.PopupMenu folderMenu;
+        private DevExpress.XtraBars.BarButtonItem contextFileShowInWindowsExplorer;
+        private DevExpress.XtraBars.BarButtonItem contextFileDecompile;
     }
 }

@@ -1149,6 +1149,9 @@
     </Content>
     <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\bin\game_shader_dx9.dll" />
     <Content Include="Resources\Templates\Mapbase\mapbase_hl2_template\bin\game_shader_dx9.pdb" />
+    <Content Include="Resources\Tools\BSP2Map\BSPTwoMAP.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Tools\BSPSource\bspsrc.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

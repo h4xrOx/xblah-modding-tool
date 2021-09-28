@@ -112,15 +112,16 @@ namespace SourceSDK.Maps
         {
             string modPath = launcher.GetCurrentMod().InstallPath;
             string filePath = modPath + "\\mapsrc";
-            string bspsourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\BSPSource\\bspsrc.jar";
+
+            string toolPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\BSPSource\\bspsrc.jar";
 
             Directory.CreateDirectory(filePath);
-            File.WriteAllBytes(filePath + "\\temp.bsp", packageFile.Data);        
+            File.WriteAllBytes(filePath + "\\temp.bsp", packageFile.Data);
 
             Process process = new Process();
             process.StartInfo.FileName = "java.exe";
-            process.StartInfo.WorkingDirectory = bspsourcePath;
-            process.StartInfo.Arguments = "-jar \"" + bspsourcePath + "\" \"" + filePath + "\\temp.bsp\"";
+            process.StartInfo.WorkingDirectory = toolPath;
+            process.StartInfo.Arguments = "-jar \"" + toolPath + "\" \"" + filePath + "\\temp.bsp\"";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.WaitForExit();

@@ -13,6 +13,7 @@ namespace SourceSDK.Packages
     public class PackageManager
     {
         private Launcher launcher;
+        private string rootPath;
 
         public List<PackageArchive> Archives { get; set; }
 
@@ -36,6 +37,13 @@ namespace SourceSDK.Packages
             this.launcher = launcher;
             Archives = new List<PackageArchive>();
 
+            this.rootPath = rootPath;
+
+            Load(rootPath);
+        }
+
+        public void Refresh()
+        {
             Load(rootPath);
         }
 

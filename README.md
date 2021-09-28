@@ -29,11 +29,11 @@
 * Run Hammer++ with auto-generated configuration. (Source 1)
 * Run Hammer++ with auto-generated configuration for Mapbase.
 * Preview a env_fog_controller in-game. (Source 1 - Alpha)
+* Decompile maps. (Goldsrc and Source 1)
 * Link to the prefabs folder. (Goldsrc and Source 1)
 * Link to Crafty. (Source 1)
 * Link to Terrain Generator. (Source 1)
 * Link to Batch Compiler. (Source 1)
-* Link to BSPSource (Source 1)
 
 ### Modeling
 * Link to HLMV. (Source 1)

@@ -249,8 +249,7 @@ namespace source_modding_tool
 
                     foreach (PackageFile file in files)
                     {
-                        byte[] vmfFile = VMF.FromBSP(file, launcher);
-                        File.WriteAllBytes(launcher.GetCurrentMod().InstallPath + "\\mapsrc\\" + file.Filename + ".vmf", vmfFile);
+                        BSP.Decompile(file, launcher);
                     }
 
                     Process.Start("explorer.exe", launcher.GetCurrentMod().InstallPath + "\\mapsrc\\");
