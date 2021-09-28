@@ -2,7 +2,9 @@
 using SourceSDK.Models;
 using SourceSDK.Packages;
 using SourceSDK.Particles;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -104,6 +106,30 @@ namespace SourceSDK.Maps
             assets = assets.Distinct().ToList();
 
             return assets;
+        }
+
+        public static byte[] FromBSP(PackageFile packageFile, Launcher launcher)
+        {
+            string modPath = launcher.GetCurrentMod().InstallPath;
+            string filePath = modPath + "\\mapsrc";
+            string bspsourcePath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\BSPSource\\bspsrc.jar";
+
+            Directory.CreateDirectory(filePath);
+            File.WriteAllBytes(filePath + "\\temp.bsp", packageFile.Data);        
+
+            Process process = new Process();
+            process.StartInfo.FileName = "java.exe";
+            process.StartInfo.WorkingDirectory = bspsourcePath;
+            process.StartInfo.Arguments = "-jar \"" + bspsourcePath + "\" \"" + filePath + "\\temp.bsp\"";
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.Start();
+            process.WaitForExit();
+
+            byte[] result = File.ReadAllBytes(filePath + "\\temp_d.vmf");
+
+            File.Delete(filePath + "\\temp_d.vmf");
+
+            return result;
         }
     }
 }

@@ -6,6 +6,7 @@ using source_modding_tool.Modding;
 using source_modding_tool.Sound;
 using source_modding_tool.Tools;
 using SourceSDK;
+using SourceSDK.Maps;
 using SourceSDK.Packages;
 using SourceSDK.Particles;
 using System;
@@ -227,15 +228,33 @@ namespace source_modding_tool
                 Process.Start("Tools\\BatchCompiler\\Batch Compiler.exe");
             }
 
-            // BSP Source
-            else if (e.Item == menuLevelDesignBspSource)
-            {
-                Process.Start("Tools\\BSPSource\\bspsrc.jar");
-            }
-
             else if(e.Item == menuLevelDesignResetHammerConfigsButton)
             {
                 Registry.CurrentUser.DeleteSubKeyTree("SOFTWARE\\Valve\\Hammer", false);
+            }
+
+            // Decompile a map
+            else if(e.Item == menuLevelDesignDecompile)
+            {
+                FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                {
+                    RootDirectory = "maps",
+                    Filter = "BSP Files (*.bsp)|*.bsp"
+                };
+                if (fileExplorer.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    PackageFile[] files = fileExplorer.Selection;
+
+                    Directory.CreateDirectory(launcher.GetCurrentMod().InstallPath + "\\mapsrc");
+
+                    foreach (PackageFile file in files)
+                    {
+                        byte[] vmfFile = VMF.FromBSP(file, launcher);
+                        File.WriteAllBytes(launcher.GetCurrentMod().InstallPath + "\\mapsrc\\" + file.Filename + ".vmf", vmfFile);
+                    }
+
+                    Process.Start("explorer.exe", launcher.GetCurrentMod().InstallPath + "\\mapsrc\\");
+                }
             }
         }
 
@@ -654,6 +673,7 @@ namespace source_modding_tool
                         menuLevelDesignPrefabs.Enabled = true;
                         menuLevelDesignTerrainGenerator.Enabled = true;
                         menuLevelDesignRunMap.Enabled = true;
+                        menuLevelDesignDecompile.Enabled = true;
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -685,11 +705,12 @@ namespace source_modding_tool
                         menuLevelDesignBatchCompiler.Enabled = false;
                         menuLevelDesignCrafty.Enabled = false;
                         menuLevelDesignFogPreviewer.Enabled = false;
-                        menuLevelDesignHammer.Enabled = true;
+                        menuLevelDesignHammer.Enabled = false;
                         menuLevelDesignMapsrc.Enabled = false;
                         menuLevelDesignPrefabs.Enabled = false;
                         menuLevelDesignTerrainGenerator.Enabled = false;
                         menuLevelDesignRunMap.Enabled = true;
+                        menuLevelDesignDecompile.Enabled = false;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
@@ -726,6 +747,7 @@ namespace source_modding_tool
                         menuLevelDesignPrefabs.Enabled = true;
                         menuLevelDesignTerrainGenerator.Enabled = false;
                         menuLevelDesignRunMap.Enabled = true;
+                        menuLevelDesignDecompile.Enabled = true;
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;

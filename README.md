@@ -57,8 +57,11 @@
 ## Credits
 
 * XBLAH's Modding Tool - XBLAH
+** Decompiling maps - AnthonyPython
 * Mapbase - Blixibon and team
 * PBR Shader - Thexa and team, White Red Dragons
 * External tools - the respective authors
+
+
 
 If you somehow contributed and are missing in this list, let me know.
