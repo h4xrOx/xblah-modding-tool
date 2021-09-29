@@ -224,6 +224,9 @@ namespace SourceSDK
         public static void writeChunkFile(string path, KeyValue root, bool quotes, Encoding encoding)
         {
             List<string> lines = writeChunkFileTraverse(root, 0, quotes);
+            lines.Insert(0, "// Made with XBLAH's Modding tool.");
+            lines.Insert(1, "// Download it at https://github.com/jean-knapp/windows-source-modding-tool/releases");
+            lines.Insert(2, "");
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllLines(path, lines, encoding);
         }
@@ -231,6 +234,9 @@ namespace SourceSDK
         public static string writeChunk(KeyValue root, bool quotes)
         {
             List<string> lines = writeChunkFileTraverse(root, 0, quotes);
+            lines.Insert(0, "// Made with XBLAH's Modding tool.");
+            lines.Insert(1, "// Download it at https://github.com/jean-knapp/windows-source-modding-tool/releases");
+            lines.Insert(2, "");
             return string.Join("\r\n", lines);
         }
 
@@ -374,6 +380,9 @@ namespace SourceSDK
             // Remove comments of line
             if (line.Contains("//"))
                 line = line.Substring(0, line.IndexOf("//"));
+
+            if (line.Length == 0)
+                return;
 
             string[] words = splitByWords(line);
 
