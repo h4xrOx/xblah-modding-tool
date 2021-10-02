@@ -57,6 +57,8 @@ namespace source_modding_tool.Modding
             this.contextFileDelete = new DevExpress.XtraBars.BarButtonItem();
             this.contextFolderOpen = new DevExpress.XtraBars.BarButtonItem();
             this.contextFolderOpenInWindows = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFileShowInWindowsExplorer = new DevExpress.XtraBars.BarButtonItem();
+            this.contextFileDecompile = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -69,8 +71,6 @@ namespace source_modding_tool.Modding
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.fileMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.contextFileShowInWindowsExplorer = new DevExpress.XtraBars.BarButtonItem();
-            this.contextFileDecompile = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.directoryTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileTree)).BeginInit();
@@ -145,6 +145,7 @@ namespace source_modding_tool.Modding
             this.fileTree.StateImageList = this.imageCollection1;
             this.fileTree.TabIndex = 2;
             this.fileTree.SelectionChanged += new System.EventHandler(this.fileTree_SelectionChanged);
+            this.fileTree.Click += new System.EventHandler(this.fileTree_Click);
             this.fileTree.DoubleClick += new System.EventHandler(this.fileTree_DoubleClick);
             this.fileTree.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileTree_MouseUp);
             // 
@@ -342,7 +343,7 @@ namespace source_modding_tool.Modding
             // 
             this.contextFileDelete.Caption = "Delete";
             this.contextFileDelete.Id = 7;
-            this.contextFileDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextDelete.ImageOptions.SvgImage")));
+            this.contextFileDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileDelete.ImageOptions.SvgImage")));
             this.contextFileDelete.Name = "contextFileDelete";
             this.contextFileDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
             // 
@@ -363,6 +364,22 @@ namespace source_modding_tool.Modding
             this.contextFolderOpenInWindows.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFolderOpenInWindows.ImageOptions.SvgImage")));
             this.contextFolderOpenInWindows.Name = "contextFolderOpenInWindows";
             this.contextFolderOpenInWindows.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFileShowInWindowsExplorer
+            // 
+            this.contextFileShowInWindowsExplorer.Caption = "Show in Windows Explorer";
+            this.contextFileShowInWindowsExplorer.Id = 10;
+            this.contextFileShowInWindowsExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileShowInWindowsExplorer.ImageOptions.SvgImage")));
+            this.contextFileShowInWindowsExplorer.Name = "contextFileShowInWindowsExplorer";
+            this.contextFileShowInWindowsExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
+            // 
+            // contextFileDecompile
+            // 
+            this.contextFileDecompile.Caption = "Decompile";
+            this.contextFileDecompile.Id = 11;
+            this.contextFileDecompile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileDecompile.ImageOptions.SvgImage")));
+            this.contextFileDecompile.Name = "contextFileDecompile";
+            this.contextFileDecompile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
             // 
             // repositoryItemTextEdit2
             // 
@@ -489,22 +506,6 @@ namespace source_modding_tool.Modding
             new DevExpress.XtraBars.LinkPersistInfo(this.contextFolderOpenInWindows)});
             this.folderMenu.Manager = this.barManager1;
             this.folderMenu.Name = "folderMenu";
-            // 
-            // contextFileShowInWindowsExplorer
-            // 
-            this.contextFileShowInWindowsExplorer.Caption = "Show in Windows Explorer";
-            this.contextFileShowInWindowsExplorer.Id = 10;
-            this.contextFileShowInWindowsExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileShowInWindowsExplorer.ImageOptions.SvgImage")));
-            this.contextFileShowInWindowsExplorer.Name = "contextFileShowInWindowsExplorer";
-            this.contextFileShowInWindowsExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
-            // 
-            // contextFileDecompile
-            // 
-            this.contextFileDecompile.Caption = "Decompile";
-            this.contextFileDecompile.Id = 11;
-            this.contextFileDecompile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("contextFileDecompile.ImageOptions.SvgImage")));
-            this.contextFileDecompile.Name = "contextFileDecompile";
-            this.contextFileDecompile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
             // 
             // FileExplorer
             // 

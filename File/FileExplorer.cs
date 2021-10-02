@@ -670,5 +670,10 @@ namespace source_modding_tool.Modding
                 Process.Start(path);
             }
         }
+
+        private void fileTree_Click(object sender, EventArgs e)
+        {
+            fileTree_SelectionChanged(sender, e);
+        }
     }
 }
