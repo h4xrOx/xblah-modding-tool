@@ -22,7 +22,7 @@ namespace SourceSDK.Materials
             if (bitmap == null || launcher == null)
                 return null;
 
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             string modPath = launcher.GetCurrentMod().InstallPath;
             string filePath = modPath + "\\materialsrc";
 
@@ -62,7 +62,7 @@ namespace SourceSDK.Materials
             if (vtf == null || vtf.Length == 0 || launcher == null)
                 return null;
 
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             string modPath = launcher.GetCurrentMod().InstallPath;
             string filePath = modPath + "\\materials";
 

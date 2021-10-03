@@ -32,6 +32,14 @@ namespace SourceSDK.Packages
             }
         }
 
+        public PackageArchive GameinfoArchive { 
+            get
+            {
+                var packs = Archives.Where(a => a.ArchivePath == launcher.GetCurrentMod().InstallPath).ToList();
+                return (packs.Count > 0 ? packs[0] : null);
+            } 
+        }
+
         public PackageManager(Launcher launcher, string rootPath)
         {
             this.launcher = launcher;
@@ -107,7 +115,7 @@ namespace SourceSDK.Packages
             string directoryPath = Path.GetDirectoryName(path).Replace("\\", "/").ToLower();
             string fileName = Path.GetFileName(path).ToLower();
 
-            foreach(PackageDirectory directory in Directories.Where(p => p.Path == directoryPath).ToList())
+            foreach(PackageDirectory directory in Directories.Where(p => p.Path == directoryPath || p.Path == directoryPath + "/").ToList())
             {
                 List<PackageFile> files = directory.Entries.Where(e => e.Filename + "." + e.Extension == fileName).ToList();
                 if (files.Count > 0)
@@ -115,6 +123,63 @@ namespace SourceSDK.Packages
             }
 
             return null;
+        }
+        
+        public PackageDirectory CreateDirectory(string path)
+        {
+            string fullPath = launcher.GetCurrentMod().InstallPath + "/" + path;
+            Directory.CreateDirectory(launcher.GetCurrentMod().InstallPath + "/" + path);
+            PackageArchive gameinfoArchive = GameinfoArchive;
+
+            PackageDirectory unpackedDirectory = null;
+            PackageDirectory[] unpackedDirectories = GameinfoArchive.Directories.Where(d => d.Path == path).ToArray();
+            if (unpackedDirectories.Length > 0)
+                unpackedDirectory = unpackedDirectories[0];
+
+            if (unpackedDirectory == null)
+            {
+                unpackedDirectory = new UnpackedDirectory(GameinfoArchive, path, new List<PackageFile>());
+                GameinfoArchive.Directories.Add(unpackedDirectory);
+            }
+
+            return unpackedDirectory;
+        }
+
+        public PackageFile CreateFile(string path)
+        {
+            string directory = Path.GetDirectoryName(path).Replace("\\", "/");
+            string extension = path.Substring(path.IndexOf(".") + 1);
+            string filename = Path.GetFileNameWithoutExtension(path);
+
+            PackageDirectory unpackedDirectory = null;
+            PackageDirectory[] unpackedDirectories = GameinfoArchive.Directories.Where(d => d.Path == directory).ToArray();
+            if (unpackedDirectories.Length > 0)
+                unpackedDirectory = unpackedDirectories[0];
+
+            if (unpackedDirectory == null)
+            {
+                unpackedDirectory = new UnpackedDirectory(GameinfoArchive, path, new List<PackageFile>());
+                GameinfoArchive.Directories.Add(unpackedDirectory);
+            }
+
+            PackageFile unpackedFile = null;
+            PackageFile[] unpackedFiles = unpackedDirectory.Entries.Where(e => e.Filename == filename && e.Extension == extension).ToArray();
+            if (unpackedFiles.Length > 0)
+                unpackedFile = unpackedFiles[0];
+
+            if (unpackedFile == null)
+            { 
+                unpackedFile = new UnpackedFile()
+                {
+                    Path = directory,
+                    Extension = extension,
+                    Filename = filename,
+                    Directory = unpackedDirectory
+                };
+                unpackedDirectory.Entries.Add(unpackedFile);
+            }
+
+            return unpackedFile;
         }
     }
 }

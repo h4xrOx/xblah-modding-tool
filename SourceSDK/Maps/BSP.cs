@@ -18,7 +18,7 @@ namespace SourceSDK.Maps
         /// <param name="launcher">The launcher.</param>
         public static void Decompile(PackageFile packageFile, Launcher launcher)
         {
-            switch (launcher.GetCurrentGame().engine)
+            switch (launcher.GetCurrentGame().EngineID)
             {
                 case Engine.GOLDSRC:
                     {

@@ -16,7 +16,7 @@ namespace SourceSDK
         {
             this.launcher = launcher;
 
-            switch (launcher.GetCurrentGame().engine)
+            switch (launcher.GetCurrentGame().EngineID)
             {
                 case Engine.SOURCE:
                     root = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\gameinfo.txt");

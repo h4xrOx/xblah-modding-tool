@@ -70,7 +70,7 @@ namespace SourceSDK
                     Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_episodic"))
                 {
 
-                    games.Add("Mapbase", new Game("Mapbase", games["Source SDK Base 2013 Singleplayer"].installPath, Engine.SOURCE));
+                    games.Add("Mapbase", new Game("Mapbase", games["Source SDK Base 2013 Singleplayer"].InstallPath, Engine.SOURCE));
 
                     break;
                 }
@@ -93,23 +93,23 @@ namespace SourceSDK
 
         public string GetModPath(Game game, Mod mod)
         {
-            if (game != currentGame || !games.ContainsKey(game.name))
+            if (game != currentGame || !games.ContainsKey(game.Name))
             {
-                if (!games.ContainsKey(game.name))
+                if (!games.ContainsKey(game.Name))
                     LoadGames();
 
-                if (games.ContainsKey(game.name))
+                if (games.ContainsKey(game.Name))
                     game.LoadMods(this);
                 else
                     return null;
             }
 
-            if (mod != game.GetCurrentMod() || !game.mods.ContainsKey(mod.Name))
+            if (mod != game.GetCurrentMod() || !game.Mods.ContainsKey(mod.Name))
             {
-                if (!game.mods.ContainsKey(mod.Name))
+                if (!game.Mods.ContainsKey(mod.Name))
                     game.LoadMods(this);
 
-                if (!game.mods.ContainsKey(mod.Name))
+                if (!game.Mods.ContainsKey(mod.Name))
                     return null;
             }
 
@@ -158,7 +158,7 @@ namespace SourceSDK
 
         public void SetCurrentMod(string mod)
         {
-            SetCurrentMod(currentGame.mods[mod]);
+            SetCurrentMod(currentGame.Mods[mod]);
         }
 
         public Mod GetCurrentMod()

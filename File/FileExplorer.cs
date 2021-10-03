@@ -97,6 +97,7 @@ namespace source_modding_tool.Modding
                 case Mode.SAVE:
                     {
                         openFileDialogPanel.Visible = true;
+                        openFileDialogBar.Visible = true;
                         statusBar.Visible = false;
                         okButton.Text = "Save";
                     }
@@ -674,6 +675,30 @@ namespace source_modding_tool.Modding
         private void fileTree_Click(object sender, EventArgs e)
         {
             fileTree_SelectionChanged(sender, e);
+        }
+
+        private void newFolderButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var folderName = XtraInputBox.Show("Type the folder name.", "New folder", "New folder");
+
+            var directories = this.directories.Where(d => d.Path == CurrentDirectory + "/" + folderName).ToList();
+            if (directories.Count > 0)
+            {
+                XtraMessageBox.Show("Directory already exists.");
+            } else
+            {
+                packageManager.CreateDirectory(CurrentDirectory + "/" + folderName);
+                UpdateDirectoryTree();
+                UpdateFileTree(RootDirectory);
+            }
+
+            var nodes = fileTree.Nodes.Where(n => !(n.Tag is PackageFile) && n.Tag.ToString() == CurrentDirectory + "/" + folderName).ToList();
+            if (nodes.Count > 0)
+            {
+                fileTree.SelectNode(nodes[0]);
+                fileTree.FocusedNode = nodes[0];
+                fileTree.MakeNodeVisible(fileTree.FocusedNode);
+            }
         }
     }
 }

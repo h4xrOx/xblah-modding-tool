@@ -65,12 +65,12 @@ namespace SourceSDK
         {
             List<string> result = new List<string>();
 
-            string gamePath = Game.installPath;
+            string gamePath = Game.InstallPath;
             string modPath = InstallPath;
 
             KeyValue gameInfo = null;
             KeyValue searchPaths = null;
-            switch (Game.engine)
+            switch (Game.EngineID)
             {
                 case Engine.SOURCE:
                     gameInfo = KeyValue.readChunkfile(modPath + "\\gameinfo.txt");
@@ -96,7 +96,7 @@ namespace SourceSDK
 
                 string value = searchPath.getValue();
 
-                switch (Game.engine)
+                switch (Game.EngineID)
                 {
                     case Engine.SOURCE:
                         value = value.Replace("/", "\\");
@@ -168,14 +168,14 @@ namespace SourceSDK
         {
             List<string> result = new List<string>();
 
-            if (Game.name == "Mapbase")
+            if (Game.Name == "Mapbase")
             {
                 // Mapbase specific fgd directory
                 result.Add(InstallPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
             }
             else
             {
-                result.AddRange(Directory.GetFiles(Game.installPath, "*.fgd", SearchOption.AllDirectories));
+                result.AddRange(Directory.GetFiles(Game.InstallPath, "*.fgd", SearchOption.AllDirectories));
             }
 
             result.AddRange(Directory.GetFiles(InstallPath, "*.fgd", SearchOption.AllDirectories));
@@ -192,7 +192,7 @@ namespace SourceSDK
                     {
                         line = line.Replace("@include", string.Empty).Replace("\"", string.Empty).Trim();
                         alreadyIncluded.Add(new FileInfo(fgd).Directory.FullName + "\\" + line);
-                        alreadyIncluded.Add(Game.installPath + "\\bin\\" + line);
+                        alreadyIncluded.Add(Game.InstallPath + "\\bin\\" + line);
                     }
                 }
             }
@@ -215,7 +215,17 @@ namespace SourceSDK
             Uri path1 = new Uri(InstallPath + "\\");
             Uri path2 = new Uri(fullPath);
             Uri diff = path1.MakeRelativeUri(path2);
-            return diff.OriginalString;
+            return diff.OriginalString.Replace("\\", "/");
+        }
+
+        /// <summary>
+        /// Returns the full path relative to the drive root.
+        /// </summary>
+        /// <param name="fullPath">The relative path to the mod. (ex: scripts/file_name.txt)</param>
+        /// <returns>The relative path of the file. (ex: D:\Steam\steamapps\sourcemods\mod_template\scripts\file_name.txt)</returns>
+        public string GetFullPath(string relativePath)
+        {
+            return InstallPath + "\\" + relativePath.Replace("/", "\\");
         }
     }
 }

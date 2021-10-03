@@ -28,7 +28,7 @@ namespace source_modding_tool
 
         private void buttonGamedata_Click(object sender, EventArgs e)
         {
-            string hammerPath = launcher.GetCurrentGame().installPath + "\\bin\\";
+            string hammerPath = launcher.GetCurrentGame().InstallPath + "\\bin\\";
             fgdDialog.InitialDirectory = hammerPath;
             if(fgdDialog.ShowDialog() == DialogResult.OK)
             {
@@ -58,7 +58,7 @@ namespace source_modding_tool
             GetFieldValues();
 
             string path = "";
-            switch (launcher.GetCurrentGame().engine)
+            switch (launcher.GetCurrentGame().EngineID)
             {
                 case Engine.SOURCE:
                     path = modPath + "\\gameinfo.txt";
@@ -103,7 +103,7 @@ namespace source_modding_tool
                     fields[field].Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
             }
 
-            switch(launcher.GetCurrentGame().engine)
+            switch(launcher.GetCurrentGame().EngineID)
             {
                 case Engine.SOURCE2:
                     {

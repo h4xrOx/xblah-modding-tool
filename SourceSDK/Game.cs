@@ -10,30 +10,32 @@ namespace SourceSDK
 {
     public class Game
     {
-        public string name;
-        public string installPath;
-        public int engine;
+        public string Name { get; set; }
 
-        Mod currentMod = null;
+        public string InstallPath { get; set; }
 
-        public Dictionary<string, Mod> mods;
+        public int EngineID { get; set; }
+
+        Mod CurrentMod { get; set; } = null;
+
+        public Dictionary<string, Mod> Mods { get; set; }
 
         public Game(string name, string installPath, int engine)
         {
-            mods = new Dictionary<string, Mod>();
+            Mods = new Dictionary<string, Mod>();
 
-            this.name = name;
-            this.installPath = installPath;
-            this.engine = engine;
+            this.Name = name;
+            this.InstallPath = installPath;
+            this.EngineID = engine;
         }
 
         public int GetAppId()
         {
-            string gamePath = installPath;
-            switch (engine)
+            string gamePath = InstallPath;
+            switch (EngineID)
             {
                 case Engine.SOURCE:
-                    switch (name)
+                    switch (Name)
                     {
                         case "Source SDK Base 2013 Singleplayer":
                             return 243730;
@@ -77,7 +79,7 @@ namespace SourceSDK
 
                     break;
                 case Engine.SOURCE2:
-                    if (name == "Half-Life Alyx")
+                    if (Name == "Half-Life Alyx")
                         return 546560;
                     break;
                 case Engine.GOLDSRC:
@@ -102,19 +104,19 @@ namespace SourceSDK
         /// <returns></returns>
         public Dictionary<string, Mod> LoadMods(Launcher launcher)
         {
-            mods = new Dictionary<string, Mod>();
+            Mods = new Dictionary<string, Mod>();
 
             if (launcher == null)
-                return mods;
+                return Mods;
 
             int gameAppId = GetAppId();
-            string gamePath = installPath;
+            string gamePath = InstallPath;
 
-            if (gameAppId == -1 && engine != Engine.GOLDSRC || gamePath == null)
-                return mods;
+            if (gameAppId == -1 && EngineID != Engine.GOLDSRC || gamePath == null)
+                return Mods;
 
             List<string> paths = new List<string>();
-            switch (engine)
+            switch (EngineID)
             {
                 case Engine.SOURCE:
                     paths.AddRange(GetAllModPaths(launcher));
@@ -136,7 +138,7 @@ namespace SourceSDK
 
             foreach (string path in paths)
             {
-                switch (engine)
+                switch (EngineID)
                 {
                     case Engine.SOURCE:
                         {
@@ -175,12 +177,12 @@ namespace SourceSDK
                                         }
                                 }
 
-                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
+                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(Mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
                                 {
 
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
-                                    foreach (Mod mod in mods.Values)
+                                    foreach (Mod mod in Mods.Values)
                                     {
                                         if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
@@ -190,9 +192,9 @@ namespace SourceSDK
                                     }
                                     if (!containsMod)
                                     {
-                                        while (mods.Keys.Contains(name))
+                                        while (Mods.Keys.Contains(name))
                                             name = name + "_";
-                                        mods.Add(name, new Mod(this, name, path));
+                                        Mods.Add(name, new Mod(this, name, path));
                                     }
                                 }
                             }
@@ -224,7 +226,7 @@ namespace SourceSDK
                                 if (steamAppIdKV != null)
                                     modAppId = steamAppIdKV.getValue();
 
-                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
+                                if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(Mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
                                 {        
                                     // Create a symbolic link in Half-Life: Alyx, so the mod can run.
                                     if (!path.Contains(gamePath))
@@ -237,7 +239,7 @@ namespace SourceSDK
 
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
-                                    foreach (Mod mod in mods.Values)
+                                    foreach (Mod mod in Mods.Values)
                                     {
                                         if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
@@ -247,9 +249,9 @@ namespace SourceSDK
                                     }
                                     if (!containsMod)
                                     {
-                                        while (mods.Keys.Contains(name))
+                                        while (Mods.Keys.Contains(name))
                                             name = name + "_";
-                                        mods.Add(name, new Mod(this, name, path));
+                                        Mods.Add(name, new Mod(this, name, path));
                                     }
                                 }
                             }
@@ -273,7 +275,7 @@ namespace SourceSDK
                                 {
                                     bool containsMod = false;
                                     string newModPath = new FileInfo(path).Name;
-                                    foreach (Mod mod in mods.Values)
+                                    foreach (Mod mod in Mods.Values)
                                     {
                                         if (new FileInfo(mod.InstallPath).Name == newModPath)
                                         {
@@ -283,9 +285,9 @@ namespace SourceSDK
                                     }
                                     if (!containsMod)
                                     {
-                                        while (mods.Keys.Contains(name))
+                                        while (Mods.Keys.Contains(name))
                                             name = name + "_";
-                                        mods.Add(name, new Mod(this, name, path));
+                                        Mods.Add(name, new Mod(this, name, path));
                                     }
                                 }
 
@@ -299,7 +301,7 @@ namespace SourceSDK
                 }
             }
 
-            return mods;
+            return Mods;
         }
 
         /// <summary>
@@ -311,33 +313,33 @@ namespace SourceSDK
         {
             List<string> mods = new List<string>();
 
-            switch (engine)
+            switch (EngineID)
             {
                 case Engine.SOURCE:
-                    foreach (string path in Directory.GetDirectories(installPath))
+                    foreach (string path in Directory.GetDirectories(InstallPath))
                     {
                         string gameBranch = new FileInfo(path).Name;
 
-                        if (File.Exists(installPath + "\\" + gameBranch + "\\gameinfo.txt"))
+                        if (File.Exists(InstallPath + "\\" + gameBranch + "\\gameinfo.txt"))
                             mods.Add(gameBranch);
                     }
                     break;
                 case Engine.SOURCE2:
-                    if (Directory.Exists(installPath + "\\"))
-                        foreach (string path in Directory.GetDirectories(installPath + "\\game\\"))
+                    if (Directory.Exists(InstallPath + "\\"))
+                        foreach (string path in Directory.GetDirectories(InstallPath + "\\game\\"))
                         {
                             string gameBranch = new FileInfo(path).Name;
 
-                            if (File.Exists(installPath + "\\game\\" + gameBranch + "\\gameinfo.gi"))
+                            if (File.Exists(InstallPath + "\\game\\" + gameBranch + "\\gameinfo.gi"))
                                 mods.Add(gameBranch);
                         }
                     break;
                 case Engine.GOLDSRC:
-                    foreach (string path in Directory.GetDirectories(installPath))
+                    foreach (string path in Directory.GetDirectories(InstallPath))
                     {
                         string gameBranch = new FileInfo(path).Name;
 
-                        if (File.Exists(installPath + "\\" + gameBranch + "\\liblist.gam"))
+                        if (File.Exists(InstallPath + "\\" + gameBranch + "\\liblist.gam"))
                         {
                             mods.Add(gameBranch);
                         }
@@ -361,7 +363,7 @@ namespace SourceSDK
             List<string> mods = new List<string>();
             foreach (string library in launcher.libraries.GetList())
             {
-                switch(launcher.GetCurrentGame().engine)
+                switch(launcher.GetCurrentGame().EngineID)
                 {
                     case Engine.SOURCE:
                         {
@@ -412,19 +414,19 @@ namespace SourceSDK
 
         public void SetCurrentMod(Mod mod)
         {
-            currentMod = mod;
+            CurrentMod = mod;
         }
 
         public Mod GetCurrentMod()
         {
-            return currentMod;
+            return CurrentMod;
         }
         public string getExePath()
         {
-            switch (engine)
+            switch (EngineID)
             {
                 case Engine.SOURCE:
-                    foreach (string file in Directory.GetFiles(installPath))
+                    foreach (string file in Directory.GetFiles(InstallPath))
                     {
                         if (new FileInfo(file).Extension == ".exe")
                         {
@@ -433,16 +435,16 @@ namespace SourceSDK
                     }
                     break;
                 case Engine.SOURCE2:
-                    return installPath + "\\game\\bin\\win64\\hlnonvr.exe";
+                    return InstallPath + "\\game\\bin\\win64\\hlnonvr.exe";
                 case Engine.GOLDSRC:
-                    return installPath + "\\hl.exe";
+                    return InstallPath + "\\hl.exe";
             }
             return string.Empty;
         }
 
         public string[] getGameinfoFields()
         {
-            switch (engine)
+            switch (EngineID)
             {
                 case Engine.SOURCE:
                     return new string[] {
@@ -519,7 +521,7 @@ namespace SourceSDK
 
         public void ApplyNonVRPatch()
         {
-            string fullPath = installPath + "\\game\\bin\\win64\\hlvr.exe";
+            string fullPath = InstallPath + "\\game\\bin\\win64\\hlvr.exe";
             Dictionary<int, string> strings = new Dictionary<int, string>();
 
             byte[] byteArray = File.ReadAllBytes(fullPath);
@@ -555,7 +557,7 @@ namespace SourceSDK
             try
             {
                 File.WriteAllBytes(fullPath.Replace("hlvr.exe", "hlnonvr.exe"), byteArray);
-                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "/Tools/HLnonVR/hlnonvr.dll", installPath + "\\game\\bin\\win64\\hlnonvr.dll");
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "/Tools/HLnonVR/hlnonvr.dll", InstallPath + "\\game\\bin\\win64\\hlnonvr.dll");
             }
             catch (Exception) { }
         }

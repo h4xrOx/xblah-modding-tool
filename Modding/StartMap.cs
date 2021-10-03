@@ -56,7 +56,7 @@ namespace source_modding_tool.Modding
             if (form.ShowDialog() == DialogResult.OK)
             {
                 VPK.File file = form.selectedFiles[0];
-                if ((file.type == ".bsp" && game.engine == Engine.GOLDSRC) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.engine == Engine.SOURCE2))
+                if ((file.type == ".bsp" && game.EngineID == Engine.GOLDSRC) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.EngineID == Engine.SOURCE2))
                 {
                     // It's a map
                     string mapName = Path.GetFileNameWithoutExtension(file.path);

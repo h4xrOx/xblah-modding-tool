@@ -27,7 +27,7 @@ namespace SourceSDK.Packages
         /// <returns></returns>
         internal string GetPackName(Launcher launcher)
         {
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             string modPath = launcher.GetCurrentMod().InstallPath;
 
             string packName;

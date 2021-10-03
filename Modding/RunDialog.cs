@@ -64,8 +64,8 @@ namespace source_modding_tool.Modding
 
                 if (
                     (preset.mod == string.Empty || preset.mod == new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name) &&
-                    (preset.game == string.Empty || preset.game == launcher.GetCurrentGame().name) &&
-                    (preset.engine == string.Empty || preset.engine == Engine.ToString(launcher.GetCurrentGame().engine))
+                    (preset.game == string.Empty || preset.game == launcher.GetCurrentGame().Name) &&
+                    (preset.engine == string.Empty || preset.engine == Engine.ToString(launcher.GetCurrentGame().EngineID))
                 )
                     availablePresets.Add(preset);
             }
@@ -154,11 +154,11 @@ namespace source_modding_tool.Modding
                 {
                     presetCoverageCombo.EditValue = "Current mod only";
                 }
-                else if (currentPreset.game == launcher.GetCurrentGame().name)
+                else if (currentPreset.game == launcher.GetCurrentGame().Name)
                 {
                     presetCoverageCombo.EditValue = "Current game only";
                 }
-                else if (currentPreset.engine == Engine.ToString(launcher.GetCurrentGame().engine))
+                else if (currentPreset.engine == Engine.ToString(launcher.GetCurrentGame().EngineID))
                 {
                     presetCoverageCombo.EditValue = "Current engine only";
                 } else
@@ -209,18 +209,18 @@ namespace source_modding_tool.Modding
                         preset.mod = "";
                         break;
                     case "Current engine only":
-                        preset.engine = Engine.ToString(launcher.GetCurrentGame().engine);
+                        preset.engine = Engine.ToString(launcher.GetCurrentGame().EngineID);
                         preset.game = "";
                         preset.mod = "";
                         break;
                     case "Current game only":
-                        preset.engine = Engine.ToString(launcher.GetCurrentGame().engine);
-                        preset.game = launcher.GetCurrentGame().name;
+                        preset.engine = Engine.ToString(launcher.GetCurrentGame().EngineID);
+                        preset.game = launcher.GetCurrentGame().Name;
                         preset.mod = "";
                         break;
                     case "Current mod only":
-                        preset.engine = Engine.ToString(launcher.GetCurrentGame().engine);
-                        preset.game = launcher.GetCurrentGame().name;
+                        preset.engine = Engine.ToString(launcher.GetCurrentGame().EngineID);
+                        preset.game = launcher.GetCurrentGame().Name;
                         preset.mod = new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name;
                         break;
                 }
@@ -276,7 +276,7 @@ namespace source_modding_tool.Modding
         {
             XtraOpenFileDialog dialog = new XtraOpenFileDialog();
             dialog.Filter = "Executable Files (*.exe)|*.exe";
-            dialog.InitialDirectory = (presetExecutableText.EditValue != null && presetExecutableText.EditValue.ToString() != "" ? presetExecutableText.EditValue.ToString() : launcher.GetCurrentGame().installPath);
+            dialog.InitialDirectory = (presetExecutableText.EditValue != null && presetExecutableText.EditValue.ToString() != "" ? presetExecutableText.EditValue.ToString() : launcher.GetCurrentGame().InstallPath);
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {

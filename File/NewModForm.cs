@@ -113,7 +113,7 @@ namespace source_modding_tool
                     break;
                 case "goldsrc":
                     engine = Engine.GOLDSRC;
-                    SetBaseModPath(launcher.GetGamesList()[gameName].installPath + "\\");
+                    SetBaseModPath(launcher.GetGamesList()[gameName].InstallPath + "\\");
                     break;
             }
 
@@ -179,13 +179,13 @@ namespace source_modding_tool
             string appId = game.GetAppId().ToString();
 
             string mod = modFolder + " (" + modFolder + ")";
-            string gamePath = game.installPath;
+            string gamePath = game.InstallPath;
             string modPath = baseModPath + modFolder;
 
             // Copy the mod template
             string templatePath = AppDomain.CurrentDomain.BaseDirectory +
                 "Templates\\" +
-                game.name +
+                game.Name +
                 "\\" +
                 gameBranch +
                 "\\";

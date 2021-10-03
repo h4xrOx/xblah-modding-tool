@@ -159,15 +159,14 @@
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
             this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignReload = new DevExpress.XtraBars.BarButtonItem();
-            this.menuLevelDesignCrafty = new DevExpress.XtraBars.BarButtonItem();
-            this.menuLevelDesignFogPreviewer = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
-            this.menuLevelDesignTerrainGenerator = new DevExpress.XtraBars.BarButtonItem();
-            this.menuLevelDesignResetHammerConfigsButton = new DevExpress.XtraBars.BarButtonItem();
-            this.menuLevelDesignBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignDecompile = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignPrefabs = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignMapsrc = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignFogPreviewer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignTerrainGenerator = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignCrafty = new DevExpress.XtraBars.BarButtonItem();
             this.menuModeling = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingReload = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
@@ -201,12 +200,13 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.toolsRunPopupIngameTools = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignResetHammerConfigsButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryModsCombo)).BeginInit();
@@ -803,21 +803,6 @@
             superToolTip15.Items.Add(toolTipItem21);
             this.menuLevelDesignReload.SuperTip = superToolTip15;
             // 
-            // menuLevelDesignCrafty
-            // 
-            this.menuLevelDesignCrafty.Caption = "Crafty (external)";
-            this.menuLevelDesignCrafty.Id = 36;
-            this.menuLevelDesignCrafty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignCrafty.ImageOptions.Image")));
-            this.menuLevelDesignCrafty.Name = "menuLevelDesignCrafty";
-            this.menuLevelDesignCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
-            // 
-            // menuLevelDesignFogPreviewer
-            // 
-            this.menuLevelDesignFogPreviewer.Caption = "Fog Previewer";
-            this.menuLevelDesignFogPreviewer.Id = 79;
-            this.menuLevelDesignFogPreviewer.Name = "menuLevelDesignFogPreviewer";
-            this.menuLevelDesignFogPreviewer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
-            // 
             // menuLevelDesignHammer
             // 
             this.menuLevelDesignHammer.Caption = "Editor";
@@ -835,29 +820,6 @@
             superToolTip16.Items.Add(toolTipItem23);
             this.menuLevelDesignHammer.SuperTip = superToolTip16;
             this.menuLevelDesignHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
-            // 
-            // menuLevelDesignTerrainGenerator
-            // 
-            this.menuLevelDesignTerrainGenerator.Caption = "Terrain Generator (external)";
-            this.menuLevelDesignTerrainGenerator.Id = 42;
-            this.menuLevelDesignTerrainGenerator.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignTerrainGenerator.ImageOptions.Image")));
-            this.menuLevelDesignTerrainGenerator.Name = "menuLevelDesignTerrainGenerator";
-            this.menuLevelDesignTerrainGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
-            // 
-            // menuLevelDesignResetHammerConfigsButton
-            // 
-            this.menuLevelDesignResetHammerConfigsButton.Caption = "Reset Hammer Configs";
-            this.menuLevelDesignResetHammerConfigsButton.Id = 98;
-            this.menuLevelDesignResetHammerConfigsButton.Name = "menuLevelDesignResetHammerConfigsButton";
-            this.menuLevelDesignResetHammerConfigsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
-            // 
-            // menuLevelDesignBatchCompiler
-            // 
-            this.menuLevelDesignBatchCompiler.Caption = "Batch Compiler (external)";
-            this.menuLevelDesignBatchCompiler.Id = 38;
-            this.menuLevelDesignBatchCompiler.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignBatchCompiler.ImageOptions.Image")));
-            this.menuLevelDesignBatchCompiler.Name = "menuLevelDesignBatchCompiler";
-            this.menuLevelDesignBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignDecompile
             // 
@@ -899,6 +861,37 @@
             superToolTip19.Items.Add(toolTipItem26);
             this.menuLevelDesignMapsrc.SuperTip = superToolTip19;
             this.menuLevelDesignMapsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignFogPreviewer
+            // 
+            this.menuLevelDesignFogPreviewer.Caption = "Fog Previewer";
+            this.menuLevelDesignFogPreviewer.Id = 79;
+            this.menuLevelDesignFogPreviewer.Name = "menuLevelDesignFogPreviewer";
+            this.menuLevelDesignFogPreviewer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignBatchCompiler
+            // 
+            this.menuLevelDesignBatchCompiler.Caption = "Batch Compiler (external)";
+            this.menuLevelDesignBatchCompiler.Id = 38;
+            this.menuLevelDesignBatchCompiler.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignBatchCompiler.ImageOptions.Image")));
+            this.menuLevelDesignBatchCompiler.Name = "menuLevelDesignBatchCompiler";
+            this.menuLevelDesignBatchCompiler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignTerrainGenerator
+            // 
+            this.menuLevelDesignTerrainGenerator.Caption = "Terrain Generator (external)";
+            this.menuLevelDesignTerrainGenerator.Id = 42;
+            this.menuLevelDesignTerrainGenerator.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignTerrainGenerator.ImageOptions.Image")));
+            this.menuLevelDesignTerrainGenerator.Name = "menuLevelDesignTerrainGenerator";
+            this.menuLevelDesignTerrainGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignCrafty
+            // 
+            this.menuLevelDesignCrafty.Caption = "Crafty (external)";
+            this.menuLevelDesignCrafty.Id = 36;
+            this.menuLevelDesignCrafty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignCrafty.ImageOptions.Image")));
+            this.menuLevelDesignCrafty.Name = "menuLevelDesignCrafty";
+            this.menuLevelDesignCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuModeling
             // 
@@ -997,9 +990,8 @@
             this.menuMaterials.Id = 48;
             this.menuMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsReload),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuMaterialsEditor, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuMaterialsSkyboxEditor, false),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor)});
             this.menuMaterials.Name = "menuMaterials";
             toolTipTitleItem22.Text = "Materials";
             toolTipItem29.Text = "Create materials and textures to use in the models and levels.";
@@ -1017,7 +1009,7 @@
             // 
             // menuMaterialsEditor
             // 
-            this.menuMaterialsEditor.Caption = "Material Editor";
+            this.menuMaterialsEditor.Caption = "Editor";
             this.menuMaterialsEditor.Id = 58;
             this.menuMaterialsEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsEditor.ImageOptions.SvgImage")));
             this.menuMaterialsEditor.Name = "menuMaterialsEditor";
@@ -1198,6 +1190,20 @@
             this.barButtonItem1.Id = 88;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // menuLevelDesignResetHammerConfigsButton
+            // 
+            this.menuLevelDesignResetHammerConfigsButton.Caption = "Reset Hammer Configs";
+            this.menuLevelDesignResetHammerConfigsButton.Id = 98;
+            this.menuLevelDesignResetHammerConfigsButton.Name = "menuLevelDesignResetHammerConfigsButton";
+            this.menuLevelDesignResetHammerConfigsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Editor";
+            this.barSubItem5.Id = 120;
+            this.barSubItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem5.ImageOptions.SvgImage")));
+            this.barSubItem5.Name = "barSubItem5";
+            // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
@@ -1228,13 +1234,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // barSubItem5
-            // 
-            this.barSubItem5.Caption = "Editor";
-            this.barSubItem5.Id = 120;
-            this.barSubItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem5.ImageOptions.SvgImage")));
-            this.barSubItem5.Name = "barSubItem5";
             // 
             // MainForm
             // 

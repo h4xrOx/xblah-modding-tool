@@ -109,7 +109,7 @@ namespace source_modding_tool
 
         private void GamemenuForm_Load(object sender, EventArgs e)
         {
-            gamePath = launcher.GetCurrentGame().installPath;
+            gamePath = launcher.GetCurrentGame().InstallPath;
             modPath = launcher.GetCurrentMod().InstallPath;
             actions = new List<MenuAction>();
             readGameMenu();

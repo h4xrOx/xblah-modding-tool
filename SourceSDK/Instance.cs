@@ -54,10 +54,10 @@ namespace SourceSDK
             if (modProcess == null)
                 return;
 
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             string modPath = launcher.GetCurrentMod().InstallPath;
 
-            switch(launcher.GetCurrentGame().engine)
+            switch(launcher.GetCurrentGame().EngineID)
             {
                 case Engine.SOURCE2:
                     {

@@ -34,7 +34,7 @@ namespace source_modding_tool
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            chapters.Add(new Chapter(launcher.GetCurrentGame().engine));
+            chapters.Add(new Chapter(launcher.GetCurrentGame().EngineID));
             updateChaptersList();
         }
 
@@ -47,7 +47,7 @@ namespace source_modding_tool
             if (form.ShowDialog() == DialogResult.OK)
             {
                 VPK.File file = form.selectedFiles[0];
-                if (file.type == ".bsp" && game.engine == Engine.SOURCE)
+                if (file.type == ".bsp" && game.EngineID == Engine.SOURCE)
                 {
                     // It's a map
                     string mapName = Path.GetFileNameWithoutExtension(file.path);
@@ -87,14 +87,14 @@ namespace source_modding_tool
             if (form.ShowDialog() == DialogResult.OK)
             {
                 VPK.File file = form.selectedFiles[0];
-                if (file.type == ".bsp" && game.engine == Engine.SOURCE)
+                if (file.type == ".bsp" && game.EngineID == Engine.SOURCE)
                 {
                     // It's a map
                     string mapName = Path.GetFileNameWithoutExtension(file.path);
                     textMap.EditValue = mapName;
 
                 }
-                else if (file.type == ".vpk" && game.engine == Engine.SOURCE2)
+                else if (file.type == ".vpk" && game.EngineID == Engine.SOURCE2)
                 {
                     // It's a map
                     string mapName = Path.GetFileNameWithoutExtension(file.path);
@@ -147,7 +147,7 @@ namespace source_modding_tool
 
         private void ChaptersForm_Load(object sender, EventArgs e)
         {
-            gamePath = launcher.GetCurrentGame().installPath;
+            gamePath = launcher.GetCurrentGame().InstallPath;
             modPath = launcher.GetCurrentMod().InstallPath;
             readChapters();
             readChapterTitles();
@@ -280,7 +280,7 @@ namespace source_modding_tool
                 chapters[index].backgroundImage = target;
                 pictureBackground.Image = target;
 
-                if (launcher.GetCurrentGame().engine == Engine.SOURCE)
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
                 {
                     writeBackgroundImage(index);
                     writeBackgroundImageWide(index);
@@ -322,7 +322,7 @@ namespace source_modding_tool
                 pictureThumbnail.Image = target;
                 galleryControl1.Gallery.GetCheckedItem().ImageOptions.Image = target;
 
-                if (launcher.GetCurrentGame().engine == Engine.SOURCE)
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
                     writeChapterThumbnail(index);
             }
         }
@@ -335,7 +335,7 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                switch(launcher.GetCurrentGame().engine)
+                switch(launcher.GetCurrentGame().EngineID)
                 {
                     case Engine.SOURCE:
                         {
@@ -482,7 +482,7 @@ namespace source_modding_tool
             foreach(int i in available)
             {
                 string map = File.ReadAllText(path + "\\chapter" + i + ".cfg").Replace("map ", string.Empty);
-                Chapter chapter = new Chapter(launcher.GetCurrentGame().engine) { map = map };
+                Chapter chapter = new Chapter(launcher.GetCurrentGame().EngineID) { map = map };
                 chapters.Add(chapter);
             }
         }
@@ -495,7 +495,7 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                switch(launcher.GetCurrentGame().engine)
+                switch(launcher.GetCurrentGame().EngineID)
                 {
                     case Engine.SOURCE:
                         {
@@ -649,7 +649,7 @@ namespace source_modding_tool
 
             for(int i = 0; i < chapters.Count; i++)
             {
-                switch(launcher.GetCurrentGame().engine)
+                switch(launcher.GetCurrentGame().EngineID)
                 {
                     case Engine.SOURCE:
                         {
@@ -737,7 +737,7 @@ namespace source_modding_tool
             {
                 if (chapters[i].background == string.Empty)
                 {
-                    switch(launcher.GetCurrentGame().engine)
+                    switch(launcher.GetCurrentGame().EngineID)
                     {
                         case Engine.SOURCE:
                             {
@@ -800,7 +800,7 @@ namespace source_modding_tool
 
             for (int i = 0; i < chapters.Count; i++)
             {
-                switch (launcher.GetCurrentGame().engine) { 
+                switch (launcher.GetCurrentGame().EngineID) { 
                     case Engine.SOURCE:
                     {
                         if (chapters[i].thumbnailFile == null)

@@ -148,7 +148,6 @@ namespace SourceSDK
             KeyValue child = getChildByKey(key);
             if (child != null)
                 return child.getValue();
-
             return string.Empty;
         }
 
@@ -310,7 +309,8 @@ namespace SourceSDK
             // Parse Valve chunkfile format
             List<KeyValue> list = new List<KeyValue>();
 
-            ReadChunkData(data, hasOSInfo, list);
+            ReadChunkData(data, hasOSInfo, ref list);
+            //System.Diagnostics.Debugger.Break();
             return RefactorRoot(list);
         }
 
@@ -328,7 +328,7 @@ namespace SourceSDK
             return RefactorRoot(list);
         }
 
-        private static void ReadChunkData(string data, bool hasOSInfo, List<KeyValue> list)
+        private static void ReadChunkData(string data, bool hasOSInfo, ref List<KeyValue> list)
         {
             Stack<KeyValuePair<string, KeyValue>> stack = new Stack<KeyValuePair<string, KeyValue>>();
 
@@ -378,16 +378,19 @@ namespace SourceSDK
             line = Regex.Replace(line, @"\s+", " ");
 
             // Remove comments of line
+            if (line.StartsWith("//"))
+                return;
+
             if (line.Contains("//"))
                 line = line.Substring(0, line.IndexOf("//"));
 
-            if (line.Length == 0)
+            if (line.Length == 0 || line.Equals(""))
                 return;
 
             string[] words = splitByWords(line);
 
             // If a line has a curly bracket inline (ex: gameinfo { ), let's split the lines, re-read them and return.
-            if (line.Split('{').Length > 1 && !words[0].Contains("{"))
+            if (!(line.Contains("\"{") || line.Contains("}\"")) && line.Split('{').Length > 1 && !words[0].Contains("{"))
             {
                 // Found a first case
                 var lineSplit = line.Split('{');
@@ -400,7 +403,7 @@ namespace SourceSDK
                     readChunkLine(substring, hasOSInfo, stack, list);
                 }
             }
-            else if(line.Split('}').Length > 1 && !words[0].Contains("}"))
+            else if(!(line.Contains("\"{") || line.Contains("}\"")) && line.Split('}').Length > 1 && !words[0].Contains("}"))
             {
                 var lineSplit = line.Split('}');
                 for (int i = 0; i < lineSplit.Length; i++)
@@ -430,11 +433,11 @@ namespace SourceSDK
                 else
                     list.Add(blank);
             }
-            else if (words.Length > 0 && words[0].Contains("{")) // It opens a group
+            else if (!(line.Contains("\"{") || line.Contains("}\"")) && words.Length > 0 && words[0].Contains("{")) // It opens a group
             {
                 // We actually don't need to do anything.
             }
-            else if (words.Length > 0 && words[0].Contains("}"))    // It closes a group
+            else if (!(line.Contains("\"{") || line.Contains("}\"")) && words.Length > 0 && words[0].Contains("}"))    // It closes a group
             {
                 KeyValuePair<string, KeyValue> child = stack.Pop();
                 if (stack.Count > 0)
@@ -490,7 +493,6 @@ namespace SourceSDK
             }
             else if (list.Count > 0)
             {
-                //Debugger.Break();
                 return list[0];
             }
                 

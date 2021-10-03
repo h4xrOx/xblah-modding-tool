@@ -60,7 +60,7 @@ namespace source_modding_tool
             // Faceposer
             if (e.Item == menuChoreographyFaceposer)
             {
-                string gamePath = launcher.GetCurrentGame().installPath;
+                string gamePath = launcher.GetCurrentGame().InstallPath;
 
                 // Copy files
                 string path = AppDomain.CurrentDomain.BaseDirectory + "Tools\\Faceposer\\";
@@ -109,7 +109,7 @@ namespace source_modding_tool
                     string modName = title + " (" + folder + ")";
 
                     launcher.SetCurrentGame(game);
-                    toolsGames.EditValue = game.name;
+                    toolsGames.EditValue = game.Name;
 
                     updateToolsMods();
 
@@ -147,7 +147,7 @@ namespace source_modding_tool
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     VPK.File file = form.selectedFiles[0];
-                    if ((file.type == ".bsp" && game.engine == Engine.GOLDSRC) || (file.type == ".bsp" && game.engine == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.engine == Engine.SOURCE2))
+                    if ((file.type == ".bsp" && game.EngineID == Engine.GOLDSRC) || (file.type == ".bsp" && game.EngineID == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.EngineID == Engine.SOURCE2))
                     {
                         // It's a map
                         string mapName = Path.GetFileNameWithoutExtension(file.path);
@@ -172,7 +172,7 @@ namespace source_modding_tool
                 Hammer.RunHammer(launcher, instance, panel1);
 
                 // TODO run source 2 hammer as a mod.
-                if (launcher.GetCurrentGame().engine == Engine.SOURCE2)
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE2)
                 {
                     FormBorderStyle = FormBorderStyle.Fixed3D;
                     MaximizeBox = false;
@@ -191,10 +191,10 @@ namespace source_modding_tool
             // Prefabs
             else if (e.Item == menuLevelDesignPrefabs)
             {
-                switch (launcher.GetCurrentGame().engine)
+                switch (launcher.GetCurrentGame().EngineID)
                 {
                     case Engine.SOURCE:
-                        string gamePath = launcher.GetCurrentGame().installPath;
+                        string gamePath = launcher.GetCurrentGame().InstallPath;
                         Process.Start(gamePath + "\\bin\\Prefabs");
                         break;
                     case Engine.GOLDSRC:
@@ -365,7 +365,7 @@ namespace source_modding_tool
 
         public void Run(RunPreset runPreset, string command)
         {
-            if (launcher.GetCurrentGame().engine == Engine.SOURCE2)
+            if (launcher.GetCurrentGame().EngineID == Engine.SOURCE2)
                 launcher.GetCurrentGame().ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
 
             instance = new Instance(launcher, panel1);
@@ -374,7 +374,7 @@ namespace source_modding_tool
 
             instance.Start(runPreset, command);
 
-            if (runPreset.runMode == RunMode.WINDOWED && (launcher.GetCurrentGame().engine == Engine.SOURCE || launcher.GetCurrentGame().engine == Engine.SOURCE2))
+            if (runPreset.runMode == RunMode.WINDOWED && (launcher.GetCurrentGame().EngineID == Engine.SOURCE || launcher.GetCurrentGame().EngineID == Engine.SOURCE2))
             {
                 FormBorderStyle = FormBorderStyle.Fixed3D;
                 MaximizeBox = false;
@@ -472,7 +472,7 @@ namespace source_modding_tool
             // HLMV
             if (e.Item == menuModelingHLMV)
             {
-                string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].installPath;
+                string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].InstallPath;
 
                 string toolPath = gamePath + "\\bin\\hlmv.exe";
 
@@ -480,7 +480,7 @@ namespace source_modding_tool
                 process.StartInfo.FileName = toolPath ;
                 process.StartInfo.Arguments = string.Empty;
 
-                if (launcher.GetCurrentGame().name == "Mapbase")
+                if (launcher.GetCurrentGame().Name == "Mapbase")
                     process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().InstallPath;
 
                 process.Start();
@@ -615,7 +615,7 @@ namespace source_modding_tool
 
             launcher.SetCurrentGame(game);
             updateToolsMods();
-            Properties.Settings.Default.currentGame = game.name;
+            Properties.Settings.Default.currentGame = game.Name;
             Properties.Settings.Default.Save();
         }
 
@@ -640,7 +640,7 @@ namespace source_modding_tool
 
         private void UpdateMenus()
         {
-            switch(launcher.GetCurrentGame().engine)
+            switch(launcher.GetCurrentGame().EngineID)
             {
                 case Engine.SOURCE:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);

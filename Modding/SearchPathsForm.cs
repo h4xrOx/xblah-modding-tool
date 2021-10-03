@@ -106,7 +106,7 @@ namespace source_modding_tool
 
         private void buttonAddVPK_Click(object sender, EventArgs e)
         {
-            string gamePath = launcher.GetCurrentGame().installPath + "\\";
+            string gamePath = launcher.GetCurrentGame().InstallPath + "\\";
             vpkDialog.InitialDirectory = gamePath;
             if (vpkDialog.ShowDialog() == DialogResult.OK)
             {
@@ -127,7 +127,7 @@ namespace source_modding_tool
 
         private void buttonAddDirectory_Click(object sender, EventArgs e)
         {
-            string gamePath = launcher.GetCurrentGame().installPath + "\\";
+            string gamePath = launcher.GetCurrentGame().InstallPath + "\\";
             Directory.CreateDirectory(gamePath);
             searchDirDialog.SelectedPath = gamePath;
             if (searchDirDialog.ShowDialog() == DialogResult.OK)

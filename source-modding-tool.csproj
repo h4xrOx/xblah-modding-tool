@@ -142,17 +142,42 @@
     <Compile Include="Materials\MaterialEditor.Designer.cs">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materials\MaterialEditorTabOld.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Materials\MaterialEditorTabOld.Designer.cs">
+      <DependentUpon>MaterialEditorTabOld.cs</DependentUpon>
+    </Compile>
     <Compile Include="Materials\MaterialEditorTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Materials\MaterialEditorTab.Designer.cs">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.Designer.cs">
+      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materials\ShaderTabs\VertexLitGenericTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Materials\ShaderTabs\VertexLitGenericTab.Designer.cs">
+      <DependentUpon>VertexLitGenericTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Materials\SkyboxEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Materials\SkyboxEditor.Designer.cs">
       <DependentUpon>SkyboxEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materials\ShaderInterface.cs" />
+    <Compile Include="Materials\ShaderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materials\ShaderDialog.Designer.cs">
+      <DependentUpon>ShaderDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\AssetsCopierForm.cs">
       <SubType>Form</SubType>
@@ -278,11 +303,23 @@
     <EmbeddedResource Include="Materials\MaterialEditor.resx">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Materials\MaterialEditorTabOld.resx">
+      <DependentUpon>MaterialEditorTabOld.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Materials\ShaderTabs\UnlitGenericTab.resx">
+      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\ShaderTabs\VertexLitGenericTab.resx">
+      <DependentUpon>VertexLitGenericTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Materials\SkyboxEditor.resx">
       <DependentUpon>SkyboxEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\ShaderDialog.resx">
+      <DependentUpon>ShaderDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
@@ -1141,6 +1178,24 @@
     <Content Include="icon_32.ico" />
     <Content Include="icon_48.ico" />
     <Content Include="icon_48_2.ico" />
+    <Content Include="Resources\Assets\Shaders\lightmappedgeneric.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Shaders\sky.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Shaders\unlitgeneric.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Shaders\vertexlitgeneric.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Shaders\water.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Assets\Shaders\worldvertextransition.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Templates\Mapbase\mapbase_episodic_template\bin\game_shader_dx9.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

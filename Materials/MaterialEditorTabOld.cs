@@ -17,21 +17,20 @@ using SourceSDK;
 using SourceSDK.Packages;
 using System.Diagnostics;
 using SourceSDK.Packages.VPKPackage;
-using source_modding_tool.Materials;
 
 namespace source_modding_tool
 {
-    public partial class MaterialEditorTab : DevExpress.XtraEditors.XtraUserControl, ShaderInterface
+    public partial class MaterialEditorTabOld : DevExpress.XtraEditors.XtraUserControl
     {
-        public Dictionary<string, PictureEdit> PictureEdits { get; set; }
-        public Dictionary<string, Texture> Textures { get; set; }
+        public Dictionary<string, PictureEdit> pictureEdits;
+        Dictionary<string, Texture> textures;
         string[] detail = null;
 
-        public Launcher Launcher { get; set; }
-        public PackageManager PackageManager { get; set; }
+        public Launcher launcher;
+        private PackageManager packageManager;
         object popupMenuActivator;
 
-        public string RelativePath { get; set; } = "";
+        public string relativePath = "";
 
         int textureWidth = 512;
         int textureHeight = 512;
@@ -43,11 +42,11 @@ namespace source_modding_tool
         {
             get
             {
-                return KeyValue.writeChunk(GetVMT(), true);
+                return KeyValue.writeChunk(GetVMT(relativePath), true);
             }
         }
 
-        public string Shader
+        public string shader
         {
             get
             {
@@ -59,35 +58,35 @@ namespace source_modding_tool
             }
         }
 
-        public MaterialEditorTab(Launcher launcher, PackageManager packageManager)
+        public MaterialEditorTabOld(Launcher launcher, PackageManager packageManager)
         {
-            this.Launcher = launcher;
-            this.PackageManager = packageManager;
+            this.launcher = launcher;
+            this.packageManager = packageManager;
             InitializeComponent();
-            PopulatePictureEdits();
+            populatePictureEdits();
             ClearMaterial();
 
             UpdatePreview();
         }
 
-        public void PopulatePictureEdits()
+        private void populatePictureEdits()
         {
-            PictureEdits = new Dictionary<string, PictureEdit>();
-            PictureEdits.Add("tooltexture", pictureToolTexture);
-            PictureEdits.Add("basetexture", pictureBaseTexture);
-            PictureEdits.Add("basetexture2", pictureBaseTexture2);
-            PictureEdits.Add("bumpmap", pictureBumpMap);
-            PictureEdits.Add("envmapmask", pictureEnvMapMask);
-            PictureEdits.Add("blendmodulatetexture", pictureBlendModulateTexture);
+            pictureEdits = new Dictionary<string, PictureEdit>();
+            pictureEdits.Add("tooltexture", pictureToolTexture);
+            pictureEdits.Add("basetexture", pictureBaseTexture);
+            pictureEdits.Add("basetexture2", pictureBaseTexture2);
+            pictureEdits.Add("bumpmap", pictureBumpMap);
+            pictureEdits.Add("envmapmask", pictureEnvMapMask);
+            pictureEdits.Add("blendmodulatetexture", pictureBlendModulateTexture);
         }
 
         public void ClearMaterial()
         {
-            Textures = new Dictionary<string, Texture>();
+            textures = new Dictionary<string, Texture>();
 
-            foreach (KeyValuePair<string, PictureEdit> kv in PictureEdits)
+            foreach (KeyValuePair<string, PictureEdit> kv in pictureEdits)
             {
-                Textures.Add(kv.Key, new Texture());
+                textures.Add(kv.Key, new Texture());
                 kv.Value.Image = null;
             }
 
@@ -100,13 +99,13 @@ namespace source_modding_tool
             shaderCombo.EditValue = "LightmappedGeneric";
         }
 
-        public void ClearTexture(PictureEdit pictureEdit)
+        private void ClearTexture(PictureEdit pictureEdit)
         {
             string tag = pictureEdit.Tag.ToString();
             pictureEdit.Image = null;
-            Textures[tag].bitmap = null;
-            Textures[tag].bytes = null;
-            Textures[tag].relativePath = string.Empty;
+            textures[tag].bitmap = null;
+            textures[tag].bytes = null;
+            textures[tag].relativePath = string.Empty;
 
             CreateToolTexture();
         }
@@ -149,21 +148,21 @@ namespace source_modding_tool
 
         private void CreateToolTexture()
         {
-            Bitmap basetexture = Textures["basetexture"].bitmap;
-            Bitmap basetexture2 = Textures["basetexture2"].bitmap;
+            Bitmap basetexture = textures["basetexture"].bitmap;
+            Bitmap basetexture2 = textures["basetexture2"].bitmap;
 
             if (basetexture == null)
             {
-                Textures["tooltexture"].bitmap = null;
-                Textures["tooltexture"].bytes = null;
-                Textures["tooltexture"].relativePath = string.Empty;
+                textures["tooltexture"].bitmap = null;
+                textures["tooltexture"].bytes = null;
+                textures["tooltexture"].relativePath = string.Empty;
             }
 
             if (basetexture != null && basetexture2 == null)
             {
-                Textures["tooltexture"].bitmap = basetexture;
-                Textures["tooltexture"].bytes = Textures["basetexture"].bytes;
-                Textures["tooltexture"].relativePath = string.Empty;
+                textures["tooltexture"].bitmap = basetexture;
+                textures["tooltexture"].bytes = textures["basetexture"].bytes;
+                textures["tooltexture"].relativePath = string.Empty;
             }
             else if (basetexture != null && basetexture2 != null)
             {
@@ -193,12 +192,12 @@ namespace source_modding_tool
                     }
                 }
 
-                Textures["tooltexture"].bitmap = tooltexture;
-                Textures["tooltexture"].bytes = VTF.FromBitmap(tooltexture, Launcher);
-                Textures["tooltexture"].relativePath = string.Empty;
+                textures["tooltexture"].bitmap = tooltexture;
+                textures["tooltexture"].bytes = VTF.FromBitmap(tooltexture, launcher);
+                textures["tooltexture"].relativePath = string.Empty;
             }
 
-            pictureToolTexture.Image = Textures["tooltexture"].bitmap;
+            pictureToolTexture.Image = textures["tooltexture"].bitmap;
         }
 
         public void LoadMaterial(PackageFile file)
@@ -211,9 +210,9 @@ namespace source_modding_tool
 
             string relativePath = file.Path + "/" + file.Filename;
 
-            this.RelativePath = relativePath.Substring("materials/".Length);
+            this.relativePath = relativePath.Substring("materials/".Length);
 
-            foreach (KeyValuePair<string, PictureEdit> kv in PictureEdits)
+            foreach (KeyValuePair<string, PictureEdit> kv in pictureEdits)
             {
                 if (vmt != null)
                 {
@@ -221,14 +220,14 @@ namespace source_modding_tool
 
                     if (value != null && value != "")
                     {
-                        PackageFile textureFile = PackageManager.GetFile("materials/" + value + ".vtf");
+                        PackageFile textureFile = packageManager.GetFile("materials/" + value + ".vtf");
 
                         if (textureFile != null)
                         {
-                            Textures[kv.Key].relativePath = textureFile.Path + "/" + textureFile.Filename + ".vtf";
-                            Textures[kv.Key].bytes = textureFile.Data;
-                            Textures[kv.Key].bitmap = VTF.ToBitmap(Textures[kv.Key].bytes, Launcher);
-                            kv.Value.Image = Textures[kv.Key].bitmap;
+                            textures[kv.Key].relativePath = textureFile.Path + "/" + textureFile.Filename + ".vtf";
+                            textures[kv.Key].bytes = textureFile.Data;
+                            textures[kv.Key].bitmap = VTF.ToBitmap(textures[kv.Key].bytes, launcher);
+                            kv.Value.Image = textures[kv.Key].bitmap;
                         } else
                         {
                             ClearTexture(kv.Value);
@@ -242,26 +241,26 @@ namespace source_modding_tool
                 }
             }
 
-            if (vmt != null && vmt.getValue("$normalmapalphaenvmapmask") == "1" && Textures["bumpmap"].bitmap != null)
+            if (vmt != null && vmt.getValue("$normalmapalphaenvmapmask") == "1" && textures["bumpmap"].bitmap != null)
             {
-                Textures["envmapmask"].bitmap = new Bitmap(Textures["bumpmap"].bitmap.Width, Textures["bumpmap"].bitmap.Height);
-                for (int i = 0; i < Textures["bumpmap"].bitmap.Width; i++)
+                textures["envmapmask"].bitmap = new Bitmap(textures["bumpmap"].bitmap.Width, textures["bumpmap"].bitmap.Height);
+                for (int i = 0; i < textures["bumpmap"].bitmap.Width; i++)
                 {
-                    for (int j = 0; j < Textures["bumpmap"].bitmap.Height; j++)
+                    for (int j = 0; j < textures["bumpmap"].bitmap.Height; j++)
                     {
-                        int alpha = Textures["bumpmap"].bitmap.GetPixel(i, j).A;
-                        Textures["envmapmask"].bitmap.SetPixel(i, j, Color.FromArgb(alpha, alpha, alpha));
+                        int alpha = textures["bumpmap"].bitmap.GetPixel(i, j).A;
+                        textures["envmapmask"].bitmap.SetPixel(i, j, Color.FromArgb(alpha, alpha, alpha));
                     }
                 }
-                Textures["envmapmask"].bytes = VTF.FromBitmap(Textures["envmapmask"].bitmap, Launcher);
-                Textures["envmapmask"].relativePath = "";
-                pictureEnvMapMask.Image = Textures["envmapmask"].bitmap;
+                textures["envmapmask"].bytes = VTF.FromBitmap(textures["envmapmask"].bitmap, launcher);
+                textures["envmapmask"].relativePath = "";
+                pictureEnvMapMask.Image = textures["envmapmask"].bitmap;
             }
 
             UpdatePreview();
         }
 
-        public void LoadTexture(PictureEdit pictureEdit)
+        private void LoadTexture(PictureEdit pictureEdit)
         {
             string tag = pictureEdit.Tag.ToString();
 
@@ -272,7 +271,7 @@ namespace source_modding_tool
             {
                 string type = new FileInfo(openBitmapFileDialog.FileName).Extension;
 
-                string modPath = Launcher.GetCurrentMod().InstallPath;
+                string modPath = launcher.GetCurrentMod().InstallPath;
 
                 Uri path1 = new Uri(modPath + "\\");
                 Uri path2 = new Uri(openBitmapFileDialog.FileName);
@@ -280,23 +279,23 @@ namespace source_modding_tool
 
                 if (type == ".vtf")
                 {
-                    Textures[tag].relativePath = diff.OriginalString;
-                    Textures[tag].bytes = File.ReadAllBytes(openBitmapFileDialog.FileName);
-                    Textures[tag].bitmap = VTF.ToBitmap(Textures[tag].bytes, Launcher);
+                    textures[tag].relativePath = diff.OriginalString;
+                    textures[tag].bytes = File.ReadAllBytes(openBitmapFileDialog.FileName);
+                    textures[tag].bitmap = VTF.ToBitmap(textures[tag].bytes, launcher);
                 }
                 else
                 {
-                    Textures[tag].relativePath = string.Empty;
+                    textures[tag].relativePath = string.Empty;
                     Image originalBitmap = Bitmap.FromFile(openBitmapFileDialog.FileName);
                     width = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Width, 2)));
                     height = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Height, 2)));
-                    Textures[tag].bitmap = new Bitmap(originalBitmap, width, height);
+                    textures[tag].bitmap = new Bitmap(originalBitmap, width, height);
                     originalBitmap.Dispose();
-                    Textures[tag].bytes = VTF.FromBitmap(Textures[tag].bitmap, Launcher);
+                    textures[tag].bytes = VTF.FromBitmap(textures[tag].bitmap, launcher);
                 }
 
-                if (Textures[tag].bitmap != null)
-                    pictureEdit.Image = Textures[tag].bitmap;
+                if (textures[tag].bitmap != null)
+                    pictureEdit.Image = textures[tag].bitmap;
             }
 
             CreateToolTexture();
@@ -314,27 +313,45 @@ namespace source_modding_tool
 
         private void popupMenu_Popup(object sender, EventArgs e) { popupMenuActivator = popupMenu.Activator; }
 
-        public void SaveMaterial()
+        public void SaveMaterial(string path)
         {
-            string shader = "VertexLitGeneric";
+            SaveMaterial(path, this.shader);
+        }
 
+        public string GetRelativePath(string fullPath)
+        {
+            Uri path1 = new Uri(launcher.GetCurrentMod().InstallPath + "\\");
+            Uri path2 = new Uri(fullPath);
+            Uri diff = path1.MakeRelativeUri(path2);
+            return diff.OriginalString;
+        }
+
+        public void SetRelativePath(string path)
+        {
+            this.relativePath = path;
+
+            UpdatePreview();
+        }
+
+        public void SaveMaterial(string relativePath, string shader)
+        {
             SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
-            string fullPath = (Launcher.GetCurrentMod().InstallPath + "\\" + RelativePath).Replace(" / ", "\\");
+            string fullPath = (launcher.GetCurrentMod().InstallPath + "\\" + relativePath).Replace(" / ", "\\");
 
             Directory.CreateDirectory(fullPath.Substring(0, fullPath.LastIndexOf("\\")));
 
             bool hasNormalMap = false;
             bool hasSpecularMap = false;
 
-            foreach (KeyValuePair<string, Texture> texture in Textures)
+            foreach (KeyValuePair<string, Texture> texture in textures)
             {
                 if (texture.Value.bitmap != null)
                 {
                     switch (texture.Key)
                     {
                         case "tooltexture":
-                            if (texture.Value.bytes != Textures["basetexture"].bytes)
+                            if (texture.Value.bytes != textures["basetexture"].bytes)
                                 File.WriteAllBytes(fullPath + "_" + texture.Key + ".vtf", texture.Value.bytes);
 
                             break;
@@ -353,8 +370,8 @@ namespace source_modding_tool
 
             if (hasNormalMap && hasSpecularMap)
             {
-                Bitmap normalBitmap = Textures["bumpmap"].bitmap;
-                Bitmap specularBitmap = new Bitmap(Textures["envmapmask"].bitmap,
+                Bitmap normalBitmap = textures["bumpmap"].bitmap;
+                Bitmap specularBitmap = new Bitmap(textures["envmapmask"].bitmap,
                                                    normalBitmap.Width,
                                                    normalBitmap.Height);
 
@@ -372,37 +389,37 @@ namespace source_modding_tool
                                                              normalColor.B));
                     }
                 }
-                Textures["bumpmap"].bytes = VTF.FromBitmap(Textures["bumpmap"].bitmap, Launcher);
-                File.WriteAllBytes(fullPath + "_bumpmap.vtf", Textures["bumpmap"].bytes);
+                textures["bumpmap"].bytes = VTF.FromBitmap(textures["bumpmap"].bitmap, launcher);
+                File.WriteAllBytes(fullPath + "_bumpmap.vtf", textures["bumpmap"].bytes);
             }
             else if (hasNormalMap)
-                File.WriteAllBytes(fullPath + "_bumpmap.vtf", Textures["bumpmap"].bytes);
+                File.WriteAllBytes(fullPath + "_bumpmap.vtf", textures["bumpmap"].bytes);
             
             else if (hasSpecularMap)
-                File.WriteAllBytes(fullPath + "_envmapmask.vtf", Textures["envmapmask"].bytes);
+                File.WriteAllBytes(fullPath + "_envmapmask.vtf", textures["envmapmask"].bytes);
 
             File.WriteAllText(fullPath + ".vmt", VMT, new UTF8Encoding(false));
         }
 
-        public KeyValue GetVMT()
+        private KeyValue GetVMT(string relativePath)
         {
-            SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(Shader);
+            SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
             bool hasNormalMap = false;
             bool hasSpecularMap = false;
 
-            string materialRelativePath = RelativePath;
-            if (RelativePath.StartsWith("/materials/"))
-                materialRelativePath = RelativePath.Substring("/materials/".Length);
+            string materialRelativePath = relativePath;
+            if (relativePath.StartsWith("/materials/"))
+                materialRelativePath = relativePath.Substring("/materials/".Length);
 
-            foreach (KeyValuePair<string, Texture> texture in Textures)
+            foreach (KeyValuePair<string, Texture> texture in textures)
             {
                 if (texture.Value.bitmap != null)
                 {
                     switch (texture.Key)
                     {
                         case "tooltexture":
-                            if (texture.Value.bytes == Textures["basetexture"].bytes)
+                            if (texture.Value.bytes == textures["basetexture"].bytes)
                             {
                                 vmt.addChild(new KeyValue("$" + texture.Key, materialRelativePath + "_basetexture"));
                             }

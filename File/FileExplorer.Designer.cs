@@ -40,7 +40,7 @@ namespace source_modding_tool.Modding
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.navigationBar = new DevExpress.XtraBars.Bar();
             this.buttonBack = new DevExpress.XtraBars.BarButtonItem();
             this.buttonForward = new DevExpress.XtraBars.BarButtonItem();
             this.buttonUp = new DevExpress.XtraBars.BarButtonItem();
@@ -49,6 +49,8 @@ namespace source_modding_tool.Modding
             this.textSearch = new DevExpress.XtraBars.BarEditItem();
             this.repositoryTextSearch = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.statusBar = new DevExpress.XtraBars.Bar();
+            this.openFileDialogBar = new DevExpress.XtraBars.Bar();
+            this.newFolderButton = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -101,7 +103,7 @@ namespace source_modding_tool.Modding
             this.directoryTree.Location = new System.Drawing.Point(0, 0);
             this.directoryTree.Name = "directoryTree";
             this.directoryTree.OptionsBehavior.Editable = false;
-            this.directoryTree.Size = new System.Drawing.Size(222, 377);
+            this.directoryTree.Size = new System.Drawing.Size(222, 349);
             this.directoryTree.StateImageList = this.imageCollection1;
             this.directoryTree.TabIndex = 1;
             this.directoryTree.Click += new System.EventHandler(this.directoryTree_Click);
@@ -141,7 +143,7 @@ namespace source_modding_tool.Modding
             this.fileTree.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.fileTree.OptionsSelection.MultiSelect = true;
             this.fileTree.OptionsSelection.UseIndicatorForSelection = true;
-            this.fileTree.Size = new System.Drawing.Size(520, 377);
+            this.fileTree.Size = new System.Drawing.Size(520, 349);
             this.fileTree.StateImageList = this.imageCollection1;
             this.fileTree.TabIndex = 2;
             this.fileTree.SelectionChanged += new System.EventHandler(this.fileTree_SelectionChanged);
@@ -176,7 +178,7 @@ namespace source_modding_tool.Modding
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 56);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
             // splitContainerControl1.Panel1
@@ -188,15 +190,16 @@ namespace source_modding_tool.Modding
             // 
             this.splitContainerControl1.Panel2.Controls.Add(this.fileTree);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(752, 377);
+            this.splitContainerControl1.Size = new System.Drawing.Size(752, 349);
             this.splitContainerControl1.SplitterPosition = 222;
             this.splitContainerControl1.TabIndex = 4;
             // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.statusBar});
+            this.navigationBar,
+            this.statusBar,
+            this.openFileDialogBar});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -213,27 +216,29 @@ namespace source_modding_tool.Modding
             this.contextFolderOpen,
             this.contextFolderOpenInWindows,
             this.contextFileShowInWindowsExplorer,
-            this.contextFileDecompile});
-            this.barManager1.MaxItemId = 12;
+            this.contextFileDecompile,
+            this.newFolderButton});
+            this.barManager1.MaxItemId = 13;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
             this.repositoryTextSearch});
             this.barManager1.StatusBar = this.statusBar;
             // 
-            // bar1
+            // navigationBar
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.navigationBar.BarName = "Tools";
+            this.navigationBar.DockCol = 0;
+            this.navigationBar.DockRow = 0;
+            this.navigationBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.navigationBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonBack),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonForward),
             new DevExpress.XtraBars.LinkPersistInfo(this.buttonUp),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.textDirectory, "", false, true, true, 143),
             new DevExpress.XtraBars.LinkPersistInfo(this.textSearch)});
-            this.bar1.Text = "Tools";
+            this.navigationBar.OptionsBar.DisableClose = true;
+            this.navigationBar.Text = "Tools";
             // 
             // buttonBack
             // 
@@ -300,13 +305,33 @@ namespace source_modding_tool.Modding
             this.statusBar.OptionsBar.UseWholeRow = true;
             this.statusBar.Text = "Status bar";
             // 
+            // openFileDialogBar
+            // 
+            this.openFileDialogBar.BarName = "Custom 4";
+            this.openFileDialogBar.DockCol = 0;
+            this.openFileDialogBar.DockRow = 1;
+            this.openFileDialogBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.openFileDialogBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.newFolderButton, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.openFileDialogBar.OptionsBar.DisableClose = true;
+            this.openFileDialogBar.Text = "Custom 4";
+            this.openFileDialogBar.Visible = false;
+            // 
+            // newFolderButton
+            // 
+            this.newFolderButton.Caption = "New folder";
+            this.newFolderButton.Id = 12;
+            this.newFolderButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("newFolderButton.ImageOptions.SvgImage")));
+            this.newFolderButton.Name = "newFolderButton";
+            this.newFolderButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.newFolderButton_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(752, 28);
+            this.barDockControlTop.Size = new System.Drawing.Size(752, 56);
             // 
             // barDockControlBottom
             // 
@@ -320,17 +345,17 @@ namespace source_modding_tool.Modding
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 28);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 56);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 450);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 422);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(752, 28);
+            this.barDockControlRight.Location = new System.Drawing.Point(752, 56);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 450);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 422);
             // 
             // contextFileExtractFromVPK
             // 
@@ -557,7 +582,7 @@ namespace source_modding_tool.Modding
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar navigationBar;
         private DevExpress.XtraBars.Bar statusBar;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -589,5 +614,7 @@ namespace source_modding_tool.Modding
         private DevExpress.XtraBars.PopupMenu folderMenu;
         private DevExpress.XtraBars.BarButtonItem contextFileShowInWindowsExplorer;
         private DevExpress.XtraBars.BarButtonItem contextFileDecompile;
+        private DevExpress.XtraBars.Bar openFileDialogBar;
+        private DevExpress.XtraBars.BarButtonItem newFolderButton;
     }
 }

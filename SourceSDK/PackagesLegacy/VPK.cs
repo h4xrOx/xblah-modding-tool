@@ -32,7 +32,7 @@ namespace SourceSDK.Packages
         /// <returns></returns>
         internal string GetPackName()
         {
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             string modPath = launcher.GetCurrentMod().InstallPath;
 
             string packName;
@@ -66,7 +66,7 @@ namespace SourceSDK.Packages
         /// </summary>
         internal virtual void ListFiles()
         {
-            string gamePath = launcher.GetCurrentGame().installPath;
+            string gamePath = launcher.GetCurrentGame().InstallPath;
             files = new Dictionary<string, File>();
 
             string toolPath = gamePath + "\\bin\\vpk.exe";

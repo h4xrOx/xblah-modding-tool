@@ -39,20 +39,20 @@ namespace SourceSDK
 
             Point location = parent.PointToScreen(Point.Empty);
 
-            if (runMode == RunMode.DEFAULT && game.engine == Engine.SOURCE)
+            if (runMode == RunMode.DEFAULT && game.EngineID == Engine.SOURCE)
                 runMode = RunMode.WINDOWED;
 
-            if (runMode == RunMode.DEFAULT && game.engine == Engine.GOLDSRC)
+            if (runMode == RunMode.DEFAULT && game.EngineID == Engine.GOLDSRC)
                 runMode = RunMode.WINDOWED;
 
-            if (runMode == RunMode.DEFAULT && game.engine == Engine.SOURCE2)
+            if (runMode == RunMode.DEFAULT && game.EngineID == Engine.SOURCE2)
                 runMode = RunMode.VR;
 
             switch (runMode)
             {
                 case RunMode.FULLSCREEN:
                     {
-                        switch (game.engine)
+                        switch (game.EngineID)
                         {
                             case Engine.SOURCE:
                                 arguments = "-game \"" + mod.InstallPath + "\" -fullscreen" +
@@ -82,7 +82,7 @@ namespace SourceSDK
                     }
                     break;
                 case RunMode.WINDOWED:
-                    switch (game.engine)
+                    switch (game.EngineID)
                     {
                         case Engine.SOURCE:
                             arguments = "-game \"" + mod.InstallPath + "\" -windowed -noborder -multirun" +
@@ -111,7 +111,7 @@ namespace SourceSDK
                     }
                     break;
                 case RunMode.VR:
-                    switch (game.engine)
+                    switch (game.EngineID)
                     {
                         case Engine.SOURCE:
                             arguments = "-game \"" + mod.InstallPath + "\" -vr" +

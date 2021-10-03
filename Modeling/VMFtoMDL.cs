@@ -36,7 +36,7 @@ namespace source_modding_tool
         {
             foreach(String fileName in vmfListBox.Items)
             {
-                String propperPath = launcher.GetCurrentGame().installPath + "\\bin\\propper.exe";
+                String propperPath = launcher.GetCurrentGame().InstallPath + "\\bin\\propper.exe";
 
                 if(!File.Exists(propperPath))
                 {
