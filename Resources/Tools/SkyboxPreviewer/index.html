@@ -1,0 +1,35 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="panorama" style="height: 100%; width: 100%"></div>
+    <script>
+        pannellum.viewer('panorama', {
+            "type": "cubemap",
+            "cubeMap": [
+                "ft.png",
+                "lf.png",
+                "bk.png",
+                "rt.png",
+                "up.png",
+                "dn.png"
+            ],
+            "autoLoad": true,
+            "showFullscreenCtrl": false,
+            "showControls": false
+        });
+    </script>
+</body>
+
+</html>

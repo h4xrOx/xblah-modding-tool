@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using DevExpress.XtraEditors;
+using source_modding_tool.Modding;
 using SourceSDK;
 using SourceSDK.Materials;
 using SourceSDK.Packages;
@@ -8,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,15 +28,39 @@ namespace source_modding_tool.Materials
         private Dictionary<string, PictureEdit> imageEdits;
         private Dictionary<string, PictureEdit> hdrImageEdits;
 
+        ChromiumWebBrowser chromium;
+
         public SkyboxEditor(Launcher launcher)
         {
             this.launcher = launcher;
-            this.packageManager = new PackageManager(launcher, "");
+            this.packageManager = new PackageManager(launcher, "materials/skybox");
 
             InitializeComponent();
 
+            Clear();
+
             SetImageEdits();
             UpdateSkyListCombo();
+
+            CefSharpSettings.ShutdownOnExit = true;
+
+            CefSettings settings = new CefSettings
+            {
+                CachePath = AppDomain.CurrentDomain.BaseDirectory + "/Assets/cache/"
+            };
+            if (!Cef.IsInitialized)
+                Cef.Initialize(settings);
+
+            // Init chromium
+            chromium = new ChromiumWebBrowser(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/index.html");
+            chromium.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
+            chromium.BrowserSettings.FileAccessFromFileUrls = CefState.Enabled;
+            chromium.BrowserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            chromium.BrowserSettings.BackgroundColor = Cef.ColorSetARGB(255, 0, 0, 0);
+
+            // Add the control
+            this.Controls.Add(chromium);
+            chromium.Dock = DockStyle.Fill;
         }
 
         private void SetImageEdits()
@@ -88,11 +116,18 @@ namespace source_modding_tool.Materials
             }
         }
 
-        private void skyListCombo_EditValueChanged(object sender, EventArgs e)
+        private void Clear()
         {
-            string skyname = skyListCombo.EditValue.ToString();
+            foreach (string face in new string[] { "up", "dn", "lf", "rt", "ft", "bk" })
+            {
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/blank.png", AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png",true);
+            }
+        }
 
-            foreach (string face in new string[]{ "up", "dn", "lf", "rt", "ft", "bk"}) {
+        private void Open(string skyname)
+        {
+            foreach (string face in new string[] { "up", "dn", "lf", "rt", "ft", "bk" })
+            {
                 PackageFile file = packageManager.GetFile("materials/skybox/" + skyname + face + ".vmt");
 
                 if (file != null)
@@ -113,6 +148,18 @@ namespace source_modding_tool.Materials
                             Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
 
                             imageEdits[face].Image = baseTextureImage;
+
+                            switch (face)
+                            {
+                                case "up":
+                                    baseTextureImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                    break;
+                                case "dn":
+                                    baseTextureImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                    break;
+                            }
+
+                            baseTextureImage.Save(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png", ImageFormat.Png);
                         }
                     }
 
@@ -142,6 +189,15 @@ namespace source_modding_tool.Materials
                     }
                 }
             }
+
+            chromium.Reload();
+        }
+
+        private void skyListCombo_EditValueChanged(object sender, EventArgs e)
+        {
+            string skyname = skyListCombo.EditValue.ToString();
+
+            Open(skyname);
         }
 
         private void clearButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -183,6 +239,30 @@ namespace source_modding_tool.Materials
                 byte[] vtf = VTF.FromBitmap(keyValuePair.Value.Image as Bitmap, launcher, new string[] { "nonice 1", "nocompress 1" });
                 string fileName = skyName + face;
                 File.WriteAllBytes(skyboxesPath + fileName + "_hdr.vtf", vtf);
+            }
+        }
+
+        private void menu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Open material
+            if (e.Item == menuFileOpen)
+            {
+                FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                {
+                    packageManager = packageManager,
+                    RootDirectory = "materials/skybox",
+                    Filter = "Skybox Files (*.vmt)|*.vmt",
+                    MultiSelect = false
+                };
+                if (fileExplorer.ShowDialog() == DialogResult.OK)
+                {
+                    string skyname = fileExplorer.Selection[0].Filename;
+                    skyname = skyname.Substring(0, skyname.Length - 2);
+                    if (skyname.EndsWith("_hdr"))
+                        skyname = skyname.Substring(0, skyname.Length - 4);
+
+                    Open(skyname);
+                }
             }
         }
     }
