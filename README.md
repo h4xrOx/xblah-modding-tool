@@ -8,7 +8,7 @@
 
 ### Modding
 * Create a mod based on Goldsrc, Source 1 or Source 2 (Alpha) games.
-* Create a mod based on Mapbase with Thexa's PBR support.
+* Create a mod based on Mapbase with Thexa4's PBR support.
 * Run mods from any game in fullscreen, windowed or VR mode (Source 2) directly from the tool.
 * Create custom launch presets.
 * Link to the mod install folder.
@@ -43,6 +43,7 @@
 
 ### Materials
 * Create basic materials and preview them in-game. (Source 1 - Alpha)
+* Create LDR skyboxes and preview them (Source 1)
 
 ### Particles
 * Auto-generate a particle manifest based on what's used in a VMF. (Source 1)
@@ -57,11 +58,10 @@
 ## Credits
 
 * XBLAH's Modding Tool - XBLAH
-** Decompiling maps - AnthonyPython
+  * Tips on decompiling maps - AnthonyPython
+  * Tips on skybox creation - Mr.Kleiner
 * Mapbase - Blixibon and team
-* PBR Shader - Thexa and team, White Red Dragons
+* PBR Shader - Thexa4, Bonjorno7, SCell555, Gocnak, White Red Dragons, and team
 * External tools - the respective authors
-
-
 
 If you somehow contributed and are missing in this list, let me know.
