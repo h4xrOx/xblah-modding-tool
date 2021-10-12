@@ -46,7 +46,6 @@ namespace source_modding_tool.Materials
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.skyListRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.menuFile = new DevExpress.XtraBars.BarSubItem();
@@ -60,6 +59,27 @@ namespace source_modding_tool.Materials
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.settingsLayoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.settingsAmbientCopyButton = new DevExpress.XtraEditors.SimpleButton();
+            this.settingsBrightnessCopyButton = new DevExpress.XtraEditors.SimpleButton();
+            this.settingsAmbientIntensityEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.settingsBrightnessIntensityEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.settingsBrightnessColorEdit = new DevExpress.XtraEditors.ColorPickEdit();
+            this.settingsAmbientColorEdit = new DevExpress.XtraEditors.ColorPickEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ldrDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.hdrDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
@@ -78,6 +98,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.skyListRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ftEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ldrLayoutControl)).BeginInit();
@@ -95,8 +116,27 @@ namespace source_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.panelContainer1.SuspendLayout();
+            this.dockPanel1.SuspendLayout();
+            this.controlContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsLayoutControl)).BeginInit();
+            this.settingsLayoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientIntensityEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessIntensityEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessColorEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientColorEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.ldrDockPanel.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             this.hdrDockPanel.SuspendLayout();
@@ -116,6 +156,7 @@ namespace source_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,7 +187,7 @@ namespace source_modding_tool.Materials
             this.ldrLayoutControl.Location = new System.Drawing.Point(0, 0);
             this.ldrLayoutControl.Name = "ldrLayoutControl";
             this.ldrLayoutControl.Root = this.Root;
-            this.ldrLayoutControl.Size = new System.Drawing.Size(162, 781);
+            this.ldrLayoutControl.Size = new System.Drawing.Size(279, 472);
             this.ldrLayoutControl.TabIndex = 21;
             this.ldrLayoutControl.Text = "layoutControl1";
             // 
@@ -237,7 +278,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem5,
             this.layoutControlItem6});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(162, 781);
+            this.Root.Size = new System.Drawing.Size(262, 620);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -245,7 +286,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem1.Control = this.ftEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(142, 100);
+            this.layoutControlItem1.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem1.Text = "Front";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -254,7 +295,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem2.Control = this.lfEdit;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 100);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(142, 100);
+            this.layoutControlItem2.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem2.Text = "Left";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -263,7 +304,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem3.Control = this.bkEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 200);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(142, 100);
+            this.layoutControlItem3.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem3.Text = "Back";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -272,7 +313,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem4.Control = this.rtEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 300);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(142, 100);
+            this.layoutControlItem4.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem4.Text = "Right";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -281,7 +322,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem5.Control = this.upEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 400);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(142, 100);
+            this.layoutControlItem5.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem5.Text = "Up";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -290,7 +331,7 @@ namespace source_modding_tool.Materials
             this.layoutControlItem6.Control = this.dnEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 500);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(142, 261);
+            this.layoutControlItem6.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem6.Text = "Down";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -317,13 +358,6 @@ namespace source_modding_tool.Materials
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.skyListRepository});
             this.barManager1.StatusBar = this.bar3;
-            // 
-            // skyListRepository
-            // 
-            this.skyListRepository.AutoHeight = false;
-            this.skyListRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.skyListRepository.Name = "skyListRepository";
             // 
             // bar3
             // 
@@ -439,7 +473,7 @@ namespace source_modding_tool.Materials
             this.dockManager1.Form = this;
             this.dockManager1.MenuManager = this.barManager1;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.ldrDockPanel,
+            this.panelContainer1,
             this.hdrDockPanel});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
@@ -455,42 +489,285 @@ namespace source_modding_tool.Materials
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
             "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
             // 
+            // panelContainer1
+            // 
+            this.panelContainer1.Controls.Add(this.dockPanel1);
+            this.panelContainer1.Controls.Add(this.ldrDockPanel);
+            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.panelContainer1.ID = new System.Guid("b2b128cf-ea21-407c-8f9f-c79916bd895c");
+            this.panelContainer1.Location = new System.Drawing.Point(769, 24);
+            this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(286, 200);
+            this.panelContainer1.Size = new System.Drawing.Size(286, 814);
+            this.panelContainer1.Text = "panelContainer1";
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Controls.Add(this.controlContainer1);
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanel1.ID = new System.Guid("f6e55065-0c34-42b1-9900-911e3865cb42");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(258, 309);
+            this.dockPanel1.Size = new System.Drawing.Size(286, 309);
+            this.dockPanel1.Text = "Settings";
+            // 
+            // controlContainer1
+            // 
+            this.controlContainer1.Controls.Add(this.settingsLayoutControl);
+            this.controlContainer1.Location = new System.Drawing.Point(4, 30);
+            this.controlContainer1.Name = "controlContainer1";
+            this.controlContainer1.Size = new System.Drawing.Size(279, 275);
+            this.controlContainer1.TabIndex = 0;
+            // 
+            // settingsLayoutControl
+            // 
+            this.settingsLayoutControl.Controls.Add(this.settingsAmbientCopyButton);
+            this.settingsLayoutControl.Controls.Add(this.settingsBrightnessCopyButton);
+            this.settingsLayoutControl.Controls.Add(this.settingsAmbientIntensityEdit);
+            this.settingsLayoutControl.Controls.Add(this.settingsBrightnessIntensityEdit);
+            this.settingsLayoutControl.Controls.Add(this.settingsBrightnessColorEdit);
+            this.settingsLayoutControl.Controls.Add(this.settingsAmbientColorEdit);
+            this.settingsLayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsLayoutControl.Location = new System.Drawing.Point(0, 0);
+            this.settingsLayoutControl.Name = "settingsLayoutControl";
+            this.settingsLayoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1099, 67, 650, 400);
+            this.settingsLayoutControl.Root = this.layoutControlGroup2;
+            this.settingsLayoutControl.Size = new System.Drawing.Size(279, 275);
+            this.settingsLayoutControl.TabIndex = 3;
+            this.settingsLayoutControl.Text = "layoutControl1";
+            // 
+            // settingsAmbientCopyButton
+            // 
+            this.settingsAmbientCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.settingsAmbientCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("settingsAmbientCopyButton.ImageOptions.SvgImage")));
+            this.settingsAmbientCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.settingsAmbientCopyButton.Location = new System.Drawing.Point(221, 183);
+            this.settingsAmbientCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
+            this.settingsAmbientCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
+            this.settingsAmbientCopyButton.Name = "settingsAmbientCopyButton";
+            this.settingsAmbientCopyButton.Size = new System.Drawing.Size(22, 22);
+            this.settingsAmbientCopyButton.StyleController = this.settingsLayoutControl;
+            this.settingsAmbientCopyButton.TabIndex = 8;
+            this.settingsAmbientCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
+            // 
+            // settingsBrightnessCopyButton
+            // 
+            this.settingsBrightnessCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.settingsBrightnessCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("settingsBrightnessCopyButton.ImageOptions.SvgImage")));
+            this.settingsBrightnessCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.settingsBrightnessCopyButton.Location = new System.Drawing.Point(221, 86);
+            this.settingsBrightnessCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
+            this.settingsBrightnessCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
+            this.settingsBrightnessCopyButton.Name = "settingsBrightnessCopyButton";
+            this.settingsBrightnessCopyButton.Size = new System.Drawing.Size(22, 22);
+            this.settingsBrightnessCopyButton.StyleController = this.settingsLayoutControl;
+            this.settingsBrightnessCopyButton.TabIndex = 7;
+            this.settingsBrightnessCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
+            // 
+            // settingsAmbientIntensityEdit
+            // 
+            this.settingsAmbientIntensityEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.settingsAmbientIntensityEdit.Location = new System.Drawing.Point(91, 207);
+            this.settingsAmbientIntensityEdit.MenuManager = this.barManager1;
+            this.settingsAmbientIntensityEdit.Name = "settingsAmbientIntensityEdit";
+            this.settingsAmbientIntensityEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.settingsAmbientIntensityEdit.Properties.ReadOnly = true;
+            this.settingsAmbientIntensityEdit.Size = new System.Drawing.Size(126, 20);
+            this.settingsAmbientIntensityEdit.StyleController = this.settingsLayoutControl;
+            this.settingsAmbientIntensityEdit.TabIndex = 6;
+            // 
+            // settingsBrightnessIntensityEdit
+            // 
+            this.settingsBrightnessIntensityEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.settingsBrightnessIntensityEdit.Location = new System.Drawing.Point(91, 110);
+            this.settingsBrightnessIntensityEdit.MenuManager = this.barManager1;
+            this.settingsBrightnessIntensityEdit.Name = "settingsBrightnessIntensityEdit";
+            this.settingsBrightnessIntensityEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.settingsBrightnessIntensityEdit.Properties.ReadOnly = true;
+            this.settingsBrightnessIntensityEdit.Size = new System.Drawing.Size(126, 20);
+            this.settingsBrightnessIntensityEdit.StyleController = this.settingsLayoutControl;
+            this.settingsBrightnessIntensityEdit.TabIndex = 5;
+            // 
+            // settingsBrightnessColorEdit
+            // 
+            this.settingsBrightnessColorEdit.EditValue = System.Drawing.Color.Empty;
+            this.settingsBrightnessColorEdit.Location = new System.Drawing.Point(91, 86);
+            this.settingsBrightnessColorEdit.MenuManager = this.barManager1;
+            this.settingsBrightnessColorEdit.Name = "settingsBrightnessColorEdit";
+            this.settingsBrightnessColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.settingsBrightnessColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.settingsBrightnessColorEdit.Properties.ReadOnly = true;
+            this.settingsBrightnessColorEdit.Size = new System.Drawing.Size(126, 20);
+            this.settingsBrightnessColorEdit.StyleController = this.settingsLayoutControl;
+            this.settingsBrightnessColorEdit.TabIndex = 4;
+            // 
+            // settingsAmbientColorEdit
+            // 
+            this.settingsAmbientColorEdit.EditValue = System.Drawing.Color.Empty;
+            this.settingsAmbientColorEdit.Location = new System.Drawing.Point(91, 183);
+            this.settingsAmbientColorEdit.MenuManager = this.barManager1;
+            this.settingsAmbientColorEdit.Name = "settingsAmbientColorEdit";
+            this.settingsAmbientColorEdit.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.settingsAmbientColorEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.settingsAmbientColorEdit.Properties.ReadOnly = true;
+            this.settingsAmbientColorEdit.Size = new System.Drawing.Size(126, 20);
+            this.settingsAmbientColorEdit.StyleController = this.settingsLayoutControl;
+            this.settingsAmbientColorEdit.TabIndex = 2;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.emptySpaceItem1,
+            this.layoutControlGroup3});
+            this.layoutControlGroup2.Name = "Root";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(279, 275);
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 243);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(259, 12);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup4,
+            this.layoutControlGroup5});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(259, 243);
+            this.layoutControlGroup3.Text = "light_environment";
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.GroupStyle = DevExpress.Utils.GroupStyle.Light;
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem14,
+            this.layoutControlItem15,
+            this.layoutControlItem17});
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup4.Name = "layoutControlGroup4";
+            this.layoutControlGroup4.Size = new System.Drawing.Size(235, 97);
+            this.layoutControlGroup4.Text = "Brightness";
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.settingsBrightnessColorEdit;
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(185, 24);
+            this.layoutControlItem14.Text = "Color";
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(43, 13);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.settingsBrightnessIntensityEdit;
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(185, 24);
+            this.layoutControlItem15.Text = "Intensity";
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(43, 13);
+            // 
+            // layoutControlItem17
+            // 
+            this.layoutControlItem17.Control = this.settingsBrightnessCopyButton;
+            this.layoutControlItem17.Location = new System.Drawing.Point(185, 0);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(26, 48);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextVisible = false;
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.GroupStyle = DevExpress.Utils.GroupStyle.Light;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem13,
+            this.layoutControlItem16,
+            this.layoutControlItem18});
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 97);
+            this.layoutControlGroup5.Name = "layoutControlGroup5";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(235, 97);
+            this.layoutControlGroup5.Text = "Ambient";
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.settingsAmbientColorEdit;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(185, 24);
+            this.layoutControlItem13.Text = "Color";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(43, 13);
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.settingsAmbientIntensityEdit;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(185, 24);
+            this.layoutControlItem16.Text = "Intensity";
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(43, 13);
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.settingsAmbientCopyButton;
+            this.layoutControlItem18.Location = new System.Drawing.Point(185, 0);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(26, 48);
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem18.TextVisible = false;
+            // 
             // ldrDockPanel
             // 
             this.ldrDockPanel.Controls.Add(this.dockPanel1_Container);
-            this.ldrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.ldrDockPanel.FloatVertical = true;
+            this.ldrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.ldrDockPanel.ID = new System.Guid("ae5c8c68-b18a-4096-83bc-4c7f4dc3d8c7");
-            this.ldrDockPanel.Location = new System.Drawing.Point(887, 24);
+            this.ldrDockPanel.Location = new System.Drawing.Point(0, 309);
             this.ldrDockPanel.Name = "ldrDockPanel";
             this.ldrDockPanel.Options.AllowDockAsTabbedDocument = false;
             this.ldrDockPanel.Options.AllowDockTop = false;
-            this.ldrDockPanel.Options.ResizeDirection = ((DevExpress.XtraBars.Docking.Helpers.ResizeDirection)((DevExpress.XtraBars.Docking.Helpers.ResizeDirection.Top | DevExpress.XtraBars.Docking.Helpers.ResizeDirection.Bottom)));
             this.ldrDockPanel.Options.ShowCloseButton = false;
-            this.ldrDockPanel.OriginalSize = new System.Drawing.Size(168, 200);
-            this.ldrDockPanel.Size = new System.Drawing.Size(168, 814);
+            this.ldrDockPanel.OriginalSize = new System.Drawing.Size(258, 505);
+            this.ldrDockPanel.Size = new System.Drawing.Size(286, 505);
             this.ldrDockPanel.Text = "Cubemap";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.ldrLayoutControl);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 30);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 30);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(162, 781);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(279, 472);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // hdrDockPanel
             // 
             this.hdrDockPanel.Controls.Add(this.dockPanel2_Container);
             this.hdrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
-            this.hdrDockPanel.FloatLocation = new System.Drawing.Point(792, 120);
+            this.hdrDockPanel.FloatLocation = new System.Drawing.Point(450, 133);
             this.hdrDockPanel.FloatSize = new System.Drawing.Size(83, 83);
             this.hdrDockPanel.FloatVertical = true;
             this.hdrDockPanel.ID = new System.Guid("2c0de4bc-2069-4d6d-afe0-e10545ab2fa9");
             this.hdrDockPanel.Location = new System.Drawing.Point(0, 0);
             this.hdrDockPanel.Name = "hdrDockPanel";
             this.hdrDockPanel.Options.ShowCloseButton = false;
-            this.hdrDockPanel.OriginalSize = new System.Drawing.Size(168, 200);
+            this.hdrDockPanel.OriginalSize = new System.Drawing.Size(102, 44);
             this.hdrDockPanel.SavedIndex = 0;
             this.hdrDockPanel.Size = new System.Drawing.Size(83, 83);
             this.hdrDockPanel.Text = "HDR";
@@ -672,6 +949,13 @@ namespace source_modding_tool.Materials
             this.layoutControlItem12.Text = "Down";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(27, 13);
             // 
+            // skyListRepository
+            // 
+            this.skyListRepository.AutoHeight = false;
+            this.skyListRepository.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.skyListRepository.Name = "skyListRepository";
+            // 
             // repositoryItemPictureEdit1
             // 
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
@@ -682,7 +966,7 @@ namespace source_modding_tool.Materials
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 856);
-            this.Controls.Add(this.ldrDockPanel);
+            this.Controls.Add(this.panelContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -709,8 +993,27 @@ namespace source_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.panelContainer1.ResumeLayout(false);
+            this.dockPanel1.ResumeLayout(false);
+            this.controlContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.settingsLayoutControl)).EndInit();
+            this.settingsLayoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientIntensityEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessIntensityEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessColorEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientColorEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ldrDockPanel.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             this.hdrDockPanel.ResumeLayout(false);
@@ -730,6 +1033,7 @@ namespace source_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -786,5 +1090,26 @@ namespace source_modding_tool.Materials
         private DevExpress.XtraBars.BarButtonItem menuFileSave;
         private DevExpress.XtraBars.BarButtonItem menuFileSaveAs;
         private DevExpress.XtraBars.BarButtonItem menuFileExit;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
+        private DevExpress.XtraLayout.LayoutControl settingsLayoutControl;
+        private DevExpress.XtraEditors.ColorPickEdit settingsAmbientColorEdit;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.ColorPickEdit settingsBrightnessColorEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DevExpress.XtraEditors.SpinEdit settingsAmbientIntensityEdit;
+        private DevExpress.XtraEditors.SpinEdit settingsBrightnessIntensityEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraEditors.SimpleButton settingsBrightnessCopyButton;
+        private DevExpress.XtraEditors.SimpleButton settingsAmbientCopyButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
     }
 }

@@ -139,8 +139,7 @@ namespace source_modding_tool.Materials
                 }
             }
             Skyname = "";
-            if (chromium != null)
-                chromium.Reload();
+            UpdatePreview();
         }
 
         private void Open(string skyname)
@@ -199,7 +198,7 @@ namespace source_modding_tool.Materials
                 }
             }
 
-            chromium.Reload();
+            UpdatePreview();
         }
 
         private void Save(string skyname)
@@ -302,8 +301,6 @@ namespace source_modding_tool.Materials
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     Skyname = Path.GetFileName(fileExplorer.FileName);
-                    System.Diagnostics.Debugger.Break();
-
                     Save(Skyname);
                 }
             }
@@ -332,7 +329,7 @@ namespace source_modding_tool.Materials
                 if (imageEdit.Value == ownerEdit)
                 {
                     SavePreview(Bitmap.FromFile(e.FileName), imageEdit.Key);
-                    chromium.Reload();
+                    UpdatePreview();
                     break;
                 }
             }
@@ -378,6 +375,119 @@ namespace source_modding_tool.Materials
 
             destImage.Save(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png", ImageFormat.Png);
             bitmap.Dispose();
+        }
+
+        private void settingsCopyButton_Click(object sender, EventArgs e)
+        {
+            if (sender == settingsBrightnessCopyButton)
+            {
+                Clipboard.SetText(settingsBrightnessColorEdit.Color.R + " " + settingsBrightnessColorEdit.Color.G + " " + settingsBrightnessColorEdit.Color.B + " " + settingsBrightnessIntensityEdit.Value);
+            } else if(sender == settingsAmbientCopyButton)
+            {
+                Clipboard.SetText(settingsAmbientColorEdit.Color.R + " " + settingsAmbientColorEdit.Color.G + " " + settingsAmbientColorEdit.Color.B + " " + settingsAmbientIntensityEdit.Value);
+            }
+        }
+
+        private void UpdateSettings()
+        {
+            int rSum = 0;
+            int gSum = 0;
+            int bSum = 0;
+            int pixelCount = 0;
+
+            Color brightnessColor = Color.Black;
+
+            /*string brightestFace = "";
+            float brightestColumn = 0;
+            float brightestColumnBrightness = 0;*/
+
+            foreach (string face in new string[] { "up", "lf", "rt", "ft", "bk" })
+            {
+                Bitmap bitmap = imageEdits[face].Image as Bitmap;
+
+                if (bitmap != null)
+                {
+                    for (int i = 0; i < bitmap.Width; i += 4)
+                    {
+                        float brightnessSum = 0;
+                        int height = (face == "up" ? bitmap.Height : bitmap.Height / 2);
+
+                        for (int j = 0; j < height; j += 4)
+                        {
+
+                            Color pixelColor = bitmap.GetPixel(i, j);
+                            rSum += pixelColor.R;
+                            gSum += pixelColor.G;
+                            bSum += pixelColor.B;
+                            pixelCount++;
+
+                            float brightness = pixelColor.GetBrightness();
+                            if (face != "up")
+                            {
+
+                                if (brightness > brightnessColor.GetBrightness())
+                                    brightnessColor = pixelColor;
+
+                                brightnessSum += brightness;
+                            }
+
+                            /*if (face != "up" && brightness > brightestColumnBrightness)
+                            {
+                                brightestFace = face;
+                                brightestColumn = (float)(i - bitmap.Width / 2) / (float)bitmap.Width;
+                                brightestColumnBrightness = brightness;
+                            }*/
+                        }
+                    }
+                }
+            }
+
+            /*double angle = -Math.Atan(brightestColumn) * 180 / Math.PI;
+
+            switch (brightestFace)
+            {
+                case "lf":
+                    // If it comes from LF, its between 315 (min column) and 45 (max column)
+
+                    angle += 0;
+                    break;
+                case "ft":
+                    // if it comes from FT, its between 45 (min column) and 135 (max column)
+
+                    angle += 90;
+                    break;
+                case "rt":
+                    // if it comes from RT, its between 135 (min column) and 225 (max column)
+
+                    angle += 180;
+                    break;
+                case "bk":
+                    // if it comes from BK, its between 225 (min column) and 315 (max column)
+
+                    angle += 270;
+                    break;
+            }*/
+
+            settingsBrightnessColorEdit.Color = brightnessColor;
+            settingsBrightnessIntensityEdit.Value = (int)(brightnessColor.GetBrightness() * 200);
+
+            if (pixelCount > 0)
+            {
+                settingsAmbientColorEdit.Color = Color.FromArgb(rSum / pixelCount, gSum / pixelCount, bSum / pixelCount);
+            }
+             else
+            {
+                settingsAmbientColorEdit.Color = Color.Transparent;
+            }
+            settingsAmbientIntensityEdit.Value = (int)(settingsAmbientColorEdit.Color.GetBrightness() * 200);
+        }
+
+        private void UpdatePreview()
+        {
+            if (chromium != null)
+                chromium.Reload();
+
+            UpdateSettings();
         }
     }
 }
