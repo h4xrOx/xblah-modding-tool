@@ -58,8 +58,8 @@
 ## Credits
 
 * XBLAH's Modding Tool - XBLAH
-** Decompiling maps - AnthonyPython
-** Skybox creation - Mr.Kleiner
+  * Tips on decompiling maps - AnthonyPython
+  * Tips on skybox creation - Mr.Kleiner
 * Mapbase - Blixibon and team
 * PBR Shader - Thexa4, Bonjorno7, SCell555, White Red Dragons, and team
 * External tools - the respective authors
