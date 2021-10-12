@@ -42,7 +42,7 @@
 * Link to Crowbar. (Source 1)
 
 ### Materials
-* Create basic materials and preview them in-game. (Source 1 - Alpha)
+* Create UnlitGeneric materials. (Source 1)
 * Create LDR skyboxes and preview them (Source 1)
 
 ### Particles
