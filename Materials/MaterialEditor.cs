@@ -30,6 +30,11 @@ namespace source_modding_tool
 
         string modPath;
 
+        /// <summary>
+        /// When the Material Editor is loaded and a packageFile is set, it will open the package file.
+        /// </summary>
+        PackageFile packageFile = null;     
+
         private ShaderInterface activeTab = null;
 
         public MaterialEditor(Launcher launcher)
@@ -42,11 +47,13 @@ namespace source_modding_tool
             InitializeComponent();
 
             activeTab = null;
+
+            previewDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
         }
 
         public MaterialEditor(Launcher launcher, PackageFile file) : this(launcher)
         {
-            LoadMaterial(file);
+            this.packageFile = file;
         }
 
         #region MainMenu
@@ -79,14 +86,12 @@ namespace source_modding_tool
                         default:
                             {
                                 tab = new MaterialEditorTab(launcher, packageManager);
-
-                                tab.OnUpdated += MaterialEditorTab_OnUpdated;
-                                
-
-                                vmtEdit.Text = tab.VMT;
                             }
                             break;
                     }
+
+                    tab.OnUpdated += MaterialEditorTab_OnUpdated;
+                    vmtEdit.Text = tab.VMT;
 
                     tabPage.Controls.Add(tab as Control);
                     (tab as Control).Dock = DockStyle.Fill;
@@ -375,10 +380,10 @@ namespace source_modding_tool
         /// 
         /// </summary>
         /// <param name="pictureEdit"></param>
-        public static void LoadTexture(string tag, ShaderInterface tabInterface)
+        public static void ImportTexture(string tag, ShaderInterface tabInterface)
         {
-            int width = 512;
-            int height = 512;
+            int width;
+            int height;
 
             XtraOpenFileDialog dialog = new XtraOpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -403,6 +408,28 @@ namespace source_modding_tool
                     originalBitmap.Dispose();
                     tabInterface.Textures[tag].bytes = VTF.FromBitmap(tabInterface.Textures[tag].bitmap, tabInterface.Launcher);
                 }
+
+                if (tabInterface.Textures[tag].bitmap != null)
+                    tabInterface.PictureEdits[tag].Image = tabInterface.Textures[tag].bitmap;
+            }
+        }
+
+        public static void OpenTexture(string tag, ShaderInterface tabInterface)
+        {
+            FileExplorer fileExplorer = new FileExplorer(tabInterface.Launcher, FileExplorer.Mode.OPEN)
+            {
+                RootDirectory = "materials",
+                Filter = "Valve Texture Files (*.vtf)|*.vtf",
+                MultiSelect = false
+            };
+            if (fileExplorer.ShowDialog() == DialogResult.OK)
+            {
+                PackageFile file = fileExplorer.Selection[0];
+                //System.Diagnostics.Debugger.Break();
+
+                tabInterface.Textures[tag].relativePath = file.FullPath;
+                tabInterface.Textures[tag].bytes = file.Data;
+                tabInterface.Textures[tag].bitmap = VTF.ToBitmap(file.Data, tabInterface.Launcher);
 
                 if (tabInterface.Textures[tag].bitmap != null)
                     tabInterface.PictureEdits[tag].Image = tabInterface.Textures[tag].bitmap;
@@ -460,13 +487,25 @@ namespace source_modding_tool
                 toolTexture.relativePath = string.Empty;
             }
 
-            using (Graphics g = Graphics.FromImage(toolTexture.bitmap))
-                g.DrawImage(shader, new Rectangle(0, 0, basetexture.Width / 8, basetexture.Height / 8), new Rectangle(0, 0, shader.Width, shader.Height), GraphicsUnit.Point);
+            if (toolTexture.bitmap != null)
+            {
+                using (Graphics g = Graphics.FromImage(toolTexture.bitmap))
+                    g.DrawImage(shader, new Rectangle(0, 0, basetexture.Width / 8, basetexture.Height / 8), new Rectangle(0, 0, shader.Width, shader.Height), GraphicsUnit.Point);
 
-            toolTexture.bytes = VTF.FromBitmap(toolTexture.bitmap, shaderInterface.Launcher);
+                toolTexture.bytes = VTF.FromBitmap(toolTexture.bitmap, shaderInterface.Launcher);
 
-            shaderInterface.Textures["tooltexture"] = toolTexture;
-            shaderInterface.PictureEdits["tooltexture"].Image = toolTexture.bitmap;
+                shaderInterface.Textures["tooltexture"] = toolTexture;
+                shaderInterface.PictureEdits["tooltexture"].Image = toolTexture.bitmap;
+            }
+        }
+
+        private void MaterialEditor_Load(object sender, EventArgs e)
+        {
+            if (packageFile != null)
+            {
+                LoadMaterial(packageFile);
+                packageFile = null;
+            }
         }
     }
 }

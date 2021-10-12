@@ -129,6 +129,7 @@ namespace source_modding_tool.Modding
             this.imageCollection1.Images.SetKeyName(6, "vmf_file.png");
             this.imageCollection1.Images.SetKeyName(7, "vtf_file.png");
             this.imageCollection1.Images.SetKeyName(8, "wav_file.png");
+            this.imageCollection1.Images.SetKeyName(9, "skybox_file.png");
             // 
             // fileTree
             // 

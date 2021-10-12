@@ -33,14 +33,14 @@ namespace source_modding_tool.Materials
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShaderDialog));
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.imageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.okButton = new DevExpress.XtraEditors.SimpleButton();
             this.cancelButton = new DevExpress.XtraEditors.SimpleButton();
-            this.imageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // treeList
@@ -53,16 +53,6 @@ namespace source_modding_tool.Materials
             this.treeList.BeginUnboundLoad();
             this.treeList.AppendNode(new object[] {
             "UnlitGeneric"}, -1, 0, 0, 0);
-            this.treeList.AppendNode(new object[] {
-            "VertexLitGeneric"}, -1, 0, 0, 1);
-            this.treeList.AppendNode(new object[] {
-            "LightmappedGeneric"}, -1, 0, 0, 2);
-            this.treeList.AppendNode(new object[] {
-            "WorldVertexTransition"}, -1, 0, 0, 3);
-            this.treeList.AppendNode(new object[] {
-            "Sky"}, -1, 0, 0, 4);
-            this.treeList.AppendNode(new object[] {
-            "Water"}, -1, 0, 0, 5);
             this.treeList.EndUnboundLoad();
             this.treeList.OptionsBehavior.Editable = false;
             this.treeList.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -79,6 +69,17 @@ namespace source_modding_tool.Materials
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // imageCollection
+            // 
+            this.imageCollection.ImageSize = new System.Drawing.Size(32, 32);
+            this.imageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection.ImageStream")));
+            this.imageCollection.Images.SetKeyName(0, "unlitgeneric.png");
+            this.imageCollection.Images.SetKeyName(1, "vertexlitgeneric.png");
+            this.imageCollection.Images.SetKeyName(2, "lightmappedgeneric.png");
+            this.imageCollection.Images.SetKeyName(3, "worldvertextransition.png");
+            this.imageCollection.Images.SetKeyName(4, "sky.png");
+            this.imageCollection.Images.SetKeyName(5, "water.png");
             // 
             // panelControl1
             // 
@@ -113,17 +114,6 @@ namespace source_modding_tool.Materials
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             // 
-            // imageCollection
-            // 
-            this.imageCollection.ImageSize = new System.Drawing.Size(32, 32);
-            this.imageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection.ImageStream")));
-            this.imageCollection.Images.SetKeyName(0, "unlitgeneric.png");
-            this.imageCollection.Images.SetKeyName(1, "vertexlitgeneric.png");
-            this.imageCollection.Images.SetKeyName(2, "lightmappedgeneric.png");
-            this.imageCollection.Images.SetKeyName(3, "worldvertextransition.png");
-            this.imageCollection.Images.SetKeyName(4, "sky.png");
-            this.imageCollection.Images.SetKeyName(5, "water.png");
-            // 
             // ShaderDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,9 +126,9 @@ namespace source_modding_tool.Materials
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Shader";
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }

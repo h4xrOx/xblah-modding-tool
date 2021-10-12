@@ -47,12 +47,11 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.previewDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.buttonPreview = new DevExpress.XtraEditors.SimpleButton();
-            this.dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.vmtDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel3_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.vmtEdit = new DevExpress.XtraEditors.MemoEdit();
             this.contextLoad = new DevExpress.XtraBars.BarButtonItem();
@@ -64,12 +63,11 @@
             this.newVMTDialog = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.panelContainer1.SuspendLayout();
-            this.dockPanel1.SuspendLayout();
+            this.previewDockPanel.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            this.dockPanel3.SuspendLayout();
+            this.vmtDockPanel.SuspendLayout();
             this.dockPanel3_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vmtEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -190,7 +188,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(729, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(591, 24);
             // 
             // barDockControlBottom
             // 
@@ -198,7 +196,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 656);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(729, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(591, 18);
             // 
             // barDockControlLeft
             // 
@@ -212,7 +210,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(729, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(591, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 632);
             // 
@@ -221,7 +219,8 @@
             this.dockManager1.Form = this;
             this.dockManager1.MenuManager = this.barManager1;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.panelContainer1});
+            this.previewDockPanel,
+            this.vmtDockPanel});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -235,45 +234,40 @@
             "DevExpress.XtraBars.TabFormControl",
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl"});
             // 
-            // panelContainer1
+            // previewDockPanel
             // 
-            this.panelContainer1.Controls.Add(this.dockPanel1);
-            this.panelContainer1.Controls.Add(this.dockPanel3);
-            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.panelContainer1.ID = new System.Guid("c7e22a9e-a18d-4e67-89d9-0999f73d1cf1");
-            this.panelContainer1.Location = new System.Drawing.Point(338, 24);
-            this.panelContainer1.Name = "panelContainer1";
-            this.panelContainer1.OriginalSize = new System.Drawing.Size(391, 200);
-            this.panelContainer1.Size = new System.Drawing.Size(391, 632);
-            this.panelContainer1.Text = "panelContainer1";
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.previewDockPanel.Controls.Add(this.dockPanel1_Container);
             customHeaderButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("customHeaderButtonImageOptions1.SvgImage")));
             customHeaderButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.dockPanel1.CustomHeaderButtons.AddRange(new DevExpress.XtraBars.Docking2010.IButton[] {
+            this.previewDockPanel.CustomHeaderButtons.AddRange(new DevExpress.XtraBars.Docking2010.IButton[] {
             new DevExpress.XtraBars.Docking.CustomHeaderButton("Refresh", false, customHeaderButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, serializableAppearanceObject1, "refresh", -1)});
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanel1.ID = new System.Guid("67027259-8967-426a-9466-ee71a6c608fd");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Options.AllowDockAsTabbedDocument = false;
-            this.dockPanel1.Options.AllowDockBottom = false;
-            this.dockPanel1.Options.AllowDockLeft = false;
-            this.dockPanel1.Options.AllowDockTop = false;
-            this.dockPanel1.Options.ShowMaximizeButton = false;
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(391, 438);
-            this.dockPanel1.Size = new System.Drawing.Size(391, 426);
-            this.dockPanel1.Text = "Preview";
-            this.dockPanel1.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.dockPanel1_CustomButtonClick);
+            this.previewDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
+            this.previewDockPanel.FloatLocation = new System.Drawing.Point(419, 118);
+            this.previewDockPanel.FloatSize = new System.Drawing.Size(143, 64);
+            this.previewDockPanel.FloatVertical = true;
+            this.previewDockPanel.ID = new System.Guid("67027259-8967-426a-9466-ee71a6c608fd");
+            this.previewDockPanel.Location = new System.Drawing.Point(0, 0);
+            this.previewDockPanel.Name = "previewDockPanel";
+            this.previewDockPanel.Options.AllowDockAsTabbedDocument = false;
+            this.previewDockPanel.Options.AllowDockBottom = false;
+            this.previewDockPanel.Options.AllowDockLeft = false;
+            this.previewDockPanel.Options.AllowDockTop = false;
+            this.previewDockPanel.Options.ShowMaximizeButton = false;
+            this.previewDockPanel.OriginalSize = new System.Drawing.Size(391, 426);
+            this.previewDockPanel.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.previewDockPanel.SavedIndex = 0;
+            this.previewDockPanel.SavedParent = this.vmtDockPanel;
+            this.previewDockPanel.SavedSizeFactor = 1.3481D;
+            this.previewDockPanel.Size = new System.Drawing.Size(143, 64);
+            this.previewDockPanel.Text = "Preview";
+            this.previewDockPanel.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.dockPanel1_CustomButtonClick);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.panelControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 36);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 40);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(384, 386);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(135, 20);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // panelControl1
@@ -283,7 +277,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(8);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(384, 384);
+            this.panelControl1.Size = new System.Drawing.Size(135, 384);
             this.panelControl1.TabIndex = 27;
             // 
             // buttonPreview
@@ -292,34 +286,37 @@
             this.buttonPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonPreview.Location = new System.Drawing.Point(2, 2);
             this.buttonPreview.Name = "buttonPreview";
-            this.buttonPreview.Size = new System.Drawing.Size(380, 380);
+            this.buttonPreview.Size = new System.Drawing.Size(131, 380);
             this.buttonPreview.TabIndex = 28;
             this.buttonPreview.Text = "Preview";
             this.buttonPreview.Click += new System.EventHandler(this.buttonPreview_Click);
             // 
-            // dockPanel3
+            // vmtDockPanel
             // 
-            this.dockPanel3.Controls.Add(this.dockPanel3_Container);
-            this.dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanel3.FloatVertical = true;
-            this.dockPanel3.ID = new System.Guid("bc8573f6-f9ac-4e41-9fcf-41f9ad73aa75");
-            this.dockPanel3.Location = new System.Drawing.Point(0, 426);
-            this.dockPanel3.Name = "dockPanel3";
-            this.dockPanel3.Options.AllowDockAsTabbedDocument = false;
-            this.dockPanel3.Options.AllowDockBottom = false;
-            this.dockPanel3.Options.AllowDockLeft = false;
-            this.dockPanel3.Options.AllowDockTop = false;
-            this.dockPanel3.Options.ShowMaximizeButton = false;
-            this.dockPanel3.OriginalSize = new System.Drawing.Size(391, 212);
-            this.dockPanel3.Size = new System.Drawing.Size(391, 206);
-            this.dockPanel3.Text = "VMT";
+            this.vmtDockPanel.Controls.Add(this.dockPanel3_Container);
+            this.vmtDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.vmtDockPanel.FloatVertical = true;
+            this.vmtDockPanel.ID = new System.Guid("bc8573f6-f9ac-4e41-9fcf-41f9ad73aa75");
+            this.vmtDockPanel.Location = new System.Drawing.Point(281, 24);
+            this.vmtDockPanel.Name = "vmtDockPanel";
+            this.vmtDockPanel.Options.AllowDockAsTabbedDocument = false;
+            this.vmtDockPanel.Options.AllowDockBottom = false;
+            this.vmtDockPanel.Options.AllowDockLeft = false;
+            this.vmtDockPanel.Options.AllowDockTop = false;
+            this.vmtDockPanel.Options.ShowMaximizeButton = false;
+            this.vmtDockPanel.OriginalSize = new System.Drawing.Size(310, 200);
+            this.vmtDockPanel.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.vmtDockPanel.SavedIndex = 0;
+            this.vmtDockPanel.SavedSizeFactor = 0.6519D;
+            this.vmtDockPanel.Size = new System.Drawing.Size(310, 632);
+            this.vmtDockPanel.Text = "VMT";
             // 
             // dockPanel3_Container
             // 
             this.dockPanel3_Container.Controls.Add(this.vmtEdit);
             this.dockPanel3_Container.Location = new System.Drawing.Point(4, 30);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(384, 173);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(303, 599);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // vmtEdit
@@ -329,7 +326,7 @@
             this.vmtEdit.MenuManager = this.barManager1;
             this.vmtEdit.Name = "vmtEdit";
             this.vmtEdit.Properties.ReadOnly = true;
-            this.vmtEdit.Size = new System.Drawing.Size(384, 173);
+            this.vmtEdit.Size = new System.Drawing.Size(303, 599);
             this.vmtEdit.TabIndex = 0;
             // 
             // contextLoad
@@ -365,7 +362,7 @@
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Name = "tabControl";
-            this.tabControl.Size = new System.Drawing.Size(338, 632);
+            this.tabControl.Size = new System.Drawing.Size(281, 632);
             this.tabControl.TabIndex = 47;
             this.tabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl_SelectedPageChanged);
             this.tabControl.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
@@ -378,9 +375,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 674);
+            this.ClientSize = new System.Drawing.Size(591, 674);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.panelContainer1);
+            this.Controls.Add(this.vmtDockPanel);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -390,14 +387,14 @@
             this.Name = "MaterialEditor";
             this.Text = "Material Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MaterialEditor_FormClosing);
+            this.Load += new System.EventHandler(this.MaterialEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.panelContainer1.ResumeLayout(false);
-            this.dockPanel1.ResumeLayout(false);
+            this.previewDockPanel.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.dockPanel3.ResumeLayout(false);
+            this.vmtDockPanel.ResumeLayout(false);
             this.dockPanel3_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vmtEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -425,7 +422,7 @@
         private DevExpress.XtraEditors.SimpleButton buttonPreview;
         private DevExpress.XtraEditors.XtraSaveFileDialog newVMTDialog;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.DockPanel previewDockPanel;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraTab.XtraTabControl tabControl;
         private DevExpress.XtraBars.Bar bar4;
@@ -434,10 +431,9 @@
         private DevExpress.XtraBars.BarButtonItem menuFileOpen;
         private DevExpress.XtraBars.BarButtonItem menuFileSave;
         private DevExpress.XtraBars.BarButtonItem menuFileExit;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
+        private DevExpress.XtraBars.Docking.DockPanel vmtDockPanel;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel3_Container;
         private DevExpress.XtraEditors.MemoEdit vmtEdit;
         private DevExpress.XtraBars.BarButtonItem menuFileSaveAs;
-        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
     }
 }

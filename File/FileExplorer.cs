@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
+using source_modding_tool.Materials;
 using source_modding_tool.Sound;
 using SourceSDK;
 using SourceSDK.Maps;
@@ -239,14 +240,33 @@ namespace source_modding_tool.Modding
                 node.StateImageIndex = 0;
             }
 
+            List<string> addedFiles = new List<string>();
+
             foreach (PackageFile file in files.GroupBy(f => new { f.Filename, f.Extension }).Select(g => g.First()))
             {
+                string filename = file.Filename;
                 string extension = file.Extension;
+                object tag = file;
+
                 int stateImageIndex = 0;
+
                 if (file.Filename.StartsWith("soundscapes_") && file.Filename != "soundscapes_manifest" && file.Extension == "txt")
                 {
                     stateImageIndex = 8;
                     extension = "soundscape";
+                }
+                else if(file.Path == "materials/skybox")
+                {
+                    if (file.Extension == "vtf")
+                        continue;
+
+                    filename = filename.Substring(0, filename.Length - 2);
+                    if (filename.EndsWith("_hdr"))
+                        filename = filename.Substring(0, filename.Length - 4);
+
+                    extension = "skybox";
+
+                    stateImageIndex = 9;
                 }
                 else
                 {
@@ -284,10 +304,14 @@ namespace source_modding_tool.Modding
                     }
                 }
 
+                if (addedFiles.Contains(filename + "." + extension))
+                    continue;
 
-                TreeListNode node = fileTree.AppendNode(new object[] { file.Filename, extension, file.Directory.ParentArchive.Name }, null);
+                TreeListNode node = fileTree.AppendNode(new object[] { filename, extension, file.Directory.ParentArchive.Name }, null);
                 node.StateImageIndex = stateImageIndex;
-                node.Tag = file;                
+                node.Tag = file;
+
+                addedFiles.Add(filename + "." + extension);
             }
 
             fileTree.EndUnboundLoad();
@@ -358,7 +382,16 @@ namespace source_modding_tool.Modding
 
         private void OpenFile(PackageFile packageFile)
         {
-            if (packageFile.Extension == "vmt")
+            if (packageFile.Path == "materials/skybox")
+            {
+                // It's a skybox.
+                SkyboxEditor skyboxEditor = new SkyboxEditor(launcher)
+                {
+                    PackageFile = packageFile
+                };
+                skyboxEditor.ShowDialog();
+            }
+            else if (packageFile.Extension == "vmt")
             {
                 // It's a material file.
                 MaterialEditor materialEditor = new MaterialEditor(launcher, packageFile);
@@ -457,7 +490,9 @@ namespace source_modding_tool.Modding
             }
 
             if (Selection.Length > 0)
-                fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
+                fileNameEdit.EditValue = string.Join(", ", fileTree.Selection.Select(p => p["name"]).ToArray());
+
+            //fileNameEdit.EditValue = string.Join(", ", Selection.Select(p => p.Filename).ToArray());
         }
 
         private void navigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

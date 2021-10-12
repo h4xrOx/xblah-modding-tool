@@ -13,6 +13,8 @@ namespace source_modding_tool.Materials.ShaderTabs
 {
     public partial class UnlitGenericTab : DevExpress.XtraEditors.XtraUserControl, ShaderInterface
     {
+        private Control popupCallerControl;
+
         public Dictionary<string, PictureEdit> PictureEdits { get; set; }
         public Dictionary<string, Texture> Textures { get; set; }
 
@@ -143,34 +145,38 @@ namespace source_modding_tool.Materials.ShaderTabs
                 materialRelativePath = RelativePath.Substring("materials/".Length);
 
             // Add the textures.
-            foreach (KeyValuePair<string, Texture> texture in Textures)
+            if (Textures != null)
             {
-                if (texture.Value.bitmap != null)
+                foreach (KeyValuePair<string, Texture> texture in Textures)
                 {
-                    string relativePath = materialRelativePath + "_" + texture.Key;
-                    if (Textures[texture.Key].relativePath != "")
+                    if (texture.Value.bitmap != null)
                     {
-                        relativePath = Textures[texture.Key].relativePath.Substring("materials/".Length);
-                        relativePath = relativePath.Substring(0, relativePath.IndexOf(".vtf"));
-                    }
+                        string relativePath = materialRelativePath + "_" + texture.Key;
+                        if (Textures[texture.Key].relativePath != "")
+                        {
+                            relativePath = Textures[texture.Key].relativePath.Substring("materials/".Length);
+                            relativePath = relativePath.Substring(0, relativePath.IndexOf(".vtf"));
+                        }
 
-                    switch(texture.Key)
-                    {
-                        case "tooltexture":
-                            vmt.addChild(new KeyValue("%" + texture.Key, relativePath));
-                            break;
-                        default:
-                            vmt.addChild(new KeyValue("$" + texture.Key, relativePath));
-                            break;
+                        switch (texture.Key)
+                        {
+                            case "tooltexture":
+                                vmt.addChild(new KeyValue("%" + texture.Key, relativePath));
+                                break;
+                            default:
+                                vmt.addChild(new KeyValue("$" + texture.Key, relativePath));
+                                break;
+                        }
+
                     }
-                   
                 }
             }
 
             /** Basics **/
 
             // Surface prop
-            vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
+            if (comboSurfaceProp.EditValue.ToString() != "default")
+                vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
 
             // Check if its a model
             if (RelativePath.StartsWith("materials/models/"))
@@ -180,7 +186,7 @@ namespace source_modding_tool.Materials.ShaderTabs
 
             // Color
             var color = editColor.Color;
-            if (color != Color.White)
+            if (color.R != 255 || color.G != 255 || color.B != 255 || color.A != 255)
             {
                 vmt.addChild("$color", "{" + color.R + " " + color.G + " " + color.B + "}");
             }
@@ -194,13 +200,32 @@ namespace source_modding_tool.Materials.ShaderTabs
             return vmt;
         }
 
-        private void pictureBaseTexture_MouseClick(object sender, MouseEventArgs e)
+        private void pictureEditPopup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            object control = popupCallerControl;
+
+            if (e.Item == pictureEditMenuImport)
             {
-                MaterialEditor.LoadTexture(((PictureEdit)sender).Tag.ToString(), this);
+                MaterialEditor.ImportTexture(((PictureEdit)control).Tag.ToString(), this);
                 MaterialEditor.CreateToolTexture(this);
+                OnUpdated.Invoke(this, EventArgs.Empty);
             }
+            else if (e.Item == pictureEditMenuOpen)
+            {
+                MaterialEditor.OpenTexture(((PictureEdit)control).Tag.ToString(), this);
+                MaterialEditor.CreateToolTexture(this);
+                OnUpdated.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private void barManager_QueryShowPopupMenu(object sender, DevExpress.XtraBars.QueryShowPopupMenuEventArgs e)
+        {
+            popupCallerControl = e.Control;
+        }
+
+        private void editor_EditValueChanged(object sender, EventArgs e)
+        {
+            OnUpdated.Invoke(this, EventArgs.Empty);
         }
     }
 }

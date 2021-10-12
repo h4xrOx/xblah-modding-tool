@@ -122,7 +122,7 @@ namespace source_modding_tool.Materials.ShaderTabs
         {
             if (e.Button == MouseButtons.Left)
             {
-                MaterialEditor.LoadTexture(((PictureEdit)sender).Tag.ToString(), this);
+                MaterialEditor.ImportTexture(((PictureEdit)sender).Tag.ToString(), this);
             }
         }
     }
