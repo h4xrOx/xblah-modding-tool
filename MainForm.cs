@@ -342,7 +342,7 @@ namespace source_modding_tool
             }
 
             // Hud Editor
-            else if (e.Item == menuModdingHudEditor)
+            else if (e.Item == menuScriptsHudEditor)
             {
                 HudEditor form = new HudEditor(launcher, launcher.GetCurrentMod());
                 form.ShowDialog();
@@ -658,7 +658,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = true;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = false;
-                            menuModdingHudEditor.Enabled = true;
+                            menuScriptsHudEditor.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = true;
@@ -676,6 +676,7 @@ namespace source_modding_tool
                     menuChoreography.Enabled = true;
                         menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuSound.Enabled = true;
+                    menuScripts.Enabled = false;
 
                     break;
                 case Engine.SOURCE2:
@@ -697,7 +698,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
-                            menuModdingHudEditor.Enabled = false;
+                            menuScriptsHudEditor.Enabled = false;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;
@@ -715,6 +716,7 @@ namespace source_modding_tool
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
                     menuSound.Enabled = false;
+                    menuScripts.Enabled = false;
 
                     break;
                 case Engine.GOLDSRC:
@@ -736,7 +738,7 @@ namespace source_modding_tool
                             menuModdingSettingsContentMount.Enabled = false;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
-                            menuModdingHudEditor.Enabled = false;
+                            menuScriptsHudEditor.Enabled = false;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;
@@ -754,7 +756,7 @@ namespace source_modding_tool
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
                     menuSound.Enabled = false;
-
+                    menuScripts.Enabled = false;
                     break;
             }
 
