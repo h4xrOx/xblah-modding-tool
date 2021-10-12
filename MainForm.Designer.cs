@@ -51,21 +51,21 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
@@ -505,14 +505,15 @@
             this.menuFile.Caption = "File";
             this.menuFile.Id = 19;
             this.menuFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuFileLibraries, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit, true)});
             this.menuFile.Name = "menuFile";
-            toolTipTitleItem8.Text = "File";
-            toolTipItem13.Text = "Manage the tool configuration.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem13);
-            this.menuFile.SuperTip = superToolTip8;
+            toolTipTitleItem9.Text = "File";
+            toolTipItem14.Text = "Manage the tool configuration.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem14);
+            this.menuFile.SuperTip = superToolTip9;
             this.menuFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileLibraries
@@ -521,11 +522,11 @@
             this.menuFileLibraries.Id = 83;
             this.menuFileLibraries.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileLibraries.ImageOptions.SvgImage")));
             this.menuFileLibraries.Name = "menuFileLibraries";
-            toolTipTitleItem6.Text = "Steam Libraries";
-            toolTipItem11.Text = "Set up custom search paths for non-steam games.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem11);
-            this.menuFileLibraries.SuperTip = superToolTip6;
+            toolTipTitleItem7.Text = "Steam Libraries";
+            toolTipItem12.Text = "Set up custom search paths for non-steam games.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem12);
+            this.menuFileLibraries.SuperTip = superToolTip7;
             this.menuFileLibraries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileExit
@@ -534,11 +535,11 @@
             this.menuFileExit.Id = 20;
             this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
             this.menuFileExit.Name = "menuFileExit";
-            toolTipTitleItem7.Text = "Exit";
-            toolTipItem12.Text = "Closes the tool.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem12);
-            this.menuFileExit.SuperTip = superToolTip7;
+            toolTipTitleItem8.Text = "Exit";
+            toolTipItem13.Text = "Closes the tool.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem13);
+            this.menuFileExit.SuperTip = superToolTip8;
             this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuModding
@@ -546,7 +547,6 @@
             this.menuModding.Caption = "Modding";
             this.menuModding.Id = 17;
             this.menuModding.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuFileNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingRun, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingOpenFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
@@ -568,15 +568,15 @@
             // 
             // menuFileNew
             // 
-            this.menuFileNew.Caption = "New";
+            this.menuFileNew.Caption = "New mod";
             this.menuFileNew.Id = 22;
             this.menuFileNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileNew.ImageOptions.SvgImage")));
             this.menuFileNew.Name = "menuFileNew";
-            toolTipTitleItem9.Text = "New";
-            toolTipItem14.Text = "Create a new mod for the selected game.";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem14);
-            this.menuFileNew.SuperTip = superToolTip9;
+            toolTipTitleItem6.Text = "New";
+            toolTipItem11.Text = "Create a new mod from one of the templates.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem11);
+            this.menuFileNew.SuperTip = superToolTip6;
             this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuModdingRun

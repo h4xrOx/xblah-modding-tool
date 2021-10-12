@@ -61,6 +61,7 @@
   * Tips on decompiling maps - AnthonyPython
   * Tips on skybox creation - Mr.Kleiner
   * Gifted Day of Defeat for testing - cambreaKer
+  * Gifted Ricochet - Ian B.
 * Mapbase - Blixibon and team
 * PBR Shader - Thexa4, Bonjorno7, SCell555, Gocnak, White Red Dragons, and team
 * External tools - the respective authors
