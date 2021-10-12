@@ -43,6 +43,7 @@
 
 ### Materials
 * Create basic materials and preview them in-game. (Source 1 - Alpha)
+* Create LDR skyboxes and preview them (Source 1)
 
 ### Particles
 * Auto-generate a particle manifest based on what's used in a VMF. (Source 1)
@@ -58,10 +59,9 @@
 
 * XBLAH's Modding Tool - XBLAH
 ** Decompiling maps - AnthonyPython
+** Skybox creation - Mr.Kleiner
 * Mapbase - Blixibon and team
-* PBR Shader - Thexa and team, White Red Dragons
+* PBR Shader - Thexa4, Bonjorno7, SCell555, White Red Dragons, and team
 * External tools - the respective authors
-
-
 
 If you somehow contributed and are missing in this list, let me know.
