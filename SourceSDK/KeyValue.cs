@@ -299,6 +299,10 @@ namespace SourceSDK
             return lines;
         }
 
+        public static KeyValue ReadChunk(byte[] data)
+        {
+            return ReadChunk(System.Text.Encoding.UTF8.GetString(data));
+        }
         public static KeyValue ReadChunk(string data)
         {
             return ReadChunk(data, false);

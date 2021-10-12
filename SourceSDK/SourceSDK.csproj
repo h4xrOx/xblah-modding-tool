@@ -80,7 +80,6 @@
     <Compile Include="Particles\PCF.cs" />
     <Compile Include="Maps\VMF.cs" />
     <Compile Include="Materials\VMT.cs" />
-    <Compile Include="PackagesLegacy\VPK.cs" />
     <Compile Include="Materials\VTF.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameInfo.cs" />
@@ -89,10 +88,8 @@
     <Compile Include="Launcher.cs" />
     <Compile Include="Libraries.cs" />
     <Compile Include="Mod.cs" />
-    <Compile Include="PackagesLegacy\MountedFolder.cs" />
     <Compile Include="RunPreset.cs" />
     <Compile Include="Utils\SteamShortcuts.cs" />
-    <Compile Include="PackagesLegacy\VPKManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

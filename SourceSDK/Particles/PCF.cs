@@ -79,12 +79,11 @@ namespace SourceSDK.Particles
             if (launcher == null)
                 return;
 
-            VPKManager vpkManager = new VPKManager(launcher);
-            vpkManager.extractFile("particles/particles_manifest.txt");
+            PackageManager packageManager = new PackageManager(launcher, "particles");
 
             string modPath = launcher.GetCurrentMod().InstallPath;
 
-            KeyValue manifest = KeyValue.readChunkfile(launcher.GetCurrentMod().InstallPath + "\\particles\\particles_manifest.txt");
+            KeyValue manifest = KeyValue.ReadChunk(packageManager.GetFile("particles/particles_manifest.txt").Data);
             foreach (string file in Directory.GetFiles(launcher.GetCurrentMod().InstallPath + "\\particles",
                                                       "*.pcf",
                                                       SearchOption.AllDirectories))

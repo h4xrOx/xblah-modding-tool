@@ -142,16 +142,19 @@ namespace source_modding_tool
             if (e.Item == menuLevelDesignRunMap)
             {
                 Game game = launcher.GetCurrentGame();
-                LegacyFileExplorer form = new LegacyFileExplorer(launcher);
-                form.RootDirectory = "maps/";
-                form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
+                FileExplorer form = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                {
+                    RootDirectory = "maps",
+                    Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk",
+                    MultiSelect = false
+                };
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    VPK.File file = form.selectedFiles[0];
-                    if ((file.type == ".bsp" && game.EngineID == Engine.GOLDSRC) || (file.type == ".bsp" && game.EngineID == Engine.SOURCE) || (file.type == ".vpk" && file.path.StartsWith("maps/") && game.EngineID == Engine.SOURCE2))
+                    PackageFile file = form.Selection[0];
+                    if ((file.Extension == "bsp" && game.EngineID == Engine.GOLDSRC) || (file.Extension == "bsp" && game.EngineID == Engine.SOURCE) || (file.Extension == "vpk" && file.FullPath.StartsWith("maps/") && game.EngineID == Engine.SOURCE2))
                     {
                         // It's a map
-                        string mapName = Path.GetFileNameWithoutExtension(file.path);
+                        string mapName = file.Filename;
                         if (instance != null)
                         {
                             instance.Command("+map " + mapName);
@@ -319,13 +322,6 @@ namespace source_modding_tool
                     launcher.SetCurrentGame(currentGame);
                     launcher.SetCurrentMod(currentMod);
                 }
-            }
-
-            // File explorer (Legacy)
-            else if (e.Item == menuModdingLegacyFileExplorer)
-            {
-                LegacyFileExplorer form = new LegacyFileExplorer(launcher);
-                form.ShowDialog();
             }
 
             // File explorer
@@ -655,6 +651,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = true;
                         menuModdingClean.Enabled = true;
+                        menuModdingAssets.Enabled = true;
                         menuModdingImport.Enabled = true;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
@@ -662,7 +659,6 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuModdingHudEditor.Enabled = true;
-                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = true;
@@ -677,7 +673,8 @@ namespace source_modding_tool
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                    menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuChoreography.Enabled = true;
+                        menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuSound.Enabled = true;
 
                     break;
@@ -693,6 +690,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = true;
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = true;
+                        menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
@@ -700,7 +698,6 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuModdingHudEditor.Enabled = false;
-                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;
@@ -715,7 +712,8 @@ namespace source_modding_tool
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
-                    menuChoreographyFaceposer.Enabled = false;
+                    menuChoreography.Enabled = false;
+                        menuChoreographyFaceposer.Enabled = false;
                     menuSound.Enabled = false;
 
                     break;
@@ -731,6 +729,7 @@ namespace source_modding_tool
                         menuModdingRunVR.Enabled = false;
                         menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = false;
+                        menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = false;
@@ -738,7 +737,6 @@ namespace source_modding_tool
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
                             menuModdingHudEditor.Enabled = false;
-                        menuModdingLegacyFileExplorer.Enabled = true;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuLevelDesignBatchCompiler.Enabled = false;
@@ -753,7 +751,8 @@ namespace source_modding_tool
                     menuModeling.Enabled = false;
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
-                    menuChoreographyFaceposer.Enabled = false;
+                    menuChoreography.Enabled = false;
+                        menuChoreographyFaceposer.Enabled = false;
                     menuSound.Enabled = false;
 
                     break;

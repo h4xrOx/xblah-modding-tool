@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraEditors;
- 
+using source_modding_tool.Modding;
 using source_modding_tool.Tools;
 using SourceSDK;
 using SourceSDK.Materials;
@@ -41,16 +41,19 @@ namespace source_modding_tool
         private void buttonBackground_Click(object sender, EventArgs e)
         {
             Game game = launcher.GetCurrentGame();
-            LegacyFileExplorer form = new LegacyFileExplorer(launcher);
-            form.RootDirectory = "maps/";
-            form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
+            FileExplorer form = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+            {
+                RootDirectory = "maps",
+                Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk",
+                MultiSelect = false
+            };
             if (form.ShowDialog() == DialogResult.OK)
             {
-                VPK.File file = form.selectedFiles[0];
-                if (file.type == ".bsp" && game.EngineID == Engine.SOURCE)
+               PackageFile file = form.Selection[0];
+                if (file.Extension == "bsp" && game.EngineID == Engine.SOURCE)
                 {
                     // It's a map
-                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    string mapName = file.Filename;
                     textBackground.EditValue = mapName;
 
                 }
@@ -81,23 +84,25 @@ namespace source_modding_tool
         private void buttonMap_Click(object sender, EventArgs e)
         {
             Game game = launcher.GetCurrentGame();
-            LegacyFileExplorer form = new LegacyFileExplorer(launcher);
-            form.RootDirectory = "maps/";
-            form.Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk";
+            FileExplorer form = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+            {
+                RootDirectory = "maps", 
+                Filter = "BSP Files (*.bsp)|*.bsp|VPK Files (*.vpk)|*.vpk"
+            };
             if (form.ShowDialog() == DialogResult.OK)
             {
-                VPK.File file = form.selectedFiles[0];
-                if (file.type == ".bsp" && game.EngineID == Engine.SOURCE)
+                PackageFile file = form.Selection[0];
+                if (file.Extension == "bsp" && game.EngineID == Engine.SOURCE)
                 {
                     // It's a map
-                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    string mapName = file.Filename;
                     textMap.EditValue = mapName;
 
                 }
-                else if (file.type == ".vpk" && game.EngineID == Engine.SOURCE2)
+                else if (file.Extension == "vpk" && game.EngineID == Engine.SOURCE2)
                 {
                     // It's a map
-                    string mapName = Path.GetFileNameWithoutExtension(file.path);
+                    string mapName = file.Filename;
                     textMap.EditValue = mapName;
 
                 }

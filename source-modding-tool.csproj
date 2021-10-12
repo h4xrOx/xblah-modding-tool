@@ -300,12 +300,6 @@
     <Compile Include="Modeling\VMFtoMDL.Designer.cs">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\LegacyFileExplorer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modding\LegacyFileExplorer.Designer.cs">
-      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Sound\Soundscape.cs" />
     <Compile Include="Sound\SoundscapeEditor.cs">
       <SubType>Form</SubType>
@@ -405,9 +399,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modeling\VMFtoMDL.resx">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modding\LegacyFileExplorer.resx">
-      <DependentUpon>LegacyFileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sound\SoundscapeEditor.resx">
       <DependentUpon>SoundscapeEditor.cs</DependentUpon>

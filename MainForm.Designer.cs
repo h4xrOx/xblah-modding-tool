@@ -150,12 +150,11 @@
             this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingHudEditor = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.menuModdingAssets = new DevExpress.XtraBars.BarSubItem();
             this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingImport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModdingLegacyFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesign = new DevExpress.XtraBars.BarSubItem();
             this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignReload = new DevExpress.XtraBars.BarButtonItem();
@@ -245,7 +244,6 @@
             this.toolsStop,
             this.menuModdingExport,
             this.menuModdingSettingsMenu,
-            this.menuModdingLegacyFileExplorer,
             this.menuModdingClean,
             this.menuLevelDesignCrafty,
             this.menuLevelDesignBatchCompiler,
@@ -292,7 +290,7 @@
             this.menuSoundSoundscapeEditor,
             this.menuLevelDesignResetHammerConfigsButton,
             this.toolsReload,
-            this.barSubItem1,
+            this.menuModdingAssets,
             this.menuSoundCreateManifest,
             this.menuMaterialsReload,
             this.menuModelingReload,
@@ -556,9 +554,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingHudEditor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingLegacyFileExplorer)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssets),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
             this.menuModding.Name = "menuModding";
             toolTipTitleItem13.Text = "Modding";
             toolTipItem19.Text = "Edit the mod settings and interface.";
@@ -686,20 +683,20 @@
             this.menuModdingHudEditor.Name = "menuModdingHudEditor";
             this.menuModdingHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
-            // barSubItem1
+            // menuModdingAssets
             // 
-            this.barSubItem1.Caption = "Assets";
-            this.barSubItem1.Id = 100;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.menuModdingAssets.Caption = "Assets";
+            this.menuModdingAssets.Id = 100;
+            this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport)});
-            this.barSubItem1.Name = "barSubItem1";
+            this.menuModdingAssets.Name = "menuModdingAssets";
             toolTipTitleItem12.Text = "Assets";
             toolTipItem18.Text = "Manage the mod assets.";
             superToolTip12.Items.Add(toolTipTitleItem12);
             superToolTip12.Items.Add(toolTipItem18);
-            this.barSubItem1.SuperTip = superToolTip12;
+            this.menuModdingAssets.SuperTip = superToolTip12;
             // 
             // menuModdingSettingsContentMount
             // 
@@ -749,14 +746,6 @@
             this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
             this.menuModdingDelete.Name = "menuModdingDelete";
             this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
-            // 
-            // menuModdingLegacyFileExplorer
-            // 
-            this.menuModdingLegacyFileExplorer.Caption = "File Explorer (Legacy)";
-            this.menuModdingLegacyFileExplorer.Id = 33;
-            this.menuModdingLegacyFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingLegacyFileExplorer.ImageOptions.SvgImage")));
-            this.menuModdingLegacyFileExplorer.Name = "menuModdingLegacyFileExplorer";
-            this.menuModdingLegacyFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuLevelDesign
             // 
@@ -1302,7 +1291,6 @@
         private DevExpress.XtraBars.BarButtonItem toolsStop;
         private DevExpress.XtraBars.BarButtonItem menuModdingExport;
         private DevExpress.XtraBars.BarButtonItem menuModdingSettingsMenu;
-        private DevExpress.XtraBars.BarButtonItem menuModdingLegacyFileExplorer;
         private DevExpress.XtraBars.BarButtonItem menuModdingClean;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignCrafty;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignBatchCompiler;
@@ -1355,7 +1343,7 @@
         private DevExpress.XtraBars.BarButtonItem menuSoundSoundscapeEditor;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignResetHammerConfigsButton;
         private DevExpress.XtraBars.BarButtonItem toolsReload;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem menuModdingAssets;
         private DevExpress.XtraBars.BarButtonItem menuSoundCreateManifest;
         private DevExpress.XtraBars.BarButtonItem menuModelingReload;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsReload;
