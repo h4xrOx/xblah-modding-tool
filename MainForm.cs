@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Microsoft.Win32;
+using source_modding_tool.LevelDesign;
 using source_modding_tool.Materials;
 using source_modding_tool.Modding;
 using source_modding_tool.Sound;
@@ -878,6 +879,12 @@ namespace source_modding_tool
             {
                 Soundscape.CreateManifest(launcher);
             }
+        }
+
+        private void menuLevelDesignPrefabsWorkshopButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PrefabsWorkshop form = new PrefabsWorkshop();
+            form.Show();
         }
     }
 }

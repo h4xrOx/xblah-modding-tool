@@ -167,6 +167,7 @@
             this.menuLevelDesignBatchCompiler = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignTerrainGenerator = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignCrafty = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignPrefabsWorkshopButton = new DevExpress.XtraBars.BarButtonItem();
             this.menuModeling = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingReload = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
@@ -301,9 +302,10 @@
             this.barSubItem4,
             this.barSubItem7,
             this.menuLevelDesignDecompile,
-            this.barSubItem5});
+            this.barSubItem5,
+            this.menuLevelDesignPrefabsWorkshopButton});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 122;
+            this.barManager.MaxItemId = 123;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGamesCombo,
             this.repositoryModsCombo,
@@ -770,7 +772,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignFogPreviewer, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignPrefabsWorkshopButton, true)});
             this.menuLevelDesign.Name = "menuLevelDesign";
             toolTipTitleItem20.Text = "Maps";
             toolTipItem27.Text = "Create levels for the mod.";
@@ -892,6 +895,13 @@
             this.menuLevelDesignCrafty.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignCrafty.ImageOptions.Image")));
             this.menuLevelDesignCrafty.Name = "menuLevelDesignCrafty";
             this.menuLevelDesignCrafty.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignPrefabsWorkshopButton
+            // 
+            this.menuLevelDesignPrefabsWorkshopButton.Caption = "Prefabs Workshop";
+            this.menuLevelDesignPrefabsWorkshopButton.Id = 122;
+            this.menuLevelDesignPrefabsWorkshopButton.Name = "menuLevelDesignPrefabsWorkshopButton";
+            this.menuLevelDesignPrefabsWorkshopButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesignPrefabsWorkshopButton_ItemClick);
             // 
             // menuModeling
             // 
@@ -1019,6 +1029,7 @@
             // 
             this.menuMaterialsSkyboxEditor.Caption = "Skybox Editor";
             this.menuMaterialsSkyboxEditor.Id = 95;
+            this.menuMaterialsSkyboxEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsSkyboxEditor.ImageOptions.SvgImage")));
             this.menuMaterialsSkyboxEditor.Name = "menuMaterialsSkyboxEditor";
             this.menuMaterialsSkyboxEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
             // 
@@ -1356,5 +1367,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignDecompile;
         private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignPrefabsWorkshopButton;
     }
 }
