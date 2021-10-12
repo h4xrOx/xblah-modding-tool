@@ -173,6 +173,13 @@ namespace SourceSDK
                 // Mapbase specific fgd directory
                 result.Add(InstallPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");
             }
+            else if(Game.Name == "Half-Life")
+            {
+                result.Add(AppDomain.CurrentDomain.BaseDirectory + "Tools\\J.A.C.K\\fgd\\valve.fgd");
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Tools\\J.A.C.K\\fgd\\" + folderName + ".fgd"))
+                    result.Add(AppDomain.CurrentDomain.BaseDirectory + "Tools\\J.A.C.K\\fgd\\" + folderName + ".fgd");
+            }
             else
             {
                 result.AddRange(Directory.GetFiles(Game.InstallPath, "*.fgd", SearchOption.AllDirectories));

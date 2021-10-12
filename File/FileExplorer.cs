@@ -401,7 +401,7 @@ namespace source_modding_tool.Modding
                 if (packageFile.Path.StartsWith("modelsrc"))
                 {
                     // It's a map file.
-                    Hammer.RunPropperHammer(launcher.GetCurrentMod(), packageFile);
+                    Hammer.RunSourceHammerWithPropper(launcher.GetCurrentMod(), packageFile);
                 } else
                 {
                     // It's a map file.

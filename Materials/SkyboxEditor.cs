@@ -477,7 +477,7 @@ namespace source_modding_tool.Materials
             }
              else
             {
-                settingsAmbientColorEdit.Color = Color.Transparent;
+                settingsAmbientColorEdit.Color = Color.Black;
             }
             settingsAmbientIntensityEdit.Value = (int)(settingsAmbientColorEdit.Color.GetBrightness() * 200);
         }

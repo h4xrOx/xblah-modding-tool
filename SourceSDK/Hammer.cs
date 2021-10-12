@@ -12,14 +12,140 @@ namespace SourceSDK
 {
     public class Hammer
     {
-        public static void RunPropperHammer(Mod mod)
+        public static void RunHammer(Launcher launcher, Instance instance, Control parent)
         {
-            RunPropperHammer(mod, null);
+            RunHammer(launcher, instance, parent, null);
         }
-        public static void RunPropperHammer(Mod mod, PackageFile packageFile)
+
+        public static void RunHammer(Launcher launcher, Instance instance, Control parent, PackageFile packageFile)
         {
-            CopyHammerPlusPlus(mod.Game);
-            CreatePropperConfig(mod);
+            Mod mod = launcher.GetCurrentMod();
+            switch (mod.Game.EngineID)
+            {
+                case Engine.SOURCE:
+                    {
+                        RunSourceHammer(packageFile, mod);
+                    }
+                    break;
+                case Engine.SOURCE2:
+                    {
+                        instance = RunSource2Hammer(launcher, parent, mod);
+                    }
+                    break;
+                case Engine.GOLDSRC:
+                    {
+                        RunGoldsrcHammer(mod);
+                    }
+                    break;
+            }
+
+        }
+
+        #region Goldsrc
+
+        private static void RunGoldsrcHammer(Mod mod)
+        {
+            // Create a maps folder if it's not existant
+            Directory.CreateDirectory(mod.InstallPath + "\\maps\\");
+            Directory.CreateDirectory(mod.InstallPath + "\\mapsrc\\");
+
+            ConfigureGoldsrcHammer(mod);
+
+            string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\J.A.C.K.\\jack.exe";
+
+            // Start process
+            Process process = new Process();
+            process.StartInfo.FileName = hammerPath;
+            process.StartInfo.Arguments = string.Empty;
+            process.Start();
+        }
+
+        private static void ConfigureGoldsrcHammer(Mod mod)
+        {
+            List<string> fgds = mod.GetFGDs();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("[Config0]");
+            sb.AppendLine("Title = " + mod.Name);
+            sb.AppendLine("Enabled = true");
+            sb.AppendLine("TextureFormat = 1");
+            sb.AppendLine("MapProfile = vpHalfLife");
+            sb.AppendLine("DefaultPointClass = light");
+            sb.AppendLine("DefaultSolidClass = func_wall");
+            sb.AppendLine("GameExecutable = " + mod.Game.getExePath().Replace("\\", "/"));
+            sb.AppendLine("GameCommandLine =");
+            sb.AppendLine("GameBasedir = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve");
+            sb.AppendLine("GameModdir = " + mod.InstallPath.Replace("\\", "/"));
+            sb.AppendLine("MapSourceFileDirectory = " + mod.InstallPath.Replace("\\", "/") + "/mapsrc");
+            sb.AppendLine("ModelViewer =");
+            sb.AppendLine("TextureBrightness = 50");
+            sb.AppendLine("DefaultTextureScale = 1.000");
+            sb.AppendLine("PaletteFile =");
+            sb.AppendLine("MapTool0 = " + AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + "Tools/J.A.C.K/tools/hlcsg.exe");
+            sb.AppendLine("MapTool1 = " + AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + "Tools/J.A.C.K/tools/hlbsp.exe");
+            sb.AppendLine("MapTool2 = " + AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + "Tools/J.A.C.K/tools/hlvis.exe");
+            sb.AppendLine("MapTool3 = " + AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/") + "Tools/J.A.C.K/tools/hlrad.exe");
+
+            for (int i = 0; i < fgds.Count; i++)
+                sb.AppendLine("GameData" + i + " = " + fgds[i].Replace("\\", "/"));
+
+            sb.AppendLine("Parcel0 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/cached.wad"); // TODO edit for each mod
+            sb.AppendLine("Parcel1 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/decals.wad");
+            sb.AppendLine("Parcel2 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/fonts.wad");
+            sb.AppendLine("Parcel3 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/gfx.wad");
+            sb.AppendLine("Parcel4 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/halflife.wad");
+            sb.AppendLine("Parcel5 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/liquids.wad");
+            sb.AppendLine("Parcel6 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/spraypaint.wad");
+            sb.AppendLine("Parcel7 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/xeno.wad");
+
+
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "Tools\\J.A.C.K.\\VDKGameCfg.ini", sb.ToString());
+        }
+
+        #endregion
+
+        #region Source
+
+        private static void RunSourceHammer(PackageFile packageFile, Mod mod)
+        {
+            // Create a maps folder if it's not existant
+            Directory.CreateDirectory(mod.InstallPath + "\\maps\\");
+            Directory.CreateDirectory(mod.InstallPath + "\\mapsrc\\");
+
+            CopySourceHammer(mod.Game);
+            ConfigureSourceHammer(mod);
+
+            string hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
+            if (!File.Exists(hammerPath))
+                hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
+
+            // Start process
+            Process process = new Process();
+            process.StartInfo.FileName = hammerPath;
+            process.StartInfo.WorkingDirectory = Path.GetDirectoryName(hammerPath);
+            process.StartInfo.Arguments = string.Empty;
+
+            // Mapbase specfic hammer launch.
+            if (mod.Game.Name == "Mapbase")
+                process.StartInfo.Arguments += "-game " + mod.InstallPath;
+
+            // Open file in hammer.
+            if (packageFile != null)
+                process.StartInfo.Arguments += " \"" + packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension + "\"" + " ";
+
+            process.Start();
+        }
+
+        public static void RunSourceHammerWithPropper(Mod mod)
+        {
+            RunSourceHammerWithPropper(mod, null);
+        }
+
+        public static void RunSourceHammerWithPropper(Mod mod, PackageFile packageFile)
+        {
+            CopySourceHammer(mod.Game);
+            ConfigureSourceHammerWithPropper(mod);
 
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
 
@@ -39,76 +165,66 @@ namespace SourceSDK
             process.Start();
         }
 
-        public static void RunHammer(Launcher launcher, Instance instance, Control parent)
+        private static void ConfigureSourceHammer(Mod mod)
         {
-            RunHammer(launcher, instance, parent, null);
+            Game game = mod.Game;
+
+            string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
+            KeyValue gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
+            string instancePath = gameinfo.getValue("instancepath");
+            string modName = gameinfo.getValue("name");
+
+            if (File.Exists(game.InstallPath + "\\bin\\propper.fgd"))
+                File.Delete(game.InstallPath + "\\bin\\propper.fgd");
+
+            if (File.Exists(game.InstallPath + "\\bin\\propper.exe"))
+                File.Delete(game.InstallPath + "\\bin\\propper.exe");
+
+            List<string> fgds = mod.GetFGDs();
+
+            // Hammer plus plus
+            fgds.Add(game.InstallPath + "\\bin\\hammerplusplus\\hammerplusplus_fgd.fgd");
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("\"Configs\"");
+            sb.AppendLine("{");
+            sb.AppendLine(" \"Games\"");
+            sb.AppendLine(" {");
+            sb.AppendLine("     \"" + mod.Name + "\"");
+            sb.AppendLine("     {");
+            sb.AppendLine("         \"GameDir\"		\"" + mod.InstallPath + "\"");
+            sb.AppendLine("         \"Hammer\"");
+            sb.AppendLine("         {");
+
+            for (int i = 0; i < fgds.Count; i++)
+                sb.AppendLine("             \"GameData" + i + "\"		\"" + fgds[i] + "\"");
+
+            sb.AppendLine("             \"DefaultTextureScale\"		\"0.250000\"");
+            sb.AppendLine("             \"DefaultLightmapScale\"		\"16\"");
+            sb.AppendLine("             \"GameExe\"		\"" + game.InstallPath + "\\hl2.exe\"");
+            sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
+            sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
+            sb.AppendLine("             \"BSP\"		\"" + game.InstallPath + "\\bin\\vbsp.exe\"");
+            sb.AppendLine("             \"Vis\"		\"" + game.InstallPath + "\\bin\\vvis.exe\"");
+            sb.AppendLine("             \"Light\"		\"" + game.InstallPath + "\\bin\\vrad.exe\"");
+            sb.AppendLine("             \"GameExeDir\"		\"" + game.InstallPath + "\"");
+            sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
+            sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
+            sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
+            sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
+            sb.AppendLine("         }");
+            sb.AppendLine("     }");
+            sb.AppendLine(" }");
+            sb.AppendLine(" \"SDKVersion\"		\"5\"");
+            sb.AppendLine("}");
+
+            File.WriteAllText(game.InstallPath + "\\bin\\GameConfig.txt", sb.ToString());
+            Directory.CreateDirectory(game.InstallPath + "\\bin\\hammerplusplus\\");
+            File.WriteAllText(game.InstallPath + "\\bin\\hammerplusplus\\hammerplusplus_gameconfig.txt", sb.ToString());
         }
 
-        public static void RunHammer(Launcher launcher, Instance instance, Control parent, PackageFile packageFile)
-        {
-            Mod mod = launcher.GetCurrentMod();
-            switch (mod.Game.EngineID)
-            {
-                case Engine.SOURCE:
-                    {
-                        // Create a maps folder if it's not existant
-                        string mapsDir = mod.InstallPath + "\\maps\\";
-                        Directory.CreateDirectory(mapsDir);
-
-                        CopyHammerPlusPlus(mod.Game);
-                        CreateGameConfig(mod);
-
-                        string hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
-                        if (!File.Exists(hammerPath))
-                            hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
-
-                        Process process = new Process();
-                        process.StartInfo.FileName = hammerPath;
-                        process.StartInfo.WorkingDirectory = Path.GetDirectoryName(hammerPath);
-                        process.StartInfo.Arguments = string.Empty;
-
-                        // Mapbase specfic hammer launch.
-                        if (mod.Game.Name == "Mapbase")
-                            process.StartInfo.Arguments += "-game " + mod.InstallPath;
-
-                        // Open file in hammer.
-                        if (packageFile != null)
-                            process.StartInfo.Arguments += " \"" + packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension + "\"" + " ";
-
-                        process.Start();
-                    }
-                    break;
-                case Engine.SOURCE2:
-                    {
-                        if (mod.Game.EngineID == Engine.SOURCE2)
-                            mod.Game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
-
-                        RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
-                        string command = "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole";
-
-                        instance = new Instance(launcher, parent);
-                        instance.Start(runPreset, command);
-                    }
-                    break;
-                case Engine.GOLDSRC:
-                    {
-                        // Create a maps folder if it's not existant
-                        string mapsDir = mod.InstallPath + "\\maps\\";
-                        Directory.CreateDirectory(mapsDir);
-
-                        string hammerPath = AppDomain.CurrentDomain.BaseDirectory + "\\Tools\\HammerEditor\\hammer.exe";
-
-                        Process process = new Process();
-                        process.StartInfo.FileName = hammerPath;
-                        process.StartInfo.Arguments = string.Empty;
-                        process.Start();
-                    }
-                    break;
-            }
-
-        }
-
-        private static void CreatePropperConfig(Mod mod)
+        private static void ConfigureSourceHammerWithPropper(Mod mod)
         {
             Game game = mod.Game;
 
@@ -153,67 +269,7 @@ namespace SourceSDK
             File.WriteAllText(game.InstallPath + "\\bin\\hammerplusplus\\hammerplusplus_gameconfig.txt", sb.ToString());
         }
 
-        private static void CreateGameConfig(Mod mod)
-        {
-            Game game = mod.Game;
-
-            string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
-            KeyValue gameinfo = SourceSDK.KeyValue.readChunkfile(gameinfoPath);
-            string instancePath = gameinfo.getValue("instancepath");
-            string modName = gameinfo.getValue("name");
-
-            if (File.Exists(game.InstallPath + "\\bin\\propper.fgd"))
-                File.Delete(game.InstallPath + "\\bin\\propper.fgd");
-
-            if (File.Exists(game.InstallPath + "\\bin\\propper.exe"))
-                File.Delete(game.InstallPath + "\\bin\\propper.exe");
-
-            List<string> fgds = mod.GetFGDs();
-
-            // Hammer plus plus
-            fgds.Add(game.InstallPath + "\\bin\\hammerplusplus\\hammerplusplus_fgd.fgd");
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("\"Configs\"");
-            sb.AppendLine("{");
-            sb.AppendLine(" \"Games\"");
-            sb.AppendLine(" {");
-            sb.AppendLine("     \"My game\"");
-            sb.AppendLine("     {");
-            sb.AppendLine("         \"GameDir\"		\"" + mod.InstallPath + "\"");
-            sb.AppendLine("         \"Hammer\"");
-            sb.AppendLine("         {");
-            for (int i = 0; i < fgds.Count; i++)
-            {
-                sb.AppendLine("             \"GameData" + i + "\"		\"" + fgds[i] + "\"");
-            }
-
-            sb.AppendLine("             \"DefaultTextureScale\"		\"0.250000\"");
-            sb.AppendLine("             \"DefaultLightmapScale\"		\"16\"");
-            sb.AppendLine("             \"GameExe\"		\"" + game.InstallPath + "\\hl2.exe\"");
-            sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
-            sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
-            sb.AppendLine("             \"BSP\"		\"" + game.InstallPath + "\\bin\\vbsp.exe\"");
-            sb.AppendLine("             \"Vis\"		\"" + game.InstallPath + "\\bin\\vvis.exe\"");
-            sb.AppendLine("             \"Light\"		\"" + game.InstallPath + "\\bin\\vrad.exe\"");
-            sb.AppendLine("             \"GameExeDir\"		\"" + game.InstallPath + "\"");
-            sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
-            sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
-            sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
-            sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
-            sb.AppendLine("         }");
-            sb.AppendLine("     }");
-            sb.AppendLine(" }");
-            sb.AppendLine(" \"SDKVersion\"		\"5\"");
-            sb.AppendLine("}");
-
-            File.WriteAllText(game.InstallPath + "\\bin\\GameConfig.txt", sb.ToString());
-            Directory.CreateDirectory(game.InstallPath + "\\bin\\hammerplusplus\\");
-            File.WriteAllText(game.InstallPath + "\\bin\\hammerplusplus\\hammerplusplus_gameconfig.txt", sb.ToString());
-        }
-
-        private static void CopyHammerPlusPlus(Game game)
+        private static void CopySourceHammer(Game game)
         {
             string startupPath = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -226,14 +282,17 @@ namespace SourceSDK
                 if (game.Name == "Mapbase")
                     hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mapbase\\";
 
-                
-            } else if(game.Name == "Source SDK Base 2013 Multiplayer" || game.Name == "Half-Life 2 Deathmatch" )
+
+            }
+            else if (game.Name == "Source SDK Base 2013 Multiplayer" || game.Name == "Half-Life 2 Deathmatch")
             {
                 hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mp\\";
-            } else if(game.Name == "Team Fortress 2")
+            }
+            else if (game.Name == "Team Fortress 2")
             {
                 hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\tf2\\";
-            } else if(game.Name == "Counter-Strike Source")
+            }
+            else if (game.Name == "Counter-Strike Source")
             {
                 hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\css\\";
             }
@@ -257,5 +316,24 @@ namespace SourceSDK
                     }
                 }
         }
+        #endregion
+
+        #region Source 2
+
+        private static Instance RunSource2Hammer(Launcher launcher, Control parent, Mod mod)
+        {
+            Instance instance;
+            if (mod.Game.EngineID == Engine.SOURCE2)
+                mod.Game.ApplyNonVRPatch();    // Until Valve reinserts the -game parameter
+
+            RunPreset runPreset = new RunPreset(RunMode.WINDOWED);
+            string command = "-addon -tools -hlvr_workshop -novr -steam -retail -console -vconsole";
+
+            instance = new Instance(launcher, parent);
+            instance.Start(runPreset, command);
+            return instance;
+        }
+
+        #endregion
     }
 }

@@ -490,7 +490,7 @@ namespace source_modding_tool
             // Propper
             else if (e.Item == menuModelingPropper)
             {
-                Hammer.RunPropperHammer(launcher.GetCurrentMod());
+                Hammer.RunSourceHammerWithPropper(launcher.GetCurrentMod());
             }
 
             // VMF to MDL
