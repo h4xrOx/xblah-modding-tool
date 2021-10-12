@@ -118,6 +118,8 @@ namespace source_modding_tool.Modding
             if (packageManager == null)
                 packageManager = new PackageManager(launcher, RootDirectory);
 
+            fileTree.OptionsSelection.MultiSelect = MultiSelect;
+
             UpdateDirectoryTree();
             UpdateFileTree(RootDirectory);
         }
