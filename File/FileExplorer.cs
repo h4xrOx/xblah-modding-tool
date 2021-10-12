@@ -260,9 +260,8 @@ namespace source_modding_tool.Modding
                     if (file.Extension == "vtf")
                         continue;
 
-                    filename = filename.Substring(0, filename.Length - 2);
-                    if (filename.EndsWith("_hdr"))
-                        filename = filename.Substring(0, filename.Length - 4);
+                    if (filename.EndsWith("up") || filename.EndsWith("dn") || filename.EndsWith("lf") || filename.EndsWith("rt") || filename.EndsWith("ft") || filename.EndsWith("bk"))
+                        filename = filename.Substring(0, filename.Length - 2);
 
                     extension = "skybox";
 

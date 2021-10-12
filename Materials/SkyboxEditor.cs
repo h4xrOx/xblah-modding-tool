@@ -271,9 +271,9 @@ namespace source_modding_tool.Materials
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     Skyname = fileExplorer.Selection[0].Filename;
-                    Skyname = Skyname.Substring(0, Skyname.Length - 2);
-                    if (Skyname.EndsWith("_hdr"))
-                        Skyname = Skyname.Substring(0, Skyname.Length - 4);
+
+                    if (Skyname.EndsWith("up") || Skyname.EndsWith("dn") || Skyname.EndsWith("lf") || Skyname.EndsWith("rt") || Skyname.EndsWith("ft") || Skyname.EndsWith("bk"))
+                        Skyname = Skyname.Substring(0, Skyname.Length - 2);
 
                     Open(Skyname);
                 }
@@ -313,12 +313,12 @@ namespace source_modding_tool.Materials
         {
             if (PackageFile != null)
             {
-                string skyname = PackageFile.Filename;
-                skyname = skyname.Substring(0, skyname.Length - 2);
-                if (skyname.EndsWith("_hdr"))
-                    skyname = skyname.Substring(0, skyname.Length - 4);
+                Skyname = PackageFile.Filename;
 
-                Open(skyname);
+                if (Skyname.EndsWith("up") || Skyname.EndsWith("dn") || Skyname.EndsWith("lf") || Skyname.EndsWith("rt") || Skyname.EndsWith("ft") || Skyname.EndsWith("bk"))
+                    Skyname = Skyname.Substring(0, Skyname.Length - 2);
+
+                Open(Skyname);
             }
         }
 
