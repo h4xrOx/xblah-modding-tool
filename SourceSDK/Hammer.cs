@@ -90,15 +90,18 @@ namespace SourceSDK
             for (int i = 0; i < fgds.Count; i++)
                 sb.AppendLine("GameData" + i + " = " + fgds[i].Replace("\\", "/"));
 
-            sb.AppendLine("Parcel0 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/cached.wad"); // TODO edit for each mod
-            sb.AppendLine("Parcel1 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/decals.wad");
-            sb.AppendLine("Parcel2 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/fonts.wad");
-            sb.AppendLine("Parcel3 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/gfx.wad");
-            sb.AppendLine("Parcel4 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/halflife.wad");
-            sb.AppendLine("Parcel5 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/liquids.wad");
-            sb.AppendLine("Parcel6 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/spraypaint.wad");
-            sb.AppendLine("Parcel7 = " + mod.Game.InstallPath.Replace("\\", "/") + "/valve/xeno.wad");
+            int wadCount = 0;
+            foreach(string file in Directory.GetFiles(mod.Game.InstallPath + "\\valve\\", "*.wad"))
+            {
+                sb.AppendLine("Parcel" + wadCount + " = " + file.Replace("\\", "/"));
+                wadCount++;
+            }
 
+            foreach (string file in Directory.GetFiles(mod.InstallPath, "*.wad"))
+            {
+                sb.AppendLine("Parcel" + wadCount + " = " + file.Replace("\\", "/"));
+                wadCount++;
+            }
 
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "Tools\\J.A.C.K.\\VDKGameCfg.ini", sb.ToString());
         }

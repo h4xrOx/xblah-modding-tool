@@ -678,6 +678,7 @@ namespace source_modding_tool
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    menuSound.Enabled = true;
 
                     break;
                 case Engine.SOURCE2:
@@ -715,6 +716,7 @@ namespace source_modding_tool
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
                     menuChoreographyFaceposer.Enabled = false;
+                    menuSound.Enabled = false;
 
                     break;
                 case Engine.GOLDSRC:
@@ -752,6 +754,7 @@ namespace source_modding_tool
                     menuMaterials.Enabled = false;
                     menuParticles.Enabled = false;
                     menuChoreographyFaceposer.Enabled = false;
+                    menuSound.Enabled = false;
 
                     break;
             }
