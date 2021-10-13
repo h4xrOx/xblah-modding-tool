@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using Microsoft.Win32;
 using source_modding_tool.LevelDesign;
 using source_modding_tool.Materials;
@@ -15,7 +16,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace source_modding_tool
@@ -42,7 +42,7 @@ namespace source_modding_tool
             launcher = new Launcher();
             updateToolsGames();
 
-            if (repositoryGamesCombo.Items.Contains(currentGame))
+            if (launcher.GetGamesList().ContainsKey(currentGame))
                 toolsGames.EditValue = currentGame;
             else
                 toolsGames.EditValue = "";
@@ -827,21 +827,26 @@ namespace source_modding_tool
                 return;
 
             string currentGame = (toolsGames.EditValue != null ? toolsGames.EditValue.ToString() : string.Empty);
-            repositoryGamesCombo.Items.Clear();
             Dictionary<string, Game> gamesList = launcher.GetGamesList();
 
+            // Image list
+            repositoryGamesCombo.Items.Clear();
+            imageCollection1.Clear();
             if (gamesList.Count > 0)
                 foreach (KeyValuePair<string, Game> item in gamesList)
-                    repositoryGamesCombo.Items.Add(item.Key);
+                {
+                    Bitmap icon = Icon.ExtractAssociatedIcon(item.Value.getExePath()).ToBitmap();
+                    imageCollection1.Images.Add(icon);
+                    repositoryGamesCombo.Items.Add(new ImageComboBoxItem(item.Key, item.Key, imageCollection1.Images.Count - 1));
+                }
 
-            if(repositoryGamesCombo.Items.Count > 0 && repositoryGamesCombo.Items.Contains(currentGame))
+            if (gamesList.Count > 0 && gamesList.ContainsKey(currentGame))
                 toolsGames.EditValue = currentGame;
-            else if(repositoryGamesCombo.Items.Count > 0)
+            else if (gamesList.Count > 0)
                 toolsGames.EditValue = repositoryGamesCombo.Items[0];
             else
-            {
                 toolsGames.EditValue = string.Empty;
-            }
+
         }
 
         private void updateToolsMods()
