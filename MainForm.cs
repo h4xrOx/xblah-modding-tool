@@ -661,10 +661,11 @@ namespace source_modding_tool
                         toolsRunPopupRunVR.Enabled = true;
                         toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRunFullscreen.Enabled = true;
-                        menuModdingRunWindowed.Enabled = true;
-                        menuModdingRunVR.Enabled = true;
-                        menuModdingIngameTools.Enabled = true;
+                        menuModdingRun.Enabled = true;
+                            menuModdingRunFullscreen.Enabled = true;
+                            menuModdingRunWindowed.Enabled = true;
+                            menuModdingRunVR.Enabled = true;
+                            menuModdingIngameTools.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = true;
                         menuModdingImport.Enabled = true;
@@ -702,6 +703,20 @@ namespace source_modding_tool
                     menuSound.Enabled = true;
                     menuScripts.Enabled = false;
 
+                    if (launcher.GetCurrentGame().GetAppId() == 730) // CSGO
+                    {
+                        menuLevelDesignHammer.Enabled = false;
+                        menuLevelDesignDecompile.Enabled = false;
+                        menuModelingPropper.Enabled = false;
+                        toolsRun.Enabled = false;
+                        menuModdingRun.Enabled = false;
+                        menuChoreography.Enabled = false;
+                        menuMaterials.Enabled = false;
+                        menuModeling.Enabled = false;
+                        menuSound.Enabled = false;
+                        //System.Diagnostics.Debugger.Break();
+                    }
+
                     break;
                 case Engine.SOURCE2:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -710,10 +725,11 @@ namespace source_modding_tool
                         toolsRunPopupRunVR.Enabled = true;
                         toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRunFullscreen.Enabled = true;
-                        menuModdingRunWindowed.Enabled = true;
-                        menuModdingRunVR.Enabled = true;
-                        menuModdingIngameTools.Enabled = false;
+                        menuModdingRun.Enabled = true;
+                            menuModdingRunFullscreen.Enabled = true;
+                            menuModdingRunWindowed.Enabled = true;
+                            menuModdingRunVR.Enabled = true;
+                            menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;
@@ -759,10 +775,11 @@ namespace source_modding_tool
                         toolsRunPopupRunVR.Enabled = false;
                         toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRunFullscreen.Enabled = true;
-                        menuModdingRunWindowed.Enabled = true;
-                        menuModdingRunVR.Enabled = false;
-                        menuModdingIngameTools.Enabled = false;
+                        menuModdingRun.Enabled = true;
+                            menuModdingRunFullscreen.Enabled = true;
+                            menuModdingRunWindowed.Enabled = true;
+                            menuModdingRunVR.Enabled = false;
+                            menuModdingIngameTools.Enabled = false;
                         menuModdingClean.Enabled = false;
                         menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;

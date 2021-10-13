@@ -119,9 +119,10 @@ namespace SourceSDK
             CopySourceHammer(mod.Game);
             ConfigureSourceHammer(mod);
 
-            string hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
-            if (!File.Exists(hammerPath))
-                hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
+            
+            string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
+            if (File.Exists(mod.Game.InstallPath + "\\bin\\hammerplusplus.exe"))
+                hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
 
             // Start process
             Process process = new Process();
