@@ -39,7 +39,16 @@ namespace source_modding_tool.Materials
         public SkyboxEditor(Launcher launcher)
         {
             this.launcher = launcher;
-            this.packageManager = new PackageManager(launcher, "materials/skybox");
+            if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
+            {
+                this.packageManager = new PackageManager(launcher, "materials/skybox");
+            } else if(launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
+            {
+                this.packageManager = new PackageManager(launcher, "gfx/env");
+            } else
+            {
+                return;
+            }
 
             InitializeComponent();
 
@@ -101,7 +110,7 @@ namespace source_modding_tool.Materials
             {
                 foreach(PackageFile file in directory.Entries)
                 {
-                    if (file.Path.EndsWith("materials/skybox") && file.Extension == "vmt")
+                    if ((file.Path.EndsWith("materials/skybox") && file.Extension == "vmt") || (file.Path.EndsWith("gfx/env") && file.Extension == "tga"))
                     {
                         string skyName = file.Filename;
 
@@ -146,54 +155,75 @@ namespace source_modding_tool.Materials
         {
             foreach (string face in new string[] { "up", "dn", "lf", "rt", "ft", "bk" })
             {
-                PackageFile file = packageManager.GetFile("materials/skybox/" + skyname + face + ".vmt");
+                PackageFile file;
 
-                if (file != null)
+                // Source skyboxes
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
                 {
-                    KeyValue fileData = VMT.FromData(file.Data);
+                    file = packageManager.GetFile("materials/skybox/" + skyname + face + ".vmt");
 
-                    KeyValue baseTexture = fileData.findChildByKey("$basetexture");
-                    KeyValue hdrbaseTexture = fileData.findChildByKey("$hdrbasetexture");
-                    KeyValue hdrcompressedTexture = fileData.findChildByKey("$hdrcompressedtexture");
-
-                    if (baseTexture != null)
+                    if (file != null)
                     {
-                        string baseTexturePath = baseTexture.getValue();
-                        PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
+                        KeyValue fileData = VMT.FromData(file.Data);
 
-                        if (baseTextureFile != null)
+                        KeyValue baseTexture = fileData.findChildByKey("$basetexture");
+                        KeyValue hdrbaseTexture = fileData.findChildByKey("$hdrbasetexture");
+                        KeyValue hdrcompressedTexture = fileData.findChildByKey("$hdrcompressedtexture");
+
+                        if (baseTexture != null)
                         {
-                            Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+                            string baseTexturePath = baseTexture.getValue();
+                            PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
 
-                            imageEdits[face].Image = baseTextureImage;
+                            if (baseTextureFile != null)
+                            {
+                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
 
-                            SavePreview(baseTextureImage, face);
+                                imageEdits[face].Image = baseTextureImage;
+
+                                SavePreview(baseTextureImage, face);
+                            }
+                        }
+
+                        if (hdrbaseTexture != null)
+                        {
+                            string baseTexturePath = hdrbaseTexture.getValue();
+                            PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
+
+                            if (baseTextureFile != null)
+                            {
+                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+
+                                hdrImageEdits[face].Image = baseTextureImage;
+                            }
+                        }
+                        else if (hdrcompressedTexture != null)
+                        {
+                            string baseTexturePath = hdrcompressedTexture.getValue();
+                            PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
+
+                            if (baseTextureFile != null)
+                            {
+                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+
+                                hdrImageEdits[face].Image = baseTextureImage;
+                            }
                         }
                     }
 
-                    if (hdrbaseTexture != null)
+                    // Goldsrc skyboxes
+                }
+                else if (launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
+                {
+                    file = packageManager.GetFile("gfx/env/" + skyname + face + ".tga");
+
+                    if (file != null)
                     {
-                        string baseTexturePath = hdrbaseTexture.getValue();
-                        PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
+                        Bitmap baseTextureImage = TGA.FromBytes(file.Data).ToBitmap();
 
-                        if (baseTextureFile != null)
-                        {
-                            Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+                        imageEdits[face].Image = baseTextureImage;
 
-                            hdrImageEdits[face].Image = baseTextureImage;
-                        }
-                    }
-                    else if (hdrcompressedTexture != null)
-                    {
-                        string baseTexturePath = hdrcompressedTexture.getValue();
-                        PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
-
-                        if (baseTextureFile != null)
-                        {
-                            Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
-
-                            hdrImageEdits[face].Image = baseTextureImage;
-                        }
+                        SavePreview(baseTextureImage, face);
                     }
                 }
             }
@@ -203,49 +233,88 @@ namespace source_modding_tool.Materials
 
         private void Save(string skyname)
         {
-            string skyboxesPath = launcher.GetCurrentMod().InstallPath + "\\materials\\skybox\\";
-
-            Directory.CreateDirectory(skyboxesPath);
-
-            bool hasHDRTextures = false;
-
-            foreach (KeyValuePair<string, PictureEdit> keyValuePair in imageEdits)
+            if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
             {
-                string face = keyValuePair.Key;
+                string skyboxesPath = launcher.GetCurrentMod().InstallPath + "\\materials\\skybox\\";
 
-                byte[] vtf = VTF.FromBitmap(keyValuePair.Value.Image as Bitmap, launcher, new string[] { "nonice 1", "nocompress 1", "nolod 1", "clamps 1", "clampt 1", "nomip 1" });
+                Directory.CreateDirectory(skyboxesPath);
 
-                File.WriteAllBytes(skyboxesPath + skyname + face + ".vtf", vtf);
+                bool hasHDRTextures = false;
 
-                KeyValue vmtRoot;
-                if (hasHDRTextures) {
-                    vmtRoot = new KeyValue("Sky");
-                    vmtRoot.addChild(new KeyValue("$hdrbasetexture", "skybox/" + skyname + "_hdr" + face));
-                } else {
-                    vmtRoot = new KeyValue("UnlitGeneric");
-                }
-
-                vmtRoot.addChild(new KeyValue("$basetexture", "skybox/" + skyname + face));
-                vmtRoot.addChild(new KeyValue("$nofog", "1"));
-                vmtRoot.addChild(new KeyValue("$ignorez", "1"));
-
-                if (keyValuePair.Value.Image.Width == 2 * keyValuePair.Value.Image.Height)
-                {
-                    vmtRoot.addChild(new KeyValue("$basetexturetransform", "center 0 0 scale 1 2 rotate 0 translate 0 0"));
-                }
-
-                KeyValue.writeChunkFile(skyboxesPath + skyname + face + ".vmt", vmtRoot, true, new UTF8Encoding(false));
-            }
-
-            if (hasHDRTextures)
-            {
-                foreach (KeyValuePair<string, PictureEdit> keyValuePair in hdrImageEdits)
+                foreach (KeyValuePair<string, PictureEdit> keyValuePair in imageEdits)
                 {
                     string face = keyValuePair.Key;
 
-                    byte[] vtf = VTF.FromBitmap(keyValuePair.Value.Image as Bitmap, launcher, new string[] { "nonice 1", "nocompress 1" });
-                    string fileName = skyname + face;
-                    File.WriteAllBytes(skyboxesPath + skyname + "_hdr" + face + ".vtf", vtf);
+                    byte[] vtf = VTF.FromBitmap(keyValuePair.Value.Image as Bitmap, launcher, new string[] { "nonice 1", "nocompress 1", "nolod 1", "clamps 1", "clampt 1", "nomip 1" });
+
+                    File.WriteAllBytes(skyboxesPath + skyname + face + ".vtf", vtf);
+
+                    KeyValue vmtRoot;
+                    if (hasHDRTextures)
+                    {
+                        vmtRoot = new KeyValue("Sky");
+                        vmtRoot.addChild(new KeyValue("$hdrbasetexture", "skybox/" + skyname + "_hdr" + face));
+                    }
+                    else
+                    {
+                        vmtRoot = new KeyValue("UnlitGeneric");
+                    }
+
+                    vmtRoot.addChild(new KeyValue("$basetexture", "skybox/" + skyname + face));
+                    vmtRoot.addChild(new KeyValue("$nofog", "1"));
+                    vmtRoot.addChild(new KeyValue("$ignorez", "1"));
+
+                    if (keyValuePair.Value.Image.Width == 2 * keyValuePair.Value.Image.Height)
+                    {
+                        vmtRoot.addChild(new KeyValue("$basetexturetransform", "center 0 0 scale 1 2 rotate 0 translate 0 0"));
+                    }
+
+                    KeyValue.writeChunkFile(skyboxesPath + skyname + face + ".vmt", vmtRoot, true, new UTF8Encoding(false));
+                }
+
+                if (hasHDRTextures)
+                {
+                    foreach (KeyValuePair<string, PictureEdit> keyValuePair in hdrImageEdits)
+                    {
+                        string face = keyValuePair.Key;
+
+                        byte[] vtf = VTF.FromBitmap(keyValuePair.Value.Image as Bitmap, launcher, new string[] { "nonice 1", "nocompress 1" });
+                        string fileName = skyname + face;
+                        File.WriteAllBytes(skyboxesPath + skyname + "_hdr" + face + ".vtf", vtf);
+                    }
+                }
+            } else if(launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
+            {
+                string skyboxesPath = launcher.GetCurrentMod().InstallPath + "\\gfx\\env\\";
+
+                Directory.CreateDirectory(skyboxesPath);
+
+                foreach (KeyValuePair<string, PictureEdit> keyValuePair in imageEdits)
+                {
+                    string face = keyValuePair.Key;
+
+                    var destImage = new Bitmap(256, 256);
+                    destImage.SetResolution(keyValuePair.Value.Image.HorizontalResolution, keyValuePair.Value.Image.VerticalResolution);
+
+                    using (var graphics = Graphics.FromImage(destImage))
+                    {
+                        graphics.CompositingMode = CompositingMode.SourceCopy;
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
+                        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        graphics.SmoothingMode = SmoothingMode.HighQuality;
+                        graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                        using (var wrapMode = new ImageAttributes())
+                        {
+                            wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                            graphics.DrawImage(keyValuePair.Value.Image, new Rectangle(0, 0, destImage.Width, destImage.Height), 0, 0, keyValuePair.Value.Image.Width, keyValuePair.Value.Image.Height, GraphicsUnit.Pixel, wrapMode);
+
+                        }
+                    }
+
+                    TGA tga = TGA.FromBitmap(destImage);
+                    tga.Save(skyboxesPath + skyname + face + ".tga");
+                    destImage.Dispose();
                 }
             }
         }
@@ -260,13 +329,26 @@ namespace source_modding_tool.Materials
             // Open material
             else if (e.Item == menuFileOpen)
             {
-                FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                FileExplorer fileExplorer = null;
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE) {
+                    fileExplorer  = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                    {
+                        packageManager = packageManager,
+                        RootDirectory = "materials/skybox",
+                        Filter = "Skybox Files (*.skybox)|*.vmt",
+                        MultiSelect = false
+                    };
+                } else if(launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
                 {
-                    packageManager = packageManager,
-                    RootDirectory = "materials/skybox",
-                    Filter = "Skybox Files (*.skybox)|*.vmt",
-                    MultiSelect = false
-                };
+                    fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
+                    {
+                        packageManager = packageManager,
+                        RootDirectory = "gfx/env",
+                        Filter = "Skybox Files (*.skybox)|*.tga",
+                        MultiSelect = false
+                    };
+                }
+
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     Skyname = fileExplorer.Selection[0].Filename;
@@ -291,13 +373,27 @@ namespace source_modding_tool.Materials
             // Save material as
             else if (e.Item == menuFileSaveAs)
             {
-                FileExplorer fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.SAVE)
+                FileExplorer fileExplorer = null;
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
                 {
-                    packageManager = packageManager,
-                    RootDirectory = "materials/skybox",
-                    Filter = "Skybox Files (*.skybox)|*.vmt",
-                    MultiSelect = false
-                };
+                    fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.SAVE)
+                    {
+                        packageManager = packageManager,
+                        RootDirectory = "materials/skybox",
+                        Filter = "Skybox Files (*.skybox)|*.vmt",
+                        MultiSelect = false
+                    };
+                }
+                else if (launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
+                {
+                    fileExplorer = new FileExplorer(launcher, FileExplorer.Mode.SAVE)
+                    {
+                        packageManager = packageManager,
+                        RootDirectory = "gfx/env",
+                        Filter = "Skybox Files (*.skybox)|*.tga",
+                        MultiSelect = false
+                    };
+                }
                 if (fileExplorer.ShowDialog() == DialogResult.OK)
                 {
                     Skyname = Path.GetFileName(fileExplorer.FileName);
@@ -484,7 +580,7 @@ namespace source_modding_tool.Materials
 
         private void UpdatePreview()
         {
-            if (chromium != null)
+            if (chromium != null && chromium.IsBrowserInitialized)
                 chromium.Reload();
 
             UpdateSettings();

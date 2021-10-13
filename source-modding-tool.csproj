@@ -226,10 +226,10 @@
     <Compile Include="Modding\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="File\FileExplorer.cs">
+    <Compile Include="Modding\FileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="File\FileExplorer.Designer.cs">
+    <Compile Include="Modding\FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\RunDialog.cs">
@@ -353,7 +353,7 @@
     <EmbeddedResource Include="Modding\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="File\FileExplorer.resx">
+    <EmbeddedResource Include="Modding\FileExplorer.resx">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
@@ -1252,6 +1252,15 @@
     <Content Include="Resources\Tools\J.A.C.K\vstdlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Tools\Jed%27s Half-Life Model Viewer\HLLib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Jed%27s Half-Life Model Viewer\hlmv.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\Jed%27s Half-Life Model Viewer\libgd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Tools\SkyboxPreviewer\blank.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2113,6 +2122,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\J.A.C.K\VDKSettings.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Tools\Jed%27s Half-Life Model Viewer\hlmv.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Tools\Propper\propper.exe">

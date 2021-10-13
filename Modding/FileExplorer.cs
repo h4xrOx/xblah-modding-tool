@@ -7,17 +7,13 @@ using SourceSDK;
 using SourceSDK.Maps;
 using SourceSDK.Packages;
 using SourceSDK.Packages.UnpackedPackage;
-using SourceSDK.Packages.VPKPackage;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace source_modding_tool.Modding
@@ -255,9 +251,9 @@ namespace source_modding_tool.Modding
                     stateImageIndex = 8;
                     extension = "soundscape";
                 }
-                else if(file.Path == "materials/skybox")
+                else if(file.Path == "materials/skybox" || file.Path == "gfx/env")
                 {
-                    if (file.Extension == "vtf")
+                    if (file.Extension == "vtf" || file.Extension == "bmp")
                         continue;
 
                     if (filename.EndsWith("up") || filename.EndsWith("dn") || filename.EndsWith("lf") || filename.EndsWith("rt") || filename.EndsWith("ft") || filename.EndsWith("bk"))
@@ -381,7 +377,7 @@ namespace source_modding_tool.Modding
 
         private void OpenFile(PackageFile packageFile)
         {
-            if (packageFile.Path == "materials/skybox")
+            if (packageFile.Path == "materials/skybox" || packageFile.Path == "gfx/env")
             {
                 // It's a skybox.
                 SkyboxEditor skyboxEditor = new SkyboxEditor(launcher)

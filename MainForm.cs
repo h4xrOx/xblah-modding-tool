@@ -469,18 +469,32 @@ namespace source_modding_tool
             // HLMV
             if (e.Item == menuModelingHLMV)
             {
-                string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].InstallPath;
+                if (launcher.GetCurrentGame().EngineID == Engine.SOURCE)
+                {
+                    string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].InstallPath;
 
-                string toolPath = gamePath + "\\bin\\hlmv.exe";
+                    string toolPath = gamePath + "\\bin\\hlmv.exe";
 
-                Process process = new Process();
-                process.StartInfo.FileName = toolPath ;
-                process.StartInfo.Arguments = string.Empty;
+                    Process process = new Process();
+                    process.StartInfo.FileName = toolPath;
+                    process.StartInfo.Arguments = string.Empty;
 
-                if (launcher.GetCurrentGame().Name == "Mapbase")
-                    process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().InstallPath;
+                    if (launcher.GetCurrentGame().Name == "Mapbase")
+                        process.StartInfo.Arguments = "-game " + launcher.GetCurrentMod().InstallPath;
 
-                process.Start();
+                    process.Start();
+                } else if(launcher.GetCurrentGame().EngineID == Engine.GOLDSRC)
+                {
+                    string gamePath = launcher.GetGamesList()[toolsGames.EditValue.ToString()].InstallPath;
+
+                    string toolPath = AppDomain.CurrentDomain.BaseDirectory + "Tools\\Jed's Half-Life Model Viewer\\hlmv.exe";
+
+                    Process process = new Process();
+                    process.StartInfo.FileName = toolPath;
+                    process.StartInfo.Arguments = string.Empty;
+
+                    process.Start();
+                }
             }
 
             // Propper
@@ -502,6 +516,7 @@ namespace source_modding_tool
                 Process.Start("Tools\\Crowbar\\Crowbar.exe");
             }
 
+            // Reload
             else if(e.Item == menuModelingReload)
             {
                 instance?.Command("+r_flushlod");
@@ -661,6 +676,7 @@ namespace source_modding_tool
                             menuScriptsHudEditor.Enabled = true;
                         menuModdingExport.Enabled = true;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignReload.Enabled = true;
                         menuLevelDesignBatchCompiler.Enabled = true;
                         menuLevelDesignCrafty.Enabled = true;
                         menuLevelDesignFogPreviewer.Enabled = true;
@@ -671,7 +687,15 @@ namespace source_modding_tool
                         menuLevelDesignRunMap.Enabled = true;
                         menuLevelDesignDecompile.Enabled = true;
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuModelingReload.Enabled = true;
+                        menuModelingHLMV.Enabled = true;
+                        menuModelingEditor.Enabled = true;
+                        menuModelingCompile.Enabled = true;
+                        menuModelingDecompile.Enabled = true;
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuMaterialsReload.Enabled = true;
+                        menuMaterialsEditor.Enabled = true;
+                        menuMaterialsSkyboxEditor.Enabled = true;
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuChoreography.Enabled = true;
                         menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -701,6 +725,7 @@ namespace source_modding_tool
                             menuScriptsHudEditor.Enabled = false;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignReload.Enabled = false;
                         menuLevelDesignBatchCompiler.Enabled = false;
                         menuLevelDesignCrafty.Enabled = false;
                         menuLevelDesignFogPreviewer.Enabled = false;
@@ -711,7 +736,15 @@ namespace source_modding_tool
                         menuLevelDesignRunMap.Enabled = true;
                         menuLevelDesignDecompile.Enabled = false;
                     menuModeling.Enabled = false;
+                        menuModelingReload.Enabled = false;
+                        menuModelingHLMV.Enabled = false;
+                        menuModelingEditor.Enabled = false;
+                        menuModelingCompile.Enabled = false;
+                        menuModelingDecompile.Enabled = false;
                     menuMaterials.Enabled = false;
+                        menuMaterialsReload.Enabled = false;
+                        menuMaterialsEditor.Enabled = false;
+                        menuMaterialsSkyboxEditor.Enabled = false;
                     menuParticles.Enabled = false;
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
@@ -741,8 +774,9 @@ namespace source_modding_tool
                             menuScriptsHudEditor.Enabled = false;
                         menuModdingExport.Enabled = false;
                     menuLevelDesign.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuLevelDesignReload.Enabled = false;
                         menuLevelDesignBatchCompiler.Enabled = false;
-                        menuLevelDesignCrafty.Enabled = false;
+                        menuLevelDesignCrafty.Enabled = true;
                         menuLevelDesignFogPreviewer.Enabled = false;
                         menuLevelDesignHammer.Enabled = true;
                         menuLevelDesignMapsrc.Enabled = false;
@@ -750,8 +784,16 @@ namespace source_modding_tool
                         menuLevelDesignTerrainGenerator.Enabled = false;
                         menuLevelDesignRunMap.Enabled = true;
                         menuLevelDesignDecompile.Enabled = true;
-                    menuModeling.Enabled = false;
-                    menuMaterials.Enabled = false;
+                    menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuModelingReload.Enabled = false;
+                        menuModelingHLMV.Enabled = true;
+                        menuModelingEditor.Enabled = false;
+                        menuModelingCompile.Enabled = false;
+                        menuModelingDecompile.Enabled = false;
+                    menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                        menuMaterialsReload.Enabled = false;
+                        menuMaterialsEditor.Enabled = false;
+                        menuMaterialsSkyboxEditor.Enabled = true;
                     menuParticles.Enabled = false;
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
