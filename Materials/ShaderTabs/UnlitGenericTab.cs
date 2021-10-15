@@ -216,6 +216,12 @@ namespace source_modding_tool.Materials.ShaderTabs
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
+            else if (e.Item == pictureEditMenuClear)
+            {
+                MaterialEditor.ClearTexture(((PictureEdit)control).Tag.ToString(), this);
+                MaterialEditor.CreateToolTexture(this);
+                OnUpdated.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void barManager_QueryShowPopupMenu(object sender, DevExpress.XtraBars.QueryShowPopupMenuEventArgs e)

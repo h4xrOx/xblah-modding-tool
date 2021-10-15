@@ -40,7 +40,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon_48_2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -177,17 +178,17 @@
     <Compile Include="Materials\MaterialEditorTab.Designer.cs">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.Designer.cs">
-      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
-    </Compile>
     <Compile Include="Materials\ShaderTabs\VertexLitGenericTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Materials\ShaderTabs\VertexLitGenericTab.Designer.cs">
       <DependentUpon>VertexLitGenericTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Materials\ShaderTabs\UnlitGenericTab.Designer.cs">
+      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
     </Compile>
     <Compile Include="Materials\SkyboxEditor.cs">
       <SubType>Form</SubType>
@@ -329,11 +330,11 @@
     <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
       <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Materials\ShaderTabs\UnlitGenericTab.resx">
-      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Materials\ShaderTabs\VertexLitGenericTab.resx">
       <DependentUpon>VertexLitGenericTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\ShaderTabs\UnlitGenericTab.resx">
+      <DependentUpon>UnlitGenericTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Materials\SkyboxEditor.resx">
       <DependentUpon>SkyboxEditor.cs</DependentUpon>
@@ -1191,10 +1192,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
-    <Content Include="icon_32.ico" />
     <Content Include="icon_48.ico" />
-    <Content Include="icon_48_2.ico" />
     <Content Include="Resources\Tools\J.A.C.K\crashrpt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1274,9 +1272,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Assets\Shaders\lightmappedgeneric.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Assets\Shaders\sky.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Assets\Shaders\unlitgeneric.png">

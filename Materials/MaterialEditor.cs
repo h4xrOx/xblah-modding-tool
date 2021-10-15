@@ -83,6 +83,14 @@ namespace source_modding_tool
                             };
 
                             break;
+                        case "VertexLitGeneric":
+                            tab = new VertexLitGenericTab()
+                            {
+                                Launcher = launcher,
+                                PackageManager = packageManager
+                            };
+
+                            break;
                         default:
                             {
                                 tab = new MaterialEditorTab(launcher, packageManager);
@@ -99,7 +107,7 @@ namespace source_modding_tool
 
                     tabControl.TabPages.Add(tabPage);
                     tabControl.SelectedTabPage = tabPage;
-                    tabPage.Text = (fileName != "" ? fileName : "Untited");
+                    tabPage.Text = (fileName != "" ? fileName : "Untitled");
                 }
 
                 
@@ -164,12 +172,20 @@ namespace source_modding_tool
 
             SourceSDK.KeyValue vmt = SourceSDK.KeyValue.ReadChunk(data);
 
-            ShaderInterface tabInterface;
+            ShaderInterface tab;
 
             switch (vmt.getKey())
             {
                 case "unlitgeneric":
-                    tabInterface = new UnlitGenericTab()
+                    tab = new UnlitGenericTab()
+                    {
+                        Launcher = launcher,
+                        PackageManager = packageManager,
+                        RelativePath = file.Path + "/" + file.Filename
+                    };
+                    break;
+                case "vertexlitgeneric":
+                    tab = new VertexLitGenericTab()
                     {
                         Launcher = launcher,
                         PackageManager = packageManager,
@@ -181,15 +197,18 @@ namespace source_modding_tool
                     return;
             }
 
-            XtraTabPage tab = new XtraTabPage();
+            XtraTabPage tabPage = new XtraTabPage();
 
-            tab.Text = file.Filename;
-            tab.Controls.Add(tabInterface as Control);
-            (tabInterface as Control).Dock = DockStyle.Fill;
-            tab.Tag = tabInterface;
+            tab.OnUpdated += MaterialEditorTab_OnUpdated;
+            vmtEdit.Text = tab.VMT;
 
-            tabControl.TabPages.Add(tab);
-            tabControl.SelectedTabPage = tab;
+            tabPage.Text = file.Filename;
+            tabPage.Controls.Add(tab as Control);
+            (tab as Control).Dock = DockStyle.Fill;
+            tabPage.Tag = tab;
+
+            tabControl.TabPages.Add(tabPage);
+            tabControl.SelectedTabPage = tabPage;
         }
 
         internal static void SaveMaterial(ShaderInterface tabInterface)
@@ -229,7 +248,8 @@ namespace source_modding_tool
 
         public void MaterialEditorTab_OnUpdated(object sender, EventArgs e)
         {
-            vmtEdit.Text = activeTab.VMT;
+            if (activeTab != null)
+                vmtEdit.Text = activeTab.VMT;
 
             if (isPreviewing)
             {

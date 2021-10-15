@@ -63,6 +63,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoFog = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutToolTexture = new DevExpress.XtraLayout.LayoutControlItem();
+            this.pictureEditMenuClear = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
@@ -181,8 +182,9 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.pictureEditMenuImport,
             this.pictureEditMenuOpen,
-            this.pictureEditMenuExport});
-            this.barManager.MaxItemId = 3;
+            this.pictureEditMenuExport,
+            this.pictureEditMenuClear});
+            this.barManager.MaxItemId = 4;
             this.barManager.QueryShowPopupMenu += new DevExpress.XtraBars.QueryShowPopupMenuEventHandler(this.barManager_QueryShowPopupMenu);
             // 
             // pictureEditMenu
@@ -190,7 +192,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureEditMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.pictureEditMenuOpen),
             new DevExpress.XtraBars.LinkPersistInfo(this.pictureEditMenuImport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pictureEditMenuExport, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.pictureEditMenuExport, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pictureEditMenuClear)});
             this.pictureEditMenu.Manager = this.barManager;
             this.pictureEditMenu.Name = "pictureEditMenu";
             // 
@@ -368,6 +371,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutToolTexture.Text = "Tool texture";
             this.layoutToolTexture.TextSize = new System.Drawing.Size(82, 13);
             // 
+            // pictureEditMenuClear
+            // 
+            this.pictureEditMenuClear.Caption = "Clear";
+            this.pictureEditMenuClear.Id = 3;
+            this.pictureEditMenuClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("pictureEditMenuClear.ImageOptions.SvgImage")));
+            this.pictureEditMenuClear.Name = "pictureEditMenuClear";
+            this.pictureEditMenuClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.pictureEditPopup_ItemClick);
+            // 
             // UnlitGenericTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,5 +444,6 @@ namespace source_modding_tool.Materials.ShaderTabs
         private DevExpress.XtraBars.BarButtonItem pictureEditMenuOpen;
         private DevExpress.XtraBars.PopupMenu pictureEditMenu;
         private DevExpress.XtraBars.BarButtonItem pictureEditMenuExport;
+        private DevExpress.XtraBars.BarButtonItem pictureEditMenuClear;
     }
 }
