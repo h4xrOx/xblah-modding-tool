@@ -82,7 +82,7 @@ namespace SourceSDK.Materials
             if (!File.Exists(filePath + "\\temp.tga"))
                 return null;
 
-            Bitmap src = TGA.FromFile(filePath + "\\temp.tga").ToBitmap();
+            Bitmap src = TGA.FromFile(filePath + "\\temp.tga").ToBitmap(true);
             File.Delete(filePath + "\\temp.tga");
             File.Delete(filePath + "\\temp.vtf");
 
