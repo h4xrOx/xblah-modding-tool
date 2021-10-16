@@ -107,8 +107,8 @@ namespace source_modding_tool.Materials.ShaderTabs
                                 {
                                     for (int j = 0; j < transparencymask.Height; j++)
                                     {
-                                        int alpha = Textures[kv.Key].bitmap.GetPixel(i, j).A;
-                                        transparencymask.SetPixel(i, j, Color.FromArgb(255, alpha, alpha, alpha));
+                                        int a = Textures[kv.Key].bitmap.GetPixel(i, j).A;
+                                        transparencymask.SetPixel(i, j, Color.FromArgb(255, a, a, a));
                                     }
                                 }
                                 if (pictureTransparencyMask.Image != null)
@@ -129,28 +129,33 @@ namespace source_modding_tool.Materials.ShaderTabs
                 }
             }
 
-            // Basics
+            /** Basics **/
+
+            // Surface Prop
             string surfaceProp = vmt.getValue("$surfaceprop");
             if (surfaceProp != "")
                 comboSurfaceProp.EditValue = surfaceProp;
 
-            // Adjustment
+            /** Adjustment **/
+
+            // Color and alpha
             string color = vmt.getValue("$color");
+            string alpha = vmt.getValue("$alpha");
             if (color != "")
             {
+                color = color.Substring(1, color.Length - 2);
+                string[] rgbs = color.Split(' ');
+                int a = (int)(255 * (alpha != "" && !isTransparent ? float.Parse(alpha) : 1));
                 if (color.StartsWith("{"))
-                {
-                    color = color.Substring(1, color.Length - 2);
-                    string[] rgbs = color.Split(' ');
-                    editColor.Color = Color.FromArgb(255, int.Parse(rgbs[0]), int.Parse(rgbs[1]), int.Parse(rgbs[2]));
+                {       
+                    editColor.Color = Color.FromArgb(a, int.Parse(rgbs[0]), int.Parse(rgbs[1]), int.Parse(rgbs[2]));
                 } else if(color.StartsWith("["))
                 {
-                    color = color.Substring(1, color.Length - 2);
-                    string[] rgbs = color.Split(' ');
-                    editColor.Color = Color.FromArgb(255, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
+                    editColor.Color = Color.FromArgb(a, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
                 }
             }
 
+            /** Transparency **/
             // Mode
 
             if (translucent == "1")
@@ -158,7 +163,9 @@ namespace source_modding_tool.Materials.ShaderTabs
             else if (alphatest == "1")
                 editTransparency.EditValue = "Alphatest";
 
-            // Effect
+            /** Effect **/
+
+            // NoFog
             string nofog = vmt.getValue("$nofog");
             if (nofog != "")
             {
@@ -175,6 +182,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             string materialRelativePath = RelativePath;
             if (RelativePath.StartsWith("materials/"))
                 materialRelativePath = RelativePath.Substring("materials/".Length);
+
+            bool isTransparent = (editTransparency.EditValue.ToString() != "Opaque");
 
             // Add the textures.
             if (Textures != null)
@@ -231,6 +240,12 @@ namespace source_modding_tool.Materials.ShaderTabs
                 vmt.addChild("$translucent", "1");
             else if (transparency == "Alphatest")
                 vmt.addChild("$alphatest", "1");
+
+            // Alpha
+            if (color.A != 255 && !isTransparent)
+            {
+                vmt.addChild("$alpha", ((float)color.A / 255).ToString());
+            }
 
             /** Effect **/
 

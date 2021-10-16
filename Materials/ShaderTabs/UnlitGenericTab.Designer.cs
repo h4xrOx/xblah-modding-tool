@@ -30,31 +30,31 @@ namespace source_modding_tool.Materials.ShaderTabs
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnlitGenericTab));
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnlitGenericTab));
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.editTransparency = new DevExpress.XtraEditors.ComboBoxEdit();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -146,21 +146,21 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.editTransparency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.editTransparency.Size = new System.Drawing.Size(128, 20);
             this.editTransparency.StyleController = this.layoutControl;
-            toolTipTitleItem1.Text = "Mode";
-            toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem1.Text = "<u>Opaque</u>: The material won\'t be transparent.";
-            toolTipItem12.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem12.Text = "<u>Translucent</u>: It specifies that the material should be partially see-throug" +
+            toolTipTitleItem2.Text = "Mode";
+            toolTipItem2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem2.Text = "<u>Opaque</u>: The material won\'t be transparent.";
+            toolTipItem3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem3.Text = "<u>Translucent</u>: It specifies that the material should be partially see-throug" +
     "h.";
-            toolTipItem13.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem13.Text = "<u>Alphatest</u>: This effect is similar to Translucent, except that it can not b" +
+            toolTipItem4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem4.Text = "<u>Alphatest</u>: This effect is similar to Translucent, except that it can not b" +
     "e semi-opaque, is much faster to render, and the engine can sort it properly whe" +
     "n layered.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipItem12);
-            superToolTip1.Items.Add(toolTipItem13);
-            this.editTransparency.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipItem3);
+            superToolTip2.Items.Add(toolTipItem4);
+            this.editTransparency.SuperTip = superToolTip2;
             this.editTransparency.TabIndex = 9;
             this.editTransparency.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
             // 
@@ -194,11 +194,11 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureBaseTexture.Properties.Tag = "basetexture";
             this.pictureBaseTexture.Size = new System.Drawing.Size(128, 128);
             this.pictureBaseTexture.StyleController = this.layoutControl;
-            toolTipTitleItem5.Text = "Base Texture";
-            toolTipItem6.Text = " It defines an albedo texture.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem6);
-            this.pictureBaseTexture.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "Base Texture";
+            toolTipItem9.Text = " It defines an albedo texture.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem9);
+            this.pictureBaseTexture.SuperTip = superToolTip6;
             this.pictureBaseTexture.TabIndex = 4;
             this.pictureBaseTexture.Tag = "basetexture";
             // 
@@ -289,11 +289,11 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureToolTexture.Properties.Tag = "basetexture";
             this.pictureToolTexture.Size = new System.Drawing.Size(128, 128);
             this.pictureToolTexture.StyleController = this.layoutControl;
-            toolTipTitleItem2.Text = "Tool Texture";
-            toolTipItem2.Text = "Used to blend texture previews in Hammer.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.pictureToolTexture.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Tool Texture";
+            toolTipItem5.Text = "Used to blend texture previews in Hammer.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem5);
+            this.pictureToolTexture.SuperTip = superToolTip3;
             this.pictureToolTexture.TabIndex = 8;
             this.pictureToolTexture.Tag = "tooltexture";
             // 
@@ -306,11 +306,11 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.switchNoFog.Properties.OnText = "On";
             this.switchNoFog.Size = new System.Drawing.Size(128, 20);
             this.switchNoFog.StyleController = this.layoutControl;
-            toolTipTitleItem3.Text = "Affected by fog";
-            toolTipItem3.Text = "Allows fog to overdraw a material.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.switchNoFog.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Affected by fog";
+            toolTipItem6.Text = "Allows fog to overdraw a material.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem6);
+            this.switchNoFog.SuperTip = superToolTip4;
             this.switchNoFog.TabIndex = 7;
             this.switchNoFog.Tag = "nofog";
             this.switchNoFog.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
@@ -325,13 +325,13 @@ namespace source_modding_tool.Materials.ShaderTabs
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.editColor.Size = new System.Drawing.Size(128, 20);
             this.editColor.StyleController = this.layoutControl;
-            toolTipTitleItem4.Text = "Color";
-            toolTipItem4.Text = "Independently scales the red, green and blue channels of an albedo.";
-            toolTipItem5.Text = "If White, nothing will change in the albedo.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.Items.Add(toolTipItem5);
-            this.editColor.SuperTip = superToolTip4;
+            toolTipTitleItem5.Text = "Color";
+            toolTipItem7.Text = "Independently scales the red, green, blue and alpha channels of an albedo.";
+            toolTipItem8.Text = "If White, nothing will change in the albedo.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem7);
+            superToolTip5.Items.Add(toolTipItem8);
+            this.editColor.SuperTip = superToolTip5;
             this.editColor.TabIndex = 6;
             this.editColor.Tag = "color";
             this.editColor.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
@@ -347,11 +347,11 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.comboSurfaceProp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.comboSurfaceProp.Size = new System.Drawing.Size(128, 20);
             this.comboSurfaceProp.StyleController = this.layoutControl;
-            toolTipTitleItem6.Text = "Surface property";
-            toolTipItem7.Text = "Links the surface to a set of physical properties.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem7);
-            this.comboSurfaceProp.SuperTip = superToolTip6;
+            toolTipTitleItem7.Text = "Surface property";
+            toolTipItem10.Text = "Links the surface to a set of physical properties.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem10);
+            this.comboSurfaceProp.SuperTip = superToolTip7;
             this.comboSurfaceProp.TabIndex = 5;
             this.comboSurfaceProp.Tag = "surfaceprop";
             // 
@@ -494,12 +494,12 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureTransparencyMask.Properties.Tag = "basetexture";
             this.pictureTransparencyMask.Size = new System.Drawing.Size(128, 128);
             this.pictureTransparencyMask.StyleController = this.layoutControl;
-            toolTipTitleItem8.Text = "Mask";
-            toolTipItem11.Text = "When the Mode is not Opaque, it will represent the alpha mask of the basetexture." +
+            toolTipTitleItem1.Text = "Mask";
+            toolTipItem1.Text = "When the Mode is not Opaque, it will represent the alpha mask of the basetexture." +
     "";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem11);
-            this.pictureTransparencyMask.SuperTip = superToolTip8;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.pictureTransparencyMask.SuperTip = superToolTip1;
             this.pictureTransparencyMask.TabIndex = 10;
             this.pictureTransparencyMask.Tag = "transparencymask";
             // 
