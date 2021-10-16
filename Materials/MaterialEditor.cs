@@ -93,7 +93,7 @@ namespace source_modding_tool
                             break;
                         default:
                             {
-                                tab = new MaterialEditorTab(launcher, packageManager);
+                                return;
                             }
                             break;
                     }

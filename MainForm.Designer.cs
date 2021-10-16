@@ -254,7 +254,7 @@
             this.menuModeling = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingReload = new DevExpress.XtraBars.BarButtonItem();
             this.menuModelingHLMV = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModelingEditor = new DevExpress.XtraBars.BarSubItem();
+            this.menuModelingEditor2 = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingPropper = new DevExpress.XtraBars.BarButtonItem();
             this.menuModelingCompile = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
@@ -375,7 +375,7 @@
             this.menuModelingReload,
             this.menuLevelDesignReload,
             this.menuModelingCompile,
-            this.menuModelingEditor,
+            this.menuModelingEditor2,
             this.menuModelingDecompile,
             this.menuLevelDesignDecompile,
             this.barSubItem5,
@@ -383,7 +383,7 @@
             this.menuScripts,
             this.toolsGames});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 125;
+            this.barManager.MaxItemId = 126;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -1113,7 +1113,7 @@
             this.menuModeling.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingReload, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingHLMV, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingEditor2),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingCompile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingDecompile)});
             this.menuModeling.Name = "menuModeling";
@@ -1149,19 +1149,19 @@
             this.menuModelingHLMV.SuperTip = superToolTip40;
             this.menuModelingHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
-            // menuModelingEditor
+            // menuModelingEditor2
             // 
-            this.menuModelingEditor.Caption = "Editor";
-            this.menuModelingEditor.Id = 111;
-            this.menuModelingEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingEditor.ImageOptions.SvgImage")));
-            this.menuModelingEditor.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.menuModelingEditor2.Caption = "Editor";
+            this.menuModelingEditor2.Id = 111;
+            this.menuModelingEditor2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingEditor.ImageOptions.SvgImage")));
+            this.menuModelingEditor2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingPropper)});
-            this.menuModelingEditor.Name = "menuModelingEditor";
+            this.menuModelingEditor2.Name = "menuModelingEditor2";
             toolTipTitleItem42.Text = "Editor";
             toolTipItem49.Text = "Edit model files.";
             superToolTip42.Items.Add(toolTipTitleItem42);
             superToolTip42.Items.Add(toolTipItem49);
-            this.menuModelingEditor.SuperTip = superToolTip42;
+            this.menuModelingEditor2.SuperTip = superToolTip42;
             // 
             // menuModelingPropper
             // 
@@ -1561,7 +1561,7 @@
         private DevExpress.XtraBars.BarButtonItem menuModelingReload;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsReload;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignReload;
-        private DevExpress.XtraBars.BarSubItem menuModelingEditor;
+        private DevExpress.XtraBars.BarSubItem menuModelingEditor2;
         private DevExpress.XtraBars.BarSubItem menuModelingCompile;
         private DevExpress.XtraBars.BarSubItem menuModelingDecompile;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;

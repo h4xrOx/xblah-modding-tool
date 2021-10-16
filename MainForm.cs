@@ -690,7 +690,7 @@ namespace source_modding_tool
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModelingReload.Enabled = true;
                         menuModelingHLMV.Enabled = true;
-                        menuModelingEditor.Enabled = true;
+                        menuModelingEditor2.Enabled = true;
                         menuModelingCompile.Enabled = true;
                         menuModelingDecompile.Enabled = true;
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -754,7 +754,7 @@ namespace source_modding_tool
                     menuModeling.Enabled = false;
                         menuModelingReload.Enabled = false;
                         menuModelingHLMV.Enabled = false;
-                        menuModelingEditor.Enabled = false;
+                        menuModelingEditor2.Enabled = false;
                         menuModelingCompile.Enabled = false;
                         menuModelingDecompile.Enabled = false;
                     menuMaterials.Enabled = false;
@@ -804,7 +804,7 @@ namespace source_modding_tool
                     menuModeling.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModelingReload.Enabled = false;
                         menuModelingHLMV.Enabled = true;
-                        menuModelingEditor.Enabled = false;
+                        menuModelingEditor2.Enabled = false;
                         menuModelingCompile.Enabled = false;
                         menuModelingDecompile.Enabled = false;
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);

@@ -166,18 +166,6 @@
     <Compile Include="Materials\MaterialEditor.Designer.cs">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materials\MaterialEditorTabOld.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Materials\MaterialEditorTabOld.Designer.cs">
-      <DependentUpon>MaterialEditorTabOld.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Materials\MaterialEditorTab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Materials\MaterialEditorTab.Designer.cs">
-      <DependentUpon>MaterialEditorTab.cs</DependentUpon>
-    </Compile>
     <Compile Include="Materials\ShaderTabs\VertexLitGenericTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -323,12 +311,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materials\MaterialEditor.resx">
       <DependentUpon>MaterialEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Materials\MaterialEditorTabOld.resx">
-      <DependentUpon>MaterialEditorTabOld.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Materials\MaterialEditorTab.resx">
-      <DependentUpon>MaterialEditorTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Materials\ShaderTabs\VertexLitGenericTab.resx">
       <DependentUpon>VertexLitGenericTab.cs</DependentUpon>
