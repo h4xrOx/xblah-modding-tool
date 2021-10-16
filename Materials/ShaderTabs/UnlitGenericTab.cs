@@ -26,7 +26,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             }
         }
 
-        public string Shader => "UnlitGeneric";
+        public string Shader { get; private set; } = "UnlitGeneric";
 
         public string RelativePath { get; set; } = "";
 
@@ -44,6 +44,8 @@ namespace source_modding_tool.Materials.ShaderTabs
 
         private void UnlitGenericTab_Load(object sender, EventArgs e)
         {
+            if (Launcher.GetCurrentGame().Name == "Mapbase")
+                Shader = "SDK_UnlitGeneric";
 
                 PopulatePictureEdits();
             MaterialEditor.ClearMaterial(this);
