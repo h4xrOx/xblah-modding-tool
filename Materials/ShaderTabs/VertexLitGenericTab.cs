@@ -290,6 +290,17 @@ namespace source_modding_tool.Materials.ShaderTabs
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
+            else if (e.Item == pictureEditMenuExport)
+            {
+                XtraSaveFileDialog dialog = new XtraSaveFileDialog()
+                {
+                    Filter = "Portable Network Graphics (*.png)|*.png"
+                };
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ((PictureEdit)control).Image.Save(dialog.FileName);
+                }
+            }
         }
 
         private void barManager_QueryShowPopupMenu(object sender, DevExpress.XtraBars.QueryShowPopupMenuEventArgs e)

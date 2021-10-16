@@ -91,6 +91,14 @@ namespace source_modding_tool
                             };
 
                             break;
+                        case "LightmappedGeneric":
+                            tab = new LightmappedGenericTab()
+                            {
+                                Launcher = launcher,
+                                PackageManager = packageManager
+                            };
+
+                            break;
                         default:
                             {
                                 return;
@@ -186,6 +194,14 @@ namespace source_modding_tool
                     break;
                 case "vertexlitgeneric":
                     tab = new VertexLitGenericTab()
+                    {
+                        Launcher = launcher,
+                        PackageManager = packageManager,
+                        RelativePath = file.Path + "/" + file.Filename
+                    };
+                    break;
+                case "lightmappedgeneric":
+                    tab = new LightmappedGenericTab()
                     {
                         Launcher = launcher,
                         PackageManager = packageManager,

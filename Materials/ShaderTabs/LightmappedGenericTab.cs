@@ -11,7 +11,7 @@ using static source_modding_tool.MaterialEditor;
 
 namespace source_modding_tool.Materials.ShaderTabs
 {
-    public partial class UnlitGenericTab : DevExpress.XtraEditors.XtraUserControl, ShaderInterface
+    public partial class LightmappedGenericTab : DevExpress.XtraEditors.XtraUserControl, ShaderInterface
     {
         private Control popupCallerControl;
 
@@ -26,7 +26,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             }
         }
 
-        public string Shader => "UnlitGeneric";
+        public string Shader => "LightmappedGeneric";
 
         public string RelativePath { get; set; } = "";
 
@@ -36,7 +36,7 @@ namespace source_modding_tool.Materials.ShaderTabs
 
         public event EventHandler OnUpdated;
 
-        public UnlitGenericTab()
+        public LightmappedGenericTab()
         {
             InitializeComponent();
 
@@ -57,6 +57,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             PictureEdits = new Dictionary<string, PictureEdit>();
             PictureEdits.Add("basetexture", pictureBaseTexture);
             PictureEdits.Add("tooltexture", pictureToolTexture);
+            PictureEdits.Add("bumpmap", pictureBumpMap);
 
             PackageManager packageManager = new PackageManager(Launcher, "scripts");
             string[] surfaceProps = SurfaceProperty.GetStringArray(packageManager);
@@ -104,12 +105,16 @@ namespace source_modding_tool.Materials.ShaderTabs
                 }
             }
 
-            // Basics
+            /** Basics **/
+
+            // Surfaceprop
             string surfaceProp = vmt.getValue("$surfaceprop");
             if (surfaceProp != "")
                 comboSurfaceProp.EditValue = surfaceProp;
 
-            // Adjustment
+            /** Adjustment **/
+
+            // Color
             string color = vmt.getValue("$color");
             if (color != "")
             {
@@ -124,6 +129,30 @@ namespace source_modding_tool.Materials.ShaderTabs
                     string[] rgbs = color.Split(' ');
                     editColor.Color = Color.FromArgb(255, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
                 }
+            }
+
+            /** Transparency **/
+
+            // Alphatest
+            string alphatest = vmt.getValue("$alphatest");
+            if (alphatest != "")
+            {
+                switchAlphaTest.IsOn = (alphatest == "1");
+            }
+
+            string nocull = vmt.getValue("$nocull");
+            if (alphatest != "")
+            {
+                switchNoCull.IsOn = (nocull == "1");
+            }
+
+            /** Lighting **/
+
+            // Self Illum
+            string selfillum = vmt.getValue("$selfillum");
+            if (selfillum != "")
+            {
+                switchSelfIllum.IsOn = (selfillum == "1");
             }
 
             // Effect
@@ -143,6 +172,9 @@ namespace source_modding_tool.Materials.ShaderTabs
             string materialRelativePath = RelativePath;
             if (RelativePath.StartsWith("materials/"))
                 materialRelativePath = RelativePath.Substring("materials/".Length);
+
+            // Check if its a model
+            bool isModel = RelativePath.StartsWith("materials/models/");
 
             // Add the textures.
             if (Textures != null)
@@ -178,8 +210,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             if (comboSurfaceProp.EditValue.ToString() != "default")
                 vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
 
-            // Check if its a model
-            if (RelativePath.StartsWith("materials/models/"))
+            // Model
+            if (isModel)
                 vmt.addChild(new KeyValue("$model", "1"));
 
             /** Adjustment **/
@@ -189,6 +221,29 @@ namespace source_modding_tool.Materials.ShaderTabs
             if (color.R != 255 || color.G != 255 || color.B != 255 || color.A != 255)
             {
                 vmt.addChild("$color", "{" + color.R + " " + color.G + " " + color.B + "}");
+            }
+
+            /** Transparency **/
+
+            // Alphatest
+            if (switchAlphaTest.IsOn)
+            {
+                vmt.addChild("$alphatest", "1");
+                vmt.addChild("$allowAlphaToCoverage", "1"); // Antialising for transparency.
+            }
+
+            // NoCull
+            if (switchNoCull.IsOn)
+            {
+                vmt.addChild("$nocull", "1");
+            }
+
+            /** Lighting **/
+
+            // SelfIllum
+            if (switchSelfIllum.IsOn)
+            {
+                vmt.addChild("$selfillum", "1");
             }
 
             /** Effect **/
@@ -216,13 +271,13 @@ namespace source_modding_tool.Materials.ShaderTabs
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
-            else if (e.Item == pictureEditMenuClear)
+            else if(e.Item == pictureEditMenuClear)
             {
                 MaterialEditor.ClearTexture(((PictureEdit)control).Tag.ToString(), this);
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
-            else if (e.Item == pictureEditMenuExport)
+            else if(e.Item == pictureEditMenuExport)
             {
                 XtraSaveFileDialog dialog = new XtraSaveFileDialog()
                 {
@@ -242,7 +297,15 @@ namespace source_modding_tool.Materials.ShaderTabs
 
         private void editor_EditValueChanged(object sender, EventArgs e)
         {
-            OnUpdated.Invoke(this, EventArgs.Empty);
+            if (sender == switchAlphaTest && switchAlphaTest.IsOn)
+            {
+                switchSelfIllum.IsOn = false;
+            }
+            else if(sender == switchSelfIllum && switchSelfIllum.IsOn)
+            {
+                switchAlphaTest.IsOn = false;
+            }
+            OnUpdated?.Invoke(this, EventArgs.Empty);
         }
     }
 }

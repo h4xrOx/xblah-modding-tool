@@ -55,6 +55,8 @@ namespace source_modding_tool.Materials
             "UnlitGeneric"}, -1, 0, 0, 0);
             this.treeList.AppendNode(new object[] {
             "VertexLitGeneric"}, -1, 0, 0, 1);
+            this.treeList.AppendNode(new object[] {
+            "LightmappedGeneric"}, -1, 0, 0, 2);
             this.treeList.EndUnboundLoad();
             this.treeList.OptionsBehavior.Editable = false;
             this.treeList.OptionsSelection.EnableAppearanceFocusedCell = false;
