@@ -45,7 +45,7 @@ namespace source_modding_tool.Materials.ShaderTabs
         private void UnlitGenericTab_Load(object sender, EventArgs e)
         {
 
-            PopulatePictureEdits();
+                PopulatePictureEdits();
             MaterialEditor.ClearMaterial(this);
 
             if (RelativePath != "")
@@ -57,6 +57,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             PictureEdits = new Dictionary<string, PictureEdit>();
             PictureEdits.Add("basetexture", pictureBaseTexture);
             PictureEdits.Add("tooltexture", pictureToolTexture);
+            PictureEdits.Add("transparencymask", pictureTransparencyMask);
 
             PackageManager packageManager = new PackageManager(Launcher, "scripts");
             string[] surfaceProps = SurfaceProperty.GetStringArray(packageManager);
@@ -69,6 +70,10 @@ namespace source_modding_tool.Materials.ShaderTabs
         {
             SourceSDK.KeyValue vmt = SourceSDK.KeyValue.ReadChunk(System.Text.Encoding.UTF8.GetString(file.Data));
             this.RelativePath = file.Path + "/" + file.Filename;
+
+            string translucent = vmt.getValue("$translucent");
+            string alphatest = vmt.getValue("$alphatest");
+            bool isTransparent = (translucent == "1" || alphatest == "1");
 
             // Get the textures.
             foreach (KeyValuePair<string, PictureEdit> kv in PictureEdits)
@@ -91,6 +96,24 @@ namespace source_modding_tool.Materials.ShaderTabs
                             Textures[kv.Key].bytes = textureFile.Data;
                             Textures[kv.Key].bitmap = VTF.ToBitmap(Textures[kv.Key].bytes, Launcher);
                             kv.Value.Image = Textures[kv.Key].bitmap;
+
+                            if (key == "$basetexture" && isTransparent)
+                            {
+                                // Copy the alpha mask.
+                                Bitmap transparencymask = new Bitmap(Textures[kv.Key].bitmap.Width, Textures[kv.Key].bitmap.Height);
+                                for (int i = 0; i < transparencymask.Width; i++)
+                                {
+                                    for (int j = 0; j < transparencymask.Height; j++)
+                                    {
+                                        int alpha = Textures[kv.Key].bitmap.GetPixel(i, j).A;
+                                        transparencymask.SetPixel(i, j, Color.FromArgb(255, alpha, alpha, alpha));
+                                    }
+                                }
+                                if (pictureTransparencyMask.Image != null)
+                                    pictureTransparencyMask.Image.Dispose();
+
+                                pictureTransparencyMask.Image = transparencymask;
+                            }
                         }
                         else
                         {
@@ -125,6 +148,13 @@ namespace source_modding_tool.Materials.ShaderTabs
                     editColor.Color = Color.FromArgb(255, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
                 }
             }
+
+            // Mode
+
+            if (translucent == "1")
+                editTransparency.EditValue = "Translucent";
+            else if (alphatest == "1")
+                editTransparency.EditValue = "Alphatest";
 
             // Effect
             string nofog = vmt.getValue("$nofog");
@@ -191,6 +221,15 @@ namespace source_modding_tool.Materials.ShaderTabs
                 vmt.addChild("$color", "{" + color.R + " " + color.G + " " + color.B + "}");
             }
 
+            /** Transparencty **/
+
+            // Mode
+            string transparency = editTransparency.EditValue.ToString();
+            if (transparency == "Translucent")
+                vmt.addChild("$translucent", "1");
+            else if (transparency == "Alphatest")
+                vmt.addChild("$alphatest", "1");
+
             /** Effect **/
 
             // Fog
@@ -206,7 +245,14 @@ namespace source_modding_tool.Materials.ShaderTabs
 
             if (e.Item == pictureEditMenuImport)
             {
-                MaterialEditor.ImportTexture(((PictureEdit)control).Tag.ToString(), this);
+                if (control == pictureTransparencyMask)
+                {
+                    MaterialEditor.ImportMask(((PictureEdit)control).Tag.ToString(), this);
+                } else
+                {
+                    MaterialEditor.ImportTexture(((PictureEdit)control).Tag.ToString(), this);
+                }
+                
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
@@ -238,10 +284,21 @@ namespace source_modding_tool.Materials.ShaderTabs
         private void barManager_QueryShowPopupMenu(object sender, DevExpress.XtraBars.QueryShowPopupMenuEventArgs e)
         {
             popupCallerControl = e.Control;
+            if (e.Control == pictureTransparencyMask)
+            {
+                pictureEditMenuOpen.Enabled = false;
+                pictureEditMenuClear.Enabled = false;
+            } else
+            {
+                pictureEditMenuOpen.Enabled = true;
+                pictureEditMenuClear.Enabled = true;
+            }
         }
 
         private void editor_EditValueChanged(object sender, EventArgs e)
         {
+            if (sender == editTransparency)
+                layoutTransparencyMask.Visibility = (editTransparency.EditValue.ToString() != "Opaque" ? DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never);
             OnUpdated.Invoke(this, EventArgs.Empty);
         }
     }

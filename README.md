@@ -42,8 +42,9 @@
 * Link to Crowbar. (Source 1)
 
 ### Materials
-* Create UnlitGeneric materials. (Source 1)
+* Create UnlitGeneric, VertexLitGeneric and LightmappedGeneric materials. (Source 1)
 * Create LDR skyboxes and preview them (Goldsrc and Source 1)
+* Materials saved under materials/models will automatically have the parameter 'model 1'
 
 ### Particles
 * Auto-generate a particle manifest based on what's used in a VMF. (Source 1)

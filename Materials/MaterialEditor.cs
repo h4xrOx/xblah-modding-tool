@@ -184,6 +184,7 @@ namespace source_modding_tool
 
             switch (vmt.getKey())
             {
+                case "sdk_unlitgeneric":
                 case "unlitgeneric":
                     tab = new UnlitGenericTab()
                     {
@@ -192,6 +193,7 @@ namespace source_modding_tool
                         RelativePath = file.Path + "/" + file.Filename
                     };
                     break;
+                case "sdk_vertexlitgeneric":
                 case "vertexlitgeneric":
                     tab = new VertexLitGenericTab()
                     {
@@ -200,6 +202,7 @@ namespace source_modding_tool
                         RelativePath = file.Path + "/" + file.Filename
                     };
                     break;
+                case "sdk_lightmappedgeneric":
                 case "lightmappedgeneric":
                     tab = new LightmappedGenericTab()
                     {
@@ -407,6 +410,9 @@ namespace source_modding_tool
 
             foreach (KeyValuePair<string, PictureEdit> kv in tabInterface.PictureEdits)
             {
+                if (kv.Key == "transparencymask")
+                    continue;
+
                 tabInterface.Textures.Add(kv.Key, new Texture());
                 kv.Value.Image = null;
             }
@@ -450,6 +456,52 @@ namespace source_modding_tool
             }
         }
 
+        internal static void ImportMask(string tag, ShaderInterface tabInterface)
+        {
+            int width;
+            int height;
+
+            XtraOpenFileDialog dialog = new XtraOpenFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string type = new FileInfo(dialog.FileName).Extension;
+
+                Image originalBitmap = Bitmap.FromFile(dialog.FileName);
+                width = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Width, 2)));
+                height = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Height, 2)));
+
+                Bitmap resizedBitmap = new Bitmap(originalBitmap, width, height);
+                originalBitmap.Dispose();
+
+                if (tag == "transparencymask")
+                {
+                    Bitmap transparencymask = new Bitmap(width, height);
+
+                    // If no albedo is set yet.
+                    if (tabInterface.Textures["basetexture"].bitmap == null)
+                        tabInterface.Textures["basetexture"].bitmap = new Bitmap(width, height);
+
+                    for (int i = 0; i < transparencymask.Width; i++)
+                    {
+                        for (int j = 0; j < transparencymask.Height; j++)
+                        {
+                            int alpha = resizedBitmap.GetPixel(i, j).R;
+                            Color color = tabInterface.Textures["basetexture"].bitmap.GetPixel(i, j);
+                            tabInterface.Textures["basetexture"].bitmap.SetPixel(i, j, Color.FromArgb(alpha, color.R, color.G, color.B));
+                        }
+                    }
+
+                    tabInterface.Textures["basetexture"].relativePath = string.Empty;
+                    tabInterface.Textures["basetexture"].bytes = VTF.FromBitmap(tabInterface.Textures["basetexture"].bitmap, tabInterface.Launcher);
+                }
+
+                if (tabInterface.PictureEdits["transparencymask"].Image != null)
+                    tabInterface.PictureEdits["transparencymask"].Image.Dispose();
+
+                tabInterface.PictureEdits["transparencymask"].Image = resizedBitmap;
+            }
+        }
+
         public static void OpenTexture(string tag, ShaderInterface tabInterface)
         {
             FileExplorer fileExplorer = new FileExplorer(tabInterface.Launcher, FileExplorer.Mode.OPEN)
@@ -466,6 +518,9 @@ namespace source_modding_tool
                 tabInterface.Textures[tag].relativePath = file.FullPath;
                 tabInterface.Textures[tag].bytes = file.Data;
                 tabInterface.Textures[tag].bitmap = VTF.ToBitmap(file.Data, tabInterface.Launcher);
+
+                if (tabInterface.PictureEdits[tag].Image != null)
+                    tabInterface.PictureEdits[tag].Image.Dispose();
 
                 if (tabInterface.Textures[tag].bitmap != null)
                     tabInterface.PictureEdits[tag].Image = tabInterface.Textures[tag].bitmap;
