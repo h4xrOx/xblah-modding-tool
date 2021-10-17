@@ -152,10 +152,29 @@ namespace SourceSDK
                                 if (steamAppIdKV != null)
                                     modAppId = steamAppIdKV.getValue();
 
-                                /*if (modAppId == 380 || // HL2:EP1 games
-                                    modAppId == 420
+                                // Special cases
+                                if (modAppId == "220" && new DirectoryInfo(path).Name == "hl2") // HL2
+                                {
+                                    name = "Half-Life 2 (" + new DirectoryInfo(path).Name + ")";
+                                }
 
-                                    )*/
+                                if (modAppId == "380") // HL2:EP1
+                                {
+                                    modAppId = "220";
+                                    name = "Half-Life 2: Episode One (" + new DirectoryInfo(path).Name + ")";
+                                } 
+
+                                if (modAppId == "420") // HL2:EP2
+                                {
+                                    modAppId = "220";
+                                    name = "Half-Life 2: Episode Two (" + new DirectoryInfo(path).Name + ")";
+                                }
+
+                                if (modAppId == "240" && new DirectoryInfo(path).Name == "hl1") // HL:S
+                                {
+                                    modAppId = "220";
+                                    name = "Half-Life: Source (" + new DirectoryInfo(path).Name + ")";
+                                }
 
                                 if (modAppId == "243730")
                                 {
