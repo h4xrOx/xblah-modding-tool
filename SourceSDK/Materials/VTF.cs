@@ -1,6 +1,10 @@
-﻿using System.Diagnostics;
+﻿using SourceSDK.Materials.VTFFile;
+using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace SourceSDK.Materials
 {
@@ -62,31 +66,39 @@ namespace SourceSDK.Materials
             if (vtf == null || vtf.Length == 0 || launcher == null)
                 return null;
 
-            string gamePath = launcher.GetCurrentGame().InstallPath;
-            string modPath = launcher.GetCurrentMod().InstallPath;
-            string filePath = modPath + "\\materials";
+            MemoryStream memoryStream = new MemoryStream(vtf);
 
-            string vtf2tgaPath = gamePath + "\\bin\\vtf2tga.exe";
+            VtfFile vtfFile = new VtfFile(memoryStream);
+            VtfImage vtfImage = vtfFile.Images[vtfFile.Images.Count - 1];
 
-            Directory.CreateDirectory(filePath);
-            File.WriteAllBytes(filePath + "\\temp.vtf", vtf);
+            var bitmap = ByteArrayToBitmap(vtfImage.GetBgra32Data(), vtfImage.Width, vtfImage.Height);
+            return bitmap;
+        }
 
-            Process process = new Process();
-            process.StartInfo.FileName = vtf2tgaPath;
-            process.StartInfo.Arguments = "-i temp -o temp";
-            process.StartInfo.WorkingDirectory = filePath;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.Start();
-            process.WaitForExit();
+        private static byte[] BitmapToByteArray(Bitmap bitmap)
+        {
+            BitmapData bmpdata = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            int numbytes = bmpdata.Stride * bitmap.Height;
+            byte[] bytedata = new byte[numbytes];
+            IntPtr ptr = bmpdata.Scan0;
 
-            if (!File.Exists(filePath + "\\temp.tga"))
-                return null;
+            Marshal.Copy(ptr, bytedata, 0, numbytes);
 
-            Bitmap src = TGA.FromFile(filePath + "\\temp.tga").ToBitmap(true);
-            File.Delete(filePath + "\\temp.tga");
-            File.Delete(filePath + "\\temp.vtf");
+            bitmap.UnlockBits(bmpdata);
 
-            return src;
+            return bytedata;
+        }
+
+        private static Bitmap ByteArrayToBitmap(byte[] bytedata, int width, int height)
+        {
+            Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            BitmapData bmpdata = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            int numbytes = bmpdata.Stride * bitmap.Height;
+            IntPtr ptr = bmpdata.Scan0;
+
+            Marshal.Copy(bytedata, 0, ptr, numbytes);
+            bitmap.UnlockBits(bmpdata);
+            return bitmap;
         }
     }
 }

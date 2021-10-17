@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,11 +30,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +53,15 @@
     <Compile Include="KeyCode.cs" />
     <Compile Include="Maps\BSP.cs" />
     <Compile Include="Maps\MAP.cs" />
+    <Compile Include="Materials\VTFFile\DxtFormat.cs" />
+    <Compile Include="Materials\VTFFile\VtfFile.cs" />
+    <Compile Include="Materials\VTFFile\VtfHeader.cs" />
+    <Compile Include="Materials\VTFFile\VtfImage.cs" />
+    <Compile Include="Materials\VTFFile\VtfImageFlag.cs" />
+    <Compile Include="Materials\VTFFile\VtfImageFormat.cs" />
+    <Compile Include="Materials\VTFFile\VtfImageFormatInfo.cs" />
+    <Compile Include="Materials\VTFFile\VtfResource.cs" />
+    <Compile Include="Materials\VTFFile\VtfResourceType.cs" />
     <Compile Include="Packages\PackageArchive.cs" />
     <Compile Include="Packages\PackageDirectory.cs" />
     <Compile Include="Packages\PackageFile.cs" />
@@ -69,6 +84,8 @@
     <Compile Include="Scripts\SurfaceProperty.cs" />
     <Compile Include="Sounds\Soundscape.cs" />
     <Compile Include="Sounds\SoundscapeRule.cs" />
+    <Compile Include="Utils\BinaryExtensions.cs" />
+    <Compile Include="Utils\ConcatStream.cs" />
     <Compile Include="Utils\GaussianBlur.cs" />
     <Compile Include="KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,7 +106,14 @@
     <Compile Include="Libraries.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="RunPreset.cs" />
+    <Compile Include="Utils\NumericsExtensions.cs" />
+    <Compile Include="Utils\Precision\PrecisionVector3.cs" />
     <Compile Include="Utils\SteamShortcuts.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="Utils\SubStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
