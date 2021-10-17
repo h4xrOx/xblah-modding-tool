@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SourceSDK
@@ -75,6 +76,8 @@ namespace SourceSDK
                     break;
                 }
             }
+
+            games = games.OrderBy(m => m.Key).ToDictionary(m => m.Key, m => m.Value);
 
             return games;
         }

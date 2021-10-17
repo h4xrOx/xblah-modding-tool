@@ -320,6 +320,8 @@ namespace SourceSDK
                 }
             }
 
+            Mods = Mods.OrderBy(m => m.Key).ToDictionary(m => m.Key, m => m.Value);
+
             return Mods;
         }
 
