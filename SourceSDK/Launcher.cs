@@ -12,6 +12,7 @@ namespace SourceSDK
 
         public Libraries libraries;
         Dictionary<string, Game> games;
+        public List<string> ReleasedModsDirectories;
 
         public Launcher()
         {
@@ -22,42 +23,51 @@ namespace SourceSDK
         private Dictionary<string, Game> LoadGames()
         {
             games = new Dictionary<string, Game>();
+            ReleasedModsDirectories = new List<string>();
+
             foreach (string library in libraries.GetList())
             {
                 if (Directory.Exists(library + "\\steamapps\\common\\"))
                     foreach (string path in Directory.GetDirectories(library + "\\steamapps\\common\\"))
                     {
-                        string game = new FileInfo(path).Name;
+                        string key = new FileInfo(path).Name;
 
-                        if (File.Exists(library + "\\steamapps\\common\\" + game + "\\bin\\engine.dll") && !games.ContainsKey(game))
+                        if (File.Exists(library + "\\steamapps\\common\\" + key + "\\bin\\engine.dll") && !games.ContainsKey(key))
                         {
                             // It's a Source game
-                            switch (game)
+
+                            Game game = new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE);
+                            if (game.GetAppId() == 243730 && key != "Source SDK Base 2013 Singleplayer")
+                            {
+                                // This is actually a wrapper for a SDK2013 mod, and should be treated as such.
+                                ReleasedModsDirectories.Add(library + "\\steamapps\\common\\" + key);
+                                continue;
+                            }
+                            switch (key)
                             {
                                 case "half-life 2":
                                     {
-                                        games.Add("Half-Life 2", new Game("Half-Life 2", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
-                                        games.Add("Half-Life 2: Episode One", new Game("Half-Life 2: Episode One", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
-                                        games.Add("Half-Life 2: Episode Two", new Game("Half-Life 2: Episode Two", library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                        game.Name = "Half-Life 2";
+                                        games.Add("Half-Life 2", game);
                                     }
                                     break;
                                 default:
                                     {
-                                        games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE));
+                                        games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE));
 
                                     }
                                     break;
                             }
                         }
-                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(game))
+                        else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(key))
                         {
                             // It's a Source 2 game
-                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.SOURCE2));
+                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE2));
                         }
-                        else if (File.Exists(library + "\\steamapps\\common\\" + game + "\\valve\\dlls\\hl.dll") && !games.ContainsKey(game))
+                        else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\valve\\dlls\\hl.dll") && !games.ContainsKey(key))
                         {
                             // It's a Goldsrc game
-                            games.Add(game, new Game(game, library + "\\steamapps\\common\\" + game, Engine.GOLDSRC));
+                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.GOLDSRC));
                         }
                     }
             }

@@ -119,16 +119,29 @@ namespace SourceSDK
             switch (EngineID)
             {
                 case Engine.SOURCE:
-                    paths.AddRange(GetAllModPaths(launcher));
-
                     foreach (string path in GetAllBaseGameinfoFolders())
                         paths.Add(gamePath + "\\" + path);
-                    break;
-                case Engine.SOURCE2:
+
                     paths.AddRange(GetAllModPaths(launcher));
 
+                    // Add Steam released mods.
+                    foreach (string gamedirectory in launcher.ReleasedModsDirectories)
+                    {
+                        foreach (string path in Directory.GetDirectories(gamedirectory))
+                        {
+                            string gameBranch = new FileInfo(path).Name;
+
+                            if (File.Exists(path + "\\gameinfo.txt"))
+                                paths.Add(path);
+                        }
+                    }
+                    
+                    break;
+                case Engine.SOURCE2:
                     foreach (string path in GetAllBaseGameinfoFolders())
                         paths.Add(gamePath + "\\game\\" + path);
+
+                    paths.AddRange(GetAllModPaths(launcher));
                     break;
                 case Engine.GOLDSRC:
                     foreach (string path in GetAllBaseGameinfoFolders())
@@ -195,6 +208,9 @@ namespace SourceSDK
                                             }
                                         }
                                 }
+
+                                // Mods with SDK2013 app id will only show under SDK2013.
+                                // This is because some mods get released on Steam and they don't use their custom app id, which breaks stuff.
 
                                 if (int.Parse(modAppId) == gameAppId || path.Contains(gamePath) && !(Mods.Values.Where(p => p.InstallPath == path).ToList().Count == 0))
                                 {
