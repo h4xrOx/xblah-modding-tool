@@ -1153,7 +1153,7 @@
             // 
             this.menuModelingEditor2.Caption = "Editor";
             this.menuModelingEditor2.Id = 111;
-            this.menuModelingEditor2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingEditor.ImageOptions.SvgImage")));
+            this.menuModelingEditor2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingEditor2.ImageOptions.SvgImage")));
             this.menuModelingEditor2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingPropper)});
             this.menuModelingEditor2.Name = "menuModelingEditor2";
