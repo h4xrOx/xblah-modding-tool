@@ -32,6 +32,11 @@ namespace SourceSDK
                     {
                         string key = new FileInfo(path).Name;
 
+                        // Entropy zero special case
+                        if (key == "Entropy Zero" && File.Exists(path + "\\Entropy Zero\\EntropyZero\\gameinfo.txt")) {
+                            ReleasedModsDirectories.Add(path + "\\Entropy Zero");
+                        }
+
                         if (File.Exists(library + "\\steamapps\\common\\" + key + "\\bin\\engine.dll") && !games.ContainsKey(key))
                         {
                             // It's a Source game
