@@ -27,19 +27,50 @@ namespace source_modding_tool.Modding
 
         bool newPreset = false;
 
-        string PRESET_PATH = Launcher.UserDirectory + "Configs\\RunPresets.cfg";
-        string DEFAULT_PRESET_PATH = Launcher.ApplicationDirectory + "Configs\\RunPresets_default.cfg";
+        static string PRESET_PATH = Launcher.UserDirectory + "Configs\\RunPresets.cfg";
+        static string DEFAULT_PRESET_PATH = Launcher.ApplicationDirectory + "Configs\\RunPresets_default.cfg";
 
         public RunDialog(Launcher launcher)
         {
             InitializeComponent();
 
-            string path = Launcher.UserDirectory;
-            System.Diagnostics.Debugger.Break();
-
             this.launcher = launcher;
             LoadPresets();
             splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel1;
+        }
+
+        public static List<RunPreset> GetPresets(Launcher launcher)
+        {
+            if (!File.Exists(PRESET_PATH) && File.Exists(DEFAULT_PRESET_PATH))
+            {
+                Directory.CreateDirectory(new FileInfo(PRESET_PATH).DirectoryName);
+                File.Copy(DEFAULT_PRESET_PATH, PRESET_PATH);
+            }
+
+            SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(PRESET_PATH);
+
+            List<RunPreset> availablePresets = new List<RunPreset>();
+
+            foreach (SourceSDK.KeyValue kv in root.getChildren())
+            {
+                RunPreset preset = new RunPreset();
+                preset.name = (kv.getValue("name") != string.Empty ? kv.getValue("name") : kv.getKey());
+                preset.engine = kv.getValue("engine");
+                preset.game = kv.getValue("game");
+                preset.mod = kv.getValue("mod");
+                preset.exePath = kv.getValue("exe");
+                preset.command = kv.getValue("command");
+                preset.runMode = RunMode.FromString(kv.findChildByKey("runmode").getValue());
+
+                if (
+                    (preset.mod == string.Empty || preset.mod == new DirectoryInfo(launcher.GetCurrentMod().InstallPath).Name) &&
+                    (preset.game == string.Empty || preset.game == launcher.GetCurrentGame().Name) &&
+                    (preset.engine == string.Empty || preset.engine == Engine.ToString(launcher.GetCurrentGame().EngineID))
+                )
+                    availablePresets.Add(preset);
+            }
+
+            return availablePresets;
         }
 
         private void LoadPresets()
@@ -78,6 +109,8 @@ namespace source_modding_tool.Modding
             }
 
             updatePresetCombo();
+
+            deleteButton.Enabled = (presetCombo.SelectedIndex != 0);
         }
 
         private void SavePresets()
@@ -190,6 +223,8 @@ namespace source_modding_tool.Modding
                     SavePresets();
                 }
             }
+
+            deleteButton.Enabled = (presetCombo.SelectedIndex != 0);
         }
 
         private void presetOptions_Click(object sender, EventArgs e)
@@ -289,6 +324,11 @@ namespace source_modding_tool.Modding
             {
                 presetExecutableText.EditValue = dialog.FileName;
             }
+        }
+
+        private void presetCombo_EditValueChanged(object sender, EventArgs e)
+        {
+            deleteButton.Enabled = (presetCombo.SelectedIndex != 0);
         }
     }
 }

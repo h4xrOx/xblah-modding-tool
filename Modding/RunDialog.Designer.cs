@@ -119,6 +119,7 @@
             this.presetCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.presetCombo.Size = new System.Drawing.Size(112, 20);
             this.presetCombo.TabIndex = 0;
+            this.presetCombo.EditValueChanged += new System.EventHandler(this.presetCombo_EditValueChanged);
             // 
             // okButton
             // 

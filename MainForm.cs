@@ -388,27 +388,16 @@ namespace source_modding_tool
         private void menuModdingRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Run
+            if (e.Item.Tag is RunPreset)
+            {
+                Run(e.Item.Tag as RunPreset, "");
+                return;
+            }
+
             if (e.Item == toolsRun)
             {
-                Run(RunMode.DEFAULT, "");
-            }
-
-            // Run fullscreen
-            if (e.Item == menuModdingRunFullscreen || e.Item == toolsRunPopupRunFullscreen)
-            {
-                Run(RunMode.FULLSCREEN, "");
-            }
-
-            // Run Windowed
-            else if (e.Item == menuModdingRunWindowed || e.Item == toolsRunPopupRunWindowed)
-            {
-                Run(RunMode.WINDOWED, "");
-            }
-
-            // Run VR
-            if (e.Item == menuModdingRunVR || e.Item == toolsRunPopupRunVR)
-            {
-                Run(RunMode.VR, "");
+                List<RunPreset> runPresets = RunDialog.GetPresets(launcher);
+                Run(runPresets[0], "");
             }
 
             // Expert mode
@@ -542,9 +531,6 @@ namespace source_modding_tool
 
             modProcessUpdater.Enabled = true;
             toolsRun.Enabled = false;
-            menuModdingRunFullscreen.Enabled = false;
-            menuModdingRunWindowed.Enabled = false;
-            menuModdingIngameTools.Enabled = false;
             menuModdingDelete.Enabled = false;
             toolsStop.Visibility = BarItemVisibility.Always;
             toolsReload.Visibility = BarItemVisibility.Always;
@@ -579,9 +565,6 @@ namespace source_modding_tool
                 MaximizeBox = true;
 
                 toolsRun.Enabled = true;
-                menuModdingRunFullscreen.Enabled = true;
-                menuModdingRunWindowed.Enabled = true;
-                menuModdingIngameTools.Enabled = true;
                 menuModdingDelete.Enabled = true;
                 toolsStop.Visibility = BarItemVisibility.Never;
                 toolsReload.Visibility = BarItemVisibility.Never;
@@ -656,16 +639,8 @@ namespace source_modding_tool
             {
                 case Engine.SOURCE:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        toolsRunPopupIngameTools.Enabled = true;
-                        toolsRunPopupRunFullscreen.Enabled = true;
-                        toolsRunPopupRunVR.Enabled = true;
-                        toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRun.Enabled = true;
-                            menuModdingRunFullscreen.Enabled = true;
-                            menuModdingRunWindowed.Enabled = true;
-                            menuModdingRunVR.Enabled = true;
-                            menuModdingIngameTools.Enabled = true;
+                        menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = true;
                         menuModdingImport.Enabled = true;
@@ -709,7 +684,7 @@ namespace source_modding_tool
                         menuLevelDesignDecompile.Enabled = false;
                         menuModelingPropper.Enabled = false;
                         toolsRun.Enabled = false;
-                        menuModdingRun.Enabled = false;
+                        menuModdingRunExpert.Enabled = false;
                         menuChoreography.Enabled = false;
                         menuMaterials.Enabled = false;
                         menuModeling.Enabled = false;
@@ -720,16 +695,8 @@ namespace source_modding_tool
                     break;
                 case Engine.SOURCE2:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        toolsRunPopupIngameTools.Enabled = false;
-                        toolsRunPopupRunFullscreen.Enabled = true;
-                        toolsRunPopupRunVR.Enabled = true;
-                        toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRun.Enabled = true;
-                            menuModdingRunFullscreen.Enabled = true;
-                            menuModdingRunWindowed.Enabled = true;
-                            menuModdingRunVR.Enabled = true;
-                            menuModdingIngameTools.Enabled = false;
+                        menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;
@@ -770,16 +737,8 @@ namespace source_modding_tool
                     break;
                 case Engine.GOLDSRC:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        toolsRunPopupIngameTools.Enabled = false;
-                        toolsRunPopupRunFullscreen.Enabled = true;
-                        toolsRunPopupRunVR.Enabled = false;
-                        toolsRunPopupRunWindowed.Enabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
-                        menuModdingRun.Enabled = true;
-                            menuModdingRunFullscreen.Enabled = true;
-                            menuModdingRunWindowed.Enabled = true;
-                            menuModdingRunVR.Enabled = false;
-                            menuModdingIngameTools.Enabled = false;
+                        menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = false;
                         menuModdingAssets.Enabled = false;
                         menuModdingImport.Enabled = false;
@@ -818,7 +777,6 @@ namespace source_modding_tool
                     menuScripts.Enabled = false;
                     break;
             }
-
         }
 
         private void toolsStop_ItemClick(object sender, ItemClickEventArgs e)
@@ -958,6 +916,25 @@ namespace source_modding_tool
         {
             PrefabsWorkshop form = new PrefabsWorkshop();
             form.Show();
+        }
+
+        private void toolsRunPopup_BeforePopup(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Run presets
+            List<RunPreset> runPresets = RunDialog.GetPresets(launcher);
+
+            toolsRunPopup.ItemLinks.Clear();
+
+            foreach (RunPreset runPreset in runPresets)
+            {
+                BarButtonItem item = new BarButtonItem(barManager, runPreset.name);
+                item.ItemClick += menuModdingRun_ItemClick;
+                item.Tag = runPreset;
+                toolsRunPopup.AddItem(item);
+            }
+
+            BarItemLink link = toolsRunPopup.AddItem(toolsRunPopupExpert);
+            link.BeginGroup = true;
         }
     }
 }
