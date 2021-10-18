@@ -414,7 +414,7 @@
             // 
             this.toolsGames.Caption = "barEditItem1";
             this.toolsGames.Edit = this.repositoryGamesCombo;
-            this.toolsGames.EditWidth = 192;
+            this.toolsGames.EditWidth = 224;
             this.toolsGames.Id = 124;
             this.toolsGames.Name = "toolsGames";
             this.toolsGames.EditValueChanged += new System.EventHandler(this.toolsGames_EditValueChanged);
@@ -486,7 +486,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunFullscreen),
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunWindowed),
             new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupRunVR),
-            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupExpert)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.toolsRunPopupExpert, true)});
             this.toolsRunPopup.Manager = this.barManager;
             this.toolsRunPopup.Name = "toolsRunPopup";
             // 

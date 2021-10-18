@@ -139,6 +139,12 @@
     <Compile Include="File\LibrariesForm.Designer.cs">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LevelDesign\CompileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelDesign\CompileForm.Designer.cs">
+      <DependentUpon>CompileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LevelDesign\FogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +311,9 @@
     <EmbeddedResource Include="File\LibrariesForm.resx">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LevelDesign\CompileForm.resx">
+      <DependentUpon>CompileForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\FogForm.resx">
       <DependentUpon>FogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,7 +414,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\RunPresets_default.cfg">
+    <None Include="Resources\Configs\RunPresets_default.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Templates\Half-Life Alyx\hlvr\cfg\actions.json">

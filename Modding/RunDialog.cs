@@ -27,11 +27,15 @@ namespace source_modding_tool.Modding
 
         bool newPreset = false;
 
-        string PRESET_PATH = AppDomain.CurrentDomain.BaseDirectory + "RunPresets.cfg";
+        string PRESET_PATH = Launcher.UserDirectory + "Configs\\RunPresets.cfg";
+        string DEFAULT_PRESET_PATH = Launcher.ApplicationDirectory + "Configs\\RunPresets_default.cfg";
 
         public RunDialog(Launcher launcher)
         {
             InitializeComponent();
+
+            string path = Launcher.UserDirectory;
+            System.Diagnostics.Debugger.Break();
 
             this.launcher = launcher;
             LoadPresets();
@@ -40,8 +44,11 @@ namespace source_modding_tool.Modding
 
         private void LoadPresets()
         {
-            if (!File.Exists(PRESET_PATH) && File.Exists(PRESET_PATH.Replace(".cfg", "_default.cfg")))
-                    File.Copy(PRESET_PATH.Replace(".cfg", "_default.cfg"), PRESET_PATH);
+            if (!File.Exists(PRESET_PATH) && File.Exists(DEFAULT_PRESET_PATH)) 
+            {
+                Directory.CreateDirectory(new FileInfo(PRESET_PATH).DirectoryName);
+                File.Copy(DEFAULT_PRESET_PATH, PRESET_PATH);
+            }
 
             SourceSDK.KeyValue root = SourceSDK.KeyValue.readChunkfile(PRESET_PATH);
 

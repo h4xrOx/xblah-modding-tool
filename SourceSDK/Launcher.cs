@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,17 @@ namespace SourceSDK
 {
     public class Launcher
     {
+        /// <summary>
+        /// Gets the user directory.
+        /// </summary>
+        public static string UserDirectory => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + Application.ProductName + "\\";
+
+        /// <summary>
+        /// Gets the application directory.
+        /// </summary>
+        public static string ApplicationDirectory => AppDomain.CurrentDomain.BaseDirectory;
+
+
         Game currentGame = null;
 
         public Libraries libraries;
