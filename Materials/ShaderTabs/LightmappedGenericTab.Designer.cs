@@ -366,6 +366,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchNoCull
             // 
+            this.switchNoCull.EditValue = true;
             this.switchNoCull.Location = new System.Drawing.Point(118, 483);
             this.switchNoCull.MenuManager = this.barManager;
             this.switchNoCull.Name = "switchNoCull";
@@ -562,7 +563,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoCull.Location = new System.Drawing.Point(0, 156);
             this.layoutNoCull.Name = "layoutNoCull";
             this.layoutNoCull.Size = new System.Drawing.Size(226, 24);
-            this.layoutNoCull.Text = "Backface";
+            this.layoutNoCull.Text = "Backface culling";
             this.layoutNoCull.TextSize = new System.Drawing.Size(82, 13);
             // 
             // layoutTransparencyMask

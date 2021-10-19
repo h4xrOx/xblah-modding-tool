@@ -41,7 +41,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.switchHalfLambert = new DevExpress.XtraEditors.ToggleSwitch();
+            this.switchEnvMap = new DevExpress.XtraEditors.ToggleSwitch();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -54,6 +54,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureBaseTexture = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.pictureBumpMap = new DevExpress.XtraEditors.PictureEdit();
+            this.switchHalfLambert = new DevExpress.XtraEditors.ToggleSwitch();
             this.switchSelfIllum = new DevExpress.XtraEditors.ToggleSwitch();
             this.switchNoCull = new DevExpress.XtraEditors.ToggleSwitch();
             this.switchAlphaTest = new DevExpress.XtraEditors.ToggleSwitch();
@@ -77,16 +78,16 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBumpMap = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutSelfIllum = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutHalfLambert = new DevExpress.XtraLayout.LayoutControlItem();
-            this.switchEnvMap = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutEnvMap = new DevExpress.XtraLayout.LayoutControlItem();
             this.reflectionGroup = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutEnvMap = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.switchHalfLambert.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBumpMap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchHalfLambert.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchSelfIllum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoCull.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchAlphaTest.Properties)).BeginInit();
@@ -110,9 +111,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutHalfLambert)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -135,17 +135,17 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl1";
             // 
-            // switchHalfLambert
+            // switchEnvMap
             // 
-            this.switchHalfLambert.Location = new System.Drawing.Point(118, 190);
-            this.switchHalfLambert.MenuManager = this.barManager;
-            this.switchHalfLambert.Name = "switchHalfLambert";
-            this.switchHalfLambert.Properties.OffText = "Off";
-            this.switchHalfLambert.Properties.OnText = "On";
-            this.switchHalfLambert.Size = new System.Drawing.Size(128, 20);
-            this.switchHalfLambert.StyleController = this.layoutControl;
-            this.switchHalfLambert.TabIndex = 13;
-            this.switchHalfLambert.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            this.switchEnvMap.Location = new System.Drawing.Point(112, 509);
+            this.switchEnvMap.MenuManager = this.barManager;
+            this.switchEnvMap.Name = "switchEnvMap";
+            this.switchEnvMap.Properties.OffText = "Off";
+            this.switchEnvMap.Properties.OnText = "On";
+            this.switchEnvMap.Size = new System.Drawing.Size(128, 20);
+            this.switchEnvMap.StyleController = this.layoutControl;
+            this.switchEnvMap.TabIndex = 14;
+            this.switchEnvMap.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
             // 
             // barManager
             // 
@@ -229,7 +229,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureBaseTexture
             // 
             this.pictureBaseTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBaseTexture.Location = new System.Drawing.Point(118, -341);
+            this.pictureBaseTexture.Location = new System.Drawing.Point(112, -71);
             this.pictureBaseTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBaseTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBaseTexture.MenuManager = this.barManager;
@@ -262,7 +262,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureBumpMap
             // 
             this.pictureBumpMap.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBumpMap.Location = new System.Drawing.Point(118, 34);
+            this.pictureBumpMap.Location = new System.Drawing.Point(112, 280);
             this.pictureBumpMap.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBumpMap.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBumpMap.MenuManager = this.barManager;
@@ -282,9 +282,21 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureBumpMap.TabIndex = 11;
             this.pictureBumpMap.Tag = "bumpmap";
             // 
+            // switchHalfLambert
+            // 
+            this.switchHalfLambert.Location = new System.Drawing.Point(112, 436);
+            this.switchHalfLambert.MenuManager = this.barManager;
+            this.switchHalfLambert.Name = "switchHalfLambert";
+            this.switchHalfLambert.Properties.OffText = "Off";
+            this.switchHalfLambert.Properties.OnText = "On";
+            this.switchHalfLambert.Size = new System.Drawing.Size(128, 20);
+            this.switchHalfLambert.StyleController = this.layoutControl;
+            this.switchHalfLambert.TabIndex = 13;
+            this.switchHalfLambert.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            // 
             // switchSelfIllum
             // 
-            this.switchSelfIllum.Location = new System.Drawing.Point(118, 166);
+            this.switchSelfIllum.Location = new System.Drawing.Point(112, 412);
             this.switchSelfIllum.MenuManager = this.barManager;
             this.switchSelfIllum.Name = "switchSelfIllum";
             this.switchSelfIllum.Properties.OffText = "Off";
@@ -296,7 +308,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchNoCull
             // 
-            this.switchNoCull.Location = new System.Drawing.Point(118, -39);
+            this.switchNoCull.EditValue = true;
+            this.switchNoCull.Location = new System.Drawing.Point(112, 207);
             this.switchNoCull.MenuManager = this.barManager;
             this.switchNoCull.Name = "switchNoCull";
             this.switchNoCull.Properties.OffText = "Off";
@@ -308,7 +321,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchAlphaTest
             // 
-            this.switchAlphaTest.Location = new System.Drawing.Point(118, -63);
+            this.switchAlphaTest.Location = new System.Drawing.Point(112, 183);
             this.switchAlphaTest.MenuManager = this.barManager;
             this.switchAlphaTest.Name = "switchAlphaTest";
             this.switchAlphaTest.Properties.OffText = "Off";
@@ -321,7 +334,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureToolTexture
             // 
             this.pictureToolTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureToolTexture.Location = new System.Drawing.Point(118, 409);
+            this.pictureToolTexture.Location = new System.Drawing.Point(112, 655);
             this.pictureToolTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureToolTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureToolTexture.MinimumSize = new System.Drawing.Size(128, 128);
@@ -342,7 +355,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // switchNoFog
             // 
             this.switchNoFog.EditValue = true;
-            this.switchNoFog.Location = new System.Drawing.Point(118, 336);
+            this.switchNoFog.Location = new System.Drawing.Point(112, 582);
             this.switchNoFog.Name = "switchNoFog";
             this.switchNoFog.Properties.OffText = "Off";
             this.switchNoFog.Properties.OnText = "On";
@@ -355,7 +368,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // editColor
             // 
             this.editColor.EditValue = System.Drawing.Color.White;
-            this.editColor.Location = new System.Drawing.Point(118, -136);
+            this.editColor.Location = new System.Drawing.Point(112, 110);
             this.editColor.Name = "editColor";
             this.editColor.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.editColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -380,15 +393,15 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.lightingGroup,
             this.reflectionGroup});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(270, 961);
+            this.Root.Size = new System.Drawing.Size(264, 937);
             this.Root.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 931);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 907);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(250, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(244, 10);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // basicsGroup
@@ -397,7 +410,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBaseTexture});
             this.basicsGroup.Location = new System.Drawing.Point(0, 0);
             this.basicsGroup.Name = "basicsGroup";
-            this.basicsGroup.Size = new System.Drawing.Size(250, 205);
+            this.basicsGroup.Size = new System.Drawing.Size(244, 181);
             this.basicsGroup.Text = "Basics";
             // 
             // layoutBaseTexture
@@ -405,17 +418,17 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBaseTexture.Control = this.pictureBaseTexture;
             this.layoutBaseTexture.Location = new System.Drawing.Point(0, 0);
             this.layoutBaseTexture.Name = "layoutBaseTexture";
-            this.layoutBaseTexture.Size = new System.Drawing.Size(226, 132);
+            this.layoutBaseTexture.Size = new System.Drawing.Size(220, 132);
             this.layoutBaseTexture.Text = "Albedo";
-            this.layoutBaseTexture.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutBaseTexture.TextSize = new System.Drawing.Size(76, 13);
             // 
             // adjustmentGroup
             // 
             this.adjustmentGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutColor});
-            this.adjustmentGroup.Location = new System.Drawing.Point(0, 205);
+            this.adjustmentGroup.Location = new System.Drawing.Point(0, 181);
             this.adjustmentGroup.Name = "adjustmentGroup";
-            this.adjustmentGroup.Size = new System.Drawing.Size(250, 73);
+            this.adjustmentGroup.Size = new System.Drawing.Size(244, 73);
             this.adjustmentGroup.Text = "Adjustment";
             // 
             // layoutColor
@@ -423,17 +436,17 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutColor.Control = this.editColor;
             this.layoutColor.Location = new System.Drawing.Point(0, 0);
             this.layoutColor.Name = "layoutColor";
-            this.layoutColor.Size = new System.Drawing.Size(226, 24);
+            this.layoutColor.Size = new System.Drawing.Size(220, 24);
             this.layoutColor.Text = "Color";
-            this.layoutColor.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutColor.TextSize = new System.Drawing.Size(76, 13);
             // 
             // effectGroup
             // 
             this.effectGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutNoFog});
-            this.effectGroup.Location = new System.Drawing.Point(0, 677);
+            this.effectGroup.Location = new System.Drawing.Point(0, 653);
             this.effectGroup.Name = "effectGroup";
-            this.effectGroup.Size = new System.Drawing.Size(250, 73);
+            this.effectGroup.Size = new System.Drawing.Size(244, 73);
             this.effectGroup.Text = "Effect";
             // 
             // layoutNoFog
@@ -441,17 +454,17 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoFog.Control = this.switchNoFog;
             this.layoutNoFog.Location = new System.Drawing.Point(0, 0);
             this.layoutNoFog.Name = "layoutNoFog";
-            this.layoutNoFog.Size = new System.Drawing.Size(226, 24);
+            this.layoutNoFog.Size = new System.Drawing.Size(220, 24);
             this.layoutNoFog.Text = "Affected by fog";
-            this.layoutNoFog.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutNoFog.TextSize = new System.Drawing.Size(76, 13);
             // 
             // editorGroup
             // 
             this.editorGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutToolTexture});
-            this.editorGroup.Location = new System.Drawing.Point(0, 750);
+            this.editorGroup.Location = new System.Drawing.Point(0, 726);
             this.editorGroup.Name = "editorGroup";
-            this.editorGroup.Size = new System.Drawing.Size(250, 181);
+            this.editorGroup.Size = new System.Drawing.Size(244, 181);
             this.editorGroup.Text = "Editor";
             // 
             // layoutToolTexture
@@ -459,18 +472,18 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutToolTexture.Control = this.pictureToolTexture;
             this.layoutToolTexture.Location = new System.Drawing.Point(0, 0);
             this.layoutToolTexture.Name = "layoutToolTexture";
-            this.layoutToolTexture.Size = new System.Drawing.Size(226, 132);
+            this.layoutToolTexture.Size = new System.Drawing.Size(220, 132);
             this.layoutToolTexture.Text = "Tool texture";
-            this.layoutToolTexture.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutToolTexture.TextSize = new System.Drawing.Size(76, 13);
             // 
             // transparencyGroup
             // 
             this.transparencyGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutAlphaTest,
             this.layoutNoCull});
-            this.transparencyGroup.Location = new System.Drawing.Point(0, 278);
+            this.transparencyGroup.Location = new System.Drawing.Point(0, 254);
             this.transparencyGroup.Name = "transparencyGroup";
-            this.transparencyGroup.Size = new System.Drawing.Size(250, 97);
+            this.transparencyGroup.Size = new System.Drawing.Size(244, 97);
             this.transparencyGroup.Text = "Transparency";
             // 
             // layoutAlphaTest
@@ -478,18 +491,18 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutAlphaTest.Control = this.switchAlphaTest;
             this.layoutAlphaTest.Location = new System.Drawing.Point(0, 0);
             this.layoutAlphaTest.Name = "layoutAlphaTest";
-            this.layoutAlphaTest.Size = new System.Drawing.Size(226, 24);
+            this.layoutAlphaTest.Size = new System.Drawing.Size(220, 24);
             this.layoutAlphaTest.Text = "Transparent";
-            this.layoutAlphaTest.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutAlphaTest.TextSize = new System.Drawing.Size(76, 13);
             // 
             // layoutNoCull
             // 
             this.layoutNoCull.Control = this.switchNoCull;
             this.layoutNoCull.Location = new System.Drawing.Point(0, 24);
             this.layoutNoCull.Name = "layoutNoCull";
-            this.layoutNoCull.Size = new System.Drawing.Size(226, 24);
-            this.layoutNoCull.Text = "Backface";
-            this.layoutNoCull.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutNoCull.Size = new System.Drawing.Size(220, 24);
+            this.layoutNoCull.Text = "Backface culling";
+            this.layoutNoCull.TextSize = new System.Drawing.Size(76, 13);
             // 
             // lightingGroup
             // 
@@ -497,9 +510,9 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBumpMap,
             this.layoutSelfIllum,
             this.layoutHalfLambert});
-            this.lightingGroup.Location = new System.Drawing.Point(0, 375);
+            this.lightingGroup.Location = new System.Drawing.Point(0, 351);
             this.lightingGroup.Name = "lightingGroup";
-            this.lightingGroup.Size = new System.Drawing.Size(250, 229);
+            this.lightingGroup.Size = new System.Drawing.Size(244, 229);
             this.lightingGroup.Text = "Lighting";
             // 
             // layoutBumpMap
@@ -507,57 +520,45 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBumpMap.Control = this.pictureBumpMap;
             this.layoutBumpMap.Location = new System.Drawing.Point(0, 0);
             this.layoutBumpMap.Name = "layoutBumpMap";
-            this.layoutBumpMap.Size = new System.Drawing.Size(226, 132);
+            this.layoutBumpMap.Size = new System.Drawing.Size(220, 132);
             this.layoutBumpMap.Text = "Bump map";
-            this.layoutBumpMap.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutBumpMap.TextSize = new System.Drawing.Size(76, 13);
             // 
             // layoutSelfIllum
             // 
             this.layoutSelfIllum.Control = this.switchSelfIllum;
             this.layoutSelfIllum.Location = new System.Drawing.Point(0, 132);
             this.layoutSelfIllum.Name = "layoutSelfIllum";
-            this.layoutSelfIllum.Size = new System.Drawing.Size(226, 24);
+            this.layoutSelfIllum.Size = new System.Drawing.Size(220, 24);
             this.layoutSelfIllum.Text = "Self illumination";
-            this.layoutSelfIllum.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutSelfIllum.TextSize = new System.Drawing.Size(76, 13);
             // 
             // layoutHalfLambert
             // 
             this.layoutHalfLambert.Control = this.switchHalfLambert;
             this.layoutHalfLambert.Location = new System.Drawing.Point(0, 156);
             this.layoutHalfLambert.Name = "layoutHalfLambert";
-            this.layoutHalfLambert.Size = new System.Drawing.Size(226, 24);
+            this.layoutHalfLambert.Size = new System.Drawing.Size(220, 24);
             this.layoutHalfLambert.Text = "Wrap lighting";
-            this.layoutHalfLambert.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutHalfLambert.TextSize = new System.Drawing.Size(76, 13);
             // 
-            // switchEnvMap
+            // reflectionGroup
             // 
-            this.switchEnvMap.Location = new System.Drawing.Point(118, 263);
-            this.switchEnvMap.MenuManager = this.barManager;
-            this.switchEnvMap.Name = "switchEnvMap";
-            this.switchEnvMap.Properties.OffText = "Off";
-            this.switchEnvMap.Properties.OnText = "On";
-            this.switchEnvMap.Size = new System.Drawing.Size(128, 20);
-            this.switchEnvMap.StyleController = this.layoutControl;
-            this.switchEnvMap.TabIndex = 14;
-            this.switchEnvMap.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            this.reflectionGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutEnvMap});
+            this.reflectionGroup.Location = new System.Drawing.Point(0, 580);
+            this.reflectionGroup.Name = "reflectionGroup";
+            this.reflectionGroup.Size = new System.Drawing.Size(244, 73);
+            this.reflectionGroup.Text = "Reflection";
             // 
             // layoutEnvMap
             // 
             this.layoutEnvMap.Control = this.switchEnvMap;
             this.layoutEnvMap.Location = new System.Drawing.Point(0, 0);
             this.layoutEnvMap.Name = "layoutEnvMap";
-            this.layoutEnvMap.Size = new System.Drawing.Size(226, 24);
+            this.layoutEnvMap.Size = new System.Drawing.Size(220, 24);
             this.layoutEnvMap.Text = "Reflective";
-            this.layoutEnvMap.TextSize = new System.Drawing.Size(82, 13);
-            // 
-            // reflectionGroup
-            // 
-            this.reflectionGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutEnvMap});
-            this.reflectionGroup.Location = new System.Drawing.Point(0, 604);
-            this.reflectionGroup.Name = "reflectionGroup";
-            this.reflectionGroup.Size = new System.Drawing.Size(250, 73);
-            this.reflectionGroup.Text = "Reflection";
+            this.layoutEnvMap.TextSize = new System.Drawing.Size(76, 13);
             // 
             // VertexLitGenericTab
             // 
@@ -573,11 +574,12 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.Load += new System.EventHandler(this.UnlitGenericTab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.switchHalfLambert.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBumpMap.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchHalfLambert.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchSelfIllum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoCull.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchAlphaTest.Properties)).EndInit();
@@ -601,9 +603,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutHalfLambert)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -159,7 +159,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             string nocull = vmt.getValue("$nocull");
             if (alphatest != "")
             {
-                switchNoCull.IsOn = (nocull == "1");
+                switchNoCull.IsOn = (nocull == "0");
             }
 
             /** Lighting **/
@@ -266,7 +266,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             }
 
             // NoCull
-            if (switchNoCull.IsOn)
+            if (!switchNoCull.IsOn)
             {
                 vmt.addChild("$nocull", "1");
             }
