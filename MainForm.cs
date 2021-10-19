@@ -810,13 +810,15 @@ namespace source_modding_tool
             if (gamesList.Count > 0)
                 foreach (KeyValuePair<string, Game> item in gamesList)
                 {
-                    Bitmap icon;
+                    Bitmap icon = null;
                     if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico"))
                         icon = (Bitmap)Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico");
-                    else
+                    else if(File.Exists(item.Value.getExePath()))
                         icon = Icon.ExtractAssociatedIcon(item.Value.getExePath()).ToBitmap();
 
-                    imageCollection1.Images.Add(icon);
+                    if (icon != null)
+                        imageCollection1.Images.Add(icon);
+
                     repositoryGamesCombo.Items.Add(new ImageComboBoxItem(item.Key, item.Key, imageCollection1.Images.Count - 1));
                 }
 
