@@ -162,6 +162,15 @@ namespace source_modding_tool.Materials.ShaderTabs
                 switchHalfLambert.IsOn = (halflambert == "1");
             }
 
+            /** Reflection **/
+
+            // Env Map
+            string envmap = vmt.getValue("$envmap");
+            if (envmap != "")
+            {
+                switchEnvMap.IsOn = (envmap == "env_cubemap");
+            }
+
             // Effect
             string nofog = vmt.getValue("$nofog");
             if (nofog != "")
@@ -201,6 +210,12 @@ namespace source_modding_tool.Materials.ShaderTabs
                         {
                             case "tooltexture":
                                 vmt.addChild(new KeyValue("%" + texture.Key, relativePath));
+                                break;
+                            case "envmapmask":
+                                if (switchEnvMap.IsOn)
+                                {
+                                    vmt.addChild(new KeyValue("%" + texture.Key, relativePath));
+                                }
                                 break;
                             default:
                                 vmt.addChild(new KeyValue("$" + texture.Key, relativePath));
@@ -257,6 +272,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             if (switchHalfLambert.IsOn)
             {
                 vmt.addChild("$halflambert", "1");
+            }
+
+            /** Reflection **/
+
+            // Env Map
+            if (switchEnvMap.IsOn)
+            {
+                vmt.addChild("$envmap", "env_cubemap");
             }
 
             /** Effect **/

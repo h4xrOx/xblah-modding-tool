@@ -50,6 +50,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureEditMenuImport = new DevExpress.XtraBars.BarButtonItem();
             this.pictureEditMenuOpen = new DevExpress.XtraBars.BarButtonItem();
             this.pictureEditMenuExport = new DevExpress.XtraBars.BarButtonItem();
+            this.pictureEditMenuClear = new DevExpress.XtraBars.BarButtonItem();
             this.pictureBaseTexture = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.pictureBumpMap = new DevExpress.XtraEditors.PictureEdit();
@@ -67,18 +68,20 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutSurfaceProp = new DevExpress.XtraLayout.LayoutControlItem();
             this.adjustmentGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutColor = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.effectGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutNoFog = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.editorGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutToolTexture = new DevExpress.XtraLayout.LayoutControlItem();
             this.transparencyGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutAlphaTest = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutNoCull = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.lightingGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutBumpMap = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutSelfIllum = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutHalfLambert = new DevExpress.XtraLayout.LayoutControlItem();
-            this.pictureEditMenuClear = new DevExpress.XtraBars.BarButtonItem();
+            this.switchEnvMap = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutEnvMap = new DevExpress.XtraLayout.LayoutControlItem();
+            this.reflectionGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.switchHalfLambert.Properties)).BeginInit();
@@ -100,21 +103,25 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutSurfaceProp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.effectGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoFog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutToolTexture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transparencyGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAlphaTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoCull)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightingGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutHalfLambert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.switchEnvMap);
             this.layoutControl.Controls.Add(this.switchHalfLambert);
             this.layoutControl.Controls.Add(this.switchSelfIllum);
             this.layoutControl.Controls.Add(this.pictureBumpMap);
@@ -135,7 +142,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchHalfLambert
             // 
-            this.switchHalfLambert.Location = new System.Drawing.Point(118, 530);
+            this.switchHalfLambert.Location = new System.Drawing.Point(118, 190);
             this.switchHalfLambert.MenuManager = this.barManager;
             this.switchHalfLambert.Name = "switchHalfLambert";
             this.switchHalfLambert.Properties.OffText = "Off";
@@ -216,10 +223,18 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureEditMenuExport.Name = "pictureEditMenuExport";
             this.pictureEditMenuExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.pictureEditPopup_ItemClick);
             // 
+            // pictureEditMenuClear
+            // 
+            this.pictureEditMenuClear.Caption = "Clear";
+            this.pictureEditMenuClear.Id = 3;
+            this.pictureEditMenuClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("pictureEditMenuClear.ImageOptions.SvgImage")));
+            this.pictureEditMenuClear.Name = "pictureEditMenuClear";
+            this.pictureEditMenuClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.pictureEditPopup_ItemClick);
+            // 
             // pictureBaseTexture
             // 
             this.pictureBaseTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBaseTexture.Location = new System.Drawing.Point(118, -1);
+            this.pictureBaseTexture.Location = new System.Drawing.Point(118, -341);
             this.pictureBaseTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBaseTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBaseTexture.MenuManager = this.barManager;
@@ -252,7 +267,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureBumpMap
             // 
             this.pictureBumpMap.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBumpMap.Location = new System.Drawing.Point(118, 374);
+            this.pictureBumpMap.Location = new System.Drawing.Point(118, 34);
             this.pictureBumpMap.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBumpMap.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBumpMap.MenuManager = this.barManager;
@@ -274,7 +289,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchSelfIllum
             // 
-            this.switchSelfIllum.Location = new System.Drawing.Point(118, 506);
+            this.switchSelfIllum.Location = new System.Drawing.Point(118, 166);
             this.switchSelfIllum.MenuManager = this.barManager;
             this.switchSelfIllum.Name = "switchSelfIllum";
             this.switchSelfIllum.Properties.OffText = "Off";
@@ -286,7 +301,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchNoCull
             // 
-            this.switchNoCull.Location = new System.Drawing.Point(118, 301);
+            this.switchNoCull.Location = new System.Drawing.Point(118, -39);
             this.switchNoCull.MenuManager = this.barManager;
             this.switchNoCull.Name = "switchNoCull";
             this.switchNoCull.Properties.OffText = "Off";
@@ -298,7 +313,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchAlphaTest
             // 
-            this.switchAlphaTest.Location = new System.Drawing.Point(118, 277);
+            this.switchAlphaTest.Location = new System.Drawing.Point(118, -63);
             this.switchAlphaTest.MenuManager = this.barManager;
             this.switchAlphaTest.Name = "switchAlphaTest";
             this.switchAlphaTest.Properties.OffText = "Off";
@@ -311,7 +326,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureToolTexture
             // 
             this.pictureToolTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureToolTexture.Location = new System.Drawing.Point(118, 676);
+            this.pictureToolTexture.Location = new System.Drawing.Point(118, 409);
             this.pictureToolTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureToolTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureToolTexture.MinimumSize = new System.Drawing.Size(128, 128);
@@ -332,7 +347,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // switchNoFog
             // 
             this.switchNoFog.EditValue = true;
-            this.switchNoFog.Location = new System.Drawing.Point(118, 603);
+            this.switchNoFog.Location = new System.Drawing.Point(118, 336);
             this.switchNoFog.Name = "switchNoFog";
             this.switchNoFog.Properties.OffText = "Off";
             this.switchNoFog.Properties.OnText = "On";
@@ -345,7 +360,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // editColor
             // 
             this.editColor.EditValue = System.Drawing.Color.White;
-            this.editColor.Location = new System.Drawing.Point(118, 204);
+            this.editColor.Location = new System.Drawing.Point(118, -136);
             this.editColor.Name = "editColor";
             this.editColor.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.editColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -359,7 +374,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // comboSurfaceProp
             // 
             this.comboSurfaceProp.EditValue = "default";
-            this.comboSurfaceProp.Location = new System.Drawing.Point(118, 131);
+            this.comboSurfaceProp.Location = new System.Drawing.Point(118, -209);
             this.comboSurfaceProp.Name = "comboSurfaceProp";
             this.comboSurfaceProp.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.comboSurfaceProp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -378,18 +393,19 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.emptySpaceItem1,
             this.basicsGroup,
             this.adjustmentGroup,
-            this.layoutControlGroup1,
-            this.layoutControlGroup2,
+            this.effectGroup,
+            this.editorGroup,
             this.transparencyGroup,
-            this.layoutControlGroup3});
+            this.lightingGroup,
+            this.reflectionGroup});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(270, 888);
+            this.Root.Size = new System.Drawing.Size(270, 961);
             this.Root.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 858);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 931);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(250, 10);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -440,14 +456,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutColor.Text = "Color";
             this.layoutColor.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // layoutControlGroup1
+            // effectGroup
             // 
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.effectGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutNoFog});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 604);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(250, 73);
-            this.layoutControlGroup1.Text = "Effect";
+            this.effectGroup.Location = new System.Drawing.Point(0, 677);
+            this.effectGroup.Name = "effectGroup";
+            this.effectGroup.Size = new System.Drawing.Size(250, 73);
+            this.effectGroup.Text = "Effect";
             // 
             // layoutNoFog
             // 
@@ -458,14 +474,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoFog.Text = "Affected by fog";
             this.layoutNoFog.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // layoutControlGroup2
+            // editorGroup
             // 
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.editorGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutToolTexture});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 677);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(250, 181);
-            this.layoutControlGroup2.Text = "Editor";
+            this.editorGroup.Location = new System.Drawing.Point(0, 750);
+            this.editorGroup.Name = "editorGroup";
+            this.editorGroup.Size = new System.Drawing.Size(250, 181);
+            this.editorGroup.Text = "Editor";
             // 
             // layoutToolTexture
             // 
@@ -504,16 +520,16 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoCull.Text = "Backface";
             this.layoutNoCull.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // layoutControlGroup3
+            // lightingGroup
             // 
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.lightingGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutBumpMap,
             this.layoutSelfIllum,
             this.layoutHalfLambert});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 375);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(250, 229);
-            this.layoutControlGroup3.Text = "Lighting";
+            this.lightingGroup.Location = new System.Drawing.Point(0, 375);
+            this.lightingGroup.Name = "lightingGroup";
+            this.lightingGroup.Size = new System.Drawing.Size(250, 229);
+            this.lightingGroup.Text = "Lighting";
             // 
             // layoutBumpMap
             // 
@@ -542,13 +558,35 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutHalfLambert.Text = "Wrap lighting";
             this.layoutHalfLambert.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // pictureEditMenuClear
+            // switchEnvMap
             // 
-            this.pictureEditMenuClear.Caption = "Clear";
-            this.pictureEditMenuClear.Id = 3;
-            this.pictureEditMenuClear.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.pictureEditMenuClear.Name = "pictureEditMenuClear";
-            this.pictureEditMenuClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.pictureEditPopup_ItemClick);
+            this.switchEnvMap.Location = new System.Drawing.Point(118, 263);
+            this.switchEnvMap.MenuManager = this.barManager;
+            this.switchEnvMap.Name = "switchEnvMap";
+            this.switchEnvMap.Properties.OffText = "Off";
+            this.switchEnvMap.Properties.OnText = "On";
+            this.switchEnvMap.Size = new System.Drawing.Size(128, 20);
+            this.switchEnvMap.StyleController = this.layoutControl;
+            this.switchEnvMap.TabIndex = 14;
+            this.switchEnvMap.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            // 
+            // layoutEnvMap
+            // 
+            this.layoutEnvMap.Control = this.switchEnvMap;
+            this.layoutEnvMap.Location = new System.Drawing.Point(0, 0);
+            this.layoutEnvMap.Name = "layoutEnvMap";
+            this.layoutEnvMap.Size = new System.Drawing.Size(226, 24);
+            this.layoutEnvMap.Text = "Reflective";
+            this.layoutEnvMap.TextSize = new System.Drawing.Size(82, 13);
+            // 
+            // reflectionGroup
+            // 
+            this.reflectionGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutEnvMap});
+            this.reflectionGroup.Location = new System.Drawing.Point(0, 604);
+            this.reflectionGroup.Name = "reflectionGroup";
+            this.reflectionGroup.Size = new System.Drawing.Size(250, 73);
+            this.reflectionGroup.Text = "Reflection";
             // 
             // VertexLitGenericTab
             // 
@@ -583,17 +621,20 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutSurfaceProp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.effectGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoFog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutToolTexture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transparencyGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAlphaTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoCull)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightingGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutHalfLambert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,10 +655,10 @@ namespace source_modding_tool.Materials.ShaderTabs
         private DevExpress.XtraLayout.LayoutControlItem layoutColor;
         private DevExpress.XtraEditors.ToggleSwitch switchNoFog;
         private DevExpress.XtraLayout.LayoutControlItem layoutNoFog;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup effectGroup;
         private DevExpress.XtraEditors.PictureEdit pictureToolTexture;
         private DevExpress.XtraLayout.LayoutControlItem layoutToolTexture;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlGroup editorGroup;
         private DevExpress.XtraBars.BarManager barManager;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -633,12 +674,15 @@ namespace source_modding_tool.Materials.ShaderTabs
         private DevExpress.XtraEditors.ToggleSwitch switchNoCull;
         private DevExpress.XtraLayout.LayoutControlItem layoutNoCull;
         private DevExpress.XtraEditors.PictureEdit pictureBumpMap;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraLayout.LayoutControlGroup lightingGroup;
         private DevExpress.XtraLayout.LayoutControlItem layoutBumpMap;
         private DevExpress.XtraEditors.ToggleSwitch switchSelfIllum;
         private DevExpress.XtraLayout.LayoutControlItem layoutSelfIllum;
         private DevExpress.XtraEditors.ToggleSwitch switchHalfLambert;
         private DevExpress.XtraLayout.LayoutControlItem layoutHalfLambert;
         private DevExpress.XtraBars.BarButtonItem pictureEditMenuClear;
+        private DevExpress.XtraEditors.ToggleSwitch switchEnvMap;
+        private DevExpress.XtraLayout.LayoutControlGroup reflectionGroup;
+        private DevExpress.XtraLayout.LayoutControlItem layoutEnvMap;
     }
 }

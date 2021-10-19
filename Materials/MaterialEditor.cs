@@ -172,6 +172,21 @@ namespace source_modding_tool
             }
         }
 
+        public static Bitmap GetAlphaMask(Bitmap bitmap)
+        {
+            Bitmap transparencymask = new Bitmap(bitmap.Width, bitmap.Height);
+            for (int i = 0; i < transparencymask.Width; i++)
+            {
+                for (int j = 0; j < transparencymask.Height; j++)
+                {
+                    int a = bitmap.GetPixel(i, j).A;
+                    transparencymask.SetPixel(i, j, Color.FromArgb(255, a, a, a));
+                }
+            }
+
+            return transparencymask;
+        }
+
         private void LoadMaterial(PackageFile file)
         {
             string data = System.Text.Encoding.UTF8.GetString(file.Data);
@@ -470,26 +485,16 @@ namespace source_modding_tool
                 width = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Width, 2)));
                 height = (int)Math.Pow(2, Math.Floor(Math.Log(originalBitmap.Height, 2)));
 
-                Bitmap resizedBitmap = new Bitmap(originalBitmap, width, height);
+                Bitmap maskBitmap = new Bitmap(originalBitmap, width, height);
                 originalBitmap.Dispose();
 
                 if (tag == "transparencymask")
                 {
-                    Bitmap transparencymask = new Bitmap(width, height);
-
                     // If no albedo is set yet.
                     if (tabInterface.Textures["basetexture"].bitmap == null)
                         tabInterface.Textures["basetexture"].bitmap = new Bitmap(width, height);
 
-                    for (int i = 0; i < transparencymask.Width; i++)
-                    {
-                        for (int j = 0; j < transparencymask.Height; j++)
-                        {
-                            int alpha = resizedBitmap.GetPixel(i, j).R;
-                            Color color = tabInterface.Textures["basetexture"].bitmap.GetPixel(i, j);
-                            tabInterface.Textures["basetexture"].bitmap.SetPixel(i, j, Color.FromArgb(alpha, color.R, color.G, color.B));
-                        }
-                    }
+                    MaterialEditor.ApplyMask(maskBitmap, tabInterface.Textures["basetexture"].bitmap);
 
                     tabInterface.Textures["basetexture"].relativePath = string.Empty;
                     tabInterface.Textures["basetexture"].bytes = VTF.FromBitmap(tabInterface.Textures["basetexture"].bitmap, tabInterface.Launcher);
@@ -498,7 +503,20 @@ namespace source_modding_tool
                 if (tabInterface.PictureEdits["transparencymask"].Image != null)
                     tabInterface.PictureEdits["transparencymask"].Image.Dispose();
 
-                tabInterface.PictureEdits["transparencymask"].Image = resizedBitmap;
+                tabInterface.PictureEdits["transparencymask"].Image = maskBitmap;
+            }
+        }
+
+        private static void ApplyMask(Bitmap transparencymask, Bitmap bitmap)
+        {
+            for (int i = 0; i < transparencymask.Width; i++)
+            {
+                for (int j = 0; j < transparencymask.Height; j++)
+                {
+                    int alpha = transparencymask.GetPixel(i, j).R;
+                    Color color = bitmap.GetPixel(i, j);
+                    bitmap.SetPixel(i, j, Color.FromArgb(alpha, color.R, color.G, color.B));
+                }
             }
         }
 

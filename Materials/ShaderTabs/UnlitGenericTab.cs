@@ -44,10 +44,7 @@ namespace source_modding_tool.Materials.ShaderTabs
 
         private void UnlitGenericTab_Load(object sender, EventArgs e)
         {
-            if (Launcher.GetCurrentGame().Name == "Mapbase")
-                Shader = "SDK_UnlitGeneric";
-
-                PopulatePictureEdits();
+            PopulatePictureEdits();
             MaterialEditor.ClearMaterial(this);
 
             if (RelativePath != "")
@@ -99,18 +96,10 @@ namespace source_modding_tool.Materials.ShaderTabs
                             Textures[kv.Key].bitmap = VTF.ToBitmap(Textures[kv.Key].bytes, Launcher);
                             kv.Value.Image = Textures[kv.Key].bitmap;
 
-                            if (key == "$basetexture" && isTransparent)
+                            if (key == "$basetexture")
                             {
                                 // Copy the alpha mask.
-                                Bitmap transparencymask = new Bitmap(Textures[kv.Key].bitmap.Width, Textures[kv.Key].bitmap.Height);
-                                for (int i = 0; i < transparencymask.Width; i++)
-                                {
-                                    for (int j = 0; j < transparencymask.Height; j++)
-                                    {
-                                        int a = Textures[kv.Key].bitmap.GetPixel(i, j).A;
-                                        transparencymask.SetPixel(i, j, Color.FromArgb(255, a, a, a));
-                                    }
-                                }
+                                Bitmap transparencymask = MaterialEditor.GetAlphaMask(Textures[kv.Key].bitmap);
                                 if (pictureTransparencyMask.Image != null)
                                     pictureTransparencyMask.Image.Dispose();
 
@@ -176,7 +165,11 @@ namespace source_modding_tool.Materials.ShaderTabs
         public KeyValue GetVMT()
         {
             // Create the root with the shader as key.
-            SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(Shader);
+            string shader = Shader;
+            if (Launcher.GetCurrentGame().Name == "Mapbase")
+                shader = "SDK_UnlitGeneric";
+
+            SourceSDK.KeyValue vmt = new SourceSDK.KeyValue(shader);
 
             // Remove 'materials/' from the beginning of the path.
             string materialRelativePath = RelativePath;
@@ -314,8 +307,10 @@ namespace source_modding_tool.Materials.ShaderTabs
 
         private void editor_EditValueChanged(object sender, EventArgs e)
         {
+            // Show transparency mask
             if (sender == editTransparency)
                 layoutTransparencyMask.Visibility = (editTransparency.EditValue.ToString() != "Opaque" ? DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never);
+
             OnUpdated.Invoke(this, EventArgs.Empty);
         }
     }

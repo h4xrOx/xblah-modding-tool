@@ -58,6 +58,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             PictureEdits.Add("basetexture", pictureBaseTexture);
             PictureEdits.Add("tooltexture", pictureToolTexture);
             PictureEdits.Add("bumpmap", pictureBumpMap);
+            PictureEdits.Add("transparencymask", pictureTransparencyMask);
 
             PackageManager packageManager = new PackageManager(Launcher, "scripts");
             string[] surfaceProps = SurfaceProperty.GetStringArray(packageManager);
@@ -70,6 +71,10 @@ namespace source_modding_tool.Materials.ShaderTabs
         {
             SourceSDK.KeyValue vmt = SourceSDK.KeyValue.ReadChunk(System.Text.Encoding.UTF8.GetString(file.Data));
             this.RelativePath = file.Path + "/" + file.Filename;
+
+            string translucent = vmt.getValue("$translucent");
+            string alphatest = vmt.getValue("$alphatest");
+            bool isTransparent = (translucent == "1" || alphatest == "1");
 
             // Get the textures.
             foreach (KeyValuePair<string, PictureEdit> kv in PictureEdits)
@@ -92,6 +97,16 @@ namespace source_modding_tool.Materials.ShaderTabs
                             Textures[kv.Key].bytes = textureFile.Data;
                             Textures[kv.Key].bitmap = VTF.ToBitmap(Textures[kv.Key].bytes, Launcher);
                             kv.Value.Image = Textures[kv.Key].bitmap;
+
+                            if (key == "$basetexture")
+                            {
+                                // Copy the alpha mask.
+                                Bitmap transparencymask = MaterialEditor.GetAlphaMask(Textures[kv.Key].bitmap);
+                                if (pictureTransparencyMask.Image != null)
+                                    pictureTransparencyMask.Image.Dispose();
+
+                                pictureTransparencyMask.Image = transparencymask;
+                            }
                         }
                         else
                         {
@@ -114,31 +129,32 @@ namespace source_modding_tool.Materials.ShaderTabs
 
             /** Adjustment **/
 
-            // Color
+            // Color and alpha
             string color = vmt.getValue("$color");
+            string alpha = vmt.getValue("$alpha");
             if (color != "")
             {
+                color = color.Substring(1, color.Length - 2);
+                string[] rgbs = color.Split(' ');
+                int a = (int)(255 * (alpha != "" && !isTransparent ? float.Parse(alpha) : 1));
                 if (color.StartsWith("{"))
                 {
-                    color = color.Substring(1, color.Length - 2);
-                    string[] rgbs = color.Split(' ');
-                    editColor.Color = Color.FromArgb(255, int.Parse(rgbs[0]), int.Parse(rgbs[1]), int.Parse(rgbs[2]));
-                } else if(color.StartsWith("["))
+                    editColor.Color = Color.FromArgb(a, int.Parse(rgbs[0]), int.Parse(rgbs[1]), int.Parse(rgbs[2]));
+                }
+                else if (color.StartsWith("["))
                 {
-                    color = color.Substring(1, color.Length - 2);
-                    string[] rgbs = color.Split(' ');
-                    editColor.Color = Color.FromArgb(255, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
+                    editColor.Color = Color.FromArgb(a, (int)(float.Parse(rgbs[0]) * 255), (int)(float.Parse(rgbs[1]) * 255), (int)(float.Parse(rgbs[2]) * 255));
                 }
             }
 
             /** Transparency **/
 
-            // Alphatest
-            string alphatest = vmt.getValue("$alphatest");
-            if (alphatest != "")
-            {
-                switchAlphaTest.IsOn = (alphatest == "1");
-            }
+            // Mode
+
+            if (translucent == "1")
+                editTransparency.EditValue = "Translucent";
+            else if (alphatest == "1")
+                editTransparency.EditValue = "Alphatest";
 
             string nocull = vmt.getValue("$nocull");
             if (alphatest != "")
@@ -153,6 +169,15 @@ namespace source_modding_tool.Materials.ShaderTabs
             if (selfillum != "")
             {
                 switchSelfIllum.IsOn = (selfillum == "1");
+            }
+
+            /** Reflection **/
+
+            // Env Map
+            string envmap = vmt.getValue("$envmap");
+            if (envmap != "")
+            {
+                switchEnvMap.IsOn = (envmap == "env_cubemap");
             }
 
             // Effect
@@ -172,6 +197,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             string materialRelativePath = RelativePath;
             if (RelativePath.StartsWith("materials/"))
                 materialRelativePath = RelativePath.Substring("materials/".Length);
+
+            bool isTransparent = (editTransparency.EditValue.ToString() != "Opaque");
 
             // Check if its a model
             bool isModel = RelativePath.StartsWith("materials/models/");
@@ -225,11 +252,17 @@ namespace source_modding_tool.Materials.ShaderTabs
 
             /** Transparency **/
 
-            // Alphatest
-            if (switchAlphaTest.IsOn)
-            {
+            // Mode
+            string transparency = editTransparency.EditValue.ToString();
+            if (transparency == "Translucent")
+                vmt.addChild("$translucent", "1");
+            else if (transparency == "Alphatest")
                 vmt.addChild("$alphatest", "1");
-                vmt.addChild("$allowAlphaToCoverage", "1"); // Antialising for transparency.
+
+            // Alpha
+            if (color.A != 255 && !isTransparent)
+            {
+                vmt.addChild("$alpha", ((float)color.A / 255).ToString());
             }
 
             // NoCull
@@ -244,6 +277,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             if (switchSelfIllum.IsOn)
             {
                 vmt.addChild("$selfillum", "1");
+            }
+
+            /** Reflection **/
+
+            // Env Map
+            if (switchEnvMap.IsOn)
+            {
+                vmt.addChild("$envmap", "env_cubemap");
             }
 
             /** Effect **/
@@ -261,7 +302,14 @@ namespace source_modding_tool.Materials.ShaderTabs
 
             if (e.Item == pictureEditMenuImport)
             {
-                MaterialEditor.ImportTexture(((PictureEdit)control).Tag.ToString(), this);
+                if (control == pictureTransparencyMask)
+                {
+                    MaterialEditor.ImportMask(((PictureEdit)control).Tag.ToString(), this);
+                }
+                else
+                {
+                    MaterialEditor.ImportTexture(((PictureEdit)control).Tag.ToString(), this);
+                }
                 MaterialEditor.CreateToolTexture(this);
                 OnUpdated.Invoke(this, EventArgs.Empty);
             }
@@ -293,17 +341,32 @@ namespace source_modding_tool.Materials.ShaderTabs
         private void barManager_QueryShowPopupMenu(object sender, DevExpress.XtraBars.QueryShowPopupMenuEventArgs e)
         {
             popupCallerControl = e.Control;
+            if (e.Control == pictureTransparencyMask)
+            {
+                pictureEditMenuOpen.Enabled = false;
+                pictureEditMenuClear.Enabled = false;
+            }
+            else
+            {
+                pictureEditMenuOpen.Enabled = true;
+                pictureEditMenuClear.Enabled = true;
+            }
         }
 
         private void editor_EditValueChanged(object sender, EventArgs e)
         {
-            if (sender == switchAlphaTest && switchAlphaTest.IsOn)
+            // Show transparency mask
+            if (sender == editTransparency)
+                layoutTransparencyMask.Visibility = (editTransparency.EditValue.ToString() != "Opaque" ? DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never);
+
+            // Selfillum is not compatible with transparency.
+            if (sender == editTransparency && editTransparency.EditValue.ToString() != "Opaque")
             {
                 switchSelfIllum.IsOn = false;
             }
             else if(sender == switchSelfIllum && switchSelfIllum.IsOn)
             {
-                switchAlphaTest.IsOn = false;
+                editTransparency.EditValue = "Opaque";
             }
             OnUpdated?.Invoke(this, EventArgs.Empty);
         }

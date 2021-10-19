@@ -139,12 +139,6 @@
     <Compile Include="File\LibrariesForm.Designer.cs">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LevelDesign\CompileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LevelDesign\CompileForm.Designer.cs">
-      <DependentUpon>CompileForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LevelDesign\FogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +146,12 @@
       <DependentUpon>FogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LevelDesign\Map.cs" />
+    <Compile Include="LevelDesign\MapCompileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelDesign\MapCompileForm.Designer.cs">
+      <DependentUpon>MapCompileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LevelDesign\MapFolder.cs" />
     <Compile Include="LevelDesign\PrefabsWorkshop.cs">
       <SubType>Form</SubType>
@@ -311,11 +311,11 @@
     <EmbeddedResource Include="File\LibrariesForm.resx">
       <DependentUpon>LibrariesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LevelDesign\CompileForm.resx">
-      <DependentUpon>CompileForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\FogForm.resx">
       <DependentUpon>FogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelDesign\MapCompileForm.resx">
+      <DependentUpon>MapCompileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\PrefabsWorkshop.resx">
       <DependentUpon>PrefabsWorkshop.cs</DependentUpon>
