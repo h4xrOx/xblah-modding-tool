@@ -60,12 +60,10 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureToolTexture = new DevExpress.XtraEditors.PictureEdit();
             this.switchNoFog = new DevExpress.XtraEditors.ToggleSwitch();
             this.editColor = new DevExpress.XtraEditors.ColorPickEdit();
-            this.comboSurfaceProp = new DevExpress.XtraEditors.ComboBoxEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.basicsGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutBaseTexture = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutSurfaceProp = new DevExpress.XtraLayout.LayoutControlItem();
             this.adjustmentGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutColor = new DevExpress.XtraLayout.LayoutControlItem();
             this.effectGroup = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -95,12 +93,10 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoFog.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editColor.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.basicsGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBaseTexture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutSurfaceProp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.effectGroup)).BeginInit();
@@ -131,7 +127,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutControl.Controls.Add(this.switchNoFog);
             this.layoutControl.Controls.Add(this.editColor);
             this.layoutControl.Controls.Add(this.pictureBaseTexture);
-            this.layoutControl.Controls.Add(this.comboSurfaceProp);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
@@ -371,20 +366,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.editColor.Tag = "color";
             this.editColor.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
             // 
-            // comboSurfaceProp
-            // 
-            this.comboSurfaceProp.EditValue = "default";
-            this.comboSurfaceProp.Location = new System.Drawing.Point(118, -209);
-            this.comboSurfaceProp.Name = "comboSurfaceProp";
-            this.comboSurfaceProp.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.comboSurfaceProp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboSurfaceProp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboSurfaceProp.Size = new System.Drawing.Size(128, 20);
-            this.comboSurfaceProp.StyleController = this.layoutControl;
-            this.comboSurfaceProp.TabIndex = 5;
-            this.comboSurfaceProp.Tag = "surfaceprop";
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -413,8 +394,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // basicsGroup
             // 
             this.basicsGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutBaseTexture,
-            this.layoutSurfaceProp});
+            this.layoutBaseTexture});
             this.basicsGroup.Location = new System.Drawing.Point(0, 0);
             this.basicsGroup.Name = "basicsGroup";
             this.basicsGroup.Size = new System.Drawing.Size(250, 205);
@@ -428,15 +408,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutBaseTexture.Size = new System.Drawing.Size(226, 132);
             this.layoutBaseTexture.Text = "Albedo";
             this.layoutBaseTexture.TextSize = new System.Drawing.Size(82, 13);
-            // 
-            // layoutSurfaceProp
-            // 
-            this.layoutSurfaceProp.Control = this.comboSurfaceProp;
-            this.layoutSurfaceProp.Location = new System.Drawing.Point(0, 132);
-            this.layoutSurfaceProp.Name = "layoutSurfaceProp";
-            this.layoutSurfaceProp.Size = new System.Drawing.Size(226, 24);
-            this.layoutSurfaceProp.Text = "Surface property";
-            this.layoutSurfaceProp.TextSize = new System.Drawing.Size(82, 13);
             // 
             // adjustmentGroup
             // 
@@ -613,12 +584,10 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoFog.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editColor.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSurfaceProp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.basicsGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBaseTexture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutSurfaceProp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.effectGroup)).EndInit();
@@ -648,8 +617,6 @@ namespace source_modding_tool.Materials.ShaderTabs
         private DevExpress.XtraLayout.LayoutControlItem layoutBaseTexture;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlGroup basicsGroup;
-        private DevExpress.XtraEditors.ComboBoxEdit comboSurfaceProp;
-        private DevExpress.XtraLayout.LayoutControlItem layoutSurfaceProp;
         private DevExpress.XtraEditors.ColorPickEdit editColor;
         private DevExpress.XtraLayout.LayoutControlGroup adjustmentGroup;
         private DevExpress.XtraLayout.LayoutControlItem layoutColor;

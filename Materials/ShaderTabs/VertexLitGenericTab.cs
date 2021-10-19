@@ -58,12 +58,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             PictureEdits.Add("basetexture", pictureBaseTexture);
             PictureEdits.Add("tooltexture", pictureToolTexture);
             PictureEdits.Add("bumpmap", pictureBumpMap);
-
-            PackageManager packageManager = new PackageManager(Launcher, "scripts");
-            string[] surfaceProps = SurfaceProperty.GetStringArray(packageManager);
-            foreach(string surfaceProp in surfaceProps) {
-                comboSurfaceProp.Properties.Items.Add(surfaceProp);
-            }
         }
 
         public void LoadMaterial(PackageFile file)
@@ -106,11 +100,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             }
 
             /** Basics **/
-
-            // Surfaceprop
-            string surfaceProp = vmt.getValue("$surfaceprop");
-            if (surfaceProp != "")
-                comboSurfaceProp.EditValue = surfaceProp;
 
             /** Adjustment **/
 
@@ -227,10 +216,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             }
 
             /** Basics **/
-
-            // Surface prop
-            if (comboSurfaceProp.EditValue.ToString() != "default")
-                vmt.addChild(new KeyValue("$surfaceprop", comboSurfaceProp.EditValue.ToString()));
 
             // Model
             if (isModel)
