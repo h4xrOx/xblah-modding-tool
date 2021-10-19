@@ -30,6 +30,11 @@ namespace source_modding_tool.Materials.ShaderTabs
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LightmappedGenericTab));
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
@@ -37,19 +42,14 @@ namespace source_modding_tool.Materials.ShaderTabs
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.switchEnvMap = new DevExpress.XtraEditors.ToggleSwitch();
+            this.editTransparency = new DevExpress.XtraEditors.ComboBoxEdit();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -62,6 +62,8 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureBaseTexture = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.pictureBumpMap = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureTransparencyMask = new DevExpress.XtraEditors.PictureEdit();
+            this.switchEnvMap = new DevExpress.XtraEditors.ToggleSwitch();
             this.switchSelfIllum = new DevExpress.XtraEditors.ToggleSwitch();
             this.switchNoCull = new DevExpress.XtraEditors.ToggleSwitch();
             this.pictureToolTexture = new DevExpress.XtraEditors.PictureEdit();
@@ -81,22 +83,22 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutToolTexture = new DevExpress.XtraLayout.LayoutControlItem();
             this.transparencyGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutNoCull = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutTransparencyMask = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutTransparency = new DevExpress.XtraLayout.LayoutControlItem();
             this.lightingGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutBumpMap = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutSelfIllum = new DevExpress.XtraLayout.LayoutControlItem();
             this.reflectionGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutEnvMap = new DevExpress.XtraLayout.LayoutControlItem();
-            this.pictureTransparencyMask = new DevExpress.XtraEditors.PictureEdit();
-            this.layoutTransparencyMask = new DevExpress.XtraLayout.LayoutControlItem();
-            this.editTransparency = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutTransparency = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editTransparency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBumpMap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransparencyMask.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchSelfIllum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoCull.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).BeginInit();
@@ -116,15 +118,13 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutToolTexture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transparencyGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoCull)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparencyMask)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTransparencyMask.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparencyMask)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editTransparency.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparency)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -148,17 +148,38 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl1";
             // 
-            // switchEnvMap
+            // editTransparency
             // 
-            this.switchEnvMap.Location = new System.Drawing.Point(118, 678);
-            this.switchEnvMap.MenuManager = this.barManager;
-            this.switchEnvMap.Name = "switchEnvMap";
-            this.switchEnvMap.Properties.OffText = "Off";
-            this.switchEnvMap.Properties.OnText = "On";
-            this.switchEnvMap.Size = new System.Drawing.Size(128, 20);
-            this.switchEnvMap.StyleController = this.layoutControl;
-            this.switchEnvMap.TabIndex = 17;
-            this.switchEnvMap.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            this.editTransparency.EditValue = "Opaque";
+            this.editTransparency.Location = new System.Drawing.Point(118, 327);
+            this.editTransparency.MenuManager = this.barManager;
+            this.editTransparency.Name = "editTransparency";
+            this.editTransparency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.editTransparency.Properties.Items.AddRange(new object[] {
+            "Opaque",
+            "Translucent",
+            "Alphatest"});
+            this.editTransparency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.editTransparency.Size = new System.Drawing.Size(128, 20);
+            this.editTransparency.StyleController = this.layoutControl;
+            toolTipTitleItem1.Text = "Mode";
+            toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem1.Text = "<u>Opaque</u>: The material won\'t be transparent.";
+            toolTipItem2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem2.Text = "<u>Translucent</u>: It specifies that the material should be partially see-throug" +
+    "h.";
+            toolTipItem3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem3.Text = "<u>Alphatest</u>: This effect is similar to Translucent, except that it can not b" +
+    "e semi-opaque, is much faster to render, and the engine can sort it properly whe" +
+    "n layered.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipItem2);
+            superToolTip1.Items.Add(toolTipItem3);
+            this.editTransparency.SuperTip = superToolTip1;
+            this.editTransparency.TabIndex = 19;
+            this.editTransparency.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
             // 
             // barManager
             // 
@@ -242,7 +263,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureBaseTexture
             // 
             this.pictureBaseTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBaseTexture.Location = new System.Drawing.Point(118, -34);
+            this.pictureBaseTexture.Location = new System.Drawing.Point(118, 49);
             this.pictureBaseTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBaseTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBaseTexture.MenuManager = this.barManager;
@@ -275,7 +296,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureBumpMap
             // 
             this.pictureBumpMap.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBumpMap.Location = new System.Drawing.Point(118, 473);
+            this.pictureBumpMap.Location = new System.Drawing.Point(118, 556);
             this.pictureBumpMap.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBumpMap.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureBumpMap.MenuManager = this.barManager;
@@ -295,9 +316,45 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.pictureBumpMap.TabIndex = 11;
             this.pictureBumpMap.Tag = "bumpmap";
             // 
+            // pictureTransparencyMask
+            // 
+            this.pictureTransparencyMask.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureTransparencyMask.Location = new System.Drawing.Point(118, 351);
+            this.pictureTransparencyMask.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureTransparencyMask.MaximumSize = new System.Drawing.Size(128, 128);
+            this.pictureTransparencyMask.MenuManager = this.barManager;
+            this.pictureTransparencyMask.MinimumSize = new System.Drawing.Size(128, 128);
+            this.pictureTransparencyMask.Name = "pictureTransparencyMask";
+            this.barManager.SetPopupContextMenu(this.pictureTransparencyMask, this.pictureEditMenu);
+            this.pictureTransparencyMask.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureTransparencyMask.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureTransparencyMask.Properties.Tag = "basetexture";
+            this.pictureTransparencyMask.Size = new System.Drawing.Size(128, 128);
+            this.pictureTransparencyMask.StyleController = this.layoutControl;
+            toolTipTitleItem2.Text = "Mask";
+            toolTipItem4.Text = "When the Mode is not Opaque, it will represent the alpha mask of the basetexture." +
+    "";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem4);
+            this.pictureTransparencyMask.SuperTip = superToolTip2;
+            this.pictureTransparencyMask.TabIndex = 18;
+            this.pictureTransparencyMask.Tag = "transparencymask";
+            // 
+            // switchEnvMap
+            // 
+            this.switchEnvMap.Location = new System.Drawing.Point(118, 761);
+            this.switchEnvMap.MenuManager = this.barManager;
+            this.switchEnvMap.Name = "switchEnvMap";
+            this.switchEnvMap.Properties.OffText = "Off";
+            this.switchEnvMap.Properties.OnText = "On";
+            this.switchEnvMap.Size = new System.Drawing.Size(128, 20);
+            this.switchEnvMap.StyleController = this.layoutControl;
+            this.switchEnvMap.TabIndex = 17;
+            this.switchEnvMap.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
+            // 
             // switchSelfIllum
             // 
-            this.switchSelfIllum.Location = new System.Drawing.Point(118, 605);
+            this.switchSelfIllum.Location = new System.Drawing.Point(118, 688);
             this.switchSelfIllum.MenuManager = this.barManager;
             this.switchSelfIllum.Name = "switchSelfIllum";
             this.switchSelfIllum.Properties.OffText = "Off";
@@ -309,7 +366,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // 
             // switchNoCull
             // 
-            this.switchNoCull.Location = new System.Drawing.Point(118, 400);
+            this.switchNoCull.Location = new System.Drawing.Point(118, 483);
             this.switchNoCull.MenuManager = this.barManager;
             this.switchNoCull.Name = "switchNoCull";
             this.switchNoCull.Properties.OffText = "Off";
@@ -322,7 +379,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // pictureToolTexture
             // 
             this.pictureToolTexture.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureToolTexture.Location = new System.Drawing.Point(118, 824);
+            this.pictureToolTexture.Location = new System.Drawing.Point(118, 907);
             this.pictureToolTexture.Margin = new System.Windows.Forms.Padding(4);
             this.pictureToolTexture.MaximumSize = new System.Drawing.Size(128, 128);
             this.pictureToolTexture.MinimumSize = new System.Drawing.Size(128, 128);
@@ -343,7 +400,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // switchNoFog
             // 
             this.switchNoFog.EditValue = true;
-            this.switchNoFog.Location = new System.Drawing.Point(118, 751);
+            this.switchNoFog.Location = new System.Drawing.Point(118, 834);
             this.switchNoFog.Name = "switchNoFog";
             this.switchNoFog.Properties.OffText = "Off";
             this.switchNoFog.Properties.OnText = "On";
@@ -356,7 +413,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // editColor
             // 
             this.editColor.EditValue = System.Drawing.Color.White;
-            this.editColor.Location = new System.Drawing.Point(118, 171);
+            this.editColor.Location = new System.Drawing.Point(118, 254);
             this.editColor.Name = "editColor";
             this.editColor.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.editColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -370,7 +427,7 @@ namespace source_modding_tool.Materials.ShaderTabs
             // comboSurfaceProp
             // 
             this.comboSurfaceProp.EditValue = "default";
-            this.comboSurfaceProp.Location = new System.Drawing.Point(118, 98);
+            this.comboSurfaceProp.Location = new System.Drawing.Point(118, 181);
             this.comboSurfaceProp.Name = "comboSurfaceProp";
             this.comboSurfaceProp.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.comboSurfaceProp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -508,6 +565,25 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutNoCull.Text = "Backface";
             this.layoutNoCull.TextSize = new System.Drawing.Size(82, 13);
             // 
+            // layoutTransparencyMask
+            // 
+            this.layoutTransparencyMask.Control = this.pictureTransparencyMask;
+            this.layoutTransparencyMask.Location = new System.Drawing.Point(0, 24);
+            this.layoutTransparencyMask.Name = "layoutTransparencyMask";
+            this.layoutTransparencyMask.Size = new System.Drawing.Size(226, 132);
+            this.layoutTransparencyMask.Text = "Mask";
+            this.layoutTransparencyMask.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutTransparencyMask.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            // 
+            // layoutTransparency
+            // 
+            this.layoutTransparency.Control = this.editTransparency;
+            this.layoutTransparency.Location = new System.Drawing.Point(0, 0);
+            this.layoutTransparency.Name = "layoutTransparency";
+            this.layoutTransparency.Size = new System.Drawing.Size(226, 24);
+            this.layoutTransparency.Text = "Mode";
+            this.layoutTransparency.TextSize = new System.Drawing.Size(82, 13);
+            // 
             // lightingGroup
             // 
             this.lightingGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -554,81 +630,6 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.layoutEnvMap.Text = "Reflective";
             this.layoutEnvMap.TextSize = new System.Drawing.Size(82, 13);
             // 
-            // pictureTransparencyMask
-            // 
-            this.pictureTransparencyMask.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureTransparencyMask.Location = new System.Drawing.Point(118, 268);
-            this.pictureTransparencyMask.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureTransparencyMask.MaximumSize = new System.Drawing.Size(128, 128);
-            this.pictureTransparencyMask.MenuManager = this.barManager;
-            this.pictureTransparencyMask.MinimumSize = new System.Drawing.Size(128, 128);
-            this.pictureTransparencyMask.Name = "pictureTransparencyMask";
-            this.barManager.SetPopupContextMenu(this.pictureTransparencyMask, this.pictureEditMenu);
-            this.pictureTransparencyMask.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureTransparencyMask.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureTransparencyMask.Properties.Tag = "basetexture";
-            this.pictureTransparencyMask.Size = new System.Drawing.Size(128, 128);
-            this.pictureTransparencyMask.StyleController = this.layoutControl;
-            toolTipTitleItem2.Text = "Mask";
-            toolTipItem4.Text = "When the Mode is not Opaque, it will represent the alpha mask of the basetexture." +
-    "";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem4);
-            this.pictureTransparencyMask.SuperTip = superToolTip2;
-            this.pictureTransparencyMask.TabIndex = 18;
-            this.pictureTransparencyMask.Tag = "transparencymask";
-            // 
-            // layoutTransparencyMask
-            // 
-            this.layoutTransparencyMask.Control = this.pictureTransparencyMask;
-            this.layoutTransparencyMask.Location = new System.Drawing.Point(0, 24);
-            this.layoutTransparencyMask.Name = "layoutTransparencyMask";
-            this.layoutTransparencyMask.Size = new System.Drawing.Size(226, 132);
-            this.layoutTransparencyMask.Text = "Mask";
-            this.layoutTransparencyMask.TextSize = new System.Drawing.Size(82, 13);
-            // 
-            // editTransparency
-            // 
-            this.editTransparency.EditValue = "Opaque";
-            this.editTransparency.Location = new System.Drawing.Point(118, 244);
-            this.editTransparency.MenuManager = this.barManager;
-            this.editTransparency.Name = "editTransparency";
-            this.editTransparency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.editTransparency.Properties.Items.AddRange(new object[] {
-            "Opaque",
-            "Translucent",
-            "Alphatest"});
-            this.editTransparency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.editTransparency.Size = new System.Drawing.Size(128, 20);
-            this.editTransparency.StyleController = this.layoutControl;
-            toolTipTitleItem1.Text = "Mode";
-            toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem1.Text = "<u>Opaque</u>: The material won\'t be transparent.";
-            toolTipItem2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem2.Text = "<u>Translucent</u>: It specifies that the material should be partially see-throug" +
-    "h.";
-            toolTipItem3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem3.Text = "<u>Alphatest</u>: This effect is similar to Translucent, except that it can not b" +
-    "e semi-opaque, is much faster to render, and the engine can sort it properly whe" +
-    "n layered.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipItem2);
-            superToolTip1.Items.Add(toolTipItem3);
-            this.editTransparency.SuperTip = superToolTip1;
-            this.editTransparency.TabIndex = 19;
-            this.editTransparency.EditValueChanged += new System.EventHandler(this.editor_EditValueChanged);
-            // 
-            // layoutTransparency
-            // 
-            this.layoutTransparency.Control = this.editTransparency;
-            this.layoutTransparency.Location = new System.Drawing.Point(0, 0);
-            this.layoutTransparency.Name = "layoutTransparency";
-            this.layoutTransparency.Size = new System.Drawing.Size(226, 24);
-            this.layoutTransparency.Text = "Mode";
-            this.layoutTransparency.TextSize = new System.Drawing.Size(82, 13);
-            // 
             // LightmappedGenericTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,11 +644,13 @@ namespace source_modding_tool.Materials.ShaderTabs
             this.Load += new System.EventHandler(this.UnlitGenericTab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editTransparency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBaseTexture.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBumpMap.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTransparencyMask.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchEnvMap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchSelfIllum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.switchNoCull.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToolTexture.Properties)).EndInit();
@@ -667,15 +670,13 @@ namespace source_modding_tool.Materials.ShaderTabs
             ((System.ComponentModel.ISupportInitialize)(this.layoutToolTexture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transparencyGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutNoCull)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparencyMask)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutBumpMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutSelfIllum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflectionGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutEnvMap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTransparencyMask.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparencyMask)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editTransparency.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutTransparency)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
