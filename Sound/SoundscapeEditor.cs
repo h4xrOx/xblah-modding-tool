@@ -1040,7 +1040,7 @@ namespace source_modding_tool.Sound
                         {
                            
                             string path = soundscapeRule.wave[0].FullPath.Replace("/", "\\");
-                            if (path.StartsWith("sound/"))
+                            if (path.StartsWith("sound/") || path.StartsWith("sound\\"))
                             {
                                 path = path.Substring(6);
                             }
@@ -1050,15 +1050,22 @@ namespace source_modding_tool.Sound
                         // Traverse through the rule random waves.
                         if (soundscapeRule.rule == Soundscape.Rule.RANDOM)
                         {
-                            foreach (PackageFile packageFile in soundscapeRule.wave)
+                            if (soundscapeRule.wave.Count > 0)
                             {
-                                string path = packageFile.FullPath.Replace("/", "\\");
-                                if (path.StartsWith("sound/"))
-                                {
-                                    path = path.Substring(6);
-                                }
+                                KeyValue rndWaveKV = new KeyValue("rndwave");
 
-                                KeyValue rndWaveKV = new KeyValue("rndwave", path);
+                                foreach (PackageFile packageFile in soundscapeRule.wave)
+                                {
+                                    string path = packageFile.FullPath.Replace("/", "\\");
+                                    if (path.StartsWith("sound/") || path.StartsWith("sound\\"))
+                                    {
+                                        path = path.Substring(6);
+                                    }
+
+                                    KeyValue waveKV = new KeyValue("wave", path);
+
+                                    rndWaveKV.addChild(waveKV);
+                                }
 
                                 soundscapeRuleKV.addChild(rndWaveKV);
                             }
