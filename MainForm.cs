@@ -237,6 +237,13 @@ namespace source_modding_tool
                 Registry.CurrentUser.DeleteSubKeyTree("SOFTWARE\\Valve\\Hammer", false);
             }
 
+            // Compile a map
+            else if (e.Item == menuLevelDesignCompile)
+            {
+                MapCompileForm form = new MapCompileForm(launcher);
+                form.ShowDialog();
+            }
+
             // Decompile a map
             else if(e.Item == menuLevelDesignDecompile)
             {
@@ -357,6 +364,13 @@ namespace source_modding_tool
                     updateToolsGames();
                     updateToolsMods();
                 }
+            }
+
+            // Create VPK
+            else if(e.Item == menuModdingAssetsPack)
+            {
+                VPKForm form = new VPKForm(launcher);
+                form.ShowDialog();
             }
         }
 

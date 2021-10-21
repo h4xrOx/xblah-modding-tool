@@ -222,6 +222,7 @@
             this.menuLevelDesignRunMap = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignReload = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignHammer = new DevExpress.XtraBars.BarButtonItem();
+            this.menuLevelDesignCompile = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignDecompile = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignPrefabs = new DevExpress.XtraBars.BarButtonItem();
             this.menuLevelDesignMapsrc = new DevExpress.XtraBars.BarButtonItem();
@@ -268,6 +269,7 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.menuModdingAssetsPack = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -354,9 +356,11 @@
             this.barSubItem5,
             this.menuLevelDesignPrefabsWorkshopButton,
             this.menuScripts,
-            this.toolsGames});
+            this.toolsGames,
+            this.menuLevelDesignCompile,
+            this.menuModdingAssetsPack});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 126;
+            this.barManager.MaxItemId = 128;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -712,7 +716,8 @@
             this.menuModdingAssets.Id = 100;
             this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, false),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack)});
             this.menuModdingAssets.Name = "menuModdingAssets";
             toolTipTitleItem20.Text = "Assets";
             toolTipItem25.Text = "Manage the mod assets.";
@@ -800,6 +805,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignRunMap),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignHammer, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignCompile, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignDecompile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
@@ -859,6 +865,14 @@
             superToolTip27.Items.Add(toolTipItem34);
             this.menuLevelDesignHammer.SuperTip = superToolTip27;
             this.menuLevelDesignHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
+            // 
+            // menuLevelDesignCompile
+            // 
+            this.menuLevelDesignCompile.Caption = "Compile";
+            this.menuLevelDesignCompile.Id = 126;
+            this.menuLevelDesignCompile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignCompile.ImageOptions.SvgImage")));
+            this.menuLevelDesignCompile.Name = "menuLevelDesignCompile";
+            this.menuLevelDesignCompile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignDecompile
             // 
@@ -1328,6 +1342,13 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // menuModdingAssetsPack
+            // 
+            this.menuModdingAssetsPack.Caption = "Pack";
+            this.menuModdingAssetsPack.Id = 127;
+            this.menuModdingAssetsPack.Name = "menuModdingAssetsPack";
+            this.menuModdingAssetsPack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1442,5 +1463,7 @@
         private DevExpress.XtraBars.BarEditItem toolsGames;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryGamesCombo;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraBars.BarButtonItem menuLevelDesignCompile;
+        private DevExpress.XtraBars.BarButtonItem menuModdingAssetsPack;
     }
 }

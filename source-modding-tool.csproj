@@ -286,6 +286,12 @@
     <Compile Include="Modding\StartMap.Designer.cs">
       <DependentUpon>StartMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modding\VPKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\VPKForm.Designer.cs">
+      <DependentUpon>VPKForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modding\AssetsRequiredForm.cs">
@@ -382,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\StartMap.resx">
       <DependentUpon>StartMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\VPKForm.resx">
+      <DependentUpon>VPKForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
