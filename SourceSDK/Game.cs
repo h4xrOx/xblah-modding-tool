@@ -342,6 +342,14 @@ namespace SourceSDK
         }
 
         /// <summary>
+        /// Opens the game install folder in the Windows file explorer.
+        /// </summary>
+        public void OpenInstallFolder()
+        {
+            Process.Start("explorer.exe", InstallPath);
+        }
+
+        /// <summary>
         /// Returns a list of all the folders with game infos of the specific game
         /// </summary>
         /// <param name="game">The base game name (i.e. Source SDK Base 2013 Singleplayer)</param>

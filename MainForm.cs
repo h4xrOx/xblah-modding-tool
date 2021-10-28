@@ -95,7 +95,7 @@ namespace source_modding_tool
         private void menuFile_ItemClick(object sender, ItemClickEventArgs e)
         {
             // New
-            if (e.Item.Name == menuFileNew.Name)
+            if (e.Item == menuFileNew)
             {
                 NewModForm form = new NewModForm();
                 if (form.ShowDialog() == DialogResult.OK)
@@ -121,18 +121,24 @@ namespace source_modding_tool
             }
 
             // Exit
-            else if (e.Item.Name == menuFileExit.Name)
+            else if (e.Item == menuFileExit)
             {
                 Close();
             }
 
             // Libraries
-            else if (e.Item.Name == menuFileLibraries.Name)
+            else if (e.Item == menuFileLibraries)
             {
                 LibrariesForm form = new LibrariesForm(launcher);
                 form.ShowDialog();
 
                 updateToolsGames();
+            }
+
+            // Game folder
+            else if(e.Item == menuFileOpenGameFolder)
+            {
+                launcher.GetCurrentGame().OpenInstallFolder();
             }
         }
 
