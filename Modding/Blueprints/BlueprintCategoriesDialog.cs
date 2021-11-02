@@ -43,17 +43,6 @@ namespace source_modding_tool.Modding.Blueprints
             Section = section;
 
             InitializeComponent();
-
-            /*var client = new MegaApiClient();
-            client.LoginAnonymous();
-
-            Uri fileLink = new Uri("https://mega.nz/file/avg0USyb#82-grQuLqUdqk1UHtd0VNUg7q0e4DPuIHgsDqpncBf8");
-            INodeInfo node = client.GetNodeFromLink(fileLink);
-
-            Console.WriteLine($"Downloading {node.Name}");
-            client.DownloadFile(fileLink, node.Name);
-
-            client.Logout();*/
         }
 
         private void PrefabsWorkshop_Load(object sender, EventArgs e)
@@ -110,11 +99,22 @@ namespace source_modding_tool.Modding.Blueprints
                 string local_path = Launcher.UserDirectory + "Resources\\Workshop\\Thumbnails\\" + item.id + ".jpg";
                 string remote_path = item.image_url;
 
+                string filename = item.filename;
+
+                bool installed = false;
+                if (File.Exists(launcher.GetCurrentMod().InstallPath + "\\custom\\" + filename + ".vpk"))
+                {
+                    installed = true;
+                }
+
                 GalleryItem galleryItem = new GalleryItem();
                 galleryItem.Caption = item.name;
+
+                if (installed)
+                    galleryItem.Description = "Installed";
+
                 galleryControl1.Gallery.Groups[0].Items.Add(galleryItem);
                 galleryItem.Tag = "https://modding-assets.net/" + item.path;
-                //galleryItem.Description = "This is a blueprint description.";
                 galleryItem.ItemClick += GalleryItem_ItemClick;
 
                 if (File.Exists(local_path))

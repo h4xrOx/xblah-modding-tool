@@ -46,6 +46,8 @@ namespace source_modding_tool.Modding.Blueprints
             // 
             // 
             // 
+            this.galleryControl1.Gallery.Appearance.ItemDescriptionAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.galleryControl1.Gallery.Appearance.ItemDescriptionAppearance.Normal.Options.UseForeColor = true;
             galleryItemGroup1.Caption = "Items";
             this.galleryControl1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
