@@ -32,7 +32,6 @@ namespace source_modding_tool
             InitializeComponent();
 
             PreviousWindowState = WindowState;
-            SteamDatabase.ValvePak.PackageEntry entry = package.FindEntry("materials/models/combine_advisor/advisor_body_d.vmt");
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -376,14 +375,21 @@ namespace source_modding_tool
             // Create VPK
             else if (e.Item == menuModdingAssetsPack)
             {
-                VPKForm form = new VPKForm(launcher);
+                PackFilesDialog form = new PackFilesDialog(launcher);
                 form.ShowDialog();
             }
 
             // Extract VPK
             else if (e.Item == menuModdingAssetsUnpack)
             {
-                UnpackForm form = new UnpackForm(launcher);
+                UnpackFilesDialog form = new UnpackFilesDialog(launcher);
+                form.ShowDialog();
+            }
+
+            // Pack Custom Folder
+            else if(e.Item == menuModdingAssetsPackCustomFolder)
+            {
+                PackCustomFolderDialog form = new PackCustomFolderDialog(launcher);
                 form.ShowDialog();
             }
         }

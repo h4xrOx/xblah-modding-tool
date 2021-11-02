@@ -3,25 +3,18 @@ using SourceSDK;
 using SourceSDK.Packages;
 using SourceSDK.Packages.VPKPackage;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace source_modding_tool.Modding
 {
-    public partial class UnpackForm : DevExpress.XtraEditors.XtraForm
+    public partial class UnpackFilesDialog : DevExpress.XtraEditors.XtraForm
     {
         Launcher launcher;
 
         PackageManager packageManager;
 
-        public UnpackForm(Launcher launcher)
+        public UnpackFilesDialog(Launcher launcher)
         {
             this.launcher = launcher;
             InitializeComponent();
@@ -58,6 +51,11 @@ namespace source_modding_tool.Modding
                         {
                             File.WriteAllBytes(rootPath + entry.FullPath, entry.Data);
                         }
+                    }
+
+                    if (XtraMessageBox.Show("Do you want to delete the VPK?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Delete(archive.ArchivePath);
                     }
                     break;
                 }

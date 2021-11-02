@@ -221,6 +221,7 @@
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingAssetsPack = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingAssetsUnpack = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingAssetsPackCustomFolder = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuChoreography = new DevExpress.XtraBars.BarSubItem();
             this.menuChoreographyFaceposer = new DevExpress.XtraBars.BarButtonItem();
@@ -367,9 +368,10 @@
             this.menuModdingAssetsPack,
             this.menuFileOpenGameFolder,
             this.menuModelingBlueprints,
-            this.menuModdingAssetsUnpack});
+            this.menuModdingAssetsUnpack,
+            this.menuModdingAssetsPackCustomFolder});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 132;
+            this.barManager.MaxItemId = 133;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -740,8 +742,9 @@
             this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsUnpack)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsUnpack),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPackCustomFolder)});
             this.menuModdingAssets.Name = "menuModdingAssets";
             toolTipTitleItem21.Text = "Assets";
             toolTipItem26.Text = "Manage the mod assets.";
@@ -764,7 +767,7 @@
             // 
             // menuModdingExport
             // 
-            this.menuModdingExport.Caption = "Export";
+            this.menuModdingExport.Caption = "Copy to Custom Folder";
             this.menuModdingExport.Id = 29;
             this.menuModdingExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingExport.ImageOptions.SvgImage")));
             this.menuModdingExport.Name = "menuModdingExport";
@@ -781,17 +784,27 @@
             // 
             // menuModdingAssetsPack
             // 
-            this.menuModdingAssetsPack.Caption = "Pack";
+            this.menuModdingAssetsPack.Caption = "Pack Files";
             this.menuModdingAssetsPack.Id = 127;
+            this.menuModdingAssetsPack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsPack.ImageOptions.SvgImage")));
             this.menuModdingAssetsPack.Name = "menuModdingAssetsPack";
             this.menuModdingAssetsPack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingAssetsUnpack
             // 
-            this.menuModdingAssetsUnpack.Caption = "Unpack";
+            this.menuModdingAssetsUnpack.Caption = "Unpack Files";
             this.menuModdingAssetsUnpack.Id = 131;
+            this.menuModdingAssetsUnpack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsUnpack.ImageOptions.SvgImage")));
             this.menuModdingAssetsUnpack.Name = "menuModdingAssetsUnpack";
             this.menuModdingAssetsUnpack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingAssetsPackCustomFolder
+            // 
+            this.menuModdingAssetsPackCustomFolder.Caption = "Pack Custom Folder";
+            this.menuModdingAssetsPackCustomFolder.Id = 132;
+            this.menuModdingAssetsPackCustomFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsPackCustomFolder.ImageOptions.SvgImage")));
+            this.menuModdingAssetsPackCustomFolder.Name = "menuModdingAssetsPackCustomFolder";
+            this.menuModdingAssetsPackCustomFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingDelete
             // 
@@ -1509,5 +1522,6 @@
         private DevExpress.XtraBars.BarButtonItem menuFileOpenGameFolder;
         private DevExpress.XtraBars.BarButtonItem menuModelingBlueprints;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsUnpack;
+        private DevExpress.XtraBars.BarButtonItem menuModdingAssetsPackCustomFolder;
     }
 }

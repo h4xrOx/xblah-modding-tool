@@ -1,7 +1,7 @@
 ﻿
 namespace source_modding_tool.Modding
 {
-    partial class UnpackForm
+    partial class UnpackFilesDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace source_modding_tool.Modding
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnpackForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnpackFilesDialog));
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.unpackButton = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -70,17 +70,17 @@ namespace source_modding_tool.Modding
             this.panelControl1.Size = new System.Drawing.Size(533, 31);
             this.panelControl1.TabIndex = 2;
             // 
-            // UnpackForm
+            // UnpackFilesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 295);
             this.Controls.Add(this.listBoxControl1);
             this.Controls.Add(this.panelControl1);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("UnpackForm.IconOptions.Image")));
-            this.Name = "UnpackForm";
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("UnpackFilesForm.IconOptions.Image")));
+            this.Name = "UnpackFilesForm";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Unpack VPK";
+            this.Text = "Unpack Files";
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace source_modding_tool.Modding
 {
-    public partial class VPKForm : DevExpress.XtraEditors.XtraForm
+    public partial class PackFilesDialog : DevExpress.XtraEditors.XtraForm
     {
         private Launcher launcher;
 
         List<PackageFile> files = new List<PackageFile>();
 
-        public VPKForm(Launcher launcher)
+        public PackFilesDialog(Launcher launcher)
         {
             this.launcher = launcher;
 
@@ -73,8 +73,14 @@ namespace source_modding_tool.Modding
             string rootPath = launcher.GetCurrentMod().InstallPath + "\\custom\\" + fileNameEdit.EditValue.ToString() + "\\";
             Directory.CreateDirectory(rootPath);
 
+            bool deleteFiles = false;
+            if (XtraMessageBox.Show("Do you want to delete the loose files?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                deleteFiles = true;
+            }
+
             // Copy the files to the directory
-            foreach(PackageFile file in files)
+            foreach (PackageFile file in files)
             {
                 string targetPath = file.Directory.Path;
                 if (targetPath.StartsWith("custom"))
@@ -87,7 +93,7 @@ namespace source_modding_tool.Modding
                 File.WriteAllBytes(rootPath + targetPath + "/" + file.Filename + "." + file.Extension, file.Data);
 
                 // Delete the original files
-                if (file is UnpackedFile && File.Exists(launcher.GetCurrentMod().InstallPath + "/" + file.FullPath))
+                if (deleteFiles && file is UnpackedFile && File.Exists(launcher.GetCurrentMod().InstallPath + "/" + file.FullPath))
                 {
                     File.Delete(launcher.GetCurrentMod().InstallPath + "/" + file.FullPath);
 
@@ -116,7 +122,6 @@ namespace source_modding_tool.Modding
             Directory.Delete(rootPath, true);
 
             XtraMessageBox.Show("File '" + fileNameEdit.EditValue.ToString() + "' was created in 'custom/'");
-            Close();
         }
     }
 }

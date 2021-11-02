@@ -1,7 +1,7 @@
 ﻿
 namespace source_modding_tool.Modding
 {
-    partial class VPKForm
+    partial class PackFilesDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace source_modding_tool.Modding
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VPKForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackFilesDialog));
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.saveButton = new DevExpress.XtraEditors.SimpleButton();
@@ -74,12 +74,13 @@ namespace source_modding_tool.Modding
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(485, 287);
+            this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveButton.Location = new System.Drawing.Point(486, 287);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(42, 22);
+            this.saveButton.Size = new System.Drawing.Size(41, 22);
             this.saveButton.StyleController = this.layoutControl1;
             this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Create";
+            this.saveButton.Text = "Pack";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // layoutControl1
@@ -101,7 +102,7 @@ namespace source_modding_tool.Modding
             // 
             this.fileNameEdit.Location = new System.Drawing.Point(69, 287);
             this.fileNameEdit.Name = "fileNameEdit";
-            this.fileNameEdit.Size = new System.Drawing.Size(412, 20);
+            this.fileNameEdit.Size = new System.Drawing.Size(413, 20);
             this.fileNameEdit.StyleController = this.layoutControl1;
             this.fileNameEdit.TabIndex = 3;
             // 
@@ -177,9 +178,9 @@ namespace source_modding_tool.Modding
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.saveButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(473, 275);
+            this.layoutControlItem4.Location = new System.Drawing.Point(474, 275);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(46, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(45, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -188,19 +189,19 @@ namespace source_modding_tool.Modding
             this.layoutControlItem5.Control = this.fileNameEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 275);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(473, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(474, 26);
             this.layoutControlItem5.Text = "File name";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(45, 13);
             // 
-            // VPKForm
+            // PackFilesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 321);
             this.Controls.Add(this.layoutControl1);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("VPKForm.IconOptions.Image")));
-            this.Name = "VPKForm";
-            this.Text = "VPK Packer";
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("PackFilesForm.IconOptions.Image")));
+            this.Name = "PackFilesForm";
+            this.Text = "Pack Files";
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

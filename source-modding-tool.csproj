@@ -238,6 +238,12 @@
     <Compile Include="Modding\FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modding\Packing\PackCustomFolderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\Packing\PackCustomFolderDialog.Designer.cs">
+      <DependentUpon>PackCustomFolderDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\RunDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,17 +298,17 @@
     <Compile Include="Modding\StartMap.Designer.cs">
       <DependentUpon>StartMap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\VPKForm.cs">
+    <Compile Include="Modding\Packing\PackFilesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\VPKForm.Designer.cs">
-      <DependentUpon>VPKForm.cs</DependentUpon>
+    <Compile Include="Modding\Packing\PackFilesDialog.Designer.cs">
+      <DependentUpon>PackFilesDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\UnpackForm.cs">
+    <Compile Include="Modding\Packing\UnpackFilesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\UnpackForm.Designer.cs">
-      <DependentUpon>UnpackForm.cs</DependentUpon>
+    <Compile Include="Modding\Packing\UnpackFilesDialog.Designer.cs">
+      <DependentUpon>UnpackFilesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,6 +383,9 @@
     <EmbeddedResource Include="Modding\FileExplorer.resx">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modding\Packing\PackCustomFolderDialog.resx">
+      <DependentUpon>PackCustomFolderDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,11 +413,11 @@
     <EmbeddedResource Include="Modding\StartMap.resx">
       <DependentUpon>StartMap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\VPKForm.resx">
-      <DependentUpon>VPKForm.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\Packing\PackFilesDialog.resx">
+      <DependentUpon>PackFilesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\UnpackForm.resx">
-      <DependentUpon>UnpackForm.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\Packing\UnpackFilesDialog.resx">
+      <DependentUpon>UnpackFilesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
