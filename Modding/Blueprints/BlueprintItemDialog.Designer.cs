@@ -327,7 +327,7 @@ namespace source_modding_tool.Modding.Blueprints
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("BlueprintItemDialog.IconOptions.Image")));
             this.Name = "BlueprintItemDialog";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Blueprint";
+            this.Text = "View Blueprint";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BlueprintItemDialog_FormClosing);
             this.Load += new System.EventHandler(this.BlueprintItemDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl1)).EndInit();

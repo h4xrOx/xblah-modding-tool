@@ -706,6 +706,7 @@ namespace source_modding_tool
                         menuModelingReload.Enabled = true;
                         menuModelingHLMV.Enabled = true;
                         menuModelingEditor2.Enabled = true;
+                            menuModelingPropper.Enabled = true;
                         menuModelingCompile.Enabled = true;
                         menuModelingDecompile.Enabled = true;
                     menuMaterials.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);

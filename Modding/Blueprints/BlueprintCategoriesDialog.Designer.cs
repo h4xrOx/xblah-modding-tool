@@ -82,7 +82,7 @@ namespace source_modding_tool.Modding.Blueprints
             this.Controls.Add(this.categoriesControl);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("BlueprintCategoriesDialog.IconOptions.Image")));
             this.Name = "BlueprintCategoriesDialog";
-            this.Text = "Categories";
+            this.Text = "Blueprints";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PrefabsWorkshop_FormClosing);
             this.Load += new System.EventHandler(this.PrefabsWorkshop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.galleryControl1)).EndInit();
