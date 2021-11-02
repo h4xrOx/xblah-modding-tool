@@ -130,14 +130,25 @@ namespace SourceSDK
 
                 if (value.EndsWith("*"))
                 {
-                    // Ends with wildcard. Add all subdirectories.
+                    // Ends with wildcard. Add all subdirectories and vpks.
                     value = value.Substring(0, value.Length - 1);
 
                     if (Directory.Exists(value))
+                    {
                         foreach (string subdir in Directory.GetDirectories(value))
                         {
                             result.Add(subdir);
                         }
+
+                        foreach(string file in Directory.GetFiles(value, "*.vpk"))
+                        {
+                            string filename = Path.GetFileNameWithoutExtension(file);
+                            if (!int.TryParse(filename.Substring(filename.Length - 3), out _))
+                            {
+                                result.Add(file);
+                            }
+                        }
+                    }
                 }
                 else
                 {

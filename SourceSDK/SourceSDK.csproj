@@ -111,6 +111,12 @@
     <Compile Include="Utils\SteamShortcuts.cs" />
     <Compile Include="Utils\StringExtensions.cs" />
     <Compile Include="Utils\SubStream.cs" />
+    <Compile Include="ValvePak\ArchiveMD5SectionEntry.cs" />
+    <Compile Include="ValvePak\Package.cs" />
+    <Compile Include="ValvePak\PackageEntry.cs" />
+    <Compile Include="ValvePak\Utilities\AsnKeyParser.cs" />
+    <Compile Include="ValvePak\Utilities\Crc32.cs" />
+    <Compile Include="ValvePak\Utilities\StreamHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

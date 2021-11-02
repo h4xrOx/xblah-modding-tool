@@ -146,18 +146,12 @@
       <DependentUpon>FogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LevelDesign\Map.cs" />
-    <Compile Include="LevelDesign\MapCompileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LevelDesign\MapCompileForm.Designer.cs">
-      <DependentUpon>MapCompileForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LevelDesign\MapFolder.cs" />
-    <Compile Include="LevelDesign\PrefabsWorkshop.cs">
+    <Compile Include="Modding\Blueprints\BlueprintCategoriesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LevelDesign\PrefabsWorkshop.Designer.cs">
-      <DependentUpon>PrefabsWorkshop.cs</DependentUpon>
+    <Compile Include="Modding\Blueprints\BlueprintCategoriesDialog.Designer.cs">
+      <DependentUpon>BlueprintCategoriesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="LevelDesign\RunMapForm.cs">
       <SubType>Form</SubType>
@@ -207,6 +201,18 @@
     </Compile>
     <Compile Include="Modding\AssetsCopierForm.Designer.cs">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modding\Blueprints\BlueprintItemDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\Blueprints\BlueprintItemDialog.Designer.cs">
+      <DependentUpon>BlueprintItemDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modding\Blueprints\BlueprintWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\Blueprints\BlueprintWaitForm.Designer.cs">
+      <DependentUpon>BlueprintWaitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\ChaptersForm.cs">
       <SubType>Form</SubType>
@@ -292,6 +298,12 @@
     <Compile Include="Modding\VPKForm.Designer.cs">
       <DependentUpon>VPKForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modding\UnpackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modding\UnpackForm.Designer.cs">
+      <DependentUpon>UnpackForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modding\AssetsRequiredForm.cs">
@@ -320,11 +332,8 @@
     <EmbeddedResource Include="LevelDesign\FogForm.resx">
       <DependentUpon>FogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LevelDesign\MapCompileForm.resx">
-      <DependentUpon>MapCompileForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LevelDesign\PrefabsWorkshop.resx">
-      <DependentUpon>PrefabsWorkshop.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\Blueprints\BlueprintCategoriesDialog.resx">
+      <DependentUpon>BlueprintCategoriesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\RunMapForm.resx">
       <DependentUpon>RunMapForm.cs</DependentUpon>
@@ -349,6 +358,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\AssetsCopierForm.resx">
       <DependentUpon>AssetsCopierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\Blueprints\BlueprintItemDialog.resx">
+      <DependentUpon>BlueprintItemDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\Blueprints\BlueprintWaitForm.resx">
+      <DependentUpon>BlueprintWaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\ChaptersForm.resx">
       <DependentUpon>ChaptersForm.cs</DependentUpon>
@@ -391,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\VPKForm.resx">
       <DependentUpon>VPKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modding\UnpackForm.resx">
+      <DependentUpon>UnpackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -1211,6 +1229,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Assets\Shaders\pbr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\7z\7za.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\7z\7za.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Tools\7z\7zxa.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Tools\J.A.C.K\crashrpt.dll">

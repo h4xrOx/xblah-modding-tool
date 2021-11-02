@@ -53,6 +53,9 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
@@ -186,9 +189,6 @@
             DevExpress.Utils.SuperToolTip superToolTip49 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem49 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem56 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.tools = new DevExpress.XtraBars.Bar();
             this.toolsGames = new DevExpress.XtraBars.BarEditItem();
@@ -203,6 +203,7 @@
             this.menu = new DevExpress.XtraBars.Bar();
             this.menuFile = new DevExpress.XtraBars.BarSubItem();
             this.menuFileNew = new DevExpress.XtraBars.BarButtonItem();
+            this.menuFileOpenGameFolder = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileLibraries = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
             this.menuModding = new DevExpress.XtraBars.BarSubItem();
@@ -219,6 +220,7 @@
             this.menuModdingImport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingAssetsPack = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModdingAssetsUnpack = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingDelete = new DevExpress.XtraBars.BarButtonItem();
             this.menuChoreography = new DevExpress.XtraBars.BarSubItem();
             this.menuChoreographyFaceposer = new DevExpress.XtraBars.BarButtonItem();
@@ -248,6 +250,7 @@
             this.menuModelingVMFtoMDL = new DevExpress.XtraBars.BarButtonItem();
             this.menuModelingDecompile = new DevExpress.XtraBars.BarSubItem();
             this.menuModelingCrowbar = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModelingBlueprints = new DevExpress.XtraBars.BarButtonItem();
             this.menuParticles = new DevExpress.XtraBars.BarSubItem();
             this.menuParticlesManifestGenerator = new DevExpress.XtraBars.BarButtonItem();
             this.menuScripts = new DevExpress.XtraBars.BarSubItem();
@@ -273,7 +276,6 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.menuFileOpenGameFolder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -363,9 +365,11 @@
             this.toolsGames,
             this.menuLevelDesignCompile,
             this.menuModdingAssetsPack,
-            this.menuFileOpenGameFolder});
+            this.menuFileOpenGameFolder,
+            this.menuModelingBlueprints,
+            this.menuModdingAssetsUnpack});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 129;
+            this.barManager.MaxItemId = 132;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -550,6 +554,19 @@
             this.menuFileNew.SuperTip = superToolTip5;
             this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
+            // menuFileOpenGameFolder
+            // 
+            this.menuFileOpenGameFolder.Caption = "Open Game Folder";
+            this.menuFileOpenGameFolder.Id = 128;
+            this.menuFileOpenGameFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileOpenGameFolder.ImageOptions.SvgImage")));
+            this.menuFileOpenGameFolder.Name = "menuFileOpenGameFolder";
+            toolTipTitleItem6.Text = "Open Game Folder";
+            toolTipItem10.Text = "Open the game folder in Windows Explorer.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem10);
+            this.menuFileOpenGameFolder.SuperTip = superToolTip6;
+            this.menuFileOpenGameFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
+            // 
             // menuFileLibraries
             // 
             this.menuFileLibraries.Caption = "Steam Libraries";
@@ -723,7 +740,8 @@
             this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsUnpack)});
             this.menuModdingAssets.Name = "menuModdingAssets";
             toolTipTitleItem21.Text = "Assets";
             toolTipItem26.Text = "Manage the mod assets.";
@@ -767,6 +785,13 @@
             this.menuModdingAssetsPack.Id = 127;
             this.menuModdingAssetsPack.Name = "menuModdingAssetsPack";
             this.menuModdingAssetsPack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
+            // 
+            // menuModdingAssetsUnpack
+            // 
+            this.menuModdingAssetsUnpack.Caption = "Unpack";
+            this.menuModdingAssetsUnpack.Id = 131;
+            this.menuModdingAssetsUnpack.Name = "menuModdingAssetsUnpack";
+            this.menuModdingAssetsUnpack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingDelete
             // 
@@ -826,7 +851,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabsWorkshopButton, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignPrefabsWorkshopButton, true)});
             this.menuLevelDesign.Name = "menuLevelDesign";
             toolTipTitleItem32.Text = "Maps";
             toolTipItem39.Text = "Create levels for the mod.";
@@ -961,8 +986,9 @@
             // 
             // menuLevelDesignPrefabsWorkshopButton
             // 
-            this.menuLevelDesignPrefabsWorkshopButton.Caption = "Prefabs Workshop";
+            this.menuLevelDesignPrefabsWorkshopButton.Caption = "Blueprints";
             this.menuLevelDesignPrefabsWorkshopButton.Id = 122;
+            this.menuLevelDesignPrefabsWorkshopButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuLevelDesignPrefabsWorkshopButton.ImageOptions.Image")));
             this.menuLevelDesignPrefabsWorkshopButton.Name = "menuLevelDesignPrefabsWorkshopButton";
             this.menuLevelDesignPrefabsWorkshopButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesignPrefabsWorkshopButton_ItemClick);
             // 
@@ -1029,7 +1055,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingHLMV, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingEditor2),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingCompile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingDecompile)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingDecompile),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingBlueprints, true)});
             this.menuModeling.Name = "menuModeling";
             toolTipTitleItem44.Text = "Modeling";
             toolTipItem51.Text = "Create models to use in the levels.";
@@ -1137,6 +1164,14 @@
             this.menuModelingCrowbar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingCrowbar.ImageOptions.Image")));
             this.menuModelingCrowbar.Name = "menuModelingCrowbar";
             this.menuModelingCrowbar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
+            // menuModelingBlueprints
+            // 
+            this.menuModelingBlueprints.Caption = "Blueprints";
+            this.menuModelingBlueprints.Id = 129;
+            this.menuModelingBlueprints.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingBlueprints.ImageOptions.Image")));
+            this.menuModelingBlueprints.Name = "menuModelingBlueprints";
+            this.menuModelingBlueprints.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
             // menuParticles
             // 
@@ -1355,19 +1390,6 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
-            // menuFileOpenGameFolder
-            // 
-            this.menuFileOpenGameFolder.Caption = "Open Game Folder";
-            this.menuFileOpenGameFolder.Id = 128;
-            this.menuFileOpenGameFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.menuFileOpenGameFolder.Name = "menuFileOpenGameFolder";
-            toolTipTitleItem6.Text = "Open Game Folder";
-            toolTipItem10.Text = "Open the game folder in Windows Explorer.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem10);
-            this.menuFileOpenGameFolder.SuperTip = superToolTip6;
-            this.menuFileOpenGameFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1485,5 +1507,7 @@
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignCompile;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsPack;
         private DevExpress.XtraBars.BarButtonItem menuFileOpenGameFolder;
+        private DevExpress.XtraBars.BarButtonItem menuModelingBlueprints;
+        private DevExpress.XtraBars.BarButtonItem menuModdingAssetsUnpack;
     }
 }

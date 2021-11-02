@@ -2,14 +2,15 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using Microsoft.Win32;
-using source_modding_tool.LevelDesign;
 using source_modding_tool.Materials;
 using source_modding_tool.Modding;
+using source_modding_tool.Modding.Blueprints;
 using source_modding_tool.Sound;
 using source_modding_tool.Tools;
 using SourceSDK;
 using SourceSDK.Maps;
 using SourceSDK.Packages;
+using SourceSDK.Packages.VPKPackage;
 using SourceSDK.Particles;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace source_modding_tool
             InitializeComponent();
 
             PreviousWindowState = WindowState;
+            SteamDatabase.ValvePak.PackageEntry entry = package.FindEntry("materials/models/combine_advisor/advisor_body_d.vmt");
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -246,8 +248,7 @@ namespace source_modding_tool
             // Compile a map
             else if (e.Item == menuLevelDesignCompile)
             {
-                MapCompileForm form = new MapCompileForm(launcher);
-                form.ShowDialog();
+
             }
 
             // Decompile a map
@@ -329,7 +330,7 @@ namespace source_modding_tool
                     assetsCopierForm.destination = currentMod.InstallPath;
                     if (assetsCopierForm.ShowDialog() == DialogResult.OK)
                     {
-                        
+
                     }
 
                     launcher.SetCurrentGame(currentGame);
@@ -373,9 +374,16 @@ namespace source_modding_tool
             }
 
             // Create VPK
-            else if(e.Item == menuModdingAssetsPack)
+            else if (e.Item == menuModdingAssetsPack)
             {
                 VPKForm form = new VPKForm(launcher);
+                form.ShowDialog();
+            }
+
+            // Extract VPK
+            else if (e.Item == menuModdingAssetsUnpack)
+            {
+                UnpackForm form = new UnpackForm(launcher);
                 form.ShowDialog();
             }
         }
@@ -529,6 +537,12 @@ namespace source_modding_tool
             else if(e.Item == menuModelingReload)
             {
                 instance?.Command("+r_flushlod");
+            }
+
+            else if(e.Item == menuModelingBlueprints)
+            {
+                BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "models");
+                form.ShowDialog();
             }
         }
 
@@ -936,8 +950,8 @@ namespace source_modding_tool
 
         private void menuLevelDesignPrefabsWorkshopButton_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PrefabsWorkshop form = new PrefabsWorkshop();
-            form.Show();
+            BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "prefabs");
+            form.ShowDialog();
         }
 
         private void toolsRunPopup_BeforePopup(object sender, System.ComponentModel.CancelEventArgs e)

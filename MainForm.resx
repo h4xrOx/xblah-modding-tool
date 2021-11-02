@@ -231,7 +231,7 @@
         Cjwvc3ZnPgs=
 </value>
   </data>
-  <data name="barButtonItem2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="menuFileOpenGameFolder.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi42
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -692,6 +692,22 @@
         iKa2JmKmGMwmwKsiqX8B2ftrJkKEYI4AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="menuLevelDesignPrefabsWorkshopButton.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAlRJREFUOE9jgAExfkbBRAf2+JZQzpKJkZx5cxK5atblck+YGMVZ3B7MkdURygnG
+        vTGc2WWBHAliXIyiYI2cbIwc1SGc5adb+M6V+nKU7SrjOf3/lvj//0sF/19v43v/f63Q//8rBP//Xw7F
+        IPY24f83e/lvSvIzSjDkurAX/v8s+X9JGvcWsIlAEO7GkaUjw2wDYs9P5V7z/6jo//8LBP//nC3w/8cs
+        gf8/Zwr8/39E5P/SdO4VDFICTEpW6iy+YJ1YgJkis+2reQKf/y8G2rxE8P/36QL/v4EM2Cr8/2g17xmo
+        MkzAxMQEZTEwsDIw8CmKMemfqOW9/G+1EMQFO4T/57uyV0GVIAA7OztPSkrKg8jIyPNycnJW3NzcwlAp
+        hsWp3Kv/bxIGhoXQ/0/TBX5zsDLyQaUQIDY29m5DQ8P/wsLC/yUlJf+BhjiCxDlZGTj/L4IEIAhPiOSc
+        B9aADjQ0NHLz8/N/5ebm/i8qKvofHBx8gIuLSwwk52/IGn57usDT/5uF/iuJMWmDNaADSUlJq+Tk5M8g
+        zWVlZf8rKyv/CwsL60GlGbr9OGZ8BDofykUFmpqa0ZMnT/5vYmLSBXRJXmlp6S8pKSl/qDSDkTyz/oPZ
+        AveTbNjyoUIIANQQA9Ls4eGxESrEwMjIKA5lgsH/+cAw2Cz8H8pFAFNT07Jp06aBNK+HCmEFC1O4108K
+        51wA5SKAvb39Eh8fn51QLk7gpccaoCnFbATlEg8mx3BNeLtO+Hm8NVsmVIh4wAhEn2cI/D/dyncXyEUk
+        TxIBN5RGAwwMAJyq2s1dtNONAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="menuMaterialsReload.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi42
@@ -895,6 +911,22 @@
         ScyU1HqA01kQwJ9wYGk3tMiAxfyPKKJr17D6M467b+TK9GuJU6hplwV4YYRMW/EoVU5+uA6uV+UIm88/
         ZxIBVE7Bw76d6wYnQPxd0FzeiRjZ72Plv6dfSwQ4GXwo0X/ihG1l/74c/uw9//OsIQKMBp+5TwH/q98p
         xO2/i1No2Vb8AnNKEF/O2u0qAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="menuModelingBlueprints.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAlRJREFUOE9jgAExfkbBRAf2+JZQzpKJkZx5cxK5atblck+YGMVZ3B7MkdURygnG
+        vTGc2WWBHAliXIyiYI2cbIwc1SGc5adb+M6V+nKU7SrjOf3/lvj//0sF/19v43v/f63Q//8rBP//Xw7F
+        IPY24f83e/lvSvIzSjDkurAX/v8s+X9JGvcWsIlAEO7GkaUjw2wDYs9P5V7z/6jo//8LBP//nC3w/8cs
+        gf8/Zwr8/39E5P/SdO4VDFICTEpW6iy+YJ1YgJkis+2reQKf/y8G2rxE8P/36QL/v4EM2Cr8/2g17xmo
+        MkzAxMQEZTEwsDIw8CmKMemfqOW9/G+1EMQFO4T/57uyV0GVIAA7OztPSkrKg8jIyPNycnJW3NzcwlAp
+        hsWp3Kv/bxIGhoXQ/0/TBX5zsDLyQaUQIDY29m5DQ8P/wsLC/yUlJf+BhjiCxDlZGTj/L4IEIAhPiOSc
+        B9aADjQ0NHLz8/N/5ebm/i8qKvofHBx8gIuLSwwk52/IGn57usDT/5uF/iuJMWmDNaADSUlJq+Tk5M8g
+        zWVlZf8rKyv/CwsL60GlGbr9OGZ8BDofykUFmpqa0ZMnT/5vYmLSBXRJXmlp6S8pKSl/qDSDkTyz/oPZ
+        AveTbNjyoUIIANQQA9Ls4eGxESrEwMjIKA5lgsH/+cAw2Cz8H8pFAFNT07Jp06aBNK+HCmEFC1O4108K
+        51wA5SKAvb39Eh8fn51QLk7gpccaoCnFbATlEg8mx3BNeLtO+Hm8NVsmVIh4wAhEn2cI/D/dyncXyEUk
+        TxIBN5RGAwwMAJyq2s1dtNONAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="menuParticlesManifestGenerator.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
