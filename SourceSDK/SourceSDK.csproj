@@ -70,17 +70,8 @@
     <Compile Include="Packages\UnpackedPackage\UnpackedDirectory.cs" />
     <Compile Include="Packages\UnpackedPackage\UnpackedFile.cs" />
     <Compile Include="Packages\UnpackedPackage\UnpackedReader.cs" />
-    <Compile Include="Packages\VPKPackage\ArchivePart.cs" />
-    <Compile Include="Packages\Exceptions\ArchiveParsingException.cs" />
-    <Compile Include="Packages\VPKPackage\IVpkArchiveHeader.cs" />
-    <Compile Include="Packages\VPKPackage\V1\VpkReaderV1.cs" />
-    <Compile Include="Packages\VPKPackage\V2\VpkArchiveHeaderV2.cs" />
-    <Compile Include="Packages\VPKPackage\V2\VpkReaderV2.cs" />
-    <Compile Include="Packages\VPKPackage\VpkArchive.cs" />
     <Compile Include="Packages\VPKPackage\VpkDirectory.cs" />
-    <Compile Include="Packages\VPKPackage\VpkFile.cs" />
-    <Compile Include="Packages\VPKPackage\VpkReaderBase.cs" />
-    <Compile Include="Packages\VPKPackage\V1\VpkArchiveHeaderV1.cs" />
+    <Compile Include="Packages\Exceptions\ArchiveParsingException.cs" />
     <Compile Include="Scripts\SurfaceProperty.cs" />
     <Compile Include="Sounds\Soundscape.cs" />
     <Compile Include="Sounds\SoundscapeRule.cs" />
@@ -111,12 +102,12 @@
     <Compile Include="Utils\SteamShortcuts.cs" />
     <Compile Include="Utils\StringExtensions.cs" />
     <Compile Include="Utils\SubStream.cs" />
-    <Compile Include="ValvePak\ArchiveMD5SectionEntry.cs" />
-    <Compile Include="ValvePak\Package.cs" />
-    <Compile Include="ValvePak\PackageEntry.cs" />
-    <Compile Include="ValvePak\Utilities\AsnKeyParser.cs" />
-    <Compile Include="ValvePak\Utilities\Crc32.cs" />
-    <Compile Include="ValvePak\Utilities\StreamHelpers.cs" />
+    <Compile Include="Packages\VPKPackage\ArchiveMD5SectionEntry.cs" />
+    <Compile Include="Packages\VPKPackage\VpkArchive.cs" />
+    <Compile Include="Packages\VPKPackage\VpkFile.cs" />
+    <Compile Include="Packages\VPKPackage\Utilities\AsnKeyParser.cs" />
+    <Compile Include="Packages\VPKPackage\Utilities\Crc32.cs" />
+    <Compile Include="Packages\VPKPackage\Utilities\StreamHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

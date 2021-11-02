@@ -1,80 +1,152 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System;
+using System.IO;
 
 namespace SourceSDK.Packages.VPKPackage
 {
     public class VpkFile : PackageFile
     {
-        public byte[] PreloadData { get { return ReadPreloadData(); } }
-        public bool HasPreloadData { get; set; }
+        /// <summary>
+        /// Gets or sets the CRC32 checksum of this entry.
+        /// </summary>
+        public uint CRC32 { get; set; }
 
-        internal uint CRC;
-        internal ushort PreloadBytes;
-        internal uint PreloadDataOffset;
-        internal ushort ArchiveIndex;
-        internal uint EntryOffset;
-        internal uint EntryLength;
-        internal VpkArchive ParentArchive;
+        /// <summary>
+        /// Gets or sets the length in bytes.
+        /// </summary>
+        public uint Length { get; set; }
 
-        internal VpkFile(VpkArchive parentArchive, uint crc, ushort preloadBytes, uint preloadDataOffset, ushort archiveIndex, uint entryOffset,
-            uint entryLength, string extension, string path, string filename)
+        /// <summary>
+        /// Gets or sets the offset in the package.
+        /// </summary>
+        public uint Offset { get; set; }
+
+        /// <summary>
+        /// Gets or sets which archive this entry is in.
+        /// </summary>
+        public ushort ArchiveIndex { get; set; }
+
+        /// <summary>
+        /// Gets the length in bytes by adding Length and length of SmallData.
+        /// </summary>
+        public uint TotalLength
         {
-            ParentArchive = parentArchive;
-            CRC = crc;
-            PreloadBytes = preloadBytes;
-            PreloadDataOffset = preloadDataOffset;
-            ArchiveIndex = archiveIndex;
-            EntryOffset = entryOffset;
-            EntryLength = entryLength;
-            Extension = extension;
-            Path = path;
-            Filename = filename;
-            HasPreloadData = preloadBytes > 0;
+            get
+            {
+                var totalLength = Length;
+
+                if (SmallData != null)
+                {
+                    totalLength += (uint)SmallData.Length;
+                }
+
+                return totalLength;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the preloaded bytes.
+        /// </summary>
+        public byte[] SmallData { get; set; }
+
+        /// <summary>
+        /// Returns the file name and extension.
+        /// </summary>
+        /// <returns>File name and extension.</returns>
+        public string GetFileName()
+        {
+            var fileName = Filename;
+
+            if (Extension == " ")
+            {
+                return fileName;
+            }
+
+            return fileName + "." + Extension;
+        }
+
+        /// <summary>
+        /// Returns the absolute path of the file in the package.
+        /// </summary>
+        /// <returns>Absolute path.</returns>
+        public string GetFullPath()
+        {
+            if (Path == " ")
+            {
+                return GetFileName();
+            }
+
+            return Path + VpkArchive.DirectorySeparatorChar + GetFileName();
         }
 
         public override string ToString()
         {
-            return string.Concat(Path, "/", Filename, ".", Extension);
-        }
-
-        private byte[] ReadPreloadData()
-        {
-            if (PreloadBytes > 0)
-            {
-                var buff = new byte[PreloadBytes];
-                using (var fs = new FileStream(ParentArchive.ArchivePath, FileMode.Open, FileAccess.Read))
-                {
-                    buff = new byte[PreloadBytes];
-                    fs.Seek(PreloadDataOffset, SeekOrigin.Begin);
-                    fs.Read(buff, 0, buff.Length);
-                }
-                return buff;
-            }
-            return null;
+            return $"{GetFullPath()} crc=0x{CRC32:x2} metadatasz={SmallData.Length} fnumber={ArchiveIndex} ofs=0x{Offset:x2} sz={Length}";
         }
 
         protected override byte[] ReadData()
         {
-            var partFile = ParentArchive.Parts.FirstOrDefault(part => part.Index == ArchiveIndex);
-            if (partFile == null)
-                return null;
-            if (HasPreloadData)
-                return ReadPreloadData();
-            var buff = new byte[EntryLength];
-            using (var fs = new FileStream(partFile.Filename, FileMode.Open, FileAccess.Read))
+            byte[] output = new byte[SmallData.Length + Length];
+
+            if (SmallData.Length > 0)
             {
-                fs.Seek(EntryOffset, SeekOrigin.Begin);
-                fs.Read(buff, 0, buff.Length);
+                SmallData.CopyTo(output, 0);
             }
-            return buff;
+
+            if (Length > 0)
+            {
+                Stream fs = null;
+
+                try
+                {
+                    var offset = Offset;
+
+                    if (ArchiveIndex != 0x7FFF)
+                    {
+
+                        if (!(Directory.ParentArchive as VpkArchive).IsDirVPK)
+                        {
+                            throw new InvalidOperationException("Given VPK is not a _dir, but entry is referencing an external archive.");
+                        }
+
+                        var fileName = $"{(Directory.ParentArchive as VpkArchive).FileName}_{ArchiveIndex:D3}.vpk";
+
+                        fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    }
+                    else
+                    {
+                        var fileName = $"{(Directory.ParentArchive as VpkArchive).FileName}.vpk";
+
+                        fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+
+                        offset += (Directory.ParentArchive as VpkArchive).HeaderSize + (Directory.ParentArchive as VpkArchive).TreeSize;
+                    }
+
+                    fs.Seek(offset, SeekOrigin.Begin);
+
+                    int length = (int)Length;
+                    int readOffset = SmallData.Length;
+                    int bytesRead;
+                    int totalRead = 0;
+                    while ((bytesRead = fs.Read(output, readOffset + totalRead, length - totalRead)) != 0)
+                    {
+                        totalRead += bytesRead;
+                    }
+                }
+                finally
+                {
+                    if (ArchiveIndex != 0x7FFF)
+                    {
+                        fs?.Close();
+                    }
+                }
+            }
+
+            return output;
         }
 
         public override void CopyTo(string destinationPath)
         {
             File.WriteAllBytes(destinationPath, Data);
         }
-
-        public byte[] AnyData { get { if (HasPreloadData) return ReadPreloadData(); else return ReadData(); } }
-
     }
 }
