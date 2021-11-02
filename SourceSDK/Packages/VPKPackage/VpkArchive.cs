@@ -226,6 +226,8 @@ namespace SourceSDK.Packages.VPKPackage
                 ReadOtherMD5Section();
                 ReadSignatureSection();
             }
+
+            Dispose();
         }
 
         private void ReadEntries(string rootPath)

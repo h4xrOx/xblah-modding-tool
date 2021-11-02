@@ -143,7 +143,7 @@ namespace SourceSDK
                         foreach(string file in Directory.GetFiles(value, "*.vpk"))
                         {
                             string filename = Path.GetFileNameWithoutExtension(file);
-                            if (!int.TryParse(filename.Substring(filename.Length - 3), out _))
+                            if (!int.TryParse(filename.Substring(filename.Length - 3), out int r) || r == -1)
                             {
                                 result.Add(file);
                             }
