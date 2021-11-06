@@ -22,6 +22,8 @@ namespace source_modding_tool.Modding.Blueprints
 
         Launcher launcher;
 
+        dynamic currentCategoryJson;
+
         List<Thread> downloadThreads = new List<Thread>();
         public BlueprintCategoriesDialog(Launcher launcher, string section)
         {
@@ -47,10 +49,10 @@ namespace source_modding_tool.Modding.Blueprints
 
         private void PrefabsWorkshop_Load(object sender, EventArgs e)
         {
-                dynamic json = GetJson("https://modding-assets.net/categories/json/" + EngineString + "/" + Section);
+            currentCategoryJson = GetJson("https://modding-assets.net/categories/json/" + EngineString + "/" + Section);
 
-                LoadCategories(json);
-                LoadItems(json);         
+            LoadCategories(currentCategoryJson);
+            LoadItems(currentCategoryJson);         
         }
 
         private dynamic GetJson(string url)
@@ -87,8 +89,8 @@ namespace source_modding_tool.Modding.Blueprints
 
         private void SubcategoryNode_Click(object sender, EventArgs e)
         {
-            dynamic json = GetJson((sender as AccordionControlElement).Tag.ToString());
-            LoadItems(json);
+            currentCategoryJson = GetJson((sender as AccordionControlElement).Tag.ToString());
+            LoadItems(currentCategoryJson);
         }
 
         private void LoadItems(dynamic json)
@@ -149,6 +151,14 @@ namespace source_modding_tool.Modding.Blueprints
         {
             BlueprintItemDialog dialog = new BlueprintItemDialog(launcher, (sender as GalleryItem).Tag.ToString());
             dialog.ShowDialog();
+            string filename = (sender as GalleryItem).Tag.ToString();
+            filename = filename.Substring(filename.IndexOf("json/") + 5);
+            filename = filename.Replace("/", "-");
+
+            if (File.Exists(launcher.GetCurrentMod().InstallPath + "\\custom\\" + filename + ".vpk"))
+                (sender as GalleryItem).Description = "Installed";
+            else
+                (sender as GalleryItem).Description = "";
         }
 
         AccordionControlElement AddGroup(AccordionControl accrodionCtrl, string txt)
