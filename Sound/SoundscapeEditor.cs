@@ -614,14 +614,14 @@ namespace source_modding_tool.Sound
                 else if (sender == minPitchSpin)
                 {
                     if ((double)(sender as SpinEdit).Value <= selectedSoundscapeRule.pitch.Item2)
-                        selectedSoundscapeRule.pitch.Item1 = (int)(sender as SpinEdit).Value;
+                        selectedSoundscapeRule.pitch.Item1 = (double)(sender as SpinEdit).Value;
                     else
                         (sender as SpinEdit).Value = (decimal)selectedSoundscapeRule.pitch.Item2;
                 }
                 else if (sender == maxPitchSpin)
                 {
                     if ((double)(sender as SpinEdit).Value >= selectedSoundscapeRule.pitch.Item1)
-                        selectedSoundscapeRule.pitch.Item2 = (int)(sender as SpinEdit).Value;
+                        selectedSoundscapeRule.pitch.Item2 = (double)(sender as SpinEdit).Value;
                     else
                         (sender as SpinEdit).Value = (decimal)selectedSoundscapeRule.pitch.Item1;
                 }
@@ -1007,11 +1007,11 @@ namespace source_modding_tool.Sound
                         // Get the rule pitch.
                         if (soundscapeRule.pitch.Item1 == soundscapeRule.pitch.Item2)
                         {
-                            soundscapeRuleKV.setValue("pitch", soundscapeRule.pitch.Item1.ToString());
+                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1 * 100).ToString());
                         }
                         else
                         {
-                            soundscapeRuleKV.setValue("pitch", soundscapeRule.pitch.Item1 + "," + soundscapeRule.pitch.Item2);
+                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1 * 100) + "," + (soundscapeRule.pitch.Item2 * 100));
                         }
 
                         // Get the rule position.

@@ -221,11 +221,17 @@ namespace SourceSDK
         { writeChunkFile(path, root, true, encoding); }
 
         public static void writeChunkFile(string path, KeyValue root, bool quotes, Encoding encoding)
+        { writeChunkFile(path, root, quotes, encoding, true); }
+
+        public static void writeChunkFile(string path, KeyValue root, bool quotes, Encoding encoding, bool credits)
         {
             List<string> lines = writeChunkFileTraverse(root, 0, quotes);
-            lines.Insert(0, "// Made with XBLAH's Modding tool.");
-            lines.Insert(1, "// Download it at https://github.com/jean-knapp/windows-source-modding-tool/releases");
-            lines.Insert(2, "");
+            if (credits)
+            {
+                lines.Insert(0, "// Made with XBLAH's Modding tool.");
+                lines.Insert(1, "// Download it at https://github.com/jean-knapp/windows-source-modding-tool/releases");
+                lines.Insert(2, "");
+            }
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllLines(path, lines, encoding);
         }
