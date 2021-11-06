@@ -979,5 +979,10 @@ namespace source_modding_tool
             BarItemLink link = toolsRunPopup.AddItem(toolsRunPopupExpert);
             link.BeginGroup = true;
         }
+
+        private void becomePatronButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Process.Start("https://www.patreon.com/moddingassets");
+        }
     }
 }
