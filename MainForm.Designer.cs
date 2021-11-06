@@ -263,6 +263,7 @@
             this.menuSoundSoundscapeEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuSoundCreateManifest = new DevExpress.XtraBars.BarButtonItem();
             this.status = new DevExpress.XtraBars.Bar();
+            this.becomePatronButton = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -280,8 +281,6 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.becomePatronButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -375,7 +374,6 @@
             this.menuModelingBlueprints,
             this.menuModdingAssetsUnpack,
             this.menuModdingAssetsPackCustomFolder,
-            this.barButtonItem2,
             this.becomePatronButton});
             this.barManager.MainMenu = this.menu;
             this.barManager.MaxItemId = 135;
@@ -526,8 +524,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModeling),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuParticles),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuScripts),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuSound),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuSound)});
             this.menu.OptionsBar.AllowQuickCustomization = false;
             this.menu.OptionsBar.DrawDragBorder = false;
             this.menu.OptionsBar.MultiLine = true;
@@ -1298,6 +1295,25 @@
             this.status.OptionsBar.UseWholeRow = true;
             this.status.Text = "Status bar";
             // 
+            // becomePatronButton
+            // 
+            this.becomePatronButton.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.becomePatronButton.Caption = "Become a Patron";
+            this.becomePatronButton.Id = 134;
+            this.becomePatronButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("becomePatronButton.ImageOptions.SvgImage")));
+            this.becomePatronButton.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(118)))), ((int)(((byte)(6)))));
+            this.becomePatronButton.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.becomePatronButton.Name = "becomePatronButton";
+            this.becomePatronButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            toolTipTitleItem51.Text = "Support the tool!";
+            toolTipItem58.Text = "XBLAH\'s Modding Tool is free and always will be. This is my hobby. If you wanna s" +
+    "upport continuous development of the tool, although not mandatory, contributing " +
+    "is highly appreciated.";
+            superToolTip51.Items.Add(toolTipTitleItem51);
+            superToolTip51.Items.Add(toolTipItem58);
+            this.becomePatronButton.SuperTip = superToolTip51;
+            this.becomePatronButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.becomePatronButton_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -1412,34 +1428,6 @@
             // 
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barButtonItem2.Caption = "Become a Patron";
-            this.barButtonItem2.Id = 133;
-            this.barButtonItem2.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(118)))), ((int)(((byte)(6)))));
-            this.barButtonItem2.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // becomePatronButton
-            // 
-            this.becomePatronButton.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.becomePatronButton.Caption = "Become a Patron";
-            this.becomePatronButton.Id = 134;
-            this.becomePatronButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.becomePatronButton.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(118)))), ((int)(((byte)(6)))));
-            this.becomePatronButton.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.becomePatronButton.Name = "becomePatronButton";
-            this.becomePatronButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem51.Text = "Support the tool!";
-            toolTipItem58.Text = "XBLAH\'s Modding Tool is free and always will be. This is my hobby. If you wanna s" +
-    "upport continuous development of the tool, although not mandatory, contributing " +
-    "is highly appreciated.";
-            superToolTip51.Items.Add(toolTipTitleItem51);
-            superToolTip51.Items.Add(toolTipItem58);
-            this.becomePatronButton.SuperTip = superToolTip51;
-            this.becomePatronButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.becomePatronButton_ItemClick);
             // 
             // MainForm
             // 
@@ -1561,7 +1549,6 @@
         private DevExpress.XtraBars.BarButtonItem menuModelingBlueprints;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsUnpack;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsPackCustomFolder;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem becomePatronButton;
     }
 }

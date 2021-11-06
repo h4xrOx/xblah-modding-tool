@@ -50,7 +50,7 @@ namespace source_modding_tool.Sound
                 }
             }
 
-            KeyValue.writeChunkFile(launcher.GetCurrentMod().InstallPath + "\\scripts\\soundscapes_manifest.txt", manifest, false);
+            KeyValue.writeChunkFile(launcher.GetCurrentMod().InstallPath + "\\scripts\\soundscapes_manifest.txt", manifest, false, Encoding.UTF8, false);
             XtraMessageBox.Show("Soundscapes manifest created.");
         }
     }
