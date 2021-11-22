@@ -60,6 +60,13 @@ namespace SourceSDK
                                 ReleasedModsDirectories.Add(library + "\\steamapps\\common\\" + key);
                                 continue;
                             }
+
+                            if (games.ContainsKey(key))
+                            {
+                                MessageBox.Show("Error: There is already a game loaded as \"" + key + "\" in the directory " + games[key] + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
+                                continue;
+                            }
+
                             switch (key)
                             {
                                 case "half-life 2":
@@ -75,11 +82,6 @@ namespace SourceSDK
                                     break;
                                 default:
                                     {
-                                        if (games.ContainsKey(key))
-                                        {
-                                            MessageBox.Show("Error: There is already a game loaded as \"" + key + "\" in the directory " + games[key] + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
-                                            continue;
-                                        }
                                         games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE));
 
                                     }
