@@ -1,6 +1,6 @@
 ﻿namespace source_modding_tool
 {
-    partial class SearchPathsForm
+    partial class ExpertContentMountForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchPathsForm));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpertContentMountForm));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.searchList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -228,12 +228,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboGames.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.comboGames.Size = new System.Drawing.Size(701, 20);
-            toolTipTitleItem2.Text = "SteamAppID <integer>";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = resources.GetString("toolTipItem2.Text");
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.comboGames.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "SteamAppID <integer>";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = resources.GetString("toolTipItem1.Text");
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.comboGames.SuperTip = superToolTip1;
             this.comboGames.TabIndex = 2;
             // 
             // labelControl18
@@ -246,7 +246,7 @@
             this.labelControl18.TabIndex = 3;
             this.labelControl18.Text = "Base game:";
             // 
-            // SearchPathsForm
+            // ExpertContentMountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,9 +255,9 @@
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl1);
-            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("SearchPathsForm.IconOptions.Icon")));
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("SearchPathsForm.IconOptions.Image")));
-            this.Name = "SearchPathsForm";
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("ExpertContentMountForm.IconOptions.Icon")));
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ExpertContentMountForm.IconOptions.Image")));
+            this.Name = "ExpertContentMountForm";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.Text = "Content Mount";
             this.Load += new System.EventHandler(this.SearchPathsForm_Load);

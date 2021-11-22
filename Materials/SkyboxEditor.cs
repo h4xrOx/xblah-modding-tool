@@ -470,6 +470,7 @@ namespace source_modding_tool.Materials
             }
 
             destImage.Save(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png", ImageFormat.Png);
+            //System.Diagnostics.Debugger.Break();
             bitmap.Dispose();
         }
 

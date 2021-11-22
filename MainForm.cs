@@ -10,7 +10,6 @@ using source_modding_tool.Tools;
 using SourceSDK;
 using SourceSDK.Maps;
 using SourceSDK.Packages;
-using SourceSDK.Packages.VPKPackage;
 using SourceSDK.Particles;
 using System;
 using System.Collections.Generic;
@@ -291,6 +290,13 @@ namespace source_modding_tool
             {
                 instance?.Command("+mat_reloadallmaterials");
             }
+
+            // Blueprints
+            else if (e.Item == menuMaterialsBlueprints)
+            {
+                BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "textures");
+                form.ShowDialog();
+            }
         }
 
         private void menuModding_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -480,9 +486,9 @@ namespace source_modding_tool
             }
 
             // Content Monut
-            else if (e.Item == menuModdingSettingsContentMount)
+            else if (e.Item == menuModdingContentMountAdvanced)
             {
-                SearchPathsForm form = new SearchPathsForm(launcher);
+                ExpertContentMountForm form = new ExpertContentMountForm(launcher);
                 form.ShowDialog();
             }
         }
@@ -545,6 +551,7 @@ namespace source_modding_tool
                 instance?.Command("+r_flushlod");
             }
 
+            // Blueprints
             else if(e.Item == menuModelingBlueprints)
             {
                 BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "models");
@@ -686,7 +693,7 @@ namespace source_modding_tool
                         menuModdingImport.Enabled = true;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
-                            menuModdingSettingsContentMount.Enabled = true;
+                            menuModdingContentMountAdvanced.Enabled = true;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuScriptsHudEditor.Enabled = true;
@@ -743,7 +750,7 @@ namespace source_modding_tool
                         menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
-                            menuModdingSettingsContentMount.Enabled = false;
+                            menuModdingContentMountAdvanced.Enabled = false;
                             menuModdingSettingsMenu.Enabled = false;
                             menuModdingSettingsStartingMaps.Enabled = false;
                             menuScriptsHudEditor.Enabled = false;
@@ -785,7 +792,7 @@ namespace source_modding_tool
                         menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = false;
-                            menuModdingSettingsContentMount.Enabled = false;
+                            menuModdingContentMountAdvanced.Enabled = false;
                             menuModdingSettingsMenu.Enabled = true;
                             menuModdingSettingsStartingMaps.Enabled = true;
                             menuScriptsHudEditor.Enabled = false;

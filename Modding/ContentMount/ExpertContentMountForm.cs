@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
- 
+
 using System.IO;
 using SourceSDK;
 
 namespace source_modding_tool
 {
-    public partial class SearchPathsForm : DevExpress.XtraEditors.XtraForm
+    public partial class ExpertContentMountForm : DevExpress.XtraEditors.XtraForm
     {
         KeyValue gameinfo;
 
         List<String[]> searchPaths;
         Launcher launcher;
-        public SearchPathsForm(Launcher launcher)
+        public ExpertContentMountForm(Launcher launcher)
         {
             this.launcher = launcher;
             InitializeComponent();

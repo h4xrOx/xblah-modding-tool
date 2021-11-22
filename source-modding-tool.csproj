@@ -250,11 +250,11 @@
     <Compile Include="Modding\RunDialog.Designer.cs">
       <DependentUpon>RunDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\SearchPathsForm.cs">
+    <Compile Include="Modding\ContentMount\ExpertContentMountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\SearchPathsForm.Designer.cs">
-      <DependentUpon>SearchPathsForm.cs</DependentUpon>
+    <Compile Include="Modding\ContentMount\ExpertContentMountForm.Designer.cs">
+      <DependentUpon>ExpertContentMountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\GamemenuDialog.cs">
       <SubType>Form</SubType>
@@ -389,8 +389,8 @@
     <EmbeddedResource Include="Modding\RunDialog.resx">
       <DependentUpon>RunDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\SearchPathsForm.resx">
-      <DependentUpon>SearchPathsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Modding\ContentMount\ExpertContentMountForm.resx">
+      <DependentUpon>ExpertContentMountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\GamemenuDialog.resx">
       <DependentUpon>GamemenuDialog.cs</DependentUpon>

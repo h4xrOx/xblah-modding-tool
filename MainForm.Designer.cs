@@ -89,12 +89,12 @@
             DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem21 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem22 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip21 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem21 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem26 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem22 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem23 = new DevExpress.Utils.ToolTipItem();
@@ -218,8 +218,8 @@
             this.menuModdingSettingsChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
-            this.menuModdingSettingsContentMount = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingAssets = new DevExpress.XtraBars.BarSubItem();
+            this.menuModdingContentMountAdvanced = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingImport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingExport = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingAssetsPack = new DevExpress.XtraBars.BarButtonItem();
@@ -281,6 +281,8 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuMaterialsBlueprints = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -343,7 +345,7 @@
             this.menuLevelDesignFogPreviewer,
             this.menuLevelDesignRunMap,
             this.menuFileLibraries,
-            this.menuModdingSettingsContentMount,
+            this.menuModdingContentMountAdvanced,
             this.menuModdingRunExpert,
             this.barButtonItem1,
             this.toolsRunPopupExpert,
@@ -374,9 +376,10 @@
             this.menuModelingBlueprints,
             this.menuModdingAssetsUnpack,
             this.menuModdingAssetsPackCustomFolder,
-            this.becomePatronButton});
+            this.becomePatronButton,
+            this.menuMaterialsBlueprints});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 135;
+            this.barManager.MaxItemId = 138;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -613,7 +616,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsContentMount),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssets),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
             this.menuModding.Name = "menuModding";
@@ -727,25 +729,13 @@
             this.menuModdingSettingsMenu.SuperTip = superToolTip17;
             this.menuModdingSettingsMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
-            // menuModdingSettingsContentMount
-            // 
-            this.menuModdingSettingsContentMount.Caption = "Content Mount";
-            this.menuModdingSettingsContentMount.Id = 84;
-            this.menuModdingSettingsContentMount.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsContentMount.ImageOptions.SvgImage")));
-            this.menuModdingSettingsContentMount.Name = "menuModdingSettingsContentMount";
-            toolTipTitleItem18.Text = "Content mount";
-            toolTipItem22.Text = "Manage the mounted VPKs and loose directories.";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem22);
-            this.menuModdingSettingsContentMount.SuperTip = superToolTip18;
-            this.menuModdingSettingsContentMount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
-            // 
             // menuModdingAssets
             // 
             this.menuModdingAssets.Caption = "Assets";
             this.menuModdingAssets.Id = 100;
             this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingContentMountAdvanced),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingExport),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPack, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsUnpack),
@@ -756,6 +746,19 @@
             superToolTip21.Items.Add(toolTipTitleItem21);
             superToolTip21.Items.Add(toolTipItem26);
             this.menuModdingAssets.SuperTip = superToolTip21;
+            // 
+            // menuModdingContentMountAdvanced
+            // 
+            this.menuModdingContentMountAdvanced.Caption = "Content Mount";
+            this.menuModdingContentMountAdvanced.Id = 84;
+            this.menuModdingContentMountAdvanced.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingContentMountAdvanced.ImageOptions.SvgImage")));
+            this.menuModdingContentMountAdvanced.Name = "menuModdingContentMountAdvanced";
+            toolTipTitleItem18.Text = "Content mount";
+            toolTipItem22.Text = "Manage the mounted VPKs and loose directories.";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            superToolTip18.Items.Add(toolTipItem22);
+            this.menuModdingContentMountAdvanced.SuperTip = superToolTip18;
+            this.menuModdingContentMountAdvanced.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingImport
             // 
@@ -1017,7 +1020,8 @@
             this.menuMaterials.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsBlueprints, true)});
             this.menuMaterials.Name = "menuMaterials";
             toolTipTitleItem36.Text = "Materials";
             toolTipItem43.Text = "Create materials and textures to use in the models and levels.";
@@ -1429,6 +1433,21 @@
             this.modProcessUpdater.Interval = 1000;
             this.modProcessUpdater.Tick += new System.EventHandler(this.modProcessUpdater_Tick);
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Blueprints";
+            this.barButtonItem2.Id = 129;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // menuMaterialsBlueprints
+            // 
+            this.menuMaterialsBlueprints.Caption = "Blueprints";
+            this.menuMaterialsBlueprints.Id = 137;
+            this.menuMaterialsBlueprints.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuMaterialsBlueprints.ImageOptions.Image")));
+            this.menuMaterialsBlueprints.Name = "menuMaterialsBlueprints";
+            this.menuMaterialsBlueprints.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1515,7 +1534,7 @@
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignFogPreviewer;
         private DevExpress.XtraBars.BarButtonItem menuLevelDesignRunMap;
         private DevExpress.XtraBars.BarButtonItem menuFileLibraries;
-        private DevExpress.XtraBars.BarButtonItem menuModdingSettingsContentMount;
+        private DevExpress.XtraBars.BarButtonItem menuModdingContentMountAdvanced;
         private DevExpress.XtraBars.BarButtonItem menuModdingRunExpert;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem toolsRunPopupExpert;
@@ -1550,5 +1569,7 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsUnpack;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsPackCustomFolder;
         private DevExpress.XtraBars.BarButtonItem becomePatronButton;
+        private DevExpress.XtraBars.BarButtonItem menuMaterialsBlueprints;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
