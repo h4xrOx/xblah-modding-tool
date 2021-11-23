@@ -63,7 +63,7 @@ namespace SourceSDK
 
                             if (games.ContainsKey(key))
                             {
-                                MessageBox.Show("Error: There is already a game loaded as \"" + key + "\" in the directory " + games[key] + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
+                                MessageBox.Show("Error: There is already a game loaded as \"" + key + "\" in the directory " + games[key].InstallPath + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
                                 continue;
                             }
 
@@ -74,7 +74,7 @@ namespace SourceSDK
                                         game.Name = "Half-Life 2";
                                         if (games.ContainsKey("Half-Life 2"))
                                         {
-                                            MessageBox.Show("Error: There is already a game loaded as \"Half-Life 2\" in the directory " + games["Half-Life 2"] + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
+                                            MessageBox.Show("Error: There is already a game loaded as \"Half-Life 2\" in the directory " + games["Half-Life 2"].InstallPath + ". It's not possible to read directory " + library + "\\steamapps\\common\\" + key + ". You have to solve this issue manually.");
                                             continue;
                                         }
                                         games.Add("Half-Life 2", game);
