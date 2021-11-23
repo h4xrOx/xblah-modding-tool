@@ -254,6 +254,7 @@ namespace source_modding_tool
             string fullPath = tabInterface.Launcher.GetCurrentMod().GetFullPath(tabInterface.RelativePath);
 
             // Saves the file.
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
             File.WriteAllText(fullPath + ".vmt", vmt, new UTF8Encoding(false));
 
             // Adds the file to File Explorer.
