@@ -35,11 +35,14 @@ namespace xblah_modding_tool
 
         private void Form_Load(object sender, EventArgs e)
         {
-            Text = Application.ProductName;
+            Text = Application.ProductName + " - v" + Application.ProductVersion;
             string currentGame = Properties.Settings.Default.currentGame;
             string currentMod = Properties.Settings.Default.currentMod;
 
             launcher = new Launcher();
+            launcher.libraries.Load();
+
+            checkMapbaseInstallation();
             updateToolsGames();
 
             if (launcher.GetGamesList().ContainsKey(currentGame))
@@ -54,6 +57,21 @@ namespace xblah_modding_tool
 
             UpdateMenus();
             updateBackground();
+        }
+
+        private void checkMapbaseInstallation()
+        {
+            string sourceModsDir = launcher.GetSourceModsDirectory();
+            if (!Directory.Exists(sourceModsDir + "mapbase_shared\\") || !Directory.Exists(sourceModsDir + "mapbase_hl2\\") || !Directory.Exists(sourceModsDir + "\\mapbase_episodic\\"))
+            {
+                foreach (string file in Directory.GetFiles(Launcher.ApplicationDirectory + "\\Tools\\Mapbase\\", "*", SearchOption.AllDirectories))
+                {
+                    string destinationPath = sourceModsDir + file.Replace(Launcher.ApplicationDirectory + "\\Tools\\Mapbase\\", string.Empty);
+                    string destinationDirectory = new FileInfo(destinationPath).Directory.FullName;
+                    Directory.CreateDirectory(destinationDirectory);
+                    File.Copy(file, destinationPath);
+                }
+            }
         }
 
         private void menuChoreography_ItemClick(object sender, ItemClickEventArgs e)
