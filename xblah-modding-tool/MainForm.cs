@@ -879,8 +879,16 @@ namespace xblah_modding_tool
                     Bitmap icon = null;
                     if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico"))
                         icon = (Bitmap)Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico");
-                    else if(File.Exists(item.Value.getExePath()))
-                        icon = Icon.ExtractAssociatedIcon(item.Value.getExePath()).ToBitmap();
+                    else if (File.Exists(item.Value.getExePath()))
+                    {
+                        try
+                        {
+                            icon = Icon.ExtractAssociatedIcon(item.Value.getExePath()).ToBitmap();
+                        } catch (FileNotFoundException)
+                        {
+
+                        }
+                    }
 
                     if (icon != null)
                         imageCollection1.Images.Add(icon);
