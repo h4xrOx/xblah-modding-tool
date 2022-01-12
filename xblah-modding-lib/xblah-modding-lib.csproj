@@ -7,8 +7,8 @@
     <ProjectGuid>{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SourceSDK</RootNamespace>
-    <AssemblyName>SourceSDK</AssemblyName>
+    <RootNamespace>xblah_modding_lib</RootNamespace>
+    <AssemblyName>xblah-modding-lib</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -121,6 +121,20 @@ namespace xblah_modding_lib
             return games;
         }
 
+        public string GetSourceModsDirectory()
+        {
+            List<string> mods = new List<string>();
+            foreach (string library in libraries.GetList())
+            {
+                if (Directory.Exists(library + "\\steamapps\\sourcemods\\"))
+                {
+                    return library + "\\steamapps\\sourcemods\\";
+                }
+
+            }
+            return "";
+        }
+
         public Dictionary<string, Game> GetGamesList()
         {
             libraries.Load();
