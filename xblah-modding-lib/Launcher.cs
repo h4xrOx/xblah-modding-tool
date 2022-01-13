@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace xblah_modding_lib
@@ -119,6 +121,46 @@ namespace xblah_modding_lib
             games = games.OrderBy(m => m.Key).ToDictionary(m => m.Key, m => m.Value);
 
             return games;
+        }
+
+        /// <summary>
+        /// Automatically sets the SDK 2013 to upcoming and restarts Steam so the download can proceed.
+        /// </summary>
+        public void SetSDK2013Upcoming()
+        {
+            foreach(string library in libraries.GetList())
+            {
+                if (File.Exists(library + "\\steamapps\\appmanifest_243730.acf"))
+                {
+                    // Get file contents and check if it contains the 'upcoming' keyword.
+                    string fileContents = File.ReadAllText(library + "\\steamapps\\appmanifest_243730.acf");
+                    if (!fileContents.Contains("upcoming"))
+                    {
+                        // Save a backup.
+                        File.Copy(library + "\\steamapps\\appmanifest_243730.acf", library + "\\steamapps\\appmanifest_243730_backup.acf");
+
+                        // Replace the key values.
+                        KeyValue root = KeyValue.readChunkfile(library + "\\steamapps\\appmanifest_243730.acf");
+                        root.setValue("StateFlags", "4");
+                        root.setValue("UpdateResult", "6");
+                        root.setValue("BytesToDownload", "0");
+                        root.setValue("BytesDownloaded", "0");
+                        root.setValue("BytesToStage", "0");
+                        root.setValue("BytesStaged", "0");
+                        root.getChildByKey("UserConfig").setValue("betakey", "upcoming");
+                        KeyValue.writeChunkFile(library + "\\steamapps\\appmanifest_243730.acf", root, new UTF8Encoding(false));
+
+                        // Restart Steam so it starts updating to upcoming branch.
+                        var process = Process.GetProcessesByName("steam");
+                        if (process != null && process.Length > 0)
+                        {
+                            var path = process[0].MainModule.FileName;
+                            process[0].Kill();
+                            Process.Start(path);
+                        }
+                    }
+                }
+            }
         }
 
         public string GetSourceModsDirectory()

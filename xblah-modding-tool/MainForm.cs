@@ -43,6 +43,7 @@ namespace xblah_modding_tool
             launcher.libraries.Load();
 
             checkMapbaseInstallation();
+            setSDK2013Upcoming();
             updateToolsGames();
 
             if (launcher.GetGamesList().ContainsKey(currentGame))
@@ -57,6 +58,11 @@ namespace xblah_modding_tool
 
             UpdateMenus();
             updateBackground();
+        }
+
+        private void setSDK2013Upcoming()
+        {
+            launcher.SetSDK2013Upcoming();
         }
 
         private void checkMapbaseInstallation()
