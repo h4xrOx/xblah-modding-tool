@@ -460,7 +460,7 @@
   <ItemGroup>
     <ProjectReference Include="..\xblah-modding-lib\xblah-modding-lib.csproj">
       <Project>{e9ead908-dfc2-45cc-b326-fcc2cafe7f79}</Project>
-      <Name>SourceSDK</Name>
+      <Name>xblah-modding-lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

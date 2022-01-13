@@ -62,7 +62,7 @@ namespace xblah_modding_tool
 
         private void setSDK2013Upcoming()
         {
-            launcher.SetSDK2013Upcoming();
+            launcher.SetSDK2013SPUpcoming();
         }
 
         private void checkMapbaseInstallation()

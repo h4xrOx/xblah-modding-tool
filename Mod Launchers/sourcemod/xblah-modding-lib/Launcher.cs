@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,19 +10,6 @@ namespace xblah_modding_lib
 {
     public class Launcher
     {
-        /// <summary>
-        /// Gets the user directory.
-        /// </summary>
-        public static string UserDirectory => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + Application.ProductName + "\\";
-
-        /// <summary>
-        /// Gets the application directory.
-        /// </summary>
-        public static string ApplicationDirectory => AppDomain.CurrentDomain.BaseDirectory;
-
-
-        Game currentGame = null;
-
         public Libraries libraries;
         Dictionary<string, Game> games;
         public List<string> ReleasedModsDirectories;
@@ -90,16 +76,6 @@ namespace xblah_modding_lib
                                     break;
                             }
                         }
-                        else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(key))
-                        {
-                            // It's a Source 2 game
-                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE2));
-                        }
-                        else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\valve\\dlls\\hl.dll") && !games.ContainsKey(key))
-                        {
-                            // It's a Goldsrc game
-                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.GOLDSRC));
-                        }
                     }
             }
 
@@ -158,8 +134,7 @@ namespace xblah_modding_lib
                             var path = process[0].MainModule.FileName;
                             process[0].Kill();
                             var p = Process.Start(path);
-                        }
-                        else
+                        } else
                         {
                             string steamPath = Launcher.GetInstallPath() + "\\steam.exe";
                             Process.Start(steamPath);
@@ -207,83 +182,6 @@ namespace xblah_modding_lib
         public static string GetInstallPath()
         {
             return Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null).ToString();
-        }
-
-        public string GetModPath(Game game, Mod mod)
-        {
-            if (game != currentGame || !games.ContainsKey(game.Name))
-            {
-                if (!games.ContainsKey(game.Name))
-                    LoadGames();
-
-                if (games.ContainsKey(game.Name))
-                    game.LoadMods(this);
-                else
-                    return null;
-            }
-
-            if (mod != game.GetCurrentMod() || !game.Mods.ContainsKey(mod.Name))
-            {
-                if (!game.Mods.ContainsKey(mod.Name))
-                    game.LoadMods(this);
-
-                if (!game.Mods.ContainsKey(mod.Name))
-                    return null;
-            }
-
-            string path = mod.InstallPath;
-
-            if (game != currentGame)
-                currentGame.LoadMods(this);
-
-            return path;
-        }
-
-        public Dictionary<string, Mod> GetModsList(Game game)
-        {
-            if (game != null)
-                return game.LoadMods(this);
-
-            return new Dictionary<string, Mod>();
-        }
-
-        public void SetCurrentGame(Game game)
-        {
-            currentGame = game;
-            if (game == null)
-            {
-                MessageBox.Show("Current game is null. Can't load mods.");
-                return;
-            }
-            game.LoadMods(this);
-        }
-
-        public void SetCurrentGame(string game)
-        {
-            SetCurrentGame(games[game]);
-        }
-
-        public Game GetCurrentGame()
-        {
-            return currentGame;
-        }
-
-        public void SetCurrentMod(Mod mod)
-        {
-            if (currentGame != null)
-                currentGame.SetCurrentMod(mod);
-        }
-
-        public void SetCurrentMod(string mod)
-        {
-            SetCurrentMod(currentGame.Mods[mod]);
-        }
-
-        public Mod GetCurrentMod()
-        {
-            if (currentGame != null)
-                return currentGame.GetCurrentMod();
-            return null;
         }
     }
 }

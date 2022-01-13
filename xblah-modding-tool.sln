@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "source-modding-tool", "xblah-modding-tool\xblah-modding-tool.csproj", "{C18AF47A-90C6-4BA5-9D57-A7322B9699BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xblah-modding-tool", "xblah-modding-tool\xblah-modding-tool.csproj", "{C18AF47A-90C6-4BA5-9D57-A7322B9699BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xblah-modding-lib", "xblah-modding-lib\xblah-modding-lib.csproj", "{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mod Launchers", "Mod Launchers", "{3D1FECD3-743B-434E-A93C-0FFA98EFE014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sourcemod", "Mod Launchers\sourcemod\sourcemod.csproj", "{6313A8C2-D144-46B2-846B-92EF67DD2860}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9EAD908-DFC2-45CC-B326-FCC2CAFE7F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6313A8C2-D144-46B2-846B-92EF67DD2860} = {3D1FECD3-743B-434E-A93C-0FFA98EFE014}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8404557C-7B98-41E3-9DA1-4A92E4CED60D}
