@@ -422,6 +422,13 @@ namespace xblah_modding_tool
                 PackCustomFolderDialog form = new PackCustomFolderDialog(launcher);
                 form.ShowDialog();
             }
+
+            // Remove Duplicates
+            else if(e.Item == menuModdingAssetsRemoveDuplicates)
+            {
+                RemoveDuplicatesForm form = new RemoveDuplicatesForm(launcher);
+                form.ShowDialog();
+            }
         }
 
         public void Run(RunPreset runPreset, string command)
