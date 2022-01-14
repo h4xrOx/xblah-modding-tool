@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using xblah_modding_lib;
+using DevExpress.XtraEditors;
 
 namespace xblah_modding_tool
 {
@@ -51,6 +52,22 @@ namespace xblah_modding_tool
             {
                 if (Directory.Exists(addDialog.SelectedPath) && !launcher.libraries.GetList().Contains(addDialog.SelectedPath))
                 {
+                    bool hasSteamappsFolder = false;
+                    foreach(var dir in Directory.GetDirectories(addDialog.SelectedPath))
+                    {
+                        if (Path.GetFileName(dir).ToLower() == "steamapps")
+                        {
+                            hasSteamappsFolder = true;
+                            break;
+                        }
+                    }
+
+                    if (!hasSteamappsFolder)
+                    {
+                        XtraMessageBox.Show("The library directory must contain the SteamApps folder.");
+                        return;
+                    }
+
                     launcher.libraries.AddUserLibrary(addDialog.SelectedPath);
 
                     UpdateLibrariesList();
