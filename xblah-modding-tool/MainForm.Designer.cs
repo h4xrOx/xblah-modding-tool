@@ -29,169 +29,181 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip97 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem97 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem107 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem108 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem109 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem4 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem110 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem111 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip98 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem98 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem112 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip100 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem100 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem114 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip56 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem56 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem63 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip27 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem27 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem32 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem20 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem21 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip25 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem25 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem30 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem22 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem23 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip20 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem20 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem24 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem25 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip21 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem21 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem26 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip22 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem22 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem27 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip23 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem23 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem28 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip24 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem24 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem29 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip26 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem26 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem31 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip29 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem29 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem34 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip28 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem28 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem33 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip36 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem36 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem43 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip30 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem30 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem35 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip31 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem31 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem36 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip32 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem32 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem37 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem2 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem38 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem39 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip33 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem33 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem40 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem34 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem41 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip35 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem35 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem42 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip40 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem40 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem47 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip37 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem37 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem44 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip38 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem38 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem45 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip39 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem39 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem46 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip48 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem48 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem55 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip41 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem41 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem48 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip42 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem42 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem49 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip44 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem44 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem51 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip43 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem43 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem50 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip46 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem46 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem53 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip45 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem45 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem52 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip47 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem47 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem54 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip50 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem50 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem57 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip49 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem49 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem56 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip51 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem51 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem58 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip54 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem54 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem61 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip52 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem52 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem59 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip53 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem53 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem60 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip54 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem54 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem61 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip55 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem55 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem62 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip70 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem70 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem78 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip57 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem57 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem64 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip58 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem58 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem65 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip59 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem59 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem66 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip60 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem60 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem67 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip61 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem61 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem68 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip62 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem62 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem69 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip63 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem63 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem70 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip64 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem64 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem71 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip68 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem68 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem76 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip65 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem65 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem72 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip66 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem66 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem73 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip67 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem67 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem74 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem75 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip69 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem69 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem77 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip72 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem72 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem80 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip71 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem71 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem79 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip79 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem79 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem89 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip73 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem73 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem81 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip74 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem74 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem82 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip75 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem75 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem83 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem3 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem84 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipItem toolTipItem85 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip76 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem76 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem86 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip77 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem77 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem87 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip78 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem78 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem88 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip83 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem83 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem93 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip80 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem80 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem90 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip81 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem81 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem91 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip82 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem82 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem92 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip91 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem91 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem101 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip84 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem84 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem94 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip85 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem85 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem95 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip87 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem87 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem97 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip86 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem86 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem96 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip89 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem89 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem99 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip88 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem88 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem98 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip90 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem90 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem100 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip93 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem93 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem103 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip92 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem92 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem102 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip99 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem99 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem113 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip96 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem96 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem106 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip94 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem94 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem104 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip95 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem95 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem105 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip101 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem101 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem115 = new DevExpress.Utils.ToolTipItem();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.tools = new DevExpress.XtraBars.Bar();
             this.toolsGames = new DevExpress.XtraBars.BarEditItem();
@@ -215,6 +227,7 @@
             this.menuModdingFileExplorer = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingClean = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsGameInfo = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.menuModdingSettingsChapters = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsStartingMaps = new DevExpress.XtraBars.BarButtonItem();
             this.menuModdingSettingsMenu = new DevExpress.XtraBars.BarButtonItem();
@@ -259,6 +272,7 @@
             this.menuModelingBlueprints = new DevExpress.XtraBars.BarButtonItem();
             this.menuParticles = new DevExpress.XtraBars.BarSubItem();
             this.menuParticlesManifestGenerator = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.menuScripts = new DevExpress.XtraBars.BarSubItem();
             this.menuScriptsHudEditor = new DevExpress.XtraBars.BarButtonItem();
             this.menuSound = new DevExpress.XtraBars.BarSubItem();
@@ -284,7 +298,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -381,9 +394,10 @@
             this.becomePatronButton,
             this.menuMaterialsBlueprints,
             this.menuModdingAssetsRemoveDuplicates,
-            this.barSubItem1});
+            this.barSubItem1,
+            this.barSubItem2});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 140;
+            this.barManager.MaxItemId = 141;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -438,11 +452,11 @@
             this.toolsMods.EditWidth = 256;
             this.toolsMods.Id = 3;
             this.toolsMods.Name = "toolsMods";
-            toolTipTitleItem97.Text = "Mod";
-            toolTipItem107.Text = "Select the mod from the current game.";
-            superToolTip97.Items.Add(toolTipTitleItem97);
-            superToolTip97.Items.Add(toolTipItem107);
-            this.toolsMods.SuperTip = superToolTip97;
+            toolTipTitleItem1.Text = "Mod";
+            toolTipItem1.Text = "Select the mod from the current game.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.toolsMods.SuperTip = superToolTip1;
             this.toolsMods.EditValueChanged += new System.EventHandler(this.toolsMods_EditValueChanged);
             // 
             // repositoryModsCombo
@@ -464,20 +478,20 @@
             this.toolsRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsRun.ImageOptions.SvgImage")));
             this.toolsRun.Name = "toolsRun";
             this.toolsRun.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem1.Text = "Run";
-            toolTipItem1.Text = "Run the selected game and mod with the default configurations.";
-            toolTipItem108.Text = "• Goldsrc and Source games will be run windowed.";
-            toolTipItem109.Text = "• Source 2 games will run on VR.";
-            toolTipItem110.Text = "Custom configurations are available in the dropdown.";
-            toolTipItem111.Text = "Specific configurations can be set on Expert Mode.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipItem108);
-            superToolTip1.Items.Add(toolTipItem109);
-            superToolTip1.Items.Add(toolTipSeparatorItem4);
-            superToolTip1.Items.Add(toolTipItem110);
-            superToolTip1.Items.Add(toolTipItem111);
-            this.toolsRun.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Run";
+            toolTipItem2.Text = "Run the selected game and mod with the default configurations.";
+            toolTipItem3.Text = "• Goldsrc and Source games will be run windowed.";
+            toolTipItem4.Text = "• Source 2 games will run on VR.";
+            toolTipItem5.Text = "Custom configurations are available in the dropdown.";
+            toolTipItem6.Text = "Specific configurations can be set on Expert Mode.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.Items.Add(toolTipItem3);
+            superToolTip2.Items.Add(toolTipItem4);
+            superToolTip2.Items.Add(toolTipSeparatorItem1);
+            superToolTip2.Items.Add(toolTipItem5);
+            superToolTip2.Items.Add(toolTipItem6);
+            this.toolsRun.SuperTip = superToolTip2;
             this.toolsRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
             // 
             // toolsRunPopup
@@ -494,11 +508,11 @@
             this.toolsStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("toolsStop.ImageOptions.LargeImage")));
             this.toolsStop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsStop.ImageOptions.SvgImage")));
             this.toolsStop.Name = "toolsStop";
-            toolTipTitleItem98.Text = "Stop";
-            toolTipItem112.Text = "Quit the running game.";
-            superToolTip98.Items.Add(toolTipTitleItem98);
-            superToolTip98.Items.Add(toolTipItem112);
-            this.toolsStop.SuperTip = superToolTip98;
+            toolTipTitleItem3.Text = "Stop";
+            toolTipItem7.Text = "Quit the running game.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem7);
+            this.toolsStop.SuperTip = superToolTip3;
             this.toolsStop.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.toolsStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.toolsStop_ItemClick);
             // 
@@ -508,11 +522,11 @@
             this.toolsReload.Id = 99;
             this.toolsReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("toolsReload.ImageOptions.SvgImage")));
             this.toolsReload.Name = "toolsReload";
-            toolTipTitleItem100.Text = "Reload map";
-            toolTipItem114.Text = "Reload the map if any is running.";
-            superToolTip100.Items.Add(toolTipTitleItem100);
-            superToolTip100.Items.Add(toolTipItem114);
-            this.toolsReload.SuperTip = superToolTip100;
+            toolTipTitleItem4.Text = "Reload map";
+            toolTipItem8.Text = "Reload the map if any is running.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem8);
+            this.toolsReload.SuperTip = superToolTip4;
             this.toolsReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.toolsReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.toolsReload_ItemClick);
             // 
@@ -549,11 +563,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuFileLibraries, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFileExit, true)});
             this.menuFile.Name = "menuFile";
-            toolTipTitleItem56.Text = "File";
-            toolTipItem63.Text = "Manage the tool configuration.";
-            superToolTip56.Items.Add(toolTipTitleItem56);
-            superToolTip56.Items.Add(toolTipItem63);
-            this.menuFile.SuperTip = superToolTip56;
+            toolTipTitleItem9.Text = "File";
+            toolTipItem13.Text = "Manage the tool configuration.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem13);
+            this.menuFile.SuperTip = superToolTip9;
             this.menuFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileNew
@@ -562,11 +576,11 @@
             this.menuFileNew.Id = 22;
             this.menuFileNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileNew.ImageOptions.SvgImage")));
             this.menuFileNew.Name = "menuFileNew";
-            toolTipTitleItem52.Text = "New";
-            toolTipItem59.Text = "Create a new mod from one of the templates.";
-            superToolTip52.Items.Add(toolTipTitleItem52);
-            superToolTip52.Items.Add(toolTipItem59);
-            this.menuFileNew.SuperTip = superToolTip52;
+            toolTipTitleItem5.Text = "New";
+            toolTipItem9.Text = "Create a new mod from one of the templates.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem9);
+            this.menuFileNew.SuperTip = superToolTip5;
             this.menuFileNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileOpenGameFolder
@@ -575,11 +589,11 @@
             this.menuFileOpenGameFolder.Id = 128;
             this.menuFileOpenGameFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileOpenGameFolder.ImageOptions.SvgImage")));
             this.menuFileOpenGameFolder.Name = "menuFileOpenGameFolder";
-            toolTipTitleItem53.Text = "Open Game Folder";
-            toolTipItem60.Text = "Open the game folder in Windows Explorer.";
-            superToolTip53.Items.Add(toolTipTitleItem53);
-            superToolTip53.Items.Add(toolTipItem60);
-            this.menuFileOpenGameFolder.SuperTip = superToolTip53;
+            toolTipTitleItem6.Text = "Open Game Folder";
+            toolTipItem10.Text = "Open the game folder in Windows Explorer.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem10);
+            this.menuFileOpenGameFolder.SuperTip = superToolTip6;
             this.menuFileOpenGameFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileLibraries
@@ -588,11 +602,11 @@
             this.menuFileLibraries.Id = 83;
             this.menuFileLibraries.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileLibraries.ImageOptions.SvgImage")));
             this.menuFileLibraries.Name = "menuFileLibraries";
-            toolTipTitleItem54.Text = "Steam Libraries";
-            toolTipItem61.Text = "Set up custom search paths for non-steam games.";
-            superToolTip54.Items.Add(toolTipTitleItem54);
-            superToolTip54.Items.Add(toolTipItem61);
-            this.menuFileLibraries.SuperTip = superToolTip54;
+            toolTipTitleItem7.Text = "Steam Libraries";
+            toolTipItem11.Text = "Set up custom search paths for non-steam games.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem11);
+            this.menuFileLibraries.SuperTip = superToolTip7;
             this.menuFileLibraries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuFileExit
@@ -601,11 +615,11 @@
             this.menuFileExit.Id = 20;
             this.menuFileExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuFileExit.ImageOptions.SvgImage")));
             this.menuFileExit.Name = "menuFileExit";
-            toolTipTitleItem55.Text = "Exit";
-            toolTipItem62.Text = "Close the tool.";
-            superToolTip55.Items.Add(toolTipTitleItem55);
-            superToolTip55.Items.Add(toolTipItem62);
-            this.menuFileExit.SuperTip = superToolTip55;
+            toolTipTitleItem8.Text = "Exit";
+            toolTipItem12.Text = "Close the tool.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem12);
+            this.menuFileExit.SuperTip = superToolTip8;
             this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuFile_ItemClick);
             // 
             // menuModding
@@ -618,17 +632,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingFileExplorer),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingClean),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsGameInfo, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssets),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingDelete, true)});
             this.menuModding.Name = "menuModding";
-            toolTipTitleItem70.Text = "Modding";
-            toolTipItem78.Text = "Edit the mod settings and interface.";
-            superToolTip70.Items.Add(toolTipTitleItem70);
-            superToolTip70.Items.Add(toolTipItem78);
-            this.menuModding.SuperTip = superToolTip70;
+            toolTipTitleItem27.Text = "Modding";
+            toolTipItem32.Text = "Edit the mod settings and interface.";
+            superToolTip27.Items.Add(toolTipTitleItem27);
+            superToolTip27.Items.Add(toolTipItem32);
+            this.menuModding.SuperTip = superToolTip27;
             // 
             // menuModdingRunExpert
             // 
@@ -636,11 +648,11 @@
             this.menuModdingRunExpert.Id = 87;
             this.menuModdingRunExpert.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingRunExpert.ImageOptions.SvgImage")));
             this.menuModdingRunExpert.Name = "menuModdingRunExpert";
-            toolTipTitleItem57.Text = "Expert mode";
-            toolTipItem64.Text = "Run the mode with custom arguments.";
-            superToolTip57.Items.Add(toolTipTitleItem57);
-            superToolTip57.Items.Add(toolTipItem64);
-            this.menuModdingRunExpert.SuperTip = superToolTip57;
+            toolTipTitleItem10.Text = "Expert mode";
+            toolTipItem14.Text = "Run the mode with custom arguments.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem14);
+            this.menuModdingRunExpert.SuperTip = superToolTip10;
             this.menuModdingRunExpert.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingRun_ItemClick);
             // 
             // menuModdingOpenFolder
@@ -649,11 +661,11 @@
             this.menuModdingOpenFolder.Id = 21;
             this.menuModdingOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingOpenFolder.ImageOptions.SvgImage")));
             this.menuModdingOpenFolder.Name = "menuModdingOpenFolder";
-            toolTipTitleItem58.Text = "Open Mod Folder";
-            toolTipItem65.Text = "Open the mod folder in Windows Explorer.";
-            superToolTip58.Items.Add(toolTipTitleItem58);
-            superToolTip58.Items.Add(toolTipItem65);
-            this.menuModdingOpenFolder.SuperTip = superToolTip58;
+            toolTipTitleItem11.Text = "Open Mod Folder";
+            toolTipItem15.Text = "Open the mod folder in Windows Explorer.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem15);
+            this.menuModdingOpenFolder.SuperTip = superToolTip11;
             this.menuModdingOpenFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingFileExplorer
@@ -662,24 +674,24 @@
             this.menuModdingFileExplorer.Id = 94;
             this.menuModdingFileExplorer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingFileExplorer.ImageOptions.SvgImage")));
             this.menuModdingFileExplorer.Name = "menuModdingFileExplorer";
-            toolTipTitleItem59.Text = "File explorer";
-            toolTipItem66.Text = "Open a File Explorer to view all the mounted files, both in VPKs or loose.";
-            superToolTip59.Items.Add(toolTipTitleItem59);
-            superToolTip59.Items.Add(toolTipItem66);
-            this.menuModdingFileExplorer.SuperTip = superToolTip59;
+            toolTipTitleItem12.Text = "File explorer";
+            toolTipItem16.Text = "Open a File Explorer to view all the mounted files, both in VPKs or loose.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem16);
+            this.menuModdingFileExplorer.SuperTip = superToolTip12;
             this.menuModdingFileExplorer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingClean
             // 
-            this.menuModdingClean.Caption = "Clean";
+            this.menuModdingClean.Caption = "Clean Files";
             this.menuModdingClean.Id = 34;
             this.menuModdingClean.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingClean.ImageOptions.SvgImage")));
             this.menuModdingClean.Name = "menuModdingClean";
-            toolTipTitleItem60.Text = "Clean";
-            toolTipItem67.Text = "Delete unnecessary files and folders to prepare the mod for publishing.";
-            superToolTip60.Items.Add(toolTipTitleItem60);
-            superToolTip60.Items.Add(toolTipItem67);
-            this.menuModdingClean.SuperTip = superToolTip60;
+            toolTipTitleItem13.Text = "Clean Files";
+            toolTipItem17.Text = "Delete unnecessary files and folders to prepare the mod for publishing.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem17);
+            this.menuModdingClean.SuperTip = superToolTip13;
             this.menuModdingClean.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingSettingsGameInfo
@@ -688,12 +700,23 @@
             this.menuModdingSettingsGameInfo.Id = 25;
             this.menuModdingSettingsGameInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsGameInfo.ImageOptions.SvgImage")));
             this.menuModdingSettingsGameInfo.Name = "menuModdingSettingsGameInfo";
-            toolTipTitleItem61.Text = "Game Info";
-            toolTipItem68.Text = "Edit the mod title and other settings.";
-            superToolTip61.Items.Add(toolTipTitleItem61);
-            superToolTip61.Items.Add(toolTipItem68);
-            this.menuModdingSettingsGameInfo.SuperTip = superToolTip61;
+            toolTipTitleItem14.Text = "Game Info";
+            toolTipItem18.Text = "Edit the mod title and other settings.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem18);
+            this.menuModdingSettingsGameInfo.SuperTip = superToolTip14;
             this.menuModdingSettingsGameInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
+            // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "Menu";
+            this.barSubItem2.Id = 140;
+            this.barSubItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem2.ImageOptions.SvgImage")));
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsChapters),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsStartingMaps),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingSettingsMenu, true)});
+            this.barSubItem2.Name = "barSubItem2";
             // 
             // menuModdingSettingsChapters
             // 
@@ -701,11 +724,11 @@
             this.menuModdingSettingsChapters.Id = 26;
             this.menuModdingSettingsChapters.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsChapters.ImageOptions.SvgImage")));
             this.menuModdingSettingsChapters.Name = "menuModdingSettingsChapters";
-            toolTipTitleItem62.Text = "Chapters";
-            toolTipItem69.Text = "Create chapters for the mod.";
-            superToolTip62.Items.Add(toolTipTitleItem62);
-            superToolTip62.Items.Add(toolTipItem69);
-            this.menuModdingSettingsChapters.SuperTip = superToolTip62;
+            toolTipTitleItem15.Text = "Chapters";
+            toolTipItem19.Text = "Create chapters for the mod.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem19);
+            this.menuModdingSettingsChapters.SuperTip = superToolTip15;
             this.menuModdingSettingsChapters.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingSettingsStartingMaps
@@ -714,30 +737,31 @@
             this.menuModdingSettingsStartingMaps.Id = 91;
             this.menuModdingSettingsStartingMaps.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsStartingMaps.ImageOptions.SvgImage")));
             this.menuModdingSettingsStartingMaps.Name = "menuModdingSettingsStartingMaps";
-            toolTipTitleItem63.Text = "Starting Maps";
-            toolTipItem70.Text = "Set the starting maps.";
-            superToolTip63.Items.Add(toolTipTitleItem63);
-            superToolTip63.Items.Add(toolTipItem70);
-            this.menuModdingSettingsStartingMaps.SuperTip = superToolTip63;
+            toolTipTitleItem16.Text = "Starting Maps";
+            toolTipItem20.Text = "Set the starting maps.";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem20);
+            this.menuModdingSettingsStartingMaps.SuperTip = superToolTip16;
             this.menuModdingSettingsStartingMaps.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingSettingsMenu
             // 
-            this.menuModdingSettingsMenu.Caption = "Menu";
+            this.menuModdingSettingsMenu.Caption = "Items";
             this.menuModdingSettingsMenu.Id = 32;
             this.menuModdingSettingsMenu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingSettingsMenu.ImageOptions.SvgImage")));
             this.menuModdingSettingsMenu.Name = "menuModdingSettingsMenu";
-            toolTipTitleItem64.Text = "Menu";
-            toolTipItem71.Text = "Edit the menu items.";
-            superToolTip64.Items.Add(toolTipTitleItem64);
-            superToolTip64.Items.Add(toolTipItem71);
-            this.menuModdingSettingsMenu.SuperTip = superToolTip64;
+            toolTipTitleItem17.Text = "Items";
+            toolTipItem21.Text = "Edit the menu items.";
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            superToolTip17.Items.Add(toolTipItem21);
+            this.menuModdingSettingsMenu.SuperTip = superToolTip17;
             this.menuModdingSettingsMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingAssets
             // 
             this.menuModdingAssets.Caption = "Assets";
             this.menuModdingAssets.Id = 100;
+            this.menuModdingAssets.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssets.ImageOptions.SvgImage")));
             this.menuModdingAssets.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingContentMountAdvanced),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuModdingImport, true),
@@ -747,11 +771,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsPackCustomFolder),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModdingAssetsRemoveDuplicates)});
             this.menuModdingAssets.Name = "menuModdingAssets";
-            toolTipTitleItem68.Text = "Assets";
-            toolTipItem76.Text = "Manage the mod assets.";
-            superToolTip68.Items.Add(toolTipTitleItem68);
-            superToolTip68.Items.Add(toolTipItem76);
-            this.menuModdingAssets.SuperTip = superToolTip68;
+            toolTipTitleItem25.Text = "Assets";
+            toolTipItem30.Text = "Manage the mod assets.";
+            superToolTip25.Items.Add(toolTipTitleItem25);
+            superToolTip25.Items.Add(toolTipItem30);
+            this.menuModdingAssets.SuperTip = superToolTip25;
             // 
             // menuModdingContentMountAdvanced
             // 
@@ -759,11 +783,11 @@
             this.menuModdingContentMountAdvanced.Id = 84;
             this.menuModdingContentMountAdvanced.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingContentMountAdvanced.ImageOptions.SvgImage")));
             this.menuModdingContentMountAdvanced.Name = "menuModdingContentMountAdvanced";
-            toolTipTitleItem65.Text = "Content mount";
-            toolTipItem72.Text = "Manage the mounted VPKs and loose directories.";
-            superToolTip65.Items.Add(toolTipTitleItem65);
-            superToolTip65.Items.Add(toolTipItem72);
-            this.menuModdingContentMountAdvanced.SuperTip = superToolTip65;
+            toolTipTitleItem18.Text = "Content mount";
+            toolTipItem22.Text = "Manage the mounted VPKs and loose directories.";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            superToolTip18.Items.Add(toolTipItem22);
+            this.menuModdingContentMountAdvanced.SuperTip = superToolTip18;
             this.menuModdingContentMountAdvanced.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModdingSettings_ItemClick);
             // 
             // menuModdingImport
@@ -772,11 +796,11 @@
             this.menuModdingImport.Id = 77;
             this.menuModdingImport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingImport.ImageOptions.SvgImage")));
             this.menuModdingImport.Name = "menuModdingImport";
-            toolTipTitleItem66.Text = "Import";
-            toolTipItem73.Text = "Copy the assets from another mod based on what is used in the selected .vmfs.";
-            superToolTip66.Items.Add(toolTipTitleItem66);
-            superToolTip66.Items.Add(toolTipItem73);
-            this.menuModdingImport.SuperTip = superToolTip66;
+            toolTipTitleItem19.Text = "Import";
+            toolTipItem23.Text = "Copy the assets from another mod based on what is used in the selected .vmfs.";
+            superToolTip19.Items.Add(toolTipTitleItem19);
+            superToolTip19.Items.Add(toolTipItem23);
+            this.menuModdingImport.SuperTip = superToolTip19;
             this.menuModdingImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingExport
@@ -785,15 +809,15 @@
             this.menuModdingExport.Id = 29;
             this.menuModdingExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingExport.ImageOptions.SvgImage")));
             this.menuModdingExport.Name = "menuModdingExport";
-            toolTipTitleItem67.Text = "Export";
-            toolTipItem74.Text = "Copy the assets from this mod into the custom folder based on what is used in the" +
+            toolTipTitleItem20.Text = "Copy to Custom Folder";
+            toolTipItem24.Text = "Copy the assets from this mod into the custom folder based on what is used in the" +
     " selected .vmfs.";
-            toolTipItem75.Text = "The exported assets are the minimum required to run the maps compiled from the se" +
+            toolTipItem25.Text = "The exported assets are the minimum required to run the maps compiled from the se" +
     "lected .vmfs.";
-            superToolTip67.Items.Add(toolTipTitleItem67);
-            superToolTip67.Items.Add(toolTipItem74);
-            superToolTip67.Items.Add(toolTipItem75);
-            this.menuModdingExport.SuperTip = superToolTip67;
+            superToolTip20.Items.Add(toolTipTitleItem20);
+            superToolTip20.Items.Add(toolTipItem24);
+            superToolTip20.Items.Add(toolTipItem25);
+            this.menuModdingExport.SuperTip = superToolTip20;
             this.menuModdingExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingAssetsPack
@@ -802,6 +826,11 @@
             this.menuModdingAssetsPack.Id = 127;
             this.menuModdingAssetsPack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsPack.ImageOptions.SvgImage")));
             this.menuModdingAssetsPack.Name = "menuModdingAssetsPack";
+            toolTipTitleItem21.Text = "Pack Files";
+            toolTipItem26.Text = "Move all the selected Unpacked Files into a single VPK.";
+            superToolTip21.Items.Add(toolTipTitleItem21);
+            superToolTip21.Items.Add(toolTipItem26);
+            this.menuModdingAssetsPack.SuperTip = superToolTip21;
             this.menuModdingAssetsPack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingAssetsUnpack
@@ -810,6 +839,11 @@
             this.menuModdingAssetsUnpack.Id = 131;
             this.menuModdingAssetsUnpack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsUnpack.ImageOptions.SvgImage")));
             this.menuModdingAssetsUnpack.Name = "menuModdingAssetsUnpack";
+            toolTipTitleItem22.Text = "Unpack Files";
+            toolTipItem27.Text = "Move all the files from a VPK into Unpacked Files.";
+            superToolTip22.Items.Add(toolTipTitleItem22);
+            superToolTip22.Items.Add(toolTipItem27);
+            this.menuModdingAssetsUnpack.SuperTip = superToolTip22;
             this.menuModdingAssetsUnpack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingAssetsPackCustomFolder
@@ -818,6 +852,11 @@
             this.menuModdingAssetsPackCustomFolder.Id = 132;
             this.menuModdingAssetsPackCustomFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsPackCustomFolder.ImageOptions.SvgImage")));
             this.menuModdingAssetsPackCustomFolder.Name = "menuModdingAssetsPackCustomFolder";
+            toolTipTitleItem23.Text = "Pack Custom Folder";
+            toolTipItem28.Text = "Move all the files inside the selected custom folder into a single VPK.";
+            superToolTip23.Items.Add(toolTipTitleItem23);
+            superToolTip23.Items.Add(toolTipItem28);
+            this.menuModdingAssetsPackCustomFolder.SuperTip = superToolTip23;
             this.menuModdingAssetsPackCustomFolder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingAssetsRemoveDuplicates
@@ -826,6 +865,12 @@
             this.menuModdingAssetsRemoveDuplicates.Id = 138;
             this.menuModdingAssetsRemoveDuplicates.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModdingAssetsRemoveDuplicates.ImageOptions.SvgImage")));
             this.menuModdingAssetsRemoveDuplicates.Name = "menuModdingAssetsRemoveDuplicates";
+            toolTipTitleItem24.Text = "Remove Duplicates";
+            toolTipItem29.Text = "List all the files with the same name, directory and content and gives you the op" +
+    "tion to delete them all.";
+            superToolTip24.Items.Add(toolTipTitleItem24);
+            superToolTip24.Items.Add(toolTipItem29);
+            this.menuModdingAssetsRemoveDuplicates.SuperTip = superToolTip24;
             this.menuModdingAssetsRemoveDuplicates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuModdingDelete
@@ -837,11 +882,11 @@
             this.menuModdingDelete.ItemInMenuAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.menuModdingDelete.ItemInMenuAppearance.Normal.Options.UseForeColor = true;
             this.menuModdingDelete.Name = "menuModdingDelete";
-            toolTipTitleItem69.Text = "Delete mod";
-            toolTipItem77.Text = "Erase all the contents of the mod.";
-            superToolTip69.Items.Add(toolTipTitleItem69);
-            superToolTip69.Items.Add(toolTipItem77);
-            this.menuModdingDelete.SuperTip = superToolTip69;
+            toolTipTitleItem26.Text = "Delete mod";
+            toolTipItem31.Text = "Erase all the contents of the mod.";
+            superToolTip26.Items.Add(toolTipTitleItem26);
+            superToolTip26.Items.Add(toolTipItem31);
+            this.menuModdingDelete.SuperTip = superToolTip26;
             this.menuModdingDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuChoreography
@@ -851,11 +896,11 @@
             this.menuChoreography.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.menuChoreographyFaceposer, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.menuChoreography.Name = "menuChoreography";
-            toolTipTitleItem72.Text = "Choreography";
-            toolTipItem80.Text = "Create scenes to use in the levels.";
-            superToolTip72.Items.Add(toolTipTitleItem72);
-            superToolTip72.Items.Add(toolTipItem80);
-            this.menuChoreography.SuperTip = superToolTip72;
+            toolTipTitleItem29.Text = "Choreography";
+            toolTipItem34.Text = "Create scenes to use in the levels.";
+            superToolTip29.Items.Add(toolTipTitleItem29);
+            superToolTip29.Items.Add(toolTipItem34);
+            this.menuChoreography.SuperTip = superToolTip29;
             // 
             // menuChoreographyFaceposer
             // 
@@ -863,11 +908,11 @@
             this.menuChoreographyFaceposer.Id = 41;
             this.menuChoreographyFaceposer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuChoreographyFaceposer.ImageOptions.Image")));
             this.menuChoreographyFaceposer.Name = "menuChoreographyFaceposer";
-            toolTipTitleItem71.Text = "Choreography Editor";
-            toolTipItem79.Text = "Run Faceposer with auto-generated configuration files.";
-            superToolTip71.Items.Add(toolTipTitleItem71);
-            superToolTip71.Items.Add(toolTipItem79);
-            this.menuChoreographyFaceposer.SuperTip = superToolTip71;
+            toolTipTitleItem28.Text = "Choreography Editor";
+            toolTipItem33.Text = "Run Faceposer with auto-generated configuration files.";
+            superToolTip28.Items.Add(toolTipTitleItem28);
+            superToolTip28.Items.Add(toolTipItem33);
+            this.menuChoreographyFaceposer.SuperTip = superToolTip28;
             this.menuChoreographyFaceposer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuChoreography_ItemClick);
             // 
             // menuLevelDesign
@@ -888,11 +933,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignPrefabsWorkshopButton, true)});
             this.menuLevelDesign.Name = "menuLevelDesign";
-            toolTipTitleItem79.Text = "Maps";
-            toolTipItem89.Text = "Create levels for the mod.";
-            superToolTip79.Items.Add(toolTipTitleItem79);
-            superToolTip79.Items.Add(toolTipItem89);
-            this.menuLevelDesign.SuperTip = superToolTip79;
+            toolTipTitleItem36.Text = "Maps";
+            toolTipItem43.Text = "Create levels for the mod.";
+            superToolTip36.Items.Add(toolTipTitleItem36);
+            superToolTip36.Items.Add(toolTipItem43);
+            this.menuLevelDesign.SuperTip = superToolTip36;
             // 
             // menuLevelDesignRunMap
             // 
@@ -900,11 +945,11 @@
             this.menuLevelDesignRunMap.Id = 81;
             this.menuLevelDesignRunMap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignRunMap.ImageOptions.SvgImage")));
             this.menuLevelDesignRunMap.Name = "menuLevelDesignRunMap";
-            toolTipTitleItem73.Text = "Run";
-            toolTipItem81.Text = "Select a map to run it in-game.";
-            superToolTip73.Items.Add(toolTipTitleItem73);
-            superToolTip73.Items.Add(toolTipItem81);
-            this.menuLevelDesignRunMap.SuperTip = superToolTip73;
+            toolTipTitleItem30.Text = "Run";
+            toolTipItem35.Text = "Select a map to run it in-game.";
+            superToolTip30.Items.Add(toolTipTitleItem30);
+            superToolTip30.Items.Add(toolTipItem35);
+            this.menuLevelDesignRunMap.SuperTip = superToolTip30;
             this.menuLevelDesignRunMap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignReload
@@ -913,11 +958,11 @@
             this.menuLevelDesignReload.Id = 106;
             this.menuLevelDesignReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignReload.ImageOptions.SvgImage")));
             this.menuLevelDesignReload.Name = "menuLevelDesignReload";
-            toolTipTitleItem74.Text = "Reload";
-            toolTipItem82.Text = "Reload the map if any is running.";
-            superToolTip74.Items.Add(toolTipTitleItem74);
-            superToolTip74.Items.Add(toolTipItem82);
-            this.menuLevelDesignReload.SuperTip = superToolTip74;
+            toolTipTitleItem31.Text = "Reload";
+            toolTipItem36.Text = "Reload the map if any is running.";
+            superToolTip31.Items.Add(toolTipTitleItem31);
+            superToolTip31.Items.Add(toolTipItem36);
+            this.menuLevelDesignReload.SuperTip = superToolTip31;
             // 
             // menuLevelDesignHammer
             // 
@@ -925,18 +970,18 @@
             this.menuLevelDesignHammer.Id = 16;
             this.menuLevelDesignHammer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignHammer.ImageOptions.SvgImage")));
             this.menuLevelDesignHammer.Name = "menuLevelDesignHammer";
-            toolTipTitleItem75.Text = "Editor";
-            toolTipItem83.Text = "Open the appropriate editor for the selected mod and auto-generate all the necess" +
+            toolTipTitleItem32.Text = "Editor";
+            toolTipItem37.Text = "Open the appropriate editor for the selected mod and auto-generate all the necess" +
     "ary configurations.";
-            toolTipItem84.Text = "For Goldsrc games, this runs J.A.C.K.";
-            toolTipItem85.Text = "For Source 1 games, this runs Hammer++ with Slartibarty\'s compile tools.\r\nThis al" +
+            toolTipItem38.Text = "For Goldsrc games, this runs J.A.C.K.";
+            toolTipItem39.Text = "For Source 1 games, this runs Hammer++ with Slartibarty\'s compile tools.\r\nThis al" +
     "so works for Mapbase.";
-            superToolTip75.Items.Add(toolTipTitleItem75);
-            superToolTip75.Items.Add(toolTipItem83);
-            superToolTip75.Items.Add(toolTipSeparatorItem3);
-            superToolTip75.Items.Add(toolTipItem84);
-            superToolTip75.Items.Add(toolTipItem85);
-            this.menuLevelDesignHammer.SuperTip = superToolTip75;
+            superToolTip32.Items.Add(toolTipTitleItem32);
+            superToolTip32.Items.Add(toolTipItem37);
+            superToolTip32.Items.Add(toolTipSeparatorItem2);
+            superToolTip32.Items.Add(toolTipItem38);
+            superToolTip32.Items.Add(toolTipItem39);
+            this.menuLevelDesignHammer.SuperTip = superToolTip32;
             this.menuLevelDesignHammer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignCompile
@@ -953,39 +998,39 @@
             this.menuLevelDesignDecompile.Id = 118;
             this.menuLevelDesignDecompile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignDecompile.ImageOptions.SvgImage")));
             this.menuLevelDesignDecompile.Name = "menuLevelDesignDecompile";
-            toolTipTitleItem76.Text = "Decompile";
-            toolTipItem86.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem86.Text = "Convert compiled map files into editable map files and save them in the mapsrc fo" +
+            toolTipTitleItem33.Text = "Decompile";
+            toolTipItem40.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem40.Text = "Convert compiled map files into editable map files and save them in the mapsrc fo" +
     "lder.";
-            superToolTip76.Items.Add(toolTipTitleItem76);
-            superToolTip76.Items.Add(toolTipItem86);
-            this.menuLevelDesignDecompile.SuperTip = superToolTip76;
+            superToolTip33.Items.Add(toolTipTitleItem33);
+            superToolTip33.Items.Add(toolTipItem40);
+            this.menuLevelDesignDecompile.SuperTip = superToolTip33;
             this.menuLevelDesignDecompile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignPrefabs
             // 
-            this.menuLevelDesignPrefabs.Caption = "Open Prefabs folder";
+            this.menuLevelDesignPrefabs.Caption = "Open Prefabs Folder";
             this.menuLevelDesignPrefabs.Id = 52;
             this.menuLevelDesignPrefabs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignPrefabs.ImageOptions.SvgImage")));
             this.menuLevelDesignPrefabs.Name = "menuLevelDesignPrefabs";
-            toolTipTitleItem77.Text = "Open Prefabs Folder";
-            toolTipItem87.Text = "Navigate to the prefabs folder in the Windows explorer.";
-            superToolTip77.Items.Add(toolTipTitleItem77);
-            superToolTip77.Items.Add(toolTipItem87);
-            this.menuLevelDesignPrefabs.SuperTip = superToolTip77;
+            toolTipTitleItem34.Text = "Open Prefabs Folder";
+            toolTipItem41.Text = "Navigate to the prefabs folder in the Windows explorer.";
+            superToolTip34.Items.Add(toolTipTitleItem34);
+            superToolTip34.Items.Add(toolTipItem41);
+            this.menuLevelDesignPrefabs.SuperTip = superToolTip34;
             this.menuLevelDesignPrefabs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignMapsrc
             // 
-            this.menuLevelDesignMapsrc.Caption = "Open Mapsrc folder";
+            this.menuLevelDesignMapsrc.Caption = "Open Mapsrc Folder";
             this.menuLevelDesignMapsrc.Id = 53;
             this.menuLevelDesignMapsrc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignMapsrc.ImageOptions.SvgImage")));
             this.menuLevelDesignMapsrc.Name = "menuLevelDesignMapsrc";
-            toolTipTitleItem78.Text = "Open Mapsrc Folder";
-            toolTipItem88.Text = "Navigate to the mapsrc folder in the Windows explorer.";
-            superToolTip78.Items.Add(toolTipTitleItem78);
-            superToolTip78.Items.Add(toolTipItem88);
-            this.menuLevelDesignMapsrc.SuperTip = superToolTip78;
+            toolTipTitleItem35.Text = "Open Mapsrc Folder";
+            toolTipItem42.Text = "Navigate to the mapsrc folder in the Windows explorer.";
+            superToolTip35.Items.Add(toolTipTitleItem35);
+            superToolTip35.Items.Add(toolTipItem42);
+            this.menuLevelDesignMapsrc.SuperTip = superToolTip35;
             this.menuLevelDesignMapsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignFogPreviewer
@@ -1037,11 +1082,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsBlueprints, true)});
             this.menuMaterials.Name = "menuMaterials";
-            toolTipTitleItem83.Text = "Materials";
-            toolTipItem93.Text = "Create materials and textures to use in the models and levels.";
-            superToolTip83.Items.Add(toolTipTitleItem83);
-            superToolTip83.Items.Add(toolTipItem93);
-            this.menuMaterials.SuperTip = superToolTip83;
+            toolTipTitleItem40.Text = "Materials";
+            toolTipItem47.Text = "Create materials and textures to use in the models and levels.";
+            superToolTip40.Items.Add(toolTipTitleItem40);
+            superToolTip40.Items.Add(toolTipItem47);
+            this.menuMaterials.SuperTip = superToolTip40;
             // 
             // menuMaterialsReload
             // 
@@ -1049,11 +1094,11 @@
             this.menuMaterialsReload.Id = 104;
             this.menuMaterialsReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsReload.ImageOptions.SvgImage")));
             this.menuMaterialsReload.Name = "menuMaterialsReload";
-            toolTipTitleItem80.Text = "Reload";
-            toolTipItem90.Text = "Reload all the materials if any map is running.";
-            superToolTip80.Items.Add(toolTipTitleItem80);
-            superToolTip80.Items.Add(toolTipItem90);
-            this.menuMaterialsReload.SuperTip = superToolTip80;
+            toolTipTitleItem37.Text = "Reload";
+            toolTipItem44.Text = "Reload all the materials if any map is running.";
+            superToolTip37.Items.Add(toolTipTitleItem37);
+            superToolTip37.Items.Add(toolTipItem44);
+            this.menuMaterialsReload.SuperTip = superToolTip37;
             this.menuMaterialsReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
             // 
             // menuMaterialsEditor
@@ -1062,11 +1107,11 @@
             this.menuMaterialsEditor.Id = 58;
             this.menuMaterialsEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsEditor.ImageOptions.SvgImage")));
             this.menuMaterialsEditor.Name = "menuMaterialsEditor";
-            toolTipTitleItem81.Text = "Editor";
-            toolTipItem91.Text = "Create and edit materials and textures.";
-            superToolTip81.Items.Add(toolTipTitleItem81);
-            superToolTip81.Items.Add(toolTipItem91);
-            this.menuMaterialsEditor.SuperTip = superToolTip81;
+            toolTipTitleItem38.Text = "Editor";
+            toolTipItem45.Text = "Create and edit materials and textures.";
+            superToolTip38.Items.Add(toolTipTitleItem38);
+            superToolTip38.Items.Add(toolTipItem45);
+            this.menuMaterialsEditor.SuperTip = superToolTip38;
             this.menuMaterialsEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
             // 
             // menuMaterialsSkyboxEditor
@@ -1075,11 +1120,11 @@
             this.menuMaterialsSkyboxEditor.Id = 95;
             this.menuMaterialsSkyboxEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsSkyboxEditor.ImageOptions.SvgImage")));
             this.menuMaterialsSkyboxEditor.Name = "menuMaterialsSkyboxEditor";
-            toolTipTitleItem82.Text = "Skybox Editor";
-            toolTipItem92.Text = "Open the Skybox Editor";
-            superToolTip82.Items.Add(toolTipTitleItem82);
-            superToolTip82.Items.Add(toolTipItem92);
-            this.menuMaterialsSkyboxEditor.SuperTip = superToolTip82;
+            toolTipTitleItem39.Text = "Skybox Editor";
+            toolTipItem46.Text = "Open the Skybox Editor";
+            superToolTip39.Items.Add(toolTipTitleItem39);
+            superToolTip39.Items.Add(toolTipItem46);
+            this.menuMaterialsSkyboxEditor.SuperTip = superToolTip39;
             this.menuMaterialsSkyboxEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
             // 
             // menuMaterialsBlueprints
@@ -1102,11 +1147,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingDecompile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingBlueprints, true)});
             this.menuModeling.Name = "menuModeling";
-            toolTipTitleItem91.Text = "Modeling";
-            toolTipItem101.Text = "Create models to use in the levels.";
-            superToolTip91.Items.Add(toolTipTitleItem91);
-            superToolTip91.Items.Add(toolTipItem101);
-            this.menuModeling.SuperTip = superToolTip91;
+            toolTipTitleItem48.Text = "Modeling";
+            toolTipItem55.Text = "Create models to use in the levels.";
+            superToolTip48.Items.Add(toolTipTitleItem48);
+            superToolTip48.Items.Add(toolTipItem55);
+            this.menuModeling.SuperTip = superToolTip48;
             // 
             // menuModelingReload
             // 
@@ -1114,11 +1159,11 @@
             this.menuModelingReload.Id = 105;
             this.menuModelingReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingReload.ImageOptions.SvgImage")));
             this.menuModelingReload.Name = "menuModelingReload";
-            toolTipTitleItem84.Text = "Reload";
-            toolTipItem94.Text = "Reload all models in-game.";
-            superToolTip84.Items.Add(toolTipTitleItem84);
-            superToolTip84.Items.Add(toolTipItem94);
-            this.menuModelingReload.SuperTip = superToolTip84;
+            toolTipTitleItem41.Text = "Reload";
+            toolTipItem48.Text = "Reload all models in-game.";
+            superToolTip41.Items.Add(toolTipTitleItem41);
+            superToolTip41.Items.Add(toolTipItem48);
+            this.menuModelingReload.SuperTip = superToolTip41;
             this.menuModelingReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
             // menuModelingHLMV
@@ -1127,11 +1172,11 @@
             this.menuModelingHLMV.Id = 40;
             this.menuModelingHLMV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingHLMV.ImageOptions.SvgImage")));
             this.menuModelingHLMV.Name = "menuModelingHLMV";
-            toolTipTitleItem85.Text = "Model Viewer";
-            toolTipItem95.Text = "Browse models with the Half-Life Model Viewer.";
-            superToolTip85.Items.Add(toolTipTitleItem85);
-            superToolTip85.Items.Add(toolTipItem95);
-            this.menuModelingHLMV.SuperTip = superToolTip85;
+            toolTipTitleItem42.Text = "Model Viewer";
+            toolTipItem49.Text = "Browse models with the Half-Life Model Viewer.";
+            superToolTip42.Items.Add(toolTipTitleItem42);
+            superToolTip42.Items.Add(toolTipItem49);
+            this.menuModelingHLMV.SuperTip = superToolTip42;
             this.menuModelingHLMV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
             // menuModelingEditor2
@@ -1142,11 +1187,11 @@
             this.menuModelingEditor2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingPropper)});
             this.menuModelingEditor2.Name = "menuModelingEditor2";
-            toolTipTitleItem87.Text = "Editor";
-            toolTipItem97.Text = "Edit model files.";
-            superToolTip87.Items.Add(toolTipTitleItem87);
-            superToolTip87.Items.Add(toolTipItem97);
-            this.menuModelingEditor2.SuperTip = superToolTip87;
+            toolTipTitleItem44.Text = "Editor";
+            toolTipItem51.Text = "Edit model files.";
+            superToolTip44.Items.Add(toolTipTitleItem44);
+            superToolTip44.Items.Add(toolTipItem51);
+            this.menuModelingEditor2.SuperTip = superToolTip44;
             // 
             // menuModelingPropper
             // 
@@ -1154,11 +1199,11 @@
             this.menuModelingPropper.Id = 51;
             this.menuModelingPropper.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuModelingPropper.ImageOptions.Image")));
             this.menuModelingPropper.Name = "menuModelingPropper";
-            toolTipTitleItem86.Text = "Hammer++ (with Propper)";
-            toolTipItem96.Text = "Run Hammer++ with Propper fgd.";
-            superToolTip86.Items.Add(toolTipTitleItem86);
-            superToolTip86.Items.Add(toolTipItem96);
-            this.menuModelingPropper.SuperTip = superToolTip86;
+            toolTipTitleItem43.Text = "Hammer++ (with Propper)";
+            toolTipItem50.Text = "Run Hammer++ with Propper fgd.";
+            superToolTip43.Items.Add(toolTipTitleItem43);
+            superToolTip43.Items.Add(toolTipItem50);
+            this.menuModelingPropper.SuperTip = superToolTip43;
             this.menuModelingPropper.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
             // menuModelingCompile
@@ -1169,22 +1214,22 @@
             this.menuModelingCompile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingVMFtoMDL)});
             this.menuModelingCompile.Name = "menuModelingCompile";
-            toolTipTitleItem89.Text = "Compile";
-            toolTipItem99.Text = "Compile model files.";
-            superToolTip89.Items.Add(toolTipTitleItem89);
-            superToolTip89.Items.Add(toolTipItem99);
-            this.menuModelingCompile.SuperTip = superToolTip89;
+            toolTipTitleItem46.Text = "Compile";
+            toolTipItem53.Text = "Compile model files.";
+            superToolTip46.Items.Add(toolTipTitleItem46);
+            superToolTip46.Items.Add(toolTipItem53);
+            this.menuModelingCompile.SuperTip = superToolTip46;
             // 
             // menuModelingVMFtoMDL
             // 
             this.menuModelingVMFtoMDL.Caption = "From Propper";
             this.menuModelingVMFtoMDL.Id = 44;
             this.menuModelingVMFtoMDL.Name = "menuModelingVMFtoMDL";
-            toolTipTitleItem88.Text = "From Propper";
-            toolTipItem98.Text = "Compile models from VMF files made with Hammer and Propper.";
-            superToolTip88.Items.Add(toolTipTitleItem88);
-            superToolTip88.Items.Add(toolTipItem98);
-            this.menuModelingVMFtoMDL.SuperTip = superToolTip88;
+            toolTipTitleItem45.Text = "From Propper";
+            toolTipItem52.Text = "Compile models from VMF files made with Hammer and Propper.";
+            superToolTip45.Items.Add(toolTipTitleItem45);
+            superToolTip45.Items.Add(toolTipItem52);
+            this.menuModelingVMFtoMDL.SuperTip = superToolTip45;
             this.menuModelingVMFtoMDL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
             // 
             // menuModelingDecompile
@@ -1195,11 +1240,11 @@
             this.menuModelingDecompile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingCrowbar)});
             this.menuModelingDecompile.Name = "menuModelingDecompile";
-            toolTipTitleItem90.Text = "Decompile";
-            toolTipItem100.Text = "Decompile model files.";
-            superToolTip90.Items.Add(toolTipTitleItem90);
-            superToolTip90.Items.Add(toolTipItem100);
-            this.menuModelingDecompile.SuperTip = superToolTip90;
+            toolTipTitleItem47.Text = "Decompile";
+            toolTipItem54.Text = "Decompile model files.";
+            superToolTip47.Items.Add(toolTipTitleItem47);
+            superToolTip47.Items.Add(toolTipItem54);
+            this.menuModelingDecompile.SuperTip = superToolTip47;
             // 
             // menuModelingCrowbar
             // 
@@ -1224,11 +1269,11 @@
             this.menuParticles.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.menuParticlesManifestGenerator)});
             this.menuParticles.Name = "menuParticles";
-            toolTipTitleItem93.Text = "Particles";
-            toolTipItem103.Text = "Create particles to use in the levels.";
-            superToolTip93.Items.Add(toolTipTitleItem93);
-            superToolTip93.Items.Add(toolTipItem103);
-            this.menuParticles.SuperTip = superToolTip93;
+            toolTipTitleItem50.Text = "Particles";
+            toolTipItem57.Text = "Create particles to use in the levels.";
+            superToolTip50.Items.Add(toolTipTitleItem50);
+            superToolTip50.Items.Add(toolTipItem57);
+            this.menuParticles.SuperTip = superToolTip50;
             // 
             // menuParticlesManifestGenerator
             // 
@@ -1236,14 +1281,21 @@
             this.menuParticlesManifestGenerator.Id = 50;
             this.menuParticlesManifestGenerator.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuParticlesManifestGenerator.ImageOptions.SvgImage")));
             this.menuParticlesManifestGenerator.Name = "menuParticlesManifestGenerator";
-            toolTipTitleItem92.Text = "Auto-generate the particles/particles_manifest.txt with all the soundscapes mount" +
+            toolTipTitleItem49.Text = "Auto-generate the particles/particles_manifest.txt with all the soundscapes mount" +
     "ed in the mod.";
-            toolTipItem102.Text = "Generate a particle manifest file with all the particle files mounted into the mo" +
+            toolTipItem56.Text = "Generate a particle manifest file with all the particle files mounted into the mo" +
     "d.";
-            superToolTip92.Items.Add(toolTipTitleItem92);
-            superToolTip92.Items.Add(toolTipItem102);
-            this.menuParticlesManifestGenerator.SuperTip = superToolTip92;
+            superToolTip49.Items.Add(toolTipTitleItem49);
+            superToolTip49.Items.Add(toolTipItem56);
+            this.menuParticlesManifestGenerator.SuperTip = superToolTip49;
             this.menuParticlesManifestGenerator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuParticles_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Programming";
+            this.barSubItem1.Enabled = false;
+            this.barSubItem1.Id = 139;
+            this.barSubItem1.Name = "barSubItem1";
             // 
             // menuScripts
             // 
@@ -1259,11 +1311,11 @@
             this.menuScriptsHudEditor.Id = 93;
             this.menuScriptsHudEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuScriptsHudEditor.ImageOptions.SvgImage")));
             this.menuScriptsHudEditor.Name = "menuScriptsHudEditor";
-            toolTipTitleItem99.Text = "HUD";
-            toolTipItem113.Text = "Edit the player HUD.";
-            superToolTip99.Items.Add(toolTipTitleItem99);
-            superToolTip99.Items.Add(toolTipItem113);
-            this.menuScriptsHudEditor.SuperTip = superToolTip99;
+            toolTipTitleItem51.Text = "HUD";
+            toolTipItem58.Text = "Edit the player HUD.";
+            superToolTip51.Items.Add(toolTipTitleItem51);
+            superToolTip51.Items.Add(toolTipItem58);
+            this.menuScriptsHudEditor.SuperTip = superToolTip51;
             this.menuScriptsHudEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModding_ItemClick);
             // 
             // menuSound
@@ -1274,11 +1326,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuSoundSoundscapeEditor),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuSoundCreateManifest)});
             this.menuSound.Name = "menuSound";
-            toolTipTitleItem96.Text = "Sound";
-            toolTipItem106.Text = "Create sounds to use in the levels.";
-            superToolTip96.Items.Add(toolTipTitleItem96);
-            superToolTip96.Items.Add(toolTipItem106);
-            this.menuSound.SuperTip = superToolTip96;
+            toolTipTitleItem54.Text = "Sound";
+            toolTipItem61.Text = "Create sounds to use in the levels.";
+            superToolTip54.Items.Add(toolTipTitleItem54);
+            superToolTip54.Items.Add(toolTipItem61);
+            this.menuSound.SuperTip = superToolTip54;
             // 
             // menuSoundSoundscapeEditor
             // 
@@ -1286,11 +1338,11 @@
             this.menuSoundSoundscapeEditor.Id = 97;
             this.menuSoundSoundscapeEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuSoundSoundscapeEditor.ImageOptions.SvgImage")));
             this.menuSoundSoundscapeEditor.Name = "menuSoundSoundscapeEditor";
-            toolTipTitleItem94.Text = "Soundscape Editor";
-            toolTipItem104.Text = "Create and edit soundscape files.";
-            superToolTip94.Items.Add(toolTipTitleItem94);
-            superToolTip94.Items.Add(toolTipItem104);
-            this.menuSoundSoundscapeEditor.SuperTip = superToolTip94;
+            toolTipTitleItem52.Text = "Soundscape Editor";
+            toolTipItem59.Text = "Create and edit soundscape files.";
+            superToolTip52.Items.Add(toolTipTitleItem52);
+            superToolTip52.Items.Add(toolTipItem59);
+            this.menuSoundSoundscapeEditor.SuperTip = superToolTip52;
             this.menuSoundSoundscapeEditor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuSound_ItemClick);
             // 
             // menuSoundCreateManifest
@@ -1299,12 +1351,12 @@
             this.menuSoundCreateManifest.Id = 103;
             this.menuSoundCreateManifest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuSoundCreateManifest.ImageOptions.SvgImage")));
             this.menuSoundCreateManifest.Name = "menuSoundCreateManifest";
-            toolTipTitleItem95.Text = "Generate manifest";
-            toolTipItem105.Text = "Auto-generate the scripts/soundscapes_manifest.txt with all the soundscapes mount" +
+            toolTipTitleItem53.Text = "Generate manifest";
+            toolTipItem60.Text = "Auto-generate the scripts/soundscapes_manifest.txt with all the soundscapes mount" +
     "ed in the mod.";
-            superToolTip95.Items.Add(toolTipTitleItem95);
-            superToolTip95.Items.Add(toolTipItem105);
-            this.menuSoundCreateManifest.SuperTip = superToolTip95;
+            superToolTip53.Items.Add(toolTipTitleItem53);
+            superToolTip53.Items.Add(toolTipItem60);
+            this.menuSoundCreateManifest.SuperTip = superToolTip53;
             this.menuSoundCreateManifest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuSound_ItemClick);
             // 
             // status
@@ -1331,13 +1383,13 @@
             this.becomePatronButton.ItemAppearance.Normal.Options.UseBackColor = true;
             this.becomePatronButton.Name = "becomePatronButton";
             this.becomePatronButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem101.Text = "Support the tool!";
-            toolTipItem115.Text = "XBLAH\'s Modding Tool is free and always will be. This is my hobby. If you wanna s" +
+            toolTipTitleItem55.Text = "Support the tool!";
+            toolTipItem62.Text = "XBLAH\'s Modding Tool is free and always will be. This is my hobby. If you wanna s" +
     "upport continuous development of the tool, although not mandatory, contributing " +
     "is highly appreciated.";
-            superToolTip101.Items.Add(toolTipTitleItem101);
-            superToolTip101.Items.Add(toolTipItem115);
-            this.becomePatronButton.SuperTip = superToolTip101;
+            superToolTip55.Items.Add(toolTipTitleItem55);
+            superToolTip55.Items.Add(toolTipItem62);
+            this.becomePatronButton.SuperTip = superToolTip55;
             this.becomePatronButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.becomePatronButton_ItemClick);
             // 
             // barDockControlTop
@@ -1346,15 +1398,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(944, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(946, 52);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 565);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 567);
             this.barDockControlBottom.Manager = this.barManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(944, 26);
+            this.barDockControlBottom.Size = new System.Drawing.Size(946, 26);
             // 
             // barDockControlLeft
             // 
@@ -1362,15 +1414,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 513);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(944, 52);
+            this.barDockControlRight.Location = new System.Drawing.Point(946, 52);
             this.barDockControlRight.Manager = this.barManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 513);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
             // 
             // barButtonItem4
             // 
@@ -1447,7 +1499,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 52);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 513);
+            this.panel1.Size = new System.Drawing.Size(946, 515);
             this.panel1.TabIndex = 9;
             // 
             // modProcessUpdater
@@ -1462,18 +1514,11 @@
             this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Programming";
-            this.barSubItem1.Enabled = false;
-            this.barSubItem1.Id = 139;
-            this.barSubItem1.Name = "barSubItem1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 591);
+            this.ClientSize = new System.Drawing.Size(946, 593);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1594,5 +1639,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsRemoveDuplicates;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
     }
 }

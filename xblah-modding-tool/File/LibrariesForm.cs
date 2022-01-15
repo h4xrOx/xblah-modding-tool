@@ -9,10 +9,10 @@ namespace xblah_modding_tool
 {
     public partial class LibrariesForm : DevExpress.XtraEditors.XtraForm
     {
-        Launcher launcher;
+        private Launcher launcher;
 
-        string selectedPath = "";
-        string selectedSource = "";
+        private string selectedPath = "";
+        private string selectedSource = "";
 
         public LibrariesForm(Launcher launcher)
         {
@@ -22,35 +22,44 @@ namespace xblah_modding_tool
 
         private void LibrariesForm_Load(object sender, EventArgs e)
         {
-            UpdateLibrariesList();
+            UpdateItemsTree();
         }
 
-        private void UpdateLibrariesList()
+        private void UpdateItemsTree()
         {
             if (launcher == null)
                 return;
 
-            list.ClearNodes();
-            list.BeginUnboundLoad();
+            itemsTree.ClearNodes();
+            itemsTree.BeginUnboundLoad();
 
             foreach(string path in launcher.libraries.GetSteamLibraries())
             {
-                list.AppendNode(new object[] { path, "Steam" }, null);
+                itemsTree.AppendNode(new object[] { path, "Steam" }, null);
             }
 
             foreach (string path in launcher.libraries.GetUserLibraries())
             {
-                list.AppendNode(new object[] { path, "User" }, null);
+                itemsTree.AppendNode(new object[] { path, "User" }, null);
             }
 
-            list.EndUnboundLoad();
+            itemsTree.EndUnboundLoad();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             if (addDialog.ShowDialog() == DialogResult.OK)
             {
-                if (Directory.Exists(addDialog.SelectedPath) && !launcher.libraries.GetList().Contains(addDialog.SelectedPath))
+                if (!Directory.Exists(addDialog.SelectedPath)) {
+                    XtraMessageBox.Show("The library directory does not exist.");
+                    return;
+                } 
+                else if(launcher.libraries.GetList().Contains(addDialog.SelectedPath))
+                {
+                    XtraMessageBox.Show("The library directory is already added.");
+                    return;
+                } 
+                else
                 {
                     bool hasSteamappsFolder = false;
                     foreach(var dir in Directory.GetDirectories(addDialog.SelectedPath))
@@ -70,7 +79,7 @@ namespace xblah_modding_tool
 
                     launcher.libraries.AddUserLibrary(addDialog.SelectedPath);
 
-                    UpdateLibrariesList();
+                    UpdateItemsTree();
                 }
             }
         }
@@ -78,10 +87,10 @@ namespace xblah_modding_tool
         private void removeButton_Click(object sender, EventArgs e)
         {
             launcher.libraries.RemoveUserLibrary(selectedPath);
-            UpdateLibrariesList();
+            UpdateItemsTree();
         }
 
-        private void list_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        private void itemsTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             if (e.Node != null)
             {

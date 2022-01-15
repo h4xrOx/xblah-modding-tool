@@ -104,7 +104,7 @@
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CleanDialog.IconOptions.Image")));
             this.Name = "CleanDialog";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Clean Mod";
+            this.Text = "Clean Files";
             this.Load += new System.EventHandler(this.CleanDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
