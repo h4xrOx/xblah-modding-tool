@@ -64,7 +64,7 @@ namespace xblah_modding_tool.Modding
             files.Add("voice_ban.dt");
             files.Add("materialsrc");
             files.Add("downloadlists");
-            files.Add("mapsrc");
+            //files.Add("mapsrc");
             files.Add("save");
             files.Add("screenshots");
 
