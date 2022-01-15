@@ -135,7 +135,7 @@
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("LibrariesForm.IconOptions.Image")));
             this.Name = "LibrariesForm";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.Text = "Libraries";
+            this.Text = "Steam Libraries";
             this.Load += new System.EventHandler(this.LibrariesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.list)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();

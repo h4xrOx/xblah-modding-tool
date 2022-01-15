@@ -78,7 +78,7 @@ namespace xblah_modding_lib
                             if (child.getValue("path") != null)
                             {
                                 string dir = child.getValue("path").Replace("\\\\", "\\");
-                                if (Directory.Exists(dir))
+                                if (Directory.Exists(dir) && !steamLibs.Contains(dir))
                                     steamLibs.Add(dir);
                             }
                             
