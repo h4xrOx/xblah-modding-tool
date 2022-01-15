@@ -15,7 +15,7 @@ namespace xblah_modding_tool.Sound
         public List<PackageFile> wave = new List<PackageFile>();
         public (double, double) volume = (1, 1);
         public (int, int) time = (1, 1);
-        public (double, double) pitch = (0, 0);
+        public (double, double) pitch = (100, 100);
         public int position = -1;
         public bool positionRandom = false;
         public float attenuation = 1;

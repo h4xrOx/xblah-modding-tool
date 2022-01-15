@@ -1187,6 +1187,8 @@ namespace xblah_modding_tool.Sound
             0,
             0,
             65536});
+            this.minPitchSpin.Properties.IsFloatValue = false;
+            this.minPitchSpin.Properties.MaskSettings.Set("mask", "N00");
             this.minPitchSpin.Properties.MaxValue = new decimal(new int[] {
             999,
             0,
@@ -1200,7 +1202,7 @@ namespace xblah_modding_tool.Sound
             this.minPitchSpin.Size = new System.Drawing.Size(127, 20);
             this.minPitchSpin.StyleController = this.ruleLayoutControl;
             toolTipTitleItem6.Text = "Minimum pitch";
-            toolTipItem14.Text = "1 is the default. +/-0.3 is the useful range.";
+            toolTipItem14.Text = "100 is the default. +/-30 is the useful range.";
             superToolTip6.Items.Add(toolTipTitleItem6);
             superToolTip6.Items.Add(toolTipItem14);
             this.minPitchSpin.SuperTip = superToolTip6;
@@ -1251,6 +1253,8 @@ namespace xblah_modding_tool.Sound
             0,
             0,
             65536});
+            this.maxPitchSpin.Properties.IsFloatValue = false;
+            this.maxPitchSpin.Properties.MaskSettings.Set("mask", "N00");
             this.maxPitchSpin.Properties.MaxValue = new decimal(new int[] {
             999,
             0,
@@ -1264,7 +1268,7 @@ namespace xblah_modding_tool.Sound
             this.maxPitchSpin.Size = new System.Drawing.Size(116, 20);
             this.maxPitchSpin.StyleController = this.ruleLayoutControl;
             toolTipTitleItem7.Text = "Maximum pitch";
-            toolTipItem15.Text = "1 is the default. +/-0.3 is the useful range.";
+            toolTipItem15.Text = "100 is the default. +/-30 is the useful range.";
             superToolTip7.Items.Add(toolTipTitleItem7);
             superToolTip7.Items.Add(toolTipItem15);
             this.maxPitchSpin.SuperTip = superToolTip7;

@@ -230,8 +230,8 @@ namespace xblah_modding_tool.Sound
                 minVolumeSpin.Value = Math.Round((decimal)selectedSoundscapeRule.volume.Item1, 4);
                 maxVolumeSpin.Value = Math.Round((decimal)selectedSoundscapeRule.volume.Item2, 4);
 
-                minPitchSpin.Value = (decimal)(selectedSoundscapeRule.pitch.Item1 / 100f);
-                maxPitchSpin.Value = (decimal)(selectedSoundscapeRule.pitch.Item2 / 100f);
+                minPitchSpin.Value = (decimal)(selectedSoundscapeRule.pitch.Item1);
+                maxPitchSpin.Value = (decimal)(selectedSoundscapeRule.pitch.Item2);
 
                 minTimeSpin.Value = (decimal)(selectedSoundscapeRule.time.Item1);
                 maxTimeSpin.Value = (decimal)(selectedSoundscapeRule.time.Item2);
@@ -818,132 +818,133 @@ namespace xblah_modding_tool.Sound
                         soundscape.dsp_volume = 1;
 
                     // Traverse through the soundscape rules.
-                    foreach (KeyValue soundscapeRuleKV in soundscapeKV.getChildren())
-                    {
-                        // Get the rule key.
-                        if (soundscapeRuleKV.getKey() == "playrandom" || soundscapeRuleKV.getKey() == "playlooping")
+                    if (soundscapeKV.getChildren() != null)
+                        foreach (KeyValue soundscapeRuleKV in soundscapeKV.getChildren())
                         {
-                            // If the soundscape rule has no key, ignore it.
-                            if (soundscapeRuleKV.getKey() == "")
-                                continue;
-
-                            SoundscapeRule soundscapeRule = new SoundscapeRule();
-                            soundscape.rules.Add(soundscapeRule);
-
-                            switch (soundscapeRuleKV.getKey())
+                            // Get the rule key.
+                            if (soundscapeRuleKV.getKey() == "playrandom" || soundscapeRuleKV.getKey() == "playlooping")
                             {
-                                case "playrandom":
-                                    soundscapeRule.rule = Soundscape.Rule.RANDOM;
-                                    break;
-                                case "playlooping":
-                                    soundscapeRule.rule = Soundscape.Rule.LOOPING;
-                                    break;
-                            }
+                                // If the soundscape rule has no key, ignore it.
+                                if (soundscapeRuleKV.getKey() == "")
+                                    continue;
 
-                            // Get the rule time.
-                            KeyValue timeKV = soundscapeRuleKV.getChildByKey("time");
-                            if (timeKV != null)
-                                soundscapeRule.time = ((int)float.Parse(timeKV.getValue().Split(',').First()), (int)float.Parse(timeKV.getValue().Split(',').Last()));
-                            else
-                                soundscapeRule.time = (1, 1);
+                                SoundscapeRule soundscapeRule = new SoundscapeRule();
+                                soundscape.rules.Add(soundscapeRule);
 
-                            // Get the rule volume.
-                            KeyValue volumeKV = soundscapeRuleKV.getChildByKey("volume");
-                            if (volumeKV != null)
-                                soundscapeRule.volume = (float.Parse(volumeKV.getValue().Split(',').First()), float.Parse(volumeKV.getValue().Split(',').Last()));
-                            else
-                                soundscapeRule.volume = (1, 1);
-
-                            // Get the rule pitch.
-                            KeyValue pitchKV = soundscapeRuleKV.getChildByKey("pitch");
-                            if (pitchKV != null)
-                                soundscapeRule.pitch = ((int)float.Parse(pitchKV.getValue().Split(',').First()), (int)float.Parse(pitchKV.getValue().Split(',').Last()));
-                            else
-                                soundscapeRule.pitch = (100, 100);
-
-                            // Get the rule position.
-                            KeyValue positionKV = soundscapeRuleKV.getChildByKey("position");
-                            if (positionKV != null)
-                            {
-                                soundscapeRule.positionRandom = (positionKV.getValue() == "random");
-                                soundscapeRule.position = (positionKV.getValue() != "random" ? int.Parse(positionKV.getValue()) : -1);
-                            }
-                            else
-                            {
-                                soundscapeRule.position = -1;
-                                soundscapeRule.positionRandom = false;
-                            }
-
-                            // Get the rule attenuation.
-                            KeyValue attenuationKV = soundscapeRuleKV.getChildByKey("attenuation");
-                            if (attenuationKV != null)
-                                float.TryParse(attenuationKV.getValue(), out soundscapeRule.attenuation);
-                            else
-                                soundscapeRule.attenuation = 1;
-
-                            // Get the rule sound level.
-                            KeyValue soundlevelKV = soundscapeRuleKV.getChildByKey("soundlevel");
-                            if (soundlevelKV != null)
-                                soundscapeRule.soundlevel = soundlevelKV.getValue();
-                            else
-                                soundscapeRule.soundlevel = "";
-
-                            // Get the rule wave.
-                            KeyValue waveKV = soundscapeRuleKV.getChildByKey("wave");
-                            if (waveKV != null)
-                            {
-                                string fileName = waveKV.getValue();
-                                if (fileName.StartsWith("*"))
-                                    fileName = fileName.Substring(1);
-
-                                PackageFile packageFile = packageManager.GetFile("sound\\" + fileName);
-                                soundscapeRule.wave.Add(packageFile);
-                            }
-
-                            // Traverse through the rule random waves.
-                            KeyValue rndWaveKV = soundscapeRuleKV.getChildByKey("rndwave");
-                            if (rndWaveKV != null)
-                            {
-                                foreach (KeyValue childWaveKV in rndWaveKV.getChildren())
+                                switch (soundscapeRuleKV.getKey())
                                 {
-                                    // If the wave has no key, ignore it.
-                                    if (childWaveKV.getKey() == "")
-                                        continue;
+                                    case "playrandom":
+                                        soundscapeRule.rule = Soundscape.Rule.RANDOM;
+                                        break;
+                                    case "playlooping":
+                                        soundscapeRule.rule = Soundscape.Rule.LOOPING;
+                                        break;
+                                }
 
-                                    string fileName = childWaveKV.getValue();
+                                // Get the rule time.
+                                KeyValue timeKV = soundscapeRuleKV.getChildByKey("time");
+                                if (timeKV != null)
+                                    soundscapeRule.time = ((int)float.Parse(timeKV.getValue().Split(',').First()), (int)float.Parse(timeKV.getValue().Split(',').Last()));
+                                else
+                                    soundscapeRule.time = (1, 1);
+
+                                // Get the rule volume.
+                                KeyValue volumeKV = soundscapeRuleKV.getChildByKey("volume");
+                                if (volumeKV != null)
+                                    soundscapeRule.volume = (float.Parse(volumeKV.getValue().Split(',').First()), float.Parse(volumeKV.getValue().Split(',').Last()));
+                                else
+                                    soundscapeRule.volume = (1, 1);
+
+                                // Get the rule pitch.
+                                KeyValue pitchKV = soundscapeRuleKV.getChildByKey("pitch");
+                                if (pitchKV != null)
+                                    soundscapeRule.pitch = ((int)float.Parse(pitchKV.getValue().Split(',').First()), (int)float.Parse(pitchKV.getValue().Split(',').Last()));
+                                else
+                                    soundscapeRule.pitch = (100, 100);
+
+                                // Get the rule position.
+                                KeyValue positionKV = soundscapeRuleKV.getChildByKey("position");
+                                if (positionKV != null)
+                                {
+                                    soundscapeRule.positionRandom = (positionKV.getValue() == "random");
+                                    soundscapeRule.position = (positionKV.getValue() != "random" ? int.Parse(positionKV.getValue()) : -1);
+                                }
+                                else
+                                {
+                                    soundscapeRule.position = -1;
+                                    soundscapeRule.positionRandom = false;
+                                }
+
+                                // Get the rule attenuation.
+                                KeyValue attenuationKV = soundscapeRuleKV.getChildByKey("attenuation");
+                                if (attenuationKV != null)
+                                    float.TryParse(attenuationKV.getValue(), out soundscapeRule.attenuation);
+                                else
+                                    soundscapeRule.attenuation = 1;
+
+                                // Get the rule sound level.
+                                KeyValue soundlevelKV = soundscapeRuleKV.getChildByKey("soundlevel");
+                                if (soundlevelKV != null)
+                                    soundscapeRule.soundlevel = soundlevelKV.getValue();
+                                else
+                                    soundscapeRule.soundlevel = "";
+
+                                // Get the rule wave.
+                                KeyValue waveKV = soundscapeRuleKV.getChildByKey("wave");
+                                if (waveKV != null)
+                                {
+                                    string fileName = waveKV.getValue();
                                     if (fileName.StartsWith("*"))
                                         fileName = fileName.Substring(1);
 
-                                    // Get the packageFile from the relative path.
                                     PackageFile packageFile = packageManager.GetFile("sound\\" + fileName);
-
                                     soundscapeRule.wave.Add(packageFile);
                                 }
-                            }
-                        } else if(soundscapeRuleKV.getKey() == "playsoundscape")
-                        {
-                            // If the rule has no soundscape name, ignore it.
-                            KeyValue nameKv = soundscapeRuleKV.getChildByKey("name");
-                            if (nameKv == null)
-                                continue;
 
-                            SoundscapeRule soundscapeRule = new SoundscapeRule()
+                                // Traverse through the rule random waves.
+                                KeyValue rndWaveKV = soundscapeRuleKV.getChildByKey("rndwave");
+                                if (rndWaveKV != null)
+                                {
+                                    foreach (KeyValue childWaveKV in rndWaveKV.getChildren())
+                                    {
+                                        // If the wave has no key, ignore it.
+                                        if (childWaveKV.getKey() == "")
+                                            continue;
+
+                                        string fileName = childWaveKV.getValue();
+                                        if (fileName.StartsWith("*"))
+                                            fileName = fileName.Substring(1);
+
+                                        // Get the packageFile from the relative path.
+                                        PackageFile packageFile = packageManager.GetFile("sound\\" + fileName);
+
+                                        soundscapeRule.wave.Add(packageFile);
+                                    }
+                                }
+                            } else if(soundscapeRuleKV.getKey() == "playsoundscape")
                             {
-                                rule = Soundscape.Rule.SOUNDSCAPE
-                            };
-                            soundscape.rules.Add(soundscapeRule);
+                                // If the rule has no soundscape name, ignore it.
+                                KeyValue nameKv = soundscapeRuleKV.getChildByKey("name");
+                                if (nameKv == null)
+                                    continue;
 
-                            // Get the rule volume.
-                            KeyValue volumeKV = soundscapeRuleKV.getChildByKey("volume");
-                            if (volumeKV != null)
-                                soundscapeRule.volume = (float.Parse(volumeKV.getValue()), float.Parse(volumeKV.getValue()));
-                            else
-                                soundscapeRule.volume = (1, 1);
+                                SoundscapeRule soundscapeRule = new SoundscapeRule()
+                                {
+                                    rule = Soundscape.Rule.SOUNDSCAPE
+                                };
+                                soundscape.rules.Add(soundscapeRule);
 
-                            // Get the sub-scape name.
-                            soundscapeRule.name = nameKv.getValue();
+                                // Get the rule volume.
+                                KeyValue volumeKV = soundscapeRuleKV.getChildByKey("volume");
+                                if (volumeKV != null)
+                                    soundscapeRule.volume = (float.Parse(volumeKV.getValue()), float.Parse(volumeKV.getValue()));
+                                else
+                                    soundscapeRule.volume = (1, 1);
+
+                                // Get the sub-scape name.
+                                soundscapeRule.name = nameKv.getValue();
+                            }
                         }
-                    }
                 }
             }
 
@@ -1007,11 +1008,11 @@ namespace xblah_modding_tool.Sound
                         // Get the rule pitch.
                         if (soundscapeRule.pitch.Item1 == soundscapeRule.pitch.Item2)
                         {
-                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1 * 100).ToString());
+                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1).ToString());
                         }
                         else
                         {
-                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1 * 100) + "," + (soundscapeRule.pitch.Item2 * 100));
+                            soundscapeRuleKV.setValue("pitch", (soundscapeRule.pitch.Item1) + "," + (soundscapeRule.pitch.Item2));
                         }
 
                         // Get the rule position.
