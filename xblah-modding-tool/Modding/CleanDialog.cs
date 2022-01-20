@@ -52,6 +52,8 @@ namespace xblah_modding_tool.Modding
         {
             string modPath = launcher.GetCurrentMod().InstallPath;
             files = new List<string>();
+
+            // Source
             files.Add("Gamestate.txt");
             files.Add("demoheader.tmp");
             files.Add("ep1_gamestats.dat");
@@ -67,6 +69,12 @@ namespace xblah_modding_tool.Modding
             //files.Add("mapsrc");
             files.Add("save");
             files.Add("screenshots");
+
+            // Goldsrc
+            files.Add("htmlcache");
+            files.Add("config.cfg");
+            files.Add("debug.log");
+            files.Add("steam_appid.txt");
 
             files = files.Where(f => (File.Exists(modPath + "\\" + f) || Directory.Exists(modPath + "\\" + f))).ToList();
 

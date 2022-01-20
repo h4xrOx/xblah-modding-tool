@@ -721,6 +721,10 @@ namespace xblah_modding_tool
                         menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = true;
+                            menuModdingAssetsPackCustomFolder.Enabled = true;
+                            menuModdingAssetsPack.Enabled = true;
+                            menuModdingAssetsUnpack.Enabled = true;
+                            menuModdingAssetsRemoveDuplicates.Enabled = true;
                         menuModdingImport.Enabled = true;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
@@ -778,7 +782,11 @@ namespace xblah_modding_tool
                         menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
                         menuModdingAssets.Enabled = false;
-                        menuModdingImport.Enabled = false;
+                            menuModdingAssetsPackCustomFolder.Enabled = false;
+                            menuModdingAssetsPack.Enabled = false;
+                            menuModdingAssetsUnpack.Enabled = false;
+                            menuModdingAssetsRemoveDuplicates.Enabled = false;
+                    menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = true;
                             menuModdingContentMountAdvanced.Enabled = false;
@@ -818,8 +826,12 @@ namespace xblah_modding_tool
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunExpert.Enabled = true;
-                        menuModdingClean.Enabled = false;
-                        menuModdingAssets.Enabled = false;
+                        menuModdingClean.Enabled = true;
+                        menuModdingAssets.Enabled = true;
+                            menuModdingAssetsPackCustomFolder.Enabled = false;
+                            menuModdingAssetsPack.Enabled = false;
+                            menuModdingAssetsUnpack.Enabled = false;
+                            menuModdingAssetsRemoveDuplicates.Enabled = false;
                         menuModdingImport.Enabled = false;
                             menuModdingSettingsGameInfo.Enabled = true;
                             menuModdingSettingsChapters.Enabled = false;
