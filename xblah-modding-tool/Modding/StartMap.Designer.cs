@@ -122,6 +122,7 @@
             this.okButton.StyleController = this.layoutControl1;
             this.okButton.TabIndex = 1;
             this.okButton.Text = "Save";
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // startMapClearButton
             // 

@@ -158,7 +158,8 @@ namespace xblah_modding_tool.Modding
 
         private void okButton_Click(object sender, EventArgs e)
         {
-
+            GetFieldValues();
+            KeyValue.writeChunkFile(launcher.GetCurrentMod().InstallPath + "\\liblist.gam", gameinfo, false, new UTF8Encoding(false));
         }
     }
 }
