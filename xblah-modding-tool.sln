@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mod Launchers", "Mod Launch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sourcemod", "Mod Launchers\sourcemod\sourcemod.csproj", "{6313A8C2-D144-46B2-846B-92EF67DD2860}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hlmod", "Mod Launchers\hlmod\hlmod.csproj", "{2753291D-ABFE-4881-B2AC-DFB6B5794812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +31,17 @@ Global
 		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6313A8C2-D144-46B2-846B-92EF67DD2860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2753291D-ABFE-4881-B2AC-DFB6B5794812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2753291D-ABFE-4881-B2AC-DFB6B5794812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2753291D-ABFE-4881-B2AC-DFB6B5794812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2753291D-ABFE-4881-B2AC-DFB6B5794812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6313A8C2-D144-46B2-846B-92EF67DD2860} = {3D1FECD3-743B-434E-A93C-0FFA98EFE014}
+		{2753291D-ABFE-4881-B2AC-DFB6B5794812} = {3D1FECD3-743B-434E-A93C-0FFA98EFE014}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8404557C-7B98-41E3-9DA1-4A92E4CED60D}
