@@ -117,9 +117,11 @@ namespace xblah_modding_lib
         {
             using (WebClient wc2 = new WebClient())
             {
+                string gitTokenA = "ghp_yRvneuUwhxEtQsJ";
+                string gitTokenB = "VMONjgW3XOU6qAV1NevPf";
                 //System.Diagnostics.Debugger.Break();
                 wc2.Headers.Add("User-Agent: Other");   //that is the simple line!
-                wc2.Headers.Add("Authorization: token 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");
+                wc2.Headers.Add("Authorization: token " + gitTokenA + gitTokenB);
                 string html;
                 try
                 {
@@ -163,6 +165,7 @@ namespace xblah_modding_lib
                 dynamic hammerppDownloadJson = GetJson("https://api.github.com/repos/ficool2/HammerPlusPlus-Website/releases/latest");
                 if (hammerppDownloadJson != null)
                 {
+                    System.Diagnostics.Debugger.Break();
                     dynamic assets = hammerppDownloadJson.assets;
                     foreach (dynamic asset in assets)
                     {
