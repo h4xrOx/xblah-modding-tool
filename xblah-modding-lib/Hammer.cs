@@ -165,7 +165,6 @@ namespace xblah_modding_lib
                 dynamic hammerppDownloadJson = GetJson("https://api.github.com/repos/ficool2/HammerPlusPlus-Website/releases/latest");
                 if (hammerppDownloadJson != null)
                 {
-                    System.Diagnostics.Debugger.Break();
                     dynamic assets = hammerppDownloadJson.assets;
                     foreach (dynamic asset in assets)
                     {
@@ -283,7 +282,7 @@ namespace xblah_modding_lib
 
             string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
             KeyValue gameinfo = xblah_modding_lib.KeyValue.readChunkfile(gameinfoPath);
-            string instancePath = gameinfo.getValue("instancepath");
+            string instancePath = Launcher.UserDirectory.Replace("\\", "/") + "Content/" + game.Name + "/" + mod.folderName + "/mapsrc";
             string modName = gameinfo.getValue("name");
 
             if (File.Exists(game.InstallPath + "\\bin\\propper.fgd"))
