@@ -575,9 +575,12 @@ RD /S /Q "$(TargetDir)ja"
 RD /S /Q "$(TargetDir)ru"
 del "$(TargetDir)*.xml"
 ; Move all assemblies and related files to lib folder
-ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF *.exe *.config *.manifest *.vdf *.cfg /XD Libs logs Resources Tools Templates data /E /IS /MOVE
+ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\ " /XF "XBLAH's Modding Tool.exe" *.config *.manifest *.vdf *.cfg /XD Libs logs Resources Tools Templates data /E /IS /MOVE
 ROBOCOPY "$(TargetDir)Resources\ " "$(TargetDir) " /E /IS /MOVE
 RD /S /Q "$(TargetDir)Resources\"
+RD /S /Q "$(TargetDir)Libs\Assets"
+RD /S /Q "$(TargetDir)Libs\Configs"
+del "$(TargetDir)*.ico"
 ; if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -590,6 +593,10 @@ RD /S /Q "$(TargetDir)Resources\"
     <Error Condition="!Exists('packages\CefSharp.Common.94.4.50\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CefSharp.Common.94.4.50\build\CefSharp.Common.targets'))" />
   </Target>
   <Import Project="packages\CefSharp.Common.94.4.50\build\CefSharp.Common.targets" Condition="Exists('packages\CefSharp.Common.94.4.50\build\CefSharp.Common.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

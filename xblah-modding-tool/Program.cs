@@ -31,7 +31,6 @@ namespace xblah_modding_tool
             //XtraMessageBox.Show("This is an BETA version. Make sure to report any bugs you find, as well as suggestions you may have. \n\nhttps://github.com/jean-knapp/windows-source-modding-tool/issues", "BETA Testing");
 
             Application.Run(new MainForm());
-            //Application.Run(new Modding.NewFileExplorer());
         }
 
 
