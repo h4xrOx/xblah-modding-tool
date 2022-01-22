@@ -119,6 +119,7 @@ namespace xblah_modding_lib
             {
                 //System.Diagnostics.Debugger.Break();
                 wc2.Headers.Add("User-Agent: Other");   //that is the simple line!
+                wc2.Headers.Add("Authorization: token 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");
                 string html;
                 try
                 {
@@ -156,7 +157,6 @@ namespace xblah_modding_lib
             }
 
             string hammerPlusPlusDir = AppDomain.CurrentDomain.BaseDirectory + "Tools\\HammerPlusPlus\\" + gameBranch + "\\";
-
             // Check for updates
             try
             {
@@ -168,11 +168,12 @@ namespace xblah_modding_lib
                     {
                         string assetName = asset.name;
                         string hammerVersion = assetName.Replace(".zip", "");
-
                         if (assetName.StartsWith(expectedFileName))
                         {
                             if (!File.Exists(hammerPlusPlusDir + "version.txt") || File.ReadAllText(hammerPlusPlusDir + "version.txt") != hammerVersion)
                             {
+                                Directory.CreateDirectory(hammerPlusPlusDir);
+
                                 string downloadUrl = asset.browser_download_url;
                                 using (WebClient wc = new WebClient())
                                 {
