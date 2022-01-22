@@ -241,7 +241,7 @@ namespace xblah_modding_tool
             // Mapsrc
             else if (e.Item == menuLevelDesignMapsrc)
             {
-                // TODO implement this
+                Process.Start(Launcher.UserDirectory + "Content\\" + launcher.GetCurrentGame().Name + "\\" + launcher.GetCurrentMod().folderName + "\\mapsrc");
             }
 
             // Crafty
@@ -320,6 +320,12 @@ namespace xblah_modding_tool
             {
                 BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "textures");
                 form.ShowDialog();
+            }
+
+            // Materialsrc
+            else if (e.Item == menuMaterialsMaterialsrc)
+            {
+                Process.Start(Launcher.UserDirectory + "Content\\" + launcher.GetCurrentGame().Name + "\\" + launcher.GetCurrentMod().folderName + "\\materialsrc");
             }
         }
 
@@ -588,6 +594,12 @@ namespace xblah_modding_tool
                 BlueprintCategoriesDialog form = new BlueprintCategoriesDialog(launcher, "models");
                 form.ShowDialog();
             }
+
+            // Modelsrc
+            else if (e.Item == menuModelingModelsrc)
+            {
+                Process.Start(Launcher.UserDirectory + "Content\\" + launcher.GetCurrentGame().Name + "\\" + launcher.GetCurrentMod().folderName + "\\modelsrc");
+            }
         }
 
         private void menuParticles_ItemClick(object sender, ItemClickEventArgs e)
@@ -682,9 +694,6 @@ namespace xblah_modding_tool
                 XtraMessageBox.Show("Launcher is null, and it really shouldn't be. Let XBLAH know.");
                 return;
             }
-                
-
-            
 
             launcher.SetCurrentGame(game);
             updateToolsMods();

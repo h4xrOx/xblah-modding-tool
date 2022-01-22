@@ -141,12 +141,12 @@
             DevExpress.Utils.SuperToolTip superToolTip33 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem33 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem40 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem34 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem41 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip35 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem35 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem42 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem34 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem41 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip40 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem40 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem47 = new DevExpress.Utils.ToolTipItem();
@@ -298,6 +298,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuMaterialsMaterialsrc = new DevExpress.XtraBars.BarButtonItem();
+            this.menuModelingModelsrc = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -395,9 +398,12 @@
             this.menuMaterialsBlueprints,
             this.menuModdingAssetsRemoveDuplicates,
             this.barSubItem1,
-            this.barSubItem2});
+            this.barSubItem2,
+            this.barButtonItem3,
+            this.menuMaterialsMaterialsrc,
+            this.menuModelingModelsrc});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 141;
+            this.barManager.MaxItemId = 144;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -925,13 +931,13 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignHammer, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCompile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignDecompile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignMapsrc, false),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignMapsrc, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignPrefabs),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignPrefabsWorkshopButton, false),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignFogPreviewer, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignBatchCompiler),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignTerrainGenerator),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuLevelDesignPrefabsWorkshopButton, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuLevelDesignCrafty)});
             this.menuLevelDesign.Name = "menuLevelDesign";
             toolTipTitleItem36.Text = "Maps";
             toolTipItem43.Text = "Create levels for the mod.";
@@ -1013,24 +1019,24 @@
             this.menuLevelDesignPrefabs.Id = 52;
             this.menuLevelDesignPrefabs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignPrefabs.ImageOptions.SvgImage")));
             this.menuLevelDesignPrefabs.Name = "menuLevelDesignPrefabs";
-            toolTipTitleItem34.Text = "Open Prefabs Folder";
-            toolTipItem41.Text = "Navigate to the prefabs folder in the Windows explorer.";
-            superToolTip34.Items.Add(toolTipTitleItem34);
-            superToolTip34.Items.Add(toolTipItem41);
-            this.menuLevelDesignPrefabs.SuperTip = superToolTip34;
+            toolTipTitleItem35.Text = "Open Prefabs Folder";
+            toolTipItem42.Text = "Navigate to the prefabs folder in the Windows explorer.";
+            superToolTip35.Items.Add(toolTipTitleItem35);
+            superToolTip35.Items.Add(toolTipItem42);
+            this.menuLevelDesignPrefabs.SuperTip = superToolTip35;
             this.menuLevelDesignPrefabs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignMapsrc
             // 
-            this.menuLevelDesignMapsrc.Caption = "Open Mapsrc Folder";
+            this.menuLevelDesignMapsrc.Caption = "Open Source Folder";
             this.menuLevelDesignMapsrc.Id = 53;
             this.menuLevelDesignMapsrc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignMapsrc.ImageOptions.SvgImage")));
             this.menuLevelDesignMapsrc.Name = "menuLevelDesignMapsrc";
-            toolTipTitleItem35.Text = "Open Mapsrc Folder";
-            toolTipItem42.Text = "Navigate to the mapsrc folder in the Windows explorer.";
-            superToolTip35.Items.Add(toolTipTitleItem35);
-            superToolTip35.Items.Add(toolTipItem42);
-            this.menuLevelDesignMapsrc.SuperTip = superToolTip35;
+            toolTipTitleItem34.Text = "Open Source Folder";
+            toolTipItem41.Text = "Navigate to the mapsrc folder in the Windows explorer.";
+            superToolTip34.Items.Add(toolTipTitleItem34);
+            superToolTip34.Items.Add(toolTipItem41);
+            this.menuLevelDesignMapsrc.SuperTip = superToolTip34;
             this.menuLevelDesignMapsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuLevelDesign_ItemClick);
             // 
             // menuLevelDesignFogPreviewer
@@ -1080,7 +1086,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsBlueprints, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsMaterialsrc, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsBlueprints)});
             this.menuMaterials.Name = "menuMaterials";
             toolTipTitleItem40.Text = "Materials";
             toolTipItem47.Text = "Create materials and textures to use in the models and levels.";
@@ -1145,7 +1152,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingEditor2),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingCompile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingDecompile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingBlueprints, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingModelsrc, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuModelingBlueprints)});
             this.menuModeling.Name = "menuModeling";
             toolTipTitleItem48.Text = "Modeling";
             toolTipItem55.Text = "Create models to use in the levels.";
@@ -1293,8 +1301,9 @@
             // barSubItem1
             // 
             this.barSubItem1.Caption = "Programming";
-            this.barSubItem1.Enabled = false;
             this.barSubItem1.Id = 139;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // menuScripts
@@ -1514,6 +1523,29 @@
             this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Editor";
+            this.barButtonItem3.Id = 141;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // menuMaterialsMaterialsrc
+            // 
+            this.menuMaterialsMaterialsrc.Caption = "Open Source Folder";
+            this.menuMaterialsMaterialsrc.Id = 142;
+            this.menuMaterialsMaterialsrc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsMaterialsrc.ImageOptions.SvgImage")));
+            this.menuMaterialsMaterialsrc.Name = "menuMaterialsMaterialsrc";
+            this.menuMaterialsMaterialsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
+            // menuModelingModelsrc
+            // 
+            this.menuModelingModelsrc.Caption = "Open Source Folder";
+            this.menuModelingModelsrc.Id = 143;
+            this.menuModelingModelsrc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingModelsrc.ImageOptions.SvgImage")));
+            this.menuModelingModelsrc.Name = "menuModelingModelsrc";
+            this.menuModelingModelsrc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuModeling_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1640,5 +1672,8 @@
         private DevExpress.XtraBars.BarButtonItem menuModdingAssetsRemoveDuplicates;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem menuMaterialsMaterialsrc;
+        private DevExpress.XtraBars.BarButtonItem menuModelingModelsrc;
     }
 }
