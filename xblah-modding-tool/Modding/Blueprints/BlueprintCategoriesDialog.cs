@@ -60,6 +60,7 @@ namespace xblah_modding_tool.Modding.Blueprints
             using (WebClient wc2 = new WebClient())
             {
                 //System.Diagnostics.Debugger.Break();
+                wc2.Headers.Add("User-Agent: Other");   //that is the simple line!
                 var html = wc2.DownloadString(url);
                 return JsonConvert.DeserializeObject(html);
             }

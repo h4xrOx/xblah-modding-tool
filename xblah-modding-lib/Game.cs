@@ -341,6 +341,30 @@ namespace xblah_modding_lib
             return Mods;
         }
 
+        public string GetBranch()
+        {
+            if (Name == "Mapbase")
+            {
+                return "mapbase";
+            }
+            else if (Name == "Half-Life 2" || Name == "Source SDK Base 2013 Singleplayer" || Name == "Portal")
+            {
+                return "sp";
+            }
+            else if (Name == "Team Fortress 2")
+            {
+                return "tf2";
+            }
+            else if (Name == "Half-Life 1 Source Deathmatch" || Name == "Half-Life 2 Deathmatch" || Name == "Source SDK Base 2013 Multiplayer" || Name == "Counter-Strike Source" || Name == "Day of Defeat Source")
+            {
+                return "mp";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         /// <summary>
         /// Opens the game install folder in the Windows file explorer.
         /// </summary>

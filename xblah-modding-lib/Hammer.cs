@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using Newtonsoft.Json;
+using System.IO.Compression;
 
 namespace xblah_modding_lib
 {
@@ -110,15 +113,116 @@ namespace xblah_modding_lib
 
         #region Source
 
+        private static dynamic GetJson(string url)
+        {
+            using (WebClient wc2 = new WebClient())
+            {
+                //System.Diagnostics.Debugger.Break();
+                wc2.Headers.Add("User-Agent: Other");   //that is the simple line!
+                string html;
+                try
+                {
+                    html = wc2.DownloadString(url);
+                } catch (WebException e)
+                {
+                    throw e;
+                }
+                return JsonConvert.DeserializeObject(html);
+            }
+        }
+
+        private static void CheckForUpdates(Mod mod)
+        {
+            string gameName = mod.Game.Name;
+            string gameBranch = mod.Game.GetBranch();
+
+            if (gameBranch == "")
+            {
+                gameBranch = "unknown";
+            }
+
+            if (gameBranch == "mapbase")
+            {
+                gameBranch = "sp";
+            }
+
+            string expectedFileName = "hammerplusplus_" + gameBranch;
+            if (gameBranch == "mapbase" || gameBranch == "sp")
+            {
+                expectedFileName = "hammerplusplus_2013sp";
+            } else if(gameBranch == "mp")
+            {
+                expectedFileName = "hammerplusplus_2013mp";
+            }
+
+            string hammerPlusPlusDir = AppDomain.CurrentDomain.BaseDirectory + "Tools\\HammerPlusPlus\\" + gameBranch + "\\";
+
+            // Check for updates
+            try
+            {
+                dynamic hammerppDownloadJson = GetJson("https://api.github.com/repos/ficool2/HammerPlusPlus-Website/releases/latest");
+                if (hammerppDownloadJson != null)
+                {
+                    dynamic assets = hammerppDownloadJson.assets;
+                    foreach (dynamic asset in assets)
+                    {
+                        string assetName = asset.name;
+                        string hammerVersion = assetName.Replace(".zip", "");
+
+                        if (assetName.StartsWith(expectedFileName))
+                        {
+                            if (!File.Exists(hammerPlusPlusDir + "version.txt") || File.ReadAllText(hammerPlusPlusDir + "version.txt") != hammerVersion)
+                            {
+                                string downloadUrl = asset.browser_download_url;
+                                using (WebClient wc = new WebClient())
+                                {
+                                    wc.Headers.Add("User-Agent: Other");
+                                    string destination = hammerPlusPlusDir + "hammerplusplus.zip";
+
+                                    if (File.Exists(destination))
+                                        File.Delete(destination);
+
+                                    wc.DownloadFile(downloadUrl, hammerPlusPlusDir + "hammerplusplus.zip");
+                                    ZipFile.ExtractToDirectory(destination, hammerPlusPlusDir);
+
+                                    if (File.Exists(hammerPlusPlusDir + "hammerplusplus.exe"))
+                                        File.Delete(hammerPlusPlusDir + "hammerplusplus.exe");
+
+                                    if (Directory.Exists(hammerPlusPlusDir + "hammerplusplus"))
+                                        Directory.Delete(hammerPlusPlusDir + "hammerplusplus", true);
+
+                                    File.Delete(destination);
+
+                                    string rootDir = Directory.GetDirectories(hammerPlusPlusDir)[0];
+                                    File.Move(rootDir + "\\bin\\hammerplusplus.exe", hammerPlusPlusDir + "hammerplusplus.exe");
+                                    Directory.Move(rootDir + "\\bin\\hammerplusplus", hammerPlusPlusDir + "hammerplusplus");
+                                    Directory.Delete(rootDir, true);
+                                    File.WriteAllText(hammerPlusPlusDir + "version.txt", hammerVersion);
+                                }
+                            } else
+                            {
+
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (WebException e)
+            {
+
+            }
+        }
+
         private static void RunSourceHammer(PackageFile packageFile, Mod mod)
         {
             // Create a maps folder if it's not existant
             Directory.CreateDirectory(mod.InstallPath + "\\maps\\");
             Directory.CreateDirectory(mod.InstallPath + "\\mapsrc\\");
 
+            CheckForUpdates(mod);
             CopySourceHammer(mod.Game);
             ConfigureSourceHammer(mod);
-
             
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
             if (File.Exists(mod.Game.InstallPath + "\\bin\\hammerplusplus.exe"))
@@ -279,26 +383,18 @@ namespace xblah_modding_lib
 
             string hammerPath = "";
 
-            if (game.Name == "Source SDK Base 2013 Singleplayer" || game.Name == "Mapbase" || game.Name == "Half-Life 2" || game.Name == "Portal")
+            string gameBranch = game.GetBranch();
+            if (gameBranch == "mapbase")
             {
-                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\sp\\";
-                // Mapbase specfic hammer launch.
-                if (game.Name == "Mapbase")
-                    hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mapbase\\";
+                gameBranch = "sp";
+            }
 
-
-            }
-            else if (game.Name == "Source SDK Base 2013 Multiplayer" || game.Name == "Half-Life 2 Deathmatch")
+            if (gameBranch != "")
             {
-                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\mp\\";
-            }
-            else if (game.Name == "Team Fortress 2")
-            {
-                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\tf2\\";
-            }
-            else if (game.Name == "Counter-Strike Source")
-            {
-                hammerPath = startupPath + "\\Tools\\HammerPlusPlus\\css\\";
+                if (Directory.Exists(startupPath + "Tools\\HammerPlusPlus\\" + gameBranch))
+                {
+                    hammerPath = startupPath + "Tools\\HammerPlusPlus\\" + gameBranch + "\\";
+                }
             }
 
             if (hammerPath != "")
