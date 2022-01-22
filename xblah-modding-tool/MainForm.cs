@@ -704,6 +704,12 @@ namespace xblah_modding_tool
                 Mod mod = launcher.GetModsList(currentGame)[toolsMods.EditValue.ToString()];
 
                 launcher.GetCurrentGame().SetCurrentMod(mod);
+
+                Directory.CreateDirectory(Launcher.UserDirectory + "Content\\" + currentGame.Name + "\\" + mod.folderName);
+                Directory.CreateDirectory(Launcher.UserDirectory + "Content\\" + currentGame.Name + "\\" + mod.folderName + "\\mapsrc");
+                Directory.CreateDirectory(Launcher.UserDirectory + "Content\\" + currentGame.Name + "\\" + mod.folderName + "\\modelsrc\\");
+                Directory.CreateDirectory(Launcher.UserDirectory + "Content\\" + currentGame.Name + "\\" + mod.folderName + "\\materialsrc\\");
+
                 Properties.Settings.Default.currentMod = toolsMods.EditValue.ToString();
                 Properties.Settings.Default.Save();
 
