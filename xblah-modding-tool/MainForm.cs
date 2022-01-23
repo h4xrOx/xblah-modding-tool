@@ -732,6 +732,7 @@ namespace xblah_modding_tool
             {
                 case Engine.SOURCE:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    toolsRun.DropDownEnabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
@@ -778,21 +779,21 @@ namespace xblah_modding_tool
 
                     if (launcher.GetCurrentGame().GetAppId() == 730) // CSGO
                     {
-                        //menuLevelDesignHammer.Enabled = false;
                         menuLevelDesignDecompile.Enabled = false;
                         menuModelingPropper.Enabled = false;
-                        toolsRun.Enabled = false;
+                        //toolsRun.Enabled = false;
+                        toolsRun.DropDownEnabled = false;
                         menuModdingRunExpert.Enabled = false;
                         menuChoreography.Enabled = false;
                         menuMaterials.Enabled = false;
                         menuModeling.Enabled = false;
                         menuSound.Enabled = false;
-                        //System.Diagnostics.Debugger.Break();
                     }
 
                     break;
                 case Engine.SOURCE2:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    toolsRun.DropDownEnabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;
@@ -839,6 +840,7 @@ namespace xblah_modding_tool
                     break;
                 case Engine.GOLDSRC:
                     toolsRun.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
+                    toolsRun.DropDownEnabled = true;
                     menuModding.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                         menuModdingRunExpert.Enabled = true;
                         menuModdingClean.Enabled = true;

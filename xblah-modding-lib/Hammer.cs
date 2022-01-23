@@ -173,7 +173,6 @@ namespace xblah_modding_lib
                         string hammerVersion = assetName.Replace(".zip", "");
                         if (assetName.StartsWith(expectedFileName))
                         {
-                            System.Diagnostics.Debugger.Break();
                             if (!File.Exists(hammerPlusPlusDir + "version.txt") || File.ReadAllText(hammerPlusPlusDir + "version.txt") != hammerVersion)
                             {
                                 Directory.CreateDirectory(hammerPlusPlusDir);

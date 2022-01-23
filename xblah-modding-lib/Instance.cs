@@ -147,6 +147,11 @@ namespace xblah_modding_lib
                 return null;
             }
 
+            if (game.GetBranch() == "csgo")
+            {
+                exePath = "steam://rungameid/730//";
+            }
+
             modProcess = new Process();
             modProcess.EnableRaisingEvents = true;
             modProcess.StartInfo.FileName = exePath;
@@ -155,7 +160,6 @@ namespace xblah_modding_lib
             {
                 if (OnStop != null)
                     OnStop.Invoke(this, new EventArgs());
-                //execute.ExitCode.ToString()
             };
 
             modProcess.Start();
