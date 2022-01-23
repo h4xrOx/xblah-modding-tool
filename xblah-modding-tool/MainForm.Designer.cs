@@ -972,7 +972,7 @@
             // 
             // menuLevelDesignHammer
             // 
-            this.menuLevelDesignHammer.Caption = "Editor";
+            this.menuLevelDesignHammer.Caption = "Map Editor";
             this.menuLevelDesignHammer.Id = 16;
             this.menuLevelDesignHammer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuLevelDesignHammer.ImageOptions.SvgImage")));
             this.menuLevelDesignHammer.Name = "menuLevelDesignHammer";
@@ -1110,7 +1110,7 @@
             // 
             // menuMaterialsEditor
             // 
-            this.menuMaterialsEditor.Caption = "Editor";
+            this.menuMaterialsEditor.Caption = "Material Editor";
             this.menuMaterialsEditor.Id = 58;
             this.menuMaterialsEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuMaterialsEditor.ImageOptions.SvgImage")));
             this.menuMaterialsEditor.Name = "menuMaterialsEditor";
@@ -1176,7 +1176,7 @@
             // 
             // menuModelingHLMV
             // 
-            this.menuModelingHLMV.Caption = "Model viewer";
+            this.menuModelingHLMV.Caption = "Model Viewer";
             this.menuModelingHLMV.Id = 40;
             this.menuModelingHLMV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuModelingHLMV.ImageOptions.SvgImage")));
             this.menuModelingHLMV.Name = "menuModelingHLMV";
@@ -1525,7 +1525,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Editor";
+            this.barButtonItem3.Caption = "Assembly Editor";
             this.barButtonItem3.Id = 141;
             this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
             this.barButtonItem3.Name = "barButtonItem3";

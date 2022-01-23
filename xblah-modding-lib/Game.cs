@@ -359,6 +359,10 @@ namespace xblah_modding_lib
             {
                 return "mp";
             }
+            else if(Name == "Counter-Strike Global Offensive")
+            {
+                return "csgo";
+            }
             else
             {
                 return "";

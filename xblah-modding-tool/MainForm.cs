@@ -778,7 +778,7 @@ namespace xblah_modding_tool
 
                     if (launcher.GetCurrentGame().GetAppId() == 730) // CSGO
                     {
-                        menuLevelDesignHammer.Enabled = false;
+                        //menuLevelDesignHammer.Enabled = false;
                         menuLevelDesignDecompile.Enabled = false;
                         menuModelingPropper.Enabled = false;
                         toolsRun.Enabled = false;

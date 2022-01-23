@@ -22,6 +22,7 @@ namespace xblah_modding_lib
 
         public static void RunHammer(Launcher launcher, Instance instance, Control parent, PackageFile packageFile)
         {
+            
             Mod mod = launcher.GetCurrentMod();
             switch (mod.Game.EngineID)
             {
@@ -172,6 +173,7 @@ namespace xblah_modding_lib
                         string hammerVersion = assetName.Replace(".zip", "");
                         if (assetName.StartsWith(expectedFileName))
                         {
+                            System.Diagnostics.Debugger.Break();
                             if (!File.Exists(hammerPlusPlusDir + "version.txt") || File.ReadAllText(hammerPlusPlusDir + "version.txt") != hammerVersion)
                             {
                                 Directory.CreateDirectory(hammerPlusPlusDir);
