@@ -261,11 +261,11 @@ namespace xblah_modding_lib
             Process process = new Process();
             process.StartInfo.FileName = hammerPath;
             process.StartInfo.WorkingDirectory = Path.GetDirectoryName(hammerPath);
-            process.StartInfo.Arguments = string.Empty;
+            process.StartInfo.Arguments = "-nop4";
 
             // Mapbase specfic hammer launch.
             if (mod.Game.Name == "Mapbase")
-                process.StartInfo.Arguments += "-game " + mod.InstallPath;
+                process.StartInfo.Arguments += " -game " + mod.InstallPath;
 
             // Open file in hammer.
             if (packageFile != null)
