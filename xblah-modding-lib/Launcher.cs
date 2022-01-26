@@ -55,7 +55,7 @@ namespace xblah_modding_lib
                         {
                             // It's a Source game
 
-                            Game game = new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE);
+                            Game game = new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE, this);
                             if (game.GetAppId() == 243730 && key != "Source SDK Base 2013 Singleplayer")
                             {
                                 // This is actually a wrapper for a SDK2013 mod, and should be treated as such.
@@ -84,7 +84,7 @@ namespace xblah_modding_lib
                                     break;
                                 default:
                                     {
-                                        games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE));
+                                        games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE, this));
 
                                     }
                                     break;
@@ -93,12 +93,12 @@ namespace xblah_modding_lib
                         else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\game\\bin\\win64\\engine2.dll") && !games.ContainsKey(key))
                         {
                             // It's a Source 2 game
-                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE2));
+                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.SOURCE2, this));
                         }
                         else if (File.Exists(library + "\\steamapps\\common\\" + key + "\\valve\\dlls\\hl.dll") && !games.ContainsKey(key))
                         {
                             // It's a Goldsrc game
-                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.GOLDSRC));
+                            games.Add(key, new Game(key, library + "\\steamapps\\common\\" + key, Engine.GOLDSRC, this));
                         }
                     }
             }
@@ -112,7 +112,7 @@ namespace xblah_modding_lib
                     Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_episodic"))
                 {
 
-                    games.Add("Mapbase", new Game("Mapbase", games["Source SDK Base 2013 Singleplayer"].InstallPath, Engine.SOURCE));
+                    games.Add("Mapbase", new Game("Mapbase", games["Source SDK Base 2013 Singleplayer"].InstallPath, Engine.SOURCE, this));
 
                     break;
                 }

@@ -16,17 +16,20 @@ namespace xblah_modding_lib
 
         public int EngineID { get; set; }
 
+        public Launcher Launcher { get; set; }
+
         Mod CurrentMod { get; set; } = null;
 
         public Dictionary<string, Mod> Mods { get; set; }
 
-        public Game(string name, string installPath, int engine)
+        public Game(string name, string installPath, int engine, Launcher launcher)
         {
             Mods = new Dictionary<string, Mod>();
 
             this.Name = name;
             this.InstallPath = installPath;
             this.EngineID = engine;
+            this.Launcher = launcher;
         }
 
         public int GetAppId()

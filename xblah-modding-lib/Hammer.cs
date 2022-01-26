@@ -135,10 +135,10 @@ namespace xblah_modding_lib
             }
         }
 
-        private static void CheckForUpdates(Mod mod)
+        private static void CheckForUpdates(Game game)
         {
-            string gameName = mod.Game.Name;
-            string gameBranch = mod.Game.GetBranch();
+            string gameName = game.Name;
+            string gameBranch = game.GetBranch();
 
             if (gameBranch == "")
             {
@@ -224,13 +224,33 @@ namespace xblah_modding_lib
             Directory.CreateDirectory(mod.InstallPath + "\\maps\\");
             Directory.CreateDirectory(mod.InstallPath + "\\mapsrc\\");
 
-            CheckForUpdates(mod);
-            CopySourceHammer(mod.Game);
-            ConfigureSourceHammer(mod);
-            
+            Game game = mod.Game;
+
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
-            if (File.Exists(mod.Game.InstallPath + "\\bin\\hammerplusplus.exe"))
-                hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
+
+            if (mod.Game.Name == "Portal 2")
+            {
+                // We can try to use CSGO SDK to use hammer++.
+                Dictionary<string, Game> gamesList = mod.Game.Launcher.GetGamesList();
+                if (gamesList.ContainsKey("Counter-Strike Global Offensive"))
+                {
+                    var csgoGame = gamesList["Counter-Strike Global Offensive"];
+                    csgoGame.LoadMods(csgoGame.Launcher);
+                    if (File.Exists(csgoGame.InstallPath + "\\bin\\hammer.exe") && File.Exists(csgoGame.InstallPath + "\\bin\\hammerplusplus.exe"))
+                    {
+                        // CSGO Hammer++ is installed. Lets try to run this.
+                        game = csgoGame;
+                    }
+                }
+            }
+
+            CheckForUpdates(game);
+            CopySourceHammer(game);
+            ConfigureSourceHammer(mod, game);
+
+            
+            if (File.Exists(game.InstallPath + "\\bin\\hammer.exe") && File.Exists(game.InstallPath + "\\bin\\hammerplusplus.exe"))
+                hammerPath = game.InstallPath + "\\bin\\hammerplusplus.exe";
             else if(!File.Exists(hammerPath))
             {
                 MessageBox.Show("hammer.exe was not found in '" + mod.Game.InstallPath + "\\bin\\'. Make sure you have this game's authoring tools or SDK installed.");
@@ -284,11 +304,14 @@ namespace xblah_modding_lib
 
         private static void ConfigureSourceHammer(Mod mod)
         {
-            Game game = mod.Game;
+            ConfigureSourceHammer(mod, mod.Game);
+        }
 
+        private static void ConfigureSourceHammer(Mod mod, Game game)
+        {
             string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
             KeyValue gameinfo = xblah_modding_lib.KeyValue.readChunkfile(gameinfoPath);
-            string instancePath = Launcher.UserDirectory.Replace("\\", "/") + "Content/" + game.Name + "/" + mod.folderName + "/mapsrc";
+            string instancePath = Launcher.UserDirectory.Replace("\\", "/") + "Content/" + mod.Game.Name + "/" + mod.folderName + "/mapsrc";
             string modName = gameinfo.getValue("name");
 
             if (File.Exists(game.InstallPath + "\\bin\\propper.fgd"))
@@ -322,10 +345,10 @@ namespace xblah_modding_lib
             sb.AppendLine("             \"GameExe\"		\"" + game.InstallPath + "\\hl2.exe\"");
             sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
             sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
-            sb.AppendLine("             \"BSP\"		\"" + game.InstallPath + "\\bin\\vbsp.exe\"");
-            sb.AppendLine("             \"Vis\"		\"" + game.InstallPath + "\\bin\\vvis.exe\"");
-            sb.AppendLine("             \"Light\"		\"" + game.InstallPath + "\\bin\\vrad.exe\"");
-            sb.AppendLine("             \"GameExeDir\"		\"" + game.InstallPath + "\"");
+            sb.AppendLine("             \"BSP\"		\"" + mod.Game.InstallPath + "\\bin\\vbsp.exe\"");
+            sb.AppendLine("             \"Vis\"		\"" + mod.Game.InstallPath + "\\bin\\vvis.exe\"");
+            sb.AppendLine("             \"Light\"		\"" + mod.Game.InstallPath + "\\bin\\vrad.exe\"");
+            sb.AppendLine("             \"GameExeDir\"		\"" + mod.Game.InstallPath + "\"");
             sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
             sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
             sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
