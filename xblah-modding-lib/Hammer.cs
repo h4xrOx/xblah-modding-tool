@@ -342,7 +342,7 @@ namespace xblah_modding_lib
 
             sb.AppendLine("             \"DefaultTextureScale\"		\"0.250000\"");
             sb.AppendLine("             \"DefaultLightmapScale\"		\"16\"");
-            sb.AppendLine("             \"GameExe\"		\"" + game.InstallPath + "\\hl2.exe\"");
+            sb.AppendLine("             \"GameExe\"		\"" + mod.Game.getExePath() + "\"");
             sb.AppendLine("             \"DefaultSolidEntity\"		\"func_detail\"");
             sb.AppendLine("             \"DefaultPointEntity\"		\"info_player_start\"");
             sb.AppendLine("             \"BSP\"		\"" + mod.Game.InstallPath + "\\bin\\vbsp.exe\"");
