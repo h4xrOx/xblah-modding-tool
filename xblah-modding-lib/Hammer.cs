@@ -231,6 +231,11 @@ namespace xblah_modding_lib
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
             if (File.Exists(mod.Game.InstallPath + "\\bin\\hammerplusplus.exe"))
                 hammerPath = mod.Game.InstallPath + "\\bin\\hammerplusplus.exe";
+            else if(!File.Exists(hammerPath))
+            {
+                MessageBox.Show("hammer.exe was not found in '" + mod.Game.InstallPath + "\\bin\\'. Make sure you have this game's authoring tools or SDK installed.");
+                return;
+            }
 
             // Start process
             Process process = new Process();
