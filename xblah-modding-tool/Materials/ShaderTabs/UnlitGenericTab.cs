@@ -166,7 +166,7 @@ namespace xblah_modding_tool.Materials.ShaderTabs
         {
             // Create the root with the shader as key.
             string shader = Shader;
-            if (Launcher.GetCurrentGame().Name == "Mapbase")
+            if (Launcher.GetCurrentGame().Name == "Mapbase" || Launcher.GetCurrentGame().Name == "Mapbase MP")
                 shader = "SDK_UnlitGeneric";
 
             xblah_modding_lib.KeyValue vmt = new xblah_modding_lib.KeyValue(shader);

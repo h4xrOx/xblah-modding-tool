@@ -179,7 +179,7 @@ namespace xblah_modding_lib
         {
             List<string> result = new List<string>();
 
-            if (Game.Name == "Mapbase")
+            if (Game.Name == "Mapbase" || Game.Name == "Mapbase MP")
             {
                 // Mapbase specific fgd directory
                 result.Add(InstallPath + "\\..\\mapbase_shared\\shared_misc\\bin\\halflife2.fgd");

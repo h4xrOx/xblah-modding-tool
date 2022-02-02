@@ -159,6 +159,12 @@
     </Compile>
     <Compile Include="LevelDesign\Map.cs" />
     <Compile Include="LevelDesign\MapFolder.cs" />
+    <Compile Include="Materials\ShaderConverterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materials\ShaderConverterDialog.Designer.cs">
+      <DependentUpon>ShaderConverterDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modding\Blueprints\BlueprintCategoriesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LevelDesign\FogForm.resx">
       <DependentUpon>FogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materials\ShaderConverterDialog.resx">
+      <DependentUpon>ShaderConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\Blueprints\BlueprintCategoriesDialog.resx">
       <DependentUpon>BlueprintCategoriesDialog.cs</DependentUpon>

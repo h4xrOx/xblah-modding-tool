@@ -68,6 +68,8 @@ namespace xblah_modding_lib
                             return 360;
                         case "Mapbase":
                             return 243731;  // Hard coded fake mapbase appid
+                        case "Mapbase MP":
+                            return 243751;  // Hard coded fake mapbase appid
                         default:
                             if (File.Exists(gamePath + "\\steam_appid.txt"))
                             {
@@ -192,7 +194,7 @@ namespace xblah_modding_lib
                                     name = "Half-Life: Source (" + new DirectoryInfo(path).Name + ")";
                                 }
 
-                                if (modAppId == "243730")
+                                if (modAppId == "243730" || modAppId == "243750")
                                 {
                                     // Check if is a Mapbase mod (Since mapbase doesn't have its own appid)
                                     xblah_modding_lib.KeyValue searchPaths = gameInfo.findChildByKey("searchpaths");
@@ -206,8 +208,15 @@ namespace xblah_modding_lib
 
                                             if (value != null && value.Contains("mapbase_shared"))
                                             {
-                                                modAppId = "243731";    // Hardcoded fake mapbase gameappid
-                                                break;
+                                                if (modAppId == "243730")
+                                                {
+                                                    modAppId = "243731";    // Hardcoded fake mapbase gameappid
+                                                    break;
+                                                } else if(modAppId == "243750")
+                                                {
+                                                    modAppId = "243751";    // Hardcoded fake mapbase mp gameappid
+                                                    break;
+                                                }
                                             }
                                         }
                                 }
@@ -349,6 +358,10 @@ namespace xblah_modding_lib
             if (Name == "Mapbase")
             {
                 return "mapbase";
+            }
+            else if (Name == "Mapbase MP")
+            {
+                return "mapbase_mp";
             }
             else if (Name == "Half-Life 2" || Name == "Source SDK Base 2013 Singleplayer" || Name == "Portal")
             {

@@ -302,6 +302,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuMaterialsShaderConverter = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -402,9 +403,10 @@
             this.barSubItem2,
             this.barButtonItem3,
             this.menuMaterialsMaterialsrc,
-            this.menuModelingModelsrc});
+            this.menuModelingModelsrc,
+            this.menuMaterialsShaderConverter});
             this.barManager.MainMenu = this.menu;
-            this.barManager.MaxItemId = 144;
+            this.barManager.MaxItemId = 145;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryModsCombo,
             this.repositoryItemTextEdit1,
@@ -1089,6 +1091,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsEditor, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsSkyboxEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsShaderConverter),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsMaterialsrc, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterialsBlueprints)});
             this.menuMaterials.Name = "menuMaterials";
@@ -1549,6 +1552,13 @@
             this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // menuMaterialsShaderConverter
+            // 
+            this.menuMaterialsShaderConverter.Caption = "Shader Converter";
+            this.menuMaterialsShaderConverter.Id = 144;
+            this.menuMaterialsShaderConverter.Name = "menuMaterialsShaderConverter";
+            this.menuMaterialsShaderConverter.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuMaterials_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1678,5 +1688,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsMaterialsrc;
         private DevExpress.XtraBars.BarButtonItem menuModelingModelsrc;
+        private DevExpress.XtraBars.BarButtonItem menuMaterialsShaderConverter;
     }
 }

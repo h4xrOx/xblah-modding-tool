@@ -149,12 +149,16 @@ namespace xblah_modding_lib
             {
                 gameBranch = "sp";
             }
+            else if(gameBranch == "mapbase_mp")
+            {
+                gameBranch = "mp";
+            }
 
             string expectedFileName = "hammerplusplus_" + gameBranch;
             if (gameBranch == "mapbase" || gameBranch == "sp")
             {
                 expectedFileName = "hammerplusplus_2013sp";
-            } else if(gameBranch == "mp")
+            } else if(gameBranch == "mp" || gameBranch == "mapbase_mp")
             {
                 expectedFileName = "hammerplusplus_2013mp";
             }
@@ -227,7 +231,7 @@ namespace xblah_modding_lib
             Game game = mod.Game;
 
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
-
+            //System.Diagnostics.Debugger.Break();
             if (mod.Game.Name == "Portal 2")
             {
                 // We can try to use CSGO SDK to use hammer++.
@@ -264,7 +268,7 @@ namespace xblah_modding_lib
             process.StartInfo.Arguments = "-nop4";
 
             // Mapbase specfic hammer launch.
-            if (mod.Game.Name == "Mapbase")
+            if (mod.Game.Name == "Mapbase" || mod.Game.Name == "Mapbase MP")
                 process.StartInfo.Arguments += " -game " + mod.InstallPath;
 
             // Open file in hammer.
@@ -292,7 +296,7 @@ namespace xblah_modding_lib
             process.StartInfo.Arguments = string.Empty;
 
             // Mapbase specfic hammer launch.
-            if (mod.Game.Name == "Mapbase")
+            if (mod.Game.Name == "Mapbase" || mod.Game.Name == "Mapbase MP")
                 process.StartInfo.Arguments += "-game " + mod.InstallPath;
 
             // Open file in hammer.
@@ -419,6 +423,10 @@ namespace xblah_modding_lib
             if (gameBranch == "mapbase")
             {
                 gameBranch = "sp";
+            }
+            else if(gameBranch == "mapbase_mp")
+            {
+                gameBranch = "mp";
             }
 
             if (gameBranch != "")

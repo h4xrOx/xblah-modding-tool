@@ -17,6 +17,8 @@ namespace xblah_modding_lib
         private string value = null;
         private string comment = string.Empty;
 
+        private KeyValue parent = null;
+
         public static bool KeyCasing { get; set; } = false;
 
         public KeyValue(string key)
@@ -39,6 +41,7 @@ namespace xblah_modding_lib
 
             childrenIndex[value.getKey()].Add(value);
             children.Add(value);
+            value.parent = this;
         }
 
         public void addChild(string key, KeyValue value)
@@ -141,6 +144,25 @@ namespace xblah_modding_lib
 
         public string getKey() { return key; }
 
+        public void setKey(string key)
+        {
+            string oldKey = this.key;
+            string newKey = key;
+
+            this.key = newKey;
+
+            if (parent != null)
+            {
+                parent.childrenIndex[oldKey].Remove(this);
+
+                if (!parent.childrenIndex.ContainsKey(newKey))
+                    parent.childrenIndex[newKey] = new List<KeyValue>();
+
+                parent.childrenIndex[newKey].Add(this);
+
+            }
+        }
+
         public string getValue() { return value; }
 
         public string getValue(string key)
@@ -233,6 +255,12 @@ namespace xblah_modding_lib
                 lines.Insert(2, "");
             }
             Directory.CreateDirectory(Path.GetDirectoryName(path));
+
+            // Lets make sure the file isn't readonly.
+            FileInfo myFile = new FileInfo(path);
+            if (myFile != null && File.Exists(path))
+                myFile.IsReadOnly = false;
+
             File.WriteAllLines(path, lines, encoding);
         }
 

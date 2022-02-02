@@ -327,6 +327,12 @@ namespace xblah_modding_tool
             {
                 Process.Start(Launcher.UserDirectory + "Content\\" + launcher.GetCurrentGame().Name + "\\" + launcher.GetCurrentMod().folderName + "\\materialsrc");
             }
+
+            else if(e.Item == menuMaterialsShaderConverter)
+            {
+                ShaderConverterDialog dialog = new ShaderConverterDialog(launcher);
+                dialog.ShowDialog();
+            }
         }
 
         private void menuModding_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

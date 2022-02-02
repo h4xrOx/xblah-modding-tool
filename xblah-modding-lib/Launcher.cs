@@ -116,6 +116,17 @@ namespace xblah_modding_lib
 
                     break;
                 }
+
+                if (games.ContainsKey("Source SDK Base 2013 Multiplayer") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_shared") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_hl2") &&
+                    Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_episodic"))
+                {
+
+                    games.Add("Mapbase MP", new Game("Mapbase MP", games["Source SDK Base 2013 Multiplayer"].InstallPath, Engine.SOURCE, this));
+
+                    break;
+                }
             }
 
             games = games.OrderBy(m => m.Key).ToDictionary(m => m.Key, m => m.Value);
