@@ -777,6 +777,7 @@ namespace xblah_modding_tool
                         menuMaterialsReload.Enabled = true;
                         menuMaterialsEditor.Enabled = true;
                         menuMaterialsSkyboxEditor.Enabled = true;
+                        menuMaterialsShaderConverter.Enabled = true;
                     menuParticles.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuChoreography.Enabled = true;
                         menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
@@ -837,6 +838,7 @@ namespace xblah_modding_tool
                         menuMaterialsReload.Enabled = false;
                         menuMaterialsEditor.Enabled = false;
                         menuMaterialsSkyboxEditor.Enabled = false;
+                        menuMaterialsShaderConverter.Enabled = false;
                     menuParticles.Enabled = false;
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
@@ -884,6 +886,7 @@ namespace xblah_modding_tool
                         menuMaterialsReload.Enabled = false;
                         menuMaterialsEditor.Enabled = false;
                         menuMaterialsSkyboxEditor.Enabled = true;
+                        menuMaterialsShaderConverter.Enabled = false;
                     menuParticles.Enabled = false;
                     menuChoreography.Enabled = false;
                         menuChoreographyFaceposer.Enabled = false;
