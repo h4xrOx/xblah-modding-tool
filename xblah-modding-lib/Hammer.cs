@@ -114,7 +114,7 @@ namespace xblah_modding_lib
 
         #region Source
 
-        private static dynamic GetJson(string url)
+        public static dynamic GetJson(string url)
         {
             using (WebClient wc2 = new WebClient())
             {

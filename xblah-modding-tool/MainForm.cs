@@ -17,6 +17,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Net;
+using System.Threading;
 
 namespace xblah_modding_tool
 {
@@ -58,6 +60,12 @@ namespace xblah_modding_tool
 
             UpdateMenus();
             updateBackground();
+
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                CheckForUpdates();
+            }).Start();
         }
 
         private void setSDK2013Upcoming()
@@ -1067,6 +1075,49 @@ namespace xblah_modding_tool
         private void becomePatronButton_ItemClick(object sender, ItemClickEventArgs e)
         {
             Process.Start("https://www.patreon.com/moddingassets");
+        }
+
+        private void CheckForUpdates()
+        {
+            // Check for updates
+            try
+            {
+                dynamic downloadJson = Hammer.GetJson("https://api.github.com/repos/jean-knapp/xblah-modding-tool/releases/latest");
+                if (downloadJson != null)
+                {
+                    string tag_name = downloadJson.tag_name;
+
+                    string[] downloadVersion = tag_name.Substring(1).Split('.');
+                    string[] currentVersion = Application.ProductVersion.Split('.');
+
+                    if (int.Parse(downloadVersion[0]) * 1000000 + int.Parse(downloadVersion[1]) * 1000 + int.Parse(downloadVersion[2]) >
+                        int.Parse(currentVersion[0]) * 1000000 + int.Parse(currentVersion[1]) * 1000 + int.Parse(currentVersion[2])) {
+
+                        Invoke((MethodInvoker)delegate {
+                            labelControl1.Text = labelControl1.Text.Replace("[[VERSION]]", tag_name);
+                            panelControl1.Visible = true;
+                        });
+
+                        
+                    }
+
+                    
+                }
+            }
+            catch (WebException e)
+            {
+
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://modding-assets.net/items/source/tools/modding/xblah-modding-tool");
+        }
+
+        private void dismissUpdateButton_Click(object sender, EventArgs e)
+        {
+            panelControl1.Visible = false;
         }
     }
 }

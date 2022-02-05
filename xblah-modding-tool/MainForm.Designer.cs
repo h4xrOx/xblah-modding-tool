@@ -303,6 +303,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.updateButton = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dismissUpdateButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -311,6 +315,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager
@@ -1543,9 +1549,9 @@
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 52);
+            this.panel1.Location = new System.Drawing.Point(0, 84);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(946, 515);
+            this.panel1.Size = new System.Drawing.Size(946, 483);
             this.panel1.TabIndex = 9;
             // 
             // modProcessUpdater
@@ -1560,12 +1566,64 @@
             this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(118)))), ((int)(((byte)(6)))));
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.dismissUpdateButton);
+            this.panelControl1.Controls.Add(this.updateButton);
+            this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 52);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(946, 32);
+            this.panelControl1.TabIndex = 14;
+            this.panelControl1.Visible = false;
+            // 
+            // updateButton
+            // 
+            this.updateButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(86)))), ((int)(((byte)(4)))));
+            this.updateButton.Appearance.Options.UseBackColor = true;
+            this.updateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.updateButton.Location = new System.Drawing.Point(866, 4);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 1;
+            this.updateButton.Text = "Download now";
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(12, 9);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(602, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "An update is available. Download [[VERSION]] at https://modding-assets.net/items/" +
+    "source/tools/modding/xblah-modding-tool";
+            // 
+            // dismissUpdateButton
+            // 
+            this.dismissUpdateButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(86)))), ((int)(((byte)(4)))));
+            this.dismissUpdateButton.Appearance.Options.UseBackColor = true;
+            this.dismissUpdateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.dismissUpdateButton.Location = new System.Drawing.Point(785, 4);
+            this.dismissUpdateButton.Name = "dismissUpdateButton";
+            this.dismissUpdateButton.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.dismissUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.dismissUpdateButton.TabIndex = 2;
+            this.dismissUpdateButton.Text = "Dismiss";
+            this.dismissUpdateButton.Click += new System.EventHandler(this.dismissUpdateButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 593);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -1586,6 +1644,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1690,5 +1751,9 @@
         private DevExpress.XtraBars.BarButtonItem menuMaterialsMaterialsrc;
         private DevExpress.XtraBars.BarButtonItem menuModelingModelsrc;
         private DevExpress.XtraBars.BarButtonItem menuMaterialsShaderConverter;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton updateButton;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton dismissUpdateButton;
     }
 }
