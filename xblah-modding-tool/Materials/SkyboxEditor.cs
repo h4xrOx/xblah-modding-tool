@@ -483,100 +483,217 @@ namespace xblah_modding_tool.Materials
             {
                 Clipboard.SetText(settingsAmbientColorEdit.Color.R + " " + settingsAmbientColorEdit.Color.G + " " + settingsAmbientColorEdit.Color.B + " " + settingsAmbientIntensityEdit.Value);
             }
+            else if(sender == settingsFogCopyButton)
+            {
+                Clipboard.SetText(settingsFogColorEdit.Color.R + " " + settingsFogColorEdit.Color.G + " " + settingsFogColorEdit.Color.B);
+            }
+            else if(sender == settingsPitchYawRollCopyButton)
+            {
+                Clipboard.SetText(settingsPitchYawRollEdit.Text);
+            }
+            else if(sender == settingsPitchCopyButton)
+            {
+                Clipboard.SetText(settingsPitchEdit.Text);
+            }
         }
 
         private void UpdateSettings()
         {
+            int step = 4;
+
+            int sectorSize = 4;
+
             int rSum = 0;
             int gSum = 0;
             int bSum = 0;
             int pixelCount = 0;
 
+            int rSumHorizon = 0;
+            int gSumHorizon = 0;
+            int bSumHorizon = 0;
+            int pixelCountHorizon = 0;
+
             Color brightnessColor = Color.Black;
+            int brightnessIntensity = 0;
 
-            /*string brightestFace = "";
-            float brightestColumn = 0;
-            float brightestColumnBrightness = 0;*/
+            Color ambientColor = Color.Black;
+            int ambientIntensity = 0;
 
+            Color fogColor = Color.Black;
+
+            Dictionary<string, (int[,], int[,], int[,], int[,])> d = new Dictionary<string, (int[,], int[,], int[,], int[,])>();
+
+            // Traverse through each face, minus dn
             foreach (string face in new string[] { "up", "lf", "rt", "ft", "bk" })
             {
+                // Get the face bitmap
                 Bitmap bitmap = imageEdits[face].Image as Bitmap;
 
                 if (bitmap != null)
                 {
-                    for (int i = 0; i < bitmap.Width; i += 4)
+                    // If it's a side face, only look at the above half.
+                    int height = (face == "up" ? bitmap.Height : (bitmap.Width / 2));
+
+                    if (!d.ContainsKey(face))
                     {
-                        float brightnessSum = 0;
-                        int height = (face == "up" ? bitmap.Height : bitmap.Height / 2);
+                        d[face] = (new int[bitmap.Width / sectorSize, height / sectorSize],
+                           new int[bitmap.Width / sectorSize, height / sectorSize],
+                           new int[bitmap.Width / sectorSize, height / sectorSize],
+                           new int[bitmap.Width / sectorSize, height / sectorSize]);
+                    }
 
-                        for (int j = 0; j < height; j += 4)
+                    // Traverse through the bitmap horizontally, from left to right.
+                    for (int i = 0; i < bitmap.Width; i += step)
+                    {
+                        // Traverse through the bitmap vertically, from top to bottom.
+                        for (int j = 0; j < height; j += step)
                         {
+                            // Get the sector index.
+                            int sectorI = (int)Math.Floor((double)i / sectorSize);
+                            int sectorJ = (int)Math.Floor((double)j / sectorSize);
 
+                            // Get the pixel color
                             Color pixelColor = bitmap.GetPixel(i, j);
+
+                            // Add the pixel color to the sum
                             rSum += pixelColor.R;
                             gSum += pixelColor.G;
                             bSum += pixelColor.B;
                             pixelCount++;
 
-                            float brightness = pixelColor.GetBrightness();
-                            if (face != "up")
+                            // Add the horizon pixel color to the sum
+                            if (j >= height - step * 4 && face != "up")
                             {
-
-                                if (brightness > brightnessColor.GetBrightness())
-                                    brightnessColor = pixelColor;
-
-                                brightnessSum += brightness;
+                                rSumHorizon += pixelColor.R;
+                                gSumHorizon += pixelColor.G;
+                                bSumHorizon += pixelColor.B;
+                                pixelCountHorizon++;
                             }
 
-                            /*if (face != "up" && brightness > brightestColumnBrightness)
-                            {
-                                brightestFace = face;
-                                brightestColumn = (float)(i - bitmap.Width / 2) / (float)bitmap.Width;
-                                brightestColumnBrightness = brightness;
-                            }*/
+                            // Add the pixel color to the sector sum
+                            d[face].Item1[sectorI, sectorJ] += pixelColor.R;
+                            d[face].Item2[sectorI, sectorJ] += pixelColor.G;
+                            d[face].Item3[sectorI, sectorJ] += pixelColor.R;
+                            d[face].Item4[sectorI, sectorJ] ++;
+
+                            // Get the brightness
+                            float brightness = pixelColor.GetBrightness();
+
+                            // Check if pixel is brighter
+                            if (brightness > brightnessColor.GetBrightness())
+                                brightnessColor = pixelColor;
                         }
                     }
                 }
             }
 
-            /*double angle = -Math.Atan(brightestColumn) * 180 / Math.PI;
+            float brightestSectorBrightness = 0;
+            Color brightestSectorColor = Color.Black;
+            string brightestFace = "";
+            (int, int) brightestSector = (0, 0);
+            (int, int) sectorsPerFace = (1, 1);
 
-            switch (brightestFace)
+            foreach(KeyValuePair<string, (int[,], int[,], int[,], int[,])> f in d)
             {
-                case "lf":
-                    // If it comes from LF, its between 315 (min column) and 45 (max column)
+                string face = f.Key;
 
-                    angle += 0;
-                    break;
-                case "ft":
-                    // if it comes from FT, its between 45 (min column) and 135 (max column)
+                var k = f.Value;
+                for (int i = 0; i < f.Value.Item1.GetLength(0); i++)
+                {
+                    for (int j = 0; j < f.Value.Item1.GetLength(1); j++)
+                    {
+                        int r = f.Value.Item1[i, j];
+                        int g = f.Value.Item2[i, j];
+                        int b = f.Value.Item3[i, j];
+                        int count = f.Value.Item4[i, j];
 
-                    angle += 90;
-                    break;
-                case "rt":
-                    // if it comes from RT, its between 135 (min column) and 225 (max column)
+                        Color c = Color.FromArgb(r / count, g / count, b / count);
+                        float brt = c.GetBrightness();
+                        if (brt > brightestSectorBrightness)
+                        {
+                            brightestSectorBrightness = brt;
+                            brightestSectorColor = c;
+                            brightestFace = f.Key;
+                            brightestSector = (i, j);
+                            sectorsPerFace = (f.Value.Item1.GetLength(0), f.Value.Item1.GetLength(1));
+                        }
+                    }
+                }
+                //
+            }
+            double cx = 0;
+            double cy = 0;
 
-                    angle += 180;
-                    break;
-                case "bk":
-                    // if it comes from BK, its between 225 (min column) and 315 (max column)
+            if (brightestFace != "up")
+            {
+                // Side faces
+                int bx = sectorsPerFace.Item1 / 2;
+                int ax = brightestSector.Item1 - bx - sectorSize / 2;
+                cx = Math.Atan2(ax, bx) * 180 / Math.PI;
 
-                    angle += 270;
-                    break;
-            }*/
+                int by = sectorsPerFace.Item1 / 2;
+                int ay = brightestSector.Item2 - by - sectorSize / 2;
+                cy = Math.Atan2(ay, by) * 180 / Math.PI;
 
-            settingsBrightnessColorEdit.Color = brightnessColor;
-            settingsBrightnessIntensityEdit.Value = (int)(brightnessColor.GetBrightness() * 200);
+                // Ft points to 180 degrees
+                // Lf points to 270 degrees
+                // Bk points to 0 degrees
+                // RT points to 90 degrees
+                switch (brightestFace)
+                {
+                    // center of LF comes from 0;
+                    case "lf":
+                        cx = -cx + 0;
+                        break;
+                    // center of FT comes from 90;
+                    case "ft":
+                        cx = -cx + 90;
+                        break;
+                    // center of RT comes from 180;
+                    case "rt":
+                        cx = -cx + 180;
+                        break;
+                    // center of BK comes from 90;
+                    case "bk":
+                        cx = -cx + 270;
+                        break;
+                }
+            } else
+            {
+                // Up face
+                int bx = sectorsPerFace.Item1 / 2;
+                int ax = brightestSector.Item1 - bx - sectorSize / 2;
+
+                int by = sectorsPerFace.Item2 / 2;
+                int ay = brightestSector.Item2 - by - sectorSize / 2;
+
+                cx = Math.Atan2(ax, -ay) * 180 / Math.PI;
+
+                double hiponetuse = Math.Sqrt(Math.Pow(ax, 2) + Math.Pow(ay, 2));
+
+                cy = -90 + Math.Atan2(hiponetuse, bx) * 180 / Math.PI;
+            }
+
+            settingsPitchYawRollEdit.Text = "0 " + (int)cx + " 0";
+            settingsPitchEdit.Text = ((int)cy).ToString();
+
+            brightnessIntensity = (int)(brightnessColor.GetBrightness() * 200);
 
             if (pixelCount > 0)
-            {
-                settingsAmbientColorEdit.Color = Color.FromArgb(rSum / pixelCount, gSum / pixelCount, bSum / pixelCount);
-            }
-             else
-            {
-                settingsAmbientColorEdit.Color = Color.Black;
-            }
-            settingsAmbientIntensityEdit.Value = (int)(settingsAmbientColorEdit.Color.GetBrightness() * 200);
+                ambientColor = Color.FromArgb(rSum / pixelCount, gSum / pixelCount, bSum / pixelCount);
+            ambientIntensity = (int)(ambientColor.GetBrightness() * 200);
+
+            if (pixelCountHorizon > 0)
+                fogColor = Color.FromArgb(rSumHorizon / pixelCountHorizon, gSumHorizon / pixelCountHorizon, bSumHorizon / pixelCountHorizon);
+
+            // Update the editors
+            settingsBrightnessColorEdit.Color = brightnessColor;
+            settingsBrightnessIntensityEdit.Value = brightnessIntensity;
+
+            settingsAmbientColorEdit.Color = ambientColor;
+            settingsAmbientIntensityEdit.Value = ambientIntensity;
+
+            settingsFogColorEdit.Color = fogColor;
         }
 
         private void UpdatePreview()
@@ -584,6 +701,13 @@ namespace xblah_modding_tool.Materials
             if (chromium != null && chromium.IsBrowserInitialized)
                 chromium.Reload();
 
+            UpdateSettings();
+
+            Text = "Skybox Editor - " + (Skyname == "" ? "Untitled" : Skyname);
+        }
+
+        private void menuEditRefreshSettingsButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             UpdateSettings();
         }
     }
