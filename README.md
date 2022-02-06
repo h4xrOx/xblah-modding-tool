@@ -45,7 +45,8 @@
 
 ### Materials
 * Create UnlitGeneric, VertexLitGeneric and LightmappedGeneric materials. (Source 1)
-* Create LDR skyboxes and preview them (Goldsrc and Source 1)
+* Create Skyboxes and preview them (Goldsrc and Source 1)
+* Get the ideal colors for light_environments and env_fog_controllers (Goldsrc and Source 1)
 * Materials saved under materials/models will automatically have the parameter 'model 1'
 
 ### Particles
