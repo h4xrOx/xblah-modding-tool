@@ -315,7 +315,11 @@ namespace xblah_modding_lib
         {
             string gameinfoPath = mod.InstallPath + "\\gameinfo.txt";
             KeyValue gameinfo = xblah_modding_lib.KeyValue.readChunkfile(gameinfoPath);
-            string instancePath = Launcher.UserDirectory.Replace("\\", "/") + "Content/" + mod.Game.Name + "/" + mod.folderName + "/mapsrc";
+            string instancePath = gameinfo.getValue("instancepath");
+            if (instancePath == "")
+            {
+                instancePath = Launcher.UserDirectory.Replace("\\", "/") + "Content/" + mod.Game.Name + "/" + mod.folderName + "/mapsrc";
+            }
             string modName = gameinfo.getValue("name");
 
             if (File.Exists(game.InstallPath + "\\bin\\propper.fgd"))
