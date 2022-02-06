@@ -54,6 +54,8 @@ namespace xblah_modding_tool.Materials
             this.menuFileSave = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.menuFileExit = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.menuEditRefreshSettingsButton = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -63,6 +65,8 @@ namespace xblah_modding_tool.Materials
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.settingsLayoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.settingsPitchCopyButton = new DevExpress.XtraEditors.SimpleButton();
+            this.settingsPitchYawRollCopyButton = new DevExpress.XtraEditors.SimpleButton();
             this.settingsFogCopyButton = new DevExpress.XtraEditors.SimpleButton();
             this.settingsFogColorEdit = new DevExpress.XtraEditors.ColorPickEdit();
             this.settingsAmbientCopyButton = new DevExpress.XtraEditors.SimpleButton();
@@ -71,6 +75,8 @@ namespace xblah_modding_tool.Materials
             this.settingsBrightnessIntensityEdit = new DevExpress.XtraEditors.SpinEdit();
             this.settingsBrightnessColorEdit = new DevExpress.XtraEditors.ColorPickEdit();
             this.settingsAmbientColorEdit = new DevExpress.XtraEditors.ColorPickEdit();
+            this.settingsPitchYawRollEdit = new DevExpress.XtraEditors.TextEdit();
+            this.settingsPitchEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.lightEnvironmentGroup = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -82,6 +88,10 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.envFogControllerGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -105,16 +115,9 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.skyListRepository = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.menuEditRefreshSettingsButton = new DevExpress.XtraBars.BarButtonItem();
-            this.settingsPitchYawRollEdit = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.settingsPitchYawRollCopyButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.settingsPitchEdit = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.settingsPitchCopyButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.exposureControlEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.exposureControlLayout = new DevExpress.XtraLayout.LayoutControlItem();
+            this.panelContainer2 = new DevExpress.XtraBars.Docking.DockPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ftEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ldrLayoutControl)).BeginInit();
             this.ldrLayoutControl.SuspendLayout();
@@ -142,6 +145,8 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessIntensityEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessColorEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientColorEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchYawRollEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightEnvironmentGroup)).BeginInit();
@@ -153,6 +158,10 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.envFogControllerGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
@@ -177,12 +186,9 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchYawRollEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureControlEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureControlLayout)).BeginInit();
+            this.panelContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ftEdit
@@ -212,7 +218,7 @@ namespace xblah_modding_tool.Materials
             this.ldrLayoutControl.Location = new System.Drawing.Point(0, 0);
             this.ldrLayoutControl.Name = "ldrLayoutControl";
             this.ldrLayoutControl.Root = this.Root;
-            this.ldrLayoutControl.Size = new System.Drawing.Size(279, 346);
+            this.ldrLayoutControl.Size = new System.Drawing.Size(279, 317);
             this.ldrLayoutControl.TabIndex = 21;
             this.ldrLayoutControl.Text = "layoutControl1";
             // 
@@ -303,7 +309,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem5,
             this.layoutControlItem6});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(262, 620);
+            this.Root.Size = new System.Drawing.Size(279, 620);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -311,7 +317,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem1.Control = this.ftEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem1.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem1.Text = "Front";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -320,7 +326,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem2.Control = this.lfEdit;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 100);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem2.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem2.Text = "Left";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -329,7 +335,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem3.Control = this.bkEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 200);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem3.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem3.Text = "Back";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -338,7 +344,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem4.Control = this.rtEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 300);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem4.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem4.Text = "Right";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -347,7 +353,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem5.Control = this.upEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 400);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem5.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem5.Text = "Up";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -356,7 +362,7 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem6.Control = this.dnEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 500);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(242, 100);
+            this.layoutControlItem6.Size = new System.Drawing.Size(259, 100);
             this.layoutControlItem6.Text = "Down";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(27, 13);
             // 
@@ -464,6 +470,21 @@ namespace xblah_modding_tool.Materials
             this.menuFileExit.Name = "menuFileExit";
             this.menuFileExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_ItemClick);
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Edit";
+            this.barSubItem1.Id = 15;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuEditRefreshSettingsButton)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // menuEditRefreshSettingsButton
+            // 
+            this.menuEditRefreshSettingsButton.Caption = "Refresh settings";
+            this.menuEditRefreshSettingsButton.Id = 16;
+            this.menuEditRefreshSettingsButton.Name = "menuEditRefreshSettingsButton";
+            this.menuEditRefreshSettingsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuEditRefreshSettingsButton_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -501,8 +522,7 @@ namespace xblah_modding_tool.Materials
             this.dockManager1.Form = this;
             this.dockManager1.MenuManager = this.barManager1;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.panelContainer1,
-            this.hdrDockPanel});
+            this.panelContainer1});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -520,7 +540,7 @@ namespace xblah_modding_tool.Materials
             // panelContainer1
             // 
             this.panelContainer1.Controls.Add(this.dockPanel1);
-            this.panelContainer1.Controls.Add(this.ldrDockPanel);
+            this.panelContainer1.Controls.Add(this.panelContainer2);
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.panelContainer1.ID = new System.Guid("b2b128cf-ea21-407c-8f9f-c79916bd895c");
             this.panelContainer1.Location = new System.Drawing.Point(769, 24);
@@ -571,10 +591,38 @@ namespace xblah_modding_tool.Materials
             this.settingsLayoutControl.TabIndex = 3;
             this.settingsLayoutControl.Text = "layoutControl1";
             // 
+            // settingsPitchCopyButton
+            // 
+            this.settingsPitchCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.settingsPitchCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("settingsPitchCopyButton.ImageOptions.SvgImage")));
+            this.settingsPitchCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.settingsPitchCopyButton.Location = new System.Drawing.Point(233, 269);
+            this.settingsPitchCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
+            this.settingsPitchCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
+            this.settingsPitchCopyButton.Name = "settingsPitchCopyButton";
+            this.settingsPitchCopyButton.Size = new System.Drawing.Size(22, 22);
+            this.settingsPitchCopyButton.StyleController = this.settingsLayoutControl;
+            this.settingsPitchCopyButton.TabIndex = 15;
+            this.settingsPitchCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
+            // 
+            // settingsPitchYawRollCopyButton
+            // 
+            this.settingsPitchYawRollCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.settingsPitchYawRollCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("settingsPitchYawRollCopyButton.ImageOptions.SvgImage")));
+            this.settingsPitchYawRollCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.settingsPitchYawRollCopyButton.Location = new System.Drawing.Point(233, 243);
+            this.settingsPitchYawRollCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
+            this.settingsPitchYawRollCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
+            this.settingsPitchYawRollCopyButton.Name = "settingsPitchYawRollCopyButton";
+            this.settingsPitchYawRollCopyButton.Size = new System.Drawing.Size(22, 22);
+            this.settingsPitchYawRollCopyButton.StyleController = this.settingsLayoutControl;
+            this.settingsPitchYawRollCopyButton.TabIndex = 12;
+            this.settingsPitchYawRollCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
+            // 
             // settingsFogCopyButton
             // 
             this.settingsFogCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.settingsFogCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage2")));
+            this.settingsFogCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("settingsFogCopyButton.ImageOptions.SvgImage")));
             this.settingsFogCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.settingsFogCopyButton.Location = new System.Drawing.Point(233, 344);
             this.settingsFogCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
@@ -688,6 +736,24 @@ namespace xblah_modding_tool.Materials
             this.settingsAmbientColorEdit.StyleController = this.settingsLayoutControl;
             this.settingsAmbientColorEdit.TabIndex = 2;
             // 
+            // settingsPitchYawRollEdit
+            // 
+            this.settingsPitchYawRollEdit.Location = new System.Drawing.Point(102, 243);
+            this.settingsPitchYawRollEdit.MenuManager = this.barManager1;
+            this.settingsPitchYawRollEdit.Name = "settingsPitchYawRollEdit";
+            this.settingsPitchYawRollEdit.Size = new System.Drawing.Size(127, 20);
+            this.settingsPitchYawRollEdit.StyleController = this.settingsLayoutControl;
+            this.settingsPitchYawRollEdit.TabIndex = 11;
+            // 
+            // settingsPitchEdit
+            // 
+            this.settingsPitchEdit.Location = new System.Drawing.Point(102, 267);
+            this.settingsPitchEdit.MenuManager = this.barManager1;
+            this.settingsPitchEdit.Name = "settingsPitchEdit";
+            this.settingsPitchEdit.Size = new System.Drawing.Size(127, 20);
+            this.settingsPitchEdit.StyleController = this.settingsLayoutControl;
+            this.settingsPitchEdit.TabIndex = 14;
+            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -800,6 +866,42 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
             // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.settingsPitchYawRollEdit;
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 194);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.Size = new System.Drawing.Size(209, 24);
+            this.layoutControlItem19.Text = "Pitch Yaw Roll";
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(66, 13);
+            // 
+            // layoutControlItem24
+            // 
+            this.layoutControlItem24.Control = this.settingsPitchEdit;
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 218);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.Size = new System.Drawing.Size(209, 28);
+            this.layoutControlItem24.Text = "Pitch";
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(66, 13);
+            // 
+            // layoutControlItem25
+            // 
+            this.layoutControlItem25.Control = this.settingsPitchCopyButton;
+            this.layoutControlItem25.Location = new System.Drawing.Point(209, 220);
+            this.layoutControlItem25.Name = "layoutControlItem25";
+            this.layoutControlItem25.Size = new System.Drawing.Size(26, 26);
+            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem25.TextVisible = false;
+            // 
+            // layoutControlItem22
+            // 
+            this.layoutControlItem22.Control = this.settingsPitchYawRollCopyButton;
+            this.layoutControlItem22.Location = new System.Drawing.Point(209, 194);
+            this.layoutControlItem22.Name = "layoutControlItem22";
+            this.layoutControlItem22.Size = new System.Drawing.Size(26, 26);
+            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.TextVisible = false;
+            // 
             // envFogControllerGroup
             // 
             this.envFogControllerGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -832,50 +934,49 @@ namespace xblah_modding_tool.Materials
             // 
             this.ldrDockPanel.Controls.Add(this.dockPanel1_Container);
             this.ldrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.ldrDockPanel.FloatVertical = true;
             this.ldrDockPanel.ID = new System.Guid("ae5c8c68-b18a-4096-83bc-4c7f4dc3d8c7");
-            this.ldrDockPanel.Location = new System.Drawing.Point(0, 435);
+            this.ldrDockPanel.Location = new System.Drawing.Point(4, 30);
             this.ldrDockPanel.Name = "ldrDockPanel";
             this.ldrDockPanel.Options.AllowDockAsTabbedDocument = false;
             this.ldrDockPanel.Options.AllowDockTop = false;
             this.ldrDockPanel.Options.ShowCloseButton = false;
-            this.ldrDockPanel.OriginalSize = new System.Drawing.Size(286, 432);
-            this.ldrDockPanel.Size = new System.Drawing.Size(286, 379);
-            this.ldrDockPanel.Text = "Cubemap";
+            this.ldrDockPanel.OriginalSize = new System.Drawing.Size(286, 379);
+            this.ldrDockPanel.Size = new System.Drawing.Size(279, 317);
+            this.ldrDockPanel.Text = "LDR Cubemap";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.ldrLayoutControl);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 30);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(279, 346);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(279, 317);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // hdrDockPanel
             // 
             this.hdrDockPanel.Controls.Add(this.dockPanel2_Container);
-            this.hdrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
-            this.hdrDockPanel.FloatLocation = new System.Drawing.Point(450, 133);
-            this.hdrDockPanel.FloatSize = new System.Drawing.Size(83, 83);
-            this.hdrDockPanel.FloatVertical = true;
+            this.hdrDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.hdrDockPanel.FloatSize = new System.Drawing.Size(247, 505);
             this.hdrDockPanel.ID = new System.Guid("2c0de4bc-2069-4d6d-afe0-e10545ab2fa9");
-            this.hdrDockPanel.Location = new System.Drawing.Point(0, 0);
+            this.hdrDockPanel.Location = new System.Drawing.Point(4, 30);
             this.hdrDockPanel.Name = "hdrDockPanel";
             this.hdrDockPanel.Options.ShowCloseButton = false;
             this.hdrDockPanel.OriginalSize = new System.Drawing.Size(102, 44);
-            this.hdrDockPanel.SavedIndex = 0;
-            this.hdrDockPanel.Size = new System.Drawing.Size(83, 83);
-            this.hdrDockPanel.Text = "HDR";
+            this.hdrDockPanel.Size = new System.Drawing.Size(279, 317);
+            this.hdrDockPanel.Text = "HDR Cubemap";
             // 
             // dockPanel2_Container
             // 
             this.dockPanel2_Container.Controls.Add(this.hdrLayoutControl);
-            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 34);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(75, 45);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(279, 317);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // hdrLayoutControl
             // 
+            this.hdrLayoutControl.Controls.Add(this.exposureControlEdit);
             this.hdrLayoutControl.Controls.Add(this.ftHdrEdit);
             this.hdrLayoutControl.Controls.Add(this.lfHdrEdit);
             this.hdrLayoutControl.Controls.Add(this.dnHdrEdit);
@@ -886,13 +987,13 @@ namespace xblah_modding_tool.Materials
             this.hdrLayoutControl.Location = new System.Drawing.Point(0, 0);
             this.hdrLayoutControl.Name = "hdrLayoutControl";
             this.hdrLayoutControl.Root = this.layoutControlGroup1;
-            this.hdrLayoutControl.Size = new System.Drawing.Size(75, 45);
+            this.hdrLayoutControl.Size = new System.Drawing.Size(279, 317);
             this.hdrLayoutControl.TabIndex = 0;
             this.hdrLayoutControl.Text = "layoutControl1";
             // 
             // ftHdrEdit
             // 
-            this.ftHdrEdit.Location = new System.Drawing.Point(51, 12);
+            this.ftHdrEdit.Location = new System.Drawing.Point(69, 36);
             this.ftHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.ftHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.ftHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -906,7 +1007,7 @@ namespace xblah_modding_tool.Materials
             // 
             // lfHdrEdit
             // 
-            this.lfHdrEdit.Location = new System.Drawing.Point(51, 112);
+            this.lfHdrEdit.Location = new System.Drawing.Point(69, 136);
             this.lfHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.lfHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.lfHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -920,7 +1021,7 @@ namespace xblah_modding_tool.Materials
             // 
             // dnHdrEdit
             // 
-            this.dnHdrEdit.Location = new System.Drawing.Point(51, 512);
+            this.dnHdrEdit.Location = new System.Drawing.Point(69, 536);
             this.dnHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.dnHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.dnHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -934,7 +1035,7 @@ namespace xblah_modding_tool.Materials
             // 
             // upHdrEdit
             // 
-            this.upHdrEdit.Location = new System.Drawing.Point(51, 412);
+            this.upHdrEdit.Location = new System.Drawing.Point(69, 436);
             this.upHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.upHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.upHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -948,7 +1049,7 @@ namespace xblah_modding_tool.Materials
             // 
             // rtHdrEdit
             // 
-            this.rtHdrEdit.Location = new System.Drawing.Point(51, 312);
+            this.rtHdrEdit.Location = new System.Drawing.Point(69, 336);
             this.rtHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.rtHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.rtHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -962,7 +1063,7 @@ namespace xblah_modding_tool.Materials
             // 
             // bkHdrEdit
             // 
-            this.bkHdrEdit.Location = new System.Drawing.Point(51, 212);
+            this.bkHdrEdit.Location = new System.Drawing.Point(69, 236);
             this.bkHdrEdit.Margin = new System.Windows.Forms.Padding(0);
             this.bkHdrEdit.MaximumSize = new System.Drawing.Size(96, 96);
             this.bkHdrEdit.MinimumSize = new System.Drawing.Size(96, 96);
@@ -984,64 +1085,65 @@ namespace xblah_modding_tool.Materials
             this.layoutControlItem9,
             this.layoutControlItem10,
             this.layoutControlItem11,
-            this.layoutControlItem12});
+            this.layoutControlItem12,
+            this.exposureControlLayout});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(159, 620);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(262, 644);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.ftHdrEdit;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem7.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem7.Text = "Front";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(45, 13);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.lfHdrEdit;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 100);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 124);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem8.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem8.Text = "Left";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(45, 13);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.bkHdrEdit;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 200);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 224);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem9.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem9.Text = "Back";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(45, 13);
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.rtHdrEdit;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 300);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 324);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem10.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem10.Text = "Right";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(45, 13);
             // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.upHdrEdit;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 400);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 424);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem11.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem11.Text = "Up";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(45, 13);
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.dnHdrEdit;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 500);
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 524);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(139, 100);
+            this.layoutControlItem12.Size = new System.Drawing.Size(242, 100);
             this.layoutControlItem12.Text = "Down";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(27, 13);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(45, 13);
             // 
             // skyListRepository
             // 
@@ -1055,102 +1157,50 @@ namespace xblah_modding_tool.Materials
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
             this.repositoryItemPictureEdit1.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             // 
-            // barSubItem1
+            // exposureControlEdit
             // 
-            this.barSubItem1.Caption = "Edit";
-            this.barSubItem1.Id = 15;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuEditRefreshSettingsButton)});
-            this.barSubItem1.Name = "barSubItem1";
+            this.exposureControlEdit.EditValue = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.exposureControlEdit.Location = new System.Drawing.Point(69, 12);
+            this.exposureControlEdit.MenuManager = this.barManager1;
+            this.exposureControlEdit.Name = "exposureControlEdit";
+            this.exposureControlEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.exposureControlEdit.Size = new System.Drawing.Size(181, 20);
+            this.exposureControlEdit.StyleController = this.hdrLayoutControl;
+            this.exposureControlEdit.TabIndex = 5;
+            this.exposureControlEdit.EditValueChanged += new System.EventHandler(this.exposureControlEdit_EditValueChanged);
             // 
-            // menuEditRefreshSettingsButton
+            // exposureControlLayout
             // 
-            this.menuEditRefreshSettingsButton.Caption = "Refresh settings";
-            this.menuEditRefreshSettingsButton.Id = 16;
-            this.menuEditRefreshSettingsButton.Name = "menuEditRefreshSettingsButton";
-            this.menuEditRefreshSettingsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menuEditRefreshSettingsButton_ItemClick);
+            this.exposureControlLayout.Control = this.exposureControlEdit;
+            this.exposureControlLayout.Location = new System.Drawing.Point(0, 0);
+            this.exposureControlLayout.Name = "exposureControlLayout";
+            this.exposureControlLayout.Size = new System.Drawing.Size(242, 24);
+            this.exposureControlLayout.Text = "Exposure";
+            this.exposureControlLayout.TextSize = new System.Drawing.Size(45, 13);
             // 
-            // settingsPitchYawRollEdit
+            // panelContainer2
             // 
-            this.settingsPitchYawRollEdit.Location = new System.Drawing.Point(102, 243);
-            this.settingsPitchYawRollEdit.MenuManager = this.barManager1;
-            this.settingsPitchYawRollEdit.Name = "settingsPitchYawRollEdit";
-            this.settingsPitchYawRollEdit.Size = new System.Drawing.Size(127, 20);
-            this.settingsPitchYawRollEdit.StyleController = this.settingsLayoutControl;
-            this.settingsPitchYawRollEdit.TabIndex = 11;
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.Control = this.settingsPitchYawRollEdit;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 194);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(209, 24);
-            this.layoutControlItem19.Text = "Pitch Yaw Roll";
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(66, 13);
-            // 
-            // settingsPitchYawRollCopyButton
-            // 
-            this.settingsPitchYawRollCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.settingsPitchYawRollCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage1")));
-            this.settingsPitchYawRollCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.settingsPitchYawRollCopyButton.Location = new System.Drawing.Point(233, 243);
-            this.settingsPitchYawRollCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
-            this.settingsPitchYawRollCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
-            this.settingsPitchYawRollCopyButton.Name = "settingsPitchYawRollCopyButton";
-            this.settingsPitchYawRollCopyButton.Size = new System.Drawing.Size(22, 22);
-            this.settingsPitchYawRollCopyButton.StyleController = this.settingsLayoutControl;
-            this.settingsPitchYawRollCopyButton.TabIndex = 12;
-            this.settingsPitchYawRollCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
-            // 
-            // layoutControlItem22
-            // 
-            this.layoutControlItem22.Control = this.settingsPitchYawRollCopyButton;
-            this.layoutControlItem22.Location = new System.Drawing.Point(209, 194);
-            this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(26, 26);
-            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem22.TextVisible = false;
-            // 
-            // settingsPitchEdit
-            // 
-            this.settingsPitchEdit.Location = new System.Drawing.Point(102, 267);
-            this.settingsPitchEdit.MenuManager = this.barManager1;
-            this.settingsPitchEdit.Name = "settingsPitchEdit";
-            this.settingsPitchEdit.Size = new System.Drawing.Size(127, 20);
-            this.settingsPitchEdit.StyleController = this.settingsLayoutControl;
-            this.settingsPitchEdit.TabIndex = 14;
-            // 
-            // layoutControlItem24
-            // 
-            this.layoutControlItem24.Control = this.settingsPitchEdit;
-            this.layoutControlItem24.Location = new System.Drawing.Point(0, 218);
-            this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(209, 28);
-            this.layoutControlItem24.Text = "Pitch";
-            this.layoutControlItem24.TextSize = new System.Drawing.Size(66, 13);
-            // 
-            // settingsPitchCopyButton
-            // 
-            this.settingsPitchCopyButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.settingsPitchCopyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.settingsPitchCopyButton.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.settingsPitchCopyButton.Location = new System.Drawing.Point(233, 269);
-            this.settingsPitchCopyButton.MaximumSize = new System.Drawing.Size(22, 22);
-            this.settingsPitchCopyButton.MinimumSize = new System.Drawing.Size(22, 22);
-            this.settingsPitchCopyButton.Name = "settingsPitchCopyButton";
-            this.settingsPitchCopyButton.Size = new System.Drawing.Size(22, 22);
-            this.settingsPitchCopyButton.StyleController = this.settingsLayoutControl;
-            this.settingsPitchCopyButton.TabIndex = 15;
-            this.settingsPitchCopyButton.Click += new System.EventHandler(this.settingsCopyButton_Click);
-            // 
-            // layoutControlItem25
-            // 
-            this.layoutControlItem25.Control = this.settingsPitchCopyButton;
-            this.layoutControlItem25.Location = new System.Drawing.Point(209, 220);
-            this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(26, 26);
-            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem25.TextVisible = false;
+            this.panelContainer2.ActiveChild = this.hdrDockPanel;
+            this.panelContainer2.Controls.Add(this.hdrDockPanel);
+            this.panelContainer2.Controls.Add(this.ldrDockPanel);
+            this.panelContainer2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.panelContainer2.FloatVertical = true;
+            this.panelContainer2.ID = new System.Guid("aebed781-9028-4456-83a8-451af7281582");
+            this.panelContainer2.Location = new System.Drawing.Point(0, 435);
+            this.panelContainer2.Name = "panelContainer2";
+            this.panelContainer2.OriginalSize = new System.Drawing.Size(286, 379);
+            this.panelContainer2.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.panelContainer2.SavedIndex = 1;
+            this.panelContainer2.SavedParent = this.panelContainer1;
+            this.panelContainer2.SavedSizeFactor = 0.9312D;
+            this.panelContainer2.Size = new System.Drawing.Size(286, 379);
+            this.panelContainer2.Tabbed = true;
+            this.panelContainer2.Text = "panelContainer2";
             // 
             // SkyboxEditor
             // 
@@ -1195,6 +1245,8 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessIntensityEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBrightnessColorEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsAmbientColorEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchYawRollEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightEnvironmentGroup)).EndInit();
@@ -1206,6 +1258,10 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.envFogControllerGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
@@ -1230,12 +1286,9 @@ namespace xblah_modding_tool.Materials
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skyListRepository)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchYawRollEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsPitchEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureControlEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureControlLayout)).EndInit();
+            this.panelContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1327,5 +1380,8 @@ namespace xblah_modding_tool.Materials
         private DevExpress.XtraEditors.TextEdit settingsPitchEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
+        private DevExpress.XtraEditors.SpinEdit exposureControlEdit;
+        private DevExpress.XtraLayout.LayoutControlItem exposureControlLayout;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer2;
     }
 }

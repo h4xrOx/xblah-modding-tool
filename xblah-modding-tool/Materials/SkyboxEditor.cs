@@ -57,7 +57,7 @@ namespace xblah_modding_tool.Materials
 
             UpdateSkyListCombo();
 
-            hdrDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
+            //hdrDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
 
             CefSharpSettings.ShutdownOnExit = true;
 
@@ -147,6 +147,15 @@ namespace xblah_modding_tool.Materials
                     imageEdit.Image = null;
                 }
             }
+
+            if (hdrImageEdits != null)
+            {
+                foreach (PictureEdit imageEdit in hdrImageEdits.Values)
+                {
+                    imageEdit.Image = null;
+                }
+            }
+
             Skyname = "";
             UpdatePreview();
         }
@@ -175,40 +184,52 @@ namespace xblah_modding_tool.Materials
                             string baseTexturePath = baseTexture.getValue();
                             PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
 
-                            if (baseTextureFile != null)
-                            {
-                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
-
-                                imageEdits[face].Image = baseTextureImage;
-
-                                SavePreview(baseTextureImage, face);
-                            }
-                        }
-
-                        if (hdrbaseTexture != null)
-                        {
-                            string baseTexturePath = hdrbaseTexture.getValue();
-                            PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
+                            Bitmap baseTextureImage = null;
 
                             if (baseTextureFile != null)
                             {
-                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+                                baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
 
-                                hdrImageEdits[face].Image = baseTextureImage;
+                                if (hdrbaseTexture != null)
+                                {
+                                    string hdrBaseTexturePath = hdrbaseTexture.getValue();
+                                    PackageFile hdrBaseTextureFile = packageManager.GetFile("materials/" + hdrBaseTexturePath + ".vtf");
+
+                                    if (hdrBaseTextureFile != null)
+                                    {
+                                        Bitmap hdrBaseTextureImage = VTF.ToBitmap(hdrBaseTextureFile.Data, launcher);
+
+                                        hdrImageEdits[face].Image = hdrBaseTextureImage;
+
+                                        SaveHDRPreview(hdrBaseTextureImage, face);
+                                    }
+                                }
+                                else if (hdrcompressedTexture != null)
+                                {
+                                    string hdrCompressedTexturePath = hdrcompressedTexture.getValue();
+                                    PackageFile hdrCompressedTextureFile = packageManager.GetFile("materials/" + hdrCompressedTexturePath + ".vtf");
+
+                                    if (hdrCompressedTextureFile != null)
+                                    {
+                                        Bitmap hdrCompressedTextureImage = VTF.ToBitmap(hdrCompressedTextureFile.Data, launcher);
+
+                                        hdrImageEdits[face].Image = hdrCompressedTextureImage;
+
+                                        // Will preview the LDR skybox.
+                                        SaveHDRPreview(hdrCompressedTextureImage, face);
+                                    }
+                                }
+                                else
+                                {
+                                    imageEdits[face].Image = baseTextureImage;
+                                    SavePreview(baseTextureImage, face);
+                                }
                             }
                         }
-                        else if (hdrcompressedTexture != null)
-                        {
-                            string baseTexturePath = hdrcompressedTexture.getValue();
-                            PackageFile baseTextureFile = packageManager.GetFile("materials/" + baseTexturePath + ".vtf");
 
-                            if (baseTextureFile != null)
-                            {
-                                Bitmap baseTextureImage = VTF.ToBitmap(baseTextureFile.Data, launcher);
+                        
 
-                                hdrImageEdits[face].Image = baseTextureImage;
-                            }
-                        }
+                        
                     }
 
                     // Goldsrc skyboxes
@@ -329,6 +350,8 @@ namespace xblah_modding_tool.Materials
             // Open material
             else if (e.Item == menuFileOpen)
             {
+                Clear();
+
                 FileExplorer fileExplorer = null;
                 if (launcher.GetCurrentGame().EngineID == Engine.SOURCE) {
                     fileExplorer  = new FileExplorer(launcher, FileExplorer.Mode.OPEN)
@@ -431,6 +454,65 @@ namespace xblah_modding_tool.Materials
             }
         }
 
+        private void SaveHDRPreview(Image source, string face)
+        {
+            Bitmap bitmap = source.Clone() as Bitmap;
+            switch (face)
+            {
+                case "up":
+                    bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    break;
+                case "dn":
+                    bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    break;
+            }
+
+            for (int i = 0; i < bitmap.Width; i++)
+            {
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    Color pixel = bitmap.GetPixel(i, j);
+
+                    float exposure = Math.Max(1, (float)exposureControlEdit.Value);
+
+                    Color hdrPixel = Color.FromArgb(
+                        (int)(Math.Min(pixel.R * (pixel.A * 16) / exposure, 255)), 
+                        (int)(Math.Min(pixel.G * (pixel.A * 16) / exposure, 255)), 
+                        (int)(Math.Min(pixel.B * (pixel.A * 16) / exposure, 255)));
+                    bitmap.SetPixel(i, j, hdrPixel);
+                }
+            }
+
+            var destImage = new Bitmap(1024, 1024);
+            destImage.SetResolution(bitmap.HorizontalResolution, bitmap.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    if (bitmap.Width == bitmap.Height)
+                    {
+                        graphics.DrawImage(bitmap, new Rectangle(0, 0, destImage.Width, destImage.Height), 0, 0, bitmap.Width, bitmap.Height, GraphicsUnit.Pixel, wrapMode);
+                    }
+                    else if (bitmap.Width == 2 * bitmap.Height)
+                    {
+                        graphics.DrawImage(bitmap, new Rectangle(0, 0, destImage.Width, destImage.Height / 2), 0, 0, bitmap.Width, bitmap.Height, GraphicsUnit.Pixel, wrapMode);
+                        graphics.DrawImage(bitmap, new Rectangle(0, destImage.Height / 2, destImage.Width, destImage.Height / 2), 0, bitmap.Height - 1, bitmap.Width, 1, GraphicsUnit.Pixel, wrapMode);
+                    }
+                }
+            }
+
+            destImage.Save(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png", ImageFormat.Png);
+            bitmap.Dispose();
+        }
+
         private void SavePreview(Image source, string face)
         {
             Bitmap bitmap = source.Clone() as Bitmap;
@@ -470,7 +552,6 @@ namespace xblah_modding_tool.Materials
             }
 
             destImage.Save(AppDomain.CurrentDomain.BaseDirectory + "Tools/SkyboxPreviewer/" + face + ".png", ImageFormat.Png);
-            //System.Diagnostics.Debugger.Break();
             bitmap.Dispose();
         }
 
@@ -523,11 +604,18 @@ namespace xblah_modding_tool.Materials
 
             Dictionary<string, (int[,], int[,], int[,], int[,])> d = new Dictionary<string, (int[,], int[,], int[,], int[,])>();
 
+            // Get exposure
+            float exposure = Math.Max(1, (float)exposureControlEdit.Value);
+
             // Traverse through each face, minus dn
             foreach (string face in new string[] { "up", "lf", "rt", "ft", "bk" })
             {
                 // Get the face bitmap
-                Bitmap bitmap = imageEdits[face].Image as Bitmap;
+                Bitmap bitmap;
+                if (hdrImageEdits[face].Image != null)
+                    bitmap = hdrImageEdits[face].Image as Bitmap;
+                else
+                    bitmap = imageEdits[face].Image as Bitmap;
 
                 if (bitmap != null)
                 {
@@ -554,6 +642,14 @@ namespace xblah_modding_tool.Materials
 
                             // Get the pixel color
                             Color pixelColor = bitmap.GetPixel(i, j);
+
+                            if (pixelColor.A < 255)
+                            {
+                                pixelColor = Color.FromArgb(
+                                    (int)(Math.Min(pixelColor.R * (pixelColor.A * 16) / exposure, 255)),
+                                    (int)(Math.Min(pixelColor.G * (pixelColor.A * 16) / exposure, 255)),
+                                    (int)(Math.Min(pixelColor.B * (pixelColor.A * 16) / exposure, 255)));
+                            }
 
                             // Add the pixel color to the sum
                             rSum += pixelColor.R;
@@ -709,6 +805,11 @@ namespace xblah_modding_tool.Materials
         private void menuEditRefreshSettingsButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UpdateSettings();
+        }
+
+        private void exposureControlEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            Open(Skyname);
         }
     }
 }
