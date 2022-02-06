@@ -1,5 +1,7 @@
 # windows-source-modding-tool
 
+[Download here](https://github.com/jean-knapp/xblah-modding-tool/releases/latest)
+
 ## Features:
 
 ### General
