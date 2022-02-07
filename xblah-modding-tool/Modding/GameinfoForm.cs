@@ -329,8 +329,13 @@ namespace xblah_modding_tool
         {
             if(dialogIcon.ShowDialog() == DialogResult.OK)
             {
-                Bitmap original = new TGA(dialogIcon.FileName).ToBitmap();
-
+                Bitmap original;
+                if (Path.GetExtension(dialogIcon.FileName).ToLower() == ".tga") {
+                    original = new TGA(dialogIcon.FileName).ToBitmap();
+                } else
+                {
+                    original = (Bitmap) Bitmap.FromFile(dialogIcon.FileName);
+                }
 
                 Bitmap large = new Bitmap(32, 32);
                 Bitmap small = new Bitmap(16, 16);
