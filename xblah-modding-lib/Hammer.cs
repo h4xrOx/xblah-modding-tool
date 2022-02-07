@@ -231,7 +231,6 @@ namespace xblah_modding_lib
             Game game = mod.Game;
 
             string hammerPath = mod.Game.InstallPath + "\\bin\\hammer.exe";
-            //System.Diagnostics.Debugger.Break();
             if (mod.Game.Name == "Portal 2")
             {
                 // We can try to use CSGO SDK to use hammer++.

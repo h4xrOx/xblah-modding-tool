@@ -304,9 +304,9 @@
             this.modProcessUpdater = new System.Windows.Forms.Timer(this.components);
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dismissUpdateButton = new DevExpress.XtraEditors.SimpleButton();
             this.updateButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dismissUpdateButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryGamesCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -559,8 +559,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuMaterials),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuModeling),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuParticles),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.menuScripts),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.barSubItem1, false),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.menuScripts, false),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuSound)});
             this.menu.OptionsBar.AllowQuickCustomization = false;
             this.menu.OptionsBar.DrawDragBorder = false;
@@ -1359,7 +1359,7 @@
             // 
             // menuScriptsHudEditor
             // 
-            this.menuScriptsHudEditor.Caption = "Hud";
+            this.menuScriptsHudEditor.Caption = "Hud Editor";
             this.menuScriptsHudEditor.Id = 93;
             this.menuScriptsHudEditor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuScriptsHudEditor.ImageOptions.SvgImage")));
             this.menuScriptsHudEditor.Name = "menuScriptsHudEditor";
@@ -1581,6 +1581,19 @@
             this.panelControl1.TabIndex = 14;
             this.panelControl1.Visible = false;
             // 
+            // dismissUpdateButton
+            // 
+            this.dismissUpdateButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(86)))), ((int)(((byte)(4)))));
+            this.dismissUpdateButton.Appearance.Options.UseBackColor = true;
+            this.dismissUpdateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.dismissUpdateButton.Location = new System.Drawing.Point(785, 4);
+            this.dismissUpdateButton.Name = "dismissUpdateButton";
+            this.dismissUpdateButton.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.dismissUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.dismissUpdateButton.TabIndex = 2;
+            this.dismissUpdateButton.Text = "Dismiss";
+            this.dismissUpdateButton.Click += new System.EventHandler(this.dismissUpdateButton_Click);
+            // 
             // updateButton
             // 
             this.updateButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(86)))), ((int)(((byte)(4)))));
@@ -1603,19 +1616,6 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "An update is available. Download [[VERSION]] at https://modding-assets.net/items/" +
     "source/tools/modding/xblah-modding-tool";
-            // 
-            // dismissUpdateButton
-            // 
-            this.dismissUpdateButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(86)))), ((int)(((byte)(4)))));
-            this.dismissUpdateButton.Appearance.Options.UseBackColor = true;
-            this.dismissUpdateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.dismissUpdateButton.Location = new System.Drawing.Point(785, 4);
-            this.dismissUpdateButton.Name = "dismissUpdateButton";
-            this.dismissUpdateButton.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.dismissUpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.dismissUpdateButton.TabIndex = 2;
-            this.dismissUpdateButton.Text = "Dismiss";
-            this.dismissUpdateButton.Click += new System.EventHandler(this.dismissUpdateButton_Click);
             // 
             // MainForm
             // 

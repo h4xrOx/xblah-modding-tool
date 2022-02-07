@@ -244,10 +244,10 @@
     <Compile Include="Modding\CleanDialog.Designer.cs">
       <DependentUpon>CleanDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modding\HudEditor.cs">
+    <Compile Include="Scripting\HudEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modding\HudEditor.Designer.cs">
+    <Compile Include="Scripting\HudEditor.Designer.cs">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Modding\FileExplorer.cs">
@@ -348,6 +348,12 @@
     <Compile Include="Modeling\VMFtoMDL.Designer.cs">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scripting\TextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scripting\TextEditor.Designer.cs">
+      <DependentUpon>TextEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sound\Soundscape.cs" />
     <Compile Include="Sound\SoundscapeEditor.cs">
       <SubType>Form</SubType>
@@ -404,7 +410,7 @@
     <EmbeddedResource Include="Modding\CleanDialog.resx">
       <DependentUpon>CleanDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modding\HudEditor.resx">
+    <EmbeddedResource Include="Scripting\HudEditor.resx">
       <DependentUpon>HudEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modding\FileExplorer.resx">
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modeling\VMFtoMDL.resx">
       <DependentUpon>VMFtoMDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripting\TextEditor.resx">
+      <DependentUpon>TextEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sound\SoundscapeEditor.resx">
       <DependentUpon>SoundscapeEditor.cs</DependentUpon>

@@ -342,6 +342,11 @@ namespace xblah_modding_lib
             return ReadChunk(data, false);
         }
 
+        public static KeyValue ReadChunk(byte[] data, bool hasOSInfo)
+        {
+            return ReadChunk(System.Text.Encoding.UTF8.GetString(data), hasOSInfo);
+        }
+
         public static KeyValue ReadChunk(string data, bool hasOSInfo)
         {
             // Parse Valve chunkfile format

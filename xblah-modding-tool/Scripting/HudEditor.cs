@@ -14,8 +14,10 @@ using System.Diagnostics;
 using DevExpress.XtraLayout;
 using DevExpress.XtraTab;
 using xblah_modding_lib;
+using xblah_modding_lib.Packages;
+using xblah_modding_lib.Packages.UnpackedPackage;
 
-namespace xblah_modding_tool.Modding
+namespace xblah_modding_tool.Scripting
 {
     public partial class HudEditor : DevExpress.XtraEditors.XtraForm
     {
@@ -26,6 +28,8 @@ namespace xblah_modding_tool.Modding
 
         KeyValue clientSchemeKV;
         KeyValue hudLayoutKV;
+
+        PackageManager packageManager;
 
         bool requiresRestart = true;
         bool isUpdating = false;
@@ -51,6 +55,7 @@ namespace xblah_modding_tool.Modding
 
             this.launcher = launcher;
             this.mod = mod;
+            packageManager = new PackageManager(launcher, "");
         }
 
         private void HudEditor2_Load(object sender, EventArgs e)
@@ -68,28 +73,28 @@ namespace xblah_modding_tool.Modding
 
         private void loadClientScheme()
         {
-            string path = mod.InstallPath + "\\resource\\clientscheme.res";
-            if (!File.Exists(path))
-            {
+            var f = packageManager.GetFile("resource/clientscheme.res");
+            if (f == null)
+            { 
                 XtraMessageBox.Show("ClientScheme.res not found in \\resource\\");
                 Close();
                 return;
             }
 
-            clientSchemeKV = KeyValue.readChunkfile(path, true);
+            clientSchemeKV = KeyValue.ReadChunk(f.Data, true);
         }
 
         private void loadHudLayout()
         {
-            string path = mod.InstallPath + "\\scripts\\hudlayout.res";
-            if (!File.Exists(path))
+            var f = packageManager.GetFile("scripts/hudlayout.res");
+            if (f == null)
             {
                 XtraMessageBox.Show("HudLayout.res not found in \\scripts\\");
                 Close();
                 return;
             }
 
-            hudLayoutKV = KeyValue.readChunkfile(path, true);
+            hudLayoutKV = KeyValue.ReadChunk(f.Data, true);
         }
 
         private void updatePages()
@@ -321,25 +326,69 @@ namespace xblah_modding_tool.Modding
 
         private void reloadHUD()
         {
-            instance.Command("+hud_reloadscheme");
-        }
-
-        private void saveChangesButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            KeyValue.writeChunkFile(mod.InstallPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
-            KeyValue.writeChunkFile(mod.InstallPath + "\\scripts\\hudlayout.res", hudLayoutKV, false, Encoding.UTF8);
-
             if (requiresRestart)
                 startPreview();
             else
-                reloadHUD();
-
+                instance.Command("+hud_reloadscheme");
         }
 
         private void HudEditor2_ResizeEnd(object sender, EventArgs e)
         {
             if (instance != null)
                 instance.Resize();
+        }
+
+        private void menuFile_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (e.Item == menuFileSave)
+            {
+                KeyValue.writeChunkFile(mod.InstallPath + "\\resource\\clientscheme.res", clientSchemeKV, false, Encoding.UTF8);
+                KeyValue.writeChunkFile(mod.InstallPath + "\\scripts\\hudlayout.res", hudLayoutKV, false, Encoding.UTF8);
+
+                reloadHUD();
+            }
+            else if(e.Item == menuFileClose)
+            {
+                Close();
+            }
+            else if(e.Item == menuEditReset)
+            {
+                requiresRestart = true;
+                ResetHud();
+            }
+            else if(e.Item == menuEditRefresh)
+            {
+                requiresRestart = true;
+                reloadHUD();
+            }
+        }
+
+        private void ResetHud()
+        {
+            var f = packageManager.GetFile("resource/clientscheme.res");
+            var f2 = packageManager.GetFile("scripts/hudlayout.res");
+
+            if (f is UnpackedFile)
+            {
+                string path = f.Directory.ParentArchive.ArchivePath + "\\" + f.FullPath.Replace("/", "\\");
+                //System.Diagnostics.Debugger.Break();
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                //File.Delete(f.FullPath)
+            }
+
+            if (f2 is UnpackedFile)
+            {
+                string path = f2.Directory.ParentArchive.ArchivePath + "\\" + f2.FullPath.Replace("/", "\\");
+                //System.Diagnostics.Debugger.Break();
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                //File.Delete(f.FullPath)
+            }
         }
     }
 }

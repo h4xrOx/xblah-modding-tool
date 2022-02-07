@@ -15,6 +15,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using xblah_modding_tool.Scripting;
 
 namespace xblah_modding_tool.Modding
 {
@@ -414,12 +415,6 @@ namespace xblah_modding_tool.Modding
                 };
                 soundscapeEditor.ShowDialog();
             }
-            else if(new string[] { "txt", "gi" }.Contains(packageFile.Extension))
-            {
-                // TODO temp method. This will only work for unpacked files.
-                if (packageFile is UnpackedFile)
-                    Process.Start("NOTEPAD", packageFile.Directory.ParentArchive.ArchivePath + "\\" + packageFile.Path + "\\" + packageFile.Filename + "." + packageFile.Extension);
-            }
             else if(packageFile.Extension == "wav")
             {
                 using (Stream s = new MemoryStream(packageFile.Data))
@@ -427,6 +422,11 @@ namespace xblah_modding_tool.Modding
                     System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer(s);
                     myPlayer.Play();
                 }
+            }
+            else
+            {
+                TextEditor textEditor = new TextEditor(launcher, packageFile);
+                textEditor.ShowDialog();
             }
         }
 
@@ -701,6 +701,10 @@ namespace xblah_modding_tool.Modding
                 string tag = fileTree.Selection[0].Tag.ToString();
                 string path = launcher.GetCurrentMod().InstallPath + "\\" + tag.Replace("/", "\\");
                 Process.Start(path);
+            }
+            else if(e.Item == contextFileOpen)
+            {
+                OpenFile(fileTree.Selection[0].Tag as PackageFile);
             }
         }
 

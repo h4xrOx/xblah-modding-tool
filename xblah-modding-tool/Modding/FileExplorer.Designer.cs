@@ -73,6 +73,7 @@ namespace xblah_modding_tool.Modding
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.fileMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.contextFileOpen = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.directoryTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileTree)).BeginInit();
@@ -218,8 +219,9 @@ namespace xblah_modding_tool.Modding
             this.contextFolderOpenInWindows,
             this.contextFileShowInWindowsExplorer,
             this.contextFileDecompile,
-            this.newFolderButton});
-            this.barManager1.MaxItemId = 13;
+            this.newFolderButton,
+            this.contextFileOpen});
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -518,10 +520,11 @@ namespace xblah_modding_tool.Modding
             // fileMenu
             // 
             this.fileMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileOpen),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileShowInWindowsExplorer, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.contextFileExtractFromVPK),
-            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileShowInWindowsExplorer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDecompile)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDecompile),
+            new DevExpress.XtraBars.LinkPersistInfo(this.contextFileDelete, true)});
             this.fileMenu.Manager = this.barManager1;
             this.fileMenu.Name = "fileMenu";
             // 
@@ -532,6 +535,13 @@ namespace xblah_modding_tool.Modding
             new DevExpress.XtraBars.LinkPersistInfo(this.contextFolderOpenInWindows)});
             this.folderMenu.Manager = this.barManager1;
             this.folderMenu.Name = "folderMenu";
+            // 
+            // contextFileOpen
+            // 
+            this.contextFileOpen.Caption = "Open";
+            this.contextFileOpen.Id = 13;
+            this.contextFileOpen.Name = "contextFileOpen";
+            this.contextFileOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.contextFolder_ItemClick);
             // 
             // FileExplorer
             // 
@@ -617,5 +627,6 @@ namespace xblah_modding_tool.Modding
         private DevExpress.XtraBars.BarButtonItem contextFileDecompile;
         private DevExpress.XtraBars.Bar openFileDialogBar;
         private DevExpress.XtraBars.BarButtonItem newFolderButton;
+        private DevExpress.XtraBars.BarButtonItem contextFileOpen;
     }
 }

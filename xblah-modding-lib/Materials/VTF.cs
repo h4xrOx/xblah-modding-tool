@@ -39,7 +39,7 @@ namespace xblah_modding_lib.Materials
 
             Process process = new Process();
             process.StartInfo.FileName = vtexPath;
-            process.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga";
+            process.StartInfo.Arguments = "-mkdir -quiet -nopause -shader UnlitGeneric temp.tga -allmips";
             process.StartInfo.WorkingDirectory = filePath;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();

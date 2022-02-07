@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Net;
 using System.Threading;
+using xblah_modding_tool.Scripting;
 
 namespace xblah_modding_tool
 {
@@ -790,7 +791,7 @@ namespace xblah_modding_tool
                     menuChoreography.Enabled = true;
                         menuChoreographyFaceposer.Enabled = (toolsMods.EditValue != null && toolsMods.EditValue.ToString() != string.Empty);
                     menuSound.Enabled = true;
-                    menuScripts.Enabled = false;
+                    menuScripts.Enabled = true;
 
                     if (launcher.GetCurrentGame().GetAppId() == 730) // CSGO
                     {
