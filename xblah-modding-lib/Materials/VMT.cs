@@ -46,6 +46,14 @@ namespace xblah_modding_lib.Materials
                 textures.Add(material.findChildByKey("%tooltexture"));
                 textures.Add(material.findChildByKey("$selfillummask"));
 
+                // for PBR
+                textures.Add(material.findChildByKey("$mraotexture"));
+                textures.Add(material.findChildByKey("$emissiontexture"));
+                textures.Add(material.findChildByKey("$normalmap"));
+                textures.Add(material.findChildByKey("$normaltexture"));
+                textures.Add(material.findChildByKey("$mrotexture"));
+                textures.Add(material.findChildByKey("$speculartexture"));
+
                 foreach (KeyValue textureKv in textures)
                 {
                     if (textureKv == null)
