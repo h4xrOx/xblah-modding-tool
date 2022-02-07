@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace xblah_modding_tool
 {
@@ -120,12 +121,16 @@ namespace xblah_modding_tool
 
             foreach (string field in launcher.GetCurrentGame().getGameinfoFields())
             {
+                
                 xblah_modding_lib.KeyValue childKV = gameinfo.findChildByKey(field);
-                if (childKV == null)
-                    continue;
+                if (field != "icon")
+                {
+                    if (childKV == null)
+                        continue;
 
-                if (!fields.ContainsKey(field))
-                    continue;
+                    if (!fields.ContainsKey(field))
+                        continue;
+                }
 
                 BaseEdit control = (fields[field] as LayoutControlItem).Control as BaseEdit;
 
@@ -187,14 +192,29 @@ namespace xblah_modding_tool
                         break;
                     case "icon":
                         {
-                            string icon = childKV.getValue();
+                            switch (launcher.GetCurrentGame().EngineID)
+                            {
+                                case Engine.SOURCE:
+                                    {
+                                        string icon = childKV.getValue();
 
-                            if (File.Exists(modPath + "\\" + icon + ".tga"))
-                                pictureEdit2.Image = new TGA(modPath + "\\" + icon + ".tga").ToBitmap();
+                                        if (File.Exists(modPath + "\\" + icon + ".tga"))
+                                            pictureEdit2.Image = new TGA(modPath + "\\" + icon + ".tga").ToBitmap();
 
-                            if (File.Exists(modPath + "\\" + icon + "_big.tga"))
-                                pictureEdit1.Image = new TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
-
+                                        if (File.Exists(modPath + "\\" + icon + "_big.tga"))
+                                            pictureEdit1.Image = new TGA(modPath + "\\" + icon + "_big.tga").ToBitmap();
+                                    }
+                                    break;
+                                case Engine.GOLDSRC:
+                                    {
+                                        if (File.Exists(modPath + "\\game.ico"))
+                                        {
+                                            pictureEdit1.Image = Bitmap.FromFile(modPath + "\\game.ico");
+                                            pictureEdit2.Image = Bitmap.FromFile(modPath + "\\game.ico");
+                                        }
+                                    }
+                                    break;
+                            }
                             pictureEdit1.Properties.ContextMenuStrip = new ContextMenuStrip();
                         }
                         break;
@@ -286,17 +306,38 @@ namespace xblah_modding_tool
                         break;
                     case "icon":
                         {
-                            gameinfo.setValue("icon", "resource/icon");
+                            switch(launcher.GetCurrentGame().EngineID)
+                            {
+                                case Engine.SOURCE:
+                                    {
+                                        gameinfo.setValue("icon", "resource/icon");
 
-                            if (pictureEdit2.Image != null)
-                                new TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
-                            else if (File.Exists(modPath + "\\resource\\icon.tga"))
-                                File.Delete(modPath + "\\resource\\icon.tga");
+                                        if (pictureEdit2.Image != null)
+                                            new TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
+                                        else if (File.Exists(modPath + "\\resource\\icon.tga"))
+                                            File.Delete(modPath + "\\resource\\icon.tga");
 
-                            if (pictureEdit1.Image != null)
-                                new TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
-                            else if (File.Exists(modPath + "\\resource\\icon_big.tga"))
-                                File.Delete(modPath + "\\resource\\icon_big.tga");
+                                        if (pictureEdit1.Image != null)
+                                            new TGA((Bitmap)pictureEdit1.Image).Save(modPath + "\\resource\\icon_big.tga");
+                                        else if (File.Exists(modPath + "\\resource\\icon_big.tga"))
+                                            File.Delete(modPath + "\\resource\\icon_big.tga");
+                                    }
+                                    break;
+                                case Engine.GOLDSRC:
+                                    {
+                                        if (pictureEdit2.Image != null)
+                                            new TGA((Bitmap)pictureEdit2.Image).Save(modPath + "\\resource\\icon.tga");
+                                        else if (File.Exists(modPath + "\\resource\\icon.tga"))
+                                            File.Delete(modPath + "\\resource\\icon.tga");
+
+                                        if (pictureEdit1.Image != null)
+                                            pictureEdit1.Image.Save(modPath + "\\game.ico", ImageFormat.Icon);
+                                        else if (File.Exists(modPath + "\\game.ico"))
+                                            File.Delete(modPath + "\\game.ico");
+                                    }
+                                    break;
+                            }
+                            
                         }
                         break;
                     case "gamedata":
