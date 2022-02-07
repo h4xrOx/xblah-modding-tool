@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -23,11 +24,9 @@ namespace xblah_modding_lib
         /// </summary>
         public string InstallPath { get; private set; }
 
-        public string folderName {
-            get {
-                return Path.GetFileName(InstallPath);
-            }
-        }
+        public string folderName => Path.GetFileName(InstallPath);
+
+        public Bitmap Icon { get; set; } = null;
 
         public Mod(Game game, string name, string installPath)
         {

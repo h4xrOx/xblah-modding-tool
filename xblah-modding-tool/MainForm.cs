@@ -51,13 +51,9 @@ namespace xblah_modding_tool
 
             if (launcher.GetGamesList().ContainsKey(currentGame))
                 toolsGames.EditValue = currentGame;
-            else
-                toolsGames.EditValue = "";
 
-            if (repositoryModsCombo.Items.Contains(currentMod))
+            if (launcher.GetCurrentGame().Mods.ContainsKey(currentMod))
                 toolsMods.EditValue = currentMod;
-            else
-                toolsMods.EditValue = "";
 
             UpdateMenus();
             updateBackground();
@@ -932,34 +928,20 @@ namespace xblah_modding_tool
 
             // Image list
             repositoryGamesCombo.Items.Clear();
-            imageCollection1.Clear();
+            gameIconsCollection.Clear();
             if (gamesList.Count > 0)
                 foreach (KeyValuePair<string, Game> item in gamesList)
                 {
-                    Bitmap icon = null;
-                    if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico"))
-                        icon = (Bitmap)Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + item.Key + ".ico");
-                    else if (File.Exists(item.Value.getExePath()))
-                    {
-                        try
-                        {
-                            icon = Icon.ExtractAssociatedIcon(item.Value.getExePath()).ToBitmap();
-                        } catch (FileNotFoundException)
-                        {
+                    if (item.Value.Icon != null)
+                        gameIconsCollection.Images.Add(item.Value.Icon);
 
-                        }
-                    }
-
-                    if (icon != null)
-                        imageCollection1.Images.Add(icon);
-
-                    repositoryGamesCombo.Items.Add(new ImageComboBoxItem(item.Key, item.Key, imageCollection1.Images.Count - 1));
+                    repositoryGamesCombo.Items.Add(new ImageComboBoxItem(item.Key, item.Key, gameIconsCollection.Images.Count - 1));
                 }
 
             if (gamesList.Count > 0 && gamesList.ContainsKey(currentGame))
                 toolsGames.EditValue = currentGame;
             else if (gamesList.Count > 0)
-                toolsGames.EditValue = repositoryGamesCombo.Items[0];
+                toolsGames.EditValue = repositoryGamesCombo.Items[0].Value;
             else
                 toolsGames.EditValue = string.Empty;
 
@@ -969,6 +951,7 @@ namespace xblah_modding_tool
         {
             string currentMod = (toolsMods.EditValue != null ? toolsMods.EditValue.ToString() : string.Empty);
             repositoryModsCombo.Items.Clear();
+            modIconsCollection.Clear();
 
             Game currentGame = (toolsGames.EditValue != null ? launcher.GetGamesList()[toolsGames.EditValue.ToString()] : null);
             if(currentGame == null)
@@ -977,12 +960,23 @@ namespace xblah_modding_tool
             Dictionary<string, Mod> modsList = launcher.GetModsList(currentGame);
             if (modsList.Count > 0)
                 foreach (KeyValuePair<string, Mod> item in modsList)
-                    repositoryModsCombo.Items.Add(item.Key);
+                {
+                    if (item.Value.Icon != null)
+                        modIconsCollection.Images.Add(item.Value.Icon);
+                    else if(currentGame.Icon != null)
+                        modIconsCollection.Images.Add(currentGame.Icon);
+
+                    repositoryModsCombo.Items.Add(new ImageComboBoxItem(item.Key, item.Key, modIconsCollection.Images.Count - 1));
+                }
 
             if (repositoryModsCombo.Items.Count > 0 && repositoryModsCombo.Items.Contains(currentMod))
+            {
                 toolsMods.EditValue = currentMod;
-            else if(repositoryModsCombo.Items.Count > 0)
-                toolsMods.EditValue = repositoryModsCombo.Items[0];
+            }
+            else if (repositoryModsCombo.Items.Count > 0)
+            {
+                toolsMods.EditValue = repositoryModsCombo.Items[0].Value;
+            }
             else
             {
                 toolsMods.EditValue = string.Empty;

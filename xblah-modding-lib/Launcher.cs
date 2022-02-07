@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -130,6 +131,23 @@ namespace xblah_modding_lib
             }
 
             games = games.OrderBy(m => m.Key).ToDictionary(m => m.Key, m => m.Value);
+
+            foreach(KeyValuePair<string, Game> game in games)
+            {
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + game.Key + ".ico"))
+                    game.Value.Icon = (Bitmap)Bitmap.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Assets/GameIcons/" + game.Key + ".ico");
+                else if (File.Exists(game.Value.getExePath()))
+                {
+                    try
+                    {
+                        game.Value.Icon = Icon.ExtractAssociatedIcon(game.Value.getExePath()).ToBitmap();
+                    }
+                    catch (FileNotFoundException)
+                    {
+
+                    }
+                }
+            }
 
             return games;
         }

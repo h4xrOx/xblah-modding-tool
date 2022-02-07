@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using xblah_modding_lib.Materials;
 
 namespace xblah_modding_lib
 {
@@ -21,6 +23,8 @@ namespace xblah_modding_lib
         Mod CurrentMod { get; set; } = null;
 
         public Dictionary<string, Mod> Mods { get; set; }
+
+        public Bitmap Icon { get; set; } = null;
 
         public Game(string name, string installPath, int engine, Launcher launcher)
         {
@@ -242,6 +246,10 @@ namespace xblah_modding_lib
                                         while (Mods.Keys.Contains(name))
                                             name = name + "_";
                                         Mods.Add(name, new Mod(this, name, path));
+
+                                        string iconPath = Mods[name].InstallPath + "\\" + gameInfo.getValue("icon").Replace("/", "\\") + ".tga";
+                                        if (File.Exists(iconPath))
+                                            Mods[name].Icon = TGA.FromFile(iconPath).ToBitmap();
                                     }
                                 }
                             }
@@ -335,6 +343,10 @@ namespace xblah_modding_lib
                                         while (Mods.Keys.Contains(name))
                                             name = name + "_";
                                         Mods.Add(name, new Mod(this, name, path));
+
+                                        // Fetch mod icon
+                                        if (File.Exists(path + "\\game.ico"))
+                                            Mods[name].Icon = (Bitmap)Bitmap.FromFile(path + "\\game.ico");
                                     }
                                 }
 
