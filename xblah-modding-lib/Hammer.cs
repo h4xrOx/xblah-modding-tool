@@ -270,7 +270,6 @@ namespace xblah_modding_lib
             if (mod.Game.Name == "Mapbase" || mod.Game.Name == "Mapbase MP")
             {
                 process.StartInfo.Arguments += " -game " + mod.InstallPath;
-                System.Diagnostics.Debugger.Break();
             }
 
             // Open file in hammer.
@@ -362,7 +361,13 @@ namespace xblah_modding_lib
             sb.AppendLine("             \"MapDir\"		\"" + instancePath + "\"");
             sb.AppendLine("             \"BSPDir\"		\"" + mod.InstallPath + "\\maps\"");
             sb.AppendLine("             \"CordonTexture\"		\"tools\\toolsskybox\"");
-            sb.AppendLine("             \"MaterialExcludeCount\"		\"0\"");
+            sb.AppendLine("             \"MaterialExcludeCount\"		\"6\"");
+            sb.AppendLine("             \"-MaterialExcludeDir0\"		\"console\"");
+            sb.AppendLine("             \"-MaterialExcludeDir1\"		\"debug\"");
+            sb.AppendLine("             \"-MaterialExcludeDir2\"		\"models\"");
+            sb.AppendLine("             \"-MaterialExcludeDir3\"		\"perftest\"");
+            sb.AppendLine("             \"-MaterialExcludeDir4\"		\"shadertest\"");
+            sb.AppendLine("             \"-MaterialExcludeDir5\"		\"vgui\"");
             sb.AppendLine("         }");
             sb.AppendLine("     }");
             sb.AppendLine(" }");
