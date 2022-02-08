@@ -558,6 +558,8 @@
     <Folder Include="Resources\Tools\HammerEditor\prefabs\" />
     <Folder Include="Resources\Tools\HammerEditor\sprites\DoD\raw\" />
     <Folder Include="Resources\Tools\HammerEditor\tools\" />
+    <Folder Include="Resources\Tools\HammerPlusPlus\mapbase\" />
+    <Folder Include="Resources\Tools\HammerPlusPlus\mapbase_mp\" />
     <Folder Include="Resources\Tools\HammerPlusPlus\mp\" />
     <Folder Include="Resources\Tools\HammerPlusPlus\sp\" />
     <Folder Include="Resources\Tools\HammerPlusPlus\tf2\" />
