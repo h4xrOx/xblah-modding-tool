@@ -117,7 +117,10 @@ namespace xblah_modding_lib
 
                     break;
                 }
+            }
 
+            foreach (string library in libraries.GetList())
+            {
                 if (games.ContainsKey("Source SDK Base 2013 Multiplayer") &&
                     Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_shared") &&
                     Directory.Exists(library + "\\steamapps\\sourcemods\\mapbase_hl2") &&

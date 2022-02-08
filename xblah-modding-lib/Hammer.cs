@@ -145,14 +145,14 @@ namespace xblah_modding_lib
                 gameBranch = "unknown";
             }
 
-            if (gameBranch == "mapbase")
+            /*if (gameBranch == "mapbase")
             {
                 gameBranch = "sp";
             }
             else if(gameBranch == "mapbase_mp")
             {
                 gameBranch = "mp";
-            }
+            }*/
 
             string expectedFileName = "hammerplusplus_" + gameBranch;
             if (gameBranch == "mapbase" || gameBranch == "sp")
@@ -268,7 +268,10 @@ namespace xblah_modding_lib
 
             // Mapbase specfic hammer launch.
             if (mod.Game.Name == "Mapbase" || mod.Game.Name == "Mapbase MP")
+            {
                 process.StartInfo.Arguments += " -game " + mod.InstallPath;
+                System.Diagnostics.Debugger.Break();
+            }
 
             // Open file in hammer.
             if (packageFile != null)
@@ -423,14 +426,14 @@ namespace xblah_modding_lib
             string hammerPath = "";
 
             string gameBranch = game.GetBranch();
-            if (gameBranch == "mapbase")
+            /*if (gameBranch == "mapbase")
             {
                 gameBranch = "sp";
             }
             else if(gameBranch == "mapbase_mp")
             {
                 gameBranch = "mp";
-            }
+            }*/
 
             if (gameBranch != "")
             {
