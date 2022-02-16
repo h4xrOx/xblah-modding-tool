@@ -32,13 +32,17 @@ namespace xblah_modding_lib.Models
                 else if (b > 0)
                     chars.Add(Convert.ToChar(b));
 
-            if (!materials.Contains("body"))
+            if (materials.Contains("body"))
+            {
+                materials.RemoveRange(0, materials.IndexOf("body") + 1);
+            } else if (materials.Contains("default")) {
+                materials.RemoveRange(0, materials.IndexOf("default") + 1);
+            } else
+            {
                 return new List<string>();
-
-            materials.RemoveRange(0, materials.IndexOf("body") + 1);
+            }
 
             string materialPath = materials.Last();
-
             if (materialPath.EndsWith("\\") || materialPath.EndsWith("/"))
             {
                 // Last string is the path, and all the previous ones are individual file names.
